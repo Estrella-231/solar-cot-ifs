@@ -25,3 +25,8 @@ cd solar-cot-ifs
 8. `refine-logs/REVIEW_SUMMARY.md`：ARIS 独立审查及修订记录。
 
 第一篇在相邻 `solar-energy` 中。本篇使用相同数据合同与合规基线以减少成本，但科学问题、下游训练、结果和正文独立。研究结论待实验决定。
+
+## 2026-09-05 推进记录
+已完成服务器P200首轮审计和COT候选时间重划，详见 `docs/P200_AUDIT_20260905.md`。已部署工程根 `/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905`。8项时间/IFS合同测试通过，独立CPU复跑通过。上游权重与数据合同仍有明确缺口，因此尚无GPU训练或第二篇精度结果。
+
+CPP质量来源已追通并发现旧裁剪偏移，18份修正样例已核验；详见 [CPP来源与空间审计](docs/CPP_QUALITY_PROVENANCE_20260905.md) 和 [COT合同](configs/cot_contract.json)。当前共14项合同测试通过，全量参考缓存待重建。

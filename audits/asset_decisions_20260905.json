@@ -1,0 +1,28 @@
+{
+  "stage": "P200",
+  "training_permitted_by_data_gates": false,
+  "m0": {"status": "PASS_INTEGRITY", "checked_files": 8, "sequences": 48310},
+  "cot_legacy": {
+    "status": "REJECT_CURRENT_PAPER_SPLIT",
+    "checkpoint": "/home/Data_Pool_3/chenyi/GHI/cloud_retrieval_hunan/results/cot_unet_agri13_geom_v1/best_model.pth",
+    "checkpoint_sha256": "8d25d47cdd7a8324dfc30580be4535cb3dc538908873f6330dc101021c3039fc",
+    "norm_sha256": "87f633050ffd7a60c2840062a08ae7032dca3d8efb5ffee1853eca5e510becd4",
+    "old_train_in_current_validation": 1916,
+    "old_validation_in_current_test": 883,
+    "new_candidate_counts": {"train": 12630, "validation": 6954, "test": 2878},
+    "new_candidate_status": "TIME_SPLIT_ONLY_CPP_QC_UNVERIFIED"
+  },
+  "simvp_candidate": {
+    "status": "REJECT_HUBEI_INITIALIZATION",
+    "config": "/home/Data_Pool_3/chenyi/GHI/SimVPv2/work_dirs/hunan_simvp_gsta_8to24_transfer_hubei_20260803_v5_3gpu/model_param.json",
+    "forecast_frames": 24,
+    "compliant_weight_search": "NOT_FOUND_WITHIN_BOUNDED_INSPECTED_ROOTS"
+  },
+  "ifs": {
+    "status": "MISSING_RELEASE_AND_NATIVE_STEP_PROVENANCE",
+    "sample_ssrd_units": "J m**-2",
+    "station_index_columns": ["station_id", "init_time_utc", "lead_hour", "valid_time_utc", "path_npz", "source_path", "status"],
+    "station_cache_steps": [1, 2, 3, 4],
+    "actual_historical_arrival_time_confirmed": false
+  }
+}

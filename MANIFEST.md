@@ -36,3 +36,18 @@
 | 2026-09-05 16:19:59 | repository-upload | docs/PACKAGE_SHA256.json | implementation | 独立仓库配套文件 |
 | 2026-09-05 16:19:59 | repository-upload | docs/UPSTREAM_PROJECT_RULES.md | implementation | 独立仓库配套文件 |
 | 2026-09-05 16:19:59 | repository-upload | scripts/audit_assets.py | implementation | 独立仓库配套文件 |
+| 2026-09-05 16:28:03 | run-experiment | docs/P200_AUDIT_20260905.md | implementation | P200实际资产核验与缺口 |
+| 2026-09-05 16:28:03 | run-experiment | scripts/audit_assets.py | implementation | 有界只读服务器审计 |
+| 2026-09-05 16:28:03 | run-experiment | scripts/repartition_cot_manifest.py | implementation | 按BJT重新划分COT候选 |
+| 2026-09-05 16:28:03 | run-experiment | scripts/ifs_causal.py | implementation | IFS因果与区间合同函数 |
+| 2026-09-05 16:28:03 | run-experiment | data/cot_candidate_m0_split_v1/split_audit.json | implementation | 新候选统计与哈希 |
+| 2026-09-05 16:28:03 | run-experiment | docs/P200_REPRODUCTION.md | implementation | 独立CPU按文档复跑 |
+| 2026-09-05 16:28:03 | run-experiment | audits/asset_decisions_20260905.json | implementation | 权重复用判定 |
+| 2026-09-05 | CPP-source-audit | docs/CPP_QUALITY_PROVENANCE_20260905.md | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | configs/cot_contract.json | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | scripts/audit_cpp_quality.py | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | scripts/cpp_quality_mask.py | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | scripts/cpp_grid_mapping.py | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | tests/test_cpp_quality_mask.py | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | tests/test_cpp_grid_mapping.py | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-source-audit | audits/cpp_quality_20260905_v2.json | implementation | CPP来源、数值掩膜与空间修正证据 |

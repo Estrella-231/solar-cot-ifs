@@ -5,7 +5,7 @@
 | ID | 阶段 | 任务 | 依赖 | 状态 | 产物 |
 |---|---|---|---|---|---|
 | P200a | 审计 | 湖南SimVP训练区域/split/权重/通道 | 现存资产查证 | AUDITED_CANDIDATES_REJECTED_TRANSFER | asset_manifest.json |
-| P200b | 审计 | COT/CPP合同、缺测、可用通道与区域 | 无 | SOURCE_TRACED_LEGACY_GRID_FAILED_REBUILD_PENDING | configs/cot_contract.json |
+| P200b | 审计 | COT/CPP合同、缺测、可用通道与区域 | 无 | LEGACY_SPLIT_REJECTED_NEW_CANDIDATE_READY_QC_PENDING | cot_contract.json |
 | P200c | 审计 | IFS周期、发布时刻、step和SSRD单位 | 无 | PARTIAL_MISSING_RELEASE_AND_STEP_CONTRACT | ifs_availability.parquet |
 | P200d | 审计 | 共同cohort、标签、网格与先前test暴露 | M0核验 | M0_8_HASHES_PASS_NEW_COHORT_PENDING | cohort_manifest与audit.json |
 | P201a | smoke | 32序列端到端及8条过拟合 | P200a/b/d | WAITING_PREREQUISITES | smoke_audit.json |
@@ -22,6 +22,3 @@
 ## 2026-09-05 P200执行更新
 本轮已实际部署CPU审计和重划脚本。M0的8文件hash通过；COT候选重划12630/6954/2878，两次服务器执行与本地一致。旧COT训练/选模时段与论文val/test重叠，旧SimVP候选为湖北迁移权重，不能直接复用。IFS抽查未保留release信息，站点缓存只覆盖step1–4。当前未启动GPU训练或完整pilot，原因是上游科学合同尚未通过，不是等待用户重复批准。
 新增产物见docs/P200_AUDIT_20260905.md、data/cot_candidate_m0_split_v1和scripts。下一任务是CPP质量来源/样本检查与合规湖南SimVP准备；IFS分支独立推进。测试代码8项通过，CPU复跑通过，不表示训练环境就绪。
-
-## 2026-09-05 CPP质量来源更新
-源到缓存18例核验通过，但旧cpp_valid_mask仅是finite掩膜，源文件没有独立QA字段。COT源Range为0–100，旧训练85阈值是实现过滤。旧CPP空间裁剪全部偏移一像元；18份独立修正样例坐标误差均为0。全量重建与新候选覆盖统计尚未完成，旧22,462条清单仅保留历史候选意义。源NC生成批次与实际checkpoint的关联仍未核实。详见docs/CPP_QUALITY_PROVENANCE_20260905.md及configs/cot_contract.json。新增6项测试，总计14项通过；未启动训练。

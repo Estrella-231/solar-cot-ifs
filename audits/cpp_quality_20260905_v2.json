@@ -1,0 +1,2815 @@
+{
+  "created_utc": "2026-09-05T08:43:57.405774+00:00",
+  "selection": "first, middle, and maximum recorded COT per split/station of existing candidate manifest",
+  "manifest_sha256": "bb17c60f593f2a619c8fb72efb642b2674e26f45ca622ff3abc0657bfc39f09d",
+  "cases": [
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202510/20251001/202510010000.npz",
+      "npz_sha256": "da7a9232c5b1df65046fed3028dcaa8121c6fd4e6be3e1fecdcbcad12abc82dd",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251001/FY4B_AGRI_20251001000000.nc",
+      "source_bytes": 84373406,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "a36f3c40307043792cf4eca4015fc3e8a4001ba30b388a23f28b8d81dc946b6c",
+      "cached_patch_sha256": "a36f3c40307043792cf4eca4015fc3e8a4001ba30b388a23f28b8d81dc946b6c",
+      "split": "test",
+      "station": "sili",
+      "timestamp_utc": "2025-10-01T00:00:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.2045998573303223,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 139,
+        "clear_phase_finite_cot": 139,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 139,
+        "1.0": 117
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202512/20251217/202512170200.npz",
+      "npz_sha256": "c96da35bc407d537fde85fbba249d22c01da3d86daa5908dc165d8c486a1ebcd",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251217/FY4B_AGRI_20251217020000.nc",
+      "source_bytes": 84340758,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "6d1f255230f7b5733948622496bb28a3477ab9b58d820d39c0d2deeb68b10a62",
+      "cached_patch_sha256": "6d1f255230f7b5733948622496bb28a3477ab9b58d820d39c0d2deeb68b10a62",
+      "split": "test",
+      "station": "sili",
+      "timestamp_utc": "2025-12-17T02:00:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.705125331878662,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 7,
+        "clear_phase_finite_cot": 7,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 7,
+        "1.0": 249
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202512/20251224/202512240900.npz",
+      "npz_sha256": "b35c50b7d649eba8e0f5bd5f21d55aa17d97fc554524b8569799c7fb3bd8c681",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251224/FY4B_AGRI_20251224090000.nc",
+      "source_bytes": 85101883,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "ebb5f3bdfce9dce352711d37f0d8caf76438f6de894f9c56ca788a526565befe",
+      "cached_patch_sha256": "ebb5f3bdfce9dce352711d37f0d8caf76438f6de894f9c56ca788a526565befe",
+      "split": "test",
+      "station": "sili",
+      "timestamp_utc": "2025-12-24T09:00:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.586022138595581,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 0
+      },
+      "phase_values_counts": {
+        "1.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202510/20251001/202510010000.npz",
+      "npz_sha256": "71155833ec63dc023d2058f44ca2171ef942ef0ea3fd166410525a94a45c0706",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251001/FY4B_AGRI_20251001000000.nc",
+      "source_bytes": 84373406,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "b5fbbab52e269cd33e7d69a883646c1821b04b152e2f40afc86f8a21e89df5b3",
+      "cached_patch_sha256": "b5fbbab52e269cd33e7d69a883646c1821b04b152e2f40afc86f8a21e89df5b3",
+      "split": "test",
+      "station": "zhujia",
+      "timestamp_utc": "2025-10-01T00:00:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.5653010606765747,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "1.0": 152,
+        "2.0": 104
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202512/20251218/202512180100.npz",
+      "npz_sha256": "582a77d8ac7ec9c5e64395cb074e7d03f6c0712d0a2526a7341e6cb148c565c3",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251218/FY4B_AGRI_20251218010000.nc",
+      "source_bytes": 87099390,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "6ede14ee934b7a8dbaa73b34293f995c7843dfed0c3290c2b4c81cf527f747a6",
+      "cached_patch_sha256": "6ede14ee934b7a8dbaa73b34293f995c7843dfed0c3290c2b4c81cf527f747a6",
+      "split": "test",
+      "station": "zhujia",
+      "timestamp_utc": "2025-12-18T01:00:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.057585254311561584,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 252,
+        "clear_phase_finite_cot": 252,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 252,
+        "1.0": 4
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202512/20251231/202512310900.npz",
+      "npz_sha256": "ffa0eae7b1f1772681e87732dae7f9b62cc2b48a2846c32244bcafd077df13d9",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251231/FY4B_AGRI_20251231090000.nc",
+      "source_bytes": 84916669,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "250eefb7cf87ede8c190181a929c70e96b69ce45903aac3bc9c9caea2c96995e",
+      "cached_patch_sha256": "250eefb7cf87ede8c190181a929c70e96b69ce45903aac3bc9c9caea2c96995e",
+      "split": "test",
+      "station": "zhujia",
+      "timestamp_utc": "2025-12-31T09:00:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 3.927849769592285,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 0
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2024/202404/20240401/202404012300.npz",
+      "npz_sha256": "7495c94f7bbc82fe5a1a8c6bbcdccfdf284116e614fed81207109f9449fc26da",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240401/FY4B_AGRI_20240401230000.nc",
+      "source_bytes": 83029465,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "d54c522ac5392284cd9fb42caec6b034193fa9e1ea10cd3b367afb80dc21dd3f",
+      "cached_patch_sha256": "d54c522ac5392284cd9fb42caec6b034193fa9e1ea10cd3b367afb80dc21dd3f",
+      "split": "train",
+      "station": "sili",
+      "timestamp_utc": "2024-04-01T23:00:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 2.3998146057128906,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 49,
+        "clear_phase_finite_cot": 49,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 0
+      },
+      "phase_values_counts": {
+        "0.0": 49,
+        "1.0": 207
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202501/20250104/202501040245.npz",
+      "npz_sha256": "9a2d0bd276ae64a4914fa2269b53a2c51988e83839df8324d5bbc5c25537367e",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250104/FY4B_AGRI_20250104024500.nc",
+      "source_bytes": 84080771,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+      "cached_patch_sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+      "split": "train",
+      "station": "sili",
+      "timestamp_utc": "2025-01-04T02:45:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.0,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 256,
+        "clear_phase_finite_cot": 256,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2024/202404/20240404/202404040400.npz",
+      "npz_sha256": "d5385cdcad80824489d5ba9e5c5b08118040a441ef2fc1fe47cd8ad20de93cc6",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240404/FY4B_AGRI_20240404040000.nc",
+      "source_bytes": 79779290,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "a3ec13f622883685929ee5c20be335bd0bcf3463c8c755a719dab35925fbf838",
+      "cached_patch_sha256": "a3ec13f622883685929ee5c20be335bd0bcf3463c8c755a719dab35925fbf838",
+      "split": "train",
+      "station": "sili",
+      "timestamp_utc": "2024-04-04T04:00:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.5352230072021484,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2024/202404/20240401/202404012300.npz",
+      "npz_sha256": "cc9f5710aae5f7c53da9eab4fc1cbbc02e67c0b7719f315ae88d8db00c5f555c",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240401/FY4B_AGRI_20240401230000.nc",
+      "source_bytes": 83029465,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "273ec3adbca152dc7b73de8e3c5eb37bae59a2947c91f8de6825e80816ff3ada",
+      "cached_patch_sha256": "273ec3adbca152dc7b73de8e3c5eb37bae59a2947c91f8de6825e80816ff3ada",
+      "split": "train",
+      "station": "zhujia",
+      "timestamp_utc": "2024-04-01T23:00:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.9672671556472778,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 0
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202501/20250104/202501040115.npz",
+      "npz_sha256": "c6528d19511719718ebbc28598179d0a9b50de1eec0f6f73c5f79fcaae752239",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250104/FY4B_AGRI_20250104011500.nc",
+      "source_bytes": 84133021,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "537b32baf3ce6a54a90fe82f856e6c76cdbd3e12fc7baea19ac9b7dd8fe0fe08",
+      "cached_patch_sha256": "537b32baf3ce6a54a90fe82f856e6c76cdbd3e12fc7baea19ac9b7dd8fe0fe08",
+      "split": "train",
+      "station": "zhujia",
+      "timestamp_utc": "2025-01-04T01:15:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.9577361345291138,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 24,
+        "clear_phase_finite_cot": 24,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 24,
+        "1.0": 232
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202505/20250507/202505072300.npz",
+      "npz_sha256": "34708a535f383b1575840306f2da81ab2615e61b9f95dcf49bf0b50d217677bb",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250507/FY4B_AGRI_20250507230000.nc",
+      "source_bytes": 90241691,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "61eec2053876397bdf93ab3819cd5f0df572e8714b2dddce918203395c905a19",
+      "cached_patch_sha256": "61eec2053876397bdf93ab3819cd5f0df572e8714b2dddce918203395c905a19",
+      "split": "train",
+      "station": "zhujia",
+      "timestamp_utc": "2025-05-07T23:00:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.6622965335845947,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202506/20250630/202506302215.npz",
+      "npz_sha256": "9b3d2a38b427c278c757cb6d475fed351d444f1101da50682cdc385e2e7596f0",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630221500.nc",
+      "source_bytes": 94339298,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "07533fc6037e2e5dee8ea4fff1b3aae798facbc499c02179356b7b83cf43d7fb",
+      "cached_patch_sha256": "07533fc6037e2e5dee8ea4fff1b3aae798facbc499c02179356b7b83cf43d7fb",
+      "split": "validation",
+      "station": "sili",
+      "timestamp_utc": "2025-06-30T22:15:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.34194475412368774,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 0
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202508/20250804/202508040645.npz",
+      "npz_sha256": "8cab595394b828819c552b1ec5ce9bdc6b60e686a934d8432effa96c1e407ca7",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250804/FY4B_AGRI_20250804064500.nc",
+      "source_bytes": 92273406,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "d7aa221cb95f3c026e161a013de70d63fe2989a5497a6df6e7c04a1face69bc5",
+      "cached_patch_sha256": "d7aa221cb95f3c026e161a013de70d63fe2989a5497a6df6e7c04a1face69bc5",
+      "split": "validation",
+      "station": "sili",
+      "timestamp_utc": "2025-08-04T06:45:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 1.1199833154678345,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 30,
+        "clear_phase_finite_cot": 30,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 30,
+        "1.0": 226
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202508/20250805/202508050845.npz",
+      "npz_sha256": "f39548435b49eb01379d689805092315b6dd4eaa052c5e63446a825679fb88ab",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250805/FY4B_AGRI_20250805084500.nc",
+      "source_bytes": 92022546,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "d28cc869b1c952913a5a7efa2940d8ff13fe39bbb2d6d998d07eb1652ca12dab",
+      "cached_patch_sha256": "d28cc869b1c952913a5a7efa2940d8ff13fe39bbb2d6d998d07eb1652ca12dab",
+      "split": "validation",
+      "station": "sili",
+      "timestamp_utc": "2025-08-05T08:45:00Z",
+      "bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.040000081062316895,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "aligned_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 2.301783561706543,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 26,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 230,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202506/20250630/202506302200.npz",
+      "npz_sha256": "21ab8a0bf264dd03c3b8a3d645ce3bdf0042fa48e6c20f4447ba4485ab12d771",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630220000.nc",
+      "source_bytes": 94203243,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "056795ec73ea2846e40071142695988bb78af741b34058b952d4fab8fad4c18b",
+      "cached_patch_sha256": "056795ec73ea2846e40071142695988bb78af741b34058b952d4fab8fad4c18b",
+      "split": "validation",
+      "station": "zhujia",
+      "timestamp_utc": "2025-06-30T22:00:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.04500981420278549,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 235,
+        "clear_phase_finite_cot": 235,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 152,
+        "range100_day_soz80": 0
+      },
+      "phase_values_counts": {
+        "0.0": 235,
+        "1.0": 21
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202508/20250804/202508040315.npz",
+      "npz_sha256": "720cf94d4ec33e90dc297c8e5b596f4aacb91d620d719cfc3ff5d31b22b437e7",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250804/FY4B_AGRI_20250804031500.nc",
+      "source_bytes": 92069978,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+      "cached_patch_sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+      "split": "validation",
+      "station": "zhujia",
+      "timestamp_utc": "2025-08-04T03:15:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 0.0088152214884758,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 256,
+        "clear_phase_finite_cot": 256,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "0.0": 256
+      },
+      "quality_variable_names": []
+    },
+    {
+      "npz": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202508/20250814/202508140945.npz",
+      "npz_sha256": "a707707bdd2c4d37a4a296c5416d8c29e1e2105c2bfaf6bf379988f0d741f26f",
+      "source": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250814/FY4B_AGRI_20250814094500.nc",
+      "source_bytes": 90759511,
+      "source_metadata": {
+        "global_attributes": {},
+        "variables": {
+          "LAT": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Latitude"
+            }
+          },
+          "LON": {
+            "shape": [
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Longitude"
+            }
+          },
+          "CER": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Effective Radius",
+              "Range": "0 - 60",
+              "Unit": "μm"
+            }
+          },
+          "COT": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Optical Thickness",
+              "Range": "0 - 100",
+              "Unit": "None"
+            }
+          },
+          "CTH": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Top Height",
+              "Range": "0 - 17.5",
+              "Unit": "km"
+            }
+          },
+          "CLP": {
+            "shape": [
+              4051,
+              4051
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": "nan",
+              "Long_Name": "Cloud Phase",
+              "Range": "0: Clear; 1: Water; 2: Ice",
+              "Unit": "None"
+            }
+          }
+        }
+      },
+      "source_patch_sha256": "f6eb49b9556bbea0caaee9a8f556f8f3b62ae4797d215b11c6347a3cb91b2368",
+      "cached_patch_sha256": "f6eb49b9556bbea0caaee9a8f556f8f3b62ae4797d215b11c6347a3cb91b2368",
+      "split": "validation",
+      "station": "zhujia",
+      "timestamp_utc": "2025-08-14T09:45:00Z",
+      "bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "present": true,
+      "values_exact_match": true,
+      "mask_equals_source_finite": true,
+      "lat_max_abs_error_deg": 0.04000091552734375,
+      "lon_max_abs_error_deg": 0.04000091552734375,
+      "lat_signed_offset_deg": -0.039999961853027344,
+      "lon_signed_offset_deg": 0.039999961853027344,
+      "aligned_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "aligned_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "aligned_lat_max_abs_error_deg": 0.0,
+      "aligned_lon_max_abs_error_deg": 0.0,
+      "aligned_vs_cached_finite_pairs": 256,
+      "aligned_vs_cached_cot_mae": 3.761216163635254,
+      "cot_counts": {
+        "finite": 256,
+        "negative": 0,
+        "over85_to100": 0,
+        "over100": 0,
+        "zero": 0,
+        "clear_phase_finite_cot": 0,
+        "clear_phase_positive_cot": 0,
+        "legacy_training_valid": 256,
+        "range100_day_soz80": 256
+      },
+      "phase_values_counts": {
+        "2.0": 256
+      },
+      "quality_variable_names": []
+    }
+  ],
+  "errors": [],
+  "scope": "source-to-cache and numeric-mask provenance; not independent retrieval accuracy",
+  "summary": {
+    "cases": 18,
+    "errors": 0,
+    "exact_value_matches": 18,
+    "finite_mask_matches": 18,
+    "source_quality_flag_present_cases": 0,
+    "sample_cot_gt85_le100_pixels": 26
+  }
+}

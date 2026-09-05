@@ -1,0 +1,52 @@
+{
+  "contract_version": "cpp_reference_v2_20260905",
+  "scope": "Hunan CPP reference supervision; no independent retrieval QA certification",
+  "source_root": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP",
+  "source_filename": "YYYY/YYYYMMDD/FY4B_AGRI_YYYYMMDDHHMMSS.nc",
+  "source_time_zone": "UTC",
+  "channels": ["COT", "CER", "CTH", "CLP"],
+  "source_builder": "/home/Data_Pool_3/chenyi/GHI/scripts/legacy_root/build_hunan_station16_samples.py",
+  "source_builder_sha256": "8a38195d276199a1a9000ad5a9c33798221a865ba4231ff55afdd1e36bcd3be9",
+  "cpp_valid_mask_semantics": "np.isfinite(cpp), not independent QA",
+  "source_range_attribute": {"name": "Range", "value": "0 - 100", "is_standard_valid_range": false},
+  "reference_mask": {
+    "finite_cot_required": true,
+    "cot_min_inclusive": 0,
+    "cot_max_inclusive": 100,
+    "day_mask_min_exclusive": 0.5,
+    "solar_zenith_min_inclusive_deg": 0,
+    "solar_zenith_max_exclusive_deg": 80,
+    "solar_threshold_origin": "study policy, not source QA",
+    "replace_missing_with_zero": false,
+    "force_clear_phase_cot_zero": false,
+    "clip_out_of_range_into_valid_range": false
+  },
+  "legacy_training_cot_max": 85,
+  "grid_mapping": {
+    "method": "match target AGRI grid_lat/grid_lon to source 1D LAT/LON, no interpolation",
+    "tolerance_deg": 0.0001,
+    "index_convention": "zero based, end exclusive",
+    "observed_corrected_bounds": {"sili": [1368, 1384, 2201, 2217], "zhujia": [1278, 1294, 2203, 2219]},
+    "bounds_are_diagnostic_not_substitute_for_coordinate_matching": true,
+    "legacy_source_minus_target_offset_deg_approx": {"latitude": -0.04, "longitude": 0.04}
+  },
+  "evidence": {
+    "local_audit": "audits/cpp_quality_20260905_v2.json",
+    "server_audit_and_sidecars": "/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905/audits/cpp_quality_20260905_v2",
+    "cases": 18,
+    "source_to_legacy_cache_exact_matches": 18,
+    "finite_mask_matches": 18,
+    "aligned_coordinate_zero_error_cases": 18,
+    "source_to_cache_provenance": "PASS_18_CASES",
+    "independent_qa": "ABSENT_IN_AUDITED_SOURCE",
+    "legacy_grid": "FAIL_ONE_PIXEL_OFFSET",
+    "corrected_sample_grid": "PASS_18_CASES",
+    "upstream_generation_batch_to_script_and_checkpoint_binding": "UNVERIFIED"
+  },
+  "full_cache_rebuild_required": true,
+  "old_filtered_candidate_manifest_is_complete_new_population": false,
+  "formal_training_gate_passed": false,
+  "future_cpp_may_filter_ghi_evaluation_cohort": false,
+  "future_true_cpp_may_enter_forecast_inputs": false,
+  "next_action": "rebuild from raw CPP and complete candidate coverage using coordinate mapping, then audit split, normalization and upstream teacher provenance"
+}

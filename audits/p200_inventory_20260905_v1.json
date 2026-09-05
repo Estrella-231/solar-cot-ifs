@@ -1,0 +1,959 @@
+{
+  "timestamp_utc": "2026-09-05T08:19:35.929696+00:00",
+  "hostname": "3090",
+  "scope": "bounded asset inventory; no experiment acceptance",
+  "assets": {
+    "m0_summary": {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/audit_summary.json",
+      "exists": true,
+      "bytes": 5702,
+      "sha256": "9f270b6c495c7aae1450914a9848075f692970329d363cd65c3addfc250a2310",
+      "content": {
+        "experiment": "Hunan-only paper M0 data/evaluator audit",
+        "run_ids": [
+          "R101",
+          "R102",
+          "R103"
+        ],
+        "status": "PASS",
+        "paper_scope": "Hunan-only training, validation, model selection, and temporal test; no Hubei data or checkpoint transfer",
+        "task": {
+          "history_frames": 8,
+          "future_frames": 16,
+          "resolution_minutes": 15,
+          "lead_minutes": [
+            15,
+            30,
+            45,
+            60,
+            75,
+            90,
+            105,
+            120,
+            135,
+            150,
+            165,
+            180,
+            195,
+            210,
+            225,
+            240
+          ]
+        },
+        "label_contract": {
+          "target_coordinate": "15-min interval end",
+          "interval": "(init+(k-1)*15min, init+k*15min]",
+          "raw_records": [
+            "target-10min",
+            "target-5min",
+            "target"
+          ],
+          "aggregation": "strict arithmetic mean; no interpolation"
+        },
+        "splits": {
+          "train": {
+            "start_bjt_inclusive": "2024-04-02T00:00:00+08:00",
+            "end_bjt_exclusive": "2025-07-01T00:00:00+08:00"
+          },
+          "validation": {
+            "start_bjt_inclusive": "2025-07-01T00:00:00+08:00",
+            "end_bjt_exclusive": "2025-10-01T00:00:00+08:00"
+          },
+          "test": {
+            "start_bjt_inclusive": "2025-10-01T00:00:00+08:00",
+            "end_bjt_exclusive": "2026-07-01T00:00:00+08:00"
+          }
+        },
+        "sources": {
+          "agri_root": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed",
+          "combined_root_read_only_audit": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined",
+          "combined_schema_sha256": "d006fe6f3196a3c12bc01766434c2015aea201e7f3a9d41bcfb9e875e4ca8137",
+          "workbook_root": "/tmp/hunan_m0_staging_20260903",
+          "authoritative_workbook_root": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations",
+          "grid_static": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/grid_static.npz",
+          "grid_static_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62"
+        },
+        "agri_inventory": {
+          "frames": 76156,
+          "first_utc": "2024-04-01T00:00:00+00:00",
+          "last_utc": "2026-07-25T08:15:00+00:00",
+          "ignored_filenames": 0,
+          "cadence_minutes_top": [
+            [
+              15,
+              74722
+            ],
+            [
+              30,
+              1097
+            ],
+            [
+              45,
+              183
+            ],
+            [
+              60,
+              56
+            ],
+            [
+              135,
+              17
+            ],
+            [
+              90,
+              15
+            ],
+            [
+              75,
+              13
+            ],
+            [
+              105,
+              13
+            ]
+          ]
+        },
+        "workbooks": {
+          "sili": {
+            "accepted_sheets": [
+              "结果集"
+            ],
+            "rejected_sheets": [],
+            "records": 230688,
+            "start_bjt": "2024-01-01T00:05:00+08:00",
+            "end_bjt": "2026-07-01T00:00:00+08:00",
+            "missing": 1534,
+            "negative": 0,
+            "duplicate_rows_resolved": 0,
+            "conflicting_duplicates": 0,
+            "path": "/tmp/hunan_m0_staging_20260903/四里光伏.xlsx",
+            "authoritative_path": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations/四里光伏.xlsx",
+            "sha256": "c13c6a066cc7ca3ee0d902bb8a9d6c8ea1cc1618659e86eafa4971bbe9a879f4"
+          },
+          "zhujia": {
+            "accepted_sheets": [
+              "结果集"
+            ],
+            "rejected_sheets": [],
+            "records": 252000,
+            "start_bjt": "2024-01-01T00:05:00+08:00",
+            "end_bjt": "2026-07-01T00:00:00+08:00",
+            "missing": 1024,
+            "negative": 0,
+            "duplicate_rows_resolved": 0,
+            "conflicting_duplicates": 0,
+            "path": "/tmp/hunan_m0_staging_20260903/竺家光伏.xlsx",
+            "authoritative_path": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations/竺家光伏.xlsx",
+            "sha256": "38e4b708a009a69d16bc49ff80ea330a88a6b32e1d69ff6ee53dc49ee13783a0"
+          }
+        },
+        "manifest": {
+          "candidate_init_times": 76156,
+          "retained_sequences": 48310,
+          "sequence_counts_by_split": {
+            "test": 16377,
+            "train": 27675,
+            "validation": 4258
+          },
+          "rejections": {
+            "missing_agri_in_8to16_support": 26733,
+            "outside_or_crosses_chronological_split": 1113
+          },
+          "canonical_targets_all_station_leads": 1545920,
+          "daylight_targets": 1062574,
+          "valid_daylight_targets": 972126,
+          "invalid_daylight_targets": 90448,
+          "lead_minutes": [
+            15,
+            30,
+            45,
+            60,
+            75,
+            90,
+            105,
+            120,
+            135,
+            150,
+            165,
+            180,
+            195,
+            210,
+            225,
+            240
+          ]
+        },
+        "source_audit": {
+          "requested": 30,
+          "audited": 30,
+          "label_matches": 30,
+          "coordinate_matches": 30,
+          "max_label_abs_difference_wm2": 2.929687502728484e-05,
+          "float32_tolerance_wm2": 0.0001,
+          "max_mean_reconstruction_difference_wm2": 0.0,
+          "pass": true
+        },
+        "metric_unit_tests": {
+          "canonical_leads_exact": true,
+          "deterministic_rmse": {
+            "computed": 21.602468994692867,
+            "expected": 21.602468994692867,
+            "pass": true
+          },
+          "deterministic_mae": {
+            "computed": 20.0,
+            "expected": 20.0,
+            "pass": true
+          },
+          "deterministic_mbe": {
+            "computed": 6.666666666666667,
+            "expected": 6.666666666666667,
+            "pass": true
+          },
+          "ensemble_crps": {
+            "vectorized": 6.666666666666667,
+            "loop": 6.666666666666667,
+            "pass": true
+          },
+          "common_cohort_inner_join": {
+            "retained": 2,
+            "expected": 2,
+            "pass": true
+          },
+          "pass": true
+        },
+        "audit_resolution": "Initial 1e-6 W m-2 equality threshold was tighter than float32 cache quantization. Re-evaluated the same 30 samples at 1e-4 W m-2; no label, timestamp, coordinate, or cohort value was changed.",
+        "spatial_audit": {
+          "status": "PASS",
+          "grid_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+          "station_patch_matches": {
+            "sili": true,
+            "zhujia": true
+          }
+        }
+      }
+    },
+    "m0_spatial": {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/spatial_audit.json",
+      "exists": true,
+      "bytes": 2060,
+      "sha256": "a13bc9c5b4776945aa1fa59ca1093dc0b400a9f17113e33c0bb39f8fe39c2166",
+      "content": {
+        "grid_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/grid_static.npz",
+        "grid_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+        "grid_extent": {
+          "latitude_min": 22.280000686645508,
+          "latitude_max": 32.47999954223633,
+          "longitude_min": 106.44000244140625,
+          "longitude_max": 116.63999938964844,
+          "hdf_row_index_min": 548,
+          "hdf_row_index_max": 784,
+          "hdf_col_index_min": 1406,
+          "hdf_col_index_max": 1666
+        },
+        "grid_checks": {
+          "shape_256x256": true,
+          "finite_coordinates": true,
+          "hdf_indices_nonnegative": true,
+          "hdf_indices_have_spatial_variation": true,
+          "hdf_indices_plausible_range": true
+        },
+        "stations": [
+          {
+            "station_id": "sili",
+            "station_latitude": 25.9478611111,
+            "station_longitude": 112.347916667,
+            "agri_bounds": [
+              155,
+              171,
+              140,
+              156
+            ],
+            "nearest_crop_row": 163,
+            "nearest_crop_col": 148,
+            "nearest_grid_latitude": 25.959999084472656,
+            "nearest_grid_longitude": 112.36000061035156,
+            "nearest_hdf_row_index": 694,
+            "nearest_hdf_col_index": 1554,
+            "checks": {
+              "inside_hunan_extent": true,
+              "patch_shape_16x16": true,
+              "nearest_pixel_in_patch": true,
+              "patch_center_matches_nearest_within_one_pixel": true
+            },
+            "pass": true
+          },
+          {
+            "station_id": "zhujia",
+            "station_latitude": 29.566666667,
+            "station_longitude": 112.45,
+            "agri_bounds": [
+              65,
+              81,
+              142,
+              158
+            ],
+            "nearest_crop_row": 73,
+            "nearest_crop_col": 150,
+            "nearest_grid_latitude": 29.559999465942383,
+            "nearest_grid_longitude": 112.44000244140625,
+            "nearest_hdf_row_index": 612,
+            "nearest_hdf_col_index": 1549,
+            "checks": {
+              "inside_hunan_extent": true,
+              "patch_shape_16x16": true,
+              "nearest_pixel_in_patch": true,
+              "patch_center_matches_nearest_within_one_pixel": true
+            },
+            "pass": true
+          }
+        ],
+        "status": "PASS"
+      }
+    },
+    "station_schema": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/schema.json",
+      "exists": true,
+      "bytes": 2573,
+      "sha256": "d006fe6f3196a3c12bc01766434c2015aea201e7f3a9d41bcfb9e875e4ca8137",
+      "content": {
+        "schema_version": 1,
+        "created_at_bjt": "2026-08-03T05:53:21",
+        "time_range": {
+          "start_utc_inclusive": "2024-04-01T00:00:00",
+          "end_utc_exclusive": "2026-04-01T00:00:00"
+        },
+        "sample_file": "uncompressed NumPy NPZ; one station and one nominal AGRI UTC time per file",
+        "fields": {
+          "agri": "float32 (20,16,16)",
+          "cpp": "float32 (4,16,16), order COT,CER,CTH,CLP; NaN when source missing",
+          "ghi_5min": "float32 (3,), BJT interval-ending readings at +5,+10,+15 min",
+          "ghi_valid": "bool (3,)"
+        },
+        "stations": [
+          {
+            "station_id": "sili",
+            "name": "四里",
+            "latitude": 25.9478611111,
+            "longitude": 112.347916667,
+            "agri_bounds": [
+              155,
+              171,
+              140,
+              156
+            ],
+            "cpp_bounds": [
+              1369,
+              1385,
+              2202,
+              2218
+            ],
+            "workbook": "四里光伏.xlsx"
+          },
+          {
+            "station_id": "zhujia",
+            "name": "竺家",
+            "latitude": 29.566666667,
+            "longitude": 112.45,
+            "agri_bounds": [
+              65,
+              81,
+              142,
+              158
+            ],
+            "cpp_bounds": [
+              1279,
+              1295,
+              2204,
+              2220
+            ],
+            "workbook": "竺家光伏.xlsx"
+          }
+        ],
+        "workbooks": {
+          "sili": {
+            "path": "/home/Data_Pool_3/chenyi/辐照度预报/data/hunan_stations_raw/四里光伏.xlsx",
+            "sha256": "c13c6a066cc7ca3ee0d902bb8a9d6c8ea1cc1618659e86eafa4971bbe9a879f4",
+            "daily_rows": 801,
+            "date_min_bjt": "2024-01-01",
+            "date_max_bjt": "2026-06-30",
+            "five_minute_records": 230688,
+            "missing_values": 1534,
+            "zero_values": 117046,
+            "negative_values": 0,
+            "minimum": 0.0,
+            "maximum": 1426.0,
+            "timezone": "Asia/Shanghai (UTC+08:00)",
+            "unit": "W m-2 (inferred from IRRADIANCE field and value range)"
+          },
+          "zhujia": {
+            "path": "/home/Data_Pool_3/chenyi/辐照度预报/data/hunan_stations_raw/竺家光伏.xlsx",
+            "sha256": "38e4b708a009a69d16bc49ff80ea330a88a6b32e1d69ff6ee53dc49ee13783a0",
+            "daily_rows": 875,
+            "date_min_bjt": "2024-01-01",
+            "date_max_bjt": "2026-06-30",
+            "five_minute_records": 252000,
+            "missing_values": 1024,
+            "zero_values": 128322,
+            "negative_values": 0,
+            "minimum": 0.0,
+            "maximum": 1162.0,
+            "timezone": "Asia/Shanghai (UTC+08:00)",
+            "unit": "W m-2 (inferred from IRRADIANCE field and value range)"
+          }
+        },
+        "agri_root": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed",
+        "cpp_root": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP"
+      }
+    },
+    "agri_meta": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/dataset_meta.json",
+      "exists": true,
+      "bytes": 3226,
+      "sha256": "c33989645e5e8bebef22b7d1a3e831632b84c8d303ac82eca717141580029f79",
+      "content": {
+        "region": "Hunan",
+        "shape": [
+          256,
+          256
+        ],
+        "crop": {
+          "row_start": 1213,
+          "row_end_exclusive": 1469,
+          "col_start": 2061,
+          "col_end_exclusive": 2317
+        },
+        "pixel_center_extent": {
+          "lon_min": 106.44000244140625,
+          "lon_max": 116.63999938964844,
+          "lat_min": 22.280000686645508,
+          "lat_max": 32.47999954223633
+        },
+        "time_conventions": {
+          "data_filename": "UTC",
+          "aux_filename_and_month": "BJT (UTC+8)",
+          "solar_geometry_time_basis": "nominal UTC from the AGRI filename; obs_time_offset_s retains the actual per-scan-line timing for optional later recomputation"
+        },
+        "requested_start_utc": "2024-04-01 00:00:00",
+        "requested_end_utc_exclusive": null,
+        "selected_first_utc": "20240401000000",
+        "selected_last_utc": "20260725081500",
+        "selected_count": 76173,
+        "source_counts": {
+          "historical": 71526,
+          "realtime": 4647
+        },
+        "source_precedence": "historical *_V0001.HDF, then realtime fill",
+        "channels": "C01-C15,SAA,SAZ,SOA,SOZ,day_mask",
+        "day_mask": "SOZ < 85 degrees",
+        "visible_zeroing": "C01-C06 only where SOZ >= 90 degrees",
+        "aux_schema_version": 2,
+        "data_schema_version": 1,
+        "aux_fields": {
+          "cosSOZ": "cos(SOZ), computed at nominal filename UTC",
+          "cosRAA": "cos(SOA-SAA), computed at nominal filename UTC",
+          "day_mask": "1 where nominal-time SOZ < 85 degrees, else 0",
+          "agri_valid_bits": "uint16 bit0-bit14 for C01-C15; 1 means raw DN and calibrated value passed fill, mask, valid-range and LUT checks before night zeroing",
+          "agri_valid_mask": "uint8 source-calibration validity before visible-channel night zeroing; 1 where all 13 AGRI channels used by the current SimVP input (C01-C06,C09-C15) are valid",
+          "obs_time_offset_s": "actual NOMObsTime scan-line midpoint minus nominal filename UTC, seconds; NaN where source scan time is unavailable",
+          "agri_valid_fraction": "cached mean of agri_valid_mask for indexing",
+          "all_channel_valid_fraction": "cached fraction with all C01-C15 valid",
+          "obs_time_valid_fraction": "cached finite fraction of obs_time_offset_s",
+          "obs_time_offset_min_s": "cached finite minimum observation offset",
+          "obs_time_offset_max_s": "cached finite maximum observation offset",
+          "source_type": "historical or realtime source selected for this frame",
+          "source_hdf": "absolute source HDF path used for this frame",
+          "source_size_bytes": "source file size verified stable during the read",
+          "source_mtime_ns": "source file mtime_ns verified stable during the read",
+          "cal_quality_flag": "raw 15-element CalQualityFlag; no undocumented interpretation",
+          "l1_quality_flag": "raw 15-element L1QualityFlag; no undocumented interpretation",
+          "nav_quality_flag": "raw 15-element NavQualityFlag; no undocumented interpretation",
+          "data_quality": "raw root Data Quality attribute; -1 if unavailable",
+          "incomplete_scans": "raw root Incomplete Scans attribute; -1 if unavailable",
+          "qa_scan_flag": "raw root QA_Scan_Flag attribute; -1 if unavailable",
+          "qa_pixel_flag": "raw root QA_Pixel_Flag attribute; -1 if unavailable",
+          "sun_avoidance_flag": "raw root Sun Avoidance Flag attribute; -1 if unavailable"
+        },
+        "created_bjt": "2026-07-25 08:46:07"
+      }
+    },
+    "agri_channels": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/channel_info.json",
+      "exists": true,
+      "bytes": 1050,
+      "sha256": "7c599162a527cd35983439ec93858f4288edb4b2a398df862fd76bdb6b435a19",
+      "content": {
+        "0": "AGRI C01 reflectance (0.47 um)",
+        "1": "AGRI C02 reflectance (0.65 um)",
+        "2": "AGRI C03 reflectance (0.825 um)",
+        "3": "AGRI C04 reflectance (1.379 um)",
+        "4": "AGRI C05 reflectance (1.61 um)",
+        "5": "AGRI C06 reflectance (2.225 um)",
+        "6": "AGRI C07 equivalent brightness temperature (3.75 um, high gain)",
+        "7": "AGRI C08 equivalent brightness temperature (3.75 um, low gain)",
+        "8": "AGRI C09 brightness temperature (6.25 um)",
+        "9": "AGRI C10 brightness temperature (6.95 um)",
+        "10": "AGRI C11 brightness temperature (7.42 um)",
+        "11": "AGRI C12 brightness temperature (8.55 um)",
+        "12": "AGRI C13 brightness temperature (10.8 um)",
+        "13": "AGRI C14 brightness temperature (12.0 um)",
+        "14": "AGRI C15 brightness temperature (13.3 um)",
+        "15": "SAA sensor azimuth angle (degree, fixed)",
+        "16": "SAZ sensor zenith angle (degree, fixed)",
+        "17": "SOA solar azimuth angle (degree, dynamic; zero at SOZ >= 90 deg)",
+        "18": "SOZ solar zenith angle (degree, dynamic)",
+        "19": "day_mask (1 where SOZ < 85 deg, else 0)"
+      }
+    },
+    "cot_cache": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Solar_Ablation_COT_Cache_20260808/READY.json",
+      "exists": true,
+      "bytes": 265,
+      "sha256": "0962fa23bd2295d580b45c85d254046099fdd2ac7a264ae1d7b9f9f2656e6561",
+      "content": {
+        "input_cache": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Solar_BaselineIFS_Cache",
+        "checkpoint": "/home/Data_Pool_3/chenyi/辐照度预报/cloud_retrieval_hunan/results/cot_unet_agri13_geom_v1/best_model.pth",
+        "cot_is_predicted": true
+      }
+    },
+    "cot_cache_manifest": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Solar_Ablation_COT_Cache_20260808/manifest.csv",
+      "exists": true,
+      "bytes": 3104873
+    },
+    "cot_root": {
+      "path": "/home/Data_Pool_3/chenyi/GHI/cloud_retrieval_hunan",
+      "exists": true,
+      "entries": [
+        "README.md",
+        "__pycache__",
+        "dataset.py",
+        "logs",
+        "make_split.py",
+        "model_unet.py",
+        "results",
+        "smoke_test.py",
+        "split_cot_hunan_chronological.csv",
+        "split_cot_hunan_chronological.summary.json",
+        "train.py"
+      ],
+      "listing_scope": "first 120 sorted immediate children; not exhaustive recursive search"
+    },
+    "cot_run": {
+      "path": "/home/Data_Pool_3/chenyi/GHI/cloud_retrieval_hunan/results/cot_unet_agri13_geom_v1",
+      "exists": true,
+      "entries": [
+        "best_model.pth",
+        "config.json",
+        "history.json",
+        "norm_stats.npz",
+        "results.json"
+      ],
+      "listing_scope": "first 120 sorted immediate children; not exhaustive recursive search"
+    },
+    "simvp_runs": {
+      "path": "/home/Data_Pool_3/chenyi/GHI/SimVPv2/work_dirs",
+      "exists": true,
+      "entries": [
+        "hbagri_2h4h_15min",
+        "hbagri_2h4h_15min_ConvMixer",
+        "hbagri_2h4h_15min_gSTA",
+        "hbagri_500ep_bs16_fp16",
+        "hbagri_500ep_bs16_fp16_pat8_w8",
+        "hbagri_500ep_bs20_fp16_pat8",
+        "hbagri_smoke_bs16_fp16",
+        "hbagri_smoke_bs24_fp16",
+        "hbagri_smoke_bs4",
+        "hbagri_v2_dayonly",
+        "hunan_simvp_gsta_8to24_transfer_hubei_20260803_v2",
+        "hunan_simvp_gsta_8to24_transfer_hubei_20260803_v3_b4",
+        "hunan_simvp_gsta_8to24_transfer_hubei_20260803_v5_3gpu",
+        "test_107"
+      ],
+      "listing_scope": "first 120 sorted immediate children; not exhaustive recursive search"
+    },
+    "ifs_station_summary": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_IFS_Station16/summary.json",
+      "exists": true,
+      "bytes": 1875,
+      "sha256": "cf5e0be34301bb3f55d60bc26dbe373ef08ae3d6378bd0e2eeab915640d34e6c",
+      "content": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-03T10:58:08.239105+00:00",
+        "time_range": {
+          "start_inclusive": "2024-04-01T00:00",
+          "end_exclusive": "2026-04-01T00:00"
+        },
+        "raw_root": "/home/Data_Pool_3/wangyc/ecmwf_hres/hunan/raw_nc",
+        "output_root": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_IFS_Station16",
+        "raw_files": 2920,
+        "records": 23360,
+        "written": 23352,
+        "skipped": 8,
+        "failed_raw_files": 0,
+        "failures": [],
+        "status_counts": {
+          "skipped_valid": 8,
+          "written": 23352
+        },
+        "stations": {
+          "sili": {
+            "name": "四里",
+            "latlon": [
+              25.947860717773438,
+              112.34791564941406
+            ],
+            "grid_lat_range": [
+              25.68000030517578,
+              26.280000686645508
+            ],
+            "grid_lon_range": [
+              112.04000091552734,
+              112.63999938964844
+            ],
+            "grid_source": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2024/202404/20240401/202404010000.npz"
+          },
+          "zhujia": {
+            "name": "竺家",
+            "latlon": [
+              29.566667556762695,
+              112.44999694824219
+            ],
+            "grid_lat_range": [
+              29.280000686645508,
+              29.8799991607666
+            ],
+            "grid_lon_range": [
+              112.12000274658203,
+              112.72000122070312
+            ],
+            "grid_source": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2024/202404/20240401/202404010000.npz"
+          }
+        },
+        "channels": [
+          "ssrd_rate",
+          "t2m",
+          "d2m"
+        ],
+        "shape": [
+          3,
+          16,
+          16
+        ],
+        "ssrd_contract": "accumulated J m-2 converted to interval-mean W m-2 before bilinear interpolation",
+        "forecast_contract": "init time and lead hour retained; steps 1-4 only",
+        "manifest": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_IFS_Station16/index.csv",
+        "manifest_sha256": "b4064948370c312fef60f12037284611fb18bda595be0722f0777225e42e941b"
+      }
+    },
+    "ifs_station_channels": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_IFS_Station16/channel_info.json",
+      "exists": true,
+      "bytes": 130,
+      "sha256": "c510d60a3f0c2fb611ea603b5646b36a5644c807f87f4e64e45f43c590060aa4",
+      "content": {
+        "0": "ssrd interval-mean rate (W m-2)",
+        "1": "2 metre temperature t2m (K)",
+        "2": "2 metre dewpoint temperature d2m (K)"
+      }
+    },
+    "ifs_station_index": {
+      "path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_IFS_Station16/index.csv",
+      "exists": true,
+      "bytes": 6681087
+    },
+    "ifs_raw_apr2024": {
+      "path": "/home/Data_Pool_3/chensr/ifs_hres_china/raw_nc/2024/202404",
+      "exists": true,
+      "entries": [
+        "ecmwf_hres_hubei_hunan_20240401_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240402_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240403_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240404_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240405_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240406_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240407_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240408_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240409_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240410_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240411_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240412_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240413_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240414_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240415_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240416_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240417_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240418_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240419_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240420_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240421_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240422_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240423_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240424_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240425_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240426_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240427_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240428_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240429_t0000.nc",
+        "ecmwf_hres_hubei_hunan_20240430_t0000.nc",
+        "ecmwf_hres_sfc_20240401.nc",
+        "ecmwf_hres_sfc_20240401_t0000.nc",
+        "ecmwf_hres_sfc_20240401_t1200.part.nc"
+      ],
+      "listing_scope": "first 120 sorted immediate children; not exhaustive recursive search"
+    }
+  },
+  "errors": {},
+  "m0_sha_checks": [
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/audit_summary.json",
+      "expected": "9f270b6c495c7aae1450914a9848075f692970329d363cd65c3addfc250a2310",
+      "actual": "9f270b6c495c7aae1450914a9848075f692970329d363cd65c3addfc250a2310",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/canonical_station_target_manifest.csv",
+      "expected": "18ba895095766596ca0e53a567b1b1bca7994f16ec0e73245ff1735e6552774a",
+      "actual": "18ba895095766596ca0e53a567b1b1bca7994f16ec0e73245ff1735e6552774a",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/metric_unit_tests.json",
+      "expected": "5b9127f3e547fba15b89eeb2d5806f2f87be10382dc5dd08d3b36052beead42e",
+      "actual": "5b9127f3e547fba15b89eeb2d5806f2f87be10382dc5dd08d3b36052beead42e",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/sequence_manifest_8to16.csv",
+      "expected": "8deb3f769bad6b04d23cfaf1a397ceab6a62284d488435c556d1a12a1be39a9c",
+      "actual": "8deb3f769bad6b04d23cfaf1a397ceab6a62284d488435c556d1a12a1be39a9c",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/source_audit_30.csv",
+      "expected": "2a38f6fea0dd63ddc98943518183d41021cdd2fb1ced7d68a9e10284b09e74f0",
+      "actual": "2a38f6fea0dd63ddc98943518183d41021cdd2fb1ced7d68a9e10284b09e74f0",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/source_schema_snapshot.json",
+      "expected": "aa91d03a30579379f63be47a96fa9b47dfa6d9298e4ce83d52f3dacbd58b9c9e",
+      "actual": "aa91d03a30579379f63be47a96fa9b47dfa6d9298e4ce83d52f3dacbd58b9c9e",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/spatial_audit.json",
+      "expected": "a13bc9c5b4776945aa1fa59ca1093dc0b400a9f17113e33c0bb39f8fe39c2166",
+      "actual": "a13bc9c5b4776945aa1fa59ca1093dc0b400a9f17113e33c0bb39f8fe39c2166",
+      "match": true
+    },
+    {
+      "path": "/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1/target_counts_by_split_station_lead.csv",
+      "expected": "736c7d21ae11f04c716f2850d04a6047e470fc13bddca820dcaa5b9d4bb7fa79",
+      "actual": "736c7d21ae11f04c716f2850d04a6047e470fc13bddca820dcaa5b9d4bb7fa79",
+      "match": true
+    }
+  ],
+  "m0_sequences": {
+    "counts": {
+      "train": 27675,
+      "validation": 4258,
+      "test": 16377
+    },
+    "examples": {
+      "train": {
+        "sequence_id": "train_20240402T0145+0800",
+        "split": "train",
+        "init_time_bjt": "2024-04-02T01:45:00+08:00",
+        "init_time_utc": "2024-04-01T17:45:00+00:00",
+        "support_start_bjt": "2024-04-02T00:00:00+08:00",
+        "support_end_bjt": "2024-04-02T05:45:00+08:00",
+        "history_paths": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011600.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011615.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011630.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011645.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011700.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011715.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011730.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011745.npy",
+        "future_paths": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011800.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011815.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011830.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011845.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011900.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011915.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011930.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011945.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012000.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012015.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012030.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012045.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012100.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012115.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012130.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404012145.npy"
+      },
+      "validation": {
+        "sequence_id": "validation_20250701T0645+0800",
+        "split": "validation",
+        "init_time_bjt": "2025-07-01T06:45:00+08:00",
+        "init_time_utc": "2025-06-30T22:45:00+00:00",
+        "support_start_bjt": "2025-07-01T05:00:00+08:00",
+        "support_end_bjt": "2025-07-01T10:45:00+08:00",
+        "history_paths": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302100.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302115.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302130.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302145.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302200.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302215.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302230.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302245.npy",
+        "future_paths": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302300.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302315.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302330.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202506/20250630/202506302345.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010000.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010015.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010030.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010045.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010100.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010115.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010130.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010145.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010200.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010215.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010230.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202507/20250701/202507010245.npy"
+      },
+      "test": {
+        "sequence_id": "test_20251001T1630+0800",
+        "split": "test",
+        "init_time_bjt": "2025-10-01T16:30:00+08:00",
+        "init_time_utc": "2025-10-01T08:30:00+00:00",
+        "support_start_bjt": "2025-10-01T14:45:00+08:00",
+        "support_end_bjt": "2025-10-01T20:30:00+08:00",
+        "history_paths": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010645.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010700.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010715.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010730.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010745.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010800.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010815.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010830.npy",
+        "future_paths": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010845.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010900.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010915.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010930.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510010945.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011000.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011015.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011030.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011045.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011100.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011115.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011130.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011145.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011200.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011215.npy|/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202510/20251001/202510011230.npy"
+      }
+    },
+    "columns": [
+      "sequence_id",
+      "split",
+      "init_time_bjt",
+      "init_time_utc",
+      "support_start_bjt",
+      "support_end_bjt",
+      "history_paths",
+      "future_paths"
+    ]
+  },
+  "ifs_sample": {
+    "path": "/home/Data_Pool_3/chensr/ifs_hres_china/raw_nc/2024/202404/ecmwf_hres_hubei_hunan_20240402_t0000.nc",
+    "attrs": {
+      "Conventions": "CF-1.6",
+      "history": "2026-08-12 16:49:16 GMT by grib_to_netcdf-2.47.1: /opt/ecmwf/mars-client/bin/grib_to_netcdf /data/scratch/private/blue/02/20260812-1640/b2/_mars-bol-webmars-private-svc-blue-001-4a73a881a8d5eead47db9eff2f9935a4-qHz7Aw.grib -o /data/scratch/private/blue/02/20260812-1640/5a/_grib2netcdf-bol-webmars-private-svc-blue-005-4a73a881a8d5eead47db9eff2f9935a4-CbxO2V.nc -utime"
+    },
+    "dimensions": {
+      "longitude": 37,
+      "latitude": 41,
+      "time": 100
+    },
+    "variables": {
+      "longitude": {
+        "dims": [
+          "longitude"
+        ],
+        "attrs": {
+          "units": "degrees_east",
+          "long_name": "longitude"
+        }
+      },
+      "latitude": {
+        "dims": [
+          "latitude"
+        ],
+        "attrs": {
+          "units": "degrees_north",
+          "long_name": "latitude"
+        }
+      },
+      "time": {
+        "dims": [
+          "time"
+        ],
+        "attrs": {
+          "units": "hours since 1900-01-01 00:00:00.0",
+          "long_name": "time",
+          "calendar": "gregorian"
+        }
+      },
+      "ssrd": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "J m**-2",
+          "long_name": "Surface short-wave (solar) radiation downwards",
+          "standard_name": "surface_downwelling_shortwave_flux_in_air"
+        }
+      },
+      "tcc": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "(0 - 1)",
+          "long_name": "Total cloud cover",
+          "standard_name": "cloud_area_fraction"
+        }
+      },
+      "ssr": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "J m**-2",
+          "long_name": "Surface net short-wave (solar) radiation",
+          "standard_name": "surface_net_downward_shortwave_flux"
+        }
+      },
+      "t2m": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "K",
+          "long_name": "2 metre temperature"
+        }
+      },
+      "d2m": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "K",
+          "long_name": "2 metre dewpoint temperature"
+        }
+      },
+      "sp": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "Pa",
+          "long_name": "Surface pressure",
+          "standard_name": "surface_air_pressure"
+        }
+      },
+      "tp": {
+        "dims": [
+          "time",
+          "latitude",
+          "longitude"
+        ],
+        "attrs": {
+          "units": "m",
+          "long_name": "Total precipitation"
+        }
+      }
+    },
+    "time_values": {
+      "time": [
+        1089169,
+        1089170,
+        1089171,
+        1089172,
+        1089173,
+        1089174,
+        1089175,
+        1089176,
+        1089177,
+        1089178,
+        1089179,
+        1089180,
+        1089181,
+        1089182,
+        1089183,
+        1089184,
+        1089185,
+        1089186,
+        1089187,
+        1089188,
+        1089189,
+        1089190,
+        1089191,
+        1089192,
+        1089193
+      ]
+    }
+  },
+  "m0_integrity": "PASS",
+  "training_gate": "NOT_EVALUATED_inventory_only"
+}
