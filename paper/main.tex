@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\title{Cloud-Optical-Thickness Representations for FY-4B Solar Irradiance Nowcasting with IFS Guidance}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+This study asks whether an explicit cloud-optical-thickness (COT) representation improves station-level irradiance nowcasting under a fixed satellite extrapolation backbone, and whether it complements IFS guidance. The study design isolates representation, supervision, capacity, and input effects. Experimental findings remain to be established.
+\end{abstract}
+\section{Introduction}
+The central question concerns the value of an explicit cloud-optical representation when the underlying multispectral forecast is held fixed. COT derived from the same imagery is treated as an inductive bias rather than an independent observation.
+\section{Related Work}
+The comparison focuses on COT-based irradiance nowcasting and satellite--numerical-weather-prediction coupling. A detailed comparison with the closest studies is required before making a novelty claim.
+\section{Data and Forecasting Task}
+The study concerns Sili and Zhujia in Hunan. Eight historical frames predict sixteen future frames at 15-minute intervals. Let t denote the final historical timestamp and let $\Delta=15$ minutes. For lead k,
+\begin{equation}
+\tau_k=t+k\Delta,\quad \mathcal I_{t,k}=(t+(k-1)\Delta,t+k\Delta],\quad k=1,\ldots,16.
+\end{equation}
+The interval-mean target and its reconstruction are
+\begin{equation}
+\bar k_{s,k}=\frac{\bar G_{s,k}}{\bar G^{cs}_{s,k}},\qquad
+\widehat G_{s,k}=\widehat k_{s,k}\bar G^{cs}_{s,k}.
+\end{equation}
+Ground observations serve only as supervision and evaluation targets. Future observations never enter inference. IFS products must have been released by initialization.
+\section{Fixed-Backbone COT Representation}
+A frozen SimVP maps historical imagery to predicted AGRI fields. A frozen retrieval model maps the predicted fields and deterministic solar geometry to COT. Four statistics of log-transformed COT are supplied to a small station head. A matched alternative uses four latent features from the same retrieval model and the same CPP supervision. IFS supplies an interval-aligned normalized radiation condition. The station head predicts nonnegative clear-sky index without imposing an upper bound of one.
+\section{Experimental Protocol}
+The principal comparison is a two-by-two design: AGRI alone, AGRI with COT, AGRI with IFS, and AGRI with both. All variants use the same cohort and fixed upstream forecasts. Capacity and supervision controls test alternative explanations. Date-block paired resampling quantifies uncertainty. For matched mean squared errors, the interaction is
+\begin{equation}
+I=\operatorname{MSE}(A)-\operatorname{MSE}(AC)-\operatorname{MSE}(AN)+\operatorname{MSE}(ACN).
+\end{equation}
+A negative interaction indicates a greater-than-additive error reduction on this scale; uncertainty must support that interpretation.
+\section{Results}
+Results will be populated from the saved matched predictions after model selection and protocol freezing. No performance improvement is assumed.
+\section{Discussion}
+The analysis will distinguish explicit representation effects from retrieval supervision and examine the propagation of extrapolation errors. Conclusions will be limited to the evaluated stations, periods, and cloud conditions.
+\section{Conclusion}
+Conclusions will follow the completed controlled experiments.
+\end{document}
