@@ -1,0 +1,60 @@
+"""Single idempotent submission; account-wide PBS and GPU resource gate."""
+import fcntl
+import hashlib
+import json
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+ROOT=Path('/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907')
+PBS='/opt/gridview/pbs/dispatcher/bin/'
+lock=(ROOT/'submit.lock').open('a')
+fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+receipt=ROOT/'audits/head_ghi_submission_20260910_v1.json'
+intent=ROOT/'audits/head_ghi_submission_20260910_v1.intent'
+if receipt.exists():
+    print(receipt.read_text());raise SystemExit(0)
+assert not intent.exists(), 'submission outcome uncertain: inspect rather than retry'
+for name in ('original','qc1'):
+    assert not (ROOT/'runs'/f'head_ghi_{name}_seed42_20260910_v1').exists(), 'output already exists'
+assert not (ROOT/'head_ghi_loss_20260910_v1_pbs.log').exists()
+manifest=json.loads((ROOT/'audits/head_ghi_launch_sha256_20260910.json').read_text())
+for rel,expected in manifest.items():
+    assert hashlib.sha256((ROOT/rel).read_bytes()).hexdigest()==expected,rel
+query=subprocess.run([PBS+'qstat','-x','-u','slfu'],capture_output=True,text=True,check=True)
+jobs=[]
+if query.stdout.strip():
+    xml=ET.fromstring(query.stdout)
+    for job in xml.findall('.//Job'):
+        owner=job.findtext('Job_Owner','').split('@')[0]
+        assert owner=='slfu', 'unexpected account in queue response'
+        if job.findtext('job_state') in ('C','F'):continue
+        resources=job.find('Resource_List')
+        # Unknown resource format is a stop, never assumed to be zero GPUs.
+        nodes=resources.findtext('nodes') if resources is not None else None
+        ngpus=resources.findtext('ngpus') if resources is not None else None
+        count=0
+        if ngpus is not None:count=int(ngpus)
+        elif nodes is not None:
+            for chunk in nodes.split('+'):
+                parts=chunk.split(':'); n=int(parts[0]) if parts[0].isdigit() else 1
+                gpu=[x for x in parts if x.startswith('gpus=')]
+                count+=n*int(gpu[0].split('=')[1]) if gpu else 0
+        else:raise RuntimeError('cannot establish GPU request for unfinished job')
+        jobs.append(dict(job_id=job.findtext('Job_Id'),state=job.findtext('job_state'),gpus=count))
+assert len(jobs)<3, f'account PBS cap: {jobs}'
+assert sum(j['gpus'] for j in jobs)+1<=8, f'account GPU cap: {jobs}'
+with intent.open('x') as stream:stream.write('One submission attempted; do not remove or blindly retry.\n')
+result=subprocess.run([PBS+'qsub','scripts/run_head_ghi_paired_20260910.pbs'],cwd=ROOT,capture_output=True,text=True)
+record=dict(server_utc=datetime.now(timezone.utc).isoformat(),queue_before=query.stdout,
+            counted_jobs=jobs,code_sha256=manifest,returncode=result.returncode,stdout=result.stdout,stderr=result.stderr)
+receipt.write_text(json.dumps(record,indent=2))
+assert result.returncode==0, record
+job_id=result.stdout.strip()
+assert job_id.endswith('.tc6000') and job_id.split('.')[0].isdigit(),record
+record['job_id']=job_id
+after=subprocess.run([PBS+'qstat','-x','-u','slfu'],capture_output=True,text=True)
+record.update(queue_after=after.stdout,queue_after_returncode=after.returncode)
+receipt.write_text(json.dumps(record,indent=2))
+print(json.dumps(record),flush=True)

@@ -1,0 +1,100 @@
+{
+  "state": "COMPLETE_TWO_LUT_METADATA_READ",
+  "source_identity": {
+    "source_hdf": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2024/20240402/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20240402000000_20240402001459_4000M_V0001.HDF",
+    "source_size_bytes": 102281546,
+    "source_mtime_ns": 1712017800000000000
+  },
+  "stat_unchanged_after_read": true,
+  "source_HDF_hashed_in_full": false,
+  "aux_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404020800_1_aux.npz",
+  "aux_sha256": "c3f8e2ac631803ae65bf1500a11f3971c461e41e2c6edea7bbddca3d7b9075e5",
+  "arrays_sha256": "ef9e657d9d2bb419ef6da59dbd3a685a6cfa3a64926263af52746bf25208ab9f",
+  "script_sha256": "68a45436e44a83bab53f9badd78e259316af2ba8bd7bc4b4c6ddaa0aae2385f3",
+  "metadata": {
+    "2": {
+      "path": "/Calibration/CALChannel02",
+      "shape": [
+        4096
+      ],
+      "dtype": ">f4",
+      "attrs": {
+        "FillValue": [
+          -65535.0
+        ],
+        "Intercept": [
+          0.0
+        ],
+        "Slope": [
+          1.0
+        ],
+        "band_names": "band2(band number is range from 1 to 20)",
+        "center_wavelength": "0.65um",
+        "creattime": "2021-06-18",
+        "long_name": "Calibration table of 0.65um Channel",
+        "units": "NUL",
+        "valid_range": [
+          0.0,
+          1.5
+        ]
+      },
+      "array_sha256": "da2f7a3f2220bd90c5a2b1c2644711626311bb8b1b91d380c5849f3ffb628788",
+      "DN_attrs_only": {
+        "valid_range": [
+          0,
+          4095
+        ],
+        "FillValue": [
+          65535
+        ]
+      }
+    },
+    "13": {
+      "path": "/Calibration/CALChannel13",
+      "shape": [
+        4096
+      ],
+      "dtype": ">f4",
+      "attrs": {
+        "FillValue": [
+          -65535.0
+        ],
+        "Intercept": [
+          0.0
+        ],
+        "Slope": [
+          1.0
+        ],
+        "band_names": "band13(band number is range from 1 to 20)",
+        "center_wavelength": "10.8um",
+        "creattime": "2021-06-18",
+        "long_name": "Calibration table of 10.8um Channel",
+        "units": "NUL",
+        "valid_range": [
+          100.0,
+          500.0
+        ]
+      },
+      "array_sha256": "28854c7952fdaeca50ff44900c81995f9195f088313d8592ad72c7ed9b4799ce",
+      "DN_attrs_only": {
+        "valid_range": [
+          0,
+          4095
+        ],
+        "FillValue": [
+          65535
+        ]
+      }
+    }
+  },
+  "payload_read": {
+    "LUT_elements": 8192,
+    "LUT_bytes": 32768,
+    "DN_elements": 0,
+    "full_AGRI_elements": 0,
+    "GHI_elements": 0
+  },
+  "DN_attrs_only_read": true,
+  "test_used": false,
+  "models_loaded": false
+}

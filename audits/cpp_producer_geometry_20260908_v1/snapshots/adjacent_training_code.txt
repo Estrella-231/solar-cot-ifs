@@ -1,0 +1,57 @@
+captured_at_bjt: 2026-09-08T19:19:27+08:00
+remote_host_alias: FD-107
+remote_hostname_seen: 3090
+scope: exact adjacent COT training directory only; read-only
+
+FILES
+main.py
+  path: /home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/main.py
+  owner: zhaozj
+  bytes: 17217
+  mtime_utc: 2025-06-29 10:52:44.018329798 +0000
+  sha256: 4db1521dc58cb7c929109c9d7d7b98af2d273a20d62ec7e7788999478f959a70
+
+SmaAtUNet.py
+  path: /home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/SmaAtUNet.py
+  owner: zhaozj
+  bytes: 13889
+  mtime_utc: 2025-06-29 10:42:37.091079542 +0000
+  sha256: 5203d0a4bc22e811fdfb08826f6200bd3ad01ca50eea556103dfa42d95655f88
+
+cot_best.pth
+  path: /home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/cot_best.pth
+  owner: zhaozj
+  bytes: 16250976
+  mtime_utc: 2025-06-29 12:49:24.709594451 +0000
+  sha256: 6990c2817e4639a724bf5cd94045c3e063256f6c4322539b4a1ff14fd8905b63
+
+BOUNDED WRITER SEARCH IN main.py
+  imports: sklearn, os, time, numpy, pandas, torch; no netCDF4 or xarray import
+  line 211: torch.save({'model_state_dict': net.state_dict()}, best_model_path)
+  line 224: np.save(f'loss_epoch_{EPOCHS}.npy', np.array(loss_epoch))
+  line 227: torch.save({'model_state_dict': net.state_dict()}, end_model_path)
+  lines 302-303: np.save('predict.npy', dfp); np.save('real.npy', dfl)
+  line 312: Root_Data_Path points to Sample, not Result/CPP
+  no occurrence: netCDF, to_netcdf, createVariable
+  Dataset( matches in the grep were MyDataset, not a netCDF writer
+
+TRAINING CONTRACT OBSERVED IN main.py
+  cpp_typ: cot
+  batch_size: 128
+  selected AGRI channels: six
+  model input channels: selected AGRI plus ten ERA5/LCCS channels = sixteen
+  COT xmax: 100
+  COT scale: 100
+  COT solar-zenith limit: 80 degrees
+  model: SmaAt_UNet
+
+SPATIAL OP SEARCH IN SmaAtUNet.py
+  lines 14-16 and 28-30 contain paired view/permute operations implementing
+  pixel shuffle/unshuffle while preserving the external N,C,H,W layout.
+  No occurrence of transpose, flip, or rot90 was found.
+
+INTERPRETATION
+  This directory is evidence for an adjacent training/evaluation implementation.
+  It does not contain the base Result/CPP NetCDF writer, a production invocation,
+  a tile/pad/stitch path for the 4051 x 4051 product, or a manifest binding the
+  checkpoint above to any inspected Result/CPP file.

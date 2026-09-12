@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -N hn_head_pair
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/head_pair_pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+cd "$ROOT"
+date -Is
+hostname
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u scripts/train_head_qc_pilot.py --pack "$ROOT/data/head_pack_trainval_20260908_v1" \
+ --view "$ROOT/data/head_qc_view_20260908_v1" --output "$ROOT/runs/head_A_AC_qc1_seed42_20260908_v1" \
+ --original-run "$ROOT/runs/head_A_AC_seed42_20260908_v1" --decision "$ROOT/docs/QC_PILOT_DECISION_20260908.md" >> head_pair_qc.log 2>&1
+python -u scripts/train_head_pilot.py --pack "$ROOT/data/head_pack_trainval_20260908_v1" \
+ --output "$ROOT/runs/head_A_AC_seed42_20260908_v1" --stage pilot >> head_pair_original.log 2>&1
+echo PAIRED_PILOTS_COMPLETE

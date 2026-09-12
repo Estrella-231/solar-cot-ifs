@@ -1,0 +1,432 @@
+{
+  "audit_time_utc": "2026-09-08T05:25:10.855528+00:00",
+  "status": "DIAGNOSTIC_FLAGS_ONLY_NO_QC_EXCLUSIONS",
+  "scope": {
+    "start_bjt_inclusive": "2024-04-02T00:00:00+08:00",
+    "train_end_bjt_exclusive": "2025-07-01T00:00:00+08:00",
+    "validation_end_bjt_exclusive": "2025-10-01T00:00:00+08:00",
+    "test_numeric_values_analyzed": false
+  },
+  "contract": {
+    "positive": "parsed finite GHI > 0; exact numeric equality, no rounding/tolerance",
+    "continuous": "consecutive interval-end timestamps differ by exactly5min; split boundary breaks run",
+    "flag": "at least12 consecutive equal positive 5min interval records, total interval support>=60min",
+    "duration_fields": "support_minutes=5*n; endpoint_span_minutes=5*(n-1)",
+    "effect": "any of target-10/-5/0 is in run; same station/target across init and lead counted separately",
+    "not_an_exclusion_rule": true
+  },
+  "source_sha256": {
+    "sili": "c13c6a066cc7ca3ee0d902bb8a9d6c8ea1cc1618659e86eafa4971bbe9a879f4",
+    "zhujia": "38e4b708a009a69d16bc49ff80ea330a88a6b32e1d69ff6ee53dc49ee13783a0"
+  },
+  "script_sha256": "515dad7c934e17ee956746b8bd7874e73185f4959345117c1cd294366aa7ab3a",
+  "cohort_sha256": "313153d7279cda3737286bf76000bacb0766e6cc678cef48e925aa5a5c0a1c9b",
+  "sources": {
+    "sili": {
+      "authoritative_path": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations/四里光伏.xlsx",
+      "verified_cache_path": "/tmp/hunan_m0_staging_20260903/四里光伏.xlsx",
+      "verified_local_copy": "C:\\Users\\29728\\AppData\\Local\\Temp\\sili_dawn_source_20260908.xlsx",
+      "sheets": [
+        {
+          "sheet": "结果集",
+          "total_rows_including_header": 802,
+          "columns": 291,
+          "selected_first_row": 91,
+          "selected_last_row": 537,
+          "selected_day_rows": 447,
+          "identity_columns": [
+            "名称·",
+            "OBJ_TYPE",
+            "DATA_DATE"
+          ],
+          "date_type": "text YYYY-MM-DD",
+          "measurement_type": "VALHHMM interval end BJT"
+        }
+      ],
+      "cache_matches_registered_authority_sha": true,
+      "authority_file_rehashed_this_audit": false,
+      "raw_statistics": {
+        "train_raw_records": 101952,
+        "train_zero": 51268,
+        "train_positive": 49896,
+        "train_missing_or_nonfinite": 788,
+        "validation_raw_records": 26496,
+        "validation_zero": 12257,
+        "validation_missing_or_nonfinite": 307,
+        "validation_positive": 13932
+      }
+    },
+    "zhujia": {
+      "authoritative_path": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations/竺家光伏.xlsx",
+      "verified_cache_path": "/tmp/hunan_m0_staging_20260903/竺家光伏.xlsx",
+      "verified_local_copy": "C:\\Users\\29728\\AppData\\Local\\Temp\\zhujia_flatline_source_20260908.xlsx",
+      "sheets": [
+        {
+          "sheet": "结果集",
+          "total_rows_including_header": 876,
+          "columns": 290,
+          "selected_first_row": 92,
+          "selected_last_row": 603,
+          "selected_day_rows": 512,
+          "identity_columns": [
+            "名称·",
+            "DATA_DATE"
+          ],
+          "date_type": "text YYYY-MM-DD",
+          "measurement_type": "VALHHMM interval end BJT"
+        }
+      ],
+      "cache_matches_registered_authority_sha": true,
+      "authority_file_rehashed_this_audit": false,
+      "raw_statistics": {
+        "train_raw_records": 120672,
+        "train_zero": 61781,
+        "train_positive": 58427,
+        "train_missing_or_nonfinite": 464,
+        "validation_raw_records": 26496,
+        "validation_zero": 11907,
+        "validation_missing_or_nonfinite": 183,
+        "validation_positive": 14406
+      }
+    }
+  },
+  "groups": [
+    {
+      "station": "sili",
+      "split": "train",
+      "positive_runs": 48740,
+      "positive_run_length_histogram": {
+        "1 record": 47708,
+        "2 records": 963,
+        "3 records": 57,
+        "4-6 records": 9,
+        "24-47 records": 1,
+        "7-11 records": 2
+      },
+      "flagged_runs": 1,
+      "flagged_source_records": 36,
+      "flagged_unique_source_dates": 1,
+      "max_support_minutes": 180,
+      "flagged_value_distribution": {
+        "362.0": 1
+      },
+      "affected_cohort_unique_targets": 12,
+      "affected_cohort_rows": 192,
+      "fully_flat_cohort_unique_targets": 12,
+      "fully_flat_cohort_rows": 192,
+      "all_cohort_unique_targets": 16695,
+      "all_cohort_rows": 248910
+    },
+    {
+      "station": "sili",
+      "split": "validation",
+      "positive_runs": 13746,
+      "positive_run_length_histogram": {
+        "1 record": 13575,
+        "2 records": 158,
+        "3 records": 11,
+        "4-6 records": 2
+      },
+      "flagged_runs": 0,
+      "flagged_source_records": 0,
+      "flagged_unique_source_dates": 0,
+      "max_support_minutes": 0,
+      "flagged_value_distribution": {},
+      "affected_cohort_unique_targets": 0,
+      "affected_cohort_rows": 0,
+      "fully_flat_cohort_unique_targets": 0,
+      "fully_flat_cohort_rows": 0,
+      "all_cohort_unique_targets": 3481,
+      "all_cohort_rows": 49806
+    },
+    {
+      "station": "zhujia",
+      "split": "train",
+      "positive_runs": 57727,
+      "positive_run_length_histogram": {
+        "1 record": 57120,
+        "2 records": 570,
+        "3 records": 26,
+        "4-6 records": 8,
+        "12-23 records": 2,
+        "7-11 records": 1
+      },
+      "flagged_runs": 2,
+      "flagged_source_records": 44,
+      "flagged_unique_source_dates": 1,
+      "max_support_minutes": 115,
+      "flagged_value_distribution": {
+        "140.0": 1,
+        "122.0": 1
+      },
+      "affected_cohort_unique_targets": 16,
+      "affected_cohort_rows": 256,
+      "fully_flat_cohort_unique_targets": 13,
+      "fully_flat_cohort_rows": 208,
+      "all_cohort_unique_targets": 19441,
+      "all_cohort_rows": 289143
+    },
+    {
+      "station": "zhujia",
+      "split": "validation",
+      "positive_runs": 14400,
+      "positive_run_length_histogram": {
+        "1 record": 14394,
+        "2 records": 6
+      },
+      "flagged_runs": 0,
+      "flagged_source_records": 0,
+      "flagged_unique_source_dates": 0,
+      "max_support_minutes": 0,
+      "flagged_value_distribution": {},
+      "affected_cohort_unique_targets": 0,
+      "affected_cohort_rows": 0,
+      "fully_flat_cohort_unique_targets": 0,
+      "fully_flat_cohort_rows": 0,
+      "all_cohort_unique_targets": 3505,
+      "all_cohort_rows": 50043
+    }
+  ],
+  "flagged_runs": [
+    {
+      "station": "sili",
+      "split": "train",
+      "interval_start_bjt_exclusive": "2024-07-01T05:45:00+08:00",
+      "first_interval_end_bjt": "2024-07-01T05:50:00+08:00",
+      "last_interval_end_bjt": "2024-07-01T08:45:00+08:00",
+      "records": 36,
+      "support_minutes": 180,
+      "endpoint_span_minutes": 175,
+      "ghi_wm2": 362.0,
+      "first_source_cell": {
+        "value": 362.0,
+        "sheet": "结果集",
+        "cell": "BU181"
+      },
+      "last_source_cell": {
+        "value": 362.0,
+        "sheet": "结果集",
+        "cell": "DD181"
+      },
+      "potential_15min_targets": 12,
+      "affected_cohort_unique_targets": 12,
+      "affected_cohort_rows": 192,
+      "fully_flat_cohort_unique_targets": 12,
+      "fully_flat_cohort_rows": 192,
+      "affected_target_times_bjt": [
+        "2024-07-01T06:00:00+08:00",
+        "2024-07-01T06:15:00+08:00",
+        "2024-07-01T06:30:00+08:00",
+        "2024-07-01T06:45:00+08:00",
+        "2024-07-01T07:00:00+08:00",
+        "2024-07-01T07:15:00+08:00",
+        "2024-07-01T07:30:00+08:00",
+        "2024-07-01T07:45:00+08:00",
+        "2024-07-01T08:00:00+08:00",
+        "2024-07-01T08:15:00+08:00",
+        "2024-07-01T08:30:00+08:00",
+        "2024-07-01T08:45:00+08:00"
+      ],
+      "cohort_aggregation_check": "PASS"
+    },
+    {
+      "station": "zhujia",
+      "split": "train",
+      "interval_start_bjt_exclusive": "2024-12-05T09:50:00+08:00",
+      "first_interval_end_bjt": "2024-12-05T09:55:00+08:00",
+      "last_interval_end_bjt": "2024-12-05T11:45:00+08:00",
+      "records": 23,
+      "support_minutes": 115,
+      "endpoint_span_minutes": 110,
+      "ghi_wm2": 140.0,
+      "first_source_cell": {
+        "value": 140.0,
+        "sheet": "结果集",
+        "cell": "DQ313"
+      },
+      "last_source_cell": {
+        "value": 140.0,
+        "sheet": "结果集",
+        "cell": "EM313"
+      },
+      "potential_15min_targets": 8,
+      "affected_cohort_unique_targets": 8,
+      "affected_cohort_rows": 128,
+      "fully_flat_cohort_unique_targets": 7,
+      "fully_flat_cohort_rows": 112,
+      "affected_target_times_bjt": [
+        "2024-12-05T10:00:00+08:00",
+        "2024-12-05T10:15:00+08:00",
+        "2024-12-05T10:30:00+08:00",
+        "2024-12-05T10:45:00+08:00",
+        "2024-12-05T11:00:00+08:00",
+        "2024-12-05T11:15:00+08:00",
+        "2024-12-05T11:30:00+08:00",
+        "2024-12-05T11:45:00+08:00"
+      ],
+      "cohort_aggregation_check": "PASS"
+    },
+    {
+      "station": "zhujia",
+      "split": "train",
+      "interval_start_bjt_exclusive": "2024-12-05T14:20:00+08:00",
+      "first_interval_end_bjt": "2024-12-05T14:25:00+08:00",
+      "last_interval_end_bjt": "2024-12-05T16:05:00+08:00",
+      "records": 21,
+      "support_minutes": 105,
+      "endpoint_span_minutes": 100,
+      "ghi_wm2": 122.0,
+      "first_source_cell": {
+        "value": 122.0,
+        "sheet": "结果集",
+        "cell": "FS313"
+      },
+      "last_source_cell": {
+        "value": 122.0,
+        "sheet": "结果集",
+        "cell": "GM313"
+      },
+      "potential_15min_targets": 8,
+      "affected_cohort_unique_targets": 8,
+      "affected_cohort_rows": 128,
+      "fully_flat_cohort_unique_targets": 6,
+      "fully_flat_cohort_rows": 96,
+      "affected_target_times_bjt": [
+        "2024-12-05T14:30:00+08:00",
+        "2024-12-05T14:45:00+08:00",
+        "2024-12-05T15:00:00+08:00",
+        "2024-12-05T15:15:00+08:00",
+        "2024-12-05T15:30:00+08:00",
+        "2024-12-05T15:45:00+08:00",
+        "2024-12-05T16:00:00+08:00",
+        "2024-12-05T16:15:00+08:00"
+      ],
+      "cohort_aggregation_check": "PASS"
+    }
+  ],
+  "total": {
+    "flagged_runs": 3,
+    "affected_cohort_unique_targets": 28,
+    "affected_cohort_rows": 448,
+    "all_cohort_rows": 637902,
+    "labels_modified": false,
+    "cohort_modified": false
+  },
+  "top10_by_support_duration": [
+    {
+      "station": "sili",
+      "split": "train",
+      "interval_start_bjt_exclusive": "2024-07-01T05:45:00+08:00",
+      "first_interval_end_bjt": "2024-07-01T05:50:00+08:00",
+      "last_interval_end_bjt": "2024-07-01T08:45:00+08:00",
+      "records": 36,
+      "support_minutes": 180,
+      "endpoint_span_minutes": 175,
+      "ghi_wm2": 362.0,
+      "first_source_cell": {
+        "value": 362.0,
+        "sheet": "结果集",
+        "cell": "BU181"
+      },
+      "last_source_cell": {
+        "value": 362.0,
+        "sheet": "结果集",
+        "cell": "DD181"
+      },
+      "potential_15min_targets": 12,
+      "affected_cohort_unique_targets": 12,
+      "affected_cohort_rows": 192,
+      "fully_flat_cohort_unique_targets": 12,
+      "fully_flat_cohort_rows": 192,
+      "affected_target_times_bjt": [
+        "2024-07-01T06:00:00+08:00",
+        "2024-07-01T06:15:00+08:00",
+        "2024-07-01T06:30:00+08:00",
+        "2024-07-01T06:45:00+08:00",
+        "2024-07-01T07:00:00+08:00",
+        "2024-07-01T07:15:00+08:00",
+        "2024-07-01T07:30:00+08:00",
+        "2024-07-01T07:45:00+08:00",
+        "2024-07-01T08:00:00+08:00",
+        "2024-07-01T08:15:00+08:00",
+        "2024-07-01T08:30:00+08:00",
+        "2024-07-01T08:45:00+08:00"
+      ],
+      "cohort_aggregation_check": "PASS"
+    },
+    {
+      "station": "zhujia",
+      "split": "train",
+      "interval_start_bjt_exclusive": "2024-12-05T09:50:00+08:00",
+      "first_interval_end_bjt": "2024-12-05T09:55:00+08:00",
+      "last_interval_end_bjt": "2024-12-05T11:45:00+08:00",
+      "records": 23,
+      "support_minutes": 115,
+      "endpoint_span_minutes": 110,
+      "ghi_wm2": 140.0,
+      "first_source_cell": {
+        "value": 140.0,
+        "sheet": "结果集",
+        "cell": "DQ313"
+      },
+      "last_source_cell": {
+        "value": 140.0,
+        "sheet": "结果集",
+        "cell": "EM313"
+      },
+      "potential_15min_targets": 8,
+      "affected_cohort_unique_targets": 8,
+      "affected_cohort_rows": 128,
+      "fully_flat_cohort_unique_targets": 7,
+      "fully_flat_cohort_rows": 112,
+      "affected_target_times_bjt": [
+        "2024-12-05T10:00:00+08:00",
+        "2024-12-05T10:15:00+08:00",
+        "2024-12-05T10:30:00+08:00",
+        "2024-12-05T10:45:00+08:00",
+        "2024-12-05T11:00:00+08:00",
+        "2024-12-05T11:15:00+08:00",
+        "2024-12-05T11:30:00+08:00",
+        "2024-12-05T11:45:00+08:00"
+      ],
+      "cohort_aggregation_check": "PASS"
+    },
+    {
+      "station": "zhujia",
+      "split": "train",
+      "interval_start_bjt_exclusive": "2024-12-05T14:20:00+08:00",
+      "first_interval_end_bjt": "2024-12-05T14:25:00+08:00",
+      "last_interval_end_bjt": "2024-12-05T16:05:00+08:00",
+      "records": 21,
+      "support_minutes": 105,
+      "endpoint_span_minutes": 100,
+      "ghi_wm2": 122.0,
+      "first_source_cell": {
+        "value": 122.0,
+        "sheet": "结果集",
+        "cell": "FS313"
+      },
+      "last_source_cell": {
+        "value": 122.0,
+        "sheet": "结果集",
+        "cell": "GM313"
+      },
+      "potential_15min_targets": 8,
+      "affected_cohort_unique_targets": 8,
+      "affected_cohort_rows": 128,
+      "fully_flat_cohort_unique_targets": 6,
+      "fully_flat_cohort_rows": 96,
+      "affected_target_times_bjt": [
+        "2024-12-05T14:30:00+08:00",
+        "2024-12-05T14:45:00+08:00",
+        "2024-12-05T15:00:00+08:00",
+        "2024-12-05T15:15:00+08:00",
+        "2024-12-05T15:30:00+08:00",
+        "2024-12-05T15:45:00+08:00",
+        "2024-12-05T16:00:00+08:00",
+        "2024-12-05T16:15:00+08:00"
+      ],
+      "cohort_aggregation_check": "PASS"
+    }
+  ]
+}

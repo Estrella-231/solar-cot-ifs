@@ -1,0 +1,74 @@
+{
+  "state": "COMPLETE_FROZEN_HEAD_TRAIN_VAL_FORWARD",
+  "script_sha256": "5d2978ab0f7e344105b379df0d34fdc9f59c401bea7e4614e73784a07e28797b",
+  "source_hashes": {
+    "x": "1f9a788f9add0d0e04f16b5e879c45afa3ff8a5606dedfddf1fca49f9ab58418",
+    "c": "89a6b9080d0b695af08d3ac58cd7a68e274c8c719caab388b90a0af6ce08964f",
+    "g": "b89a8d026dde71f320d9d1962a99e2cb659f7fca08846e45c947c678dda5aa9a",
+    "kt": "76703a5e5058426341e3b2939add606b29605d6d1e608cc78ed938b79808c285",
+    "ghi": "b819c940a12755af96440dfc2fe4f8df16bdfeb494f8fbd562c68bc50050f0da",
+    "clear": "67a722a2253cbe6468489c91c4df175ea6029e9f1355279e4108accc010f9e59",
+    "station": "d45847ca89035bb2e009886163a327aa6b74af3702ac8f20a7f439f2ac90c011",
+    "lead": "4bfc0b4212d4a9133b4e92165ec3b23d9cf3c09d46a2fcaffbb254f77345ac43",
+    "split": "4a9574e2b7f7378250cf2557d1f1e0a32edf4ba85fbf05b743eb9bf3439aa154"
+  },
+  "protocol_sha256": "8dbfb701cac2227317edb7da6a83ac566d32c5719bf1688986d94f0c6f7fa093",
+  "training": false,
+  "test_used": false,
+  "batch": 2048,
+  "precision": "BF16 forward, saved float32 pred_kt, float64 residual aggregation",
+  "models": [
+    {
+      "cohort": "qc1",
+      "group": "A",
+      "selected_lr": "0.0003",
+      "checkpoint_sha256": "4ba9c721b57b67c4375bd15e2e58f6149244a38b04131adee0b540d17062023c",
+      "predictions_file": "qc1_A_predictions.npz",
+      "predictions_sha256": "e11c5920734c27ea0ea76cc7105abe5d36a3dfa9937980ce9eefa6a85a66b688",
+      "train_rows": 537605,
+      "validation_rows": 99849,
+      "validation_binding_pass": true,
+      "validation_max_kt_difference": 0.0
+    },
+    {
+      "cohort": "qc1",
+      "group": "AC",
+      "selected_lr": "0.001",
+      "checkpoint_sha256": "1698972fc2ab3af6ee517ef7cba74ba787bff23a9923721f3be4dc2ed8abf6ac",
+      "predictions_file": "qc1_AC_predictions.npz",
+      "predictions_sha256": "0ba811e9ab11dfd8ca2fe7f43cc1c29c99aa3a2cb6815d6c27243d2c477ce7fa",
+      "train_rows": 537605,
+      "validation_rows": 99849,
+      "validation_binding_pass": true,
+      "validation_max_kt_difference": 0.0
+    },
+    {
+      "cohort": "original",
+      "group": "A",
+      "selected_lr": "0.0003",
+      "checkpoint_sha256": "f79f6c1aefe650bfd8a051ecc6cc4b67b8b13075d5c44fc4662dbf59323626d3",
+      "predictions_file": "original_A_predictions.npz",
+      "predictions_sha256": "bfcbd7a2096aeefee5d1d9b6b993aa280aea72f94e8b811900133ddf960b472e",
+      "train_rows": 538053,
+      "validation_rows": 99849,
+      "validation_binding_pass": true,
+      "validation_max_kt_difference": 0.0
+    },
+    {
+      "cohort": "original",
+      "group": "AC",
+      "selected_lr": "0.001",
+      "checkpoint_sha256": "7c9a1009d2920099b8b606c37d522060d15a56307488a8017b7735e6cfcea4db",
+      "predictions_file": "original_AC_predictions.npz",
+      "predictions_sha256": "88d8b6904e694ad040c8e6cdd495ef406c40f5a57a954a1378c2059a3dfa9ad3",
+      "train_rows": 538053,
+      "validation_rows": 99849,
+      "validation_binding_pass": true,
+      "validation_max_kt_difference": 0.0
+    }
+  ],
+  "seconds": 66.64073583111167,
+  "peak_GiB": 8.350962162017822,
+  "torch_version": "2.3.1+cu118",
+  "gpu": "NVIDIA A100-SXM4-40GB"
+}

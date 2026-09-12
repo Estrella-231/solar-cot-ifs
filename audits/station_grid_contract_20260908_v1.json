@@ -1,0 +1,122 @@
+{
+  "state": "PASS_STATION_GRID_CONTRACT_ONLY",
+  "region": "Hunan",
+  "grid_shape": [
+    256,
+    256
+  ],
+  "crop_from_dataset_meta": {
+    "row_start": 1213,
+    "row_end_exclusive": 1469,
+    "col_start": 2061,
+    "col_end_exclusive": 2317
+  },
+  "extent_lat": [
+    22.280000686645508,
+    32.47999954223633
+  ],
+  "extent_lon": [
+    106.44000244140625,
+    116.63999938964844
+  ],
+  "north_to_south": true,
+  "west_to_east": true,
+  "stations": [
+    {
+      "station": "sili",
+      "station_latlon": [
+        25.9478611111,
+        112.347916667
+      ],
+      "bounds": [
+        155,
+        171,
+        140,
+        156
+      ],
+      "nearest_grid_row_col": [
+        163,
+        148
+      ],
+      "patch_nearest_row_col": [
+        8,
+        8
+      ],
+      "nearest_grid_latlon": [
+        25.959999084472656,
+        112.36000061035156
+      ],
+      "distance_to_nearest_km": 1.8114346392882168,
+      "true_HDF_row_col": [
+        694,
+        1554
+      ],
+      "lat_range": [
+        25.68000030517578,
+        26.280000686645508
+      ],
+      "lon_range": [
+        112.04000091552734,
+        112.63999938964844
+      ],
+      "center_is_exact_nearest": true
+    },
+    {
+      "station": "zhujia",
+      "station_latlon": [
+        29.566666667,
+        112.45
+      ],
+      "bounds": [
+        65,
+        81,
+        142,
+        158
+      ],
+      "nearest_grid_row_col": [
+        73,
+        150
+      ],
+      "patch_nearest_row_col": [
+        8,
+        8
+      ],
+      "nearest_grid_latlon": [
+        29.559999465942383,
+        112.44000244140625
+      ],
+      "distance_to_nearest_km": 1.2184450459522143,
+      "true_HDF_row_col": [
+        612,
+        1549
+      ],
+      "lat_range": [
+        29.280000686645508,
+        29.8799991607666
+      ],
+      "lon_range": [
+        112.12000274658203,
+        112.72000122070312
+      ],
+      "center_is_exact_nearest": true
+    }
+  ],
+  "time_contract": {
+    "data_filename": "UTC",
+    "aux_filename_and_month": "BJT (UTC+8)",
+    "solar_geometry_time_basis": "nominal UTC from the AGRI filename; obs_time_offset_s retains the actual per-scan-line timing for optional later recomputation"
+  },
+  "sources": {
+    "audits\\spatial_reaudit_static_20260908\\grid_static.npz": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+    "audits\\spatial_reaudit_static_20260908\\station_schema.json": "d006fe6f3196a3c12bc01766434c2015aea201e7f3a9d41bcfb9e875e4ca8137",
+    "audits\\spatial_reaudit_static_20260908\\dataset_meta.json": "c33989645e5e8bebef22b7d1a3e831632b84c8d303ac82eca717141580029f79",
+    "configs\\s_frozen_hunan_seed42.json": "afd2fb70212e5082e57d3f2a384c24da9e41e486b3e5a4d49981d11de3b9ffb8",
+    "scripts\\check_station_grid_contract_20260908.py": "79483fa317cdcddfc614de9bc62e5372ff200b46c3c6230cabb71595d0471ed4"
+  },
+  "limits": [
+    "Station coordinates use the authoritative project schema, not an independent ground survey.",
+    "This check does not prove original HDF geolocation or actual AGRI/CPP payload alignment; those are separate checks."
+  ],
+  "test_used": false,
+  "training": false
+}

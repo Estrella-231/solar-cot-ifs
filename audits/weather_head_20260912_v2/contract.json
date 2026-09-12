@@ -1,0 +1,65 @@
+{
+  "test_used": false,
+  "seed": 42,
+  "classes": [
+    "sunny",
+    "partly_cloudy",
+    "overcast"
+  ],
+  "coverage_thresholds": [
+    0.2,
+    0.8
+  ],
+  "min_valid_pixels": 231,
+  "inputs": [
+    "frozen forecast AGRI 13x16x16",
+    "solar geometry 3",
+    "station",
+    "lead"
+  ],
+  "excluded_inputs": [
+    "observed GHI",
+    "observed kt",
+    "future true AGRI",
+    "future CLP",
+    "COT"
+  ],
+  "label": "target-instant patch cloud fraction from CLP1+CLP2; regional proxy, not official daily weather",
+  "fit_rows": 102751,
+  "tune_rows": 67294,
+  "validation_rows": 99849,
+  "fit_target_class_counts": [
+    1750,
+    802,
+    4344
+  ],
+  "train_purge_date": "2025-04-01",
+  "tune_start_date": "2025-04-02",
+  "stopping": "original-train temporal holdout inverse-target-repeat NLL; max30epochs patience6",
+  "optimizer": "AdamW lr0.001 weight_decay0.0001",
+  "loss": "CE weighted inverse unique-target class frequency and inverse repeated-target rows",
+  "parameters": 9931,
+  "pack_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+  "labels_sha256": "8c836458c402f7d194d0082ad7e8bc12de072053c786e22a7dcec57547a837a8",
+  "code_sha256": "4538388c397bfba932abe4c90d5cc438b8ce20447477522de759fbbe6e20873c",
+  "label_coverage": {
+    "0": {
+      "total_targets": 36136,
+      "labeled_targets": 11469,
+      "classes": [
+        2385,
+        1301,
+        7783
+      ]
+    },
+    "1": {
+      "total_targets": 6986,
+      "labeled_targets": 6984,
+      "classes": [
+        1775,
+        1397,
+        3812
+      ]
+    }
+  }
+}

@@ -1,0 +1,710 @@
+{
+  "state": "PASS_INDEPENDENT_FROZEN_LOSS_AGGREGATION",
+  "script_sha256": "43c11ab19da29210c2f5b5a11a831ada14d3aaa1cb42f5709d6c4e40815b106c",
+  "forward_report_sha256": "cffd634b3a1c4dfa42863e4a88bf8b9b09bb58320ede8a0851a00fea76bc175f",
+  "models": [
+    {
+      "cohort": "qc1",
+      "group": "A",
+      "selected_lr": "0.0003",
+      "checkpoint_sha256": "4ba9c721b57b67c4375bd15e2e58f6149244a38b04131adee0b540d17062023c",
+      "prediction_sha256": "e11c5920734c27ea0ea76cc7105abe5d36a3dfa9937980ce9eefa6a85a66b688",
+      "splits": {
+        "train": {
+          "n": 537605,
+          "weighted_kt_mse": 1.5231032567338973,
+          "station_equal_ghi_rmse": 142.81491911236742,
+          "station_rmse": [
+            144.82638522758063,
+            140.8034529971542
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 30630,
+              "row_percent": 5.697491652793408,
+              "actual_kt_loss_percent": 95.45916342977864,
+              "actual_ghi_sse_percent": 0.018681528571248194,
+              "ghi_rmse": 8.17002861286511
+            },
+            {
+              "group": "clear_20_100",
+              "n": 40513,
+              "row_percent": 7.535830209912482,
+              "actual_kt_loss_percent": 1.0855180161852647,
+              "actual_ghi_sse_percent": 0.19551916779792228,
+              "ghi_rmse": 22.982027485225366
+            },
+            {
+              "group": "clear_100_300",
+              "n": 80372,
+              "row_percent": 14.950009765534174,
+              "actual_kt_loss_percent": 0.716109202091692,
+              "actual_ghi_sse_percent": 2.1812083830916777,
+              "ghi_rmse": 54.498815466924036
+            },
+            {
+              "group": "clear_300_600",
+              "n": 134923,
+              "row_percent": 25.097050808679235,
+              "actual_kt_loss_percent": 1.06910199705956,
+              "actual_ghi_sse_percent": 17.641436870964007,
+              "ghi_rmse": 119.62304539270006
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 251167,
+              "row_percent": 46.7196175630807,
+              "actual_kt_loss_percent": 1.670107354884821,
+              "actual_ghi_sse_percent": 79.96315404957515,
+              "ghi_rmse": 186.66140934121586
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 8630,
+              "row_percent": 1.6052678081491059,
+              "actual_kt_loss_percent": 90.30148169275071,
+              "actual_ghi_sse_percent": 0.021690771298072974,
+              "ghi_rmse": 16.585286247886764
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 1833,
+              "row_percent": 0.340956650328773,
+              "actual_kt_loss_percent": 88.23520496663762,
+              "actual_ghi_sse_percent": 0.0025485824832240382,
+              "ghi_rmse": 12.335563297147091
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 499,
+              "row_percent": 0.09281907720352303,
+              "actual_kt_loss_percent": 85.53509713800473,
+              "actual_ghi_sse_percent": 0.0008295683328711138,
+              "ghi_rmse": 13.488593960892088
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 32,
+              "row_percent": 0.0059523255922098945,
+              "actual_kt_loss_percent": 55.06018685415216,
+              "actual_ghi_sse_percent": 1.0627216824118781e-06,
+              "ghi_rmse": 1.9064510255931661
+            }
+          ]
+        },
+        "validation": {
+          "n": 99849,
+          "weighted_kt_mse": 0.8803228559572793,
+          "station_equal_ghi_rmse": 149.9058249344003,
+          "station_rmse": [
+            169.68940714930022,
+            130.12224271950035
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 5672,
+              "row_percent": 5.680577672285151,
+              "actual_kt_loss_percent": 89.72418354353883,
+              "actual_ghi_sse_percent": 0.04547634805563872,
+              "ghi_rmse": 13.52479789217451
+            },
+            {
+              "group": "clear_20_100",
+              "n": 7269,
+              "row_percent": 7.279992789111558,
+              "actual_kt_loss_percent": 3.7415919909043227,
+              "actual_ghi_sse_percent": 0.39144146440785366,
+              "ghi_rmse": 35.05114290549362
+            },
+            {
+              "group": "clear_100_300",
+              "n": 14049,
+              "row_percent": 14.070246071568068,
+              "actual_kt_loss_percent": 1.7034909587568832,
+              "actual_ghi_sse_percent": 2.4664286490341016,
+              "ghi_rmse": 63.28746148449995
+            },
+            {
+              "group": "clear_300_600",
+              "n": 21645,
+              "row_percent": 21.677733377399875,
+              "actual_kt_loss_percent": 1.584463492720977,
+              "actual_ghi_sse_percent": 12.684574080247026,
+              "ghi_rmse": 115.62859635953028
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 51214,
+              "row_percent": 51.29145008963535,
+              "actual_kt_loss_percent": 3.246270014078984,
+              "actual_ghi_sse_percent": 84.41207945825538,
+              "ghi_rmse": 193.91618350038274
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 2811,
+              "row_percent": 2.8152510290538713,
+              "actual_kt_loss_percent": 73.17656957396429,
+              "actual_ghi_sse_percent": 0.19688440646516964,
+              "ghi_rmse": 39.97434365611689
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 821,
+              "row_percent": 0.8222415847930375,
+              "actual_kt_loss_percent": 68.14535362602257,
+              "actual_ghi_sse_percent": 0.0247783006487195,
+              "ghi_rmse": 26.24038995241181
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 164,
+              "row_percent": 0.16424801450189785,
+              "actual_kt_loss_percent": 56.06789573068644,
+              "actual_ghi_sse_percent": 0.006032248866195239,
+              "ghi_rmse": 28.968353090382273
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 0,
+              "row_percent": 0.0,
+              "actual_kt_loss_percent": 0.0,
+              "actual_ghi_sse_percent": 0.0,
+              "ghi_rmse": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cohort": "qc1",
+      "group": "AC",
+      "selected_lr": "0.001",
+      "checkpoint_sha256": "1698972fc2ab3af6ee517ef7cba74ba787bff23a9923721f3be4dc2ed8abf6ac",
+      "prediction_sha256": "0ba811e9ab11dfd8ca2fe7f43cc1c29c99aa3a2cb6815d6c27243d2c477ce7fa",
+      "splits": {
+        "train": {
+          "n": 537605,
+          "weighted_kt_mse": 1.5498646722646903,
+          "station_equal_ghi_rmse": 142.32340914181208,
+          "station_rmse": [
+            144.90308447629002,
+            139.74373380733417
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 30630,
+              "row_percent": 5.697491652793408,
+              "actual_kt_loss_percent": 95.63882709005081,
+              "actual_ghi_sse_percent": 0.018122757806046955,
+              "ghi_rmse": 8.01731946434026
+            },
+            {
+              "group": "clear_20_100",
+              "n": 40513,
+              "row_percent": 7.535830209912482,
+              "actual_kt_loss_percent": 0.9897046684755271,
+              "actual_ghi_sse_percent": 0.19298220549416395,
+              "ghi_rmse": 22.74845860730477
+            },
+            {
+              "group": "clear_100_300",
+              "n": 80372,
+              "row_percent": 14.950009765534174,
+              "actual_kt_loss_percent": 0.7021101296460674,
+              "actual_ghi_sse_percent": 2.1920052248743636,
+              "ghi_rmse": 54.43258369647916
+            },
+            {
+              "group": "clear_300_600",
+              "n": 134923,
+              "row_percent": 25.097050808679235,
+              "actual_kt_loss_percent": 1.039815841210095,
+              "actual_ghi_sse_percent": 17.561339365208795,
+              "ghi_rmse": 118.91218724790842
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 251167,
+              "row_percent": 46.7196175630807,
+              "actual_kt_loss_percent": 1.6295422706175038,
+              "actual_ghi_sse_percent": 80.03555044661667,
+              "ghi_rmse": 186.05901747413012
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 8630,
+              "row_percent": 1.6052678081491059,
+              "actual_kt_loss_percent": 91.81355487738858,
+              "actual_ghi_sse_percent": 0.023356621713883415,
+              "ghi_rmse": 17.14707944114344
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 1833,
+              "row_percent": 0.340956650328773,
+              "actual_kt_loss_percent": 89.63739535043467,
+              "actual_ghi_sse_percent": 0.0028208352998754143,
+              "ghi_rmse": 12.929989633806379
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 499,
+              "row_percent": 0.09281907720352303,
+              "actual_kt_loss_percent": 86.46133646072644,
+              "actual_ghi_sse_percent": 0.00085544586431491,
+              "ghi_rmse": 13.64697943230512
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 32,
+              "row_percent": 0.0059523255922098945,
+              "actual_kt_loss_percent": 55.08891979306089,
+              "actual_ghi_sse_percent": 1.0901653341586834e-06,
+              "ghi_rmse": 1.9238080563646214
+            }
+          ]
+        },
+        "validation": {
+          "n": 99849,
+          "weighted_kt_mse": 0.892230352250366,
+          "station_equal_ghi_rmse": 151.2486530956433,
+          "station_rmse": [
+            169.29776074084404,
+            133.19954545044257
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 5672,
+              "row_percent": 5.680577672285151,
+              "actual_kt_loss_percent": 89.78028194197965,
+              "actual_ghi_sse_percent": 0.04303083799762671,
+              "ghi_rmse": 13.25361476120773
+            },
+            {
+              "group": "clear_20_100",
+              "n": 7269,
+              "row_percent": 7.279992789111558,
+              "actual_kt_loss_percent": 3.4112768674721785,
+              "actual_ghi_sse_percent": 0.3967790177448389,
+              "ghi_rmse": 35.55081543691143
+            },
+            {
+              "group": "clear_100_300",
+              "n": 14049,
+              "row_percent": 14.070246071568068,
+              "actual_kt_loss_percent": 1.8635787228031966,
+              "actual_ghi_sse_percent": 2.722831953827971,
+              "ghi_rmse": 66.98850184800298
+            },
+            {
+              "group": "clear_300_600",
+              "n": 21645,
+              "row_percent": 21.677733377399875,
+              "actual_kt_loss_percent": 1.7308950253212911,
+              "actual_ghi_sse_percent": 13.780436137902532,
+              "ghi_rmse": 121.4130134791513
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 51214,
+              "row_percent": 51.29145008963535,
+              "actual_kt_loss_percent": 3.213967442423678,
+              "actual_ghi_sse_percent": 83.05692205252703,
+              "ghi_rmse": 193.77873657049716
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 2811,
+              "row_percent": 2.8152510290538713,
+              "actual_kt_loss_percent": 79.93951103386604,
+              "actual_ghi_sse_percent": 0.2279875861713737,
+              "ghi_rmse": 43.33489310096829
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 821,
+              "row_percent": 0.8222415847930375,
+              "actual_kt_loss_percent": 75.0395192166207,
+              "actual_ghi_sse_percent": 0.026465427611418648,
+              "ghi_rmse": 27.31998341059043
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 164,
+              "row_percent": 0.16424801450189785,
+              "actual_kt_loss_percent": 59.95396008199572,
+              "actual_ghi_sse_percent": 0.006526541635193599,
+              "ghi_rmse": 30.35513610983918
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 0,
+              "row_percent": 0.0,
+              "actual_kt_loss_percent": 0.0,
+              "actual_ghi_sse_percent": 0.0,
+              "ghi_rmse": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cohort": "original",
+      "group": "A",
+      "selected_lr": "0.0003",
+      "checkpoint_sha256": "f79f6c1aefe650bfd8a051ecc6cc4b67b8b13075d5c44fc4662dbf59323626d3",
+      "prediction_sha256": "bfcbd7a2096aeefee5d1d9b6b993aa280aea72f94e8b811900133ddf960b472e",
+      "splits": {
+        "train": {
+          "n": 538053,
+          "weighted_kt_mse": 8.739441026831551,
+          "station_equal_ghi_rmse": 147.8471975086254,
+          "station_rmse": [
+            149.2799739056428,
+            146.41442111160805
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 30662,
+              "row_percent": 5.698695109961286,
+              "actual_kt_loss_percent": 98.87459068121565,
+              "actual_ghi_sse_percent": 0.06307980515192506,
+              "ghi_rmse": 15.54447445108344
+            },
+            {
+              "group": "clear_20_100",
+              "n": 40545,
+              "row_percent": 7.535503008067979,
+              "actual_kt_loss_percent": 0.44373557342386905,
+              "actual_ghi_sse_percent": 0.31728559505760157,
+              "ghi_rmse": 30.317098639777218
+            },
+            {
+              "group": "clear_100_300",
+              "n": 80484,
+              "row_percent": 14.95837770628544,
+              "actual_kt_loss_percent": 0.17069553811120908,
+              "actual_ghi_sse_percent": 2.6158725972520522,
+              "ghi_rmse": 61.785224562320984
+            },
+            {
+              "group": "clear_300_600",
+              "n": 135195,
+              "row_percent": 25.126706848581833,
+              "actual_kt_loss_percent": 0.20277549434046918,
+              "actual_ghi_sse_percent": 17.730794420405598,
+              "ghi_rmse": 124.11231993506053
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 251167,
+              "row_percent": 46.680717327103466,
+              "actual_kt_loss_percent": 0.3082027129086625,
+              "actual_ghi_sse_percent": 79.27296758213276,
+              "ghi_rmse": 192.53619307900522
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 8726,
+              "row_percent": 1.6217733197287258,
+              "actual_kt_loss_percent": 96.98565723146596,
+              "actual_ghi_sse_percent": 0.11511537962730328,
+              "ghi_rmse": 39.36318054547516
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 1881,
+              "row_percent": 0.34959381324888067,
+              "actual_kt_loss_percent": 96.50625194238668,
+              "actual_ghi_sse_percent": 0.05010118350245109,
+              "ghi_rmse": 55.93204600583153
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 531,
+              "row_percent": 0.09868916259178928,
+              "actual_kt_loss_percent": 96.08320182266998,
+              "actual_ghi_sse_percent": 0.034078017320081554,
+              "ghi_rmse": 86.82024570796263
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 48,
+              "row_percent": 0.008921054245585473,
+              "actual_kt_loss_percent": 90.53202410098025,
+              "actual_ghi_sse_percent": 0.01724601579449753,
+              "ghi_rmse": 205.4257506169325
+            }
+          ]
+        },
+        "validation": {
+          "n": 99849,
+          "weighted_kt_mse": 0.9915381941853723,
+          "station_equal_ghi_rmse": 149.81745132151582,
+          "station_rmse": [
+            167.5685677028888,
+            132.0663349401428
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 5672,
+              "row_percent": 5.680577672285151,
+              "actual_kt_loss_percent": 86.86996373573777,
+              "actual_ghi_sse_percent": 0.07888288150830919,
+              "ghi_rmse": 17.77314639803718
+            },
+            {
+              "group": "clear_20_100",
+              "n": 7269,
+              "row_percent": 7.279992789111558,
+              "actual_kt_loss_percent": 6.8338392708166715,
+              "actual_ghi_sse_percent": 0.5731781669989295,
+              "ghi_rmse": 42.32027988364264
+            },
+            {
+              "group": "clear_100_300",
+              "n": 14049,
+              "row_percent": 14.070246071568068,
+              "actual_kt_loss_percent": 1.9189811183989363,
+              "actual_ghi_sse_percent": 3.1333530246254058,
+              "ghi_rmse": 71.17426710934744
+            },
+            {
+              "group": "clear_300_600",
+              "n": 21645,
+              "row_percent": 21.677733377399875,
+              "actual_kt_loss_percent": 1.567469243842632,
+              "actual_ghi_sse_percent": 13.970345144213702,
+              "ghi_rmse": 121.07816176916033
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 51214,
+              "row_percent": 51.29145008963535,
+              "actual_kt_loss_percent": 2.809746631204001,
+              "actual_ghi_sse_percent": 82.24424078265365,
+              "ghi_rmse": 190.9850819598062
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 2811,
+              "row_percent": 2.8152510290538713,
+              "actual_kt_loss_percent": 63.468308190735435,
+              "actual_ghi_sse_percent": 0.24209145959690032,
+              "ghi_rmse": 44.22831129349533
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 821,
+              "row_percent": 0.8222415847930375,
+              "actual_kt_loss_percent": 54.82691141153655,
+              "actual_ghi_sse_percent": 0.024032731350998725,
+              "ghi_rmse": 25.78523140908426
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 164,
+              "row_percent": 0.16424801450189785,
+              "actual_kt_loss_percent": 44.24575949675209,
+              "actual_ghi_sse_percent": 0.00523081266719687,
+              "ghi_rmse": 26.915577680886454
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 0,
+              "row_percent": 0.0,
+              "actual_kt_loss_percent": 0.0,
+              "actual_ghi_sse_percent": 0.0,
+              "ghi_rmse": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cohort": "original",
+      "group": "AC",
+      "selected_lr": "0.001",
+      "checkpoint_sha256": "7c9a1009d2920099b8b606c37d522060d15a56307488a8017b7735e6cfcea4db",
+      "prediction_sha256": "88d8b6904e694ad040c8e6cdd495ef406c40f5a57a954a1378c2059a3dfa9ad3",
+      "splits": {
+        "train": {
+          "n": 538053,
+          "weighted_kt_mse": 8.75883436643126,
+          "station_equal_ghi_rmse": 149.09480238441492,
+          "station_rmse": [
+            153.9066578634701,
+            144.28294690535975
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 30662,
+              "row_percent": 5.698695109961286,
+              "actual_kt_loss_percent": 99.06359562415392,
+              "actual_ghi_sse_percent": 0.05352955677373464,
+              "ghi_rmse": 14.42275292317577
+            },
+            {
+              "group": "clear_20_100",
+              "n": 40545,
+              "row_percent": 7.535503008067979,
+              "actual_kt_loss_percent": 0.26855187686297616,
+              "actual_ghi_sse_percent": 0.228258131682194,
+              "ghi_rmse": 25.89977888132857
+            },
+            {
+              "group": "clear_100_300",
+              "n": 80484,
+              "row_percent": 14.95837770628544,
+              "actual_kt_loss_percent": 0.15152915783065551,
+              "actual_ghi_sse_percent": 2.379364395474295,
+              "ghi_rmse": 59.350896403670106
+            },
+            {
+              "group": "clear_300_600",
+              "n": 135195,
+              "row_percent": 25.126706848581833,
+              "actual_kt_loss_percent": 0.1982793875124552,
+              "actual_ghi_sse_percent": 16.957093182343016,
+              "ghi_rmse": 122.24946519432935
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 251167,
+              "row_percent": 46.680717327103466,
+              "actual_kt_loss_percent": 0.318043953640008,
+              "actual_ghi_sse_percent": 80.38175473372674,
+              "ghi_rmse": 195.27607251141134
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 8726,
+              "row_percent": 1.6217733197287258,
+              "actual_kt_loss_percent": 97.8453393175705,
+              "actual_ghi_sse_percent": 0.10601135863850318,
+              "ghi_rmse": 38.046978719860974
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 1881,
+              "row_percent": 0.34959381324888067,
+              "actual_kt_loss_percent": 97.41464847657188,
+              "actual_ghi_sse_percent": 0.05084741022977072,
+              "ghi_rmse": 56.753362946834656
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 531,
+              "row_percent": 0.09868916259178928,
+              "actual_kt_loss_percent": 96.86860486504895,
+              "actual_ghi_sse_percent": 0.03434281325589507,
+              "ghi_rmse": 87.78539208733417
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 48,
+              "row_percent": 0.008921054245585473,
+              "actual_kt_loss_percent": 91.34066574410582,
+              "actual_ghi_sse_percent": 0.01713909071733368,
+              "ghi_rmse": 206.2646715958888
+            }
+          ]
+        },
+        "validation": {
+          "n": 99849,
+          "weighted_kt_mse": 0.9145654213007578,
+          "station_equal_ghi_rmse": 154.57885315268425,
+          "station_rmse": [
+            169.3234740688968,
+            139.83423223647173
+          ],
+          "groups": [
+            {
+              "group": "clear_0_20",
+              "n": 5672,
+              "row_percent": 5.680577672285151,
+              "actual_kt_loss_percent": 89.29941050131733,
+              "actual_ghi_sse_percent": 0.048635305082429574,
+              "ghi_rmse": 14.364779290285005
+            },
+            {
+              "group": "clear_20_100",
+              "n": 7269,
+              "row_percent": 7.279992789111558,
+              "actual_kt_loss_percent": 4.079878988633017,
+              "actual_ghi_sse_percent": 0.3813363068800133,
+              "ghi_rmse": 35.53104577477915
+            },
+            {
+              "group": "clear_100_300",
+              "n": 14049,
+              "row_percent": 14.070246071568068,
+              "actual_kt_loss_percent": 1.6582533816693206,
+              "actual_ghi_sse_percent": 2.4102389931688193,
+              "ghi_rmse": 64.25376703262074
+            },
+            {
+              "group": "clear_300_600",
+              "n": 21645,
+              "row_percent": 21.677733377399875,
+              "actual_kt_loss_percent": 1.6787755832466857,
+              "actual_ghi_sse_percent": 13.267753293874032,
+              "ghi_rmse": 121.4538105458765
+            },
+            {
+              "group": "clear_600_inf",
+              "n": 51214,
+              "row_percent": 51.29145008963535,
+              "actual_kt_loss_percent": 3.2836815451336645,
+              "actual_ghi_sse_percent": 83.89203610099469,
+              "ghi_rmse": 198.54422775340578
+            },
+            {
+              "group": "kt_gt_2",
+              "n": 2811,
+              "row_percent": 2.8152510290538713,
+              "actual_kt_loss_percent": 70.29540086735018,
+              "actual_ghi_sse_percent": 0.2021781977866453,
+              "ghi_rmse": 41.60331950381994
+            },
+            {
+              "group": "kt_gt_5",
+              "n": 821,
+              "row_percent": 0.8222415847930375,
+              "actual_kt_loss_percent": 63.90192012455789,
+              "actual_ghi_sse_percent": 0.023886734754068672,
+              "ghi_rmse": 26.460500914196633
+            },
+            {
+              "group": "kt_gt_10",
+              "n": 164,
+              "row_percent": 0.16424801450189785,
+              "actual_kt_loss_percent": 51.52440031383956,
+              "actual_ghi_sse_percent": 0.005513871438506983,
+              "ghi_rmse": 28.444456527266343
+            },
+            {
+              "group": "kt_gt_100",
+              "n": 0,
+              "row_percent": 0.0,
+              "actual_kt_loss_percent": 0.0,
+              "actual_ghi_sse_percent": 0.0,
+              "ghi_rmse": null
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "training": false,
+  "test_used": false,
+  "scope": "Saved fixed-checkpoint actual errors; not optimizer trajectory or causal intervention."
+}

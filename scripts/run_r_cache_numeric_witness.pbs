@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -N hn_R_num
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=4:gpus=1
+#PBS -l walltime=00:10:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/r_cache_numeric_witness_pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=2
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+cd "$ROOT"
+date -Is
+hostname
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u scripts/verify_r_cache_numeric_backends.py --project "$ROOT" \
+ --output "$ROOT/audits/r_cache_numeric_witness_20260908.json"
+echo R_NUMERIC_WITNESS_EXECUTION_COMPLETE

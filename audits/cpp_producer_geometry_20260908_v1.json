@@ -1,0 +1,117 @@
+{
+  "audit_id": "cpp_producer_geometry_20260908_v1",
+  "created_at_bjt": "2026-09-08T19:19:27+08:00",
+  "state": "COMPLETE_PRODUCER_BINDING_UNVERIFIED",
+  "purpose": "Bounded code and provenance audit of the source CPP NetCDF production path for possible transpose, latitude reversal, off-by-one, tiling, or file-time versus true-input-time errors.",
+  "scope": {
+    "region": "Hunan downstream use of the global FY-4B CPP reference product",
+    "remote_host_alias": "FD-107",
+    "read_only": true,
+    "training_run": false,
+    "model_loaded": false,
+    "test_payloads_read": 0,
+    "large_nc_payloads_read": 0,
+    "cot_payload_values_read_by_this_audit": 0,
+    "remote_files_modified": 0,
+    "full_tree_search_run": false,
+    "result_to_claim_reassessment": false
+  },
+  "source_product": {
+    "root": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP",
+    "inspected_header_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250804/FY4B_AGRI_20250804064500.nc",
+    "declared_dimensions": {
+      "LAT": 4051,
+      "LON": 4051,
+      "COT": [4051, 4051]
+    },
+    "COT_dimension_names": ["LAT", "LON"],
+    "LAT_direction": "strictly_decreasing",
+    "LAT_endpoints": [81.0, -81.0],
+    "LAT_unique_count": 4051,
+    "LON_direction": "strictly_increasing",
+    "LON_endpoints": [24.0, 186.0],
+    "LON_unique_count": 4051,
+    "global_attributes": [],
+    "internal_time_variable_or_attribute_seen": false,
+    "producer_or_checkpoint_attribute_seen": false,
+    "source_input_attribute_seen": false,
+    "declared_coordinate_schema_status": "VERIFIED_FOR_ONE_EXACT_FILE",
+    "payload_georegistration_to_declared_axes_status": "UNVERIFIED"
+  },
+  "adjacent_training_candidate": {
+    "main_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/main.py",
+    "main_sha256": "4db1521dc58cb7c929109c9d7d7b98af2d273a20d62ec7e7788999478f959a70",
+    "network_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/SmaAtUNet.py",
+    "network_sha256": "5203d0a4bc22e811fdfb08826f6200bd3ad01ca50eea556103dfa42d95655f88",
+    "checkpoint_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/cot_best.pth",
+    "checkpoint_sha256": "6990c2817e4639a724bf5cd94045c3e063256f6c4322539b4a1ff14fd8905b63",
+    "netcdf_writer_found": false,
+    "result_cpp_path_reference_found": false,
+    "global_tiling_padding_stitching_path_found": false,
+    "explicit_global_flip_or_transpose_found": false,
+    "role_supported_by_code": "training_and_evaluation_candidate_only",
+    "binding_to_source_nc_batch": "UNVERIFIED"
+  },
+  "other_candidates": [
+    {
+      "path": "/home/Data_Pool_3/data/Global_CPP/SmaAT-Unet/Code/AGRI_COT.ipynb",
+      "sha256": "ce559ffc9d46d546cf9145d27b17ac5e4087f38c61cfaceb618dceba28240fba",
+      "finding": "AGRI-only COT training notebook with cap 150, batch 32, 30 epochs, and AGRI_V1 save name; no base Result/CPP writer found.",
+      "same_contract_as_adjacent_candidate": false
+    },
+    {
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/TP_CPP.py",
+      "sha256": "b3b031589da0f48589e07478fd2f2598394accd97224567bdf43de231e3cae3d",
+      "finding": "Downstream geographic subsetter that reads Result/CPP and writes another NetCDF; not the base producer. It constructs an FY4A_AGRI basename in an FY4B tree."
+    }
+  ],
+  "local_downstream_code_receipts": {
+    "scripts/cpp_grid_mapping.py": "60572a9a999f7d1a3616ba759bdbbaf72137e507da25a6c3a146bf4e225bf9f6",
+    "scripts/repair_cpp_cache.py": "082e472d95440bf10fe68f12ba707bacfa0e3026df8464590f9a21686852abd7",
+    "scripts/check_cpp_spatial_payload_20260908.py": "8c5f49da358676a3a13066c4895cfbffef026cb2655c599e3af9d1e58f53d2ab",
+    "audits/source_snapshots/upstream_cot_main.py": "4db1521dc58cb7c929109c9d7d7b98af2d273a20d62ec7e7788999478f959a70"
+  },
+  "confirmed": [
+    "The inspected NC explicitly declares COT(LAT,LON), a strictly descending unique LAT axis, and a strictly ascending unique LON axis.",
+    "The adjacent main.py is byte-identical to the local snapshot and saves PyTorch checkpoints plus NPY evaluation arrays; it does not write Result/CPP NetCDF files.",
+    "No explicit whole-image transpose, flip, or rot90 appears in the adjacent main.py or network search; the network's view/permute pairs implement internal pixel shuffle/unshuffle.",
+    "At least two materially different COT training contracts exist in nearby accessible code.",
+    "The inspected NC contains no internal producer, checkpoint, source-input, processing-version, or acquisition-time binding."
+  ],
+  "not_excluded": [
+    "COT payload transposed while the nominal LAT/LON axes were written unchanged.",
+    "COT payload vertically or horizontally reversed while the nominal LAT/LON axes were written unchanged.",
+    "One-cell or other fixed offset introduced before writing, with nominal coordinate axes retained.",
+    "Tile padding, cropping, stitching, or seam offset in the missing 4051 x 4051 inference path.",
+    "File basename timestamp differing from the actual AGRI input represented by the payload.",
+    "A different checkpoint, input-channel contract, normalization, or source model from either inspected training candidate."
+  ],
+  "reason_existing_coordinate_checks_cannot_close_producer_geometry": [
+    "They establish source-NC to downstream-sidecar and pack extraction relative to the coordinates declared in the NC.",
+    "A producer-coherent error can affect the COT payload while leaving LAT/LON declarations plausible, so every downstream coordinate comparison can still pass.",
+    "The 4051 by 4051 square payload gives no shape-level signal for a transpose.",
+    "The filename-derived UTC identity has no independent in-file acquisition-time witness."
+  ],
+  "verdict": {
+    "actual_result_cpp_writer_identified": false,
+    "specific_transpose_flip_or_off_by_one_error_found": false,
+    "specific_transpose_flip_or_off_by_one_error_excluded_at_producer": false,
+    "actual_checkpoint_bound": false,
+    "actual_input_time_bound": false,
+    "producer_payload_georegistration_status": "UNVERIFIED",
+    "scientific_interpretation": "No concrete producer-side geometry or time error was found, but the accessible evidence cannot certify that the COT payload is registered to the declared axes or that the filename time is the true model-input time."
+  },
+  "minimum_closure_evidence": [
+    "Obtain the exact Result/CPP generation script or immutable source snapshot and the command/job record used for the inspected batch.",
+    "Record producer code SHA256, checkpoint SHA256, input AGRI path and identity, normalization/config identity, and the timestamp parsing rule.",
+    "Inspect the exact tensor-to-COT(LAT,LON) write path, including any reprojection, latitude reversal, transpose, padding, crop, tile order, and stitching boundaries.",
+    "Using the already frozen twelve source rows, reproduce bounded raw-output-to-NC pixels or export an intermediate tensor witness before NetCDF writing; compare the predefined identity/transpose/flips/one-cell offsets and fixed time shifts without selecting by the outcome.",
+    "If the original producer cannot be recovered, retain an explicit unverified-producer qualifier for the CPP reference and do not upgrade it to certified physical truth."
+  ],
+  "artifacts": [
+    "docs/CPP_PRODUCER_GEOMETRY_REVIEW_20260908.md",
+    "audits/cpp_producer_geometry_20260908_v1/snapshots/adjacent_training_code.txt",
+    "audits/cpp_producer_geometry_20260908_v1/snapshots/result_nc_header_and_axes.txt",
+    "audits/cpp_producer_geometry_20260908_v1/snapshots/candidate_inventory.txt"
+  ]
+}

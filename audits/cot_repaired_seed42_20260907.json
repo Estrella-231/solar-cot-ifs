@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "best_checkpoint": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/cot_repaired_seed42_v1/best.pt",
+  "best_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "validation_samples": 6536,
+  "valid_pixels": 1664013,
+  "cot_rmse": 4.246485313157526,
+  "cot_mae": 2.0323170811353584,
+  "huber_log1p": 0.019415024841873515,
+  "best_epoch_0based": 37,
+  "station_metrics": {
+    "sili": {
+      "samples": 3246,
+      "pixels": 825721,
+      "rmse": 4.698138220067916,
+      "mae": 2.487496851123
+    },
+    "zhujia": {
+      "samples": 3290,
+      "pixels": 838292,
+      "rmse": 3.748780332907432,
+      "mae": 1.583963172409084
+    }
+  },
+  "cpu_reload_samples": 6,
+  "cpu_vs_saved_max_log1p_error": 0.0020630359649658203,
+  "test_used": false,
+  "model_use": "frozen R candidate for downstream A/AC; forecast-domain and GHI gains untested",
+  "script_sha256": "2ac500d5277abc3ca1327725d281fb0368b8c421dcfb4fd2418e7b036ca86bc3"
+}

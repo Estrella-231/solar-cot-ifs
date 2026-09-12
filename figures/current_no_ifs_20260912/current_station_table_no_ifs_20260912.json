@@ -1,0 +1,492 @@
+{
+  "state": "COMPLETE_CURRENT_NO_IFS_STATION_TABLE_METRICS",
+  "test_used": false,
+  "scope": "Hunan validation; all canonical +15 to +240 min forecast rows; original cohort fixed lr0.0003; saved seeds42/43/44",
+  "methods": {
+    "A": "frozen SimVP forecast AGRI plus geometry/station/lead, no COT",
+    "AC": "same plus four predicted log1p(COT) patch statistics"
+  },
+  "definitions": {
+    "r2": "1-SSE/SST within the same station rows",
+    "rmse_wm2": "sqrt(mean(error^2))",
+    "nrmse_pct": "RMSE/mean(observed GHI in same station rows)*100",
+    "nmae_pct": "MAE/mean(observed GHI in same station rows)*100",
+    "uncertainty": "mean and sample SD across model-training seeds42/43/44"
+  },
+  "source_pack_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+  "sources": {
+    "A_seed42": {
+      "predictions": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/head_ghi_original_seed42_20260910_v1/A_lr0.0003_seed42/validation_predictions.npz",
+      "sha256": "3bbec8dc46472670e3d04bf9996308ac452fba88ce764ea4a676c19e702e5804",
+      "checkpoint_sha256": "892df0af884388e501910b4cc863fb59d85c0b1cf569dac28a93fd3b452dbc39"
+    },
+    "A_seed43": {
+      "predictions": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/head_ghi_multiseed_original_seed43_20260910_v1/A_lr0.0003_seed43/validation_predictions.npz",
+      "sha256": "c40c217dba14b40f2cf9be6fb1bd0a2a1d1ee8bfdd0bf6c86c1ef6cb1cb7ec57",
+      "checkpoint_sha256": "75c606fcaede72f575a611ead5d2c389d2ef50d83791ecb522d44a9b10b2bfc3"
+    },
+    "A_seed44": {
+      "predictions": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/head_ghi_multiseed_original_seed44_20260910_v1/A_lr0.0003_seed44/validation_predictions.npz",
+      "sha256": "c61736cb445bf30e0d54aebd26653574e507122cf06320fa1f25a88bcbda5425",
+      "checkpoint_sha256": "ff4d09147939032847951b0dcd671bba9a91672a61e129e0f98e64749096879f"
+    },
+    "AC_seed42": {
+      "predictions": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/head_ghi_original_seed42_20260910_v1/AC_lr0.0003_seed42/validation_predictions.npz",
+      "sha256": "c0fdb7ff89eea4d6ac2ab2bdce9b4d09d3c157deea79c8e30cd6ae3bc6cfe3a0",
+      "checkpoint_sha256": "66463093737cbb534310965d182e5306d217ddd9019f2aae17eb460c5fd02b6d"
+    },
+    "AC_seed43": {
+      "predictions": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/head_ghi_multiseed_original_seed43_20260910_v1/AC_lr0.0003_seed43/validation_predictions.npz",
+      "sha256": "05ca2edfd8b54e12fac43778bbfa69182a6d21adfca3c01ee7a8a95123f08095",
+      "checkpoint_sha256": "f85761acb32c8d63770c9a0680c99840a2312db001826b7d6eceb514ede4dd9d"
+    },
+    "AC_seed44": {
+      "predictions": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/head_ghi_multiseed_original_seed44_20260910_v1/AC_lr0.0003_seed44/validation_predictions.npz",
+      "sha256": "37b6757a5c1d2cfee05abcb93143b60bf7dcd5cbf37db3b801a6037e42c8f283",
+      "checkpoint_sha256": "1350ff9f0ac9e4601dc257309bc8d1d1aaa561ca13bebfdc61b29bf0cceeb9dd"
+    }
+  },
+  "rows": [
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "seed": 42,
+      "r2": 0.7388525780602859,
+      "rmse_wm2": 164.94751550928598,
+      "nrmse_pct": 37.643799181357,
+      "nmae_pct": 26.167113926287744,
+      "mae_wm2": 114.65900159001988,
+      "mean_observed_wm2": 438.17977753684295,
+      "n": 49806
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "seed": 42,
+      "r2": 0.7531669285058877,
+      "rmse_wm2": 135.0863272519554,
+      "nrmse_pct": 34.91616118435545,
+      "nmae_pct": 25.022361015946608,
+      "mae_wm2": 96.80843294798565,
+      "mean_observed_wm2": 386.8876837253295,
+      "n": 50043
+    },
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "seed": 43,
+      "r2": 0.727349498311799,
+      "rmse_wm2": 168.5411906381843,
+      "nrmse_pct": 38.46393632896787,
+      "nmae_pct": 27.306967366776387,
+      "mae_wm2": 119.65360885979908,
+      "mean_observed_wm2": 438.17977753684295,
+      "n": 49806
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "seed": 43,
+      "r2": 0.7672426161253761,
+      "rmse_wm2": 131.17813558845236,
+      "nrmse_pct": 33.90599936533057,
+      "nmae_pct": 24.485684086039427,
+      "mae_wm2": 94.73209600477956,
+      "mean_observed_wm2": 386.8876837253295,
+      "n": 50043
+    },
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "seed": 44,
+      "r2": 0.7349029887069514,
+      "rmse_wm2": 166.19016645106333,
+      "nrmse_pct": 37.927393040654366,
+      "nmae_pct": 26.99474798801539,
+      "mae_wm2": 118.28552668051724,
+      "mean_observed_wm2": 438.17977753684295,
+      "n": 49806
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "seed": 44,
+      "r2": 0.757787357799607,
+      "rmse_wm2": 133.81602470529276,
+      "nrmse_pct": 34.58782234078439,
+      "nmae_pct": 24.90190438431176,
+      "mae_wm2": 96.34240107596004,
+      "mean_observed_wm2": 386.8876837253295,
+      "n": 50043
+    },
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "seed": 42,
+      "r2": 0.7330143628833046,
+      "rmse_wm2": 166.78110860189696,
+      "nrmse_pct": 38.062255985301306,
+      "nmae_pct": 26.955298018596498,
+      "mae_wm2": 118.11266489227917,
+      "mean_observed_wm2": 438.17977753684295,
+      "n": 49806
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "seed": 42,
+      "r2": 0.767051765456008,
+      "rmse_wm2": 131.23190467771792,
+      "nrmse_pct": 33.91989722032244,
+      "nmae_pct": 24.77425044945822,
+      "mae_wm2": 95.84852372422094,
+      "mean_observed_wm2": 386.8876837253295,
+      "n": 50043
+    },
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "seed": 43,
+      "r2": 0.737884171301755,
+      "rmse_wm2": 165.25306797273186,
+      "nrmse_pct": 37.713531396103065,
+      "nmae_pct": 26.730945363263128,
+      "mae_wm2": 117.1295969262414,
+      "mean_observed_wm2": 438.17977753684295,
+      "n": 49806
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "seed": 43,
+      "r2": 0.7632261380201919,
+      "rmse_wm2": 132.30510427671837,
+      "nrmse_pct": 34.19729028403195,
+      "nmae_pct": 25.1190493848314,
+      "mae_wm2": 97.18250833879584,
+      "mean_observed_wm2": 386.8876837253295,
+      "n": 50043
+    },
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "seed": 44,
+      "r2": 0.7365030084855184,
+      "rmse_wm2": 165.68787863685768,
+      "nrmse_pct": 37.81276250771896,
+      "nmae_pct": 26.843783041005057,
+      "mae_wm2": 117.62402881154874,
+      "mean_observed_wm2": 438.17977753684295,
+      "n": 49806
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "seed": 44,
+      "r2": 0.747973596327941,
+      "rmse_wm2": 136.50002835073397,
+      "nrmse_pct": 35.28156467437253,
+      "nmae_pct": 25.58415507405289,
+      "mae_wm2": 98.98194496669959,
+      "mean_observed_wm2": 386.8876837253295,
+      "n": 50043
+    }
+  ],
+  "summary": [
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "n": 49806,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "r2": {
+        "values": [
+          0.7388525780602859,
+          0.727349498311799,
+          0.7349029887069514
+        ],
+        "mean": 0.7337016883596789,
+        "std_ddof1": 0.005844874063509044
+      },
+      "rmse_wm2": {
+        "values": [
+          164.94751550928598,
+          168.5411906381843,
+          166.19016645106333
+        ],
+        "mean": 166.5596241995112,
+        "std_ddof1": 1.8251026009328155
+      },
+      "nrmse_pct": {
+        "values": [
+          37.643799181357,
+          38.46393632896787,
+          37.927393040654366
+        ],
+        "mean": 38.01170951699307,
+        "std_ddof1": 0.41651913084449865
+      },
+      "nmae_pct": {
+        "values": [
+          26.167113926287744,
+          27.306967366776387,
+          26.99474798801539
+        ],
+        "mean": 26.822943093693173,
+        "std_ddof1": 0.5890281468090046
+      },
+      "mae_wm2": {
+        "values": [
+          114.65900159001988,
+          119.65360885979908,
+          118.28552668051724
+        ],
+        "mean": 117.53271237677875,
+        "std_ddof1": 2.58100222331709
+      },
+      "mean_observed_wm2": {
+        "values": [
+          438.17977753684295,
+          438.17977753684295,
+          438.17977753684295
+        ],
+        "mean": 438.17977753684295,
+        "std_ddof1": 0.0
+      }
+    },
+    {
+      "station": "sili",
+      "station_cn": "\u56db\u91cc",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "n": 49806,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "r2": {
+        "values": [
+          0.7330143628833046,
+          0.737884171301755,
+          0.7365030084855184
+        ],
+        "mean": 0.7358005142235259,
+        "std_ddof1": 0.002509757388514246
+      },
+      "rmse_wm2": {
+        "values": [
+          166.78110860189696,
+          165.25306797273186,
+          165.68787863685768
+        ],
+        "mean": 165.90735173716214,
+        "std_ddof1": 0.7873076732845745
+      },
+      "nrmse_pct": {
+        "values": [
+          38.062255985301306,
+          37.713531396103065,
+          37.81276250771896
+        ],
+        "mean": 37.86284996304111,
+        "std_ddof1": 0.17967686179182035
+      },
+      "nmae_pct": {
+        "values": [
+          26.955298018596498,
+          26.730945363263128,
+          26.843783041005057
+        ],
+        "mean": 26.843342140954892,
+        "std_ddof1": 0.11217697751064651
+      },
+      "mae_wm2": {
+        "values": [
+          118.11266489227917,
+          117.1295969262414,
+          117.62402881154874
+        ],
+        "mean": 117.62209687668978,
+        "std_ddof1": 0.49153683050370883
+      },
+      "mean_observed_wm2": {
+        "values": [
+          438.17977753684295,
+          438.17977753684295,
+          438.17977753684295
+        ],
+        "mean": 438.17977753684295,
+        "std_ddof1": 0.0
+      }
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "A",
+      "method_label": "FY4B\u5916\u63a8",
+      "n": 50043,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "r2": {
+        "values": [
+          0.7531669285058877,
+          0.7672426161253761,
+          0.757787357799607
+        ],
+        "mean": 0.7593989674769569,
+        "std_ddof1": 0.007174901379423328
+      },
+      "rmse_wm2": {
+        "values": [
+          135.0863272519554,
+          131.17813558845236,
+          133.81602470529276
+        ],
+        "mean": 133.3601625152335,
+        "std_ddof1": 1.993576753454169
+      },
+      "nrmse_pct": {
+        "values": [
+          34.91616118435545,
+          33.90599936533057,
+          34.58782234078439
+        ],
+        "mean": 34.46999429682347,
+        "std_ddof1": 0.5152856597186224
+      },
+      "nmae_pct": {
+        "values": [
+          25.022361015946608,
+          24.485684086039427,
+          24.90190438431176
+        ],
+        "mean": 24.803316495432597,
+        "std_ddof1": 0.28159405293593576
+      },
+      "mae_wm2": {
+        "values": [
+          96.80843294798565,
+          94.73209600477956,
+          96.34240107596004
+        ],
+        "mean": 95.96097667624174,
+        "std_ddof1": 1.0894527089121133
+      },
+      "mean_observed_wm2": {
+        "values": [
+          386.8876837253295,
+          386.8876837253295,
+          386.8876837253295
+        ],
+        "mean": 386.8876837253295,
+        "std_ddof1": 0.0
+      }
+    },
+    {
+      "station": "zhujia",
+      "station_cn": "\u7afa\u5bb6",
+      "method": "AC",
+      "method_label": "FY4B\u5916\u63a8 + COT\u4e91\u5c5e\u6027",
+      "n": 50043,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "r2": {
+        "values": [
+          0.767051765456008,
+          0.7632261380201919,
+          0.747973596327941
+        ],
+        "mean": 0.7594171666013804,
+        "std_ddof1": 0.01009333105430384
+      },
+      "rmse_wm2": {
+        "values": [
+          131.23190467771792,
+          132.30510427671837,
+          136.50002835073397
+        ],
+        "mean": 133.3456791017234,
+        "std_ddof1": 2.7839502031059657
+      },
+      "nrmse_pct": {
+        "values": [
+          33.91989722032244,
+          34.19729028403195,
+          35.28156467437253
+        ],
+        "mean": 34.46625072624231,
+        "std_ddof1": 0.7195758149495494
+      },
+      "nmae_pct": {
+        "values": [
+          24.77425044945822,
+          25.1190493848314,
+          25.58415507405289
+        ],
+        "mean": 25.15915163611417,
+        "std_ddof1": 0.4064388246137654
+      },
+      "mae_wm2": {
+        "values": [
+          95.84852372422094,
+          97.18250833879584,
+          98.98194496669959
+        ],
+        "mean": 97.33765900990545,
+        "std_ddof1": 1.5724617543086477
+      },
+      "mean_observed_wm2": {
+        "values": [
+          386.8876837253295,
+          386.8876837253295,
+          386.8876837253295
+        ],
+        "mean": 386.8876837253295,
+        "std_ddof1": 0.0
+      }
+    }
+  ],
+  "limitations": [
+    "validation not test",
+    "forecast AGRI, not future observed AGRI",
+    "IFS absent",
+    "three seeds; no significance test",
+    "original cohort only; QC1 is sensitivity analysis"
+  ]
+}

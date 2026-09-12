@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "created_at_bjt": "2026-08-03T05:53:21",
+  "time_range": {
+    "start_utc_inclusive": "2024-04-01T00:00:00",
+    "end_utc_exclusive": "2026-04-01T00:00:00"
+  },
+  "sample_file": "uncompressed NumPy NPZ; one station and one nominal AGRI UTC time per file",
+  "fields": {
+    "agri": "float32 (20,16,16)",
+    "cpp": "float32 (4,16,16), order COT,CER,CTH,CLP; NaN when source missing",
+    "ghi_5min": "float32 (3,), BJT interval-ending readings at +5,+10,+15 min",
+    "ghi_valid": "bool (3,)"
+  },
+  "stations": [
+    {
+      "station_id": "sili",
+      "name": "四里",
+      "latitude": 25.9478611111,
+      "longitude": 112.347916667,
+      "agri_bounds": [
+        155,
+        171,
+        140,
+        156
+      ],
+      "cpp_bounds": [
+        1369,
+        1385,
+        2202,
+        2218
+      ],
+      "workbook": "四里光伏.xlsx"
+    },
+    {
+      "station_id": "zhujia",
+      "name": "竺家",
+      "latitude": 29.566666667,
+      "longitude": 112.45,
+      "agri_bounds": [
+        65,
+        81,
+        142,
+        158
+      ],
+      "cpp_bounds": [
+        1279,
+        1295,
+        2204,
+        2220
+      ],
+      "workbook": "竺家光伏.xlsx"
+    }
+  ],
+  "workbooks": {
+    "sili": {
+      "path": "/home/Data_Pool_3/chenyi/辐照度预报/data/hunan_stations_raw/四里光伏.xlsx",
+      "sha256": "c13c6a066cc7ca3ee0d902bb8a9d6c8ea1cc1618659e86eafa4971bbe9a879f4",
+      "daily_rows": 801,
+      "date_min_bjt": "2024-01-01",
+      "date_max_bjt": "2026-06-30",
+      "five_minute_records": 230688,
+      "missing_values": 1534,
+      "zero_values": 117046,
+      "negative_values": 0,
+      "minimum": 0.0,
+      "maximum": 1426.0,
+      "timezone": "Asia/Shanghai (UTC+08:00)",
+      "unit": "W m-2 (inferred from IRRADIANCE field and value range)"
+    },
+    "zhujia": {
+      "path": "/home/Data_Pool_3/chenyi/辐照度预报/data/hunan_stations_raw/竺家光伏.xlsx",
+      "sha256": "38e4b708a009a69d16bc49ff80ea330a88a6b32e1d69ff6ee53dc49ee13783a0",
+      "daily_rows": 875,
+      "date_min_bjt": "2024-01-01",
+      "date_max_bjt": "2026-06-30",
+      "five_minute_records": 252000,
+      "missing_values": 1024,
+      "zero_values": 128322,
+      "negative_values": 0,
+      "minimum": 0.0,
+      "maximum": 1162.0,
+      "timezone": "Asia/Shanghai (UTC+08:00)",
+      "unit": "W m-2 (inferred from IRRADIANCE field and value range)"
+    }
+  },
+  "agri_root": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed",
+  "cpp_root": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP",
+  "finished_at_bjt": "2026-08-03T09:20:53",
+  "agri_frames": 65470,
+  "stations_per_frame": 2,
+  "workers": 4,
+  "totals": {
+    "written": 130750,
+    "skipped": 190,
+    "missing_cpp": 85039,
+    "missing_ghi_values": 41306,
+    "failed": 0
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "state": "COMPLETE",
+  "status": "PASS_FULL_CACHE_AND_LABEL_PACK",
+  "rows": 637902,
+  "counts": {
+    "train": 538053,
+    "validation": 99849
+  },
+  "sequences": {
+    "train": 27675,
+    "val": 4258
+  },
+  "shards_checked": 1332,
+  "all_source_arrays_finite": true,
+  "all_source_shapes_verified": true,
+  "all_source_receipts_and_sha_verified": true,
+  "all_index_and_label_identities_verified": true,
+  "all_explicit_cot_features_reconstructed": true,
+  "train_val_frames_disjoint": true,
+  "test_used": false,
+  "label_filters_added": 0,
+  "kt_clipping": false,
+  "S_frozen": true,
+  "R_frozen": true,
+  "source_labels": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/forecast_label_join_20260907_v1/labels.csv",
+  "source_labels_sha256": "01587fda1acc500845e3b2fc5d1e0cc2f8028330f9b543b27b6e9d01fb8ddcd0",
+  "source_cache": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/frozen_forecast_trainval_20260907_v1",
+  "source_cache_contract_sha256": "0ce045fb25570079fdc06a24dc85fc63cd9a807393d5e92b50108bb0010926a2",
+  "source_cache_contract": {
+    "S": {
+      "asset_id": "hunan_simvp16_ddp8_b8_seed42_v1",
+      "status": "TRAINING_COMPLETE_VALIDATION_SELECTED",
+      "checkpoint": "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSimVPDDP_20260907/runs/simvp16_ddp8_b8_seed42_v1/best.pt",
+      "checkpoint_sha256": "30f528189f363fd23b0bb1aab52eb8d5c149e330c2fb9e368db3622cf3a5efc6",
+      "manifest": "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSimVPFull_20260906/manifests_v1/hunan_8to16.csv",
+      "manifest_sha256": "9b6f5ff452a377a202db3d7dc305cebd74230cb084b6accf21df745b4b47dcf8",
+      "normalization": "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSimVPFull_20260906/manifests_v1/hunan_train_norm.json",
+      "normalization_sha256": "f8f13dd41ef66a1e215d05964e7c1c204460ea8bda4d805d56735d971e0d9370",
+      "grid_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+      "best_epoch_0based": 3,
+      "validation_rmse": 0.555505797061281,
+      "test_used": false,
+      "region": "Hunan",
+      "initialization": "random; Hunan single GPU then named DDP continuation",
+      "input": "8 frames: 13 AGRI C01-C06/C09-C15 plus cosSOZ,cosRAA,day_mask",
+      "output": "16 frames: 13 AGRI, recurrent 8-to-8-to-16",
+      "lead_minutes": [
+        15,
+        30,
+        45,
+        60,
+        75,
+        90,
+        105,
+        120,
+        135,
+        150,
+        165,
+        180,
+        195,
+        210,
+        225,
+        240
+      ],
+      "downstream_gradients_into_S": false,
+      "batchnorm_inference": "BatchNorm2d eval strictly loading SyncBatchNorm state; identical eval equations",
+      "station_patches": {
+        "sili": [
+          155,
+          171,
+          140,
+          156
+        ],
+        "zhujia": [
+          65,
+          81,
+          142,
+          158
+        ]
+      },
+      "center_pixel": [
+        8,
+        8
+      ],
+      "center_reason": "M0 nearest station pixel is patch index [8,8] for both stations"
+    },
+    "R": {
+      "asset_id": "hunan_cot_unet16_base16_log1p_cpp_repaired_seed42_v1",
+      "status": "TRAINED_VALIDATION_SELECTED_FROZEN_FOR_DOWNSTREAM",
+      "server": "zjnu-hpc",
+      "checkpoint": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/cot_repaired_seed42_v1/best.pt",
+      "checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+      "run_metadata_sha256": "ab89061d31f7d73032b1837632b6249c6be1dc899e2b2a1371e40c83627ae2b4",
+      "job_id": "207372.tc6000",
+      "train_samples": 11978,
+      "validation_samples": 6536,
+      "test_used": false,
+      "best_epoch_0based": 37,
+      "input": "13 physical AGRI C01-C06/C09-C15 + cosSOZ + cosRAA + day_mask; 16x16 patch",
+      "normalization": "checkpoint metadata.norm; fitted on train only; normalized nonfinite inputs imputed with zero",
+      "forecast_AGRI_input": "invert SimVP normalization to physical AGRI first, then apply this R normalization",
+      "output": "nonnegative log1p(COT), no upper clipping",
+      "architecture": "COTUNet in scripts/train_cot_repaired.py; base16 two-level U-Net",
+      "explicit_features": "mean, population std, p90, center pixel of R output; center convention to be fixed before downstream cache",
+      "latent_features": "same frozen R forward_features, spatial mean then fixed 4D projection; seeds11/22/33 per plan",
+      "downstream_gradients_into_R": false,
+      "validation_reference_cot_mae": 2.0323170811353584,
+      "validation_reference_cot_rmse": 4.246485313157526,
+      "validation_predictions_sha256": "80713492a6c2ade996d71c2851bf210ad6d541572c7c44babc7a6cd1649ebcac",
+      "verification": "audits/cot_repaired_seed42_20260907.json",
+      "scope": "real AGRI retrieval-reference validation; forecast-domain and GHI improvement not yet tested",
+      "source_NC_generation_checkpoint_binding": "UNVERIFIED"
+    },
+    "script_sha256": "1140d2af5a23b97f5617e1c0c802d9fe7f2845fe744807785d07a2033c69da12",
+    "imported_source_sha256": {
+      "train_full.py": "92eb8182fe600af30ae0ef2a1b1621481caf42d4169244f680f066dad2cc90e9",
+      "hunan_data.py": "f4b4aab55101bde575f474d5daa4a184466c16399b401c2ac67bf666c5f28b91",
+      "train_ddp.py": "3a47895d04f9b3f6ba9cfb530c8f373bcc9f3079b1a0db34de519c32b813880b",
+      "simvp.py": "2e0d280f7962a77f0c9b7e4cc817fed21d142c1436a12eb858e3234485313d16"
+    },
+    "R_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+    "test_used": false
+  },
+  "source_shards_sha256": "562660f485f65b6eb0fe51fbb0c87eacd69985f3c7942d3cc25228a21dbcf051",
+  "source_split_complete_sha256": {
+    "train": "4867b7b7b1eb0b822b6bc03254b1684e8d4e75a0998981b2ba5a8972d1fac3c2",
+    "val": "37d4d4fc20955516b4b831dea423ce6b85dfdf100d197ee528cbfca5352c0978"
+  },
+  "rows_csv_sha256": "01587fda1acc500845e3b2fc5d1e0cc2f8028330f9b543b27b6e9d01fb8ddcd0",
+  "norm_sha256": "92d1a102e172b42994e1775dfdbd75426ae9a75fb7ddad3547a4bb6778203cee",
+  "script_sha256": "06952078c037cc5d540fa79eb6aa4e93835c9cc78cbcb8e85ab02498d43f6397",
+  "arrays": {
+    "x": {
+      "name": "x.npy",
+      "dtype": "float32",
+      "shape": [
+        637902,
+        13,
+        16,
+        16
+      ],
+      "sha256": "1f9a788f9add0d0e04f16b5e879c45afa3ff8a5606dedfddf1fca49f9ab58418"
+    },
+    "c": {
+      "name": "c.npy",
+      "dtype": "float32",
+      "shape": [
+        637902,
+        4
+      ],
+      "sha256": "89a6b9080d0b695af08d3ac58cd7a68e274c8c719caab388b90a0af6ce08964f"
+    },
+    "g": {
+      "name": "g.npy",
+      "dtype": "float32",
+      "shape": [
+        637902,
+        3
+      ],
+      "sha256": "b89a8d026dde71f320d9d1962a99e2cb659f7fca08846e45c947c678dda5aa9a"
+    },
+    "kt": {
+      "name": "kt.npy",
+      "dtype": "float64",
+      "shape": [
+        637902
+      ],
+      "sha256": "76703a5e5058426341e3b2939add606b29605d6d1e608cc78ed938b79808c285"
+    },
+    "ghi": {
+      "name": "ghi.npy",
+      "dtype": "float64",
+      "shape": [
+        637902
+      ],
+      "sha256": "b819c940a12755af96440dfc2fe4f8df16bdfeb494f8fbd562c68bc50050f0da"
+    },
+    "clear": {
+      "name": "clear.npy",
+      "dtype": "float64",
+      "shape": [
+        637902
+      ],
+      "sha256": "67a722a2253cbe6468489c91c4df175ea6029e9f1355279e4108accc010f9e59"
+    },
+    "station": {
+      "name": "station.npy",
+      "dtype": "int64",
+      "shape": [
+        637902
+      ],
+      "sha256": "d45847ca89035bb2e009886163a327aa6b74af3702ac8f20a7f439f2ac90c011"
+    },
+    "lead": {
+      "name": "lead.npy",
+      "dtype": "int64",
+      "shape": [
+        637902
+      ],
+      "sha256": "4bfc0b4212d4a9133b4e92165ec3b23d9cf3c09d46a2fcaffbb254f77345ac43"
+    },
+    "split": {
+      "name": "split.npy",
+      "dtype": "int8",
+      "shape": [
+        637902
+      ],
+      "sha256": "4a9574e2b7f7378250cf2557d1f1e0a32edf4ba85fbf05b743eb9bf3439aa154"
+    },
+    "sequence": {
+      "name": "sequence.npy",
+      "dtype": "int64",
+      "shape": [
+        637902
+      ],
+      "sha256": "d107c1265a11b5bbe78c8ba6adb4adb00a10e6f61e9c9d89548abbd5636304ba"
+    },
+    "weight": {
+      "name": "weight.npy",
+      "dtype": "float32",
+      "shape": [
+        637902
+      ],
+      "sha256": "5ad0c453c0dd66f1304b80d17ddb88a715bcba50e7b7dbf809008f424e159c6c"
+    }
+  },
+  "kt_audit": {
+    "train": {
+      "min": 0.0,
+      "max": 477.5474812424924,
+      "quantile_levels": [
+        0.5,
+        0.9,
+        0.99,
+        0.999,
+        1.0
+      ],
+      "quantiles": [
+        0.47118004643313394,
+        1.0721381778738934,
+        2.7116572069398566,
+        9.772486395485231,
+        477.5474812424924
+      ],
+      "count_gt_10": 531,
+      "count_gt_100": 48
+    },
+    "validation": {
+      "min": 0.0,
+      "max": 38.77865349956636,
+      "quantile_levels": [
+        0.5,
+        0.9,
+        0.99,
+        0.999,
+        1.0
+      ],
+      "quantiles": [
+        0.8102252578351856,
+        1.1699112975152732,
+        4.225797706776484,
+        13.152206465313878,
+        38.77865349956636
+      ],
+      "count_gt_10": 164,
+      "count_gt_100": 0
+    },
+    "float32_max_absolute_error": 5.439481157054615e-06,
+    "float32_max_relative_error": 5.9328953197031586e-08
+  },
+  "station_order": [
+    "sili",
+    "zhujia"
+  ],
+  "train_station_lead_counts": [
+    [
+      15047,
+      15238,
+      15410,
+      15526,
+      15599,
+      15623,
+      15651,
+      15682,
+      15711,
+      15735,
+      15751,
+      15728,
+      15681,
+      15611,
+      15514,
+      15403
+    ],
+    [
+      17551,
+      17748,
+      17921,
+      18045,
+      18130,
+      18151,
+      18176,
+      18203,
+      18231,
+      18256,
+      18271,
+      18239,
+      18186,
+      18115,
+      18018,
+      17902
+    ]
+  ],
+  "weight_formula": "Ntrain/(32*n_train_station_lead); ordinary minibatch weighted-MSE mean is unbiased equal-32-group MSE",
+  "validation_weight": "stored as 1; selection must explicitly compute equal station/lead group metric",
+  "split_values": {
+    "train": 0,
+    "validation": 1
+  },
+  "lead_values": "0..15 means +15..+240 min",
+  "sequence_values": "cache split-local index; combine with split for globally unique sequence",
+  "seconds": 521.3735711444169,
+  "completed_utc": "2026-09-08T05:07:18.391857Z"
+}

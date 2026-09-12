@@ -1,0 +1,39 @@
+{
+  "state": "RUNNING",
+  "mode": "check-source",
+  "script_sha256": "44daab874fc23db1c9e958e56d33ad4e372c1152a449f45520d7c330922cbd5a",
+  "selection_file_sha256": "d2557c7e37d6d55d60a295fb3c7c16a207783cd3928b6e9a8a37f0fb1054a49c",
+  "selection_sha256": "ae0cbeab4116ba3452f4f0e329b4ca545844c04fa8ad75457e0b6a9c4b50cb2b",
+  "started_utc": "2026-09-08T11:10:27.081604+00:00",
+  "absolute_coordinate_tolerance_deg": 0.0001,
+  "test_used": false,
+  "GHI_decoded": false,
+  "models_loaded": 0,
+  "GPU_used": false,
+  "old_assets_modified": false,
+  "mapping": "independent nearest source LAT/LON for every target pixel; no interpolation, no error-based coordinate choice",
+  "mask": "source finite, COT [0,100], finite day>0.5, finite SOZ in [0,180] and SOZ<80; original contract unchanged",
+  "scope": "twelve preselected train/validation rows; does not certify the complete dataset or upstream retrieval teacher",
+  "runtime": {
+    "python": "3.9.23",
+    "numpy": "1.26.4"
+  },
+  "samples": [],
+  "pack_export": {
+    "report_sha256": "46de243207b7a98aba9b1ce39b8517319529454cee8e229476b876ad60d9913e",
+    "values_sha256": "85d4e87a9b0705c9907f6169dcd02aa7c9824dfdda1f4bf6c9f3710f46eabd32",
+    "source_pack": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/cot_repaired_pack_20260907_v1",
+      "verified_file_sha256": {
+        "SHA256.json": "f0216e4a5b14ca7dc2ef54da4816273e0c935da486c951889d838749e4a3c898",
+        "rows.csv": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69",
+        "target.npy": "e7e330fd7245212ff09b58f0cbb841a60020e583f4e4121e90b76958d595ba33",
+        "mask.npy": "c134bc31d54cbbab89523a9825bf32cefc226d89b75d85bf6c588295b63547c4"
+      },
+      "selected_rows": 12,
+      "semantic_payload_bytes": 15456
+    }
+  },
+  "finished_utc": "2026-09-08T11:13:36.966296+00:00",
+  "elapsed_seconds": 189.88541673496366
+}

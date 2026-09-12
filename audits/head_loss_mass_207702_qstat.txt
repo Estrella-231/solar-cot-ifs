@@ -1,0 +1,55 @@
+Job Id: 207702.tc6000
+    Job_Name = hn_head_loss
+    Job_Owner = slfu@tc6000
+    resources_used.cput = 00:00:00
+    resources_used.mem = 0kb
+    resources_used.vmem = 0kb
+    resources_used.walltime = 00:00:01
+    job_state = C
+    queue = gpu
+    server = tc6000
+    Checkpoint = u
+    ctime = Tue Sep  8 19:23:40 2026
+    Error_Path = tc6000:/public/home/slfu/ttzhou/swc/irradiance_forecast/Solar
+	COTIFS_20260907/head_loss_mass_20260908_pbs.log
+    exec_host = node21/0+node21/1+node21/2+node21/3
+    exec_port = 15003+15003+15003+15003
+    exec_gpus = node21-gpu/0
+    Hold_Types = n
+    Join_Path = oe
+    Keep_Files = n
+    Mail_Points = a
+    mtime = Tue Sep  8 19:23:42 2026
+    Output_Path = tc6000:/public/home/slfu/ttzhou/swc/irradiance_forecast/Sola
+	rCOTIFS_20260907/head_loss_mass_20260908_pbs.log
+    Priority = 0
+    qtime = Tue Sep  8 19:23:40 2026
+    Rerunable = True
+    Resource_List.nodect = 1
+    Resource_List.nodes = node21:ppn=4:gpus=1
+    Resource_List.walltime = 00:10:00
+    session_id = 0
+    Variable_List = PBS_O_QUEUE=gpu,PBS_O_HOME=/public/home/slfu,
+	PBS_O_LOGNAME=slfu,
+	PBS_O_PATH=/usr/lib64/qt-3.3/bin:/opt/gridview//pbs/dispatcher-sched/
+	bin:/opt/gridview//pbs/dispatcher-sched/sbin:/opt/gridview//pbs/dispat
+	cher/bin/lsf_cmd:/opt/gridview//pbs/dispatcher/bin:/opt/gridview//pbs/
+	dispatcher/sbin:/public/software/compiler/intel/intel-compiler-2017.5.
+	239/bin/intel64:/opt/gridview/clusquota//bin:/opt/gridview/clusquota//
+	sbin:/opt/gridview/clusconf/bin:/usr/local/bin:/usr/bin:/opt/ibutils/b
+	in,PBS_O_MAIL=/var/mail/slfu,PBS_O_SHELL=/bin/bash,
+	PBS_O_LANG=en_US.UTF-8,PBS_O_WORKDIR=/public/home/slfu,
+	PBS_O_HOST=tc6000,PBS_O_SERVER=tc6000
+    etime = Tue Sep  8 19:23:40 2026
+    exit_status = -2
+    submit_args = /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS
+	_20260907/scripts/run_head_loss_mass_20260908.pbs
+    start_time = Tue Sep  8 19:23:42 2026
+    start_count = 1
+    fault_tolerant = False
+    comp_time = Tue Sep  8 19:23:42 2026
+    job_radix = 0
+    total_runtime = 1.387040
+    submit_host = tc6000
+    gpu_flags = 1
+

@@ -1,0 +1,4542 @@
+{
+  "state": "COMPLETE_WITH_NUMERICAL_DIFFERENCES",
+  "started_utc": "2026-09-08T06:56:45.994425+00:00",
+  "script_sha256": "af5307a1997bae3c14cdddb366eaeae4ccbb36aea1796abefa1dc026177ddd1b",
+  "test_used": false,
+  "GHI_or_kt_read": false,
+  "models_or_cache_modified": false,
+  "R_frozen": true,
+  "R_forward_precision": "FP32 without autocast",
+  "threshold_absolute": 0.001,
+  "threshold_timing": "fixed before this GPU experiment; never relaxed",
+  "numerical_failures": "record every comparison and finish all six samples",
+  "C_features": [
+    "mean_log1p_cot",
+    "std_log1p_cot",
+    "p90_log1p_cot",
+    "center_log1p_cot"
+  ],
+  "C_feature_domain": "statistics of log1p(COT), center [8,8]",
+  "backend_attribution": "on/off changes both cuDNN benchmark and TF32; do not infer TF32 alone",
+  "comparison_scope": "GPU uses whole original shard batch; CPU uses all 32 patches of each fixed sequence",
+  "provenance": {
+    "diagnostic_sha256": "bcc3990514f70654e618a5d3522aad867ba186a9b036ad10751e9c7d687971cc",
+    "cache_contract_sha256": "0ce045fb25570079fdc06a24dc85fc63cd9a807393d5e92b50108bb0010926a2",
+    "R_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+    "R_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+    "R_norm_file_sha256": "affb70cf0d645402adf6cef89311eb34599074d1856f447fcfd2cb2f3e6b1328",
+    "R_norm": {
+      "mean": [
+        0.22663158419824836,
+        0.2505269047944267,
+        0.28341220363317843,
+        0.04040353168302252,
+        0.1986882865500607,
+        0.13720909157655828,
+        237.81265840361803,
+        245.03329681864483,
+        253.07788506139795,
+        271.82214979270816,
+        272.91217531819916,
+        270.7814156469608,
+        258.4232974989941,
+        0.639830426520923,
+        0.2931932003417837,
+        0.0
+      ],
+      "std": [
+        0.16726969123611526,
+        0.19808064645189885,
+        0.18269550813961835,
+        0.0681421911295367,
+        0.1227930213598024,
+        0.09315040094528365,
+        8.212431007748274,
+        9.832274239134769,
+        11.694770661143629,
+        19.86554032345596,
+        20.67224538067349,
+        20.39550100718207,
+        14.532749567715273,
+        0.24325066074089569,
+        0.4621130709048413,
+        1.0
+      ],
+      "count": [
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368,
+        3066368
+      ],
+      "feature_names": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "cosSOZ",
+        "cosRAA",
+        "day_mask"
+      ],
+      "train_samples": 11978,
+      "cot_scale": 100.0,
+      "test_used": false,
+      "manifest_sha256": "1e6834ecfeea71c3a8b80a754a58c405664e0194b45d3ea9c11604a2eca22b53"
+    },
+    "cache_script_sha256": "1140d2af5a23b97f5617e1c0c802d9fe7f2845fe744807785d07a2033c69da12",
+    "head_norm_sha256": "92d1a102e172b42994e1775dfdbd75426ae9a75fb7ddad3547a4bb6778203cee",
+    "head_C_stats": {
+      "mean": [
+        2.038626076085078,
+        0.15371991602354057,
+        2.2381714171665164,
+        2.0262988410294964
+      ],
+      "std": [
+        1.5083052262063654,
+        0.18464932870388662,
+        1.511263341684991,
+        1.5505740036967388
+      ],
+      "count": 538053
+    },
+    "head_pack_audit_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+    "exact_six_samples": [
+      {
+        "split": "train",
+        "shard": "shard_00000.npz",
+        "sequence": 3,
+        "sha256": "0794381b2457b8f6f10495f45ddfec54f7de3f0569503101ab6719173da8c78c"
+      },
+      {
+        "split": "train",
+        "shard": "shard_00577.npz",
+        "sequence": 13848,
+        "sha256": "a668b9307e865f67277102ee9546b1164faf0269c143419e421afe135c66a20d"
+      },
+      {
+        "split": "train",
+        "shard": "shard_01152.npz",
+        "sequence": 27648,
+        "sha256": "ca1206cfc88abe3141c9b4649b30038026ff3265359259fe0f3d0789aa00d264"
+      },
+      {
+        "split": "val",
+        "shard": "shard_00000.npz",
+        "sequence": 0,
+        "sha256": "f83720e330a40ead5d1f4a1313bdbc078a41e3532e36e0a6ddc27e2e9da7271f"
+      },
+      {
+        "split": "val",
+        "shard": "shard_00088.npz",
+        "sequence": 2112,
+        "sha256": "a6733a1333fc1242efe2b334db071fcf21ec7a6ff6b793edb3f7f0c8ece05f7d"
+      },
+      {
+        "split": "val",
+        "shard": "shard_00177.npz",
+        "sequence": 4248,
+        "sha256": "b731de00eb706fcef176314233579a9b0f98d99a4ac9ec62cffcc158fcaaf074"
+      }
+    ]
+  },
+  "initial_backend_defaults": {
+    "cudnn_benchmark": false,
+    "cudnn_allow_tf32": true,
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_deterministic": false,
+    "cudnn_enabled": true,
+    "mkldnn_enabled": true,
+    "float32_matmul_precision": "highest",
+    "default_dtype": "torch.float32"
+  },
+  "runtime": {
+    "torch": "2.3.1+cu118",
+    "numpy": "1.26.4",
+    "cuda": "11.8",
+    "cudnn": 8700,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "pbs_job_id": "207626.tc6000",
+    "CUDA_VISIBLE_DEVICES": "2"
+  },
+  "samples": [
+    {
+      "split": "train",
+      "shard": "shard_00000.npz",
+      "shard_sha256": "0794381b2457b8f6f10495f45ddfec54f7de3f0569503101ab6719173da8c78c",
+      "sequence": 3,
+      "sequence_local_index": 3,
+      "original_shard_sequences": 24,
+      "original_R_batch": 768,
+      "cpu_fixed_sequence_patches": 32,
+      "cpu_fixed_sequence_pixels": 8192,
+      "head_feature_rows": [
+        0,
+        1
+      ],
+      "gpu_mode_settings": {
+        "benchmark_true_tf32_true": {
+          "cudnn_benchmark": true,
+          "cudnn_allow_tf32": true,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        },
+        "benchmark_false_tf32_false": {
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        }
+      },
+      "comparisons": {
+        "normalization_torch_cpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_torch_cpu_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "benchmark_true_tf32_true_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0010333061218261719,
+          "rmse": 0.00010851713536283267,
+          "mean_signed_error": -2.842076879024565e-05,
+          "mean_absolute_error": 7.171409163693927e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            4.4345855712890625e-05,
+            0.00017547607421875,
+            0.0003781318664550781,
+            0.0005653841495513942,
+            0.0010333061218261719
+          ]
+        },
+        "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0006914138793945312,
+          "rmse": 7.621741003923539e-05,
+          "mean_signed_error": -2.602189670142252e-05,
+          "mean_absolute_error": 4.5583710137483045e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.349168062210083e-05,
+            0.0001143693923950196,
+            0.00029282331466674795,
+            0.0004777414798736576,
+            0.0006914138793945312
+          ]
+        },
+        "benchmark_false_tf32_false_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.006795406341552734,
+          "rmse": 0.0005641671877164962,
+          "mean_signed_error": 5.169757188146681e-05,
+          "mean_absolute_error": 0.00033546464223851064,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00018787384033203125,
+            0.0007999300956726095,
+            0.002217323184013364,
+            0.004101806581020365,
+            0.006795406341552734
+          ]
+        },
+        "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.00551372766494751,
+          "rmse": 0.000515828860912681,
+          "mean_signed_error": 2.3444036438983556e-05,
+          "mean_absolute_error": 0.0002881374942565647,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            1.2665987014770508e-07,
+            0.00013363361358642578,
+            0.0007195472717285156,
+            0.0022219240665435763,
+            0.0037932257652282964,
+            0.00551372766494751
+          ]
+        },
+        "gpu_on_vs_gpu_off_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.006935238838195801,
+          "rmse": 0.0005653559188097259,
+          "mean_signed_error": -8.011834067171246e-05,
+          "mean_absolute_error": 0.00034348493825101894,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0001983642578125,
+            0.0008116960525512695,
+            0.002171244621276852,
+            0.004077559351921185,
+            0.006935238838195801
+          ]
+        },
+        "cpu_numpy_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.003983736038208008,
+          "rmse": 0.0006089042747625777,
+          "mean_signed_error": -5.891511386835191e-05,
+          "mean_absolute_error": 0.0003670750959372526,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00020864605903625488,
+            0.0008705198764801033,
+            0.0023716688156127947,
+            0.0035022432804107714,
+            0.003983736038208008
+          ]
+        },
+        "cpu_torch_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.003983736038208008,
+          "rmse": 0.0006089042747625777,
+          "mean_signed_error": -5.891511386835191e-05,
+          "mean_absolute_error": 0.0003670750959372526,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00020864605903625488,
+            0.0008705198764801033,
+            0.0023716688156127947,
+            0.0035022432804107714,
+            0.003983736038208008
+          ]
+        },
+        "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0042781829833984375,
+          "rmse": 0.0006003694918073056,
+          "mean_signed_error": 1.1725002877938095e-05,
+          "mean_absolute_error": 0.00037419548471007147,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0002282261848449707,
+            0.0008521080017089844,
+            0.0023378849029541023,
+            0.003462949514389038,
+            0.0042781829833984375
+          ]
+        },
+        "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 2.86102294921875e-06,
+          "rmse": 5.29809925077471e-07,
+          "mean_signed_error": -1.0201165423495695e-07,
+          "mean_absolute_error": 3.447485141805373e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.086162567138672e-07,
+            9.5367431640625e-07,
+            1.9073486328125e-06,
+            2.384185791015625e-06,
+            2.86102294921875e-06
+          ]
+        },
+        "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 2.86102294921875e-06,
+          "rmse": 5.29809925077471e-07,
+          "mean_signed_error": -1.0201165423495695e-07,
+          "mean_absolute_error": 3.447485141805373e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.086162567138672e-07,
+            9.5367431640625e-07,
+            1.9073486328125e-06,
+            2.384185791015625e-06,
+            2.86102294921875e-06
+          ]
+        },
+        "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_log1p_to_explicit_numpy_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 9.5367431640625e-07,
+          "rmse": 1.0351538216590703e-07,
+          "mean_signed_error": 6.984919309616089e-10,
+          "mean_absolute_error": 4.007597453892231e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            1.1920928955078125e-07,
+            4.76837158203125e-07,
+            4.76837158203125e-07,
+            9.5367431640625e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_cpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 9.5367431640625e-07,
+          "rmse": 9.40919651952092e-08,
+          "mean_signed_error": -1.4266940221811335e-09,
+          "mean_absolute_error": 2.8449600601258378e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            5.960464477539063e-08,
+            4.76837158203125e-07,
+            4.76837158203125e-07,
+            9.5367431640625e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_gpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_explicit_to_pack_C_float32_formula": {
+          "status": "PASS",
+          "shape": [
+            2,
+            4
+          ],
+          "n_points": 8,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "pack_C_inverse_to_saved_explicit": {
+          "status": "PASS",
+          "shape": [
+            2,
+            4
+          ],
+          "n_points": 8,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 8.08381628303323e-08,
+          "rmse": 3.3552135684127695e-08,
+          "mean_signed_error": -1.7083951558971577e-08,
+          "mean_absolute_error": 2.261981132956059e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            4.497928696167719e-10,
+            1.1747943062800914e-08,
+            5.162507079603528e-08,
+            7.791685362690258e-08,
+            8.054603190998934e-08,
+            8.08381628303323e-08
+          ]
+        }
+      },
+      "seconds": 4.171809432096779
+    },
+    {
+      "split": "train",
+      "shard": "shard_00577.npz",
+      "shard_sha256": "a668b9307e865f67277102ee9546b1164faf0269c143419e421afe135c66a20d",
+      "sequence": 13848,
+      "sequence_local_index": 0,
+      "original_shard_sequences": 24,
+      "original_R_batch": 768,
+      "cpu_fixed_sequence_patches": 32,
+      "cpu_fixed_sequence_pixels": 8192,
+      "head_feature_rows": [
+        304635,
+        304636,
+        304637,
+        304638,
+        304639,
+        304640,
+        304641,
+        304642,
+        304643,
+        304644,
+        304645,
+        304646,
+        304647,
+        304648,
+        304649,
+        304650,
+        304651,
+        304652,
+        304653,
+        304654,
+        304655,
+        304656,
+        304657,
+        304658
+      ],
+      "gpu_mode_settings": {
+        "benchmark_true_tf32_true": {
+          "cudnn_benchmark": true,
+          "cudnn_allow_tf32": true,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        },
+        "benchmark_false_tf32_false": {
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        }
+      },
+      "comparisons": {
+        "normalization_torch_cpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_torch_cpu_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "benchmark_true_tf32_true_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0008749961853027344,
+          "rmse": 0.0001336218950307337,
+          "mean_signed_error": -3.465004552557124e-05,
+          "mean_absolute_error": 9.206258512980033e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            6.103515625e-05,
+            0.00022840499877929688,
+            0.0004087603092193595,
+            0.0005613310337066676,
+            0.0008749961853027344
+          ]
+        },
+        "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0005973577499389648,
+          "rmse": 8.78262729510203e-05,
+          "mean_signed_error": -2.394998682575533e-05,
+          "mean_absolute_error": 5.401336784416344e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            7.450580596923828e-09,
+            2.765655517578125e-05,
+            0.0001387476921081543,
+            0.0003209114074707031,
+            0.000522936224937444,
+            0.0005973577499389648
+          ]
+        },
+        "benchmark_false_tf32_false_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.008136749267578125,
+          "rmse": 0.0007586304201261188,
+          "mean_signed_error": -0.0002429637499214247,
+          "mean_absolute_error": 0.00045133486304393955,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00023175030946731567,
+            0.0011754035949707031,
+            0.002847416400909422,
+            0.004553020715713556,
+            0.008136749267578125
+          ]
+        },
+        "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.00594782829284668,
+          "rmse": 0.000597661735434442,
+          "mean_signed_error": -0.00016130754481006684,
+          "mean_absolute_error": 0.0003309950035751778,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            9.313225746154785e-09,
+            0.0001468956470489502,
+            0.0008544802665710449,
+            0.0024720349907875055,
+            0.0036866515874862866,
+            0.00594782829284668
+          ]
+        },
+        "gpu_on_vs_gpu_off_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.008163928985595703,
+          "rmse": 0.0007471631902864184,
+          "mean_signed_error": 0.00020831370439585348,
+          "mean_absolute_error": 0.0004515679992399176,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00023803114891052246,
+            0.0011708736419677734,
+            0.002755012512207028,
+            0.004479758024215748,
+            0.008163928985595703
+          ]
+        },
+        "cpu_numpy_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.008136749267578125,
+          "rmse": 0.0009733265984091439,
+          "mean_signed_error": -0.00029578265787222335,
+          "mean_absolute_error": 0.0003822962966069099,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            5.21540641784668e-05,
+            0.0010609149932861344,
+            0.004474542140960695,
+            0.007331888675689704,
+            0.008136749267578125
+          ]
+        },
+        "cpu_torch_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.008136749267578125,
+          "rmse": 0.0009733265984091439,
+          "mean_signed_error": -0.00029578265787222335,
+          "mean_absolute_error": 0.0003822962966069099,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            5.21540641784668e-05,
+            0.0010609149932861344,
+            0.004474542140960695,
+            0.007331888675689704,
+            0.008136749267578125
+          ]
+        },
+        "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.008164167404174805,
+          "rmse": 0.0009562134961831502,
+          "mean_signed_error": 0.00026826052999240346,
+          "mean_absolute_error": 0.0003715652264872915,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            5.221366882324219e-05,
+            0.0009868979454040528,
+            0.004370062351226813,
+            0.0073597755432128955,
+            0.008164167404174805
+          ]
+        },
+        "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.0531158447265625e-06,
+          "rmse": 4.411069351591736e-07,
+          "mean_signed_error": 1.0493408808542881e-08,
+          "mean_absolute_error": 2.3786913061485393e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            4.470348358154297e-08,
+            7.152557373046875e-07,
+            1.8531084060669032e-06,
+            2.9574632644653555e-06,
+            4.0531158447265625e-06
+          ]
+        },
+        "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.0531158447265625e-06,
+          "rmse": 4.411069351591736e-07,
+          "mean_signed_error": 1.0493408808542881e-08,
+          "mean_absolute_error": 2.3786913061485393e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            4.470348358154297e-08,
+            7.152557373046875e-07,
+            1.8531084060669032e-06,
+            2.9574632644653555e-06,
+            4.0531158447265625e-06
+          ]
+        },
+        "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_log1p_to_explicit_numpy_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 6.66972563643179e-08,
+          "mean_signed_error": 1.797767860504488e-10,
+          "mean_absolute_error": 2.6522381328201543e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            1.1920928955078125e-07,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_cpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 6.761656722895256e-08,
+          "mean_signed_error": 1.0124191855235647e-09,
+          "mean_absolute_error": 2.0768463097435113e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            5.960464477539063e-08,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_gpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_explicit_to_pack_C_float32_formula": {
+          "status": "PASS",
+          "shape": [
+            24,
+            4
+          ],
+          "n_points": 96,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "pack_C_inverse_to_saved_explicit": {
+          "status": "PASS",
+          "shape": [
+            24,
+            4
+          ],
+          "n_points": 96,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.7223402437593904e-07,
+          "rmse": 6.404518814079586e-08,
+          "mean_signed_error": 1.2631713727668617e-08,
+          "mean_absolute_error": 4.544806711352656e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            2.871836102258385e-11,
+            3.0689946584061545e-08,
+            1.2330146148542553e-07,
+            1.667036620744966e-07,
+            1.716809881457948e-07,
+            1.7223402437593904e-07
+          ]
+        }
+      },
+      "seconds": 0.3357108738273382
+    },
+    {
+      "split": "train",
+      "shard": "shard_01152.npz",
+      "shard_sha256": "ca1206cfc88abe3141c9b4649b30038026ff3265359259fe0f3d0789aa00d264",
+      "sequence": 27648,
+      "sequence_local_index": 0,
+      "original_shard_sequences": 24,
+      "original_R_batch": 768,
+      "cpu_fixed_sequence_patches": 32,
+      "cpu_fixed_sequence_pixels": 8192,
+      "head_feature_rows": [
+        537525,
+        537526,
+        537527,
+        537528,
+        537529,
+        537530,
+        537531,
+        537532,
+        537533,
+        537534,
+        537535,
+        537536,
+        537537,
+        537538,
+        537539,
+        537540,
+        537541,
+        537542,
+        537543,
+        537544,
+        537545,
+        537546,
+        537547,
+        537548,
+        537549,
+        537550,
+        537551,
+        537552,
+        537553,
+        537554,
+        537555,
+        537556
+      ],
+      "gpu_mode_settings": {
+        "benchmark_true_tf32_true": {
+          "cudnn_benchmark": true,
+          "cudnn_allow_tf32": true,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        },
+        "benchmark_false_tf32_false": {
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        }
+      },
+      "comparisons": {
+        "normalization_torch_cpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_torch_cpu_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "benchmark_true_tf32_true_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0007677078247070312,
+          "rmse": 9.659846765372099e-05,
+          "mean_signed_error": -2.449382110114584e-05,
+          "mean_absolute_error": 5.861626877864031e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.8133392333984375e-05,
+            0.00016069412231445312,
+            0.0003495216369628906,
+            0.000507354736328125,
+            0.0007677078247070312
+          ]
+        },
+        "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0005960464477539062,
+          "rmse": 7.1288970218428e-05,
+          "mean_signed_error": -2.3677080055980088e-05,
+          "mean_absolute_error": 3.844096757651035e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            1.4571473002433777e-05,
+            9.868144989013674e-05,
+            0.0002942085266113281,
+            0.0004817297458648692,
+            0.0005960464477539062
+          ]
+        },
+        "benchmark_false_tf32_false_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0048503875732421875,
+          "rmse": 0.0006375186329426268,
+          "mean_signed_error": 0.00012304871859688168,
+          "mean_absolute_error": 0.0003780205047452985,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00020140409469604492,
+            0.0009899139404296875,
+            0.0024678665399551387,
+            0.0034457361698150765,
+            0.0048503875732421875
+          ]
+        },
+        "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0038529634475708008,
+          "rmse": 0.0005901358255732952,
+          "mean_signed_error": 0.00011247927871712211,
+          "mean_absolute_error": 0.0003476026896957289,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0001993626356124878,
+            0.0008472084999084472,
+            0.0024035358428955078,
+            0.0031044127047062053,
+            0.0038529634475708008
+          ]
+        },
+        "gpu_on_vs_gpu_off_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0048220157623291016,
+          "rmse": 0.0006366901351424808,
+          "mean_signed_error": -0.00014754253969802752,
+          "mean_absolute_error": 0.0003840609478231727,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00021505355834960938,
+            0.0009773313999176057,
+            0.002446413040161133,
+            0.0034185116887092675,
+            0.0048220157623291016
+          ]
+        },
+        "cpu_numpy_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0017626285552978516,
+          "rmse": 0.00029375498813191545,
+          "mean_signed_error": 3.545422032402712e-06,
+          "mean_absolute_error": 0.00014728533051311388,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.42721289396286e-05,
+            0.00047960281372070365,
+            0.0011507183313369752,
+            0.0015715580284595524,
+            0.0017626285552978516
+          ]
+        },
+        "cpu_torch_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0017626285552978516,
+          "rmse": 0.00029375498813191545,
+          "mean_signed_error": 3.545422032402712e-06,
+          "mean_absolute_error": 0.00014728533051311388,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.42721289396286e-05,
+            0.00047960281372070365,
+            0.0011507183313369752,
+            0.0015715580284595524,
+            0.0017626285552978516
+          ]
+        },
+        "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.001786351203918457,
+          "rmse": 0.00029645734299088225,
+          "mean_signed_error": -5.363547188608209e-06,
+          "mean_absolute_error": 0.00014854473465675255,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.385210245847702e-05,
+            0.00048027038574218763,
+            0.0011698070168495184,
+            0.001538445800542832,
+            0.001786351203918457
+          ]
+        },
+        "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.7285346984863281e-06,
+          "rmse": 2.031250089766949e-07,
+          "mean_signed_error": -2.9635771170433145e-08,
+          "mean_absolute_error": 1.021534217215958e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.421438694000244e-08,
+            3.2782554626464844e-07,
+            8.344650268554688e-07,
+            1.2999176979065059e-06,
+            1.7285346984863281e-06
+          ]
+        },
+        "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.7285346984863281e-06,
+          "rmse": 2.031250089766949e-07,
+          "mean_signed_error": -2.9635771170433145e-08,
+          "mean_absolute_error": 1.021534217215958e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.421438694000244e-08,
+            3.2782554626464844e-07,
+            8.344650268554688e-07,
+            1.2999176979065059e-06,
+            1.7285346984863281e-06
+          ]
+        },
+        "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_log1p_to_explicit_numpy_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 8.498225601887138e-08,
+          "mean_signed_error": -1.1740818687637027e-09,
+          "mean_absolute_error": 3.234155580382018e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            1.1920928955078125e-07,
+            4.76837158203125e-07,
+            4.76837158203125e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_cpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 9.5367431640625e-07,
+          "rmse": 7.88554557250438e-08,
+          "mean_signed_error": -1.1377778719179332e-09,
+          "mean_absolute_error": 2.2558651835424826e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            5.960464477539063e-08,
+            4.76837158203125e-07,
+            4.76837158203125e-07,
+            9.5367431640625e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_gpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_explicit_to_pack_C_float32_formula": {
+          "status": "PASS",
+          "shape": [
+            32,
+            4
+          ],
+          "n_points": 128,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "pack_C_inverse_to_saved_explicit": {
+          "status": "PASS",
+          "shape": [
+            32,
+            4
+          ],
+          "n_points": 128,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.6883302578207804e-07,
+          "rmse": 5.7504305174573105e-08,
+          "mean_signed_error": -1.384694832753941e-09,
+          "mean_absolute_error": 3.93518919308139e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            5.5933924159035087e-11,
+            2.0929903143951378e-08,
+            9.728294259048198e-08,
+            1.5999525075471872e-07,
+            1.6839284390357537e-07,
+            1.6883302578207804e-07
+          ]
+        }
+      },
+      "seconds": 0.32620630506426096
+    },
+    {
+      "split": "val",
+      "shard": "shard_00000.npz",
+      "shard_sha256": "f83720e330a40ead5d1f4a1313bdbc078a41e3532e36e0a6ddc27e2e9da7271f",
+      "sequence": 0,
+      "sequence_local_index": 0,
+      "original_shard_sequences": 24,
+      "original_R_batch": 768,
+      "cpu_fixed_sequence_patches": 32,
+      "cpu_fixed_sequence_pixels": 8192,
+      "head_feature_rows": [
+        538053,
+        538054,
+        538055,
+        538056,
+        538057,
+        538058,
+        538059,
+        538060,
+        538061,
+        538062,
+        538063,
+        538064,
+        538065,
+        538066,
+        538067,
+        538068,
+        538069,
+        538070,
+        538071,
+        538072,
+        538073,
+        538074,
+        538075,
+        538076,
+        538077,
+        538078,
+        538079,
+        538080,
+        538081,
+        538082,
+        538083
+      ],
+      "gpu_mode_settings": {
+        "benchmark_true_tf32_true": {
+          "cudnn_benchmark": true,
+          "cudnn_allow_tf32": true,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        },
+        "benchmark_false_tf32_false": {
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        }
+      },
+      "comparisons": {
+        "normalization_torch_cpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_torch_cpu_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "benchmark_true_tf32_true_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0003399848937988281,
+          "rmse": 3.3044904878814e-05,
+          "mean_signed_error": -6.4295911149277645e-06,
+          "mean_absolute_error": 2.1258577111401184e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            1.0609626770019531e-05,
+            5.6624412536621094e-05,
+            0.00011157989501953125,
+            0.0001609325408935547,
+            0.0003399848937988281
+          ]
+        },
+        "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.00017070770263671875,
+          "rmse": 2.1911002325451007e-05,
+          "mean_signed_error": -4.6821808912985334e-06,
+          "mean_absolute_error": 1.2434140141219055e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            5.245208740234375e-06,
+            3.336668014526368e-05,
+            8.626103401184078e-05,
+            0.00013745188713073803,
+            0.00017070770263671875
+          ]
+        },
+        "benchmark_false_tf32_false_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0013385415077209473,
+          "rmse": 0.000165374335955525,
+          "mean_signed_error": 5.962812376007302e-06,
+          "mean_absolute_error": 0.00010055392447346397,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            4.0531158447265625e-05,
+            0.0002846717834472656,
+            0.0005617141723632812,
+            0.0008951277136802719,
+            0.0013385415077209473
+          ]
+        },
+        "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0008393526077270508,
+          "rmse": 0.00013582735710977186,
+          "mean_signed_error": 1.1302640208062561e-05,
+          "mean_absolute_error": 7.993088183866348e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            3.236532211303711e-05,
+            0.00024173259735107424,
+            0.0004667240381240843,
+            0.0006442719697952281,
+            0.0008393526077270508
+          ]
+        },
+        "gpu_on_vs_gpu_off_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0014504194259643555,
+          "rmse": 0.0001686229792148746,
+          "mean_signed_error": -1.2392403490935067e-05,
+          "mean_absolute_error": 0.00010240988068233037,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            4.102196544408798e-05,
+            0.000292985141277314,
+            0.0005689859390258789,
+            0.0008996173143386958,
+            0.0014504194259643555
+          ]
+        },
+        "cpu_numpy_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0010176599025726318,
+          "rmse": 0.00012715569002178637,
+          "mean_signed_error": -4.314013665407401e-05,
+          "mean_absolute_error": 7.977840994044527e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            3.361701965332031e-05,
+            0.00022504329681396497,
+            0.0004202127456665039,
+            0.0005893976092338636,
+            0.0010176599025726318
+          ]
+        },
+        "cpu_torch_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0010176599025726318,
+          "rmse": 0.00012715569002178637,
+          "mean_signed_error": -4.314013665407401e-05,
+          "mean_absolute_error": 7.977840994044527e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            3.361701965332031e-05,
+            0.00022504329681396497,
+            0.0004202127456665039,
+            0.0005893976092338636,
+            0.0010176599025726318
+          ]
+        },
+        "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0009871423244476318,
+          "rmse": 0.00012035155053065531,
+          "mean_signed_error": 3.1652500751988555e-05,
+          "mean_absolute_error": 7.456233413449809e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            3.219395875930786e-05,
+            0.00021123886108398438,
+            0.00040149688720703125,
+            0.0005824861526489275,
+            0.0009871423244476318
+          ]
+        },
+        "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.341104507446289e-06,
+          "rmse": 1.4812247582915998e-07,
+          "mean_signed_error": 1.5736191016912926e-08,
+          "mean_absolute_error": 8.304471066367114e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.2351741790771484e-08,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            1.0132789611816406e-06,
+            1.341104507446289e-06
+          ]
+        },
+        "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.341104507446289e-06,
+          "rmse": 1.4812247582915998e-07,
+          "mean_signed_error": 1.5736191016912926e-08,
+          "mean_absolute_error": 8.304471066367114e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.2351741790771484e-08,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            1.0132789611816406e-06,
+            1.341104507446289e-06
+          ]
+        },
+        "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_log1p_to_explicit_numpy_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 3.963656429118812e-08,
+          "mean_signed_error": 7.494236342608929e-10,
+          "mean_absolute_error": 1.3792487152386457e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            5.960464477539063e-08,
+            1.1920928955078125e-07,
+            2.384185791015625e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_cpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 3.7528491270990025e-08,
+          "mean_signed_error": -6.605963183877369e-10,
+          "mean_absolute_error": 1.0424021941920122e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            2.2351741790771484e-08,
+            2.384185791015625e-07,
+            2.384185791015625e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_gpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_explicit_to_pack_C_float32_formula": {
+          "status": "PASS",
+          "shape": [
+            31,
+            4
+          ],
+          "n_points": 124,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "pack_C_inverse_to_saved_explicit": {
+          "status": "PASS",
+          "shape": [
+            31,
+            4
+          ],
+          "n_points": 124,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.6636624877719441e-07,
+          "rmse": 4.1285754626847954e-08,
+          "mean_signed_error": 9.304435000245803e-10,
+          "mean_absolute_error": 2.2654753381500642e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            1.1613821015998838e-11,
+            4.4016821298953346e-09,
+            8.376828759537603e-08,
+            1.2786822424004637e-07,
+            1.6197137352946795e-07,
+            1.6636624877719441e-07
+          ]
+        }
+      },
+      "seconds": 0.30873390939086676
+    },
+    {
+      "split": "val",
+      "shard": "shard_00088.npz",
+      "shard_sha256": "a6733a1333fc1242efe2b334db071fcf21ec7a6ff6b793edb3f7f0c8ece05f7d",
+      "sequence": 2112,
+      "sequence_local_index": 0,
+      "original_shard_sequences": 24,
+      "original_R_batch": 768,
+      "cpu_fixed_sequence_patches": 32,
+      "cpu_fixed_sequence_pixels": 8192,
+      "head_feature_rows": [
+        588001,
+        588002,
+        588003,
+        588004,
+        588005,
+        588006,
+        588007,
+        588008,
+        588009,
+        588010,
+        588011,
+        588012,
+        588013,
+        588014,
+        588015,
+        588016,
+        588017,
+        588018,
+        588019,
+        588020,
+        588021,
+        588022,
+        588023,
+        588024,
+        588025,
+        588026,
+        588027,
+        588028,
+        588029,
+        588030,
+        588031,
+        588032
+      ],
+      "gpu_mode_settings": {
+        "benchmark_true_tf32_true": {
+          "cudnn_benchmark": true,
+          "cudnn_allow_tf32": true,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        },
+        "benchmark_false_tf32_false": {
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        }
+      },
+      "comparisons": {
+        "normalization_torch_cpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_torch_cpu_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            768,
+            16,
+            16,
+            16
+          ],
+          "n_points": 3145728,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "benchmark_true_tf32_true_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0007740259170532227,
+          "rmse": 5.810713614218471e-05,
+          "mean_signed_error": -1.309913014324593e-05,
+          "mean_absolute_error": 2.6084205766589246e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            7.010996341705322e-06,
+            7.295608520507812e-05,
+            0.00026226043701171875,
+            0.00042862558364868686,
+            0.0007740259170532227
+          ]
+        },
+        "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.00037801265716552734,
+          "rmse": 4.363959403701928e-05,
+          "mean_signed_error": -1.2833403692032638e-05,
+          "mean_absolute_error": 1.9977339206889155e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            5.619600415229797e-06,
+            5.57243824005127e-05,
+            0.00019510120153427122,
+            0.0003292984962463396,
+            0.00037801265716552734
+          ]
+        },
+        "benchmark_false_tf32_false_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.004483342170715332,
+          "rmse": 0.0003723249745245908,
+          "mean_signed_error": 1.3521548538619754e-05,
+          "mean_absolute_error": 0.00015523131803737064,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.230703830718994e-05,
+            0.0004800647497177129,
+            0.0016995605826377862,
+            0.002878555536270165,
+            0.004483342170715332
+          ]
+        },
+        "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0021326541900634766,
+          "rmse": 0.000261452344504914,
+          "mean_signed_error": 1.3518603054762934e-05,
+          "mean_absolute_error": 0.00011932006623283087,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.47173011302948e-05,
+            0.00032768547534942636,
+            0.0012019133567810058,
+            0.0018875144720077578,
+            0.0021326541900634766
+          ]
+        },
+        "gpu_on_vs_gpu_off_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            24,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 196608,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.004705071449279785,
+          "rmse": 0.00037445944518727555,
+          "mean_signed_error": -2.6620678681865684e-05,
+          "mean_absolute_error": 0.0001572679569032213,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.29664146900177e-05,
+            0.00048720836639404297,
+            0.001695743799209594,
+            0.0029238820075990074,
+            0.004705071449279785
+          ]
+        },
+        "cpu_numpy_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0023605823516845703,
+          "rmse": 0.00034987564225736267,
+          "mean_signed_error": 9.636407412472181e-05,
+          "mean_absolute_error": 0.00014349735556606902,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            1.862645149230957e-09,
+            1.5490688383579254e-05,
+            0.00047169923782348704,
+            0.0016576689481735231,
+            0.002102369725704194,
+            0.0023605823516845703
+          ]
+        },
+        "cpu_torch_norm_vs_saved_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0023605823516845703,
+          "rmse": 0.00034987564225736267,
+          "mean_signed_error": 9.636407412472181e-05,
+          "mean_absolute_error": 0.00014349735556606902,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            1.862645149230957e-09,
+            1.5490688383579254e-05,
+            0.00047169923782348704,
+            0.0016576689481735231,
+            0.002102369725704194,
+            0.0023605823516845703
+          ]
+        },
+        "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0023653507232666016,
+          "rmse": 0.0003546087711246578,
+          "mean_signed_error": -0.00010063504032586934,
+          "mean_absolute_error": 0.00014577645356439461,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            7.450580596923828e-09,
+            1.5651807188987732e-05,
+            0.00047397017478942874,
+            0.0016967070102691657,
+            0.0021285602450370794,
+            0.0023653507232666016
+          ]
+        },
+        "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.7285346984863281e-06,
+          "rmse": 2.4706046725600193e-07,
+          "mean_signed_error": 1.9360641090315767e-08,
+          "mean_absolute_error": 1.1634756447165273e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.0489096641540527e-08,
+            3.8743019104003906e-07,
+            1.0132789611816406e-06,
+            1.4901161193847656e-06,
+            1.7285346984863281e-06
+          ]
+        },
+        "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.7285346984863281e-06,
+          "rmse": 2.4706046725600193e-07,
+          "mean_signed_error": 1.9360641090315767e-08,
+          "mean_absolute_error": 1.1634756447165273e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.0489096641540527e-08,
+            3.8743019104003906e-07,
+            1.0132789611816406e-06,
+            1.4901161193847656e-06,
+            1.7285346984863281e-06
+          ]
+        },
+        "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_log1p_to_explicit_numpy_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 2.384185791015625e-07,
+          "rmse": 3.644025051155209e-08,
+          "mean_signed_error": 7.09405867382884e-11,
+          "mean_absolute_error": 1.0887257910023132e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            2.9802322387695312e-08,
+            2.384185791015625e-07,
+            2.384185791015625e-07,
+            2.384185791015625e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_cpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 3.05741836816115e-08,
+          "mean_signed_error": 8.348403450024003e-10,
+          "mean_absolute_error": 6.7650489654624835e-09,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            7.450580596923828e-09,
+            1.1920928955078125e-07,
+            2.384185791015625e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_gpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            24,
+            2,
+            16,
+            4
+          ],
+          "n_points": 3072,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_explicit_to_pack_C_float32_formula": {
+          "status": "PASS",
+          "shape": [
+            32,
+            4
+          ],
+          "n_points": 128,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "pack_C_inverse_to_saved_explicit": {
+          "status": "PASS",
+          "shape": [
+            32,
+            4
+          ],
+          "n_points": 128,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.533568934064533e-07,
+          "rmse": 5.98586664890592e-08,
+          "mean_signed_error": -2.6326821382649523e-09,
+          "mean_absolute_error": 4.375475856979727e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            3.452118590985265e-10,
+            3.210856291957498e-08,
+            1.0721266789914807e-07,
+            1.5134325039412034e-07,
+            1.5319673735803007e-07,
+            1.533568934064533e-07
+          ]
+        }
+      },
+      "seconds": 0.32418770901858807
+    },
+    {
+      "split": "val",
+      "shard": "shard_00177.npz",
+      "shard_sha256": "b731de00eb706fcef176314233579a9b0f98d99a4ac9ec62cffcc158fcaaf074",
+      "sequence": 4248,
+      "sequence_local_index": 0,
+      "original_shard_sequences": 10,
+      "original_R_batch": 320,
+      "cpu_fixed_sequence_patches": 32,
+      "cpu_fixed_sequence_pixels": 8192,
+      "head_feature_rows": [
+        637582,
+        637583,
+        637584,
+        637585,
+        637586,
+        637587,
+        637588,
+        637589,
+        637590,
+        637591,
+        637592,
+        637593,
+        637594,
+        637595,
+        637596,
+        637597,
+        637598,
+        637599,
+        637600,
+        637601,
+        637602,
+        637603,
+        637604,
+        637605,
+        637606,
+        637607,
+        637608,
+        637609,
+        637610,
+        637611,
+        637612,
+        637613
+      ],
+      "gpu_mode_settings": {
+        "benchmark_true_tf32_true": {
+          "cudnn_benchmark": true,
+          "cudnn_allow_tf32": true,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        },
+        "benchmark_false_tf32_false": {
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "cuda_matmul_allow_tf32": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "mkldnn_enabled": true,
+          "float32_matmul_precision": "highest",
+          "default_dtype": "torch.float32"
+        }
+      },
+      "comparisons": {
+        "normalization_torch_cpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            320,
+            16,
+            16,
+            16
+          ],
+          "n_points": 1310720,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_torch_cpu_fp32": {
+          "status": "PASS",
+          "shape": [
+            320,
+            16,
+            16,
+            16
+          ],
+          "n_points": 1310720,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "normalization_torch_gpu_vs_numpy_fp32": {
+          "status": "PASS",
+          "shape": [
+            320,
+            16,
+            16,
+            16
+          ],
+          "n_points": 1310720,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "benchmark_true_tf32_true_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            10,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 81920,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0007534027099609375,
+          "rmse": 7.553223447777608e-05,
+          "mean_signed_error": 3.302625759715738e-06,
+          "mean_absolute_error": 5.3737996790914624e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            3.8623809814453125e-05,
+            0.00011801719665527344,
+            0.0002536773681640625,
+            0.0003986744880676296,
+            0.0007534027099609375
+          ]
+        },
+        "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+          "status": "PASS",
+          "shape": [
+            10,
+            2,
+            16,
+            4
+          ],
+          "n_points": 1280,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.00027823448181152344,
+          "rmse": 4.618955199450512e-05,
+          "mean_signed_error": 5.335162859410047e-06,
+          "mean_absolute_error": 2.9554171487689018e-05,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            1.6570091247558594e-05,
+            7.416009902954103e-05,
+            0.00015841007232666017,
+            0.00024997401237487795,
+            0.00027823448181152344
+          ]
+        },
+        "benchmark_false_tf32_false_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            10,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 81920,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0026390552520751953,
+          "rmse": 0.0002417287551872871,
+          "mean_signed_error": 9.751714583217107e-06,
+          "mean_absolute_error": 0.00016517723231572744,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00012302398681640625,
+            0.0003364086151123047,
+            0.0008475440740585323,
+            0.0018991841077804772,
+            0.0026390552520751953
+          ]
+        },
+        "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            10,
+            2,
+            16,
+            4
+          ],
+          "n_points": 1280,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0012085437774658203,
+          "rmse": 0.0001755527517074756,
+          "mean_signed_error": -4.760426236316562e-07,
+          "mean_absolute_error": 0.00012167444510851056,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            2.3096799850463867e-07,
+            8.31112265586853e-05,
+            0.00028014183044433594,
+            0.000550503730773927,
+            0.0010333510041236884,
+            0.0012085437774658203
+          ]
+        },
+        "gpu_on_vs_gpu_off_full_shard": {
+          "status": "FAIL_ABSOLUTE_TOLERANCE",
+          "shape": [
+            10,
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 81920,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.002777576446533203,
+          "rmse": 0.0002457784900279898,
+          "mean_signed_error": -6.44908882350137e-06,
+          "mean_absolute_error": 0.00016706947321836195,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00012350082397460938,
+            0.00034165382385253906,
+            0.0008758932352066033,
+            0.001927253246307381,
+            0.002777576446533203
+          ]
+        },
+        "cpu_numpy_norm_vs_saved_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0007605552673339844,
+          "rmse": 0.00019976518521076656,
+          "mean_signed_error": 5.19871391588822e-05,
+          "mean_absolute_error": 0.00015894875105004758,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0001334547996520996,
+            0.00032520294189453125,
+            0.0005279874801635744,
+            0.0006636180877685558,
+            0.0007605552673339844
+          ]
+        },
+        "cpu_torch_norm_vs_saved_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0007605552673339844,
+          "rmse": 0.00019976518521076656,
+          "mean_signed_error": 5.19871391588822e-05,
+          "mean_absolute_error": 0.00015894875105004758,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0001334547996520996,
+            0.00032520294189453125,
+            0.0005279874801635744,
+            0.0006636180877685558,
+            0.0007605552673339844
+          ]
+        },
+        "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0007672309875488281,
+          "rmse": 0.0001968203031580802,
+          "mean_signed_error": -4.714350507128984e-05,
+          "mean_absolute_error": 0.00015601956692989916,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.00012969970703125,
+            0.00032401084899902344,
+            0.0005214428901672364,
+            0.0006411182880401614,
+            0.0007672309875488281
+          ]
+        },
+        "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.430511474609375e-06,
+          "rmse": 3.2856025613277803e-07,
+          "mean_signed_error": 6.231130100786686e-08,
+          "mean_absolute_error": 2.3873872123658657e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            9.5367431640625e-07,
+            1.1920928955078125e-06,
+            1.430511474609375e-06
+          ]
+        },
+        "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 1.430511474609375e-06,
+          "rmse": 3.2856025613277803e-07,
+          "mean_signed_error": 6.231130100786686e-08,
+          "mean_absolute_error": 2.3873872123658657e-07,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            9.5367431640625e-07,
+            1.1920928955078125e-06,
+            1.430511474609375e-06
+          ]
+        },
+        "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+          "status": "PASS",
+          "shape": [
+            2,
+            16,
+            16,
+            16
+          ],
+          "n_points": 8192,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_log1p_to_explicit_numpy_full_shard": {
+          "status": "PASS",
+          "shape": [
+            10,
+            2,
+            16,
+            4
+          ],
+          "n_points": 1280,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 4.76837158203125e-07,
+          "rmse": 8.253043357564505e-08,
+          "mean_signed_error": 2.7153873816132545e-09,
+          "mean_absolute_error": 3.988097887486219e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            1.1920928955078125e-07,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            4.76837158203125e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_cpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            10,
+            2,
+            16,
+            4
+          ],
+          "n_points": 1280,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 7.152557373046875e-07,
+          "rmse": 8.72339709183073e-08,
+          "mean_signed_error": -7.07223080098629e-10,
+          "mean_absolute_error": 3.2930984161794186e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            1.1920928955078125e-07,
+            2.384185791015625e-07,
+            4.76837158203125e-07,
+            7.152557373046875e-07
+          ]
+        },
+        "saved_log1p_to_explicit_torch_gpu_full_shard": {
+          "status": "PASS",
+          "shape": [
+            10,
+            2,
+            16,
+            4
+          ],
+          "n_points": 1280,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "saved_explicit_to_pack_C_float32_formula": {
+          "status": "PASS",
+          "shape": [
+            32,
+            4
+          ],
+          "n_points": 128,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 0.0,
+          "rmse": 0.0,
+          "mean_signed_error": 0.0,
+          "mean_absolute_error": 0.0,
+          "exact_equal": true,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "pack_C_inverse_to_saved_explicit": {
+          "status": "PASS",
+          "shape": [
+            32,
+            4
+          ],
+          "n_points": 128,
+          "threshold_absolute": 0.001,
+          "max_absolute_error": 8.451758048977354e-08,
+          "rmse": 2.7905517114037214e-08,
+          "mean_signed_error": 1.6426046861670734e-09,
+          "mean_absolute_error": 1.6751586638446767e-08,
+          "exact_equal": false,
+          "quantile_levels": [
+            0.0,
+            0.5,
+            0.9,
+            0.99,
+            0.999,
+            1.0
+          ],
+          "absolute_error_quantiles": [
+            5.232236865992945e-11,
+            4.454191682157216e-09,
+            5.633044253272601e-08,
+            7.968049587248063e-08,
+            8.405905303732198e-08,
+            8.451758048977354e-08
+          ]
+        }
+      },
+      "seconds": 0.244846872985363
+    }
+  ],
+  "comparison_summary": {
+    "normalization_torch_cpu_vs_numpy_fp32": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 17039360,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "normalization_torch_gpu_vs_torch_cpu_fp32": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 17039360,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "normalization_torch_gpu_vs_numpy_fp32": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 17039360,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "benchmark_true_tf32_true_vs_saved_full_shard": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 1064960,
+      "max_absolute_error": 0.0010333061218261719,
+      "pooled_rmse": 9.196077539734534e-05
+    },
+    "benchmark_true_tf32_true_explicit_vs_saved_full_shard": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 16640,
+      "max_absolute_error": 0.0006914138793945312,
+      "pooled_rmse": 6.355342137071608e-05
+    },
+    "benchmark_false_tf32_false_vs_saved_full_shard": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 1064960,
+      "max_absolute_error": 0.008136749267578125,
+      "pooled_rmse": 0.0005245756599506087
+    },
+    "benchmark_false_tf32_false_explicit_vs_saved_full_shard": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 16640,
+      "max_absolute_error": 0.00594782829284668,
+      "pooled_rmse": 0.00044469940949495526
+    },
+    "gpu_on_vs_gpu_off_full_shard": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 1064960,
+      "max_absolute_error": 0.008163928985595703,
+      "pooled_rmse": 0.0005221984896096998
+    },
+    "cpu_numpy_norm_vs_saved_fixed_sequence": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 0.008136749267578125,
+      "pooled_rmse": 0.0005136322841325702
+    },
+    "cpu_torch_norm_vs_saved_fixed_sequence": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 0.008136749267578125,
+      "pooled_rmse": 0.0005136322841325702
+    },
+    "gpu_on_vs_cpu_torch_norm_fixed_sequence": {
+      "status": "FAIL",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 0.008164167404174805,
+      "pooled_rmse": 0.0005068932894271881
+    },
+    "gpu_off_vs_cpu_torch_norm_fixed_sequence": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 4.0531158447265625e-06,
+      "pooled_rmse": 3.433813813785017e-07
+    },
+    "gpu_off_vs_cpu_same_gpu_normalized_input_fixed_sequence": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 4.0531158447265625e-06,
+      "pooled_rmse": 3.433813813785017e-07
+    },
+    "cpu_torch_norm_vs_cpu_numpy_norm_fixed_sequence": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "cpu_gpu_norm_vs_cpu_cpu_norm_fixed_sequence": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 49152,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "saved_log1p_to_explicit_numpy_full_shard": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 16640,
+      "max_absolute_error": 9.5367431640625e-07,
+      "pooled_rmse": 7.205500651363829e-08
+    },
+    "saved_log1p_to_explicit_torch_cpu_full_shard": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 16640,
+      "max_absolute_error": 9.5367431640625e-07,
+      "pooled_rmse": 6.815013070681115e-08
+    },
+    "saved_log1p_to_explicit_torch_gpu_full_shard": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 16640,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "saved_explicit_to_pack_C_float32_formula": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 612,
+      "max_absolute_error": 0.0,
+      "pooled_rmse": 0.0
+    },
+    "pack_C_inverse_to_saved_explicit": {
+      "status": "PASS",
+      "sample_count": 6,
+      "point_count": 612,
+      "max_absolute_error": 1.7223402437593904e-07,
+      "pooled_rmse": 5.106237456195917e-08
+    }
+  },
+  "finished_utc": "2026-09-08T06:57:02.015943+00:00"
+}

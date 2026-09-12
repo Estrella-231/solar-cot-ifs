@@ -1,0 +1,19 @@
+{
+  "server_utc": "2026-09-12T07:02:15.139941+00:00",
+  "queue_before": "\ntc6000: \n                                                                                          Req'd    Req'd       Elap\nJob ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time\n----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------\n208399.tc6000           slfu        gpu              hn_weather_head   82358     1      8    --   00:40:00 C       -- \n",
+  "counted_jobs": [],
+  "code_sha256": {
+    "scripts/train_weather_head_20260912_v2.py": "4538388c397bfba932abe4c90d5cc438b8ce20447477522de759fbbe6e20873c",
+    "scripts/evaluate_weather_head_20260912_v2.py": "e2431c2a0097d92f74379f9f9a65a3953b81ac15c78870092b4aeb1693f2d7a3",
+    "scripts/run_weather_head_20260912_v2.pbs": "531f2db8d71a21ff0aa28de54027e4eabfc4ea8b80f7204b43ddc73cfe585b5c",
+    "scripts/submit_weather_head_once_20260912_v2.py": "77aea722411eb8d4f913caa334a95a38e89aa79ecea6fd56ca992b40cdf6653a",
+    "scripts/evaluate_clp_effect_20260912.py": "bfe8e0a9848e9c40446b0b86732e5c0515b70a7df23c766abe134036c2b2b175",
+    "docs/WEATHER_HEAD_PROTOCOL_20260912.md": "488edcc34ddc113e9f6d35b9252e1e487452c5321ebe1b43e1f2523ab5fd5e2a"
+  },
+  "returncode": 0,
+  "stdout": "208402.tc6000\n",
+  "stderr": "",
+  "job_id": "208402.tc6000",
+  "queue_after": "\ntc6000: \n                                                                                          Req'd    Req'd       Elap\nJob ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time\n----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------\n208399.tc6000           slfu        gpu              hn_weather_head   82358     1      8    --   00:40:00 C       -- \n208402.tc6000           slfu        gpu              hn_weather_head     --      1      8    --   00:40:00 Q       -- \n",
+  "queue_after_returncode": 0
+}

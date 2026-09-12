@@ -1,0 +1,92 @@
+{
+  "state": "PASS_FIXED_RAW_HDF_TO_FULL_PATCH",
+  "selection": "first train UTC target 2024-04-02T00:00:00Z at both stations; preselected channels C02/C13",
+  "source_hdf": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2024/20240402/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20240402000000_20240402001459_4000M_V0001.HDF",
+  "source_size_bytes": 102281546,
+  "source_mtime_ns": 1712017800000000000,
+  "source_HDF_hashed_in_full": false,
+  "source_identity_verified_with_aux": true,
+  "grid_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+  "aux_sha256": "c3f8e2ac631803ae65bf1500a11f3971c461e41e2c6edea7bbddca3d7b9075e5",
+  "full_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240402/202404020000.npy",
+  "values_sha256": "c5670773ada99b585570e1f6e049302f952be755d849112d01824e938a8b8a73",
+  "script_sha256": "adaf368fbdce8e38ca632ce0b8854179c31d6cec3d4bdf70311f863c076a1b2f",
+  "checks": [
+    {
+      "station": "sili",
+      "channel": 2,
+      "full_channel_index": 1,
+      "valid_pixels": 256,
+      "exact_values_and_nan": true,
+      "aux_valid_exact": true,
+      "max_abs": 0.0
+    },
+    {
+      "station": "sili",
+      "channel": 13,
+      "full_channel_index": 12,
+      "valid_pixels": 256,
+      "exact_values_and_nan": true,
+      "aux_valid_exact": true,
+      "max_abs": 0.0
+    },
+    {
+      "station": "zhujia",
+      "channel": 2,
+      "full_channel_index": 1,
+      "valid_pixels": 256,
+      "exact_values_and_nan": true,
+      "aux_valid_exact": true,
+      "max_abs": 0.0
+    },
+    {
+      "station": "zhujia",
+      "channel": 13,
+      "full_channel_index": 12,
+      "valid_pixels": 256,
+      "exact_values_and_nan": true,
+      "aux_valid_exact": true,
+      "max_abs": 0.0
+    }
+  ],
+  "source_metadata": {
+    "2": {
+      "data_shape": [
+        2748,
+        2748
+      ],
+      "LUT_shape": [
+        4096
+      ],
+      "DN_valid_range": [
+        0,
+        4095
+      ],
+      "LUT_range": [
+        0.0,
+        1.5
+      ]
+    },
+    "13": {
+      "data_shape": [
+        2748,
+        2748
+      ],
+      "LUT_shape": [
+        4096
+      ],
+      "DN_valid_range": [
+        0,
+        4095
+      ],
+      "LUT_range": [
+        100.0,
+        500.0
+      ]
+    }
+  },
+  "test_used": false,
+  "training": false,
+  "GHI_read": false,
+  "scope": "Four station/channel witnesses only. Proves values follow stored true HDF indices and LUT; not independent absolute geolocation calibration."
+}

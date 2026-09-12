@@ -1,0 +1,65 @@
+captured_at_bjt: 2026-09-08T19:19:27+08:00
+remote_host_alias: FD-107
+scope: one exact validation NC header plus LAT/LON coordinate arrays; no COT payload read
+coordinate_array_verification_exit_code: 0
+
+SOURCE FILE
+path: /home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250804/FY4B_AGRI_20250804064500.nc
+owner: yangzx
+bytes: 92273406
+mtime_utc: 2026-03-01 01:04:34.671086482 +0000
+
+NETCDF HEADER
+dimensions:
+  LAT = 4051
+  LON = 4051
+variables:
+  float LAT(LAT)
+    Long_Name = Latitude
+  float LON(LON)
+    Long_Name = Longitude
+  float CER(LAT, LON)
+  float COT(LAT, LON)
+    Long_Name = Cloud Optical Thickness
+    Range = 0 - 100
+    Unit = None
+  float CTH(LAT, LON)
+  float CLP(LAT, LON)
+global_attributes: []
+
+COORDINATE AXES
+LAT:
+  shape: [4051]
+  first3: [81.0, 80.95999908447266, 80.91999816894531]
+  last3: [-80.91999816894531, -80.95999908447266, -81.0]
+  strictly_decreasing: true
+  unique_count: 4051
+LON:
+  shape: [4051]
+  first3: [24.0, 24.040000915527344, 24.079999923706055]
+  last3: [185.9199981689453, 185.9600067138672, 186.0]
+  strictly_increasing: true
+  unique_count: 4051
+COT:
+  dimensions: [LAT, LON]
+  shape: [4051, 4051]
+  dtype: float32
+
+OTHER EXACT RESULT FILE STATS
+/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630221500.nc
+  owner: yangzx
+  bytes: 94339298
+  mtime_utc: 2026-02-28 20:37:50.671010427 +0000
+/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250805/FY4B_AGRI_20250805084500.nc
+  owner: yangzx
+  bytes: 92022546
+  mtime_utc: 2026-03-01 01:12:58.543110509 +0000
+
+INTERPRETATION
+  The file explicitly declares row = LAT and column = LON, with descending LAT
+  and ascending LON. The axes are monotonic and unique. This establishes the
+  declared coordinate schema only. Because COT is a square 4051 x 4051 array,
+  shape alone cannot reveal a transpose. Empty global attributes provide no
+  producer, checkpoint, source-input, acquisition-time, or processing-version
+  binding. A producer could in principle transform the payload and still write
+  these same coordinate arrays; this header/axis check cannot detect that case.

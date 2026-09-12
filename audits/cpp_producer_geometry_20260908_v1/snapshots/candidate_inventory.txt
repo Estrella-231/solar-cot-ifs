@@ -1,0 +1,58 @@
+captured_at_bjt: 2026-09-08T19:19:27+08:00
+remote_host_alias: FD-107
+scope: explicit small candidate files and immediately named private directories; no recursive search
+
+CANDIDATE A: ADJACENT TRAINING IMPLEMENTATION
+path: /home/Data_Pool_3/data/Global_CPP/FY/FY4B/Model/COT/train-16y-batchsize128-100nan/main.py
+sha256: 4db1521dc58cb7c929109c9d7d7b98af2d273a20d62ec7e7788999478f959a70
+finding: training/evaluation only; no base Result/CPP NetCDF writer
+
+CANDIDATE B: PUBLIC AGRI-ONLY COT NOTEBOOK
+path: /home/Data_Pool_3/data/Global_CPP/SmaAT-Unet/Code/AGRI_COT.ipynb
+owner: yangzx
+mode: 664
+bytes: 13597
+mtime_utc: 2025-06-03 08:54:19.987133266 +0000
+sha256: ce559ffc9d46d546cf9145d27b17ac5e4087f38c61cfaceb618dceba28240fba
+bounded excerpts:
+  line 59: values above 150 are set to 150
+  line 60: y_max = 150
+  line 291: save_path = ../Model/COT/
+  line 292: save_name = AGRI_V1
+  line 295: BATCH_SIZE = 32
+  line 296: EPOCHS = 30
+  line 303: SmaAt_UNet with AGRI-derived input channel count
+finding: materially different target/input/training contract from candidate A;
+  no Result/CPP or NetCDF writer occurrence found in the bounded search
+
+CANDIDATE C: DOWNSTREAM TP SUBSETTER
+path: /home/Data_Pool_3/data/Global_CPP/FY/FY4B/TP_CPP.py
+owner: zhaozj
+mode: 664
+bytes: 2758
+mtime_utc: 2025-11-21 10:06:53.725679676 +0000
+sha256: b3b031589da0f48589e07478fd2f2598394accd97224567bdf43de231e3cae3d
+bounded excerpts:
+  line 21: reads /home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP
+  line 50: constructs a source basename beginning FY4A_AGRI_ inside the FY4B tree
+  line 59: selects LAT 45..20 and LON 63..105
+  line 70: writes the subset with to_netcdf
+finding: consumer/subsetter of Result/CPP, not the base producer; the FY4A basename
+  is a local defect in this consumer and is not evidence about base product geometry
+
+PROVENANCE SEPARATION
+adjacent main.py and cot_best.pth:
+  owner: zhaozj
+  mtime_utc: 2025-06-29
+inspected Result/CPP NC files:
+  owner: yangzx
+  mtime_utc: 2026-02-28 or 2026-03-01
+finding: different owner and generation period do not prove different models, but
+  they prevent adjacency from serving as an immutable producer/checkpoint binding.
+
+BOUNDED ACCESS STOP
+getent passwd yangzx home: /home/nvme/yangzx/
+/home/Data_Pool_3/yangzx/Code: owner yangzx, mode 700
+/home/Data_Pool_3/yangzx/Project: owner yangzx, mode 700
+These locations were not recursively searched and access was not bypassed. No full
+tree find was run. The actual Result/CPP writer remained unidentified at this stop.

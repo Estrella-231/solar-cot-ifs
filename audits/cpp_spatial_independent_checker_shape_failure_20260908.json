@@ -1,0 +1,6 @@
+{
+  "state": "CHECKER_SHAPE_ASSERTION_BEFORE_VALUE_COMPARISONS",
+  "source_sha256": "c62b524d9e10c20158342fb1b12540969a51279c0e87bbf9711e7fc11b8fa76a",
+  "error": "np.array_equal compared source latitude shape (16,1) to target (16,16), and longitude (1,16) to (16,16), without explicit broadcast. This is a checker shape error, not measured coordinate inequality.",
+  "correction": "Explicitly broadcast source axis coordinates before exact comparison; selection/data/tolerance unchanged."
+}

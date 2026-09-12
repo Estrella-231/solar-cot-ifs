@@ -1,0 +1,99 @@
+{
+  "state": "PASS_FOUR_SAVED_DN_INDEPENDENT_LUT_RECONSTRUCTION",
+  "selection": "first train UTC target 2024-04-02T00:00:00Z at both stations; preselected channels C02/C13",
+  "source_identity": {
+    "source_hdf": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2024/20240402/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20240402000000_20240402001459_4000M_V0001.HDF",
+    "source_size_bytes": 102281546,
+    "source_mtime_ns": 1712017800000000000
+  },
+  "LUT_read_report": "agri_spatial_payload_20260908_v1_peer_lut_snapshot.json",
+  "LUT_read_report_sha256": "6278bdad93468b12e78a7ddcb18fa8bb0eac4b51def45783c865c571b6934f33",
+  "checks": [
+    {
+      "station": "sili",
+      "channel": 2,
+      "saved_DN_min": 256,
+      "saved_DN_max": 1146,
+      "DN_FillValue": 65535,
+      "valid_pixels": 256,
+      "night_zeroing_triggered": false,
+      "max_abs_vs_independent_Combined": 0.0,
+      "equals_saved_calibrated": true,
+      "equals_saved_full": true,
+      "equals_independent_Combined": true,
+      "valid_equals_saved": true,
+      "valid_equals_aux": true
+    },
+    {
+      "station": "zhujia",
+      "channel": 2,
+      "saved_DN_min": 604,
+      "saved_DN_max": 1411,
+      "DN_FillValue": 65535,
+      "valid_pixels": 256,
+      "night_zeroing_triggered": false,
+      "max_abs_vs_independent_Combined": 0.0,
+      "equals_saved_calibrated": true,
+      "equals_saved_full": true,
+      "equals_independent_Combined": true,
+      "valid_equals_saved": true,
+      "valid_equals_aux": true
+    },
+    {
+      "station": "sili",
+      "channel": 13,
+      "saved_DN_min": 1861,
+      "saved_DN_max": 2461,
+      "DN_FillValue": 65535,
+      "valid_pixels": 256,
+      "night_zeroing_triggered": false,
+      "max_abs_vs_independent_Combined": 0.0,
+      "equals_saved_calibrated": true,
+      "equals_saved_full": true,
+      "equals_independent_Combined": true,
+      "valid_equals_saved": true,
+      "valid_equals_aux": true
+    },
+    {
+      "station": "zhujia",
+      "channel": 13,
+      "saved_DN_min": 2871,
+      "saved_DN_max": 3517,
+      "DN_FillValue": 65535,
+      "valid_pixels": 256,
+      "night_zeroing_triggered": false,
+      "max_abs_vs_independent_Combined": 0.0,
+      "equals_saved_calibrated": true,
+      "equals_saved_full": true,
+      "equals_independent_Combined": true,
+      "valid_equals_saved": true,
+      "valid_equals_aux": true
+    }
+  ],
+  "new_arrays_sha256": "c9c76bdec61e51408fbff03c7f81209b884c8e51f263e5aa37f39982f70760ff",
+  "script_sha256": "68a45436e44a83bab53f9badd78e259316af2ba8bd7bc4b4c6ddaa0aae2385f3",
+  "input_hashes": {
+    "original_HDF_report": "5b0a65ae649bf86837f293c13225b6e98b26d49b7b52c44b8fffa15de7e0ad6e",
+    "saved_DN_values": "c5670773ada99b585570e1f6e049302f952be755d849112d01824e938a8b8a73",
+    "original_HDF_execution_script": "adaf368fbdce8e38ca632ce0b8854179c31d6cec3d4bdf70311f863c076a1b2f",
+    "independent_Combined_patches": "8aa4d94ee55f020a845c717e7d25e41b4a738795d67ae498cbc94ebf50f4d30d"
+  },
+  "payload_scope": {
+    "LUT_elements": 8192,
+    "LUT_bytes": 32768,
+    "DN_elements": 0,
+    "full_AGRI_elements": 0,
+    "GHI_elements": 0
+  },
+  "source_HDF_hashed_in_full": false,
+  "new_DN_read": false,
+  "new_Combined_read": false,
+  "test_used": false,
+  "GHI_read": false,
+  "models_loaded": false,
+  "limits": [
+    "One previously fixed train target and two channels at two stations only.",
+    "Original HDF identity is bound by exact path, size, mtime and auxiliary identity; no whole-HDF hash.",
+    "DN patches come from the prior witnessed read; this step independently rereads LUTs and recalculates from those saved DN values."
+  ]
+}

@@ -1,0 +1,2880 @@
+{
+  "state": "PASS_12_SOURCE_SIDECAR_PACK_PIXEL_CHAINS",
+  "mode": "check-source",
+  "script_sha256": "8c5f49da358676a3a13066c4895cfbffef026cb2655c599e3af9d1e58f53d2ab",
+  "selection_file_sha256": "d2557c7e37d6d55d60a295fb3c7c16a207783cd3928b6e9a8a37f0fb1054a49c",
+  "selection_sha256": "ae0cbeab4116ba3452f4f0e329b4ca545844c04fa8ad75457e0b6a9c4b50cb2b",
+  "started_utc": "2026-09-08T11:15:59.043790+00:00",
+  "absolute_coordinate_tolerance_deg": 0.0001,
+  "test_used": false,
+  "GHI_decoded": false,
+  "models_loaded": 0,
+  "GPU_used": false,
+  "old_assets_modified": false,
+  "mapping": "independent nearest source LAT/LON for every target pixel; no interpolation, no error-based coordinate choice",
+  "mask": "source finite, COT [0,100], finite day>0.5, finite SOZ in [0,180] and SOZ<80; original contract unchanged",
+  "scope": "twelve preselected train/validation rows; does not certify the complete dataset or upstream retrieval teacher",
+  "runtime": {
+    "python": "3.9.23",
+    "numpy": "1.26.4"
+  },
+  "samples": [
+    {
+      "position": 0,
+      "r_pack_index": 0,
+      "station": "sili",
+      "split": "train",
+      "timestamp_utc": "2024-04-02T00:00:00Z",
+      "selection_slot": "first",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240402/FY4B_AGRI_20240402000000.nc",
+      "original_sha256": "78b7b9f2203c0a1b8a70782a0eecef7ccc737074818a5f94dc0f357ad3b8e740",
+      "sidecar_sha256": "60b46119573784b85ec55377946e261262e046a7f8852c99a4cc594b442ba189",
+      "source_nc_sha256": "581cda300b56684cb4feebdc51447af9ecaf7c95ecaca3aad8c55e73652034c2",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1368,
+          1384,
+          2201,
+          2217
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "derived_zero_based_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 1.9073486328125e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 1,
+      "r_pack_index": 3005,
+      "station": "sili",
+      "split": "train",
+      "timestamp_utc": "2025-01-04T03:00:00Z",
+      "selection_slot": "middle",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250104/FY4B_AGRI_20250104030000.nc",
+      "original_sha256": "2fb2300b7498d87d4c2fc0c073da83ea4a31b28df159fe800adaf7e15a5ca359",
+      "sidecar_sha256": "d97ba025e3bb31b100746b2d7e704c7e070eda575e30e31be2af078112098c43",
+      "source_nc_sha256": "84334fb3f8ccb7a5d52ee02e16d3988d0e6e07d05c0b3f14132ac3fbf3570297",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1368,
+          1384,
+          2201,
+          2217
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "derived_zero_based_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 0.0,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 2,
+      "r_pack_index": 6010,
+      "station": "sili",
+      "split": "train",
+      "timestamp_utc": "2025-06-30T10:30:00Z",
+      "selection_slot": "last",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630103000.nc",
+      "original_sha256": "e6f80fc960f042a2989eee87aca111e51f74a635965be27ba921df42ff2258fb",
+      "sidecar_sha256": "31d626e35b910f1b7f4ab97622a1e545d863cf9d6d9ac71348ce1aff253f53c2",
+      "source_nc_sha256": "e992cbdead6596ac1fed57c49279cee50cb9fde5e057783a0bf2ef7ad3e83f75",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1368,
+          1384,
+          2201,
+          2217
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "derived_zero_based_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "valid_pixels": 157,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 1.9073486328125e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 3,
+      "r_pack_index": 6011,
+      "station": "sili",
+      "split": "validation",
+      "timestamp_utc": "2025-06-30T22:30:00Z",
+      "selection_slot": "first",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630223000.nc",
+      "original_sha256": "a0d1a0efe6e2a429b7980ed7f260daca92534028c9c91d9b6143a0a60a6f80cb",
+      "sidecar_sha256": "f0144003acf7c2d557adc930848e4b6b8bf257b0a97d9649d465820473fd8637",
+      "source_nc_sha256": "007a766b83670381d0f44256788e903dcca529e88f44e33120a2308b1b464e4d",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1368,
+          1384,
+          2201,
+          2217
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "derived_zero_based_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "valid_pixels": 18,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 2.384185791015625e-07,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 4,
+      "r_pack_index": 7633,
+      "station": "sili",
+      "split": "validation",
+      "timestamp_utc": "2025-08-04T05:00:00Z",
+      "selection_slot": "middle",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250804/FY4B_AGRI_20250804050000.nc",
+      "original_sha256": "7f6b3dc6c0dcf971d9f35cc2532f8a602cc16beb68df9dbeacec92eee1ce114d",
+      "sidecar_sha256": "f224906b4ad103d124bb651fe3279c89a1919b591efc804bdee28d0a8cb5e5b7",
+      "source_nc_sha256": "1d6cacb4a876a9380e87d175da365dfdd93f113d95bf993ca61f97f960592ebf",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1368,
+          1384,
+          2201,
+          2217
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "derived_zero_based_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 9.5367431640625e-07,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 5,
+      "r_pack_index": 9256,
+      "station": "sili",
+      "split": "validation",
+      "timestamp_utc": "2025-09-22T06:15:00Z",
+      "selection_slot": "last",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250922/FY4B_AGRI_20250922061500.nc",
+      "original_sha256": "9fa588709d500ddf73e9b4e3e78defd6f8b5713e5ce846426af58f797969233d",
+      "sidecar_sha256": "d4491ea6f76c43dc97b97463455781e2afb2adaa92dc97d6359bccad8f35a2ba",
+      "source_nc_sha256": "78122df28c47f926e5db3fb2232ffa7d7e3f05815c037dd6f8fda6094370730d",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1368,
+          1384,
+          2201,
+          2217
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.6000003814697266,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1368,
+        1369,
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375,
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381,
+        1382,
+        1383
+      ],
+      "derived_zero_based_cols": [
+        2201,
+        2202,
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 1.9073486328125e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 6,
+      "r_pack_index": 9257,
+      "station": "zhujia",
+      "split": "train",
+      "timestamp_utc": "2024-04-02T00:00:00Z",
+      "selection_slot": "first",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240402/FY4B_AGRI_20240402000000.nc",
+      "original_sha256": "1d1d7726c3d2167ba32845fe80087cb6fed211008865a609a6f0d1390ca4a611",
+      "sidecar_sha256": "ce1d452eadab3b2f2bb8634fea3cfb10c537ae8f8e931bafe639bfbdd84d3125",
+      "source_nc_sha256": "581cda300b56684cb4feebdc51447af9ecaf7c95ecaca3aad8c55e73652034c2",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1278,
+          1294,
+          2203,
+          2219
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "derived_zero_based_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 3.814697265625e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 7,
+      "r_pack_index": 12240,
+      "station": "zhujia",
+      "split": "train",
+      "timestamp_utc": "2025-01-04T04:00:00Z",
+      "selection_slot": "middle",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250104/FY4B_AGRI_20250104040000.nc",
+      "original_sha256": "200b955727a220ffc4816d517f4832c73df550fd6ac04e1c28f4973f93c28a8e",
+      "sidecar_sha256": "2556350105cb3202a23290e763f4e95d5016db3e28b3d817c13362a22c922532",
+      "source_nc_sha256": "1a91847c3682e47889efbb1d7b950f7e040c332f2c2ea76946578269b7aeeef0",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1278,
+          1294,
+          2203,
+          2219
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "derived_zero_based_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 1.9073486328125e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 8,
+      "r_pack_index": 15223,
+      "station": "zhujia",
+      "split": "train",
+      "timestamp_utc": "2025-06-30T10:30:00Z",
+      "selection_slot": "last",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630103000.nc",
+      "original_sha256": "3522d8cfb3d7912903f8cdc32d426be2f9c51142fa9c0234fefd6e7b947bc78f",
+      "sidecar_sha256": "645c541c9d695d16073c39e79f5f8b1dd8e90c02369b784a838c380634f8c0bb",
+      "source_nc_sha256": "e992cbdead6596ac1fed57c49279cee50cb9fde5e057783a0bf2ef7ad3e83f75",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1278,
+          1294,
+          2203,
+          2219
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "derived_zero_based_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 1.9073486328125e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 9,
+      "r_pack_index": 15224,
+      "station": "zhujia",
+      "split": "validation",
+      "timestamp_utc": "2025-06-30T22:30:00Z",
+      "selection_slot": "first",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630223000.nc",
+      "original_sha256": "7815003fee9c983d0c0b1c4bd8b4b1af5dd61d7468dbfd06b8a9eb1f1fe0a785",
+      "sidecar_sha256": "2c43bcf96c87f6159548107df8c45cdf522dbe11ced52dca1bbcc5f0475f57c7",
+      "source_nc_sha256": "007a766b83670381d0f44256788e903dcca529e88f44e33120a2308b1b464e4d",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1278,
+          1294,
+          2203,
+          2219
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "derived_zero_based_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 2.9802322387695312e-08,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 10,
+      "r_pack_index": 16868,
+      "station": "zhujia",
+      "split": "validation",
+      "timestamp_utc": "2025-08-04T02:15:00Z",
+      "selection_slot": "middle",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250804/FY4B_AGRI_20250804021500.nc",
+      "original_sha256": "61de369cf0fbf0bdc15a4854f53f2db0520ae3cac74b0b5f01bfc0d5d227402c",
+      "sidecar_sha256": "f5dd90e835e614f5a6df4c45d7a9733a88c2f8f05b072dbc3a3239d8b55c4859",
+      "source_nc_sha256": "19084760c7f3191ceff7571ed2ca89ead3cfcd8f7e993a794126fd5821f55c7f",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1278,
+          1294,
+          2203,
+          2219
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "derived_zero_based_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 0.0,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    },
+    {
+      "position": 11,
+      "r_pack_index": 18513,
+      "station": "zhujia",
+      "split": "validation",
+      "timestamp_utc": "2025-09-22T06:15:00Z",
+      "selection_slot": "last",
+      "source_nc": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250922/FY4B_AGRI_20250922061500.nc",
+      "original_sha256": "9bb9f5acf70cde92867186be4841611c8711359b9f7ece866800cd258f864894",
+      "sidecar_sha256": "7bfe7b8ed0f8871feb3c6cf70d3b803305d483e15b67d58bbba3100c95c98250",
+      "source_nc_sha256": "78122df28c47f926e5db3fb2232ffa7d7e3f05815c037dd6f8fda6094370730d",
+      "netcdf": {
+        "COT_dimensions": [
+          "LAT",
+          "LON"
+        ],
+        "COT_shape": [
+          4051,
+          4051
+        ],
+        "COT_dtype": "float32",
+        "LAT_dimension": "LAT",
+        "LON_dimension": "LON",
+        "LAT_length": 4051,
+        "LON_length": 4051,
+        "LAT_direction": "decreasing",
+        "LON_direction": "increasing",
+        "attributes": {
+          "_FillValue": "nan",
+          "Long_Name": "Cloud Optical Thickness",
+          "Range": "0 - 100",
+          "Unit": "None"
+        },
+        "production_lat_then_lon_dimension_order": true
+      },
+      "source_read_rectangle": {
+        "zero_based_bounds": [
+          1278,
+          1294,
+          2203,
+          2219
+        ],
+        "returned_pixels": 256,
+        "source_chunks": [
+          2026,
+          2026
+        ],
+        "strategy": "single basic-slice hyperslab; paired indexing in NumPy; no alternate-coordinate value search"
+      },
+      "checks": {
+        "original_sidecar_grid_exact": true,
+        "cpp_rows_zero_based_exact": true,
+        "cpp_cols_zero_based_exact": true,
+        "source_to_sidecar_COT_exact": true,
+        "source_to_sidecar_finite_exact": true,
+        "independently_rebuilt_sidecar_mask_exact": true,
+        "independently_rebuilt_pack_mask_exact": true,
+        "independently_rebuilt_pack_target_exact": true,
+        "recorded_valid_pixels_exact": true,
+        "COT_dimension_order_matches_production": true
+      },
+      "coordinate_error": {
+        "latitude_max_abs_deg": 0.0,
+        "longitude_max_abs_deg": 0.0
+      },
+      "coordinate_only_alternative_hypotheses": {
+        "transpose_target_patch": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "vertical_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "horizontal_flip": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "both_flips": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.5999984741210938,
+          "longitude_max_abs_deg": 0.5999984741210938,
+          "within_coordinate_tolerance": false
+        },
+        "row_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "row_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.0,
+          "within_coordinate_tolerance": false
+        },
+        "col_minus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "col_plus_1": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.0,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "one_based_indices_as_zero_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        },
+        "zero_based_indices_as_one_based": {
+          "in_bounds": true,
+          "latitude_max_abs_deg": 0.04000091552734375,
+          "longitude_max_abs_deg": 0.04000091552734375,
+          "within_coordinate_tolerance": false
+        }
+      },
+      "derived_zero_based_rows": [
+        1278,
+        1279,
+        1280,
+        1281,
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287,
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "derived_zero_based_cols": [
+        2203,
+        2204,
+        2205,
+        2206,
+        2207,
+        2208,
+        2209,
+        2210,
+        2211,
+        2212,
+        2213,
+        2214,
+        2215,
+        2216,
+        2217,
+        2218
+      ],
+      "valid_pixels": 256,
+      "float32_div100_mul100_rounding_max_abs_valid_COT": 1.9073486328125e-06,
+      "source_sidecar_max_abs_finite_COT": 0.0,
+      "state": "PASS_SOURCE_SIDECAR_PACK_PIXEL_CHAIN"
+    }
+  ],
+  "pack_export": {
+    "report_sha256": "46de243207b7a98aba9b1ce39b8517319529454cee8e229476b876ad60d9913e",
+    "values_sha256": "85d4e87a9b0705c9907f6169dcd02aa7c9824dfdda1f4bf6c9f3710f46eabd32",
+    "source_pack": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/cot_repaired_pack_20260907_v1",
+      "verified_file_sha256": {
+        "SHA256.json": "f0216e4a5b14ca7dc2ef54da4816273e0c935da486c951889d838749e4a3c898",
+        "rows.csv": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69",
+        "target.npy": "e7e330fd7245212ff09b58f0cbb841a60020e583f4e4121e90b76958d595ba33",
+        "mask.npy": "c134bc31d54cbbab89523a9825bf32cefc226d89b75d85bf6c588295b63547c4"
+      },
+      "selected_rows": 12,
+      "semantic_payload_bytes": 15456
+    }
+  },
+  "values": {
+    "path": "/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905/audits/cpp_spatial_payload_20260908_v1/cpp_spatial_payload_20260908_v1_hyperslab.npz",
+    "sha256": "7f2151daab0a06b5e2ecde73127f4d4fc1d51c5100da6954dade955ae34ddb77",
+    "bytes": 317536,
+    "shapes": {
+      "s00_target_lat": [
+        16,
+        16
+      ],
+      "s00_target_lon": [
+        16,
+        16
+      ],
+      "s00_sidecar_COT": [
+        16,
+        16
+      ],
+      "s00_sidecar_finite": [
+        16,
+        16
+      ],
+      "s00_sidecar_mask": [
+        16,
+        16
+      ],
+      "s00_sidecar_rows": [
+        16
+      ],
+      "s00_sidecar_cols": [
+        16
+      ],
+      "s00_day": [
+        16,
+        16
+      ],
+      "s00_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s00_pack_target": [
+        16,
+        16
+      ],
+      "s00_pack_mask": [
+        16,
+        16
+      ],
+      "s00_source_LAT_axis": [
+        4051
+      ],
+      "s00_source_LON_axis": [
+        4051
+      ],
+      "s00_derived_rows": [
+        16,
+        16
+      ],
+      "s00_derived_cols": [
+        16,
+        16
+      ],
+      "s00_source_COT": [
+        16,
+        16
+      ],
+      "s00_expected_mask": [
+        16,
+        16
+      ],
+      "s00_expected_target": [
+        16,
+        16
+      ],
+      "s01_target_lat": [
+        16,
+        16
+      ],
+      "s01_target_lon": [
+        16,
+        16
+      ],
+      "s01_sidecar_COT": [
+        16,
+        16
+      ],
+      "s01_sidecar_finite": [
+        16,
+        16
+      ],
+      "s01_sidecar_mask": [
+        16,
+        16
+      ],
+      "s01_sidecar_rows": [
+        16
+      ],
+      "s01_sidecar_cols": [
+        16
+      ],
+      "s01_day": [
+        16,
+        16
+      ],
+      "s01_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s01_pack_target": [
+        16,
+        16
+      ],
+      "s01_pack_mask": [
+        16,
+        16
+      ],
+      "s01_source_LAT_axis": [
+        4051
+      ],
+      "s01_source_LON_axis": [
+        4051
+      ],
+      "s01_derived_rows": [
+        16,
+        16
+      ],
+      "s01_derived_cols": [
+        16,
+        16
+      ],
+      "s01_source_COT": [
+        16,
+        16
+      ],
+      "s01_expected_mask": [
+        16,
+        16
+      ],
+      "s01_expected_target": [
+        16,
+        16
+      ],
+      "s02_target_lat": [
+        16,
+        16
+      ],
+      "s02_target_lon": [
+        16,
+        16
+      ],
+      "s02_sidecar_COT": [
+        16,
+        16
+      ],
+      "s02_sidecar_finite": [
+        16,
+        16
+      ],
+      "s02_sidecar_mask": [
+        16,
+        16
+      ],
+      "s02_sidecar_rows": [
+        16
+      ],
+      "s02_sidecar_cols": [
+        16
+      ],
+      "s02_day": [
+        16,
+        16
+      ],
+      "s02_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s02_pack_target": [
+        16,
+        16
+      ],
+      "s02_pack_mask": [
+        16,
+        16
+      ],
+      "s02_source_LAT_axis": [
+        4051
+      ],
+      "s02_source_LON_axis": [
+        4051
+      ],
+      "s02_derived_rows": [
+        16,
+        16
+      ],
+      "s02_derived_cols": [
+        16,
+        16
+      ],
+      "s02_source_COT": [
+        16,
+        16
+      ],
+      "s02_expected_mask": [
+        16,
+        16
+      ],
+      "s02_expected_target": [
+        16,
+        16
+      ],
+      "s03_target_lat": [
+        16,
+        16
+      ],
+      "s03_target_lon": [
+        16,
+        16
+      ],
+      "s03_sidecar_COT": [
+        16,
+        16
+      ],
+      "s03_sidecar_finite": [
+        16,
+        16
+      ],
+      "s03_sidecar_mask": [
+        16,
+        16
+      ],
+      "s03_sidecar_rows": [
+        16
+      ],
+      "s03_sidecar_cols": [
+        16
+      ],
+      "s03_day": [
+        16,
+        16
+      ],
+      "s03_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s03_pack_target": [
+        16,
+        16
+      ],
+      "s03_pack_mask": [
+        16,
+        16
+      ],
+      "s03_source_LAT_axis": [
+        4051
+      ],
+      "s03_source_LON_axis": [
+        4051
+      ],
+      "s03_derived_rows": [
+        16,
+        16
+      ],
+      "s03_derived_cols": [
+        16,
+        16
+      ],
+      "s03_source_COT": [
+        16,
+        16
+      ],
+      "s03_expected_mask": [
+        16,
+        16
+      ],
+      "s03_expected_target": [
+        16,
+        16
+      ],
+      "s04_target_lat": [
+        16,
+        16
+      ],
+      "s04_target_lon": [
+        16,
+        16
+      ],
+      "s04_sidecar_COT": [
+        16,
+        16
+      ],
+      "s04_sidecar_finite": [
+        16,
+        16
+      ],
+      "s04_sidecar_mask": [
+        16,
+        16
+      ],
+      "s04_sidecar_rows": [
+        16
+      ],
+      "s04_sidecar_cols": [
+        16
+      ],
+      "s04_day": [
+        16,
+        16
+      ],
+      "s04_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s04_pack_target": [
+        16,
+        16
+      ],
+      "s04_pack_mask": [
+        16,
+        16
+      ],
+      "s04_source_LAT_axis": [
+        4051
+      ],
+      "s04_source_LON_axis": [
+        4051
+      ],
+      "s04_derived_rows": [
+        16,
+        16
+      ],
+      "s04_derived_cols": [
+        16,
+        16
+      ],
+      "s04_source_COT": [
+        16,
+        16
+      ],
+      "s04_expected_mask": [
+        16,
+        16
+      ],
+      "s04_expected_target": [
+        16,
+        16
+      ],
+      "s05_target_lat": [
+        16,
+        16
+      ],
+      "s05_target_lon": [
+        16,
+        16
+      ],
+      "s05_sidecar_COT": [
+        16,
+        16
+      ],
+      "s05_sidecar_finite": [
+        16,
+        16
+      ],
+      "s05_sidecar_mask": [
+        16,
+        16
+      ],
+      "s05_sidecar_rows": [
+        16
+      ],
+      "s05_sidecar_cols": [
+        16
+      ],
+      "s05_day": [
+        16,
+        16
+      ],
+      "s05_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s05_pack_target": [
+        16,
+        16
+      ],
+      "s05_pack_mask": [
+        16,
+        16
+      ],
+      "s05_source_LAT_axis": [
+        4051
+      ],
+      "s05_source_LON_axis": [
+        4051
+      ],
+      "s05_derived_rows": [
+        16,
+        16
+      ],
+      "s05_derived_cols": [
+        16,
+        16
+      ],
+      "s05_source_COT": [
+        16,
+        16
+      ],
+      "s05_expected_mask": [
+        16,
+        16
+      ],
+      "s05_expected_target": [
+        16,
+        16
+      ],
+      "s06_target_lat": [
+        16,
+        16
+      ],
+      "s06_target_lon": [
+        16,
+        16
+      ],
+      "s06_sidecar_COT": [
+        16,
+        16
+      ],
+      "s06_sidecar_finite": [
+        16,
+        16
+      ],
+      "s06_sidecar_mask": [
+        16,
+        16
+      ],
+      "s06_sidecar_rows": [
+        16
+      ],
+      "s06_sidecar_cols": [
+        16
+      ],
+      "s06_day": [
+        16,
+        16
+      ],
+      "s06_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s06_pack_target": [
+        16,
+        16
+      ],
+      "s06_pack_mask": [
+        16,
+        16
+      ],
+      "s06_source_LAT_axis": [
+        4051
+      ],
+      "s06_source_LON_axis": [
+        4051
+      ],
+      "s06_derived_rows": [
+        16,
+        16
+      ],
+      "s06_derived_cols": [
+        16,
+        16
+      ],
+      "s06_source_COT": [
+        16,
+        16
+      ],
+      "s06_expected_mask": [
+        16,
+        16
+      ],
+      "s06_expected_target": [
+        16,
+        16
+      ],
+      "s07_target_lat": [
+        16,
+        16
+      ],
+      "s07_target_lon": [
+        16,
+        16
+      ],
+      "s07_sidecar_COT": [
+        16,
+        16
+      ],
+      "s07_sidecar_finite": [
+        16,
+        16
+      ],
+      "s07_sidecar_mask": [
+        16,
+        16
+      ],
+      "s07_sidecar_rows": [
+        16
+      ],
+      "s07_sidecar_cols": [
+        16
+      ],
+      "s07_day": [
+        16,
+        16
+      ],
+      "s07_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s07_pack_target": [
+        16,
+        16
+      ],
+      "s07_pack_mask": [
+        16,
+        16
+      ],
+      "s07_source_LAT_axis": [
+        4051
+      ],
+      "s07_source_LON_axis": [
+        4051
+      ],
+      "s07_derived_rows": [
+        16,
+        16
+      ],
+      "s07_derived_cols": [
+        16,
+        16
+      ],
+      "s07_source_COT": [
+        16,
+        16
+      ],
+      "s07_expected_mask": [
+        16,
+        16
+      ],
+      "s07_expected_target": [
+        16,
+        16
+      ],
+      "s08_target_lat": [
+        16,
+        16
+      ],
+      "s08_target_lon": [
+        16,
+        16
+      ],
+      "s08_sidecar_COT": [
+        16,
+        16
+      ],
+      "s08_sidecar_finite": [
+        16,
+        16
+      ],
+      "s08_sidecar_mask": [
+        16,
+        16
+      ],
+      "s08_sidecar_rows": [
+        16
+      ],
+      "s08_sidecar_cols": [
+        16
+      ],
+      "s08_day": [
+        16,
+        16
+      ],
+      "s08_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s08_pack_target": [
+        16,
+        16
+      ],
+      "s08_pack_mask": [
+        16,
+        16
+      ],
+      "s08_source_LAT_axis": [
+        4051
+      ],
+      "s08_source_LON_axis": [
+        4051
+      ],
+      "s08_derived_rows": [
+        16,
+        16
+      ],
+      "s08_derived_cols": [
+        16,
+        16
+      ],
+      "s08_source_COT": [
+        16,
+        16
+      ],
+      "s08_expected_mask": [
+        16,
+        16
+      ],
+      "s08_expected_target": [
+        16,
+        16
+      ],
+      "s09_target_lat": [
+        16,
+        16
+      ],
+      "s09_target_lon": [
+        16,
+        16
+      ],
+      "s09_sidecar_COT": [
+        16,
+        16
+      ],
+      "s09_sidecar_finite": [
+        16,
+        16
+      ],
+      "s09_sidecar_mask": [
+        16,
+        16
+      ],
+      "s09_sidecar_rows": [
+        16
+      ],
+      "s09_sidecar_cols": [
+        16
+      ],
+      "s09_day": [
+        16,
+        16
+      ],
+      "s09_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s09_pack_target": [
+        16,
+        16
+      ],
+      "s09_pack_mask": [
+        16,
+        16
+      ],
+      "s09_source_LAT_axis": [
+        4051
+      ],
+      "s09_source_LON_axis": [
+        4051
+      ],
+      "s09_derived_rows": [
+        16,
+        16
+      ],
+      "s09_derived_cols": [
+        16,
+        16
+      ],
+      "s09_source_COT": [
+        16,
+        16
+      ],
+      "s09_expected_mask": [
+        16,
+        16
+      ],
+      "s09_expected_target": [
+        16,
+        16
+      ],
+      "s10_target_lat": [
+        16,
+        16
+      ],
+      "s10_target_lon": [
+        16,
+        16
+      ],
+      "s10_sidecar_COT": [
+        16,
+        16
+      ],
+      "s10_sidecar_finite": [
+        16,
+        16
+      ],
+      "s10_sidecar_mask": [
+        16,
+        16
+      ],
+      "s10_sidecar_rows": [
+        16
+      ],
+      "s10_sidecar_cols": [
+        16
+      ],
+      "s10_day": [
+        16,
+        16
+      ],
+      "s10_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s10_pack_target": [
+        16,
+        16
+      ],
+      "s10_pack_mask": [
+        16,
+        16
+      ],
+      "s10_source_LAT_axis": [
+        4051
+      ],
+      "s10_source_LON_axis": [
+        4051
+      ],
+      "s10_derived_rows": [
+        16,
+        16
+      ],
+      "s10_derived_cols": [
+        16,
+        16
+      ],
+      "s10_source_COT": [
+        16,
+        16
+      ],
+      "s10_expected_mask": [
+        16,
+        16
+      ],
+      "s10_expected_target": [
+        16,
+        16
+      ],
+      "s11_target_lat": [
+        16,
+        16
+      ],
+      "s11_target_lon": [
+        16,
+        16
+      ],
+      "s11_sidecar_COT": [
+        16,
+        16
+      ],
+      "s11_sidecar_finite": [
+        16,
+        16
+      ],
+      "s11_sidecar_mask": [
+        16,
+        16
+      ],
+      "s11_sidecar_rows": [
+        16
+      ],
+      "s11_sidecar_cols": [
+        16
+      ],
+      "s11_day": [
+        16,
+        16
+      ],
+      "s11_solar_zenith_deg": [
+        16,
+        16
+      ],
+      "s11_pack_target": [
+        16,
+        16
+      ],
+      "s11_pack_mask": [
+        16,
+        16
+      ],
+      "s11_source_LAT_axis": [
+        4051
+      ],
+      "s11_source_LON_axis": [
+        4051
+      ],
+      "s11_derived_rows": [
+        16,
+        16
+      ],
+      "s11_derived_cols": [
+        16,
+        16
+      ],
+      "s11_source_COT": [
+        16,
+        16
+      ],
+      "s11_expected_mask": [
+        16,
+        16
+      ],
+      "s11_expected_target": [
+        16,
+        16
+      ]
+    }
+  },
+  "source_NC_files_hashed": 8,
+  "pass_count": 12,
+  "missing_source_count": 0,
+  "finished_utc": "2026-09-08T11:16:05.559492+00:00",
+  "elapsed_seconds": 6.515947772189975
+}

@@ -1,0 +1,94 @@
+{
+  "state": "PASS_INDEPENDENT_STATIC_AND_SAVED_HDF_WITNESS_REVIEW",
+  "test_used": false,
+  "models_loaded": false,
+  "source_HDF_reopened": false,
+  "source_Combined_reopened": false,
+  "static_nearest_checks": [
+    {
+      "station": "sili",
+      "independent_method": "unit-sphere Cartesian nearest",
+      "nearest": [
+        163,
+        148
+      ],
+      "patch_center": [
+        8,
+        8
+      ],
+      "distance_km": 1.8114346392878462,
+      "distance_report_difference_km": -3.7059244561987725e-13
+    },
+    {
+      "station": "zhujia",
+      "independent_method": "unit-sphere Cartesian nearest",
+      "nearest": [
+        73,
+        150
+      ],
+      "patch_center": [
+        8,
+        8
+      ],
+      "distance_km": 1.2184450459515173,
+      "distance_report_difference_km": -6.969980148596733e-13
+    }
+  ],
+  "saved_HDF_checks": [
+    {
+      "station": "sili",
+      "channel": 2,
+      "calibrated_equals_saved_full": true,
+      "saved_full_equals_independent_Combined_payload": true,
+      "source_HDF_row_col_equals_static_patch": true,
+      "valid_mask_equals_aux": true,
+      "valid_pixels": 256,
+      "max_abs": 0,
+      "night_zeroing_not_triggered": true
+    },
+    {
+      "station": "sili",
+      "channel": 13,
+      "calibrated_equals_saved_full": true,
+      "saved_full_equals_independent_Combined_payload": true,
+      "source_HDF_row_col_equals_static_patch": true,
+      "valid_mask_equals_aux": true,
+      "valid_pixels": 256,
+      "max_abs": 0,
+      "night_zeroing_not_triggered": true
+    },
+    {
+      "station": "zhujia",
+      "channel": 2,
+      "calibrated_equals_saved_full": true,
+      "saved_full_equals_independent_Combined_payload": true,
+      "source_HDF_row_col_equals_static_patch": true,
+      "valid_mask_equals_aux": true,
+      "valid_pixels": 256,
+      "max_abs": 0,
+      "night_zeroing_not_triggered": true
+    },
+    {
+      "station": "zhujia",
+      "channel": 13,
+      "calibrated_equals_saved_full": true,
+      "saved_full_equals_independent_Combined_payload": true,
+      "source_HDF_row_col_equals_static_patch": true,
+      "valid_mask_equals_aux": true,
+      "valid_pixels": 256,
+      "max_abs": 0,
+      "night_zeroing_not_triggered": true
+    }
+  ],
+  "hashes": {
+    "station_report": "1577561507c381284be9beeb3354d69f9a338f2850d175e570e7b7dac2fa630d",
+    "HDF_report": "5b0a65ae649bf86837f293c13225b6e98b26d49b7b52c44b8fffa15de7e0ad6e",
+    "HDF_values": "c5670773ada99b585570e1f6e049302f952be755d849112d01824e938a8b8a73",
+    "HDF_checker": "adaf368fbdce8e38ca632ce0b8854179c31d6cec3d4bdf70311f863c076a1b2f"
+  },
+  "limits": [
+    "DN-to-LUT calculation reviewed in source code; LUT arrays are not saved, so this pass recomputes saved calibrated/full equality, not calibration from HDF again.",
+    "Four station/channel witnesses at one fixed train target only; original HDF not full-hashed and absolute geolocation not independently calibrated."
+  ],
+  "earlier_attempt": "UTF-8 station-schema read failed under local gbk default before array recompute; failure note retained; this attempt explicitly uses UTF-8"
+}

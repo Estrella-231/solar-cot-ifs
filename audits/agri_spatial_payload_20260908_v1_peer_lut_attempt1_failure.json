@@ -1,0 +1,16 @@
+{
+  "state": "FAILED_BEFORE_LUT_SNAPSHOT_OUTPUT",
+  "stage": "FD first LUT read",
+  "preserved_script": "agri_spatial_payload_20260908_v1_sources/peer_lut_review_attempt1.py",
+  "exception": "AssertionError: lut.shape == (4096,) and lut.dtype == np.dtype('float32')",
+  "followup_metadata_only_result": {
+    "CALChannel02": {"shape": [4096], "dtype": ">f4"},
+    "CALChannel13": {"shape": [4096], "dtype": ">f4"}
+  },
+  "cause": "Native-endian float32 equality rejects the source big-endian 4-byte float dtype.",
+  "repair": "Accept floating kind and 4-byte width with original shape; preserve original LUT dtype in snapshot. No value tolerance, sample, or calibration formula change.",
+  "DN_payload_read": false,
+  "LUT_elements_read_in_failed_attempt": 4096,
+  "test_used": false,
+  "models_loaded": false
+}

@@ -1,0 +1,12 @@
+{
+  "state": "INTERRUPTED_OWN_READ_ONLY_SCALAR_NC_AUDIT",
+  "utc": "2026-09-08T11:14:12.093638+00:00",
+  "script_sha256": "44daab874fc23db1c9e958e56d33ad4e372c1152a449f45520d7c330922cbd5a",
+  "selection_sha256": "ae0cbeab4116ba3452f4f0e329b4ca545844c04fa8ad75457e0b6a9c4b50cb2b",
+  "reason": "Read-only audit interrupted before any completed sample. SIGINT traceback locates execution at independent coordinate np.argmin, not at scalar COT reads. Initial suspicion of repeated compressed-chunk decoding was not confirmed. Replacement uses equivalent nearest-coordinate sorted-axis bracketing and one bounded basic-slice rectangle, preserving selection, coordinates and thresholds.",
+  "original_assets_modified": false,
+  "old_script_snapshot": "cpp_spatial_payload_20260908_v1_scalar_read_script.py",
+  "replacement_output_prefix": "cpp_spatial_payload_20260908_v1_hyperslab",
+  "interruption_traceback_location": "independent_indices: np.argmin along source longitude axis",
+  "performance_cause": "unresolved; do not attribute observed delay solely to NetCDF scalar decoding"
+}

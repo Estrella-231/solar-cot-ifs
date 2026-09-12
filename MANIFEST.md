@@ -51,3 +51,16 @@
 | 2026-09-05 | CPP-source-audit | tests/test_cpp_quality_mask.py | implementation | CPP来源、数值掩膜与空间修正证据 |
 | 2026-09-05 | CPP-source-audit | tests/test_cpp_grid_mapping.py | implementation | CPP来源、数值掩膜与空间修正证据 |
 | 2026-09-05 | CPP-source-audit | audits/cpp_quality_20260905_v2.json | implementation | CPP来源、数值掩膜与空间修正证据 |
+| 2026-09-05 | CPP-repair | scripts/repair_cpp_cache.py | implementation | CPP空间修复与执行记录 |
+| 2026-09-05 | CPP-repair | scripts/load_repaired_cpp.py | implementation | CPP空间修复与执行记录 |
+| 2026-09-05 | CPP-repair | scripts/run_cpp_repair_20260905.sh | implementation | CPP空间修复与执行记录 |
+| 2026-09-05 | CPP-repair | tests/test_repair_cpp_cache.py | implementation | CPP空间修复与执行记录 |
+| 2026-09-05 | CPP-repair | docs/CPP_REPAIR_RUNBOOK_20260905.md | implementation | CPP空间修复与执行记录 |
+| 2026-09-05 | CPP-repair | audits/cpp_repair_smoke_inventory.txt | implementation | CPP空间修复与执行记录 |
+| 2026-09-05 | CPP-repair | scripts/verify_cpp_repair.py | implementation | 修复验收 |
+| 2026-09-05 | CPP-repair | scripts/finalize_cpp_repair_20260905.sh | implementation | 修复验收 |
+| 2026-09-05 | CPP-repair | audits/cpp_repair_smoke_v2_acceptance.json | implementation | 修复验收 |
+| 2026-09-12 | COT/IFS progress update | docs/PROJECT_STATUS_20260912.md | implementation | 服务器位置、PBS资源、当前模型状态、未闭合门禁与下一步 |
+| 2026-09-12 | COT/IFS progress update | findings.md | implementation | 验证限定的COT诊断结论索引 |
+| 2026-09-12 | COT/IFS progress update | docs/AC_COT_COUNTERFACTUAL_RESULTS_20260912.md | implementation | 固定AC反事实前向与四维COT响应 |
+| 2026-09-12 | COT/IFS progress update | docs/WEATHER_HEAD_RESULTS_20260912.md | implementation | 天气分层诊断，未修改主实验 |

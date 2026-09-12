@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "sequences": [
+    20058,
+    16548,
+    22984,
+    7343,
+    20846,
+    25017,
+    6607,
+    1272
+  ],
+  "rows": 145,
+  "steps": 800,
+  "selection": "seed42 uniformly selected training sequences, no outcome-based selection",
+  "gate": "final weighted kt MSE <= half initial for both A and AC",
+  "groups": [
+    {
+      "group": "A",
+      "initial": 0.743828296661377,
+      "final": 0.0004078725178260356,
+      "passed": true,
+      "checkpoint_sha256": "f7f504de5cfe81514025b987724d0af8f420f9d22a677f91c493bcbc22196f61",
+      "predictions_sha256": "69f5578544fb4e5aee43b36952ce56dd321ead65deb74074b5be7b4382b9c0c4",
+      "reload_max_error": 0.0
+    },
+    {
+      "group": "AC",
+      "initial": 0.7475905418395996,
+      "final": 0.0005521633429452777,
+      "passed": true,
+      "checkpoint_sha256": "ff7a8cd5ef65af63e525929818c168732cc00a149c88a4a26d0412dc49a3da1e",
+      "predictions_sha256": "fbd886636d67c9faee47d8eac804041b3fac55c1069964cca0c238b0abc55138",
+      "reload_max_error": 0.0
+    }
+  ]
+}
