@@ -1,0 +1,44 @@
+{
+  "scope": "Hubei cross-region engineering diagnostic only; not Hunan paper evidence and not COT-reference accuracy validation",
+  "input": "Hubei saved common56 13-channel predictions inverse-DDMS-transformed to physical AGRI; exact per-target Hubei geometry from raw channel 15/17/18; fixed Hunan R",
+  "models": [
+    "motion_source",
+    "afno_temporal"
+  ],
+  "sample_count": 5,
+  "canonical_leads_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "patch": "Hubei full crop rows 103:119, cols 118:134; station proxy (8,8)",
+  "selected_visual_case": {
+    "seq_id": "val_000036",
+    "bjt_start": "202404090945"
+  },
+  "aggregate_vs_same_R_on_true_Hubei_AGRI": {
+    "motion_source": {
+      "map_mae_log1p": 0.5334197282791138,
+      "station_mae_log1p": 0.5441365242004395,
+      "local_peak_mae_log1p": 0.6464086771011353
+    },
+    "afno_temporal": {
+      "map_mae_log1p": 0.41882458329200745,
+      "station_mae_log1p": 0.45754995942115784,
+      "local_peak_mae_log1p": 0.46334052085876465
+    }
+  }
+}
