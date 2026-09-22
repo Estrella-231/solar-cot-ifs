@@ -1,0 +1,92 @@
+{
+  "state": "COMPLETE_FIXED_GHI_HEAD_REAL_AGRI_R_SWAP",
+  "test_used": false,
+  "cohort": "same frozen validation rows, GHI/clear labels, station head, image, metadata, forecast COT, normalization and causal masks",
+  "only_mutation": "observed historic AGRI retrieved COT: original R FP32 vs continued R FP32",
+  "history_pair_sha256": "caba510a8f6110535f52b804b0a49005c9477cb0e9553f0b9ffe2f26d889fc9e",
+  "fixed_head_complete_sha256": "dc936ff36fe587eee02bb5526b050bbcfb05c18569b8a90e033527d376a83eb0",
+  "script_sha256": "75041e6071afcb09685b81a7010dd5920823b6af577ed373480356f5f44507fb",
+  "batch": 512,
+  "runs": {
+    "Sili": {
+      "AC_H": {
+        "legacy_bf16": {
+          "ghi_rmse": 165.53762920048032,
+          "sample_count": 49806,
+          "prediction_sha256": "23852dad0c67fa37edbadf5b16f711aa31436d25b8db2255aabb9678303dcb5e",
+          "prior_pred_kt_max_abs_difference": 0.0025495290756225586
+        },
+        "original_fp32": {
+          "ghi_rmse": 165.5407868881447,
+          "sample_count": 49806,
+          "prediction_sha256": "add86b3f96ebaeb9f4d6c741d657e7b2aa31a9dde14be21fd16fcfef39c5abb4"
+        },
+        "continued_fp32": {
+          "ghi_rmse": 165.6152388393291,
+          "sample_count": 49806,
+          "prediction_sha256": "d8ee4710fd298642a6293adc9d09f3c5a84dcc72ca70d09ac2daccd4e4ceff69"
+        },
+        "continued_minus_original_fp32_rmse": 0.07445195118438619
+      },
+      "AC_ST": {
+        "legacy_bf16": {
+          "ghi_rmse": 165.36406799126678,
+          "sample_count": 49806,
+          "prediction_sha256": "2515420afeb928e0b6ba1222e6f740c5510218c3b267a6148994a7a58d65dbe5",
+          "prior_pred_kt_max_abs_difference": 0.002528667449951172
+        },
+        "original_fp32": {
+          "ghi_rmse": 165.36567816979368,
+          "sample_count": 49806,
+          "prediction_sha256": "ad71d8a7e0ca3e19a157eeecddce257278be0e5562d1a3a7796ad31c612a727f"
+        },
+        "continued_fp32": {
+          "ghi_rmse": 165.39351815387414,
+          "sample_count": 49806,
+          "prediction_sha256": "0102a3d1452f7c3ae467c5870df67b666a0e2042cd23eb9c480fae2bde2fe926"
+        },
+        "continued_minus_original_fp32_rmse": 0.02783998408045818
+      }
+    },
+    "Zhujia": {
+      "AC_H": {
+        "legacy_bf16": {
+          "ghi_rmse": 128.67511813414575,
+          "sample_count": 50043,
+          "prediction_sha256": "f520f49c6a5199036e73389c778704330fc4ad1cb63add8b7b86eb79a0a4040e",
+          "prior_pred_kt_max_abs_difference": 0.002621293067932129
+        },
+        "original_fp32": {
+          "ghi_rmse": 128.67506416076003,
+          "sample_count": 50043,
+          "prediction_sha256": "80676bc0258208b2d3966d5f727e7c6ad65396f7de390908213e281bff61ca92"
+        },
+        "continued_fp32": {
+          "ghi_rmse": 128.68661637769569,
+          "sample_count": 50043,
+          "prediction_sha256": "df00a55af7a791ab314f60357210bfa088587ccd1927733ab308e46009c5647a"
+        },
+        "continued_minus_original_fp32_rmse": 0.011552216935655224
+      },
+      "AC_ST": {
+        "legacy_bf16": {
+          "ghi_rmse": 137.42729404405887,
+          "sample_count": 50043,
+          "prediction_sha256": "851f97b75afb20406fc26476c2ae3232d795ba420948784233c227037c1d1e27",
+          "prior_pred_kt_max_abs_difference": 0.002644658088684082
+        },
+        "original_fp32": {
+          "ghi_rmse": 137.4253622520021,
+          "sample_count": 50043,
+          "prediction_sha256": "a3a371eb789c57ad155dcec15a3e2bac889f1ca8e4c0acbd7ce7506c4f43b14c"
+        },
+        "continued_fp32": {
+          "ghi_rmse": 137.4273064918058,
+          "sample_count": 50043,
+          "prediction_sha256": "1220110c07f24e5a7d932a934db201e09ec7f347c32fc0cab30c5f85612f61a8"
+        },
+        "continued_minus_original_fp32_rmse": 0.0019442398037199382
+      }
+    }
+  }
+}

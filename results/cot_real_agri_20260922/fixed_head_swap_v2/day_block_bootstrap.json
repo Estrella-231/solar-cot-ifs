@@ -1,0 +1,61 @@
+{
+  "state": "COMPLETE_FIXED_GHI_R_SWAP_DAY_BOOTSTRAP",
+  "test_used": false,
+  "unit": "BJT initialization calendar day, preserving all same-day station leads",
+  "repetitions": 2000,
+  "seed": 42,
+  "stations": {
+    "Sili": {
+      "AC_H": {
+        "days": 72,
+        "rows": 49806,
+        "old_rmse_wm2": 165.54078688814477,
+        "new_rmse_wm2": 165.61523883932912,
+        "delta_new_minus_old_wm2": 0.07445195118435777,
+        "day_bootstrap_95pct_interval_wm2": [
+          -0.009430908569897412,
+          0.1578731477819459
+        ],
+        "bootstrap_positive_fraction": 0.961
+      },
+      "AC_ST": {
+        "days": 72,
+        "rows": 49806,
+        "old_rmse_wm2": 165.36567816979368,
+        "new_rmse_wm2": 165.3935181538741,
+        "delta_new_minus_old_wm2": 0.027839984080429758,
+        "day_bootstrap_95pct_interval_wm2": [
+          -0.006098952124314394,
+          0.06277947485680711
+        ],
+        "bootstrap_positive_fraction": 0.9405
+      }
+    },
+    "Zhujia": {
+      "AC_H": {
+        "days": 72,
+        "rows": 50043,
+        "old_rmse_wm2": 128.67506416076006,
+        "new_rmse_wm2": 128.68661637769566,
+        "delta_new_minus_old_wm2": 0.01155221693559838,
+        "day_bootstrap_95pct_interval_wm2": [
+          -0.007933300306602576,
+          0.030236417983547526
+        ],
+        "bootstrap_positive_fraction": 0.87
+      },
+      "AC_ST": {
+        "days": 72,
+        "rows": 50043,
+        "old_rmse_wm2": 137.4253622520021,
+        "new_rmse_wm2": 137.42730649180578,
+        "delta_new_minus_old_wm2": 0.0019442398036915165,
+        "day_bootstrap_95pct_interval_wm2": [
+          -0.023837010678525773,
+          0.028054591774280605
+        ],
+        "bootstrap_positive_fraction": 0.5755
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -N hn_real_r_swap
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/pbs_real_agri_r_fixed_ghi_swap_20260922.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+cd "$ROOT"
+hostname
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u scripts/build_real_agri_history_cot_pair_20260922.py \
+  --root "$ROOT" \
+  --candidate "$ROOT/runs/cot_real_agri_highcloud_pilot_seed42_20260922/log_control/best.pt" \
+  --candidate-sha256 18d285c2b1349ca9890c48109b3a149520638674bae69293ff9480938fcfe069 \
+  --output "$ROOT/data/real_agri_history_cot_pair_20260922" --batch 16 \
+  > "$ROOT/real_agri_history_cot_pair_20260922.log" 2>&1
+python -u scripts/eval_fixed_ghi_head_real_agri_r_swap_20260922.py \
+  --root "$ROOT" \
+  --paired-history "$ROOT/data/real_agri_history_cot_pair_20260922" \
+  --output "$ROOT/runs/fixed_ghi_head_real_agri_r_swap_20260922" --batch 512 \
+  > "$ROOT/fixed_ghi_head_real_agri_r_swap_20260922.log" 2>&1

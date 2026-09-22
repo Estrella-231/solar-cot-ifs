@@ -30,3 +30,5 @@ PBS `210251.tc6000` 单卡完成（exit 0，墙钟 1 分 44 秒）。使用相�
 `figures/real_agri_cot_retrieval_cases_20260922/real_agri_cot_retrieval_cases.png` 用**真实目标 AGRI**做假彩色图，按四里站点中心 CPP COT 的晴空、中等、厚云三个预声明区间选取时间中位数样例；并排显示 CPP 参考、两版 R 输出及像元误差。选样不看模型误差，仍只能辅助解释：厚云单例的某些像元新 R 误差增大，与完整验证集厚云 RMSE 的平均改善可以同时成立。图像不含 SimVP 预测云图。
 
 结果文件在 `results/cot_real_agri_20260922/`。论文正文、正式冻结 R 和任何可部署 GHI 路线均未据此更新；真实 AGRI 验证精度提升不等于预测 AGRI 或辐照度精度提升。
+
+后续同样本的中心/邻域逐像元分解与固定 GHI 头替换实验见 `docs/COT_REAL_AGRI_FIXED_GHI_SWAP_20260922.md`。新 R 在真实 AGRI 反演的站点中心、3×3、5×5 范围仍改善，但冻结 GHI 头的四组验证 RMSE 都未改善且差值接近零，因此继续保留原正式 R。
