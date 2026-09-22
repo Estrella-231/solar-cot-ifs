@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N hn_cot_fc_full16
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/pbs_forecast_domain_cot_full16_20260922.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+cd "$ROOT"
+hostname
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u scripts/pack_forecast_domain_cot_full16_20260922.py \
+  --root "$ROOT" --output "$ROOT/data/forecast_domain_cot_full16_20260922" \
+  > "$ROOT/forecast_domain_cot_full16_20260922.pack.log" 2>&1
+python -u scripts/train_forecast_domain_cot_pilot_20260922.py \
+  --root "$ROOT" --pack "$ROOT/data/forecast_domain_cot_full16_20260922" \
+  --output "$ROOT/runs/forecast_domain_cot_full16_seed42_20260922" \
+  --epochs 8 --batch 512 --lr 0.0001 --seed 42 \
+  > "$ROOT/forecast_domain_cot_full16_20260922.train.log" 2>&1

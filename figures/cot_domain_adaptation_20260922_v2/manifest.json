@@ -1,0 +1,36 @@
+{
+  "state": "COMPLETE_COT_DOMAIN_ADAPTATION_VALIDATION_CASE",
+  "test_used": false,
+  "selection": "temporal median among daytime validation station-sequences with all predeclared +60,+120,+180,+240 min CPP-reference targets; no AGRI, COT, GHI, or model-error selection",
+  "station": "Zhujia",
+  "sequence": 2082,
+  "leads_minutes": [
+    60,
+    120,
+    180,
+    240
+  ],
+  "cpp_pack_rows": [
+    16761,
+    16765,
+    16769,
+    16773
+  ],
+  "validation_pack_positions": [
+    44173,
+    44181,
+    44189,
+    44197
+  ],
+  "case_metrics": {
+    "real_train_control": {
+      "case_valid_pixels": 1024,
+      "case_rmse": 1.4160628782984788
+    },
+    "forecast_train_adapt": {
+      "case_valid_pixels": 1024,
+      "case_rmse": 1.40483240977935
+    }
+  },
+  "figure_sha256": "c903b0e3fe044caef7b90d67e73fa29d7a10c8620df6baa9f25f12e9c2bea174"
+}

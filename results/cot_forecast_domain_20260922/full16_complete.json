@@ -1,0 +1,48 @@
+{
+  "state": "COMPLETE_FORECAST_DOMAIN_COT_PAIRED_PILOT",
+  "test_used": false,
+  "arms": {
+    "real_train_control": {
+      "best_epoch": -1,
+      "cot_rmse": 8.913193424800495,
+      "cot_mae": 4.68178258427155,
+      "cot_bias": 0.26315923912943057,
+      "log_huber": 0.050112381564765704,
+      "high_cot_ge30_rmse": 25.338713780460083,
+      "high_cot_ge30_bias": -18.222992338524065,
+      "station_5x5_rmse": 8.996889364198102,
+      "clear_cot_lt0p1_rmse": 2.084340862229182,
+      "valid_pixels": {
+        "all": 22865672,
+        "high": 1047060,
+        "center": 2232476,
+        "clear": 9227049
+      }
+    },
+    "forecast_train_adapt": {
+      "best_epoch": 3,
+      "cot_rmse": 7.709564735051309,
+      "cot_mae": 3.929199660357675,
+      "cot_bias": -0.6747495133082814,
+      "log_huber": 0.04555778989322545,
+      "high_cot_ge30_rmse": 24.976817323091257,
+      "high_cot_ge30_bias": -19.290603038599922,
+      "station_5x5_rmse": 7.5422510113394035,
+      "clear_cot_lt0p1_rmse": 2.013801567364365,
+      "valid_pixels": {
+        "all": 22865672,
+        "high": 1047060,
+        "center": 2232476,
+        "clear": 9227049
+      }
+    }
+  },
+  "forecast_adapt_minus_real_control": {
+    "cot_rmse": -1.203628689749186,
+    "cot_mae": -0.7525829239138755,
+    "high_cot_ge30_rmse": -0.36189645736882525,
+    "station_5x5_rmse": -1.4546383528586988,
+    "clear_cot_lt0p1_rmse": -0.07053929486481669
+  },
+  "note": "Four predeclared leads; validation-only; CPP is retrieval reference, not independent physical truth."
+}
