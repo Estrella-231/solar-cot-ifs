@@ -1,0 +1,42 @@
+{
+  "state": "COMPLETE_PAIRED_VALIDATION_PILOT",
+  "test_used": false,
+  "control": {
+    "best_epoch": 21,
+    "cot_rmse": 4.1687980662553645,
+    "cot_mae": 2.0037279594852175,
+    "cot_bias": 0.24518061566317298,
+    "log_huber": 0.019021527292796606,
+    "high_cot_ge30_rmse": 11.288959275288988,
+    "high_cot_ge30_bias": -3.6771584883468407,
+    "station_5x5_rmse": 3.881899755967853,
+    "clear_cot_lt0p1_rmse": 0.8474236234399259,
+    "valid_pixels": {
+      "all": 1664013,
+      "high": 75843,
+      "center": 162454,
+      "clear": 648648
+    }
+  },
+  "high_cloud_weighted": {
+    "best_epoch": -1,
+    "cot_rmse": 4.246164397624913,
+    "cot_mae": 2.03225686915269,
+    "cot_bias": 0.08917112377108082,
+    "log_huber": 0.019414929198316434,
+    "high_cot_ge30_rmse": 11.949837608746112,
+    "high_cot_ge30_bias": -4.553352184242088,
+    "station_5x5_rmse": 3.943565921165888,
+    "clear_cot_lt0p1_rmse": 0.7711762542248346,
+    "valid_pixels": {
+      "all": 1664013,
+      "high": 75843,
+      "center": 162454,
+      "clear": 648648
+    }
+  },
+  "candidate_minus_control_cot_rmse": 0.07736633136954829,
+  "candidate_minus_control_high_rmse": 0.6608783334571235,
+  "candidate_minus_control_station_5x5_rmse": 0.06166616519803503,
+  "note": "Both arms train and validate on real observed AGRI; validation-only selection; no independent test or GHI claim."
+}
