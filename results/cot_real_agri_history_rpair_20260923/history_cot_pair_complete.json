@@ -1,0 +1,51 @@
+{
+  "state": "COMPLETE_REAL_AGRI_HISTORY_COT_TRAINVAL_PAIR",
+  "test_used": false,
+  "train_sequences": 27675,
+  "validation_sequences": 4258,
+  "sequence_source": "same frozen-Hunan-S real observed AGRI history loader; 8 frames ending at init",
+  "forward_precision": "FP32, autocast disabled",
+  "normalization": "same frozen original-R train-only AGRI/geometry normalization for both retrievers",
+  "original_R_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "continued_R_sha256": "18d285c2b1349ca9890c48109b3a149520638674bae69293ff9480938fcfe069",
+  "builder_sha256": "15b20ead9d1de32455dfa50998c57da71a41b52b3a8b1851bf8a518fff04d743",
+  "batch": 16,
+  "arms": {
+    "original_R": {
+      "checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+      "splits": {
+        "train": {
+          "sequence_slots": 27675,
+          "source_sequences_written": 27675,
+          "head_sequences_required": 23789,
+          "sha256": "c13fc38b1c346078c8e5a689a9190fd084480b24050aada02f921414ab10e581"
+        },
+        "val": {
+          "sequence_slots": 4258,
+          "source_sequences_written": 4258,
+          "head_sequences_required": 3824,
+          "sha256": "7f73f6c6a0e000e64afcaf6cfe4c947f6ad897d9a9ead65d0c4c148858100fb1"
+        }
+      },
+      "state": "COMPLETE_HISTORY_COT_TRAJECTORY_SIDECAR"
+    },
+    "continued_R": {
+      "checkpoint_sha256": "18d285c2b1349ca9890c48109b3a149520638674bae69293ff9480938fcfe069",
+      "splits": {
+        "train": {
+          "sequence_slots": 27675,
+          "source_sequences_written": 27675,
+          "head_sequences_required": 23789,
+          "sha256": "cbb87a0725a76e520df45d605c7ffdea5a8640768254d1f3e5b95b296ce50c72"
+        },
+        "val": {
+          "sequence_slots": 4258,
+          "source_sequences_written": 4258,
+          "head_sequences_required": 3824,
+          "sha256": "71397af9944b39eaa3948537e3e72d0e7b8b80fc44382b3d2b6441198116b230"
+        }
+      },
+      "state": "COMPLETE_HISTORY_COT_TRAJECTORY_SIDECAR"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N cot_v5_commonnorm
+#PBS -q gpu
+#PBS -l nodes=1:ppn=12:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/cot_v5_commonnorm_20260923.log
+
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+FORECAST="$ROOT/data/forecast_cot_trajectory_trainval_20260918_v1"
+HISTORY="$ROOT/data/history_cot_trajectory_real_agri_rpair_20260923/continued_R"
+ORIGINAL_CONTRACT="$ROOT/runs/causal_cot_v5_real_agri_Rpair_seed42_20260923/original_R/execution_contract.json"
+OUT="$ROOT/runs/causal_cot_v5_real_agri_Rpair_seed42_commonnorm_20260923/continued_R"
+test -f "$FORECAST/audit.json"
+test -f "$HISTORY/audit.json"
+test -f "$ROOT/data/solarresnet_v5_input_trainval_20260918_v1/audit.json"
+test -f "$ORIGINAL_CONTRACT"
+test ! -e "$OUT"
+cd "$ROOT"
+echo "GPU=$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py --root "$ROOT" --forecast-dir "$FORECAST" --history-dir "$HISTORY" --out "$OUT" --epochs 10 --batch 0 --seed 42 --cot-normalization-json "$ORIGINAL_CONTRACT" --allow-unverified-cpp
+echo COT_V5_COMMON_NORMALIZATION_RETRAIN_COMPLETE

@@ -1,0 +1,31 @@
+{
+  "trials": [
+    {
+      "batch": 256,
+      "rows_per_second": 4523.602729782775,
+      "peak_GiB": 4.447072982788086
+    },
+    {
+      "batch": 512,
+      "rows_per_second": 6815.08263122411,
+      "peak_GiB": 7.355925559997559
+    },
+    {
+      "batch": 1024,
+      "rows_per_second": 7486.403076730466,
+      "peak_GiB": 13.175583839416504
+    },
+    {
+      "batch": 1536,
+      "rows_per_second": 7683.430433621242,
+      "peak_GiB": 18.995091438293457
+    },
+    {
+      "batch": 2048,
+      "rows_per_second": 393.3555814403508,
+      "peak_GiB": 19.060749053955078
+    }
+  ],
+  "training_batch": 1536,
+  "selection": "largest profiled batch below 80 percent allocated-memory threshold"
+}

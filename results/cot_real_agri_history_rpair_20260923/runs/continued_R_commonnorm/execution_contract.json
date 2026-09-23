@@ -1,0 +1,33 @@
+{
+  "state": "EXPLORATORY_CAUSAL_COT_TRAJECTORY_CPP_PROVENANCE_UNRESOLVED",
+  "test_used": false,
+  "groups": [
+    "A_ST",
+    "AC_H",
+    "AC_F",
+    "AC_ST"
+  ],
+  "seed": 42,
+  "epochs_max": 10,
+  "batch": 1536,
+  "frozen_S": true,
+  "frozen_R": true,
+  "head": "SolarResNet image trunk plus causal dilated 3D COT trajectory fusion",
+  "forbidden": "no full-patch average; no COT statistics; no post-target forecast map; no reference CPP",
+  "cot_normalization": {
+    "fit": "one scalar over only unique training sequences and all COT pixels/times",
+    "mean": 2.1315194058200513,
+    "std": 1.5542820660267898,
+    "count": 292319232
+  },
+  "cot_normalization_source": {
+    "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/causal_cot_v5_real_agri_Rpair_seed42_20260923/original_R/execution_contract.json",
+    "sha256": "a2fccf0debd7a6caace2f212790b5b15da5768093038abc0f4a711f14dcda9d9"
+  },
+  "loss": "mean(w*((pred_kt*clear-ghi)/1000)^2)",
+  "base_pack_audit_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+  "input_sidecar_audit_sha256": "9beb2f628593e73962092ce861c5748fbcddb26eaaf24b1a7cc0017417d311f9",
+  "forecast_sidecar_audit_sha256": "d8a408d08fbf69b25c336b65923feabf31fbd403a1549c3592c9083df5c377e3",
+  "history_sidecar_audit_sha256": "f4e2fbb06ec890b7070a01b82193436c5014926f3baf545e96bdaf1afed6c05d",
+  "script_sha256": "97f34e5784f3e28e29828b337e148ce7b4c1f2bd8a793eff44d7a2f0b3322aac"
+}
