@@ -318,5 +318,3 @@ if __name__ == "__main__":
         raise RuntimeError("requires explicit exploratory CPP authorization")
     main(args.root, args.forecast_dir, args.history_dir, args.out, args.epochs, args.batch, args.seed,
          args.cot_normalization_json)
-
-
