@@ -8,6 +8,8 @@ Status: exploratory validation-only retraining; no test split was used.
 
 Does replacing the original real-AGRI-to-COT retriever with its continued/improved checkpoint change the value of historical COT for the same-from-scratch GHI head? The comparison uses the same Hunan frozen-SimVP historical AGRI frames, rows, labels, station inputs, forecast-COT bank, head, optimizer, seed, and training budget. Only the historical COT sidecar source changes.
 
+The selected continued-R checkpoint was trained on real observed AGRI, but its supervision is the CPP reference COT product and its objective is pixelwise COT loss—not GHI error or independently measured physical COT. It is the `log_control` continuation of the old R; the separate `high_cloud_weighted` candidate did not beat its initial checkpoint and was not selected. On real AGRI validation, the selected continuation reduced full-grid COT RMSE from 4.2465 to 4.1688 and COT≥30 RMSE from 11.9531 to 11.2890, while clear-sky COT RMSE increased from 0.7711 to 0.8474; 2025-09 aggregate error also worsened. These COT results use the same validation period involved in model selection and do not by themselves predict GHI impact. See `docs/COT_REAL_AGRI_HIGHCLOUD_PILOT_20260922.md` for the retrieval audit.
+
 ## Historical COT sidecars
 
 The FP32 sidecar builder reads 8 observed AGRI frames ending at each initialization time through the audited frozen-Hunan-S loader. It writes train and validation COT separately for the original and continued R checkpoints. Each route uses the same original-R train-only AGRI/geometry normalization. There are 27,675 training and 4,258 validation sequence slots; no test sequences are included.
