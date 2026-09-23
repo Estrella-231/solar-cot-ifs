@@ -24,4 +24,6 @@ runs/causal_cot_v5_real_agri_Rpair_seed42_20260923/original_R/
 runs/causal_cot_v5_real_agri_Rpair_seed42_20260923/continued_R/
 ```
 
+独立验证审计入口为 `scripts/audit_real_agri_history_r_head_retrain_pair_20260923.py`：它核对两边逐行 pack 键、真值、晴空值、站点和 lead，并从保存的 `pred_kt` 用 FP64 重算指标；对 `A_ST/AC_F` 做不依赖历史 R 的 placebo 核验；对两站等权 RMSE 报告初始化日成组 bootstrap 区间。
+
 当前验证结果、样本/标签独立审计、初始化日 bootstrap 和模型权重哈希将在作业完成后补入本记录。测试集维持关闭；pilot 完成后先审计逐样本预测和同 cohort，再决定是否扩大 seeds 或训练轮数。
