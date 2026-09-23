@@ -1,0 +1,44 @@
+#!/bin/bash
+#PBS -N hn_real_r_head_pair
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/pbs_real_agri_r_history_retrain_pair_20260923.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+CANDIDATE="$ROOT/runs/cot_real_agri_highcloud_pilot_seed42_20260922/log_control/best.pt"
+HISTORY="$ROOT/data/history_cot_trajectory_real_agri_rpair_20260923"
+FORECAST="$ROOT/data/forecast_cot_trajectory_trainval_20260918_v1"
+RUN="$ROOT/runs/causal_cot_v5_real_agri_Rpair_seed42_20260923"
+test -f "$FORECAST/audit.json"
+test ! -e "$HISTORY"
+test ! -e "$RUN"
+cd "$ROOT"
+hostname
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u scripts/build_real_agri_history_cot_trainval_pair_20260923.py \
+  --root "$ROOT" --candidate "$CANDIDATE" \
+  --candidate-sha256 18d285c2b1349ca9890c48109b3a149520638674bae69293ff9480938fcfe069 \
+  --output "$HISTORY" --batch 16 \
+  > "$ROOT/build_real_agri_history_cot_trainval_pair_20260923.log" 2>&1
+test -f "$HISTORY/complete.json"
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py \
+  --root "$ROOT" --forecast-dir "$FORECAST" \
+  --history-dir "$HISTORY/original_R" --out "$RUN/original_R" \
+  --epochs 10 --batch 1536 --seed 42 --allow-unverified-cpp \
+  > "$ROOT/train_cot_v5_original_R_retrained_20260923.log" 2>&1
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py \
+  --root "$ROOT" --forecast-dir "$FORECAST" \
+  --history-dir "$HISTORY/continued_R" --out "$RUN/continued_R" \
+  --epochs 10 --batch 1536 --seed 42 --allow-unverified-cpp \
+  > "$ROOT/train_cot_v5_continued_R_retrained_20260923.log" 2>&1
+echo REAL_AGRI_HISTORY_COT_RPAIR_HEAD_RETRAIN_PILOT_COMPLETE
