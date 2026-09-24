@@ -16,7 +16,8 @@ Station RMSE (Sili/Zhujia) is A0 163.557/131.720, AH 164.323/133.380,
 AI 164.431/133.116, and O_diag 140.834/119.384 W/m². Lower is better.
 The small AI−AH difference changes sign after +150 min in the pooled
 lead-wise readout; the separately trained heads and single seed prevent a
-mechanistic attribution from that pattern alone.
+mechanistic attribution from that pattern alone. AI−O_diag pooled lead-wise
+RMSE widens from **5.32 W/m² at +15 min** to **31.13 W/m² at +240 min**.
 
 A paired bootstrap over the 72 **initialization dates** in the validation
 period (2,000 fixed-seed replicates) gives a 95% percentile interval of
