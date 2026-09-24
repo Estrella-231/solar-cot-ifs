@@ -25,7 +25,7 @@
 1. `qstat -u slfu` 计入全部未结束状态（R/Q/H等），未结束任务数达到3不得 `qsub`；同时核对当前GPU总数不超过8。禁止停掉其他任务让路。
 2. 核验 SimVP `training_complete.json`、best 权重哈希及 job `210506.tc6000` 最终状态。当前 best 不能提前冻结为正式 S。
 3. 仅在正式 SimVP 完成后，提交已通过 `bash -n`/`py_compile` 的 `scripts/run_cot_dynamics_geometry24_bank_20260924.pbs`，用一张卡、batch16 生成独立 train/val SimVP→R COT 与13+3通道预测图 bank，并在同一作业内按原 GHI 行键打包修复版图像 sidecar；以两份 `complete.json`、sidecar `audit.json`、哈希和序列索引为准。
-4. 两份 bank 和 sidecar 完成后，提交 `scripts/run_cot_dynamics_ghi_b1_20260924.pbs`，以同头、同样本、同种子训练 A0/AH/AI。若 oracle train/val 都完整且 B1 训练完成，再提交 `scripts/run_cot_dynamics_ghi_oracle_20260924.pbs`，强制重用 AI 的批量、COT 标准化及图像 sidecar 训练 O_diag；只可单列诊断。
+4. 两份 SimVP bank、sidecar 和 oracle train/val bank 完成后，提交 `scripts/run_cot_dynamics_ghi_b1_20260924.pbs`；同一作业先以同头、同样本、同种子训练 A0/AH/AI，再强制重用 AI 的批量、COT 标准化及图像 sidecar 训练 O_diag，最后从保存预测重算配对指标。O_diag 只可单列诊断。`run_cot_dynamics_ghi_oracle_20260924.pbs` 仅作独立重跑备份，不与组合脚本同时提交。
 5. `scripts/evaluate_geometry24_cot_ghi_pair_20260924.py` 必须从保存的预测和相同 `pack_row` 重算两站等权 GHI RMSE、MAE、bias、16 lead。若 O_diag 在匹配条件下无明确潜力，先查 R/H/标签对应，停止 E 扩展；若有，再解决上游 COT halo 门禁，不能用 P16 越界零填充伪装晴空。
 
 所有新建脚本原件位于本仓库 `scripts/`，已用的服务器副本位于 `experiments/cot_dynamics_20260924/scripts/`。旧AFNO-COT bank 采用 `geos[:16]`，把历史几何错配给未来图；旧配对GHI差值不得当新结果。论文中不要写服务器路径、作业号或修复过程。
