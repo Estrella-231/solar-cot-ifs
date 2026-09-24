@@ -1,0 +1,74 @@
+{
+  "arms_equal_station_rmse_wm2": {
+    "A0": 147.63853406138435,
+    "AH": 148.85178384060814,
+    "AI": 148.77313618142358,
+    "O_diag": 130.10875960511595
+  },
+  "comparisons": {
+    "AH_minus_A0": {
+      "bootstrap_percentile_95_ci_wm2": [
+        -1.034561644048327,
+        3.678157287137808
+      ],
+      "fraction_of_draws_below_zero": 0.1645,
+      "point_equal_station_rmse_wm2": 1.213249779223787
+    },
+    "AI_minus_A0": {
+      "bootstrap_percentile_95_ci_wm2": [
+        -0.49769626286975993,
+        2.787173704600224
+      ],
+      "fraction_of_draws_below_zero": 0.093,
+      "point_equal_station_rmse_wm2": 1.1346021200392329
+    },
+    "AI_minus_AH": {
+      "bootstrap_percentile_95_ci_wm2": [
+        -2.3013408462321245,
+        2.0484551307562127
+      ],
+      "fraction_of_draws_below_zero": 0.5175,
+      "point_equal_station_rmse_wm2": -0.07864765918455419
+    },
+    "O_diag_minus_A0": {
+      "bootstrap_percentile_95_ci_wm2": [
+        -21.484236103240896,
+        -13.639122981862085
+      ],
+      "fraction_of_draws_below_zero": 1.0,
+      "point_equal_station_rmse_wm2": -17.5297744562684
+    },
+    "O_diag_minus_AH": {
+      "bootstrap_percentile_95_ci_wm2": [
+        -23.54614759245238,
+        -14.175124974249721
+      ],
+      "fraction_of_draws_below_zero": 1.0,
+      "point_equal_station_rmse_wm2": -18.743024235492186
+    },
+    "O_diag_minus_AI": {
+      "bootstrap_percentile_95_ci_wm2": [
+        -23.06158344021134,
+        -14.327321365580877
+      ],
+      "fraction_of_draws_below_zero": 1.0,
+      "point_equal_station_rmse_wm2": -18.66437657630763
+    }
+  },
+  "date_max": "2025-09-10",
+  "date_min": "2025-07-01",
+  "dates": 72,
+  "interpretation": "validation initialization-date resampling only; excludes training-seed and independent-test uncertainty",
+  "paired_metrics_sha256": "beed1e4d6ea327919ecbf59bcc72515bd91d0244ba0ee3390e26688bf542a9e6",
+  "paired_predictions_sha256": "7ce2ee6931f0537172d0c7260f596001fa95eef35b80014e3514b5e3832c512d",
+  "replicates": 2000,
+  "rows_sha256": "01587fda1acc500845e3b2fc5d1e0cc2f8028330f9b543b27b6e9d01fb8ddcd0",
+  "seed": 20260924,
+  "state": "COMPLETE_EXPLORATORY_PAIRED_INIT_DATE_BOOTSTRAP",
+  "station_rows": [
+    49806,
+    50043
+  ],
+  "test_used": false,
+  "validation_rows": 99849
+}

@@ -1,0 +1,552 @@
+{
+  "state": "COMPLETE_EXPLORATORY_CAUSAL_COT_TRAJECTORY",
+  "test_used": false,
+  "groups": [
+    "A_ST",
+    "AC_H",
+    "AC_ST"
+  ],
+  "seed": 42,
+  "epochs_max": 10,
+  "batch": 1536,
+  "frozen_S": true,
+  "frozen_R": true,
+  "backbone": "geometry24 SimVP best checkpoint",
+  "future_cot_kind": "simvp",
+  "deployable": true,
+  "group_meanings": {
+    "A_ST": "A0: zero history/future COT",
+    "AC_H": "AH: history COT only",
+    "AC_ST": "AI: history plus SimVP forecast COT"
+  },
+  "head": "SolarResNet image trunk plus causal dilated 3D COT trajectory fusion",
+  "forbidden": "no full-patch average; no COT statistics; no post-target forecast map; no reference CPP",
+  "cot_normalization": {
+    "fit": "one scalar over only unique training sequences and all COT pixels/times",
+    "mean": 2.1132889255816827,
+    "std": 1.537612549793448,
+    "count": 292319232
+  },
+  "cot_normalization_source": "fitted from this route train split only",
+  "loss": "mean(w*((pred_kt*clear-ghi)/1000)^2)",
+  "base_pack_audit_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+  "input_sidecar_audit_sha256": "452fffa5dd674c70126c6a55a7cbbd0140ddcdb5e1d05f4e7c318686315766ae",
+  "forecast_train_complete_sha256": "8e1880d5f987e3a061276bad288f6636a45b1f843da6c718355e11851751d9a5",
+  "forecast_val_complete_sha256": "c7e96cd340bd2bb61541f9fc39b68b834b1d4f62847221208b010a96b5379a31",
+  "history_sidecar_audit_sha256": "2f60b81d4bc7694a7a97ee95ba6f56f26a44ab99009f5af8cd949c4f26d37acd",
+  "head_model_code_sha256": "9bd2be0b6fe97060f3ead000830cd82b5a6928a1c25e789cf88701c7e0652f4e",
+  "script_sha256": "d655327b8095cc28113364b44083863c4736577584b0d4faba165b125d4640f5",
+  "profile": {
+    "trials": [
+      {
+        "batch": 256,
+        "rows_per_second": 4669.380527881497,
+        "peak_GiB": 4.447072982788086
+      },
+      {
+        "batch": 512,
+        "rows_per_second": 7042.309345355992,
+        "peak_GiB": 7.355925559997559
+      },
+      {
+        "batch": 1024,
+        "rows_per_second": 7753.483875316399,
+        "peak_GiB": 13.175583839416504
+      },
+      {
+        "batch": 1536,
+        "rows_per_second": 7766.3442496930265,
+        "peak_GiB": 18.995091438293457
+      },
+      {
+        "batch": 2048,
+        "rows_per_second": 395.139587487913,
+        "peak_GiB": 19.060749053955078
+      }
+    ],
+    "training_batch": 1536,
+    "selection": "highest measured row throughput below 80 percent allocated-memory threshold"
+  },
+  "station_training": "one independently initialized head per station",
+  "runs": {
+    "Sili": {
+      "A_ST": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 163.55741016156674,
+        "sample_count": 49806,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.021447890064869572,
+            "ghi_rmse": 163.55741016156674,
+            "sample_count": 49806,
+            "seconds": 33.989609813084826
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.01840686422558424,
+            "ghi_rmse": 180.97106090478127,
+            "sample_count": 49806,
+            "seconds": 33.603710061870515
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.018105820944557222,
+            "ghi_rmse": 174.3479950005439,
+            "sample_count": 49806,
+            "seconds": 33.51517373183742
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.0165734818256647,
+            "ghi_rmse": 169.46979020518836,
+            "sample_count": 49806,
+            "seconds": 33.53662106581032
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.014756171861895814,
+            "ghi_rmse": 171.06064194603675,
+            "sample_count": 49806,
+            "seconds": 33.67143353796564
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.014231892078472854,
+            "ghi_rmse": 181.68171157929683,
+            "sample_count": 49806,
+            "seconds": 33.52861132589169
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.012694762507649995,
+            "ghi_rmse": 175.43208667838678,
+            "sample_count": 49806,
+            "seconds": 33.52363404002972
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.011895149816498852,
+            "ghi_rmse": 179.1265437134869,
+            "sample_count": 49806,
+            "seconds": 33.619449572172016
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.011063530943152725,
+            "ghi_rmse": 179.65226958543008,
+            "sample_count": 49806,
+            "seconds": 33.6281219269149
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.010422810036596999,
+            "ghi_rmse": 180.24808956569527,
+            "sample_count": 49806,
+            "seconds": 33.51288217701949
+          }
+        ],
+        "checkpoint_sha256": "154c8242bdd3defce49684a220315ed38d7b23eb346e7dc54f2b10e05b4406a4",
+        "predictions_sha256": "1bc42f538db5a3223ac27d563344a8abb47a41d7f90a6876755f8e4943e71738"
+      },
+      "AC_H": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 164.32343589633797,
+        "sample_count": 49806,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.02140769827102945,
+            "ghi_rmse": 164.32343589633797,
+            "sample_count": 49806,
+            "seconds": 34.09883921779692
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.0184487450885851,
+            "ghi_rmse": 168.03865970121936,
+            "sample_count": 49806,
+            "seconds": 33.624974271981046
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.017366843950328906,
+            "ghi_rmse": 181.24700526644787,
+            "sample_count": 49806,
+            "seconds": 33.58166916389018
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.016513300876324976,
+            "ghi_rmse": 166.26556018889949,
+            "sample_count": 49806,
+            "seconds": 33.522895416943356
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.014754277315519223,
+            "ghi_rmse": 168.91501060755536,
+            "sample_count": 49806,
+            "seconds": 33.54787232214585
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.013744718348994676,
+            "ghi_rmse": 176.79019510366743,
+            "sample_count": 49806,
+            "seconds": 33.61025146394968
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.01283270321701993,
+            "ghi_rmse": 178.6428759869207,
+            "sample_count": 49806,
+            "seconds": 33.48410140001215
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.01179835815615732,
+            "ghi_rmse": 201.49942295121278,
+            "sample_count": 49806,
+            "seconds": 33.48887291084975
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.01108891021269922,
+            "ghi_rmse": 176.3202018796411,
+            "sample_count": 49806,
+            "seconds": 33.50141896400601
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.010318357851798526,
+            "ghi_rmse": 179.1946239404596,
+            "sample_count": 49806,
+            "seconds": 33.599677346879616
+          }
+        ],
+        "checkpoint_sha256": "6b7104dbf6b87f57d5182c032ff4a1dd73757aa489b6908389f5d4145e43f752",
+        "predictions_sha256": "a658581bb6f762868755da558dbb202d21c31f7d0a0c1e2ad838f3c23bfcde08"
+      },
+      "AC_ST": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 164.43058902516412,
+        "sample_count": 49806,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.021473047399427125,
+            "ghi_rmse": 164.43058902516412,
+            "sample_count": 49806,
+            "seconds": 34.0036404968705
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.01839093292401191,
+            "ghi_rmse": 168.6420430133578,
+            "sample_count": 49806,
+            "seconds": 33.53627933887765
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.01745987381605164,
+            "ghi_rmse": 191.64850740700638,
+            "sample_count": 49806,
+            "seconds": 33.64206559001468
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.015915589032020536,
+            "ghi_rmse": 171.31407150748691,
+            "sample_count": 49806,
+            "seconds": 33.609276845818385
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.014755425150870444,
+            "ghi_rmse": 176.1120319057292,
+            "sample_count": 49806,
+            "seconds": 33.53661210089922
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.014539264941989219,
+            "ghi_rmse": 190.4665939475483,
+            "sample_count": 49806,
+            "seconds": 33.504942558007315
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.012730810861251966,
+            "ghi_rmse": 182.2305178692019,
+            "sample_count": 49806,
+            "seconds": 33.66757129295729
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.011736738923485845,
+            "ghi_rmse": 189.09764863826328,
+            "sample_count": 49806,
+            "seconds": 33.507432823069394
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.01103832870014654,
+            "ghi_rmse": 184.86413108670888,
+            "sample_count": 49806,
+            "seconds": 33.53412598418072
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.010218671461904251,
+            "ghi_rmse": 187.06562383782935,
+            "sample_count": 49806,
+            "seconds": 33.548826517071575
+          }
+        ],
+        "checkpoint_sha256": "91238391bf1ee319118d18eb2bb167d142344736cc218803be6590c7be0e6d32",
+        "predictions_sha256": "81c2e050f5411a3c2ce8961971e6b4143b19bd9c3e07b5543ab2a9ff4c100170"
+      }
+    },
+    "Zhujia": {
+      "A_ST": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 131.71965796120202,
+        "sample_count": 50043,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.014858958457347133,
+            "ghi_rmse": 131.71965796120202,
+            "sample_count": 50043,
+            "seconds": 38.972209659870714
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.011197761124589643,
+            "ghi_rmse": 140.23047995714637,
+            "sample_count": 50043,
+            "seconds": 38.653709487989545
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.00939628647453679,
+            "ghi_rmse": 148.79417069004322,
+            "sample_count": 50043,
+            "seconds": 38.67883610888384
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.008219931363503095,
+            "ghi_rmse": 146.45300069327382,
+            "sample_count": 50043,
+            "seconds": 38.71091444394551
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.007133226487179519,
+            "ghi_rmse": 145.53087192919045,
+            "sample_count": 50043,
+            "seconds": 38.631089546950534
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.006335607942296483,
+            "ghi_rmse": 145.1680822778149,
+            "sample_count": 50043,
+            "seconds": 38.6545812538825
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.005595153091131696,
+            "ghi_rmse": 144.42578061296587,
+            "sample_count": 50043,
+            "seconds": 38.6896809451282
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.0051119925116085456,
+            "ghi_rmse": 155.9716785297713,
+            "sample_count": 50043,
+            "seconds": 38.573352430947125
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.0044361016782907105,
+            "ghi_rmse": 153.34835554500523,
+            "sample_count": 50043,
+            "seconds": 38.59277719887905
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.0042320623026962465,
+            "ghi_rmse": 155.639430874958,
+            "sample_count": 50043,
+            "seconds": 38.69792896695435
+          }
+        ],
+        "checkpoint_sha256": "14ed4ec5be907c448b66b51861e52f460ab4b6b7abac160326a7478cb944cb5e",
+        "predictions_sha256": "625e1bf287ef2adf7d4e5ab360a84ff04a1f9d25159c34c2fe784ca91ecaf314"
+      },
+      "AC_H": {
+        "best_epoch_0based": 1,
+        "ghi_rmse": 133.38013178487833,
+        "sample_count": 50043,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.014940728015837137,
+            "ghi_rmse": 137.8726226544104,
+            "sample_count": 50043,
+            "seconds": 39.18222536705434
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.011207821804530843,
+            "ghi_rmse": 133.38013178487833,
+            "sample_count": 50043,
+            "seconds": 38.57675377209671
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.00944663527337982,
+            "ghi_rmse": 144.5346254393062,
+            "sample_count": 50043,
+            "seconds": 38.708911896916106
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.00834970559827999,
+            "ghi_rmse": 149.97660604133065,
+            "sample_count": 50043,
+            "seconds": 38.6818939470686
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.007074454016573221,
+            "ghi_rmse": 148.371059956248,
+            "sample_count": 50043,
+            "seconds": 38.59020318207331
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.006245951138578762,
+            "ghi_rmse": 147.11669382746487,
+            "sample_count": 50043,
+            "seconds": 38.77901166584343
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.005563818353069538,
+            "ghi_rmse": 148.9501852268073,
+            "sample_count": 50043,
+            "seconds": 38.880324569996446
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.004903099127999426,
+            "ghi_rmse": 154.2180187093687,
+            "sample_count": 50043,
+            "seconds": 38.80891822488047
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.004448827449400475,
+            "ghi_rmse": 147.98930408030222,
+            "sample_count": 50043,
+            "seconds": 38.64487120392732
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.004162252195913033,
+            "ghi_rmse": 151.30836172374745,
+            "sample_count": 50043,
+            "seconds": 38.7024451920297
+          }
+        ],
+        "checkpoint_sha256": "d1ba7e3c42df99128d22bb4eeec72cc1c419392c6d6ceaa2b1c7a4c3855516d5",
+        "predictions_sha256": "182b70c9f59dcfdfa42695be944070fad203ccffa7e246e61ac8e8c9ff9e4bf7"
+      },
+      "AC_ST": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 133.11568333768304,
+        "sample_count": 50043,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.014995919822121504,
+            "ghi_rmse": 133.11568333768304,
+            "sample_count": 50043,
+            "seconds": 39.07129965303466
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.011238927971797603,
+            "ghi_rmse": 137.66802638974562,
+            "sample_count": 50043,
+            "seconds": 38.639421972911805
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.009398649152864943,
+            "ghi_rmse": 150.46402149387285,
+            "sample_count": 50043,
+            "seconds": 38.686516816029325
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.008337847825737973,
+            "ghi_rmse": 155.6619873900557,
+            "sample_count": 50043,
+            "seconds": 38.593993437010795
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.007105526113025849,
+            "ghi_rmse": 142.66893687424584,
+            "sample_count": 50043,
+            "seconds": 38.605947867035866
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.006236404584997535,
+            "ghi_rmse": 146.4749328209059,
+            "sample_count": 50043,
+            "seconds": 38.698709707008675
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.0054716341549858995,
+            "ghi_rmse": 152.66230870595288,
+            "sample_count": 50043,
+            "seconds": 38.66528490395285
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.0049417357519446784,
+            "ghi_rmse": 159.7512346228356,
+            "sample_count": 50043,
+            "seconds": 38.635630181990564
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.00441673301769815,
+            "ghi_rmse": 154.3524999806067,
+            "sample_count": 50043,
+            "seconds": 38.681941012851894
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.003993551409004448,
+            "ghi_rmse": 151.0765752279397,
+            "sample_count": 50043,
+            "seconds": 38.665937987854704
+          }
+        ],
+        "checkpoint_sha256": "3c298233518842bfedb92fcc025d6b495c3bb29c181f512f198a8a0a7eebf14c",
+        "predictions_sha256": "072fe399b71c83f262b48f54f1ba9d5d23e5b9aaf0d867a1be98e609edd6da9e"
+      }
+    }
+  },
+  "next": "Audit saved paired validation outputs before any seed expansion, IFS, or test."
+}

@@ -1,0 +1,237 @@
+{
+  "state": "COMPLETE_EXPLORATORY_CAUSAL_COT_TRAJECTORY",
+  "test_used": false,
+  "groups": [
+    "AC_ST"
+  ],
+  "seed": 42,
+  "epochs_max": 10,
+  "batch": 1536,
+  "frozen_S": true,
+  "frozen_R": true,
+  "backbone": "geometry24 SimVP best checkpoint",
+  "future_cot_kind": "oracle",
+  "deployable": false,
+  "group_meanings": {
+    "A_ST": "A0: zero history/future COT",
+    "AC_H": "AH: history COT only",
+    "AC_ST": "AI: history plus SimVP forecast COT"
+  },
+  "head": "SolarResNet image trunk plus causal dilated 3D COT trajectory fusion",
+  "forbidden": "no full-patch average; no COT statistics; no post-target forecast map; no reference CPP",
+  "cot_normalization": {
+    "fit": "one scalar over only unique training sequences and all COT pixels/times",
+    "mean": 2.1132889255816827,
+    "std": 1.537612549793448,
+    "count": 292319232
+  },
+  "cot_normalization_source": {
+    "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_dynamics_20260924/ghi_b1_simvp_geometry24_seed42_v1/execution_contract.json",
+    "sha256": "7a2bfafd2bff1d36be5fa48db25a769d30409d63a269777f17ac71d7bcf3dbdb"
+  },
+  "loss": "mean(w*((pred_kt*clear-ghi)/1000)^2)",
+  "base_pack_audit_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+  "input_sidecar_audit_sha256": "452fffa5dd674c70126c6a55a7cbbd0140ddcdb5e1d05f4e7c318686315766ae",
+  "forecast_train_complete_sha256": "a22280cba3ab2c45943be2d684e9ce3e80efaa83e07bd92364e4ebfdbdc7dc26",
+  "forecast_val_complete_sha256": "8ee7155ebbd27acbdd51678ed546437ad459b082ab989863c503246d69141bd1",
+  "history_sidecar_audit_sha256": "2f60b81d4bc7694a7a97ee95ba6f56f26a44ab99009f5af8cd949c4f26d37acd",
+  "head_model_code_sha256": "9bd2be0b6fe97060f3ead000830cd82b5a6928a1c25e789cf88701c7e0652f4e",
+  "script_sha256": "d655327b8095cc28113364b44083863c4736577584b0d4faba165b125d4640f5",
+  "profile": {
+    "trials": [
+      {
+        "batch": 256,
+        "rows_per_second": 4486.11096892391,
+        "peak_GiB": 4.447072982788086
+      },
+      {
+        "batch": 512,
+        "rows_per_second": 7070.641213289137,
+        "peak_GiB": 7.355925559997559
+      },
+      {
+        "batch": 1024,
+        "rows_per_second": 7362.817111062705,
+        "peak_GiB": 13.175583839416504
+      },
+      {
+        "batch": 1536,
+        "rows_per_second": 7950.533246105365,
+        "peak_GiB": 18.995091438293457
+      },
+      {
+        "batch": 2048,
+        "rows_per_second": 394.9677202666078,
+        "peak_GiB": 19.060749053955078
+      }
+    ],
+    "training_batch": 1536,
+    "selection": "highest measured row throughput below 80 percent allocated-memory threshold"
+  },
+  "station_training": "one independently initialized head per station",
+  "runs": {
+    "Sili": {
+      "AC_ST": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 140.83357892877646,
+        "sample_count": 49806,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.019420188812884032,
+            "ghi_rmse": 140.83357892877646,
+            "sample_count": 49806,
+            "seconds": 34.05224902788177
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.015070062329570824,
+            "ghi_rmse": 143.89838996811767,
+            "sample_count": 49806,
+            "seconds": 33.6776831028983
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.013491897128914816,
+            "ghi_rmse": 150.64824767543354,
+            "sample_count": 49806,
+            "seconds": 33.649325761944056
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.012541268153253723,
+            "ghi_rmse": 155.74621232907924,
+            "sample_count": 49806,
+            "seconds": 33.59159138193354
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.010971844061734095,
+            "ghi_rmse": 169.53236441838698,
+            "sample_count": 49806,
+            "seconds": 33.57366437301971
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.010185838335373178,
+            "ghi_rmse": 164.19005361566997,
+            "sample_count": 49806,
+            "seconds": 33.69038993911818
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.009827850726073343,
+            "ghi_rmse": 158.17430007859878,
+            "sample_count": 49806,
+            "seconds": 33.64089396013878
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.008614530954593037,
+            "ghi_rmse": 162.8896699360829,
+            "sample_count": 49806,
+            "seconds": 33.55091120605357
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.008079919099405442,
+            "ghi_rmse": 157.1431158859926,
+            "sample_count": 49806,
+            "seconds": 33.52917482308112
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.007569582076260354,
+            "ghi_rmse": 156.09848321130758,
+            "sample_count": 49806,
+            "seconds": 33.68566378299147
+          }
+        ],
+        "checkpoint_sha256": "d83f4606cb0fc92200d13e9fe1a2d1b70bc540895ce230d5b0dea3dc84dcf266",
+        "predictions_sha256": "cde6859f6cb9cca630fb58fdbcfff3f5e9c63db5c5503ef51bbfbf978d090a18"
+      }
+    },
+    "Zhujia": {
+      "AC_ST": {
+        "best_epoch_0based": 0,
+        "ghi_rmse": 119.38394028145551,
+        "sample_count": 50043,
+        "epochs": [
+          {
+            "epoch": 0,
+            "train_weighted_normalized_ghi_mse": 0.014017921286332159,
+            "ghi_rmse": 119.38394028145551,
+            "sample_count": 50043,
+            "seconds": 39.13435496110469
+          },
+          {
+            "epoch": 1,
+            "train_weighted_normalized_ghi_mse": 0.00965832162609034,
+            "ghi_rmse": 129.94495369518532,
+            "sample_count": 50043,
+            "seconds": 38.62837306386791
+          },
+          {
+            "epoch": 2,
+            "train_weighted_normalized_ghi_mse": 0.007896503793915717,
+            "ghi_rmse": 129.85911312248274,
+            "sample_count": 50043,
+            "seconds": 38.772802758961916
+          },
+          {
+            "epoch": 3,
+            "train_weighted_normalized_ghi_mse": 0.006648207036802971,
+            "ghi_rmse": 136.6395556410466,
+            "sample_count": 50043,
+            "seconds": 38.612220138078555
+          },
+          {
+            "epoch": 4,
+            "train_weighted_normalized_ghi_mse": 0.005688806779952154,
+            "ghi_rmse": 133.42249454922987,
+            "sample_count": 50043,
+            "seconds": 38.59752707881853
+          },
+          {
+            "epoch": 5,
+            "train_weighted_normalized_ghi_mse": 0.004939191695527871,
+            "ghi_rmse": 136.80805169154942,
+            "sample_count": 50043,
+            "seconds": 38.6858020958025
+          },
+          {
+            "epoch": 6,
+            "train_weighted_normalized_ghi_mse": 0.004367015188416163,
+            "ghi_rmse": 136.15240552405766,
+            "sample_count": 50043,
+            "seconds": 38.70865137479268
+          },
+          {
+            "epoch": 7,
+            "train_weighted_normalized_ghi_mse": 0.0039021132342924223,
+            "ghi_rmse": 144.9685310186137,
+            "sample_count": 50043,
+            "seconds": 38.719542909180745
+          },
+          {
+            "epoch": 8,
+            "train_weighted_normalized_ghi_mse": 0.0035500974856669974,
+            "ghi_rmse": 139.96993222940006,
+            "sample_count": 50043,
+            "seconds": 38.70334209501743
+          },
+          {
+            "epoch": 9,
+            "train_weighted_normalized_ghi_mse": 0.0031774056796084033,
+            "ghi_rmse": 134.7371459898806,
+            "sample_count": 50043,
+            "seconds": 38.71840517478995
+          }
+        ],
+        "checkpoint_sha256": "d52a10639a25b26106fab292099af4c0101e9d2245ad906774c1901188746907",
+        "predictions_sha256": "a339f79d42fa07c285071fe62b923fa152cdd42274fb3e2709a9324be1f80f7e"
+      }
+    }
+  },
+  "next": "Audit saved paired validation outputs before any seed expansion, IFS, or test."
+}

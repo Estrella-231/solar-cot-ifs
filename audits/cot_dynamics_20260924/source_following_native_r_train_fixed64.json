@@ -1,0 +1,712 @@
+{
+  "state": "COMPLETE_SOURCE_FOLLOWING_NATIVE_R_PILOT",
+  "test_used": false,
+  "split": "train",
+  "sequences": 64,
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "source": "last observed AGRI frame and historical C13 motion only; integer upstream 16x16 crop",
+  "R_input_contract": "frozen native 16x16; no larger-input extrapolation or stitched COT halo",
+  "reference": "R(real future AGRI) only for offline comparison; not a deployed input or physical observation",
+  "limitation": "small fixed pilot; upstream crop can move off station distribution; one rigid velocity per patch; not trained E",
+  "zero_offset_max_abs_bank_drift": 0.005068778991699219,
+  "zero_offset_p95_abs_bank_drift": 0.003185272216796875,
+  "pilot_sha256": "6dcb67412ce4645a8a53960770511e6ab56f5be1de24a83d1670d59b0adc7b1b",
+  "oracle_sha256": "a22280cba3ab2c45943be2d684e9ce3e80efaa83e07bd92364e4ebfdbdc7dc26",
+  "history_sha256": "c13fc38b1c346078c8e5a689a9190fd084480b24050aada02f921414ab10e581",
+  "R_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "manifest_sha256": "9b6f5ff452a377a202db3d7dc305cebd74230cb084b6accf21df745b4b47dcf8",
+  "script_sha256": "d244497fa65c88ef0f77fa56a84e6ae3a3e224f4cc919168891b01ba19e2746a",
+  "per_lead": [
+    {
+      "lead_minutes": 15,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.142693892121315
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.1547115296125412
+        },
+        "AP_on_P16_support": {
+          "pixels": 27881,
+          "mae_log1p_cot": 0.1389225274324417
+        },
+        "P16_on_same_support": {
+          "pixels": 27881,
+          "mae_log1p_cot": 0.15926377475261688
+        },
+        "common_support_fraction_of_all_pixels": 0.850860595703125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.18288880586624146
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.18711747229099274
+        },
+        "AP_on_P16_support": {
+          "pixels": 3097,
+          "mae_log1p_cot": 0.18153932690620422
+        },
+        "P16_on_same_support": {
+          "pixels": 3097,
+          "mae_log1p_cot": 0.18387743830680847
+        },
+        "common_support_fraction_of_all_pixels": 0.094512939453125
+      }
+    },
+    {
+      "lead_minutes": 30,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.25855833292007446
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.29234156012535095
+        },
+        "AP_on_P16_support": {
+          "pixels": 24462,
+          "mae_log1p_cot": 0.26365238428115845
+        },
+        "P16_on_same_support": {
+          "pixels": 24462,
+          "mae_log1p_cot": 0.28437310457229614
+        },
+        "common_support_fraction_of_all_pixels": 0.74652099609375
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.3165958523750305
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.34096628427505493
+        },
+        "AP_on_P16_support": {
+          "pixels": 2647,
+          "mae_log1p_cot": 0.32543644309043884
+        },
+        "P16_on_same_support": {
+          "pixels": 2647,
+          "mae_log1p_cot": 0.3436695337295532
+        },
+        "common_support_fraction_of_all_pixels": 0.080780029296875
+      }
+    },
+    {
+      "lead_minutes": 45,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.31963565945625305
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.35623136162757874
+        },
+        "AP_on_P16_support": {
+          "pixels": 21732,
+          "mae_log1p_cot": 0.3125687539577484
+        },
+        "P16_on_same_support": {
+          "pixels": 21732,
+          "mae_log1p_cot": 0.32764631509780884
+        },
+        "common_support_fraction_of_all_pixels": 0.6632080078125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.37780869007110596
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.4143078029155731
+        },
+        "AP_on_P16_support": {
+          "pixels": 2268,
+          "mae_log1p_cot": 0.3704691231250763
+        },
+        "P16_on_same_support": {
+          "pixels": 2268,
+          "mae_log1p_cot": 0.38354992866516113
+        },
+        "common_support_fraction_of_all_pixels": 0.0692138671875
+      }
+    },
+    {
+      "lead_minutes": 60,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.3742793798446655
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.39672017097473145
+        },
+        "AP_on_P16_support": {
+          "pixels": 20044,
+          "mae_log1p_cot": 0.34941771626472473
+        },
+        "P16_on_same_support": {
+          "pixels": 20044,
+          "mae_log1p_cot": 0.35657382011413574
+        },
+        "common_support_fraction_of_all_pixels": 0.6116943359375
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.4232398569583893
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.4479113817214966
+        },
+        "AP_on_P16_support": {
+          "pixels": 2061,
+          "mae_log1p_cot": 0.39690080285072327
+        },
+        "P16_on_same_support": {
+          "pixels": 2061,
+          "mae_log1p_cot": 0.4035320281982422
+        },
+        "common_support_fraction_of_all_pixels": 0.062896728515625
+      }
+    },
+    {
+      "lead_minutes": 75,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.42512252926826477
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.45013609528541565
+        },
+        "AP_on_P16_support": {
+          "pixels": 18921,
+          "mae_log1p_cot": 0.38304051756858826
+        },
+        "P16_on_same_support": {
+          "pixels": 18921,
+          "mae_log1p_cot": 0.38470959663391113
+        },
+        "common_support_fraction_of_all_pixels": 0.577423095703125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.4854552745819092
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.5110788345336914
+        },
+        "AP_on_P16_support": {
+          "pixels": 1886,
+          "mae_log1p_cot": 0.4392240047454834
+        },
+        "P16_on_same_support": {
+          "pixels": 1886,
+          "mae_log1p_cot": 0.4441479742527008
+        },
+        "common_support_fraction_of_all_pixels": 0.05755615234375
+      }
+    },
+    {
+      "lead_minutes": 90,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.4625178277492523
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.48731017112731934
+        },
+        "AP_on_P16_support": {
+          "pixels": 18259,
+          "mae_log1p_cot": 0.39728325605392456
+        },
+        "P16_on_same_support": {
+          "pixels": 18259,
+          "mae_log1p_cot": 0.4032945930957794
+        },
+        "common_support_fraction_of_all_pixels": 0.557220458984375
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.503794252872467
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.5312773585319519
+        },
+        "AP_on_P16_support": {
+          "pixels": 1806,
+          "mae_log1p_cot": 0.4116996228694916
+        },
+        "P16_on_same_support": {
+          "pixels": 1806,
+          "mae_log1p_cot": 0.4261963367462158
+        },
+        "common_support_fraction_of_all_pixels": 0.05511474609375
+      }
+    },
+    {
+      "lead_minutes": 105,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.5096779465675354
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.5378415584564209
+        },
+        "AP_on_P16_support": {
+          "pixels": 17603,
+          "mae_log1p_cot": 0.42692747712135315
+        },
+        "P16_on_same_support": {
+          "pixels": 17603,
+          "mae_log1p_cot": 0.4338577687740326
+        },
+        "common_support_fraction_of_all_pixels": 0.537200927734375
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.5666646957397461
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.5803565979003906
+        },
+        "AP_on_P16_support": {
+          "pixels": 1729,
+          "mae_log1p_cot": 0.43215876817703247
+        },
+        "P16_on_same_support": {
+          "pixels": 1729,
+          "mae_log1p_cot": 0.4455457925796509
+        },
+        "common_support_fraction_of_all_pixels": 0.052764892578125
+      }
+    },
+    {
+      "lead_minutes": 120,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.5483425855636597
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.5837964415550232
+        },
+        "AP_on_P16_support": {
+          "pixels": 17168,
+          "mae_log1p_cot": 0.47054412961006165
+        },
+        "P16_on_same_support": {
+          "pixels": 17168,
+          "mae_log1p_cot": 0.478337824344635
+        },
+        "common_support_fraction_of_all_pixels": 0.52392578125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.602764904499054
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.6138085126876831
+        },
+        "AP_on_P16_support": {
+          "pixels": 1694,
+          "mae_log1p_cot": 0.4575607478618622
+        },
+        "P16_on_same_support": {
+          "pixels": 1694,
+          "mae_log1p_cot": 0.46815225481987
+        },
+        "common_support_fraction_of_all_pixels": 0.05169677734375
+      }
+    },
+    {
+      "lead_minutes": 135,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.5744808912277222
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.6203145384788513
+        },
+        "AP_on_P16_support": {
+          "pixels": 16879,
+          "mae_log1p_cot": 0.4844513237476349
+        },
+        "P16_on_same_support": {
+          "pixels": 16879,
+          "mae_log1p_cot": 0.489871084690094
+        },
+        "common_support_fraction_of_all_pixels": 0.515106201171875
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.6188750863075256
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.6372566223144531
+        },
+        "AP_on_P16_support": {
+          "pixels": 1661,
+          "mae_log1p_cot": 0.47876909375190735
+        },
+        "P16_on_same_support": {
+          "pixels": 1661,
+          "mae_log1p_cot": 0.48445144295692444
+        },
+        "common_support_fraction_of_all_pixels": 0.050689697265625
+      }
+    },
+    {
+      "lead_minutes": 150,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.6320128440856934
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.6673985719680786
+        },
+        "AP_on_P16_support": {
+          "pixels": 16721,
+          "mae_log1p_cot": 0.5394660830497742
+        },
+        "P16_on_same_support": {
+          "pixels": 16721,
+          "mae_log1p_cot": 0.5432519316673279
+        },
+        "common_support_fraction_of_all_pixels": 0.510284423828125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.6767067313194275
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.6786272525787354
+        },
+        "AP_on_P16_support": {
+          "pixels": 1630,
+          "mae_log1p_cot": 0.5604504942893982
+        },
+        "P16_on_same_support": {
+          "pixels": 1630,
+          "mae_log1p_cot": 0.5608963966369629
+        },
+        "common_support_fraction_of_all_pixels": 0.04974365234375
+      }
+    },
+    {
+      "lead_minutes": 165,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.6801550984382629
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.7119976282119751
+        },
+        "AP_on_P16_support": {
+          "pixels": 16511,
+          "mae_log1p_cot": 0.5849218964576721
+        },
+        "P16_on_same_support": {
+          "pixels": 16511,
+          "mae_log1p_cot": 0.5864502191543579
+        },
+        "common_support_fraction_of_all_pixels": 0.503875732421875
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.7211520075798035
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.7235515117645264
+        },
+        "AP_on_P16_support": {
+          "pixels": 1600,
+          "mae_log1p_cot": 0.6155576705932617
+        },
+        "P16_on_same_support": {
+          "pixels": 1600,
+          "mae_log1p_cot": 0.6113654375076294
+        },
+        "common_support_fraction_of_all_pixels": 0.048828125
+      }
+    },
+    {
+      "lead_minutes": 180,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.6963205337524414
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.7336891889572144
+        },
+        "AP_on_P16_support": {
+          "pixels": 16412,
+          "mae_log1p_cot": 0.6112205982208252
+        },
+        "P16_on_same_support": {
+          "pixels": 16412,
+          "mae_log1p_cot": 0.6109810471534729
+        },
+        "common_support_fraction_of_all_pixels": 0.5008544921875
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.728213906288147
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.731864333152771
+        },
+        "AP_on_P16_support": {
+          "pixels": 1600,
+          "mae_log1p_cot": 0.6304544806480408
+        },
+        "P16_on_same_support": {
+          "pixels": 1600,
+          "mae_log1p_cot": 0.6262997388839722
+        },
+        "common_support_fraction_of_all_pixels": 0.048828125
+      }
+    },
+    {
+      "lead_minutes": 195,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.729860782623291
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.7653587460517883
+        },
+        "AP_on_P16_support": {
+          "pixels": 16261,
+          "mae_log1p_cot": 0.6517752408981323
+        },
+        "P16_on_same_support": {
+          "pixels": 16261,
+          "mae_log1p_cot": 0.652751624584198
+        },
+        "common_support_fraction_of_all_pixels": 0.496246337890625
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.7707911729812622
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.7911968231201172
+        },
+        "AP_on_P16_support": {
+          "pixels": 1581,
+          "mae_log1p_cot": 0.6810950040817261
+        },
+        "P16_on_same_support": {
+          "pixels": 1581,
+          "mae_log1p_cot": 0.6782217025756836
+        },
+        "common_support_fraction_of_all_pixels": 0.048248291015625
+      }
+    },
+    {
+      "lead_minutes": 210,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.7635626196861267
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.7908546924591064
+        },
+        "AP_on_P16_support": {
+          "pixels": 16167,
+          "mae_log1p_cot": 0.7051396369934082
+        },
+        "P16_on_same_support": {
+          "pixels": 16167,
+          "mae_log1p_cot": 0.704598605632782
+        },
+        "common_support_fraction_of_all_pixels": 0.493377685546875
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.8075286746025085
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.8165223598480225
+        },
+        "AP_on_P16_support": {
+          "pixels": 1581,
+          "mae_log1p_cot": 0.7109057903289795
+        },
+        "P16_on_same_support": {
+          "pixels": 1581,
+          "mae_log1p_cot": 0.7075180411338806
+        },
+        "common_support_fraction_of_all_pixels": 0.048248291015625
+      }
+    },
+    {
+      "lead_minutes": 225,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.7849752306938171
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.8064987659454346
+        },
+        "AP_on_P16_support": {
+          "pixels": 16025,
+          "mae_log1p_cot": 0.7510058879852295
+        },
+        "P16_on_same_support": {
+          "pixels": 16025,
+          "mae_log1p_cot": 0.7500458359718323
+        },
+        "common_support_fraction_of_all_pixels": 0.489044189453125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.831405758857727
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.8395105004310608
+        },
+        "AP_on_P16_support": {
+          "pixels": 1564,
+          "mae_log1p_cot": 0.778123140335083
+        },
+        "P16_on_same_support": {
+          "pixels": 1564,
+          "mae_log1p_cot": 0.7757866382598877
+        },
+        "common_support_fraction_of_all_pixels": 0.0477294921875
+      }
+    },
+    {
+      "lead_minutes": 240,
+      "available_source_patch_fraction": 0.984375,
+      "mean_finite_input_fraction": 0.9873046875,
+      "full16": {
+        "AP": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.8060954213142395
+        },
+        "P0_on_AP_rows": {
+          "pixels": 32256,
+          "mae_log1p_cot": 0.8366363644599915
+        },
+        "AP_on_P16_support": {
+          "pixels": 15936,
+          "mae_log1p_cot": 0.7991163730621338
+        },
+        "P16_on_same_support": {
+          "pixels": 15936,
+          "mae_log1p_cot": 0.7977426648139954
+        },
+        "common_support_fraction_of_all_pixels": 0.486328125
+      },
+      "center5": {
+        "AP": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.8374095559120178
+        },
+        "P0_on_AP_rows": {
+          "pixels": 3150,
+          "mae_log1p_cot": 0.8591213822364807
+        },
+        "AP_on_P16_support": {
+          "pixels": 1564,
+          "mae_log1p_cot": 0.8155103921890259
+        },
+        "P16_on_same_support": {
+          "pixels": 1564,
+          "mae_log1p_cot": 0.813040554523468
+        },
+        "common_support_fraction_of_all_pixels": 0.0477294921875
+      }
+    }
+  ]
+}
