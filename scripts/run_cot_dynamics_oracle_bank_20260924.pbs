@@ -1,0 +1,41 @@
+#!/bin/bash
+#PBS -N cotdyn_oracle
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=18:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_dynamics_20260924/oracle_bank.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/cot_dynamics_20260924
+SCRIPT=$EXP/scripts/build_real_future_r_oracle_20260924.py
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SOURCE=$ROOT/HunanSimVPFull_20260906
+PROFILE=$EXP/oracle_val_profile_n256_b128
+TRAIN=$EXP/oracle_train_geometry24_r_v1
+VAL=$EXP/oracle_val_geometry24_r_v1
+python -m py_compile "$SCRIPT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+python -u "$SCRIPT" --project "$SOLAR" --data-root "$DATA" --source-root "$SOURCE" \
+  --split val --output "$PROFILE" --max-sequences 256 --device cuda --frame-batch 128
+python - "$PROFILE/complete.json" <<'PY'
+import json,sys
+with open(sys.argv[1]) as stream:
+    profile=json.load(stream)
+assert profile['state']=='PILOT_REAL_FUTURE_R_ORACLE'
+assert profile['test_used'] is False and profile['peak_gpu_allocated_gib'] < 32
+print('ORACLE_PROFILE_OK',profile['unique_real_future_frames']/profile['elapsed_seconds'],
+      'frames_per_second',profile['peak_gpu_allocated_gib'],'GiB',flush=True)
+PY
+python -u "$SCRIPT" --project "$SOLAR" --data-root "$DATA" --source-root "$SOURCE" \
+  --split train --output "$TRAIN" --device cuda --frame-batch 128
+python -u "$SCRIPT" --project "$SOLAR" --data-root "$DATA" --source-root "$SOURCE" \
+  --split val --output "$VAL" --device cuda --frame-batch 128

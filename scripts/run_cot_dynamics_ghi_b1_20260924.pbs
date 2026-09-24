@@ -1,0 +1,36 @@
+#!/bin/bash
+#PBS -N cotdyn_ghi_b1
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_dynamics_20260924/ghi_b1.pbs.log
+
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/cot_dynamics_20260924
+HIST=$SOLAR/data/history_cot_trajectory_real_agri_rpair_20260923/original_R
+IMAGE=$EXP/simvp_geometry24_v5_input_trainval_v1
+TRAIN=$EXP/simvp_geometry24_train_cot_image_bank_v1
+VAL=$EXP/simvp_geometry24_val_cot_image_bank_v1
+OUT=$EXP/ghi_b1_simvp_geometry24_seed42_v1
+
+test -f "$IMAGE/audit.json"
+test -f "$TRAIN/complete.json"
+test -f "$VAL/complete.json"
+test ! -e "$OUT"
+python -m py_compile "$EXP/scripts/train_geometry24_cot_ghi_v5_20260924.py"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+python -u "$EXP/scripts/train_geometry24_cot_ghi_v5_20260924.py" \
+  --root "$SOLAR" --forecast-train-dir "$TRAIN" --forecast-val-dir "$VAL" \
+  --history-dir "$HIST" --image-sidecar "$IMAGE" --out "$OUT" \
+  --forecast-kind simvp --epochs 10 --seed 42 --allow-unverified-cpp

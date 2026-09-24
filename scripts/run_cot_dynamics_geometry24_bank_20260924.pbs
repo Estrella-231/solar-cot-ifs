@@ -1,0 +1,36 @@
+#!/bin/bash
+#PBS -N cotdyn_sbank
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_dynamics_20260924/geometry24_bank.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+TRIAD=$ROOT/HunanBackboneTriad_20260921
+EXP=$SOLAR/experiments/cot_dynamics_20260924
+SCRIPT=$EXP/scripts/build_geometry24_forecast_cot_20260924.py
+RUN=$TRIAD/geometry24_v2/runs/simvp_geometry24_formal_e12_v1
+test -f "$RUN/training_complete.json"
+python -m py_compile "$SCRIPT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+for SPLIT in train val; do
+  OUT=$EXP/simvp_geometry24_${SPLIT}_cot_image_bank_v1
+  python -u "$SCRIPT" --triad-root "$TRIAD" --hunan-source "$ROOT/HunanSimVPFull_20260906" \
+    --solar-root "$SOLAR" --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+    --output "$OUT" --backbone simvp --split "$SPLIT" --batch 16 --workers 4
+done
+
+python -u "$EXP/scripts/pack_geometry24_v5_inputs_20260924.py" \
+  --root "$SOLAR" \
+  --train-bank "$EXP/simvp_geometry24_train_cot_image_bank_v1" \
+  --val-bank "$EXP/simvp_geometry24_val_cot_image_bank_v1" \
+  --out "$EXP/simvp_geometry24_v5_input_trainval_v1"
