@@ -2,12 +2,14 @@
 
 本页只记录工程状态；科学问题、实验组、停止条件见 [`refine-logs/cot_dynamics_20260924/EXPERIMENT_PLAN.md`](../refine-logs/cot_dynamics_20260924/EXPERIMENT_PLAN.md)。状态可能随 PBS 和服务器产物变化，重启前必须实时复查，不能把本页的作业号当完成证明。
 
+2026-09-24 当时快照：修复版 SimVP `210506.tc6000` 已完成12轮，预测 bank `210593.tc6000` 已启动；配对 GHI 作业 `210598.tc6000` 被 PBS 保持在 `H`，依赖前者成功结束。oracle train/val bank 已完整且不可部署。当前未有新方案的配对 GHI 结果，E 的大视场反演门禁仍失败；进度以服务器最新文件和 `qstat` 为准。
+
 ## 服务器与输入
 
 - SSH alias：`zjnu-hpc`；用户 `slfu`；Hunan AGRI/aux 根目录：`/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed`。
 - 第二篇工程：`/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907`；本次隔离结果：其下 `experiments/cot_dynamics_20260924/`。
 - 修复版 backbone 工程：`/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanBackboneTriad_20260921`；**模型源码必须使用**其 `geometry24_v2/triad_models.py`，与 checkpoint 的 `model_code_sha256` 一致。其根目录旧 `triad_models.py` 与 geometry24 权重不匹配。
-- 主 SimVP：`geometry24_v2/runs/simvp_geometry24_formal_e12_v1/best.pt`，须等待同目录 `training_complete.json`。AFNO 只作次要稳健性对照：`geometry24_v2/runs/afno_transformer_geometry24_formal_e12_v1/best.pt`。
+- 主 SimVP：`geometry24_v2/runs/simvp_geometry24_formal_e12_v1/best.pt`；同目录 `training_complete.json` 已记录12轮、41,520步，best权重SHA-256为 `32e24c620e3ad2939f8a4dea50599c4f657d8072193462707e5e7ca0feaf28fb`。AFNO 只作次要稳健性对照：`geometry24_v2/runs/afno_transformer_geometry24_formal_e12_v1/best.pt`。
 - 冻结 R、历史 COT：第二篇工程的 `configs/r_frozen_repaired_seed42.json` 与 `data/history_cot_trajectory_real_agri_rpair_20260923/original_R/`。R SHA-256 为 `0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c`，缓存已标 FP32、train/val、test=false。
 - GHI 标签/行合同：`data/head_pack_trainval_20260908_v1/`。本轮必须重建图像输入 sidecar，不得沿用其中旧 SimVP 预测图的 `x.npy`，也不得沿用旧 `solarresnet_v5_input_trainval_20260918_v1`。
 
@@ -23,9 +25,9 @@
 ## 接续顺序
 
 1. `qstat -u slfu` 计入全部未结束状态（R/Q/H等），未结束任务数达到3不得 `qsub`；同时核对当前GPU总数不超过8。禁止停掉其他任务让路。
-2. 核验 SimVP `training_complete.json`、best 权重哈希及 job `210506.tc6000` 最终状态。当前 best 不能提前冻结为正式 S。
-3. 仅在正式 SimVP 完成后，提交已通过 `bash -n`/`py_compile` 的 `scripts/run_cot_dynamics_geometry24_bank_20260924.pbs`，用一张卡、batch16 生成独立 train/val SimVP→R COT 与13+3通道预测图 bank，并在同一作业内按原 GHI 行键打包修复版图像 sidecar；以两份 `complete.json`、sidecar `audit.json`、哈希和序列索引为准。
-4. 两份 SimVP bank、sidecar 和 oracle train/val bank 完成后，提交 `scripts/run_cot_dynamics_ghi_b1_20260924.pbs`；同一作业先以同头、同样本、同种子训练 A0/AH/AI，再强制重用 AI 的批量、COT 标准化及图像 sidecar 训练 O_diag，最后从保存预测重算配对指标。O_diag 只可单列诊断。`run_cot_dynamics_ghi_oracle_20260924.pbs` 仅作独立重跑备份，不与组合脚本同时提交。
+2. SimVP 完成标记、best权重哈希及 `210506.tc6000` 成功退出已核验；如 checkpoint 或源码后续改动，须重新核验。
+3. `scripts/run_cot_dynamics_geometry24_bank_20260924.pbs` 已提交为 `210593.tc6000`：一张卡、batch16，顺序生成独立 train/val SimVP→R COT 与13+3通道预测图 bank，并在同一作业内按原 GHI 行键打包修复版图像 sidecar；接续时以两份 `complete.json`、sidecar `audit.json`、哈希和序列索引为准。
+4. `scripts/run_cot_dynamics_ghi_b1_20260924.pbs` 已提交为 `210598.tc6000`，PBS依赖 `afterok:210593.tc6000`，目前等待中。它将先以同头、同样本、同种子训练 A0/AH/AI，再强制重用 AI 的批量、COT 标准化及图像 sidecar 训练 O_diag，最后从保存预测重算配对指标。O_diag 只可单列诊断。`run_cot_dynamics_ghi_oracle_20260924.pbs` 仅作独立重跑备份，不与组合脚本同时提交。
 5. `scripts/evaluate_geometry24_cot_ghi_pair_20260924.py` 必须从保存的预测和相同 `pack_row` 重算两站等权 GHI RMSE、MAE、bias、16 lead。若 O_diag 在匹配条件下无明确潜力，先查 R/H/标签对应，停止 E 扩展；若有，再解决上游 COT halo 门禁，不能用 P16 越界零填充伪装晴空。
 
 所有新建脚本原件位于本仓库 `scripts/`，已用的服务器副本位于 `experiments/cot_dynamics_20260924/scripts/`。旧AFNO-COT bank 采用 `geos[:16]`，把历史几何错配给未来图；旧配对GHI差值不得当新结果。论文中不要写服务器路径、作业号或修复过程。
