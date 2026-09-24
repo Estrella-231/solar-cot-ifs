@@ -228,11 +228,17 @@ def main(root, forecast_train_dir, forecast_val_dir, history_dir, image_sidecar,
     if input_audit["state"] != "COMPLETE_GEOMETRY24_SOLARRESNET_V5_INPUT_SIDECAR" or input_audit["test_used"]:
         raise RuntimeError("invalid SolarResNet-v5 input sidecar")
     r_contract = json.loads((root / "configs/r_frozen_repaired_seed42.json").read_text())
+    head_source = root / "scripts/causal_cot_trajectory_solarresnet_v5.py"
+    if sha(head_source) != sha(Path(__file__).with_name(head_source.name)):
+        raise RuntimeError("deployed GHI head source differs from recorded project source")
     history_audit = json.loads((history_dir / "audit.json").read_text())
     if (history_audit.get("arm") != "original_R" or
             history_audit.get("checkpoint_sha256") != r_contract["checkpoint_sha256"]):
         raise RuntimeError("historical COT does not come from the locked original R")
     for split_name, bank_dir in (("train", forecast_train_dir), ("val", forecast_val_dir)):
+        bank_contract = json.loads((bank_dir / "complete.json").read_text())
+        if bank_contract.get("R_checkpoint_sha256") != r_contract["checkpoint_sha256"]:
+            raise RuntimeError("future COT and historical COT use different retrievers")
         if forecast_kind == "simvp" and input_audit["bank_complete_sha256"][split_name] != sha(bank_dir / "complete.json"):
             raise RuntimeError("image and COT bank source mismatch")
     keys = ("ghi", "clear", "station", "lead", "sequence", "split", "weight")
@@ -300,7 +306,7 @@ def main(root, forecast_train_dir, forecast_val_dir, history_dir, image_sidecar,
                 "forecast_train_complete_sha256": sha(forecast_train_dir / "complete.json"),
                 "forecast_val_complete_sha256": sha(forecast_val_dir / "complete.json"),
                 "history_sidecar_audit_sha256": sha(history_dir / "audit.json"),
-                "head_model_code_sha256": sha(root / "scripts/causal_cot_trajectory_solarresnet_v5.py"),
+                "head_model_code_sha256": sha(head_source),
                 "script_sha256": sha(__file__)}
     atomic(out / "execution_contract.json", contract)
     report = {"state": "RUNNING_EXPLORATORY_CAUSAL_COT_TRAJECTORY", **contract, "profile": profile_result,

@@ -18,6 +18,7 @@
 - `audits/r_halo_train_cpu_witness.json` 与 `audits/r_tiling_train_cpu_witness.json`：原生16×16 R改为直接32/64，中心16平均差0.614/0.613 log1p(COT)；九块16重叠拼接的未锚定中心差0.325，强锚定后接缝跳变0.428，而原生内部相邻梯度0.154。val固定案例同方向。**E 的大视场 COT 输入门禁失败；不得直接把 R 改在大patch上推理或拼接后宣称同一反演合同。**
 - B0 小样本 GPU：`210576` 因误用旧模型定义严格载权失败；修复哈希绑定后 `210577` 完成当前 best SimVP 2条、AFNO 4条 val 的24几何→16预测图→R全链路。`210578` 因 PBS 变量错误在模型前失败；`210579` 修复后在一张 A100 40GB 上完成 batch 8/16/24/32 的64序列 profile，峰值4.95/9.85/14.76/19.67 GiB、全流程吞吐3.45/3.67/3.34/3.15序列/秒；batch16暂优。短样本吞吐含启动/缓存，正式运行记录仍需核对。
 - 真实未来 AGRI→R 仅用于 oracle 诊断：CPU 两序列小样本通过；PBS `210580` 已提交，先跑固定256序列GPU profile，再顺序生成 train/val 全量缓存。任何 `real_future_cot_log1p.npy` 禁止进入部署组推理。
+- [真实验证 AGRI 的视场诊断图](../figures/cot_dynamics_20260924/r_halo_actual_val_sili_v2/r_halo_actual_val_sili.png) 固定取四个验证序列的历史末帧；三个白天四里案例中，原生16×16 R 与同权重32×32 R 的共同中心16差值 MAE 为0.213/0.147/0.425 `log(1+COT)`。第三行案例是夜间，图内标明。图旁 `source_arrays.npz` 和 `provenance.json` 保存原值及展示色标；这证明视场不一致，不能作为 GHI 预报提升证据。
 
 ## 接续顺序
 

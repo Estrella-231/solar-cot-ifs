@@ -1,0 +1,60 @@
+{
+  "state": "ACTUAL_VAL_AGRI_R_HALO_WITNESS",
+  "test_used": false,
+  "selection": "four fixed validation sequence positions 0, floor(n/3), floor(2n/3), n-1; Sili; observed history frame 7",
+  "meaning": "same frozen R and AGRI frame; original 16x16 input versus 32x32 input, central 16x16 output",
+  "not_a_forecast": true,
+  "not_cpp_truth": true,
+  "R_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "manifest_sha256": "9b6f5ff452a377a202db3d7dc305cebd74230cb084b6accf21df745b4b47dcf8",
+  "figure_values": "stored physical AGRI C13; log1p(COT) from R",
+  "display_limits": {
+    "c13_2_98_percentile": [
+      236.07000732421875,
+      268.8800048828125
+    ],
+    "COT_common_0_99_percentile": [
+      0,
+      2.615399901866912
+    ],
+    "abs_difference_0_99_percentile": [
+      0,
+      2.5437613558769225
+    ]
+  },
+  "cases": [
+    {
+      "sequence_index": 0,
+      "seq_id": "hunan_202506302100",
+      "history_end_bjt": "2025-07-01T06:45:00",
+      "station": "Sili",
+      "day_mask_at_station": 1.0,
+      "native_vs_32_center_mae_log1p_cot": 0.21305646002292633
+    },
+    {
+      "sequence_index": 1419,
+      "seq_id": "hunan_202507230330",
+      "history_end_bjt": "2025-07-23T13:15:00",
+      "station": "Sili",
+      "day_mask_at_station": 1.0,
+      "native_vs_32_center_mae_log1p_cot": 0.14725135266780853
+    },
+    {
+      "sequence_index": 2838,
+      "seq_id": "hunan_202508131800",
+      "history_end_bjt": "2025-08-14T03:45:00",
+      "station": "Sili",
+      "day_mask_at_station": 0.0,
+      "native_vs_32_center_mae_log1p_cot": 0.6417042016983032
+    },
+    {
+      "sequence_index": 4257,
+      "seq_id": "hunan_202509100430",
+      "history_end_bjt": "2025-09-10T14:15:00",
+      "station": "Sili",
+      "day_mask_at_station": 1.0,
+      "native_vs_32_center_mae_log1p_cot": 0.4252668619155884
+    }
+  ],
+  "source_arrays_sha256": "fb9ca1d665708b05501f8d417e3b97d410f421379160aa8b5f98013feccd103a"
+}
