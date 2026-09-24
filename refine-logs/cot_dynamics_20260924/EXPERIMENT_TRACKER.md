@@ -7,7 +7,7 @@
 | D000 | M0 | geometry24全链路、输入方向/时刻见证、来源锁定 | train/val | 24几何与16预测逐帧对应；无test | MUST | PARTIAL：逐行合同与pilot PASS、S正式训练完成；train/val全量bank仍在构建 | 选定修复版S训练完成 |
 | D001 | M0 | halo覆盖、原生patch与拼接R一致性、单卡profile | train/val pilot | 位移源覆盖/拼接误差/吞吐 | MUST | GATE FAIL：直接大裁剪与重叠16拼接均不稳定；单卡profile完成 | D000 |
 | D010 | M1 | A0/AH/AI/O_diag匹配来源训练H | train/val | 同键GHI RMSE/MAE/bias，理想参考潜力 | MUST | QUEUED：PBS 210598 依赖 210593 成功结束 | D000/D001，新bank |
-| D011 | M1 | P0持续与AP纯搬运 | train/val | COT空间/轨迹/越界，零训练参照 | MUST | PARTIAL：16个val/64个train序列 P16 支持度 pilot；非正式 AP | D000/D001 |
+| D011 | M1 | P0持续与AP纯搬运 | train/val | COT空间/轨迹/越界，零训练参照 | MUST | PARTIAL：固定16个val/64个train序列完成同支持像元 P16 对 P0 离线参照；非正式 AP | D000/D001 |
 | D020 | M2 | E_phys与其H；AP的H | train/val | AD/AP相对AH/AI的GHI与COT误差 | MUST | CONDITIONAL | M1有信号、覆盖足够 |
 | D030 | M3 | 同起点E_phys_cont/E_task，固定H反传 | train/val | 梯度见证、相同步数、COT漂移 | MUST | CONDITIONAL | D020通过 |
 | D031 | M3 | 固定两种E、从相同初始化重训新H | train/val | AT相对AD/AH/AI的配对增益 | MUST | CONDITIONAL | D030 |
@@ -31,3 +31,5 @@ GPU pilot第一次 `210576` 因误载旧 `triad_models.py` strict加载失败，
 `audits/ghi_to_cot_causal_gradient_witness.json` 已在冻结且 eval 模式的现有 GHI 头上通过 CPU 自动求导见证：lead索引3/10之前及当时的未来 COT 输入梯度L1分别为约1.10e-4/4.03e-4，之后时效的最大梯度均为0。这只证明将来 E_task 所需的梯度路径存在且无后验时效泄漏；随机权重的梯度幅度不证明GHI指导有效，仍须做 AD/AT 配对训练。
 
 正式 SimVP `210506.tc6000` 已 C 且 `training_complete.json` 为12 epochs/41,520 steps，`best.pt` SHA-256 为 `32e24c620e3ad2939f8a4dea50599c4f657d8072193462707e5e7ca0feaf28fb`，最佳验证图像像素RMSE 0.5600656；它不是 GHI 成绩。oracle `210580.tc6000` 已 C，train/val `complete.json` 分别记录27,675/4,258个序列及35,445/5,623个唯一真实未来 AGRI 帧，`deployable=false`。qsub前实时查账户未结束数2后提交预测 bank `210593.tc6000`，用最终 SimVP 最优权重、geometry24对齐和冻结R生成train/val预测图与COT，并在同一作业内按GHI行键打包图像sidecar。oracle完成后再次查未结束数2，提交 `210598.tc6000`，PBS显示 `H` 且 `depend=afterok:210593.tc6000`；它将顺序训练A0/AH/AI和O_diag，再从逐样本文件重算配对指标。上述作业号仅为当时运行记录，最终完成必须检查各自完整标记与保存预测。
+
+补充无训练运动参照：`audits/cot_dynamics_20260924/p16_vs_p0_oracle_{train_fixed64,val_fixed16}.json` 以冻结 R(真实未来 AGRI) 为离线参照，并仅在 P16 有效来源像元上配对比较 P0，未让真实未来图进入 P16。中心5×5 的 val 固定16序列在+15分钟 P0/P16 MAE 为0.188/0.156，+240分钟0.782/0.791 `log(1+COT)`；train 固定64序列相应为0.211/0.207和0.860/0.866。val早期优势未在train稳定复现，且+240分钟中心有效源仅约一半；此诊断不足以通过 E 的4小时覆盖门禁，也不测 GHI。

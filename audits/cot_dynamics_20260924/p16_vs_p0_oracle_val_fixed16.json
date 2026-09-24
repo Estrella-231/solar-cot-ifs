@@ -1,0 +1,287 @@
+{
+  "state": "COMPLETE_P16_P0_SUPPORTED_PIXEL_DIAGNOSTIC",
+  "test_used": false,
+  "split": "val",
+  "sequences": 16,
+  "stations": 2,
+  "reference": "frozen R(real future AGRI), not observed physical COT or deployed input",
+  "comparison": "P16 and persistence on identical valid P16 source pixels at each lead",
+  "limitation": "small fixed sequence pilot; long-lead invalid source pixels excluded, not a full-horizon GHI test",
+  "pilot_sha256": "9a279dc4413b53638e2f0e087929f3ad5734e4b460976d385fe32cdca74292a1",
+  "oracle_complete_sha256": "8ee7155ebbd27acbdd51678ed546437ad459b082ab989863c503246d69141bd1",
+  "history_sha256": "7f73f6c6a0e000e64afcaf6cfe4c947f6ad897d9a9ead65d0c4c148858100fb1",
+  "per_lead": [
+    {
+      "lead_minutes": 15,
+      "source_support_full_fraction": 0.8968505859375,
+      "source_support_center5_fraction": 0.99375,
+      "full16": {
+        "paired_supported_pixels": 7347,
+        "P0_mae_log1p_cot": 0.1721796691417694,
+        "P16_mae_log1p_cot": 0.16385029256343842,
+        "P16_minus_P0_mae_log1p_cot": -0.008329376578330994
+      },
+      "center5": {
+        "paired_supported_pixels": 795,
+        "P0_mae_log1p_cot": 0.18848393857479095,
+        "P16_mae_log1p_cot": 0.15638932585716248,
+        "P16_minus_P0_mae_log1p_cot": -0.03209461271762848
+      }
+    },
+    {
+      "lead_minutes": 30,
+      "source_support_full_fraction": 0.8280029296875,
+      "source_support_center5_fraction": 0.9125,
+      "full16": {
+        "paired_supported_pixels": 6783,
+        "P0_mae_log1p_cot": 0.2824289798736572,
+        "P16_mae_log1p_cot": 0.2643676996231079,
+        "P16_minus_P0_mae_log1p_cot": -0.018061280250549316
+      },
+      "center5": {
+        "paired_supported_pixels": 730,
+        "P0_mae_log1p_cot": 0.2749510109424591,
+        "P16_mae_log1p_cot": 0.19167840480804443,
+        "P16_minus_P0_mae_log1p_cot": -0.08327260613441467
+      }
+    },
+    {
+      "lead_minutes": 45,
+      "source_support_full_fraction": 0.748779296875,
+      "source_support_center5_fraction": 0.83125,
+      "full16": {
+        "paired_supported_pixels": 6134,
+        "P0_mae_log1p_cot": 0.3526995778083801,
+        "P16_mae_log1p_cot": 0.3341708183288574,
+        "P16_minus_P0_mae_log1p_cot": -0.018528759479522705
+      },
+      "center5": {
+        "paired_supported_pixels": 665,
+        "P0_mae_log1p_cot": 0.3078933358192444,
+        "P16_mae_log1p_cot": 0.26443684101104736,
+        "P16_minus_P0_mae_log1p_cot": -0.04345649480819702
+      }
+    },
+    {
+      "lead_minutes": 60,
+      "source_support_full_fraction": 0.70556640625,
+      "source_support_center5_fraction": 0.7625,
+      "full16": {
+        "paired_supported_pixels": 5780,
+        "P0_mae_log1p_cot": 0.36487331986427307,
+        "P16_mae_log1p_cot": 0.34896543622016907,
+        "P16_minus_P0_mae_log1p_cot": -0.015907883644104004
+      },
+      "center5": {
+        "paired_supported_pixels": 610,
+        "P0_mae_log1p_cot": 0.3415239453315735,
+        "P16_mae_log1p_cot": 0.3192999064922333,
+        "P16_minus_P0_mae_log1p_cot": -0.02222403883934021
+      }
+    },
+    {
+      "lead_minutes": 75,
+      "source_support_full_fraction": 0.6566162109375,
+      "source_support_center5_fraction": 0.7,
+      "full16": {
+        "paired_supported_pixels": 5379,
+        "P0_mae_log1p_cot": 0.39420047402381897,
+        "P16_mae_log1p_cot": 0.3759930729866028,
+        "P16_minus_P0_mae_log1p_cot": -0.018207401037216187
+      },
+      "center5": {
+        "paired_supported_pixels": 560,
+        "P0_mae_log1p_cot": 0.3934342563152313,
+        "P16_mae_log1p_cot": 0.35683903098106384,
+        "P16_minus_P0_mae_log1p_cot": -0.03659522533416748
+      }
+    },
+    {
+      "lead_minutes": 90,
+      "source_support_full_fraction": 0.633544921875,
+      "source_support_center5_fraction": 0.68125,
+      "full16": {
+        "paired_supported_pixels": 5190,
+        "P0_mae_log1p_cot": 0.5130232572555542,
+        "P16_mae_log1p_cot": 0.4892989695072174,
+        "P16_minus_P0_mae_log1p_cot": -0.023724287748336792
+      },
+      "center5": {
+        "paired_supported_pixels": 545,
+        "P0_mae_log1p_cot": 0.5153423547744751,
+        "P16_mae_log1p_cot": 0.47228482365608215,
+        "P16_minus_P0_mae_log1p_cot": -0.043057531118392944
+      }
+    },
+    {
+      "lead_minutes": 105,
+      "source_support_full_fraction": 0.6004638671875,
+      "source_support_center5_fraction": 0.6575,
+      "full16": {
+        "paired_supported_pixels": 4919,
+        "P0_mae_log1p_cot": 0.5666460394859314,
+        "P16_mae_log1p_cot": 0.538880467414856,
+        "P16_minus_P0_mae_log1p_cot": -0.02776557207107544
+      },
+      "center5": {
+        "paired_supported_pixels": 526,
+        "P0_mae_log1p_cot": 0.59935063123703,
+        "P16_mae_log1p_cot": 0.5363984704017639,
+        "P16_minus_P0_mae_log1p_cot": -0.06295216083526611
+      }
+    },
+    {
+      "lead_minutes": 120,
+      "source_support_full_fraction": 0.58203125,
+      "source_support_center5_fraction": 0.63625,
+      "full16": {
+        "paired_supported_pixels": 4768,
+        "P0_mae_log1p_cot": 0.6092236638069153,
+        "P16_mae_log1p_cot": 0.5780344605445862,
+        "P16_minus_P0_mae_log1p_cot": -0.0311892032623291
+      },
+      "center5": {
+        "paired_supported_pixels": 509,
+        "P0_mae_log1p_cot": 0.6650874614715576,
+        "P16_mae_log1p_cot": 0.5898285508155823,
+        "P16_minus_P0_mae_log1p_cot": -0.07525891065597534
+      }
+    },
+    {
+      "lead_minutes": 135,
+      "source_support_full_fraction": 0.5660400390625,
+      "source_support_center5_fraction": 0.6175,
+      "full16": {
+        "paired_supported_pixels": 4637,
+        "P0_mae_log1p_cot": 0.6473034620285034,
+        "P16_mae_log1p_cot": 0.6133583188056946,
+        "P16_minus_P0_mae_log1p_cot": -0.03394514322280884
+      },
+      "center5": {
+        "paired_supported_pixels": 494,
+        "P0_mae_log1p_cot": 0.7292327284812927,
+        "P16_mae_log1p_cot": 0.643602728843689,
+        "P16_minus_P0_mae_log1p_cot": -0.08562999963760376
+      }
+    },
+    {
+      "lead_minutes": 150,
+      "source_support_full_fraction": 0.561767578125,
+      "source_support_center5_fraction": 0.60125,
+      "full16": {
+        "paired_supported_pixels": 4602,
+        "P0_mae_log1p_cot": 0.6702617406845093,
+        "P16_mae_log1p_cot": 0.628731369972229,
+        "P16_minus_P0_mae_log1p_cot": -0.04153037071228027
+      },
+      "center5": {
+        "paired_supported_pixels": 481,
+        "P0_mae_log1p_cot": 0.7505030035972595,
+        "P16_mae_log1p_cot": 0.6576716899871826,
+        "P16_minus_P0_mae_log1p_cot": -0.0928313136100769
+      }
+    },
+    {
+      "lead_minutes": 165,
+      "source_support_full_fraction": 0.5474853515625,
+      "source_support_center5_fraction": 0.57,
+      "full16": {
+        "paired_supported_pixels": 4485,
+        "P0_mae_log1p_cot": 0.6982313990592957,
+        "P16_mae_log1p_cot": 0.681246280670166,
+        "P16_minus_P0_mae_log1p_cot": -0.01698511838912964
+      },
+      "center5": {
+        "paired_supported_pixels": 456,
+        "P0_mae_log1p_cot": 0.7350415587425232,
+        "P16_mae_log1p_cot": 0.7240201830863953,
+        "P16_minus_P0_mae_log1p_cot": -0.01102137565612793
+      }
+    },
+    {
+      "lead_minutes": 180,
+      "source_support_full_fraction": 0.5439453125,
+      "source_support_center5_fraction": 0.57,
+      "full16": {
+        "paired_supported_pixels": 4456,
+        "P0_mae_log1p_cot": 0.7032607793807983,
+        "P16_mae_log1p_cot": 0.7107967734336853,
+        "P16_minus_P0_mae_log1p_cot": 0.007535994052886963
+      },
+      "center5": {
+        "paired_supported_pixels": 456,
+        "P0_mae_log1p_cot": 0.7261112928390503,
+        "P16_mae_log1p_cot": 0.7177736163139343,
+        "P16_minus_P0_mae_log1p_cot": -0.008337676525115967
+      }
+    },
+    {
+      "lead_minutes": 195,
+      "source_support_full_fraction": 0.5313720703125,
+      "source_support_center5_fraction": 0.53875,
+      "full16": {
+        "paired_supported_pixels": 4353,
+        "P0_mae_log1p_cot": 0.7171487808227539,
+        "P16_mae_log1p_cot": 0.742350161075592,
+        "P16_minus_P0_mae_log1p_cot": 0.025201380252838135
+      },
+      "center5": {
+        "paired_supported_pixels": 431,
+        "P0_mae_log1p_cot": 0.7298904061317444,
+        "P16_mae_log1p_cot": 0.7435734868049622,
+        "P16_minus_P0_mae_log1p_cot": 0.013683080673217773
+      }
+    },
+    {
+      "lead_minutes": 210,
+      "source_support_full_fraction": 0.528564453125,
+      "source_support_center5_fraction": 0.53875,
+      "full16": {
+        "paired_supported_pixels": 4330,
+        "P0_mae_log1p_cot": 0.7265831232070923,
+        "P16_mae_log1p_cot": 0.7505643367767334,
+        "P16_minus_P0_mae_log1p_cot": 0.023981213569641113
+      },
+      "center5": {
+        "paired_supported_pixels": 431,
+        "P0_mae_log1p_cot": 0.7574849724769592,
+        "P16_mae_log1p_cot": 0.767679750919342,
+        "P16_minus_P0_mae_log1p_cot": 0.010194778442382812
+      }
+    },
+    {
+      "lead_minutes": 225,
+      "source_support_full_fraction": 0.5177001953125,
+      "source_support_center5_fraction": 0.5125,
+      "full16": {
+        "paired_supported_pixels": 4241,
+        "P0_mae_log1p_cot": 0.7293460965156555,
+        "P16_mae_log1p_cot": 0.746403694152832,
+        "P16_minus_P0_mae_log1p_cot": 0.017057597637176514
+      },
+      "center5": {
+        "paired_supported_pixels": 410,
+        "P0_mae_log1p_cot": 0.7776046991348267,
+        "P16_mae_log1p_cot": 0.7893478870391846,
+        "P16_minus_P0_mae_log1p_cot": 0.01174318790435791
+      }
+    },
+    {
+      "lead_minutes": 240,
+      "source_support_full_fraction": 0.515625,
+      "source_support_center5_fraction": 0.5125,
+      "full16": {
+        "paired_supported_pixels": 4224,
+        "P0_mae_log1p_cot": 0.7467902302742004,
+        "P16_mae_log1p_cot": 0.7523690462112427,
+        "P16_minus_P0_mae_log1p_cot": 0.005578815937042236
+      },
+      "center5": {
+        "paired_supported_pixels": 410,
+        "P0_mae_log1p_cot": 0.7821479439735413,
+        "P16_mae_log1p_cot": 0.7912240624427795,
+        "P16_minus_P0_mae_log1p_cot": 0.009076118469238281
+      }
+    }
+  ]
+}
