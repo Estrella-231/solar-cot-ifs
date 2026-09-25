@@ -1,0 +1,1004 @@
+{
+  "state": "REGIONAL_VIEW_GEOMETRY_AUDIT",
+  "test_used": false,
+  "source": "historical C13 phase-correlation pilot; small fixed train/val samples",
+  "crop_definition": "station pixel centered; 256 uses full Hunan grid",
+  "source_convention": "backward sample = target pixel minus round(motion per 15 min * lead)",
+  "limits": "source coverage is geometric only; velocity and COT retrieval accuracy remain unverified",
+  "views": {
+    "train": {
+      "pilot_sha256": "6dcb67412ce4645a8a53960770511e6ab56f5be1de24a83d1670d59b0adc7b1b",
+      "sequences": 64,
+      "station_records": 128,
+      "per_view": {
+        "16": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 0.87469482421875,
+            "source_support_station5": 0.9834375,
+            "fraction_records_full_station5_support": 0.953125
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 0.76214599609375,
+            "source_support_station5": 0.8428125,
+            "fraction_records_full_station5_support": 0.765625
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 0.6826171875,
+            "source_support_station5": 0.7275,
+            "fraction_records_full_station5_support": 0.6796875
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 0.6273193359375,
+            "source_support_station5": 0.6596875,
+            "fraction_records_full_station5_support": 0.6015625
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 0.59722900390625,
+            "source_support_station5": 0.605,
+            "fraction_records_full_station5_support": 0.5703125
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 0.572845458984375,
+            "source_support_station5": 0.58,
+            "fraction_records_full_station5_support": 0.5625
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 0.554779052734375,
+            "source_support_station5": 0.5615625,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.53955078125,
+            "source_support_station5": 0.545,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.532684326171875,
+            "source_support_station5": 0.5346875,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.525909423828125,
+            "source_support_station5": 0.525,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.519500732421875,
+            "source_support_station5": 0.515625,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.5164794921875,
+            "source_support_station5": 0.515625,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.513519287109375,
+            "source_support_station5": 0.515625,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.509002685546875,
+            "source_support_station5": 0.5096875,
+            "fraction_records_full_station5_support": 0.4921875
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.504669189453125,
+            "source_support_station5": 0.504375,
+            "fraction_records_full_station5_support": 0.4921875
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.501953125,
+            "source_support_station5": 0.504375,
+            "fraction_records_full_station5_support": 0.4921875
+          }
+        ],
+        "32": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 0.9638671875,
+            "source_support_station5": 0.9890625,
+            "fraction_records_full_station5_support": 0.96875
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 0.88592529296875,
+            "source_support_station5": 0.9178125,
+            "fraction_records_full_station5_support": 0.890625
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 0.818359375,
+            "source_support_station5": 0.840625,
+            "fraction_records_full_station5_support": 0.78125
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 0.75897216796875,
+            "source_support_station5": 0.7609375,
+            "fraction_records_full_station5_support": 0.7265625
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 0.70361328125,
+            "source_support_station5": 0.7265625,
+            "fraction_records_full_station5_support": 0.6953125
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 0.67364501953125,
+            "source_support_station5": 0.696875,
+            "fraction_records_full_station5_support": 0.6796875
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.646484375,
+            "source_support_station5": 0.6565625,
+            "fraction_records_full_station5_support": 0.609375
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.621856689453125,
+            "source_support_station5": 0.621875,
+            "fraction_records_full_station5_support": 0.6015625
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.601165771484375,
+            "source_support_station5": 0.5990625,
+            "fraction_records_full_station5_support": 0.5703125
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.584869384765625,
+            "source_support_station5": 0.5909375,
+            "fraction_records_full_station5_support": 0.5703125
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.5672607421875,
+            "source_support_station5": 0.5765625,
+            "fraction_records_full_station5_support": 0.5703125
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.559234619140625,
+            "source_support_station5": 0.5703125,
+            "fraction_records_full_station5_support": 0.5703125
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.553558349609375,
+            "source_support_station5": 0.5675,
+            "fraction_records_full_station5_support": 0.5625
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.548065185546875,
+            "source_support_station5": 0.5559375,
+            "fraction_records_full_station5_support": 0.515625
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.541015625,
+            "source_support_station5": 0.545,
+            "fraction_records_full_station5_support": 0.515625
+          }
+        ],
+        "64": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 0.9814453125,
+            "source_support_station5": 0.990625,
+            "fraction_records_full_station5_support": 0.9765625
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 0.943023681640625,
+            "source_support_station5": 0.953125,
+            "fraction_records_full_station5_support": 0.953125
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 0.9117431640625,
+            "source_support_station5": 0.915625,
+            "fraction_records_full_station5_support": 0.90625
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 0.865386962890625,
+            "source_support_station5": 0.884375,
+            "fraction_records_full_station5_support": 0.875
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.828125,
+            "source_support_station5": 0.8375,
+            "fraction_records_full_station5_support": 0.78125
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.78955078125,
+            "source_support_station5": 0.775,
+            "fraction_records_full_station5_support": 0.765625
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.75390625,
+            "source_support_station5": 0.765625,
+            "fraction_records_full_station5_support": 0.765625
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.73779296875,
+            "source_support_station5": 0.7421875,
+            "fraction_records_full_station5_support": 0.7265625
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.724609375,
+            "source_support_station5": 0.725,
+            "fraction_records_full_station5_support": 0.71875
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.70172119140625,
+            "source_support_station5": 0.7125,
+            "fraction_records_full_station5_support": 0.6953125
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.68212890625,
+            "source_support_station5": 0.6953125,
+            "fraction_records_full_station5_support": 0.6953125
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.6651611328125,
+            "source_support_station5": 0.6921875,
+            "fraction_records_full_station5_support": 0.6796875
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.650390625,
+            "source_support_station5": 0.6565625,
+            "fraction_records_full_station5_support": 0.609375
+          }
+        ],
+        "128": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.986328125,
+            "source_support_station5": 0.990625,
+            "fraction_records_full_station5_support": 0.9765625
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.9638671875,
+            "source_support_station5": 0.965625,
+            "fraction_records_full_station5_support": 0.953125
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.947265625,
+            "source_support_station5": 0.953125,
+            "fraction_records_full_station5_support": 0.953125
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.931640625,
+            "source_support_station5": 0.928125,
+            "fraction_records_full_station5_support": 0.921875
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.90966796875,
+            "source_support_station5": 0.915625,
+            "fraction_records_full_station5_support": 0.9140625
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.897003173828125,
+            "source_support_station5": 0.8975,
+            "fraction_records_full_station5_support": 0.890625
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.8858642578125,
+            "source_support_station5": 0.8875,
+            "fraction_records_full_station5_support": 0.875
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.85546875,
+            "source_support_station5": 0.875,
+            "fraction_records_full_station5_support": 0.875
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.828125,
+            "source_support_station5": 0.8375,
+            "fraction_records_full_station5_support": 0.78125
+          }
+        ],
+        "256": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          }
+        ]
+      }
+    },
+    "val": {
+      "pilot_sha256": "9a279dc4413b53638e2f0e087929f3ad5734e4b460976d385fe32cdca74292a1",
+      "sequences": 16,
+      "station_records": 32,
+      "per_view": {
+        "16": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 0.9163818359375,
+            "source_support_station5": 0.99375,
+            "fraction_records_full_station5_support": 0.96875
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 0.8280029296875,
+            "source_support_station5": 0.9125,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 0.7525634765625,
+            "source_support_station5": 0.8375,
+            "fraction_records_full_station5_support": 0.75
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 0.70556640625,
+            "source_support_station5": 0.7625,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 0.6705322265625,
+            "source_support_station5": 0.7,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 0.633544921875,
+            "source_support_station5": 0.68125,
+            "fraction_records_full_station5_support": 0.65625
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 0.6004638671875,
+            "source_support_station5": 0.6575,
+            "fraction_records_full_station5_support": 0.59375
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.58203125,
+            "source_support_station5": 0.63625,
+            "fraction_records_full_station5_support": 0.59375
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.5772705078125,
+            "source_support_station5": 0.6175,
+            "fraction_records_full_station5_support": 0.59375
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.561767578125,
+            "source_support_station5": 0.60125,
+            "fraction_records_full_station5_support": 0.59375
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.5474853515625,
+            "source_support_station5": 0.57,
+            "fraction_records_full_station5_support": 0.5
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.5439453125,
+            "source_support_station5": 0.57,
+            "fraction_records_full_station5_support": 0.5
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.5406494140625,
+            "source_support_station5": 0.57,
+            "fraction_records_full_station5_support": 0.5
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.528564453125,
+            "source_support_station5": 0.53875,
+            "fraction_records_full_station5_support": 0.46875
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.5177001953125,
+            "source_support_station5": 0.5125,
+            "fraction_records_full_station5_support": 0.46875
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.515625,
+            "source_support_station5": 0.5125,
+            "fraction_records_full_station5_support": 0.46875
+          }
+        ],
+        "32": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 0.98828125,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 0.95703125,
+            "source_support_station5": 0.95625,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 0.9140625,
+            "source_support_station5": 0.93125,
+            "fraction_records_full_station5_support": 0.90625
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 0.863037109375,
+            "source_support_station5": 0.86875,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 0.8251953125,
+            "source_support_station5": 0.84375,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 0.788818359375,
+            "source_support_station5": 0.825,
+            "fraction_records_full_station5_support": 0.75
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.765625,
+            "source_support_station5": 0.7625,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.7362060546875,
+            "source_support_station5": 0.7,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.70849609375,
+            "source_support_station5": 0.6875,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.6824951171875,
+            "source_support_station5": 0.6875,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.658203125,
+            "source_support_station5": 0.6875,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.6514892578125,
+            "source_support_station5": 0.6875,
+            "fraction_records_full_station5_support": 0.6875
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.64501953125,
+            "source_support_station5": 0.68125,
+            "fraction_records_full_station5_support": 0.65625
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.6387939453125,
+            "source_support_station5": 0.6575,
+            "fraction_records_full_station5_support": 0.59375
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.6328125,
+            "source_support_station5": 0.63625,
+            "fraction_records_full_station5_support": 0.59375
+          }
+        ],
+        "64": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 0.986328125,
+            "source_support_station5": 0.99375,
+            "fraction_records_full_station5_support": 0.96875
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 0.96484375,
+            "source_support_station5": 0.9625,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 0.947265625,
+            "source_support_station5": 0.9375,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 0.921875,
+            "source_support_station5": 0.9375,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 0.900390625,
+            "source_support_station5": 0.90625,
+            "fraction_records_full_station5_support": 0.875
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.8828125,
+            "source_support_station5": 0.86875,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.865234375,
+            "source_support_station5": 0.85,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.8515625,
+            "source_support_station5": 0.84375,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.825927734375,
+            "source_support_station5": 0.84375,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.8046875,
+            "source_support_station5": 0.84375,
+            "fraction_records_full_station5_support": 0.84375
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.78515625,
+            "source_support_station5": 0.825,
+            "fraction_records_full_station5_support": 0.75
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.765625,
+            "source_support_station5": 0.7625,
+            "fraction_records_full_station5_support": 0.6875
+          }
+        ],
+        "128": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 0.9921875,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 0.98046875,
+            "source_support_station5": 0.96875,
+            "fraction_records_full_station5_support": 0.96875
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 0.9609375,
+            "source_support_station5": 0.96875,
+            "fraction_records_full_station5_support": 0.96875
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 0.951171875,
+            "source_support_station5": 0.94375,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 0.94140625,
+            "source_support_station5": 0.9375,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 0.9375,
+            "source_support_station5": 0.9375,
+            "fraction_records_full_station5_support": 0.9375
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 0.9375,
+            "source_support_station5": 0.9375,
+            "fraction_records_full_station5_support": 0.9375
+          }
+        ],
+        "256": [
+          {
+            "lead_minutes": 15,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 30,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 45,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 60,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 75,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 90,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 105,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 120,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 135,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 150,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 165,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 180,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 195,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 210,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 225,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          },
+          {
+            "lead_minutes": 240,
+            "source_support_full16": 1.0,
+            "source_support_station5": 1.0,
+            "fraction_records_full_station5_support": 1.0
+          }
+        ]
+      }
+    }
+  }
+}

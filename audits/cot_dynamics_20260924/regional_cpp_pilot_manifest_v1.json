@@ -1,0 +1,624 @@
+{
+  "state": "REGIONAL_CPP_STRATIFIED_PILOT",
+  "test_used": false,
+  "reference": "original CPP retrieval, no independent QA/producer binding",
+  "manifest_sha256": "9b6f5ff452a377a202db3d7dc305cebd74230cb084b6accf21df745b4b47dcf8",
+  "grid_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+  "per_month_requested": 4,
+  "splits": {
+    "train": {
+      "frames": 60,
+      "utc_months": [
+        "202404",
+        "202405",
+        "202406",
+        "202407",
+        "202408",
+        "202409",
+        "202410",
+        "202411",
+        "202412",
+        "202501",
+        "202502",
+        "202503",
+        "202504",
+        "202505",
+        "202506"
+      ],
+      "mean_valid_fraction": 1.0,
+      "archive": "train_cpp_256.npz",
+      "archive_sha256": "bcc1dca42dbdb550cf882048e2afacf95fb665baefc2063c4e63012b59998020",
+      "records": [
+        {
+          "utc": "202404020000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240402/FY4B_AGRI_20240402000000.nc",
+          "size_bytes": 83044591,
+          "mtime_ns": 1772270966060159409,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202404110500",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240411/FY4B_AGRI_20240411050000.nc",
+          "size_bytes": 82846076,
+          "mtime_ns": 1772271935049033857,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202404200800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240420/FY4B_AGRI_20240420080000.nc",
+          "size_bytes": 79273170,
+          "mtime_ns": 1772272951897082344,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202404300800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240430/FY4B_AGRI_20240430080000.nc",
+          "size_bytes": 85475208,
+          "mtime_ns": 1772274062324135294,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202405010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240501/FY4B_AGRI_20240501000000.nc",
+          "size_bytes": 89562248,
+          "mtime_ns": 1772274133695138697,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202405110500",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240511/FY4B_AGRI_20240511050000.nc",
+          "size_bytes": 86088297,
+          "mtime_ns": 1772275234560019386,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202405210700",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240521/FY4B_AGRI_20240521070000.nc",
+          "size_bytes": 86955347,
+          "mtime_ns": 1772276400418074978,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202405310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240531/FY4B_AGRI_20240531080000.nc",
+          "size_bytes": 87027654,
+          "mtime_ns": 1772277601177132235,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202406010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240601/FY4B_AGRI_20240601000000.nc",
+          "size_bytes": 85267231,
+          "mtime_ns": 1772277674906135751,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202406100800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240610/FY4B_AGRI_20240610080000.nc",
+          "size_bytes": 90808867,
+          "mtime_ns": 1772278806167017937,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202406200800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240620/FY4B_AGRI_20240620080000.nc",
+          "size_bytes": 89766885,
+          "mtime_ns": 1772280021846075905,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202406300800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240630/FY4B_AGRI_20240630080000.nc",
+          "size_bytes": 91238420,
+          "mtime_ns": 1772281311965137422,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202407010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240701/FY4B_AGRI_20240701000000.nc",
+          "size_bytes": 93417723,
+          "mtime_ns": 1772281399502141596,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202407110200",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240711/FY4B_AGRI_20240711020000.nc",
+          "size_bytes": 89850178,
+          "mtime_ns": 1772282817728037418,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202407210500",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240721/FY4B_AGRI_20240721050000.nc",
+          "size_bytes": 87025127,
+          "mtime_ns": 1772284228779104702,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202407310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240731/FY4B_AGRI_20240731080000.nc",
+          "size_bytes": 89558611,
+          "mtime_ns": 1772285543934167414,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202408010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240801/FY4B_AGRI_20240801000000.nc",
+          "size_bytes": 90358665,
+          "mtime_ns": 1772285641411000258,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202408110100",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240811/FY4B_AGRI_20240811010000.nc",
+          "size_bytes": 89835269,
+          "mtime_ns": 1772286890218059805,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202408210300",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240821/FY4B_AGRI_20240821030000.nc",
+          "size_bytes": 88834799,
+          "mtime_ns": 1772288062599115709,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202408310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240831/FY4B_AGRI_20240831080000.nc",
+          "size_bytes": 90200199,
+          "mtime_ns": 1772289148298167479,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202409010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240901/FY4B_AGRI_20240901000000.nc",
+          "size_bytes": 88452520,
+          "mtime_ns": 1772289219084170854,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202409090700",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240909/FY4B_AGRI_20240909070000.nc",
+          "size_bytes": 87653043,
+          "mtime_ns": 1772290243804047912,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202409220000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240922/FY4B_AGRI_20240922000000.nc",
+          "size_bytes": 88955621,
+          "mtime_ns": 1772291385691102362,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202409300800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240930/FY4B_AGRI_20240930080000.nc",
+          "size_bytes": 83933584,
+          "mtime_ns": 1772292270898144572,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202410010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241001/FY4B_AGRI_20241001000000.nc",
+          "size_bytes": 84807784,
+          "mtime_ns": 1772292340978147913,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202410110500",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241011/FY4B_AGRI_20241011050000.nc",
+          "size_bytes": 86815213,
+          "mtime_ns": 1772293411636027257,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202410220200",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241022/FY4B_AGRI_20241022020000.nc",
+          "size_bytes": 86372830,
+          "mtime_ns": 1772294733543090291,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202410310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241031/FY4B_AGRI_20241031080000.nc",
+          "size_bytes": 83536778,
+          "mtime_ns": 1772295763069139382,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202411010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241101/FY4B_AGRI_20241101000000.nc",
+          "size_bytes": 84852910,
+          "mtime_ns": 1772295840457143072,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202411100800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241110/FY4B_AGRI_20241110080000.nc",
+          "size_bytes": 86465061,
+          "mtime_ns": 1772296869145020320,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202411200800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241120/FY4B_AGRI_20241120080000.nc",
+          "size_bytes": 84190800,
+          "mtime_ns": 1783816078351129001,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202411300800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241130/FY4B_AGRI_20241130080000.nc",
+          "size_bytes": 84512664,
+          "mtime_ns": 1783909730193128564,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202412010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241201/FY4B_AGRI_20241201000000.nc",
+          "size_bytes": 85203764,
+          "mtime_ns": 1783916370560101593,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202412110600",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241211/FY4B_AGRI_20241211060000.nc",
+          "size_bytes": 84251504,
+          "mtime_ns": 1784010315423114937,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202412210700",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241221/FY4B_AGRI_20241221070000.nc",
+          "size_bytes": 84791451,
+          "mtime_ns": 1784095079629034076,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202412310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241231/FY4B_AGRI_20241231080000.nc",
+          "size_bytes": 1484504,
+          "mtime_ns": 1784163982455055811,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202501010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250101/FY4B_AGRI_20250101000000.nc",
+          "size_bytes": 84670035,
+          "mtime_ns": 1772510989765095833,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202501040545",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250104/FY4B_AGRI_20250104054500.nc",
+          "size_bytes": 84180177,
+          "mtime_ns": 1773149621554140311,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202501170500",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250117/FY4B_AGRI_20250117050000.nc",
+          "size_bytes": 87362939,
+          "mtime_ns": 1772575044607058250,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202501310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250131/FY4B_AGRI_20250131080000.nc",
+          "size_bytes": 82830489,
+          "mtime_ns": 1772608045675085767,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202502010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250201/FY4B_AGRI_20250201000000.nc",
+          "size_bytes": 83360671,
+          "mtime_ns": 1772609713844165312,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202502090700",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250209/FY4B_AGRI_20250209070000.nc",
+          "size_bytes": 85218953,
+          "mtime_ns": 1772630266971286530,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202502180700",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250218/FY4B_AGRI_20250218070000.nc",
+          "size_bytes": 79211499,
+          "mtime_ns": 1772652210390332873,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202502280800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250228/FY4B_AGRI_20250228080000.nc",
+          "size_bytes": 82991380,
+          "mtime_ns": 1772675418321439514,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202503010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250301/FY4B_AGRI_20250301000000.nc",
+          "size_bytes": 83108602,
+          "mtime_ns": 1772676343441483627,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202503110000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250311/FY4B_AGRI_20250311000000.nc",
+          "size_bytes": 79887666,
+          "mtime_ns": 1772699946466609107,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202503210500",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250321/FY4B_AGRI_20250321050000.nc",
+          "size_bytes": 79877455,
+          "mtime_ns": 1772734518252257618,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202503310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250331/FY4B_AGRI_20250331080000.nc",
+          "size_bytes": 84172725,
+          "mtime_ns": 1772759935217469593,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202504010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250401/FY4B_AGRI_20250401000000.nc",
+          "size_bytes": 83593979,
+          "mtime_ns": 1772761246513532121,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202504100600",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250410/FY4B_AGRI_20250410060000.nc",
+          "size_bytes": 82480421,
+          "mtime_ns": 1772778923044156547,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202504210100",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250421/FY4B_AGRI_20250421010000.nc",
+          "size_bytes": 81475192,
+          "mtime_ns": 1772805037790027551,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202504300800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250430/FY4B_AGRI_20250430080000.nc",
+          "size_bytes": 82489997,
+          "mtime_ns": 1772826735281031580,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202505010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250501/FY4B_AGRI_20250501000000.nc",
+          "size_bytes": 81732453,
+          "mtime_ns": 1772828439077112823,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202505110300",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250511/FY4B_AGRI_20250511030000.nc",
+          "size_bytes": 84524611,
+          "mtime_ns": 1772852837750073897,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202505210100",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250521/FY4B_AGRI_20250521010000.nc",
+          "size_bytes": 89107635,
+          "mtime_ns": 1772876056808150480,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202505310800",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250531/FY4B_AGRI_20250531080000.nc",
+          "size_bytes": 90938838,
+          "mtime_ns": 1772898969356040595,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202506010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250601/FY4B_AGRI_20250601000000.nc",
+          "size_bytes": 92966436,
+          "mtime_ns": 1772297513393051040,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202506110000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250611/FY4B_AGRI_20250611000000.nc",
+          "size_bytes": 88393991,
+          "mtime_ns": 1772302072536096632,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202506210015",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250621/FY4B_AGRI_20250621001500.nc",
+          "size_bytes": 90096775,
+          "mtime_ns": 1772306575782139607,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202506300845",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250630/FY4B_AGRI_20250630084500.nc",
+          "size_bytes": 94002406,
+          "mtime_ns": 1772310820002170183,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        }
+      ]
+    },
+    "val": {
+      "frames": 12,
+      "utc_months": [
+        "202507",
+        "202508",
+        "202509"
+      ],
+      "mean_valid_fraction": 1.0,
+      "archive": "val_cpp_256.npz",
+      "archive_sha256": "c75da52654f203c0252f9ac078e50f51d5a2104836e7604378ba1cbaedb18065",
+      "records": [
+        {
+          "utc": "202507010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250701/FY4B_AGRI_20250701000000.nc",
+          "size_bytes": 94486525,
+          "mtime_ns": 1772311104605012045,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202507110245",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250711/FY4B_AGRI_20250711024500.nc",
+          "size_bytes": 91626061,
+          "mtime_ns": 1772315738717061260,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202507210630",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250721/FY4B_AGRI_20250721063000.nc",
+          "size_bytes": 92378771,
+          "mtime_ns": 1772320402267111878,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202507310845",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731084500.nc",
+          "size_bytes": 93264434,
+          "mtime_ns": 1772325189380168389,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202508010000",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250801/FY4B_AGRI_20250801000000.nc",
+          "size_bytes": 94260063,
+          "mtime_ns": 1772325506252011694,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202508110145",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250811/FY4B_AGRI_20250811014500.nc",
+          "size_bytes": 89515891,
+          "mtime_ns": 1772330195267063527,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202508210600",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250821/FY4B_AGRI_20250821060000.nc",
+          "size_bytes": 87658820,
+          "mtime_ns": 1772334839004113153,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202508310845",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250831/FY4B_AGRI_20250831084500.nc",
+          "size_bytes": 86606301,
+          "mtime_ns": 1772339146636146753,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202509010315",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250901/FY4B_AGRI_20250901031500.nc",
+          "size_bytes": 86740734,
+          "mtime_ns": 1772339478628162583,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202509040230",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250904/FY4B_AGRI_20250904023000.nc",
+          "size_bytes": 84180398,
+          "mtime_ns": 1772340741073051025,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202509070300",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250907/FY4B_AGRI_20250907030000.nc",
+          "size_bytes": 88475463,
+          "mtime_ns": 1772342129834117246,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        },
+        {
+          "utc": "202509100845",
+          "cpp_file": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250910/FY4B_AGRI_20250910084500.nc",
+          "size_bytes": 92403204,
+          "mtime_ns": 1772343722286021423,
+          "coordinate_error_deg": 0.0,
+          "valid_fraction": 1.0
+        }
+      ]
+    }
+  }
+}

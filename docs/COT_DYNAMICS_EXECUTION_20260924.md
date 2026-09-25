@@ -1,5 +1,7 @@
 # COT dynamics 执行交接（2026-09-24）
 
+2026-09-25 接续方向：用户同意从 16×16 历史 COT 单独搬运，转为完整湖南 256×256 区域背景加站点周围精细图的候选。区域 CPP/AGRI 来源核查、小样本配对和单卡 R256 试跑状态见 [`refine-logs/cot_dynamics_20260925/REGIONAL_STATION_COT_PLAN.md`](../refine-logs/cot_dynamics_20260925/REGIONAL_STATION_COT_PLAN.md)。下文仍是 2026-09-24 旧合同的完成记录，旧 B1 数值不能直接当新区域方法的配对基线。
+
 本页只记录工程状态；科学问题、实验组、停止条件见 [`refine-logs/cot_dynamics_20260924/EXPERIMENT_PLAN.md`](../refine-logs/cot_dynamics_20260924/EXPERIMENT_PLAN.md)。状态可能随 PBS 和服务器产物变化，重启前必须实时复查，不能把本页的作业号当完成证明。
 
 2026-09-24 完成快照：修复版 SimVP `210506.tc6000`、预测 bank `210593.tc6000`、配对 GHI 作业 `210598.tc6000` 均已完成并验收；后两者 PBS 退出码0。oracle train/val bank 已完整且不可部署。B1结果与日期级配对复核见 [`results/cot_dynamics_20260924/ghi_b1/README.md`](../results/cot_dynamics_20260924/ghi_b1/README.md)。E 未训练；大视场反演与源随动外推准确性仍是门禁，服务器当前状态须实时复查。
