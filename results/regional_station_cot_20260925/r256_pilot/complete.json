@@ -1,0 +1,57 @@
+{
+  "state": "COMPLETE_REGIONAL_R_256_PILOT",
+  "test_used": false,
+  "train_frames": 60,
+  "val_frames": 12,
+  "training_role": "pipeline and GPU sizing pilot only; not paper COT/GHI evidence",
+  "raw_cpp_producer_binding": "unverified",
+  "independent_cpp_qa": "unavailable",
+  "batch_selected": 16,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "profile": [
+    {
+      "batch": 2,
+      "peak_allocated_gib": 0.6239433288574219,
+      "sequences_per_second": 0.6231704079678634
+    },
+    {
+      "batch": 4,
+      "peak_allocated_gib": 0.8173027038574219,
+      "sequences_per_second": 120.50575164841328
+    },
+    {
+      "batch": 8,
+      "peak_allocated_gib": 1.2040214538574219,
+      "sequences_per_second": 205.75760698232457
+    },
+    {
+      "batch": 16,
+      "peak_allocated_gib": 1.97745943069458,
+      "sequences_per_second": 306.2388609824077
+    }
+  ],
+  "epochs": [
+    {
+      "epoch": 0,
+      "train_huber": 0.16038496925733023,
+      "val_huber": 0.13668520748615265,
+      "val_mae_log1p_cot": 1.4166364669799805
+    },
+    {
+      "epoch": 1,
+      "train_huber": 0.14380640150940416,
+      "val_huber": 0.13480640947818756,
+      "val_mae_log1p_cot": 1.3978538513183594
+    },
+    {
+      "epoch": 2,
+      "train_huber": 0.13768099301441897,
+      "val_huber": 0.13023854792118073,
+      "val_mae_log1p_cot": 1.3521790504455566
+    }
+  ],
+  "cpp_pilot_manifest_sha256": "2afe5334c73a1bf9d54026c0f82fea62e0e9a05c1363809e05491b145c00069e",
+  "source_script_sha256": "7ff2374d5ca6c1d701c857245cdeefe4ebd02880c1ea27e3f9cc1513d0905405",
+  "r_arch_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "val_pred_sha256": "cf837ba340da5509dc4ba2a21635336bcbf7b95af3ef0f7eb1f8f0384bc2b973"
+}
