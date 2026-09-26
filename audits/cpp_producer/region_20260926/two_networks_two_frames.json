@@ -1,0 +1,117 @@
+{
+  "identity": {
+    "schema": "hunan_cpp_region_v1",
+    "grid_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+    "script_sha256": "8c9e6e5806ebbe2a3ab9deac1354a7e50879a1d9993d05febad06f80b1c91f7d",
+    "networks": "two",
+    "input_reader_sha256": "6524981c687fe032e9c627d930b52164156a72c41fc6969a3ab96cddb1d14aae",
+    "input_mode": "region",
+    "weights": {
+      "CLP": "3d46ad8a5958f06662d83e584e32387ba5ba1642174821598964d50064d662a3",
+      "COT": "6990c2817e4639a724bf5cd94045c3e063256f6c4322539b4a1ff14fd8905b63"
+    },
+    "tile_rows": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "tile_cols": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "input_bounds": [
+      1088,
+      1536,
+      1984,
+      2432
+    ],
+    "coordinate_error_deg": 0.0,
+    "fallback": "disabled",
+    "test_used": false,
+    "batch": 64,
+    "device": "cuda:0",
+    "pad_batch": 64
+  },
+  "startup_seconds": 84.91378521732986,
+  "frames": [
+    {
+      "utc": "2024-04-02T04:00:00",
+      "tile_count": 36,
+      "seconds": {
+        "bt": 0.39792308025062084,
+        "environment": 2.308413650840521,
+        "inference": 4.973436502739787,
+        "total": 8.613234719261527
+      },
+      "valid_fraction": 1.0,
+      "peak_allocated_bytes": 3346041344,
+      "sources": {
+        "raw_hdf": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2024/20240402/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20240402040000_20240402041459_4000M_V0001.HDF",
+        "raw_size": 116199333,
+        "hdf_native_bounds": [
+          446,
+          853,
+          1331,
+          1787
+        ],
+        "era_valid_hour_utc": "2024-04-02T04:00:00",
+        "lccs_year": 2024
+      },
+      "reference": {
+        "sha256": "ee5c7c2886e52ba8450f6eec011481e4b34c5b0c6bacb90733ebb45fc2ce7d3d",
+        "common_pixels": 65536,
+        "mae": 0.0,
+        "max_abs": 0.0,
+        "mask_same": true,
+        "clp_same": true,
+        "phase_mismatch_pixels": 0,
+        "same_phase_mae": 0.0,
+        "passed": true
+      },
+      "output_sha256": "0d2d0470cf9cd09e626eb397189a059d133e914fbbd103f41ea5ddbba5610744"
+    },
+    {
+      "utc": "2024-04-02T04:15:00",
+      "tile_count": 36,
+      "seconds": {
+        "bt": 0.6413962747901678,
+        "environment": 0.04743902571499348,
+        "inference": 3.344675777480006,
+        "total": 4.240438671782613
+      },
+      "valid_fraction": 1.0,
+      "peak_allocated_bytes": 3346041344,
+      "sources": {
+        "raw_hdf": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2024/20240402/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20240402041500_20240402042959_4000M_V0001.HDF",
+        "raw_size": 116528755,
+        "hdf_native_bounds": [
+          446,
+          853,
+          1331,
+          1787
+        ],
+        "era_valid_hour_utc": "2024-04-02T04:00:00",
+        "lccs_year": 2024
+      },
+      "reference": {
+        "sha256": "ba5653c9000b6f6e3ad3cbd5c4cedea7aa21b5b3f3dcc5b5b9a7c2e671b7ae2b",
+        "common_pixels": 65536,
+        "mae": 0.0,
+        "max_abs": 0.0,
+        "mask_same": true,
+        "clp_same": true,
+        "phase_mismatch_pixels": 0,
+        "same_phase_mae": 0.0,
+        "passed": true
+      },
+      "output_sha256": "15f7cdf6b441466a55765b946eeff0da577a22c41e003aebba6dae2a1b28655e"
+    }
+  ]
+}
