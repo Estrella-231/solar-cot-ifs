@@ -40,3 +40,15 @@ batch16 的区域推理曾产生 COT/云相差异；恢复原 batch64 推理形�
 24帧对照已启动：`code_gate_v1/run_cpp_region_fullscene_gate_v1.sh` 调用未修改的原整景CLI，输出 `p2_fullscene24_gate_v1/`，外层日志 `p2_fullscene24_gate_v1.log`，原流水线日志在其 `logs/`。每帧生成整景后核验COT/CLP/mask；任一超限立即停止，不放行1000帧。driver已启动、首帧原卫星和ERA输入已读取；这不是24帧已通过的声明。
 
 1000帧选择按四季各250帧，使用固定train/val UTC清单。冬季不存在完整250帧连续段，因此改为多个真实15分钟连续段拼成各季预算，显式记录段间缺口，不伪造连续时间轴。生产尚未启动，需先通过24帧一致性。
+
+## 24帧通过与1000帧启动
+
+24/24整景对照全部完成并通过。所有帧COT MAE/max_abs均为0，CLP与有限像元掩膜均相同；低覆盖帧共同像元36,011、参考覆盖54.9484%，同样完全一致。报告保存于 `audits/cpp_producer/region_20260926/fullscene24_report.json`；结论仅为该24帧同版本数值复现，不证明物理真值或GHI提升。
+
+已启动1000帧测试，复用冻结的 `code_v6`，CLP+COT、batch64/pad64和区域读取合同不变。启动前GPU5总48GiB、其他进程占约27.2GiB，区域实测峰值约3.12GiB，保留余量；没有扩卡或终止其他任务。不是PBS作业。
+
+- 启动器：`run_hunan_cpp_region_continuous1000_v1.sh`。
+- 输出：`p2_continuous1000_two_v6/`；日志：`p2_continuous1000_v1.log`。
+- 时间清单：`p2_selection1000_v2/times1000.json`；四季各250帧，段边界保留。
+
+完成后统计缓存复用下median/p95、端到端耗时、有效像元、坏源/坏输出及实际压缩存储量，再验证分片完整性和断点复用。全量补产、统一train/val bank及R_region训练尚未启动。
