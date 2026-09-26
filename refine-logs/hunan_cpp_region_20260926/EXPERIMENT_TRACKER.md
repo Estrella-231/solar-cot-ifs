@@ -7,8 +7,8 @@
 | P0 | 网格和tile映射 | MAPPING_PASS | 36 tiles，448×448上下文，256×256输出；空间示意图待补 |
 | P1 | 四网与两网一致性 | TWO_FRAME_PASS | 两个时刻分别与整景V2 COT/CLP/mask完全一致 |
 | P2a | 分层输入审计 | PASS | 48帧生产完成；24/24整景对照COT误差0、CLP/mask相同，缺测来源已核查 |
-| P2b | 1000帧连续生产 | RUNNING | 冻结code_v6已启动，尚待完整吞吐、覆盖及分片验收 |
-| P3a | 27,270缺口 | TODO | 未启动全量补产 |
+| P2b | 1000帧连续生产 | PASS | 1000/1000；低覆盖6帧逐源掩膜通过；8个哈希分片 |
+| P3a | 27,270缺口 | RUNNING | 缺口manifest与输入审计SHA冻结，GPU5区域双网任务已启动 |
 | P3b | 统一V2 bank | TODO | 需逐帧台账及分片验收 |
 | P4 | R_region训练 | TODO | 未启动新训练 |
 
