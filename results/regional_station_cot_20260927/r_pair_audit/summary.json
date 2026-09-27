@@ -1,0 +1,372 @@
+{
+  "state": "COMPLETE_PAIRED_CPP_REFERENCE_AUDIT",
+  "test_used": false,
+  "validation_frames": 3488,
+  "baseline": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/r256_full_exploratory_seed42_node22",
+  "candidate": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/r256_full_exploratory_seed42_batch512_node22",
+  "baseline_metrics": {
+    "cot/extreme": {
+      "n_pixels": 2093029,
+      "mae": 6.10671384371076,
+      "rmse": 7.926611292945543,
+      "bias": -0.19307159208811947
+    },
+    "cot/moderate": {
+      "n_pixels": 54117214,
+      "mae": 1.3747984322547457,
+      "rmse": 1.9767192280768588,
+      "bias": -0.176244156121039
+    },
+    "cot/near_zero": {
+      "n_pixels": 71310835,
+      "mae": 0.20235787900685795,
+      "rmse": 1.2422831056433281,
+      "bias": 0.20134137149744705
+    },
+    "cot/thick": {
+      "n_pixels": 48021636,
+      "mae": 3.548456573662363,
+      "rmse": 5.1634948432931935,
+      "bias": 0.4116795004774459
+    },
+    "cot/thin": {
+      "n_pixels": 22347363,
+      "mae": 0.8593583747928505,
+      "rmse": 1.1244738197045785,
+      "bias": -0.17750511729885057
+    },
+    "cot/very_thick": {
+      "n_pixels": 14867621,
+      "mae": 6.941863046288366,
+      "rmse": 8.950138391866902,
+      "bias": 0.26618379158896305
+    },
+    "month/2025-07": {
+      "n_pixels": 95917875,
+      "mae": 1.724725570690082,
+      "rmse": 3.5608508817883653,
+      "bias": -0.06391117708313984
+    },
+    "month/2025-08": {
+      "n_pixels": 91445681,
+      "mae": 1.9139274097744576,
+      "rmse": 3.8128167178630767,
+      "bias": 0.2667415799828493
+    },
+    "month/2025-09": {
+      "n_pixels": 25394142,
+      "mae": 2.125520314187894,
+      "rmse": 4.003307696207329,
+      "bias": 0.2328885373964669
+    },
+    "region/all": {
+      "n_pixels": 212757698,
+      "mae": 1.8538843739159008,
+      "rmse": 3.7252754031104565,
+      "bias": 0.1136322960535245
+    },
+    "sili/5x5": {
+      "n_pixels": 80542,
+      "mae": 1.5617210900946208,
+      "rmse": 3.1575647465864694,
+      "bias": 0.43132397812404616
+    },
+    "sili/cot/extreme": {
+      "n_pixels": 338,
+      "mae": 6.134022176618407,
+      "rmse": 7.533321381095247,
+      "bias": 5.09384127058221
+    },
+    "sili/cot/moderate": {
+      "n_pixels": 22660,
+      "mae": 1.2907303673023685,
+      "rmse": 2.0112806603878166,
+      "bias": 0.21705035236380527
+    },
+    "sili/cot/near_zero": {
+      "n_pixels": 23032,
+      "mae": 0.09762431458014455,
+      "rmse": 0.6025127990430452,
+      "bias": 0.09594038363774499
+    },
+    "sili/cot/thick": {
+      "n_pixels": 18504,
+      "mae": 3.369567630613618,
+      "rmse": 4.977589734402356,
+      "bias": 1.2057993610957665
+    },
+    "sili/cot/thin": {
+      "n_pixels": 12857,
+      "mae": 0.7640684273986652,
+      "rmse": 1.0276416210415695,
+      "bias": 0.059369632798534834
+    },
+    "sili/cot/very_thick": {
+      "n_pixels": 3151,
+      "mae": 6.359980957881112,
+      "rmse": 8.19805375008729,
+      "bias": 0.8932056012360946
+    },
+    "solar_altitude/10_20": {
+      "n_pixels": 28357221,
+      "mae": 2.1571777722914454,
+      "rmse": 4.27092496988155,
+      "bias": 0.13669693179614023
+    },
+    "solar_altitude/20_40": {
+      "n_pixels": 55499432,
+      "mae": 2.0369385500146246,
+      "rmse": 4.098312718424707,
+      "bias": 0.21638123095518577
+    },
+    "solar_altitude/40_60": {
+      "n_pixels": 57232415,
+      "mae": 1.8101909428629799,
+      "rmse": 3.6356575793569106,
+      "bias": 0.04760553046209245
+    },
+    "solar_altitude/60_91": {
+      "n_pixels": 71668630,
+      "mae": 1.627016912580471,
+      "rmse": 3.2277018519600826,
+      "bias": 0.07766558022194717
+    },
+    "zhujia/5x5": {
+      "n_pixels": 81787,
+      "mae": 1.0228840271641026,
+      "rmse": 2.487926623881431,
+      "bias": 0.014883217738610234
+    },
+    "zhujia/cot/extreme": {
+      "n_pixels": 397,
+      "mae": 5.384281177664884,
+      "rmse": 6.546008608857823,
+      "bias": -4.985171003365696
+    },
+    "zhujia/cot/moderate": {
+      "n_pixels": 14527,
+      "mae": 1.3180300314575608,
+      "rmse": 1.9111440340034307,
+      "bias": 0.07801461125418022
+    },
+    "zhujia/cot/near_zero": {
+      "n_pixels": 43704,
+      "mae": 0.03419525764743073,
+      "rmse": 0.3577169958803847,
+      "bias": 0.031552079319698646
+    },
+    "zhujia/cot/thick": {
+      "n_pixels": 9356,
+      "mae": 3.697412694861309,
+      "rmse": 5.072794818810928,
+      "bias": 0.4323839055212607
+    },
+    "zhujia/cot/thin": {
+      "n_pixels": 10996,
+      "mae": 0.7954058805294267,
+      "rmse": 1.052674539644903,
+      "bias": -0.13668638960857768
+    },
+    "zhujia/cot/very_thick": {
+      "n_pixels": 2807,
+      "mae": 6.248766747241263,
+      "rmse": 7.95504904415901,
+      "bias": -0.6620178107141726
+    }
+  },
+  "candidate_metrics": {
+    "cot/extreme": {
+      "n_pixels": 2093029,
+      "mae": 6.772923885639055,
+      "rmse": 8.564286793979841,
+      "bias": -5.126941804443084
+    },
+    "cot/moderate": {
+      "n_pixels": 54117214,
+      "mae": 1.190608550646983,
+      "rmse": 1.736241634716174,
+      "bias": -0.21517536689117547
+    },
+    "cot/near_zero": {
+      "n_pixels": 71310835,
+      "mae": 0.21179460385676221,
+      "rmse": 1.2529553673398346,
+      "bias": 0.21128171944077997
+    },
+    "cot/thick": {
+      "n_pixels": 48021636,
+      "mae": 3.2108337667028963,
+      "rmse": 4.516433797777495,
+      "bias": 0.32635569650156043
+    },
+    "cot/thin": {
+      "n_pixels": 22347363,
+      "mae": 0.7982769392076036,
+      "rmse": 1.0494490478807694,
+      "bias": 0.023767785846784826
+    },
+    "cot/very_thick": {
+      "n_pixels": 14867621,
+      "mae": 5.730189656883953,
+      "rmse": 7.378485678047246,
+      "bias": -1.057334658365594
+    },
+    "month/2025-07": {
+      "n_pixels": 95917875,
+      "mae": 1.5057545147521103,
+      "rmse": 3.073830768380354,
+      "bias": -0.2010898829143232
+    },
+    "month/2025-08": {
+      "n_pixels": 91445681,
+      "mae": 1.7337383263061952,
+      "rmse": 3.365043102194699,
+      "bias": 0.1411740042082387
+    },
+    "month/2025-09": {
+      "n_pixels": 25394142,
+      "mae": 1.8887466898383978,
+      "rmse": 3.439607300856102,
+      "bias": -0.017612774316459134
+    },
+    "region/all": {
+      "n_pixels": 212757698,
+      "mae": 1.649457388354218,
+      "rmse": 3.246341010547468,
+      "bias": -0.032081671568130715
+    },
+    "sili/5x5": {
+      "n_pixels": 80542,
+      "mae": 1.3290444043117418,
+      "rmse": 2.5185686618610372,
+      "bias": 0.26252334287086687
+    },
+    "sili/cot/extreme": {
+      "n_pixels": 338,
+      "mae": 4.244722975781683,
+      "rmse": 5.355405240599463,
+      "bias": -3.471717304026587
+    },
+    "sili/cot/moderate": {
+      "n_pixels": 22660,
+      "mae": 1.063414669042126,
+      "rmse": 1.646979499689587,
+      "bias": 0.07147143019161073
+    },
+    "sili/cot/near_zero": {
+      "n_pixels": 23032,
+      "mae": 0.12049320679877389,
+      "rmse": 0.5747317048418289,
+      "bias": 0.11974628102568063
+    },
+    "sili/cot/thick": {
+      "n_pixels": 18504,
+      "mae": 2.9070769630105167,
+      "rmse": 4.02375583341083,
+      "bias": 0.9922250343049392
+    },
+    "sili/cot/thin": {
+      "n_pixels": 12857,
+      "mae": 0.7578696978812391,
+      "rmse": 1.008265662072485,
+      "bias": 0.25899104736388967
+    },
+    "sili/cot/very_thick": {
+      "n_pixels": 3151,
+      "mae": 4.824030237249328,
+      "rmse": 6.15734564760016,
+      "bias": -1.1900740568693082
+    },
+    "solar_altitude/10_20": {
+      "n_pixels": 28357221,
+      "mae": 1.9164789921781387,
+      "rmse": 3.696488213979297,
+      "bias": 0.14196886361353483
+    },
+    "solar_altitude/20_40": {
+      "n_pixels": 55499432,
+      "mae": 1.7772834013390717,
+      "rmse": 3.4706214638811548,
+      "bias": -0.0022565025130847623
+    },
+    "solar_altitude/40_60": {
+      "n_pixels": 57232415,
+      "mae": 1.6119692928897225,
+      "rmse": 3.1886909703586106,
+      "bias": -0.11537762819660384
+    },
+    "solar_altitude/60_91": {
+      "n_pixels": 71668630,
+      "mae": 1.4747543486880448,
+      "rmse": 2.903754262317891,
+      "bias": -0.057527123442835726
+    },
+    "zhujia/5x5": {
+      "n_pixels": 81787,
+      "mae": 0.9698740170194879,
+      "rmse": 2.3703638781777325,
+      "bias": 0.013910991688347972
+    },
+    "zhujia/cot/extreme": {
+      "n_pixels": 397,
+      "mae": 9.642772251772941,
+      "rmse": 10.760220123068093,
+      "bias": -9.547682053496315
+    },
+    "zhujia/cot/moderate": {
+      "n_pixels": 14527,
+      "mae": 1.1074264422330884,
+      "rmse": 1.6495665331314284,
+      "bias": -0.10077466198768965
+    },
+    "zhujia/cot/near_zero": {
+      "n_pixels": 43704,
+      "mae": 0.04740411744259612,
+      "rmse": 0.278606168473627,
+      "bias": 0.04637936199285096
+    },
+    "zhujia/cot/thick": {
+      "n_pixels": 9356,
+      "mae": 3.450601050465369,
+      "rmse": 4.7155748807697195,
+      "bias": 0.3353176527728684
+    },
+    "zhujia/cot/thin": {
+      "n_pixels": 10996,
+      "mae": 0.7531190095242369,
+      "rmse": 1.00381277256904,
+      "bias": 0.10866637655326175
+    },
+    "zhujia/cot/very_thick": {
+      "n_pixels": 2807,
+      "mae": 5.974510906343151,
+      "rmse": 7.347001786433836,
+      "bias": 0.011767187278212115
+    }
+  },
+  "edge_definition": "valid adjacent CPP pixels with absolute COT difference >=3; descriptive only",
+  "edge_metrics": [
+    {
+      "n_pairs": 26744483,
+      "gradient_mae": 2.7057826958370046,
+      "prediction_gradient_abs_mean": 3.736652768833557
+    },
+    {
+      "n_pairs": 26744483,
+      "gradient_mae": 2.459743745698542,
+      "prediction_gradient_abs_mean": 3.730431329632647
+    }
+  ],
+  "note": "CPP retrieval reference; producer/physical QA unresolved; no GHI skill claim",
+  "case_selection": "per station: worst candidate RMSE, largest improvement, largest worsening, median-RMSE reference case",
+  "date_bootstrap": {
+    "unit": "BJT validation day",
+    "days": 72,
+    "repetitions": 2000,
+    "seed": 20260927,
+    "region_delta_RMSE_candidate_minus_baseline_95pct": [
+      -0.5317976721132117,
+      -0.42626509850411826
+    ]
+  }
+}

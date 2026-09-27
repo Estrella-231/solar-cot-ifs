@@ -1,0 +1,46 @@
+{
+  "profile": [
+    {
+      "batch": 16,
+      "peak_gib": 0.13006067276000977,
+      "rows_per_second": 4.929094603453188
+    },
+    {
+      "batch": 32,
+      "peak_gib": 0.24105024337768555,
+      "rows_per_second": 1297.9001555568727
+    },
+    {
+      "batch": 64,
+      "peak_gib": 0.45519542694091797,
+      "rows_per_second": 2329.2407780461217
+    },
+    {
+      "batch": 128,
+      "peak_gib": 0.8790783882141113,
+      "rows_per_second": 3240.7909116124533
+    },
+    {
+      "batch": 256,
+      "peak_gib": 1.7316079139709473,
+      "rows_per_second": 4961.996209426994
+    },
+    {
+      "batch": 512,
+      "peak_gib": 3.436072826385498,
+      "rows_per_second": 5220.737879683654
+    },
+    {
+      "batch": 1024,
+      "peak_gib": 6.844825267791748,
+      "rows_per_second": 5346.700511651864
+    },
+    {
+      "batch": 2048,
+      "peak_gib": 13.663535594940186,
+      "rows_per_second": 5424.099694578853
+    }
+  ],
+  "selected_batch": 2048,
+  "rule": "largest tested batch below75% VRAM; throughput recorded; identical batch across arms"
+}

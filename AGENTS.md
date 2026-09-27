@@ -1,5 +1,17 @@
 # 第二篇论文工程规则
 
+## 2026-09-26 最新授权：区域背景与局地 COT
+
+当前路线以 `refine-logs/cot_dynamics_20260925/REGIONAL_STATION_COT_PLAN.md` 为准：用户批准推进256×256区域背景、站点局地原分辨率场及独立R_region候选。旧16×16 R不直接扩大视场或拼接冒充区域COT；新R独立训练和冻结，旧资产保留。先验收区域CPP及真实AGRI配对缓存与样本代表性，再单卡充分profile；缺失CPP不填晴空，不删正式GHI比较行，不混入未经一致性验收的V2。原始CPP生产链未闭合期间仅作探索性训练，test保持关闭。上述授权覆盖旧段落限定冻结原R的候选合同，但不解除数据完整性、来源表述和队列资源规则。
+
+## 2026-09-17 当前方向：完整 COT 空间场
+
+用户要求将完整 COT 空间图加入 GHI 网络，并修改论文与实验计划。当前权威方案为 `refine-logs/FINAL_PROPOSAL.md`、`refine-logs/EXPERIMENT_PLAN.md` 和 `docs/COT_SPATIAL_DIRECTION_20260917.md`。主候选由四统计量改为当前完整16×16 COT patch，先最小H14卷积头验证，再独立检验IFS增量。冻结湖南S/R，不同时改损失或引入新骨干、注意力、多尺度分支。
+
+2026-09-18 用户决定：区域均值、p90 等 COT 全局平均类统计特征全部从计划移除，不再作为任何未来实验的输入或对照组；新头不含四统计槽。旧四统计量 AC 三 seed 结果仅作历史负结果锚点只读保留，不重训、不扩展、不进新对照表；`cot_gated_station_v3` 的四统计读出槽须在 B0 重跑前从代码移除并重做 witness。
+
+空间COT的B0侧车打包与GPU smoke已于2026-09-17完成：data/head_spatial_cot_trainval_20260917_v2绑定637902条train/validation行和1332个冻结源shard，audits/spatial_b0_20260917_v2/spatial_head_smoke.json通过。用户于同日明确授权在CPP历史生产链未闭环时先使用现有冻结COT进行探索性B1；PBS 209422运行A_sp/AC_stat_sp/AC_map的seed42、10epoch pilot。该结果只能作表示筛选，不能写成最终论文物理/性能结论，不能自动扩展到多seed、QC1、IFS或test。CPP生产链及IFS因果门禁仍不解除；不恢复持续监控。下方带日期内容为历史记录；其“当前四统计量主方法”等表述不覆盖本版方向，历史数据完整性和资源规则继续有效。
+
 ## 2026-09-10 来源核查与后续授权
 
 用户已授权来源核验后推进空间表示最小对照。最新证据见docs/SOURCE_FOLLOWUP_20260910.md：FD-107登录恢复，CPP生产目录仍700、writer绑定未闭合；新IFS根chensr/ifs_hres_china/raw_nc含2024–2026目录，2025抽样header有100时刻，历史下载请求包含湖南长步长，但时间坐标读取超时、历史发布合同未放行。空间表示准备见docs/COT_SPATIAL_REPRESENTATION_NEXT_20260910.md，可复用已有cot_log1p场，不重建或重跑S/R。本轮未提交训练、未打开test，监控保持关闭。
@@ -52,3 +64,7 @@ PBS208030已提交（单A100，提交前账户空队列），复用seed42、新�
 ## 2026-09-08 后续用户要求：继续查负收益原因
 
 用户明确要求检查加入云物理属性后变差的原因，允许对已完成候选做有界只读分解、冻结模型只前向与独立复算；不局限于等待producer路径。新证据/受阻状态以 docs/COT_FAILURE_CAUSES_20260908.md 和小时交接为准。新的loss/表示对照须单独冻结合同，不能为预设COT有效而篡改结果或扩大搜索。
+
+## 2026-09-27 用户批准的分站下一步
+
+四里先固定当前regional forecast-COT pilot模型；竺家独立冻结无COT基线，推进零初始化、允许双向修正的COT残差分支。执行合同和服务器路径见docs/STATION_COT_RESIDUAL_PLAN_20260927.md；竺家退化证据见docs/ZHUJIA_COT_DIAGNOSIS_20260927.md。先同步仓库，残差实现和新训练仍待执行，不改变四里权重，不放行test/IFS。
