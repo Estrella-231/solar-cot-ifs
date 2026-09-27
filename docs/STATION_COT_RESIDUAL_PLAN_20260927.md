@@ -43,3 +43,19 @@ PBS 210903最终于19:18:11以Exit_status=0完成，walltime 12m12s，无OOM。�
 提交时账户另有PBS 210853一个运行任务，合计2任务/8卡。现用样本为既有regional GHI pilot bank的512条train/128条val序列，仅竺家监督行；同一600 optimizer updates、batch512、seed42、lr3e-4。无COT和direct-COT头从同一seed独立训练，残差以无COT验证选定checkpoint为冻结基线，使用direct-COT头初始化时空COT编码器；delta零初始化、tanh限制为±0.15 kt，delta平方惩罚0.05。每臂严格跑满600次更新，固定预算内按竺家验证RMSE选checkpoint，并记录训练损失和实际step。四里checkpoint不参与训练且其哈希写入完成结果。开始训练前零delta等于基线的kernel witness写入输出。
 
 此为小规模单seed探索，不代表正式GHI提升。完成后先核验witness、600 updates、共同样本键、+15/+30/+45min和日期bootstrap；不以单次pilot决定部署或打开test。
+
+## 2026-09-27 修正后的v2与配对审计
+
+发现v1残差组选模未纳入step0；新建独立输出运行v2，step0纳入验证选模，未覆盖v1。PBS 210962完成，退出码0，运行13分22秒。三臂各600 updates。脚本 `scripts/audit_zhujia_cot_residual_v2_20260927.py` 对保存预测逐行核验：1,624个row_id、lead、真值完全一致，均为竺家站，覆盖70个初始化BJT日期（2025-07-01至2025-09-10）。
+
+v2结果：zero RMSE 127.295、MAE 93.014、bias −11.703；fusion RMSE 134.911、MAE 93.723、bias −21.094；residual与zero的选定预测逐样本完全一致，best step=0。Fusion相对zero RMSE差+7.615 W/m²，按初始化日期配对bootstrap 5000次的95%区间为[−1.330,17.340] W/m²，仅5.34%的抽样差值有利于fusion。+15/+30/+45分钟RMSE分别是zero 109.843/114.130/109.930、fusion 127.334/126.563/121.509，residual回退后与zero相同。故本pilot没有证明COT给竺家带来收益；小样本单seed不能据此断言COT普遍无效。test未打开，四里模型保持冻结。完整审计见 `docs/ZHUJIA_COT_RESIDUAL_V2_RESULTS_20260927.md` 和 `results/zhujia_cot_residual_v2_20260927/`。
+
+下一步先在扩大但仍仅训练/验证的区域样本上检查COT残差学习曲线、训练收益与验证失配及分时效/天气类型表现，再决定是否多seed；保持四里固定，不进入test，不启动部署切换。
+
+## 2026-09-27 案例图与容量对照准备
+
+从已保存的512/128 validation pilot中重建三个真实序列的AGRI预测图、forecast-COT与真实未来AGRI→R oracle-COT轨迹、同序列GHI预报曲线，见 `docs/ZHUJIA_COT_EVENT_FORENSICS_20260927.md` 和 `results/zhujia_cot_ghi_case_forensics_20260927_v4/`。图中使用归一化C02/C03/C13的伪彩色代理；oracle仅用于诊断，不是CPP真值。直接融合误差既有变大也有变小案例；此前竺家残差v2仍回退到step0基线。
+
+已实现容量匹配的AGRI残差与AGRI+COT残差训练脚本、PBS启动脚本及日期bootstrap审计。两臂使用同一冻结zero基线、相同COT分支初始化和可训练参数量、相同样本顺序、损失与600次更新；AGRI对照在训练和验证中将COT值置零但保留因果有效时刻掩码。独立代码审查为GO，修复内容记于 `docs/EXPERIMENT_CODE_REVIEW_20260927.md`。正式提交前先跑3-update GPU sanity，再提交600-update小样本pilot；完成后先跑配对审计。
+
+sanity及正式任务均已结束：PBS 210971三步sanity和210972正式配对均exit_status=0，后者运行node21/GPU0，两臂各600更新。正式配对输出审计见`docs/ZHUJIA_RESIDUAL_CAPACITY_CONTROL_RESULTS_20260927.md`和`results/zhujia_residual_capacity_control_20260927/paired_audit.json`。1,624行/70初始化日的逐行key、真值和lead一致；AGRI-only选step276，RMSE 126.323；AGRI+COT选step0精确回退，RMSE 127.295；COT−AGRI日bootstrap区间[−1.488,3.336] W/m²。次级语义复核为no-go（same-family/provisional），只说明当前候选未证实增量，不证明COT普遍无效。test保持关闭，四里checkpoint和路径未变化。后续先查forecast-COT分时效与云况下的保真度/尺度/有效覆盖，再按较大train/validation cohort、多seed和预注册门槛复验；不据此发布竺家新模型。

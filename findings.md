@@ -1,5 +1,11 @@
 # Research Findings
 
+## 2026-09-17：空间COT seed42 pilot不支持性能主张
+
+同一14通道H14头、原始cohort、GHI损失和seed42下，10epoch验证pilot的两站等权RMSE为A_sp 148.8904、AC_stat_sp 149.8294、AC_map 148.6723 W/m²。AC_map相对A_sp仅改善0.2181 W/m²（0.146%），未达到预设1%门槛；Sili退化1.0292而Zhujia改善约1.4653 W/m²，站点方向相反。
+
+独立Result-to-Claim判定claim_supported=no、confidence=high（仅对不放行判断），same-family/provisional。该pilot只支持“本次运行AC_map数值最低”，不支持空间COT稳定提高GHI精度。下一步先做输入激活/对齐及保存checkpoint的zero/permutation敏感性诊断；输入活跃后才做seed42 AC_shuffle重训和A_proxy容量控制。控制不利则停止H14空间优越性路线，不直接追加seed或换复杂架构。详见docs/SPATIAL_B1_RESULT_TO_CLAIM_20260917.md。
+
 ## 2026-09-12：固定 AC checkpoint 的 COT 反事实前向
 
 original-cohort AC seed42/43/44 在同一99849条湖南validation行上完成原COT、标准化全零、训练集晴天中位COT及四维逐项屏蔽前向；三个原COT前向与历史保存预测逐值完全一致。四里全样本中屏蔽COT均值和p90的RMSE分别平均改善1.568和1.539 W/m²，且三个seed方向一致；屏蔽空间标准差仅改善0.243，屏蔽中心像元则恶化2.690且三个seed均恶化。说明固定AC模型内，四里整体向下响应主要沿均值和p90出现，中心像元总体提供有益抵消。
@@ -41,3 +47,23 @@ original与QC1两个训练分支各运行A/AC×两档LR，seed42，全部8次完
 这提供了固定样本内输入替换的 CPP-reference 检索退化证据，尚不能归因为 GHI 负收益机制或证明 COT 普遍无效；重复 target、不同 lead 的覆盖、R validation 选模和 CPP source teacher 未绑定均限制解释。旧cache数值warning仍开放。保留 8 次负结果，不重训 S/R、不调整 cohort 或 loss、不打开 test；按 docs/COT_PAIR_RESULT_TO_CLAIM_20260908.md 的独立语义判定执行下一步。
 
 独立 Result-to-Claim 复审：claim_supported=no，same-family/provisional；confidence=high 仅针对本配置不放行判定。P202 当前配置正向扩展关闭，IFS 单独保持等待具体新来源。此判定不证明 COT 普遍无效。
+
+### 2026-09-17 — B2 spatial-COT controls
+
+- The no-training diagnostic confirmed that COT is active in `AC_map` (zeroing worsened equal-station validation RMSE from 148.6723 to 152.2370 W/m²; first-layer COT/AGRI activation RMS ratio 0.3988), but non-center spatial permutation changed RMSE by only 0.2835 W/m².
+- Seed-42 controls agree: `AC_shuffle` 148.6884 W/m² and `A_proxy` 148.9985 W/m² versus `AC_map` 148.6723 W/m². The current evidence supports amplitude use, not a spatial-order gain.
+- Decision: stop spatial-map seed expansion and formal test/IFS work for this route. Any next COT pilot must target a defined amplitude representation or close the CPP provenance gate first.
+
+## 2026-09-23 — 真实 AGRI→COT 新反演器配对重训
+
+基于同一真实历史 AGRI train/validation 序列，使用 continued R 重新生成 COT 后，从头训练相同 SolarResNet-v5 GHI 头。发现初次配对训练按各 R 路线分别拟合 COT mean/std，连带改变 AC_F 的未来 COT 数值输入；该结果标记为归一化混杂诊断，不用于因果判断。修正实验固定旧 R 的训练集 COT mean/std，独立审计通过，A_ST/AC_F 两站预测与旧 R 逐值完全相同。
+
+修正后的验证差异（continued R − original R，等站点 RMSE）：AC_H +1.313 W m⁻²，95% 初始化日配对区间 [−0.192, +2.650]；AC_ST −1.505 W m⁻²，区间 [−3.182, +0.148]。AC_H 两站均退化，AC_ST 两站均改善，但两区间均跨零；AC_ST 仍比 AC_F 高 1.487 W m⁻²。单 seed、10 epoch、validation 选模且未用 test。Result-to-Claim 复审为 partial / medium confidence / same-family provisional；不能声称新 R 已提升 GHI 或加强历史 COT 价值。建议只对 AC_H、AC_ST 做至少 3–5 个 seed 配对复核，共用归一化并预注册 checkpoint 规则后，再考虑独立 test。
+
+审计与协议：docs/REAL_AGRI_HISTORY_R_HEAD_RETRAIN_20260923.md；raw paired audit：results/cot_real_agri_history_rpair_20260923/independent_retrain_pair_audit_commonnorm.json；PBS 210398.tc6000，exit status 0。
+
+## 2026-09-28 — 竺家 forecast-COT 残差容量对照不支持增益主张
+
+同一冻结无COT锚点下，AGRI-only与AGRI+COT残差头使用完全相同的192,433可训练参数、初始化、485训练/127验证序列、seed42、batch512及每臂600次更新。配对审计覆盖1,624条竺家验证行、70个初始化日期，row/truth/lead完全相同；test未使用。AGRI-only验证选中step276，RMSE 126.323 W/m²；COT臂选中step0回退，RMSE 127.295 W/m²。COT−AGRI点差+0.972 W/m²，日期bootstrap 95%区间[−1.488, 3.336]，22.72%抽样有利于COT。独立result-to-claim复核为no（same-family provisional），置信度高仅限于“当前实验不支持该主张”。
+
+因此，当前配置下观察到的微小点估计改善来自AGRI残差臂，未显示forecast COT的增量价值；区间跨零、单seed与小样本不允许断言AGRI臂稳定优越，也不支持COT普遍无效。COT臂验证误差随训练上升、训练损失下降，提示泛化失败但原因未定。先检查forecast-COT分时效/云况保真度与尺度，再在更大train/validation cohort上按预注册规则做多seed复验；测试集继续关闭。详见 `docs/ZHUJIA_RESIDUAL_CAPACITY_CONTROL_RESULTS_20260927.md`。

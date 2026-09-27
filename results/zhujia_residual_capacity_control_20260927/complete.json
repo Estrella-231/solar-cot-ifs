@@ -1,0 +1,91 @@
+{
+  "state": "COMPLETE_ZHUJIA_RESIDUAL_CAPACITY_CONTROL_PILOT",
+  "station": "Zhujia",
+  "seed": 42,
+  "train_sequences": 485,
+  "val_sequences": 127,
+  "actual_updates_per_arm": {
+    "agri_residual": 600,
+    "cot_residual": 600
+  },
+  "source_zero_checkpoint_sha256": "ff087540eea05335619d1386469b3f90da7bf9c795c9d95b9ba03e943ef87cc6",
+  "source_fusion_checkpoint_sha256": "29a5390cd8fd615c420c9bc6f6b41c877b622dde3db4315d3eafb88326d09485",
+  "sili_checkpoint_sha256": "4d243d0c8c3be33cff83ad8307c6d2e1bcde59d8a9bae6cac17bfd8e87ea7d4c",
+  "batch": 512,
+  "lr": 0.0003,
+  "cot_limit_kt": 0.15,
+  "delta_penalty": 0.05,
+  "arms": {
+    "agri_residual": {
+      "updates": 600,
+      "best_step": 276,
+      "metrics": {
+        "n": 1624,
+        "rmse": 126.32321890220607,
+        "mae": 92.08024977778112,
+        "bias": -18.787479682546625,
+        "lead_rmse": {
+          "15": 111.44719105158559,
+          "30": 112.586862087939,
+          "45": 110.14669863397376,
+          "60": 116.22856775660563,
+          "75": 118.42932140889152,
+          "90": 118.03351801083952,
+          "105": 126.10799002661321,
+          "120": 129.69722027586946,
+          "135": 130.84001345441774,
+          "150": 128.70349579446733,
+          "165": 139.26690521597493,
+          "180": 127.62870074811137,
+          "195": 128.28677152283706,
+          "210": 135.80684413297428,
+          "225": 145.55033715946044,
+          "240": 142.25198817638122
+        }
+      },
+      "final_loss_mean_last100": 0.2889941133755983
+    },
+    "cot_residual": {
+      "updates": 600,
+      "best_step": 0,
+      "metrics": {
+        "n": 1624,
+        "rmse": 127.29536960923751,
+        "mae": 93.0142858277577,
+        "bias": -11.703474782917061,
+        "lead_rmse": {
+          "15": 109.84312864886577,
+          "30": 114.12966208634407,
+          "45": 109.93037830978399,
+          "60": 115.06207116985341,
+          "75": 119.54302494778634,
+          "90": 120.68323314443006,
+          "105": 129.21655549468258,
+          "120": 132.54914972570705,
+          "135": 131.69721563769764,
+          "150": 130.18510226221645,
+          "165": 140.11604503425312,
+          "180": 126.47615166597494,
+          "195": 127.28429216879852,
+          "210": 138.61945301506265,
+          "225": 145.17675595871287,
+          "240": 145.21652361712628
+        }
+      },
+      "final_loss_mean_last100": 0.2591237319252805
+    }
+  },
+  "capacity_control": "Identical residual architecture/trainable parameter count and shared initial weights; AGri arm zeros COT values while retaining temporal validity masks; both consume the same frozen AGRI/geometry features.",
+  "test_used": false,
+  "station_id": 1,
+  "pilot_bank_contract": "COMPLETE_EXPLORATORY_REGIONAL_GHI_PILOT_BANK",
+  "pilot_bank_complete_sha256": "9069423f65dac2cd3b4b30cfabdf4369a43839fd1bfd924a19ccd20dae906286",
+  "sili_model_hash_preserved": true,
+  "frozen_sili_checkpoint_sha256": "4d243d0c8c3be33cff83ad8307c6d2e1bcde59d8a9bae6cac17bfd8e87ea7d4c",
+  "output_sha256": {
+    "agri_residual_best.pt": "d8599d2831e3b8dd0fbd2fde4ec23206d1d2d5755e41794753886e92c3ecd062",
+    "cot_residual_best.pt": "0c9115adbe99a0b431e46ecb5719961e29b3a70f8679372cb9568d5a056bcf7f",
+    "agri_residual_val_predictions.npz": "b8f8bde2c191a4d221391125e6109595687bb98b800af7595771dd7d044f44a1",
+    "cot_residual_val_predictions.npz": "29534904350854e69de14e6b893e659797dcaaff286095c2734eabe69ad82d6b"
+  }
+}
