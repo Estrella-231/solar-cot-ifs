@@ -1,5 +1,7 @@
 # Sili transport diagnosis status — 2026-09-27
 
+Later execution update: the pilot started bank construction, and a pre-training loss-shape error was corrected and smoke-tested. See [pilot readiness correction](PILOT_LOSS_SHAPE_FIX_20260927.md) for the dated status and clarification that the learned input uses the last two COT frames, rather than a full eight-frame COT history encoder. Queue descriptions below record the earlier submission snapshot.
+
 ## Purpose and scope
 
 This is a validation-only diagnostic for whether improving cloud displacement can recover thick-cloud COT at the Sili station. The reference is the CPP COT retrieval, not an independent in-situ cloud measurement. No GHI model was trained and no test split was used.

@@ -86,6 +86,22 @@ def evaluate(model,d,idx):
         result[n]={'mae':a['abs']/a['n'] if a['n'] else None,'rmse':(a['sq']/a['n'])**.5 if a['n'] else None,'thick_lead_records':a['thick_n'],'thick_misses_pred_lt10':a['thick_miss'],'thick_rmse':(a['thick_sq']/a['thick_n'])**.5 if a['thick_n'] else None,'clear_false10_rate':a['false10']/a['clear_n'] if a['clear_n'] else None,'thick_iou_cot30':a['tp']/(a['tp']+a['fp']+a['fn']) if a['tp']+a['fp']+a['fn'] else None}
     return result
 
+def training_loss(prediction, target, mask):
+    # prepare() already removes the singleton COT channel from target/mask.
+    # Preserve all 16 target times; only prediction still has a channel axis.
+    pred = prediction[:, 0]
+    if pred.shape != target.shape or mask.shape != target.shape:
+        raise ValueError(f'Loss shape mismatch: pred={pred.shape}, target={target.shape}, mask={mask.shape}')
+    truth_c = torch.expm1(target)
+    pred_c = torch.expm1(pred)
+    weight = 1 + 2 * (truth_c >= 30).float() + (truth_c < 5).float()
+    hub = F.smooth_l1_loss(pred, target, reduction='none')
+    loss = (hub * weight * mask).sum() / torch.clamp((weight * mask).sum(), min=1)
+    clear = mask & (truth_c < 5)
+    false = F.relu(pred_c - 10)
+    return loss + 0.015 * (false.square() * clear).sum() / torch.clamp(clear.sum(), min=1)
+
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--bank',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--epochs',type=int,default=40);ap.add_argument('--batch-size',type=int,default=8);a=ap.parse_args()
     torch.manual_seed(42);torch.cuda.manual_seed_all(42);np.random.seed(42);random.seed(42);torch.set_num_threads(2)
@@ -99,13 +115,7 @@ def main():
         for s in range(0,512,a.batch_size):
             ii=order[s:s+a.batch_size];h=tr['h'][ii].cuda();f=tr['f'][ii].cuda();y=tr['y'][ii].cuda();m=tr['mask'][ii].cuda();v=tr['motion'][ii].cuda();adv=tr['adv'][ii].cuda()
             x=make_input(h,f,adv,v);p=model(x,adv)
-            truth_c=torch.expm1(y[:,0]);pred_c=torch.expm1(p[:,0]);valid=m[:,0]
-            weight=1+2*(truth_c>=30).float()+1*(truth_c<5).float()
-            hub=F.smooth_l1_loss(p[:,0],y[:,0],reduction='none')
-            loss=(hub*weight*valid).sum()/torch.clamp((weight*valid).sum(),min=1)
-            # Penalize hallucinated clouds in clear reference pixels without rewarding global shrinkage.
-            clear=valid&(truth_c<5);false=F.relu(pred_c-10)
-            loss=loss+0.015*(false.square()*clear).sum()/torch.clamp(clear.sum(),min=1)
+            loss=training_loss(p,y,m)
             opt.zero_grad(set_to_none=True);loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1.);opt.step();loss_sum+=float(loss.detach());steps+=1
         val=evaluate(model,va,np.arange(512));val_score=val['learned']['thick_rmse'] if val['learned']['thick_rmse'] is not None else val['learned']['rmse']
         rec={'epoch':epoch,'train_loss':loss_sum/steps,'val':val,'elapsed_seconds':time.time()-started};history.append(rec)
