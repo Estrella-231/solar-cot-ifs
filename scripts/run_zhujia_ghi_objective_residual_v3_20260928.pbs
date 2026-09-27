@@ -1,0 +1,50 @@
+#!/bin/bash
+#PBS -N zhujia_ghi_loss3
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/zhujia_ghi_objective_residual_v3_20260928.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONUNBUFFERED=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/regional_station_cot_20260925
+SCRIPT=$EXP/scripts
+BANK=$EXP/regional_ghi_pilot_bank_20260927_v1
+BASE=$SOLAR/data/head_pack_trainval_20260908_v1
+PILOT=$EXP/regional_ghi_pilot_seed42_20260927_v1
+SOURCE=$EXP/zhujia_cot_residual_seed42_20260927_v2
+SILI=$PILOT/forecast_best.pt
+SMOKE=$EXP/zhujia_ghi_loss_smoke_v3_20260928
+OUT=$EXP/zhujia_ghi_objective_residual_seed42_v3_20260928
+test -d "$BANK" && test -d "$PILOT" && test -d "$SOURCE" && test -f "$SILI"
+test ! -e "$SMOKE" && test ! -e "$OUT"
+test "$(sha256sum "$SILI" | awk '{print $1}')" = 4d243d0c8c3be33cff83ad8307c6d2e1bcde59d8a9bae6cac17bfd8e87ea7d4c
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total,memory.used --format=csv
+python -m py_compile "$SCRIPT/train_zhujia_residual_ghi_objective_v2_20260928.py" "$SCRIPT/train_zhujia_cot_residual_20260927.py" "$SCRIPT/train_regional_cot_ghi_pilot_20260927.py"
+LOCAL=${TMPDIR:-/tmp}/zhujia_ghi_loss_${PBS_JOBID//[^A-Za-z0-9]/_}
+mkdir -p "$LOCAL/bank" "$LOCAL/base"
+BANK_BYTES=$(du -sb "$BANK" | awk '{print $1}')
+AVAILABLE=$(df -PB1 "$LOCAL" | awk 'NR==2 {print $4}')
+test "$AVAILABLE" -gt "$((BANK_BYTES+BANK_BYTES/10))"
+cp -a "$BANK/." "$LOCAL/bank/"
+for f in sequence.npy station.npy lead.npy ghi.npy clear.npy weight.npy split.npy audit.json; do cp "$BASE/$f" "$LOCAL/base/$f"; done
+echo "LOCAL_DATA_READY bank_bytes=$BANK_BYTES path=$LOCAL"
+python -u "$SCRIPT/train_zhujia_residual_ghi_objective_v2_20260928.py" --bank "$LOCAL/bank" --base "$LOCAL/base" --source-run "$SOURCE" --sili-checkpoint "$SILI" --out "$SMOKE" --updates 3 --batch 512 --seed 42 --lr 0.0003 --cot-limit 0.15 --delta-penalty 0.05
+python - "$SMOKE/complete.json" <<'PY'
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='COMPLETE_ZHUJIA_GHI_OBJECTIVE_RESIDUAL_PILOT'
+assert x['actual_updates_per_arm']=={'agri_residual':3,'cot_residual':3}
+assert x['test_used'] is False
+PY
+python -u "$SCRIPT/train_zhujia_residual_ghi_objective_v2_20260928.py" --bank "$LOCAL/bank" --base "$LOCAL/base" --source-run "$SOURCE" --sili-checkpoint "$SILI" --out "$OUT" --updates 600 --batch 512 --seed 42 --lr 0.0003 --cot-limit 0.15 --delta-penalty 0.05
+test -f "$OUT/complete.json"
+echo COMPLETE_ZHUJIA_GHI_OBJECTIVE_RESIDUAL_V2_20260928
