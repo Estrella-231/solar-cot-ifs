@@ -1,0 +1,26 @@
+#!/bin/bash
+#PBS -N zhujia_cot_res
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/zhujia_cot_residual_20260927_v1.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/regional_station_cot_20260925
+SCRIPT=$EXP/scripts
+BANK=$EXP/regional_ghi_pilot_bank_20260927_v1
+PILOT=$EXP/regional_ghi_pilot_seed42_20260927_v1
+OUT=$EXP/zhujia_cot_residual_seed42_20260927_v1
+test -d "$BANK" && test -d "$PILOT" && test ! -e "$OUT"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total,memory.used --format=csv
+python -m py_compile "$SCRIPT/train_zhujia_cot_residual_20260927.py" "$SCRIPT/train_regional_cot_ghi_pilot_20260927.py"
+python -u "$SCRIPT/train_zhujia_cot_residual_20260927.py" --bank "$BANK" --base "$SOLAR/data/head_pack_trainval_20260908_v1" --pilot "$PILOT" --out "$OUT" --updates 600 --batch 512 --seed 42 --lr 0.0003 --cot-limit 0.15 --delta-penalty 0.05
+echo COMPLETE_ZHUJIA_COT_RESIDUAL_PILOT

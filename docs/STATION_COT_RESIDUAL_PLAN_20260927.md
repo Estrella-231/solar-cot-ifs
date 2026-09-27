@@ -27,3 +27,9 @@
 ## 来源与结论边界
 
 诊断见docs/ZHUJIA_COT_DIAGNOSIS_20260927.md及保存的summary.json/input_probe.json。最差12例局地分支驱动不代表所有样本；共享训练干扰、过拟合及云位置误判仍是待验证解释。CPP来源限制、IFS因果门禁继续有效。此次上传不修改论文结论，也不表示新训练已启动。
+
+## 2026-09-27 残差pilot启动
+
+PBS 210898.tc6000，node21单A100-SXM4-40GB GPU0，18:59:43开始运行，申请8小时。提交时账户已有PBS 210853一个运行任务，合计2任务/8卡。现用样本为既有regional GHI pilot bank的512条train/128条val序列，仅竺家监督行；同一600 optimizer updates、batch512、seed42、lr3e-4。无COT和direct-COT头从同一seed独立训练，残差以无COT验证选定checkpoint为冻结基线，使用direct-COT头初始化时空COT编码器；delta零初始化、tanh限制为±0.15 kt，delta平方惩罚0.05。每臂严格跑满600次更新，固定预算内按竺家验证RMSE选checkpoint，并记录训练损失和实际step。四里checkpoint不参与训练且其哈希写入完成结果。开始训练前零delta等于基线的kernel witness写入输出。
+
+此为小规模单seed探索，不代表正式GHI提升。完成后先核验witness、600 updates、共同样本键、+15/+30/+45min和日期bootstrap；不以单次pilot决定部署或打开test。
