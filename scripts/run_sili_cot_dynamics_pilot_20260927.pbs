@@ -1,0 +1,48 @@
+#!/bin/bash
+#PBS -N sili_cot_dynpilot
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/sili_cot_dynamics_pilot_20260927.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONUNBUFFERED=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/regional_station_cot_20260925
+SCRIPT=$SOLAR/scripts
+BANK=$EXP/sili_cot_dynamics_bank_train512_val512_20260927_v1
+RUN=$EXP/sili_cot_dynamics_pilot_seed42_20260927_v1
+test ! -e "$BANK"
+test ! -e "$RUN"
+python -m py_compile "$SCRIPT/build_sili_cot_dynamics_bank_20260927.py" "$SCRIPT/train_sili_transport_thickness_pilot_20260927.py" "$SCRIPT/smoke_sili_transport_thickness_pilot_20260927.py"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+python -u "$SCRIPT/smoke_sili_transport_thickness_pilot_20260927.py"
+python -u "$SCRIPT/build_sili_cot_dynamics_bank_20260927.py" \
+ --solar-root "$SOLAR" --triad-root "$ROOT/HunanBackboneTriad_20260921" \
+ --hunan-source "$ROOT/HunanSimVPFull_20260906" \
+ --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+ --r-run "$EXP/r256_full_exploratory_seed42_batch512_node22" \
+ --r-cache "$EXP/agri_cpp_pair_bank_v1" \
+ --output "$BANK" --train-sequences 512 --val-sequences 512
+python - "$BANK" <<'PY'
+import json,sys
+from pathlib import Path
+p=Path(sys.argv[1]);d=json.loads((p/'complete.json').read_text())
+assert d['test_used'] is False and len(d['selected_sequences']['train'])==512 and len(d['selected_sequences']['val'])==512
+assert d['state']=='COMPLETE_SILI_COT_DYNAMICS_BANK'
+for s in ('train','val'):
+ import numpy as np
+ y=np.load(p/s/'cot_local_cpp.npy',mmap_mode='r');m=np.load(p/s/'cot_local_cpp_mask.npy',mmap_mode='r')
+ assert y.shape==(512,2,16,1,64,64) and m.shape==y.shape
+ assert m[:,0].sum()>0
+print('CPP_LABEL_BANK_QC_PASS',flush=True)
+PY
+python -u "$SCRIPT/train_sili_transport_thickness_pilot_20260927.py" --bank "$BANK" --output "$RUN" --epochs 40 --batch-size 8
+echo SILI_COT_DYNAMICS_PILOT_COMPLETE
