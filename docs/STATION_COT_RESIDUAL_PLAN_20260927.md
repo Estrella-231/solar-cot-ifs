@@ -32,6 +32,8 @@
 
 PBS 210898因Python导入时cuDNN符号冲突退出，Exit_status=127，训练循环未启动、只留下空输出目录。PBS 210900沿用成功pilot的LD_PRELOAD顺序后通过导入，但数据worker在6.6GB共享盘bank读取停滞、GPU无训练利用，已在无任何checkpoint时主动qdel。PBS脚本已增加将bank复制到节点本地盘、仅复制所需小型标签数组后训练；重提第三次前先核对代码和队列。失败与处理记录保留，空目录仅在确认无文件后由PBS脚本rmdir。
 
+第三次提交PBS 210903于19:06:02分配node21 GPU0。bank复制到本地/tmp完成；19:07首个zero臂状态为24/600 updates、epoch2，验证RMSE 208.968，GPU显存约6.7GB、利用率74%。这确认训练循环已启动；单一早期验证点不作模型效果结论。任务继续运行，下一阶段还包括fusion和residual各600 updates。
+
 提交时账户另有PBS 210853一个运行任务，合计2任务/8卡。现用样本为既有regional GHI pilot bank的512条train/128条val序列，仅竺家监督行；同一600 optimizer updates、batch512、seed42、lr3e-4。无COT和direct-COT头从同一seed独立训练，残差以无COT验证选定checkpoint为冻结基线，使用direct-COT头初始化时空COT编码器；delta零初始化、tanh限制为±0.15 kt，delta平方惩罚0.05。每臂严格跑满600次更新，固定预算内按竺家验证RMSE选checkpoint，并记录训练损失和实际step。四里checkpoint不参与训练且其哈希写入完成结果。开始训练前零delta等于基线的kernel witness写入输出。
 
 此为小规模单seed探索，不代表正式GHI提升。完成后先核验witness、600 updates、共同样本键、+15/+30/+45min和日期bootstrap；不以单次pilot决定部署或打开test。
