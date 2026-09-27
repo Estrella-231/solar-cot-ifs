@@ -72,7 +72,13 @@ def main():
         gen=torch.Generator().manual_seed(a.seed+7)
         loader=DataLoader(tr,batch_size=a.batch,shuffle=True,num_workers=2,pin_memory=True,generator=gen)
         valid=DataLoader(va,batch_size=512,shuffle=False,num_workers=2,pin_memory=True)
-        best=float('inf'); step=0; epoch=0; losses=[]; beststep=0
+        # Include update 0 in model selection. For the bounded residual arm this
+        # is an exact no-COT fallback because the correction head is zero-init.
+        best, _ = evaluate(model,valid,arm)
+        best=best['rmse']; step=0; epoch=0; losses=[]; beststep=0
+        torch.save({'model':model.state_dict(),'step':0,'epoch':0,'arm':arm},a.out/f'{arm}_best.pt')
+        curve=a.out/f'{arm}_validation_curve.jsonl'
+        curve.write_text(json.dumps({'arm':arm,'step':0,'epoch':0,'val_rmse':best,'best_val_rmse':best})+'\n')
         while step<a.updates:
             model.train()
             for b in loader:
@@ -90,7 +96,9 @@ def main():
                 if key<best:
                     best=key;beststep=step
                     torch.save({'model':model.state_dict(),'step':step,'epoch':epoch,'arm':arm},a.out/f'{arm}_best.pt')
-                save(a.out/f'{arm}_status.json',{'arm':arm,'step':step,'updates_target':a.updates,'epoch':epoch,'val_rmse':key,'best_val_rmse':best,'best_step':beststep,'train_loss_mean':float(np.mean(losses[-100:]))})
+                rec={'arm':arm,'step':step,'updates_target':a.updates,'epoch':epoch,'val_rmse':key,'best_val_rmse':best,'best_step':beststep,'train_loss_mean':float(np.mean(losses[-100:]))}
+                with curve.open('a') as f: f.write(json.dumps(rec)+'\n')
+                save(a.out/f'{arm}_status.json',rec)
             if step%100==0 or step==a.updates: print(json.dumps({'arm':arm,'step':step,'train_loss':losses[-1]}),flush=True)
         ck=torch.load(a.out/f'{arm}_best.pt',map_location='cuda',weights_only=False);model.load_state_dict(ck['model'])
         met,arr=evaluate(model,valid,arm);np.savez_compressed(a.out/f'{arm}_val_predictions.npz',**arr);save(a.out/f'{arm}_metrics.json',met)

@@ -34,6 +34,12 @@ PBS 210898因Python导入时cuDNN符号冲突退出，Exit_status=127，训练�
 
 第三次提交PBS 210903于19:06:02分配node21 GPU0。bank复制到本地/tmp完成；19:07首个zero臂状态为24/600 updates、epoch2，验证RMSE 208.968，GPU显存约6.7GB、利用率74%。这确认训练循环已启动；单一早期验证点不作模型效果结论。任务继续运行，下一阶段还包括fusion和residual各600 updates。
 
+PBS 210903最终于19:18:11以Exit_status=0完成，walltime 12m12s，无OOM。三臂各600 updates。验证选定结果（1624条竺家行，seed42）：zero RMSE127.295、MAE93.014、bias−11.705，best step132；fusion RMSE134.912、MAE93.723、bias−21.097，best step156；residual RMSE127.744、MAE93.109、bias−14.678，best step12。+15/+30/+45分钟三时效RMSE：zero 109.843/114.128/109.931；fusion 127.335/126.564/121.509；residual 110.015/114.073/110.383。direct fusion明显退化；残差训练检查点略差于zero。
+
+核查发现残差零修正起点未纳入当轮validation选模；kernel_witness已验证首batch精确重现基线。故残差step0的本应RMSE=zero baseline 127.295，优于step12的127.744。以公平fallback重新解释后，残差策略选择基线、不应用修正；本试验未显示COT带来竺家收益。它仍是128验证序列、单seed pilot，不据此断言方法无效或替换站点生产头。600步终点RMSE为zero161.085/fusion167.662/residual146.487，三臂均显示后段过拟合；尤其残差best step12，提示当前更新预算/学习率与pilot规模不匹配。
+
+代码后续已修正：每臂step0先评价并保存为候选，逐epoch保存validation_curve.jsonl；本次已完成原始产物不覆盖。四里不参与训练，forecast checkpoint SHA-256仍为4d243d0c8c3be33cff83ad8307c6d2e1bcde59d8a9bae6cac17bfd8e87ea7d4c。当前训练后队列仅剩210853其他项目任务。
+
 提交时账户另有PBS 210853一个运行任务，合计2任务/8卡。现用样本为既有regional GHI pilot bank的512条train/128条val序列，仅竺家监督行；同一600 optimizer updates、batch512、seed42、lr3e-4。无COT和direct-COT头从同一seed独立训练，残差以无COT验证选定checkpoint为冻结基线，使用direct-COT头初始化时空COT编码器；delta零初始化、tanh限制为±0.15 kt，delta平方惩罚0.05。每臂严格跑满600次更新，固定预算内按竺家验证RMSE选checkpoint，并记录训练损失和实际step。四里checkpoint不参与训练且其哈希写入完成结果。开始训练前零delta等于基线的kernel witness写入输出。
 
 此为小规模单seed探索，不代表正式GHI提升。完成后先核验witness、600 updates、共同样本键、+15/+30/+45min和日期bootstrap；不以单次pilot决定部署或打开test。
