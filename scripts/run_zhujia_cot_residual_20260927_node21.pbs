@@ -15,6 +15,7 @@ SOLAR=$ROOT/SolarCOTIFS_20260907
 EXP=$SOLAR/experiments/regional_station_cot_20260925
 SCRIPT=$EXP/scripts
 BANK=$EXP/regional_ghi_pilot_bank_20260927_v1
+BASE=$SOLAR/data/head_pack_trainval_20260908_v1
 PILOT=$EXP/regional_ghi_pilot_seed42_20260927_v1
 OUT=$EXP/zhujia_cot_residual_seed42_20260927_v1
 test -d "$BANK" && test -d "$PILOT"
@@ -25,5 +26,13 @@ test "$(echo "$GPU" | wc -l)" -eq 1
 export CUDA_VISIBLE_DEVICES="$GPU"
 nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total,memory.used --format=csv
 python -m py_compile "$SCRIPT/train_zhujia_cot_residual_20260927.py" "$SCRIPT/train_regional_cot_ghi_pilot_20260927.py"
-python -u "$SCRIPT/train_zhujia_cot_residual_20260927.py" --bank "$BANK" --base "$SOLAR/data/head_pack_trainval_20260908_v1" --pilot "$PILOT" --out "$OUT" --updates 600 --batch 512 --seed 42 --lr 0.0003 --cot-limit 0.15 --delta-penalty 0.05
+LOCAL=${TMPDIR:-/tmp}/zhujia_cot_residual_${PBS_JOBID//[^A-Za-z0-9]/_}
+mkdir -p "$LOCAL/bank" "$LOCAL/base"
+BANK_BYTES=$(du -sb "$BANK" | awk '{print $1}')
+AVAILABLE=$(df -PB1 "$LOCAL" | awk 'NR==2 {print $4}')
+test "$AVAILABLE" -gt "$((BANK_BYTES+BANK_BYTES/10))"
+cp -a "$BANK/." "$LOCAL/bank/"
+for f in sequence.npy station.npy lead.npy ghi.npy clear.npy weight.npy split.npy audit.json; do cp "$BASE/$f" "$LOCAL/base/$f"; done
+echo "LOCAL_DATA_READY bank_bytes=$BANK_BYTES path=$LOCAL"
+python -u "$SCRIPT/train_zhujia_cot_residual_20260927.py" --bank "$LOCAL/bank" --base "$LOCAL/base" --pilot "$PILOT" --out "$OUT" --updates 600 --batch 512 --seed 42 --lr 0.0003 --cot-limit 0.15 --delta-penalty 0.05
 echo COMPLETE_ZHUJIA_COT_RESIDUAL_PILOT

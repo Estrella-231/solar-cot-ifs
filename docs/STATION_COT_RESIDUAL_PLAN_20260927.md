@@ -30,7 +30,7 @@
 
 ## 2026-09-27 残差pilot启动
 
-PBS 210898因Python导入时cuDNN符号冲突退出，Exit_status=127，训练循环未启动、只留下空输出目录。参照已成功pilot PBS环境增加相同的LD_PRELOAD加载顺序；重提PBS 210900.tc6000，于19:02:51分配node21单A100-SXM4-40GB GPU0，申请8小时。第一次失败与重提已登记，空目录仅在确认无文件后由PBS脚本rmdir，避免覆盖任何结果。当前应继续检查kernel witness和训练step日志确认真正进入训练。
+PBS 210898因Python导入时cuDNN符号冲突退出，Exit_status=127，训练循环未启动、只留下空输出目录。PBS 210900沿用成功pilot的LD_PRELOAD顺序后通过导入，但数据worker在6.6GB共享盘bank读取停滞、GPU无训练利用，已在无任何checkpoint时主动qdel。PBS脚本已增加将bank复制到节点本地盘、仅复制所需小型标签数组后训练；重提第三次前先核对代码和队列。失败与处理记录保留，空目录仅在确认无文件后由PBS脚本rmdir。
 
 提交时账户另有PBS 210853一个运行任务，合计2任务/8卡。现用样本为既有regional GHI pilot bank的512条train/128条val序列，仅竺家监督行；同一600 optimizer updates、batch512、seed42、lr3e-4。无COT和direct-COT头从同一seed独立训练，残差以无COT验证选定checkpoint为冻结基线，使用direct-COT头初始化时空COT编码器；delta零初始化、tanh限制为±0.15 kt，delta平方惩罚0.05。每臂严格跑满600次更新，固定预算内按竺家验证RMSE选checkpoint，并记录训练损失和实际step。四里checkpoint不参与训练且其哈希写入完成结果。开始训练前零delta等于基线的kernel witness写入输出。
 
