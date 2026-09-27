@@ -16,5 +16,6 @@ node=run([str(PBS/'pbsnodes'),'-a','node21']);print(node[:5000],flush=True)
 if 'state = free' not in node.lower(): raise SystemExit('blocked: node21 is not reported free')
 script=EXP/'scripts/run_zhujia_cot_residual_20260927_node21.pbs'
 subprocess.run(['bash','-n',str(script)],check=True)
-if (EXP/'zhujia_cot_residual_seed42_20260927_v1').exists(): raise SystemExit('output exists; refusing duplicate')
+out=EXP/'zhujia_cot_residual_seed42_20260927_v1'
+if out.exists() and any(out.iterdir()): raise SystemExit('nonempty output exists; refusing duplicate')
 job=run([str(PBS/'qsub'),str(script)]).strip();print('SUBMITTED',job);print(run([str(PBS/'qstat'),'-u','slfu']))
