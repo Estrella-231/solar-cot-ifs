@@ -1,0 +1,37 @@
+#!/bin/bash
+#PBS -N sili_patch_audit
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=6:gpus=1
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/sili_patch_case_audit_seed42_20260928_v3.pbs.log
+set -euo pipefail
+trap 'rc=$?; echo "FAILED: line=$LINENO status=$rc"; exit "$rc"' ERR
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONUNBUFFERED=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/regional_station_cot_20260925
+BANK=$EXP/sili_cot_dynamics_bank_train512_val512_20260927_v1
+RUN=$EXP/sili_cot_dynamics_pilot_seed42_20260927_v1
+STATION=$EXP/sili_station_val_audit_seed42_20260928_v2/summary.json
+OUT=$EXP/sili_patch_case_audit_seed42_20260928_v3
+TMP=${TMPDIR:-/tmp}/sili_patch_audit_${PBS_JOBID%%.*}
+mkdir -p "$TMP/bank"
+test -s "$BANK/complete.json"
+test -s "$RUN/best.pt"
+test -s "$STATION"
+test ! -e "$OUT"
+python -m py_compile "$ROOT/scripts/train_sili_transport_thickness_pilot_20260927.py" "$ROOT/scripts/audit_sili_patch_and_cases_20260928.py"
+# Stage the validation bank once to node-local scratch; the test split is never copied or opened.
+df -Pk "$TMP" | awk 'NR==2 { if ($4 < 2000000) exit 1 }'
+cp "$BANK/complete.json" "$TMP/bank/complete.json"
+cp -a "$BANK/val" "$TMP/bank/"
+sha256sum "$ROOT/scripts/audit_sili_patch_and_cases_20260928.py" "$TMP/bank/complete.json"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total,memory.used,utilization.gpu --format=csv
+python -u "$ROOT/scripts/audit_sili_patch_and_cases_20260928.py" --bank "$TMP/bank" --checkpoint "$RUN/best.pt" --station-audit "$STATION" --output "$OUT"
+echo SILI_PATCH_CASE_AUDIT_COMPLETE

@@ -1,0 +1,169 @@
+{
+  "state": "COMPLETE_SILI_LOW_COT_PENALTY_ABLATION_ANALYSIS",
+  "test_used": false,
+  "source": "fixed 512/512 validation bank; overlapping windows; CPP retrieval reference",
+  "pbs_exit_status": 0,
+  "baseline_transport": {
+    "mae": 5.287325252272672,
+    "rmse": 9.520247887885613,
+    "thick_lead_records": 1218803,
+    "thick_misses_pred_lt10": 334790,
+    "thick_rmse": 26.504161217794557,
+    "clear_false10_rate": 0.05814177450974351,
+    "thick_iou_cot30": 0.24111498063999287
+  },
+  "arms": {
+    "penalty_on_seed42": {
+      "extra_lowcot_false_cot_penalty": true,
+      "epochs_run": 8,
+      "selected_candidate": "step0_zero_residual_transport",
+      "selected_thick_rmse": 26.504161217794557,
+      "best_learned_epoch_by_thick_rmse": 1,
+      "best_learned_metrics": {
+        "mae": 4.900100030721967,
+        "rmse": 9.055515202419897,
+        "thick_lead_records": 1218803,
+        "thick_misses_pred_lt10": 371192,
+        "thick_rmse": 28.278856223093445,
+        "clear_false10_rate": 0.03106998583610552,
+        "thick_iou_cot30": 0.16641990171146478
+      },
+      "best_learned_thick_rmse_minus_transport": 1.774695005298888,
+      "epoch_metrics": [
+        {
+          "epoch": 1,
+          "thick_rmse": 28.278856223093445,
+          "all_rmse": 9.055515202419897,
+          "clear_false10_rate": 0.03106998583610552,
+          "thick_misses_pred_lt10": 371192
+        },
+        {
+          "epoch": 2,
+          "thick_rmse": 31.47293684026781,
+          "all_rmse": 9.430734596046108,
+          "clear_false10_rate": 0.01191351661594719,
+          "thick_misses_pred_lt10": 517188
+        },
+        {
+          "epoch": 3,
+          "thick_rmse": 28.817749727581113,
+          "all_rmse": 9.023950602164556,
+          "clear_false10_rate": 0.01976527900407311,
+          "thick_misses_pred_lt10": 417735
+        },
+        {
+          "epoch": 4,
+          "thick_rmse": 30.889438446939252,
+          "all_rmse": 9.319956003490033,
+          "clear_false10_rate": 0.010932431445078156,
+          "thick_misses_pred_lt10": 500695
+        },
+        {
+          "epoch": 5,
+          "thick_rmse": 30.306170331802083,
+          "all_rmse": 9.169396671371459,
+          "clear_false10_rate": 0.012080507963559441,
+          "thick_misses_pred_lt10": 466296
+        },
+        {
+          "epoch": 6,
+          "thick_rmse": 28.316983706117586,
+          "all_rmse": 9.042545660868823,
+          "clear_false10_rate": 0.02301698875075155,
+          "thick_misses_pred_lt10": 395912
+        },
+        {
+          "epoch": 7,
+          "thick_rmse": 28.968267663815226,
+          "all_rmse": 8.934103010376363,
+          "clear_false10_rate": 0.01840610852060807,
+          "thick_misses_pred_lt10": 417340
+        },
+        {
+          "epoch": 8,
+          "thick_rmse": 29.030595015736235,
+          "all_rmse": 9.009078880812707,
+          "clear_false10_rate": 0.018890180961577907,
+          "thick_misses_pred_lt10": 422779
+        }
+      ]
+    },
+    "penalty_off_seed42": {
+      "extra_lowcot_false_cot_penalty": false,
+      "epochs_run": 8,
+      "selected_candidate": "step0_zero_residual_transport",
+      "selected_thick_rmse": 26.504161217794557,
+      "best_learned_epoch_by_thick_rmse": 3,
+      "best_learned_metrics": {
+        "mae": 5.1423430339493414,
+        "rmse": 9.353301289022491,
+        "thick_lead_records": 1218803,
+        "thick_misses_pred_lt10": 328427,
+        "thick_rmse": 26.85582579404902,
+        "clear_false10_rate": 0.036940123434511134,
+        "thick_iou_cot30": 0.2307206150672495
+      },
+      "best_learned_thick_rmse_minus_transport": 0.3516645762544641,
+      "epoch_metrics": [
+        {
+          "epoch": 1,
+          "thick_rmse": 27.784442648910584,
+          "all_rmse": 9.142482288517519,
+          "clear_false10_rate": 0.03316657673019145,
+          "thick_misses_pred_lt10": 354708
+        },
+        {
+          "epoch": 2,
+          "thick_rmse": 29.450425024614887,
+          "all_rmse": 9.133386400680193,
+          "clear_false10_rate": 0.02073764928647951,
+          "thick_misses_pred_lt10": 429773
+        },
+        {
+          "epoch": 3,
+          "thick_rmse": 26.85582579404902,
+          "all_rmse": 9.353301289022491,
+          "clear_false10_rate": 0.036940123434511134,
+          "thick_misses_pred_lt10": 328427
+        },
+        {
+          "epoch": 4,
+          "thick_rmse": 27.314949323423214,
+          "all_rmse": 9.317548542881983,
+          "clear_false10_rate": 0.03540735941520458,
+          "thick_misses_pred_lt10": 347503
+        },
+        {
+          "epoch": 5,
+          "thick_rmse": 27.474572440276933,
+          "all_rmse": 8.995098733371405,
+          "clear_false10_rate": 0.029950078654069106,
+          "thick_misses_pred_lt10": 354827
+        },
+        {
+          "epoch": 6,
+          "thick_rmse": 28.537216955535744,
+          "all_rmse": 9.043423357778673,
+          "clear_false10_rate": 0.021913102878818154,
+          "thick_misses_pred_lt10": 399226
+        },
+        {
+          "epoch": 7,
+          "thick_rmse": 27.41054544965545,
+          "all_rmse": 9.083432020842524,
+          "clear_false10_rate": 0.030568395589034028,
+          "thick_misses_pred_lt10": 356227
+        },
+        {
+          "epoch": 8,
+          "thick_rmse": 27.840073917082997,
+          "all_rmse": 9.029389833150073,
+          "clear_false10_rate": 0.026762454147802747,
+          "thick_misses_pred_lt10": 375223
+        }
+      ]
+    }
+  },
+  "decision": "FAIL_ADVANCE_GATE_BOTH_ARMS_SELECT_STEP0",
+  "uncertainty_limit": "Per-epoch per-sample predictions were not saved; no paired day-bootstrap interval can be computed for trained epoch checkpoints. The predeclared selection gate fails on point estimate because every learned checkpoint has higher thick-COT RMSE than step 0."
+}
