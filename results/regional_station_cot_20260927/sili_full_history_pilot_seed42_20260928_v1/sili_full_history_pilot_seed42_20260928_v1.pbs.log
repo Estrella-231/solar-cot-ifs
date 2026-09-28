@@ -1,0 +1,24 @@
+[2026-09-28 12:28:54][INFO][211083.tc6000] In prologue, JOB_ID is 211083.tc6000
+[2026-09-28 12:28:54][INFO][211083.tc6000] In prologue, the pbs_server_name is tc6000.
+tc6000
+[2026-09-28 12:28:55][INFO][211083.tc6000] ########################  Job 211083.tc6000 start to execute pre.sh!   ##########################
+[2026-09-28 12:28:55][INFO][211083.tc6000] goldenable is true, storageenable is false.
+[2026-09-28 12:28:55][INFO][211083.tc6000] Gold runs normally.
+[2026-09-28 12:28:56][INFO][211083.tc6000] The seconds that job requested is 14400.
+[2026-09-28 12:28:56][INFO][211083.tc6000] The procBillingTime of CPU&GPU is 835200.
+[2026-09-28 12:28:56][INFO][211083.tc6000] The billingTimeTotal of CPU, GPU and storage is 835200.
+[2026-09-28 12:28:57][INFO][211083.tc6000] The greserve command is : /opt/gridview//clusquota/bin//greserve -J 211083.tc6000 -u slfu -C gpu -P 1 -t 835200 -s '2026-09-28 12:28:57' -e '2026-09-28 16:28:57' 2>&1
+[2026-09-28 12:28:57][INFO][211083.tc6000] greserve command result is 0, execute greserve command output is: Successfully reserved 835200 credits for job 211083.tc6000 and created gold job id 169339
+[2026-09-28 12:28:57][INFO][211083.tc6000] make_reserve function executed successfully.
+72b65439ff301251bb68023d50617c52b6bee098aa22393f9f17f7518e8ecf96  /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/scripts/train_sili_full_history_pilot_20260928.py
+f0ed2654b74c7680064626ec2989f44bebc8ce3130e21565612ef054959f137b  /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/scripts/smoke_sili_full_history_pilot_20260928.py
+7a7df500b1ac8e9606c66b0a64c35846907e0e2ac5294d2295076d9c36c41c0e  /tmp/sili_fullhist_211083/bank/complete.json
+d1ab28e23b2c14ebe301b16ef6fd7d4df4a4b147c366707e5308e8d5423288d3  /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/sili_station_tracks_day_sidecar_seed42_20260928.npz
+{'short_shape': (2, 8, 16, 5, 5), 'full_shape': (2, 14, 16, 5, 5), 'initial_output_max_abs_diff': 0.0, 'loss': 0.0859912782907486}
+index, name, memory.total [MiB], memory.used [MiB], utilization.gpu [%]
+0, NVIDIA A800-SXM4-80GB, 81920 MiB, 2 MiB, 0 %
+PREPARE_FIXED_TRAIN
+PREPARE_FIXED_VALIDATION
+BATCH_PROFILE {"selected_batch": 512, "candidates": [{"batch": 8, "peak_allocated_gib": 1.6058344841003418, "step_seconds": 6.713740110397339, "status": "ok", "eligible": true}, {"batch": 16, "peak_allocated_gib": 2.208861827850342, "step_seconds": 0.051465749740600586, "status": "ok", "eligible": true}, {"batch": 32, "peak_allocated_gib": 3.414916515350342, "step_seconds": 0.0750424861907959, "status": "ok", "eligible": true}, {"batch": 64, "peak_allocated_gib": 5.827025890350342, "step_seconds": 0.12958621978759766, "status": "ok", "eligible": true}, {"batch": 128, "peak_allocated_gib": 10.6512451171875, "step_seconds": 0.25212574005126953, "status": "ok", "eligible": true}, {"batch": 256, "peak_allocated_gib": 20.299683570861816, "step_seconds": 0.49883151054382324, "status": "ok", "eligible": true}, {"batch": 512, "peak_allocated_gib": 39.59656047821045, "step_seconds": 0.9947888851165771, "status": "ok", "eligible": true}]}
+SILI_FULL_HISTORY_PILOT_COMPLETE {"selected_batch": 512, "short_candidate": "step0_zero_residual_transport", "short_thick_rmse": 26.504161279635838, "full_candidate": "step0_zero_residual_transport", "full_thick_rmse": 26.504161279635838, "input_init_maxdiff": 0.0}
+SILI_FULL_HISTORY_PILOT_COMPLETE

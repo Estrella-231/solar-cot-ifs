@@ -96,6 +96,8 @@ PBS `211063.tc6000` completed with `Exit_status=0` on node22 using one A800 GPU.
 
 The completed patch audit's paired results are mirrored in `results/regional_station_cot_20260927/sili_patch_case_audit_20260928_v3/`. To make repeated examples fully auditable, local sidecar `scripts/plot_sili_local64_cases_masked_20260928.py` regenerates the displayed maps from the saved case arrays and masks excluded transport-source pixels.
 
+The completed penalty ablation is documented in `docs/SILI_LOW_COT_PENALTY_ABLATION_RESULTS_20260928.md`. The subsequent matched all-eight-frame history pilot is documented in `docs/SILI_FULL_HISTORY_PILOT_RESULTS_20260928.md`; it improved the best unselected thick-patch candidate over the short-history candidate, but neither arm beat the step-0 transport selection gate, and the full-history station thick-COT score was worse than transport. Keep these as validation diagnostics; test remains closed and no GHI-head claim follows.
+
 ### Low-COT penalty ablation completed (2026-09-28)
 
 PBS `211063.tc6000` completed both serial arms on one node22 GPU. The log ends with `SILI_LOW_COT_PENALTY_ABLATION_COMPLETE`; both arm-level and aggregate completion JSONs are present, `test_used=false`. The same local-staged 512/512 bank, seed-42 initialization, shuffled minibatch order, architecture, optimizer, weighting, 40-epoch cap, and eight-epoch patience were used. The only loss change was removal of the additional physical-domain penalty on predictions above 10 for CPP COT<5. Both arms made step-0 transport an explicit candidate selected by thick-cloud RMSE.
