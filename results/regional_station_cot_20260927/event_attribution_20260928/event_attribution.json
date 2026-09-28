@@ -1,0 +1,987 @@
+{
+  "test_used": false,
+  "station": "Sili (local crop centre row=163,col=148)",
+  "ghi_label": "Observed 15-minute interval mean; lead 1..16 maps to +15..+240 min.",
+  "reference": "CPP retrieval product; producer/physical QA unresolved.",
+  "selection": "Three already-selected validation examples for event diagnostics, not a representative sample.",
+  "events": [
+    {
+      "event": "cloud_decay",
+      "sequence": 2311,
+      "description": "2025-08-05 09:15 BJT \u00b7 dissipating cloud",
+      "cot_series_station_pixel": {
+        "CPP retrieval ref": [
+          17.280399322509766,
+          16.660343170166016,
+          17.07866096496582,
+          21.54469871520996,
+          14.018494606018066,
+          8.902752876281738,
+          5.030587196350098,
+          5.732645034790039,
+          7.728647708892822,
+          4.104893207550049,
+          3.19474196434021,
+          2.976785659790039,
+          1.6264535188674927,
+          2.8561317920684814,
+          3.070152997970581,
+          2.043694019317627
+        ],
+        "R(real future AGRI) \u00b7 oracle": [
+          23.71940803527832,
+          21.90999412536621,
+          19.152191162109375,
+          22.236465454101562,
+          14.191144943237305,
+          8.915693283081055,
+          4.833950519561768,
+          5.084909439086914,
+          6.484381198883057,
+          4.364166736602783,
+          2.9154701232910156,
+          2.820974349975586,
+          1.878051519393921,
+          1.6224095821380615,
+          2.0920095443725586,
+          1.3454467058181763
+        ],
+        "R(SimVP future AGRI)": [
+          11.715216636657715,
+          11.62051773071289,
+          14.358644485473633,
+          14.296224594116211,
+          14.462413787841797,
+          16.702791213989258,
+          16.574552536010742,
+          18.151866912841797,
+          19.108348846435547,
+          18.56618881225586,
+          19.158496856689453,
+          18.114643096923828,
+          13.765191078186035,
+          14.241767883300781,
+          13.917011260986328,
+          15.239224433898926
+        ],
+        "history + fixed translation": [
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285,
+          23.64910316467285
+        ]
+      },
+      "ghi_observed_15min_mean": [
+        106.0,
+        116.66666666666669,
+        125.0,
+        176.0,
+        186.0,
+        620.6666666666666,
+        741.0,
+        601.0,
+        574.6666666666666,
+        1019.3333333333333,
+        1008.0,
+        659.0,
+        906.3333333333334,
+        587.0,
+        998.3333333333334,
+        661.3333333333334
+      ],
+      "ghi_existing_pilot_prediction": [
+        518.3729534728329,
+        569.7641922005025,
+        611.2770556503096,
+        666.6538853538921,
+        701.9551037743638,
+        740.7394233930669,
+        754.0879743792839,
+        746.3133636025703,
+        792.3483482704345,
+        815.6465012304645,
+        823.189426055397,
+        812.2308282975973,
+        831.3678241845156,
+        818.5031248467402,
+        757.8588995140306,
+        780.8370564450869
+      ],
+      "future_reference_alignment": [
+        {
+          "lead_minutes": 15,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            0,
+            0
+          ],
+          "unshifted_rmse_cot": 2.9957175254821777,
+          "aligned_rmse_cot": 2.9957175254821777,
+          "aligned_mae_cot": 2.1757564544677734
+        },
+        {
+          "lead_minutes": 30,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            1,
+            0
+          ],
+          "unshifted_rmse_cot": 3.996333360671997,
+          "aligned_rmse_cot": 3.929752826690674,
+          "aligned_mae_cot": 2.921037197113037
+        },
+        {
+          "lead_minutes": 45,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            1,
+            0
+          ],
+          "unshifted_rmse_cot": 5.0649943351745605,
+          "aligned_rmse_cot": 4.847313404083252,
+          "aligned_mae_cot": 3.5842347145080566
+        },
+        {
+          "lead_minutes": 60,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            1,
+            -1
+          ],
+          "unshifted_rmse_cot": 5.725055694580078,
+          "aligned_rmse_cot": 5.610258102416992,
+          "aligned_mae_cot": 3.8975539207458496
+        },
+        {
+          "lead_minutes": 75,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            4,
+            -2
+          ],
+          "unshifted_rmse_cot": 7.676595211029053,
+          "aligned_rmse_cot": 7.093792915344238,
+          "aligned_mae_cot": 4.752904891967773
+        },
+        {
+          "lead_minutes": 90,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            1,
+            -12
+          ],
+          "unshifted_rmse_cot": 8.550436019897461,
+          "aligned_rmse_cot": 7.1896653175354,
+          "aligned_mae_cot": 5.269064426422119
+        },
+        {
+          "lead_minutes": 105,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            1,
+            -14
+          ],
+          "unshifted_rmse_cot": 10.105033874511719,
+          "aligned_rmse_cot": 7.345034599304199,
+          "aligned_mae_cot": 5.424666404724121
+        },
+        {
+          "lead_minutes": 120,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            2,
+            -16
+          ],
+          "unshifted_rmse_cot": 11.082242965698242,
+          "aligned_rmse_cot": 7.804950714111328,
+          "aligned_mae_cot": 5.357548713684082
+        },
+        {
+          "lead_minutes": 135,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            2,
+            -16
+          ],
+          "unshifted_rmse_cot": 11.440205574035645,
+          "aligned_rmse_cot": 7.753887176513672,
+          "aligned_mae_cot": 5.371584892272949
+        },
+        {
+          "lead_minutes": 150,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            2,
+            -16
+          ],
+          "unshifted_rmse_cot": 11.926046371459961,
+          "aligned_rmse_cot": 8.275232315063477,
+          "aligned_mae_cot": 6.019596576690674
+        },
+        {
+          "lead_minutes": 165,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            3,
+            -16
+          ],
+          "unshifted_rmse_cot": 12.78821086883545,
+          "aligned_rmse_cot": 8.375626564025879,
+          "aligned_mae_cot": 6.162633895874023
+        },
+        {
+          "lead_minutes": 180,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            3,
+            -16
+          ],
+          "unshifted_rmse_cot": 13.637526512145996,
+          "aligned_rmse_cot": 8.532946586608887,
+          "aligned_mae_cot": 6.441369533538818
+        },
+        {
+          "lead_minutes": 195,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            7,
+            -16
+          ],
+          "unshifted_rmse_cot": 14.220803260803223,
+          "aligned_rmse_cot": 8.85720443725586,
+          "aligned_mae_cot": 6.071220397949219
+        },
+        {
+          "lead_minutes": 210,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            3,
+            -16
+          ],
+          "unshifted_rmse_cot": 14.252202033996582,
+          "aligned_rmse_cot": 9.197043418884277,
+          "aligned_mae_cot": 6.75877046585083
+        },
+        {
+          "lead_minutes": 225,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            6,
+            -16
+          ],
+          "unshifted_rmse_cot": 13.150875091552734,
+          "aligned_rmse_cot": 8.371761322021484,
+          "aligned_mae_cot": 5.7592034339904785
+        },
+        {
+          "lead_minutes": 240,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            7,
+            -16
+          ],
+          "unshifted_rmse_cot": 11.922443389892578,
+          "aligned_rmse_cot": 7.943162441253662,
+          "aligned_mae_cot": 5.650229454040527
+        }
+      ],
+      "alignment_warning": "Uses future CPP to select an integer translation; diagnostic lower bound, not forecast skill."
+    },
+    {
+      "event": "moving_thick_cloud",
+      "sequence": 2869,
+      "description": "2025-08-14 11:30 BJT \u00b7 moving, thickening cloud",
+      "cot_series_station_pixel": {
+        "CPP retrieval ref": [
+          25.169479370117188,
+          22.196374893188477,
+          26.11469268798828,
+          23.339435577392578,
+          33.2169075012207,
+          40.07609939575195,
+          47.10771942138672,
+          57.68770980834961,
+          67.8375244140625,
+          64.66631317138672,
+          59.46586227416992,
+          59.34209442138672,
+          59.888427734375,
+          54.36747360229492,
+          49.30305480957031,
+          38.61338424682617
+        ],
+        "R(real future AGRI) \u00b7 oracle": [
+          33.44729232788086,
+          32.9191780090332,
+          27.52289390563965,
+          31.290071487426758,
+          35.04111099243164,
+          36.86222839355469,
+          49.48938751220703,
+          61.149532318115234,
+          65.77003479003906,
+          61.87325668334961,
+          58.64725112915039,
+          61.8827018737793,
+          59.74626922607422,
+          58.509010314941406,
+          49.46250534057617,
+          35.779476165771484
+        ],
+        "R(SimVP future AGRI)": [
+          40.67280960083008,
+          30.847440719604492,
+          31.173465728759766,
+          30.482982635498047,
+          32.154808044433594,
+          32.05912780761719,
+          30.33733367919922,
+          25.379880905151367,
+          32.06110382080078,
+          29.37484359741211,
+          30.953319549560547,
+          30.765262603759766,
+          30.43994140625,
+          29.459300994873047,
+          28.528535842895508,
+          27.90468406677246
+        ],
+        "history + fixed translation": [
+          34.17079162597656,
+          36.50902557373047,
+          35.178611755371094,
+          34.865909576416016,
+          34.99180603027344,
+          36.907535552978516,
+          41.19783401489258,
+          42.60960388183594,
+          44.03284454345703,
+          45.3251953125,
+          46.37873840332031,
+          47.71501541137695,
+          48.21279525756836,
+          48.13488006591797,
+          48.536617279052734,
+          47.0231819152832
+        ]
+      },
+      "ghi_observed_15min_mean": [
+        368.3333333333333,
+        267.0,
+        151.66666666666666,
+        197.66666666666663,
+        217.66666666666663,
+        253.66666666666666,
+        248.33333333333331,
+        150.66666666666666,
+        64.33333333333333,
+        24.0,
+        17.333333333333332,
+        20.0,
+        19.0,
+        19.33333333333333,
+        39.333333333333336,
+        44.0
+      ],
+      "ghi_existing_pilot_prediction": [
+        319.40152292257466,
+        322.36297470666244,
+        299.7233886787846,
+        318.85289703172975,
+        314.8043072684522,
+        310.8972039609727,
+        299.06617151812867,
+        275.1345006423473,
+        265.51857234725134,
+        260.1537476754432,
+        247.00158721961319,
+        229.01534547880422,
+        228.10042681557564,
+        216.2301947429485,
+        194.0686507200926,
+        198.10422373369605
+      ],
+      "future_reference_alignment": [
+        {
+          "lead_minutes": 15,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            6,
+            2
+          ],
+          "unshifted_rmse_cot": 7.04274320602417,
+          "aligned_rmse_cot": 4.657027244567871,
+          "aligned_mae_cot": 3.750960350036621
+        },
+        {
+          "lead_minutes": 30,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            10,
+            5
+          ],
+          "unshifted_rmse_cot": 12.197443962097168,
+          "aligned_rmse_cot": 5.335606098175049,
+          "aligned_mae_cot": 4.490243434906006
+        },
+        {
+          "lead_minutes": 45,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            8,
+            6
+          ],
+          "unshifted_rmse_cot": 9.573708534240723,
+          "aligned_rmse_cot": 4.986929893493652,
+          "aligned_mae_cot": 3.990994930267334
+        },
+        {
+          "lead_minutes": 60,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            10,
+            10
+          ],
+          "unshifted_rmse_cot": 12.800056457519531,
+          "aligned_rmse_cot": 5.709726333618164,
+          "aligned_mae_cot": 4.656900405883789
+        },
+        {
+          "lead_minutes": 75,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            8,
+            13
+          ],
+          "unshifted_rmse_cot": 11.405789375305176,
+          "aligned_rmse_cot": 7.40997314453125,
+          "aligned_mae_cot": 5.488227367401123
+        },
+        {
+          "lead_minutes": 90,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            6,
+            -10
+          ],
+          "unshifted_rmse_cot": 10.020432472229004,
+          "aligned_rmse_cot": 8.311285972595215,
+          "aligned_mae_cot": 6.7218098640441895
+        },
+        {
+          "lead_minutes": 105,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            4,
+            -8
+          ],
+          "unshifted_rmse_cot": 10.747637748718262,
+          "aligned_rmse_cot": 9.433433532714844,
+          "aligned_mae_cot": 7.478561878204346
+        },
+        {
+          "lead_minutes": 120,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            1,
+            -4
+          ],
+          "unshifted_rmse_cot": 9.571361541748047,
+          "aligned_rmse_cot": 9.205395698547363,
+          "aligned_mae_cot": 6.866433143615723
+        },
+        {
+          "lead_minutes": 135,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            4,
+            -4
+          ],
+          "unshifted_rmse_cot": 10.922627449035645,
+          "aligned_rmse_cot": 9.740643501281738,
+          "aligned_mae_cot": 7.236688613891602
+        },
+        {
+          "lead_minutes": 150,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            5,
+            -5
+          ],
+          "unshifted_rmse_cot": 11.531075477600098,
+          "aligned_rmse_cot": 10.214167594909668,
+          "aligned_mae_cot": 7.921374320983887
+        },
+        {
+          "lead_minutes": 165,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            3,
+            -3
+          ],
+          "unshifted_rmse_cot": 11.937029838562012,
+          "aligned_rmse_cot": 11.155553817749023,
+          "aligned_mae_cot": 9.172040939331055
+        },
+        {
+          "lead_minutes": 180,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -6,
+            -6
+          ],
+          "unshifted_rmse_cot": 13.110922813415527,
+          "aligned_rmse_cot": 12.212152481079102,
+          "aligned_mae_cot": 10.292459487915039
+        },
+        {
+          "lead_minutes": 195,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -5,
+            -4
+          ],
+          "unshifted_rmse_cot": 11.936882972717285,
+          "aligned_rmse_cot": 11.04808235168457,
+          "aligned_mae_cot": 9.490952491760254
+        },
+        {
+          "lead_minutes": 210,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -16,
+            -6
+          ],
+          "unshifted_rmse_cot": 15.4343843460083,
+          "aligned_rmse_cot": 13.266044616699219,
+          "aligned_mae_cot": 11.08192253112793
+        },
+        {
+          "lead_minutes": 225,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -16,
+            -6
+          ],
+          "unshifted_rmse_cot": 15.948444366455078,
+          "aligned_rmse_cot": 13.576910972595215,
+          "aligned_mae_cot": 11.437929153442383
+        },
+        {
+          "lead_minutes": 240,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -16,
+            -7
+          ],
+          "unshifted_rmse_cot": 17.564802169799805,
+          "aligned_rmse_cot": 15.280117988586426,
+          "aligned_mae_cot": 13.373675346374512
+        }
+      ],
+      "alignment_warning": "Uses future CPP to select an integer translation; diagnostic lower bound, not forecast skill."
+    },
+    {
+      "event": "missed_growth",
+      "sequence": 534,
+      "description": "2025-07-09 12:15 BJT \u00b7 missed cloud growth",
+      "cot_series_station_pixel": {
+        "CPP retrieval ref": [
+          28.696603775024414,
+          22.21670150756836,
+          20.774337768554688,
+          13.085476875305176,
+          14.651219367980957,
+          16.68067169189453,
+          15.702611923217773,
+          20.27406883239746,
+          35.87556838989258,
+          60.711151123046875,
+          68.7473373413086,
+          64.35985565185547,
+          49.419151306152344,
+          33.583011627197266,
+          26.047609329223633,
+          18.438819885253906
+        ],
+        "R(real future AGRI) \u00b7 oracle": [
+          21.00628089904785,
+          17.59302520751953,
+          13.909032821655273,
+          12.682229995727539,
+          14.371502876281738,
+          17.133501052856445,
+          18.537492752075195,
+          23.14739418029785,
+          38.83259201049805,
+          54.24660873413086,
+          64.62064361572266,
+          59.13616943359375,
+          47.35673904418945,
+          33.839420318603516,
+          23.626623153686523,
+          17.04288101196289
+        ],
+        "R(SimVP future AGRI)": [
+          15.338947296142578,
+          7.622861862182617,
+          6.3794331550598145,
+          6.861932754516602,
+          6.985100269317627,
+          6.719567775726318,
+          7.140406608581543,
+          7.550492763519287,
+          7.127570629119873,
+          7.242565155029297,
+          7.391363143920898,
+          7.7241291999816895,
+          6.283963203430176,
+          5.756546974182129,
+          4.228458404541016,
+          5.423494815826416
+        ],
+        "history + fixed translation": [
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312,
+          25.083084106445312
+        ]
+      },
+      "ghi_observed_15min_mean": [
+        84.0,
+        394.0,
+        1102.0,
+        1054.6666666666667,
+        704.6666666666666,
+        958.0,
+        595.0,
+        824.3333333333334,
+        283.0,
+        327.0,
+        355.6666666666667,
+        145.66666666666666,
+        69.33333333333333,
+        50.333333333333336,
+        87.0,
+        131.33333333333334
+      ],
+      "ghi_existing_pilot_prediction": [
+        696.1248269039577,
+        708.1874775670939,
+        693.9398802839585,
+        704.1336548029084,
+        675.2452718822482,
+        672.3809565990583,
+        662.0191898556288,
+        607.1066420510132,
+        597.7643354558106,
+        566.324764046201,
+        535.4623029470328,
+        490.5658671305552,
+        464.3293861695418,
+        419.9691237905163,
+        373.121896745118,
+        361.92535686941534
+      ],
+      "future_reference_alignment": [
+        {
+          "lead_minutes": 15,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            0,
+            -1
+          ],
+          "unshifted_rmse_cot": 7.840946674346924,
+          "aligned_rmse_cot": 7.684235572814941,
+          "aligned_mae_cot": 4.862067222595215
+        },
+        {
+          "lead_minutes": 30,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            0,
+            -2
+          ],
+          "unshifted_rmse_cot": 10.512537002563477,
+          "aligned_rmse_cot": 9.450782775878906,
+          "aligned_mae_cot": 6.401741027832031
+        },
+        {
+          "lead_minutes": 45,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            2,
+            -1
+          ],
+          "unshifted_rmse_cot": 13.270013809204102,
+          "aligned_rmse_cot": 11.510815620422363,
+          "aligned_mae_cot": 8.659223556518555
+        },
+        {
+          "lead_minutes": 60,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            2,
+            -2
+          ],
+          "unshifted_rmse_cot": 13.48527717590332,
+          "aligned_rmse_cot": 10.870705604553223,
+          "aligned_mae_cot": 8.229244232177734
+        },
+        {
+          "lead_minutes": 75,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            4,
+            -3
+          ],
+          "unshifted_rmse_cot": 15.08892822265625,
+          "aligned_rmse_cot": 10.649306297302246,
+          "aligned_mae_cot": 7.884786605834961
+        },
+        {
+          "lead_minutes": 90,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            6,
+            -6
+          ],
+          "unshifted_rmse_cot": 19.158023834228516,
+          "aligned_rmse_cot": 13.214999198913574,
+          "aligned_mae_cot": 9.908889770507812
+        },
+        {
+          "lead_minutes": 105,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            8,
+            -7
+          ],
+          "unshifted_rmse_cot": 19.129928588867188,
+          "aligned_rmse_cot": 12.939895629882812,
+          "aligned_mae_cot": 9.502820014953613
+        },
+        {
+          "lead_minutes": 120,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            9,
+            -8
+          ],
+          "unshifted_rmse_cot": 22.804855346679688,
+          "aligned_rmse_cot": 16.262859344482422,
+          "aligned_mae_cot": 11.992015838623047
+        },
+        {
+          "lead_minutes": 135,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            11,
+            -8
+          ],
+          "unshifted_rmse_cot": 24.892301559448242,
+          "aligned_rmse_cot": 17.618566513061523,
+          "aligned_mae_cot": 12.688607215881348
+        },
+        {
+          "lead_minutes": 150,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            12,
+            -9
+          ],
+          "unshifted_rmse_cot": 23.897369384765625,
+          "aligned_rmse_cot": 18.0382137298584,
+          "aligned_mae_cot": 12.807806015014648
+        },
+        {
+          "lead_minutes": 165,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            11,
+            -15
+          ],
+          "unshifted_rmse_cot": 21.22549057006836,
+          "aligned_rmse_cot": 17.74816131591797,
+          "aligned_mae_cot": 12.754623413085938
+        },
+        {
+          "lead_minutes": 180,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            0,
+            9
+          ],
+          "unshifted_rmse_cot": 24.047691345214844,
+          "aligned_rmse_cot": 19.848291397094727,
+          "aligned_mae_cot": 14.880355834960938
+        },
+        {
+          "lead_minutes": 195,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -1,
+            7
+          ],
+          "unshifted_rmse_cot": 21.957189559936523,
+          "aligned_rmse_cot": 18.55931282043457,
+          "aligned_mae_cot": 13.86160659790039
+        },
+        {
+          "lead_minutes": 210,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            -2,
+            6
+          ],
+          "unshifted_rmse_cot": 19.452823638916016,
+          "aligned_rmse_cot": 15.864166259765625,
+          "aligned_mae_cot": 11.965944290161133
+        },
+        {
+          "lead_minutes": 225,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            14,
+            -16
+          ],
+          "unshifted_rmse_cot": 18.680383682250977,
+          "aligned_rmse_cot": 14.613076210021973,
+          "aligned_mae_cot": 10.144411087036133
+        },
+        {
+          "lead_minutes": 240,
+          "status": "diagnostic_only_future_reference_used",
+          "max_integer_shift_pixels": 16,
+          "n_common_pixels": 1024,
+          "best_shift_row_col": [
+            14,
+            -16
+          ],
+          "unshifted_rmse_cot": 16.575916290283203,
+          "aligned_rmse_cot": 12.836539268493652,
+          "aligned_mae_cot": 9.412644386291504
+        }
+      ],
+      "alignment_warning": "Uses future CPP to select an integer translation; diagnostic lower bound, not forecast skill."
+    }
+  ]
+}
