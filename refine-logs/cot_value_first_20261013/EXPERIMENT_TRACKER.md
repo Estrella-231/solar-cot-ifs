@@ -19,7 +19,7 @@
 |T13|B1|当前会话|T11|两站R-A/AC/AP seed44|6 runs|GPU|PASS；PBS 213838 Sili、213839 Zhujia均exit_status=0；各A/AC/AP 30 epoch；新test未读取。|
 |T14|B2|当前会话|T12,T13|18臂主终点、配对CI与分层|experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md；GHI_WEATHER_STRATIFICATION_20261013.md|CPU|PASS_VALIDATION_ONLY；FP64与日期块bootstrap通过。总体AC−A=-3.740、AC−AP=-3.582 W m⁻²。季节描述分层均为负；同键CPP/CLP云况诊断中，cloudy子集840行、AC−A=-3.730 [−7.813,−0.289]、AC−AP=-3.559 [−7.831,−0.119]，clear/mixed CI跨0。该分层仅1291/4479行有CLP键，主GHI cohort保持不变；CLP非独立真值。|
 |T15|B2|当前会话|T11|固定头COT扰动与输入依赖诊断|experiments/monthly_R_station16_20261013_v1/results/COT_INPUT_DEPENDENCE_VALIDATION_20261013.md|CPU|PASS_VALIDATION_DIAGNOSTIC；物理零/中心保留外围置零/保值邻域置换/同站同月错配均已完成；置换敏感度很小，错配与置零会明显退化；结果仅为冻结头输入依赖诊断，不作因果证明。|
-|T16|B2|当前会话|T03,T06,T14|预先选16例并输出真实图像/GHI案例|event_manifest.json, figures/|CPU|PLANNED|
+|T16|B2|当前会话|T03,T06,T14|预先选16例并输出真实图像/GHI案例|event_manifest.json, figures/|CPU|WAITING_VALIDATION_SEQUENCE_AND_AGRI_INPUTS；本地仅有单时刻16×16 R/CPP COT与CLP快照，尚未核验完整+15…+240 min参考序列或配套AGRI合成RGB输入；不按单帧/预测误差替代预注册规则。|
 |T17|B2|当前会话|T14,T15,T16|决定应用验证/错误修复/收缩结论|phase_decision.json|CPU|PLANNED|
 |T18|B2条件|当前会话|T14|R-AL同监督隐特征两站三seed|6 runs + audit|GPU|PLANNED|
 |T19|B3|当前会话|T01,T04,T05|S冻结来源、train/val预测与几何验收|forecast_contract.json|CPU/GPU|PLANNED|
