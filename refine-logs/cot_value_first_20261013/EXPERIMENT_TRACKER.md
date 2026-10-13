@@ -110,3 +110,12 @@
 - 17:05 BJT：PBS `213716.tc6000`继续运行，进度25,472/55,733，source errors=0，PBS账户仍有2个未结束作业。pack job继续等待，不与bank竞争同源I/O。
 - 19:48 BJT：新R bank完成并核验：55,733帧完整（train 51,236/val 4,497），source errors=0，`test_payload_opened=false`；COT bank输出绑定R checkpoint SHA `342596…f001`。PBS账户实时查询只有`213666.tc6000`未完成，于是提交CPU数据连接作业`213781.tc6000`，开始生成同键GHI/AGRI/几何/COT 3×3 pack；账户当前未结束任务数2。待pack审计后再提交单卡profile/seed42训练。
 - 2026-10-13 20:14 BJT：PBS 213781 live check: 8-core CPU pack is R, elapsed about 7m34s, log reached 6,001/54,937; pack manifest is not yet present. Account has 2 unfinished jobs (213666 and 213781). Do not overlap another shared-data reader; after completion audit counts/hashes/support then submit single-GPU GHI-head profile/training if queue remains below the 3-job cap.
+
+## 2026-10-14：T15/T16局部退化深入诊断（不改变T16覆盖或T17结论）
+
+对四个冻结JJA案例及完整train/val做18个已冻结head的CPU重放、梯度/输入替换和错误分解。病例AC相对A平均下调约38–42 W/m²，竺家A原已低估，AC进一步放大低估；两个竺家窗口共享13/16目标，不能作为两个独立事件。关键失败子群是R中心COT≥3但实测区间kt≥0.9：train AC−A四里+12.466、竺家+16.820，val分别+16.822/+8.357 W/m²。低kt子群仍有改善，解释总体收益和局部退化并存。这是使用目标的事后诊断，不是可部署门控或独立天气分类。
+
+保持head冻结，将R替换同刻CPP不能修复竺家主要退化（同CPU病例RMSE仅−0.196/−0.666）；替换直接H太阳几何的病例影响≤0.218 W/m²，未重算R几何，不全局排除该通路。COT排列响应很弱，±15 min/±2像元探针没有共同一致的修复方向。51个原HDF元数据路径在PBS均不可读；缓存扫描行偏移约四里+184 s、竺家+159 s，待源链核验，不能直接移动标签。未读test、未提交训练或PBS任务。
+
+新证据：`experiments/monthly_R_station16_20261013_v1/results/t16_deterioration_forensics_20261014/T16_DETERIORATION_CAUSES_20261014.md`、逐目标JSON/CSV、两组真实数值图、SPA/扫描元数据/优化日志审计。优先闭合扫描时刻和15min支持，再对照时间序列/站点作用表示；T18来源控制仍必要。整体三seed验证增益和T16 4/16覆盖边界保留。
+- 2026-10-14 BJT：补充完成T19单窗物理反归一化→冻结R回放见证。PBS `213855.tc6000` 单A800运行成功；固定val窗 `hunan_202404181745`，+15…+240 min、两站共32幅16×16 COT，观测AGRI→R输出与已保存新R bank最大绝对差 `0.0012164`（log1p COT）。本地FP64对保存数组重算得到同一差值。SimVP输入仅历史8帧和24帧几何；未来AGRI只作离线R回放参考。复现代码 `experiments/monthly_R_station16_20261013_v1/witness_simvp_to_R_replay.py`，SHA-256 `9227aa5ca98da5df9436f806be4e536fe5e66bc3edcd0d851888284b4818f94`；结果与压缩数组已复制到 `results/simvp_to_R_replay_witness_20261014_val0/`，witness SHA-256 `BD835E0070AC914F1B1A96026DFDB292B84E2C78F77FAF76083E84F3BFA46FCC`、NPZ SHA-256 `D8A518F73C4AC8CDDF0CFAB5F81F12B84FEA3CE4B7169F4393A97EC983C0C2C3`。这不评价SimVP外推精度；下一步按T19先完成100窗单卡吞吐profile。提交前全账户1个未结束作业，提交后2个，低于3个上限；当前 `213855` 已完成，test载荷未打开。
