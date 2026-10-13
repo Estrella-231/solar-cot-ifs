@@ -1,0 +1,70 @@
+{
+  "state": "CHECKPOINT_RELOAD_NUMERICAL_COMPARISON",
+  "device": "CPU reload vs saved A800 predictions",
+  "parameter_counts": {
+    "A": 22177,
+    "AC": 24489,
+    "AP": 24613
+  },
+  "stations": {
+    "sili": {
+      "n": 2128,
+      "arms": {
+        "A": {
+          "max_abs_reload_vs_saved_wm2": 0.089569091796875,
+          "mean_abs_reload_vs_saved_wm2": 0.00910145922709927,
+          "saved_rmse_wm2": 135.24120683628504,
+          "reloaded_cpu_rmse_wm2": 135.2403196763036,
+          "rmse_delta_cpu_minus_saved_wm2": -0.0008871599814312958,
+          "mae_delta_cpu_minus_saved_wm2": 0.0007807873672476262
+        },
+        "AC": {
+          "max_abs_reload_vs_saved_wm2": 0.071746826171875,
+          "mean_abs_reload_vs_saved_wm2": 0.00664010273817952,
+          "saved_rmse_wm2": 132.63908165403484,
+          "reloaded_cpu_rmse_wm2": 132.6383096061416,
+          "rmse_delta_cpu_minus_saved_wm2": -0.0007720478932355945,
+          "mae_delta_cpu_minus_saved_wm2": 0.0009517797228824065
+        },
+        "AP": {
+          "max_abs_reload_vs_saved_wm2": 0.122528076171875,
+          "mean_abs_reload_vs_saved_wm2": 0.008753744984179983,
+          "saved_rmse_wm2": 135.0978364622284,
+          "reloaded_cpu_rmse_wm2": 135.09557587211174,
+          "rmse_delta_cpu_minus_saved_wm2": -0.0022605901166627973,
+          "mae_delta_cpu_minus_saved_wm2": 0.0005518263210291252
+        }
+      }
+    },
+    "zhujia": {
+      "n": 2351,
+      "arms": {
+        "A": {
+          "max_abs_reload_vs_saved_wm2": 0.45166015625,
+          "mean_abs_reload_vs_saved_wm2": 0.02793126909857342,
+          "saved_rmse_wm2": 110.62526391626568,
+          "reloaded_cpu_rmse_wm2": 110.62075053522695,
+          "rmse_delta_cpu_minus_saved_wm2": -0.00451338103873411,
+          "mae_delta_cpu_minus_saved_wm2": -0.005346384000105786
+        },
+        "AC": {
+          "max_abs_reload_vs_saved_wm2": 0.217529296875,
+          "mean_abs_reload_vs_saved_wm2": 0.010776288313592591,
+          "saved_rmse_wm2": 106.89054231438169,
+          "reloaded_cpu_rmse_wm2": 106.88814588319411,
+          "rmse_delta_cpu_minus_saved_wm2": -0.0023964311875772637,
+          "mae_delta_cpu_minus_saved_wm2": -0.001467696387450701
+        },
+        "AP": {
+          "max_abs_reload_vs_saved_wm2": 0.2362060546875,
+          "mean_abs_reload_vs_saved_wm2": 0.013237501595422389,
+          "saved_rmse_wm2": 110.34464678226223,
+          "reloaded_cpu_rmse_wm2": 110.34328460670734,
+          "rmse_delta_cpu_minus_saved_wm2": -0.0013621755548882675,
+          "mae_delta_cpu_minus_saved_wm2": -0.0023628661691361685
+        }
+      }
+    }
+  },
+  "test_payload_opened": false
+}

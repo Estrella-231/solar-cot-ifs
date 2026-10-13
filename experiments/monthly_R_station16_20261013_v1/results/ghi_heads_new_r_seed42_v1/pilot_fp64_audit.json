@@ -1,0 +1,86 @@
+{
+  "state": "PASS_SEED42_VALIDATION_FP64_AUDIT",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "per_station": {
+    "sili": {
+      "n": 2128,
+      "arms": {
+        "A": {
+          "rmse_wm2": 135.24120683628504,
+          "mae_wm2": 77.85880559962476,
+          "bias_wm2": 0.8345876473190948,
+          "best_epoch": 26,
+          "checkpoint_sha256": "b070ffffa2ee2ef71b31857c18d1f536ed7c0c82ed8246f0a843f22a0f4a9300"
+        },
+        "AC": {
+          "rmse_wm2": 132.63908165403484,
+          "mae_wm2": 73.45443754956753,
+          "bias_wm2": -0.3640449569637265,
+          "best_epoch": 26,
+          "checkpoint_sha256": "1b63fd5f15be5bc2b242b10e0acfc255a2afe393a43fa51cb03712b326bd5968"
+        },
+        "AP": {
+          "rmse_wm2": 135.0978364622284,
+          "mae_wm2": 77.65097843601144,
+          "bias_wm2": 0.7353823441608914,
+          "best_epoch": 26,
+          "checkpoint_sha256": "04de637159009d5222ea4895eb3f771161d891885c9e9eeb0c3d7191e1734ce0"
+        }
+      }
+    },
+    "zhujia": {
+      "n": 2351,
+      "arms": {
+        "A": {
+          "rmse_wm2": 110.62526391626568,
+          "mae_wm2": 77.98320054626656,
+          "bias_wm2": 1.3267102324696851,
+          "best_epoch": 28,
+          "checkpoint_sha256": "d921d2bd04f2f738e1b54180e2da97d8b1759d7729bb8ca549fafdf692c76bcb"
+        },
+        "AC": {
+          "rmse_wm2": 106.89054231438169,
+          "mae_wm2": 73.17673197527286,
+          "bias_wm2": -2.8054862114170307,
+          "best_epoch": 28,
+          "checkpoint_sha256": "23ea5745a729b4e258e1fa43ad4dbbc80293cf3c800390450cf9ad14083e043a"
+        },
+        "AP": {
+          "rmse_wm2": 110.34464678226223,
+          "mae_wm2": 77.79729044868922,
+          "bias_wm2": 1.1978609666092985,
+          "best_epoch": 28,
+          "checkpoint_sha256": "412bf3bb20d487824222dda6f1cd3ea1addebf1981b65ffb855502c276f69a15"
+        }
+      }
+    }
+  },
+  "summary": {
+    "A": {
+      "station_equal_rmse_wm2": 122.93323537627536,
+      "station_rmse": {
+        "sili": 135.24120683628504,
+        "zhujia": 110.62526391626568
+      }
+    },
+    "AC": {
+      "station_equal_rmse_wm2": 119.76481198420827,
+      "station_rmse": {
+        "sili": 132.63908165403484,
+        "zhujia": 106.89054231438169
+      },
+      "delta_vs_A_station_equal_wm2": -3.1684233920670977
+    },
+    "AP": {
+      "station_equal_rmse_wm2": 122.72124162224532,
+      "station_rmse": {
+        "sili": 135.0978364622284,
+        "zhujia": 110.34464678226223
+      },
+      "delta_vs_A_station_equal_wm2": -0.21199375403004694
+    }
+  },
+  "test_payload_opened": false,
+  "claim_scope": "single-seed validation pilot only; not independent test or three-seed result"
+}

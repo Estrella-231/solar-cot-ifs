@@ -1,0 +1,110 @@
+{
+  "state": "COMPLETE",
+  "rows": 54937,
+  "unique_frames": 29655,
+  "train": 50458,
+  "val": 4479,
+  "stations": {
+    "sili": 26283,
+    "zhujia": 28654
+  },
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "sample_key": "(station,target_time_utc)",
+  "label": "15-minute mean GHI and kt from frozen trainval label join; main_mask only",
+  "AGRI_channels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "AGRI_norm_mean": [
+    0.2091480791568756,
+    0.22361086308956146,
+    0.2568201720714569,
+    0.032579075545072556,
+    0.17763261497020721,
+    0.12395621836185455,
+    238.41941833496094,
+    245.89540100097656,
+    254.08203125,
+    273.15234375,
+    274.3147888183594,
+    272.2543029785156,
+    259.4027404785156
+  ],
+  "AGRI_norm_std": [
+    0.1762118935585022,
+    0.20347559452056885,
+    0.19357138872146606,
+    0.057594943791627884,
+    0.1287347823381424,
+    0.10032995790243149,
+    7.6853461265563965,
+    9.097551345825195,
+    10.728856086730957,
+    18.480453491210938,
+    19.27269172668457,
+    19.018138885498047,
+    13.403448104858398
+  ],
+  "COT_transform": "log1p from frozen new-monthly-R output; train-sample mean/std",
+  "COT_norm_mean": 1.8784252282902711,
+  "COT_norm_std": 1.427114814138804,
+  "geometry": "physical cosSOZ/cosRAA, no spatial pooling",
+  "test_payload_opened": false,
+  "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "label_sha256": "a86c2425ac4e6e8259fcaa4b5b2e083ee427d16e12d4eb1b44aa87751b75988d",
+  "bank_manifest": {
+    "state": "COMPLETE",
+    "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+    "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+    "monthly_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+    "R_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+    "R_validation_audit": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/seed42_v1/validation_audit_fp64.json",
+    "R_validation_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+    "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+    "R_source_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+    "R_input": "13 physical AGRI channels + cosSOZ/cosRAA/day_mask; station-centered 16x16 crop",
+    "R_output": "nonnegative log1p(COT), FP32 inference, no autocast",
+    "layout": "[unique_trainval_target_frame, station(sili,zhujia), 1, 16, 16]",
+    "frames_total": 55733,
+    "train_frames": 51236,
+    "val_frames": 4497,
+    "frames_with_source_errors": 0,
+    "frames_complete": 55733,
+    "mean_input_valid_fraction": [
+      0.9928752779960632,
+      0.9929152131080627
+    ],
+    "test_payload_opened": false,
+    "errors": []
+  },
+  "bank_indices_hash": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+  "support_summary": {
+    "mean_R_input_valid_fraction_by_station": [
+      0.9997717155575847,
+      0.9997557060096322
+    ],
+    "mean_AGRI_valid_fraction_3x3_by_station": [
+      0.9997717155575847,
+      0.9997557060096322
+    ]
+  },
+  "array_sha256": {
+    "agri_raw.npy": "03323acf1f27dcecdbe45f9f397bd70cad25c788c23882fd2ccf6ec01309ed4a",
+    "agri_valid.npy": "2ee89c1007366db4142209dd3875bcb81610ba89f597161aa8109c0171eed842",
+    "geometry.npy": "15a9891915b834ad51462d4d816f55332eec7eba145b889215de1ef341d40e90",
+    "cot_log1p.npy": "4d45515a4e7efab04d2c5d7faa0129fa1e46be7436264c8391aade093481e1da",
+    "rows.csv": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756"
+  }
+}

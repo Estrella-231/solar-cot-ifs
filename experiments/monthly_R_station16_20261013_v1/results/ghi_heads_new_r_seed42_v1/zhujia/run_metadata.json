@@ -1,0 +1,16 @@
+{
+  "station": "zhujia",
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 2000,
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "input_normalization": "train-only AGRI statistics; train-only log1p(COT) statistics; geometry remains physical cosSOZ/cosRAA",
+  "loss": "MSE of physical GHI error divided by 1000",
+  "test_payload_opened": false,
+  "parameter_counts": {
+    "A": 22177,
+    "AC": 24489,
+    "AP": 24613
+  }
+}

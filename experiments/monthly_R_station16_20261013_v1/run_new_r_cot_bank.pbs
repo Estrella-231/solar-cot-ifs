@@ -1,0 +1,30 @@
+#!/bin/bash
+#PBS -N monthly_R_cot_bank
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/new_r_cot_bank.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+BANK=$ROOT/experiments/cot_value_first_20261013
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+OUT=$EXP/results/new_monthly_R_seed42_cot_bank_v1
+test ! -e "$OUT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/build_monthly_new_R_cot_bank.py" \
+  --candidate "$BANK/input/target_candidates_train_val.csv" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --monthly-norm "$ROOT/experiments/hunan_monthly_block_20261002/manifests_v1/hunan_train_norm.json" \
+  --r-checkpoint "$EXP/results/seed42_v1/best.pt" \
+  --r-source "$EXP/scripts/train_station16_R.py" \
+  --r-norm "$EXP/results/seed42_v1/normalization.json" \
+  --output "$OUT" --batch-frames 128
+echo NEW_MONTHLY_R_COT_BANK_COMPLETE

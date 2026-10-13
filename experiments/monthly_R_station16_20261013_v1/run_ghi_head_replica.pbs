@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N cot_ghi_replica
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+# Pass SEED and STATION with qsub -v; override -o with a unique log path.
+set -euo pipefail
+test -n "${SEED:-}" && test -n "${STATION:-}"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+PACK=$EXP/data/ghi_head_pack_new_r_v1
+OUT=$EXP/results/ghi_heads_new_r_seed${SEED}_v1/${STATION}
+test -s "$PACK/pack_manifest.json"
+test ! -e "$OUT"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/train_ghi_heads.py" --pack "$PACK" --station "$STATION" --seed "$SEED" --epochs 30 --batch-size 2000 --output "$OUT"
+echo "GHI_HEAD_REPLICA_COMPLETE seed=$SEED station=$STATION"

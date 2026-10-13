@@ -1,0 +1,30 @@
+#!/bin/bash
+#PBS -N cot_ghi_heads42
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/ghi_heads_new_r_seed42.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+PACK=$EXP/data/ghi_head_pack_new_r_v1
+OUT=$EXP/results/ghi_heads_new_r_seed42_v1
+test -s "$PACK/pack_manifest.json"
+test ! -e "$OUT"
+mkdir -p "$OUT"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/train_ghi_heads.py" --pack "$PACK" --station sili --seed 42 --epochs 30 \
+  --output "$OUT/profile_scratch" --profile-only --profile-output "$OUT/profile.json"
+BS=$(python -c 'import json; d=json.load(open("'"$OUT"'/profile.json")); rows=d["results"]; by={}; [by.setdefault(r["batch"],[]).append(r["examples_per_second"]) for r in rows if r["updates_per_smallest_site_epoch"]>=12]; best=max(sum(v)/len(v) for v in by.values()); print(max(b for b,v in by.items() if sum(v)/len(v)>=0.97*best))')
+echo "PROFILE_SELECTED_BATCH=$BS"
+python -u "$EXP/train_ghi_heads.py" --pack "$PACK" --station sili --seed 42 --epochs 30 --batch-size "$BS" --output "$OUT/sili"
+python -u "$EXP/train_ghi_heads.py" --pack "$PACK" --station zhujia --seed 42 --epochs 30 --batch-size "$BS" --output "$OUT/zhujia"
+echo GHI_HEAD_SEED42_SIX_ARM_PILOT_COMPLETE
