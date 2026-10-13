@@ -1,0 +1,37 @@
+{
+  "state": "COMPLETE_MONTHLY_R_STATION16_PACK",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payloads_read": 0,
+  "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "cpp_inventory_sha256": "0a303ec6965be360689f3891e96b5e4085ad3e6550b2db6504a8b2ac35565dd2",
+  "grid_static_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+  "cpp_grid_mapping_max_error_deg": 0.0,
+  "candidate_unique_frames": 55733,
+  "selected_cpp_frames": 17600,
+  "cpp_missing_frames": 38133,
+  "packed_examples": 16826,
+  "by_split": {
+    "train": 15428,
+    "val": 1398
+  },
+  "sample_states_by_split": {
+    "train": {
+      "NO_VALID_CPP_PIXELS": 16780,
+      "SUPERVISED": 15428,
+      "CPP_UNAVAILABLE": 70264
+    },
+    "val": {
+      "NO_VALID_CPP_PIXELS": 1594,
+      "SUPERVISED": 1398,
+      "CPP_UNAVAILABLE": 6002
+    }
+  },
+  "source_read_error_frames": 0,
+  "mask": "finite COT 0..100 AND CLP in {0,1,2} AND all13 AGRI channels valid AND day_mask>0.5 AND cosSOZ>cos80",
+  "valid_zero_cot_retained": true,
+  "missing_cpp_is_not_clear_sky": true,
+  "first_pass_source_read_error_frames": 13,
+  "source_retry_recovered_frames": 13,
+  "recovered_from_pack_status_sha256": "1b15f3e22a778f6b4d9c1546cc2d8381f14faae6c95b1350a937731efad2928b",
+  "source_error_recheck_sha256": "8d3319b281e327f4b397ee02e6687c62cae7578da7697a86f94c4f3c5ba75b74"
+}

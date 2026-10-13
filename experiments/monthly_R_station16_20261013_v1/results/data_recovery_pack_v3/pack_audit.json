@@ -1,0 +1,76 @@
+{
+  "state": "PASS_MONTHLY_R_STATION16_PACK_AUDIT",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payloads_read": 0,
+  "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "cpp_inventory_sha256": "0a303ec6965be360689f3891e96b5e4085ad3e6550b2db6504a8b2ac35565dd2",
+  "pack_status_sha256": "c0e399f6c74e5f0c30803aab5e74f1896ddad9809d7fc78dbf5aaac1a7f1f44b",
+  "arrays": {
+    "x_raw": {
+      "shape": [
+        16826,
+        16,
+        16,
+        16
+      ],
+      "sha256": "c13e421f934799eef2a3fdc0cbb4f7c742f3bd39a609d9ec63af487f23e88f4b"
+    },
+    "cot": {
+      "shape": [
+        16826,
+        1,
+        16,
+        16
+      ],
+      "sha256": "5887fe9aaf92f146aad1799339f21ef78344cabd17d1864d3d9bd3b2b6e5a547"
+    },
+    "mask": {
+      "shape": [
+        16826,
+        1,
+        16,
+        16
+      ],
+      "sha256": "0e837a5157fdb26cf3983c54cf071d6f9d9f86adb99e1ea33cd37ac5dba382c7"
+    }
+  },
+  "candidate_frames_by_split": {
+    "train": 51236,
+    "val": 4497
+  },
+  "station_row_count": 111466,
+  "source_read_error_frames": 0,
+  "sample_states_by_split": {
+    "train": {
+      "NO_VALID_CPP_PIXELS": 16780,
+      "SUPERVISED": 15428,
+      "CPP_UNAVAILABLE": 70264
+    },
+    "val": {
+      "NO_VALID_CPP_PIXELS": 1594,
+      "SUPERVISED": 1398,
+      "CPP_UNAVAILABLE": 6002
+    }
+  },
+  "supervised_by_split": {
+    "train": {
+      "supervised_examples": 15428,
+      "valid_pixels": 3925408,
+      "exact_zero_pixels": 1244551,
+      "thick_ge30_pixels": 568946
+    },
+    "val": {
+      "supervised_examples": 1398,
+      "valid_pixels": 356169,
+      "exact_zero_pixels": 118483,
+      "thick_ge30_pixels": 50924
+    }
+  },
+  "unresolved_source_error_frames": 0,
+  "first_pass_source_error_frames": 13,
+  "retry_recovered_source_error_frames": 13,
+  "cpp_grid_mapping_max_error_deg": 0.0,
+  "valid_zero_cot_retained": true,
+  "missing_cpp_is_not_clear_sky": true,
+  "claim_scope": "CPP-supported daytime retrieval-reference pixels; not independent truth"
+}
