@@ -1,0 +1,341 @@
+{
+  "state": "PASS_VALIDATION_CPP_CLP_WEATHER_STRATIFICATION",
+  "split": "hunan_monthly_block_2d_buffer1d_seed42_v1; validation only",
+  "weather_source": "CPP CLP; clear=0, water=1, ice=2; co-produced reference, not independent truth",
+  "footprint": "centered 3x3 CLP footprint matching the GHI head/COT input; no global spatial average",
+  "thresholds": {
+    "clear": "cloud fraction <= 0.20",
+    "cloudy": "cloud fraction >= 0.80",
+    "mixed": "0.20 < cloud fraction < 0.80"
+  },
+  "support": {
+    "clear": {
+      "total": 370,
+      "sili": 119,
+      "zhujia": 251,
+      "unique_BJT_dates": 30
+    },
+    "mixed": {
+      "total": 74,
+      "sili": 26,
+      "zhujia": 48,
+      "unique_BJT_dates": 22
+    },
+    "cloudy": {
+      "total": 840,
+      "sili": 465,
+      "zhujia": 375,
+      "unique_BJT_dates": 41
+    },
+    "unsupported": {
+      "total": 7,
+      "sili": 5,
+      "zhujia": 2,
+      "unique_BJT_dates": 5
+    }
+  },
+  "cohort_relation": {
+    "primary_GHI_validation_rows": 4479,
+    "keyed_CPP_CLP_intersection_rows": 1291,
+    "CPP_CLP_unavailable_GHI_rows": 3188,
+    "primary_GHI_cohort_unchanged": true
+  },
+  "results": {
+    "clear": {
+      "by_seed": {
+        "42": {
+          "sili": {
+            "n": 119,
+            "A": 165.33170392444424,
+            "AC": 161.2116529279621,
+            "AP": 165.1409322793441,
+            "AC_minus_A": -4.120050996482149,
+            "AC_minus_AP": -3.9292793513820072
+          },
+          "zhujia": {
+            "n": 251,
+            "A": 134.18888968639808,
+            "AC": 136.44714548162904,
+            "AP": 133.6841702839689,
+            "AC_minus_A": 2.2582557952309514,
+            "AC_minus_AP": 2.7629751976601256
+          }
+        },
+        "43": {
+          "sili": {
+            "n": 119,
+            "A": 165.94863481922087,
+            "AC": 160.08803634526288,
+            "AP": 165.85157194175366,
+            "AC_minus_A": -5.860598473957992,
+            "AC_minus_AP": -5.763535596490783
+          },
+          "zhujia": {
+            "n": 251,
+            "A": 141.9812570654949,
+            "AC": 136.2116287064411,
+            "AP": 141.6988821090111,
+            "AC_minus_A": -5.769628359053797,
+            "AC_minus_AP": -5.487253402569991
+          }
+        },
+        "44": {
+          "sili": {
+            "n": 119,
+            "A": 162.4594563788389,
+            "AC": 157.5342148012308,
+            "AP": 162.21194280023852,
+            "AC_minus_A": -4.925241577608091,
+            "AC_minus_AP": -4.677727999007715
+          },
+          "zhujia": {
+            "n": 251,
+            "A": 142.15934124983153,
+            "AC": 142.0817729376266,
+            "AP": 141.92500024081662,
+            "AC_minus_A": -0.07756831220493154,
+            "AC_minus_AP": 0.15677269680998052
+          }
+        }
+      },
+      "three_seed_mean_delta": {
+        "AC_minus_A": -3.082471987346002,
+        "AC_minus_AP": -2.823008075830065
+      },
+      "paired_station_equal_delta_by_seed": {
+        "AC_minus_A": [
+          -0.9308976006255989,
+          -5.815113416505895,
+          -2.501404944906511
+        ],
+        "AC_minus_AP": [
+          -0.5831520768609408,
+          -5.625394499530387,
+          -2.260477651098867
+        ]
+      },
+      "paired_date_bootstrap_95ci": {
+        "AC_minus_A": [
+          -7.327305498668388,
+          0.5451021683234
+        ],
+        "AC_minus_AP": [
+          -6.870743444767452,
+          0.5971087484033513
+        ]
+      },
+      "paired_date_bootstrap_valid_replicates": {
+        "AC_minus_A": 2000,
+        "AC_minus_AP": 2000
+      }
+    },
+    "mixed": {
+      "by_seed": {
+        "42": {
+          "sili": {
+            "n": 26,
+            "A": 234.37134749994672,
+            "AC": 235.2332401671716,
+            "AP": 234.4866520423083,
+            "AC_minus_A": 0.861892667224879,
+            "AC_minus_AP": 0.7465881248633082
+          },
+          "zhujia": {
+            "n": 48,
+            "A": 156.01637354684382,
+            "AC": 155.04545748110698,
+            "AP": 155.0397525095152,
+            "AC_minus_A": -0.9709160657368443,
+            "AC_minus_AP": 0.005704971591768526
+          }
+        },
+        "43": {
+          "sili": {
+            "n": 26,
+            "A": 235.7199720435891,
+            "AC": 234.5585961252101,
+            "AP": 235.6570423815658,
+            "AC_minus_A": -1.161375918379008,
+            "AC_minus_AP": -1.098446256355686
+          },
+          "zhujia": {
+            "n": 48,
+            "A": 171.4486940748433,
+            "AC": 160.61892916890383,
+            "AP": 172.14811765439484,
+            "AC_minus_A": -10.82976490593947,
+            "AC_minus_AP": -11.529188485491005
+          }
+        },
+        "44": {
+          "sili": {
+            "n": 26,
+            "A": 231.54244611079986,
+            "AC": 233.07429542330385,
+            "AP": 231.8323794108517,
+            "AC_minus_A": 1.5318493125039936,
+            "AC_minus_AP": 1.241916012452151
+          },
+          "zhujia": {
+            "n": 48,
+            "A": 164.8065549108395,
+            "AC": 165.4269691986507,
+            "AP": 164.6995196153582,
+            "AC_minus_A": 0.6204142878112009,
+            "AC_minus_AP": 0.727449583292497
+          }
+        }
+      },
+      "three_seed_mean_delta": {
+        "AC_minus_A": -1.6579834370858748,
+        "AC_minus_AP": -1.6509960082744943
+      },
+      "paired_station_equal_delta_by_seed": {
+        "AC_minus_A": [
+          -0.05451169925598265,
+          -5.995570412159239,
+          1.0761318001575972
+        ],
+        "AC_minus_AP": [
+          0.37614654822753835,
+          -6.313817370923346,
+          0.984682797872324
+        ]
+      },
+      "paired_date_bootstrap_95ci": {
+        "AC_minus_A": [
+          -12.99017379772985,
+          4.6215599255959745
+        ],
+        "AC_minus_AP": [
+          -13.521296583743831,
+          4.498891570767504
+        ]
+      },
+      "paired_date_bootstrap_valid_replicates": {
+        "AC_minus_A": 2000,
+        "AC_minus_AP": 2000
+      }
+    },
+    "cloudy": {
+      "by_seed": {
+        "42": {
+          "sili": {
+            "n": 465,
+            "A": 137.80443821856372,
+            "AC": 136.72840786058077,
+            "AP": 137.59118848310843,
+            "AC_minus_A": -1.076030357982944,
+            "AC_minus_AP": -0.8627806225276515
+          },
+          "zhujia": {
+            "n": 375,
+            "A": 111.89078139860776,
+            "AC": 105.42977640297484,
+            "AP": 111.6604380911977,
+            "AC_minus_A": -6.461004995632919,
+            "AC_minus_AP": -6.230661688222867
+          }
+        },
+        "43": {
+          "sili": {
+            "n": 465,
+            "A": 139.9830921885281,
+            "AC": 139.90759761176702,
+            "AP": 140.06816028384605,
+            "AC_minus_A": -0.07549457676108773,
+            "AC_minus_AP": -0.1605626720790383
+          },
+          "zhujia": {
+            "n": 375,
+            "A": 116.81506185912792,
+            "AC": 105.7179849161176,
+            "AP": 116.64744682367676,
+            "AC_minus_A": -11.097076943010322,
+            "AC_minus_AP": -10.929461907559158
+          }
+        },
+        "44": {
+          "sili": {
+            "n": 465,
+            "A": 137.22440278989424,
+            "AC": 136.3748020165242,
+            "AP": 137.02520917614808,
+            "AC_minus_A": -0.8496007733700424,
+            "AC_minus_AP": -0.6504071596238816
+          },
+          "zhujia": {
+            "n": 375,
+            "A": 111.43974521632828,
+            "AC": 108.62112194512255,
+            "AP": 111.1434447739194,
+            "AC_minus_A": -2.8186232712057233,
+            "AC_minus_AP": -2.5223228287968453
+          }
+        }
+      },
+      "three_seed_mean_delta": {
+        "AC_minus_A": -3.729638486327173,
+        "AC_minus_AP": -3.5593661464682405
+      },
+      "paired_station_equal_delta_by_seed": {
+        "AC_minus_A": [
+          -3.7685176768079316,
+          -5.586285759885705,
+          -1.8341120222878828
+        ],
+        "AC_minus_AP": [
+          -3.546721155375259,
+          -5.545012289819098,
+          -1.5863649942103635
+        ]
+      },
+      "paired_date_bootstrap_95ci": {
+        "AC_minus_A": [
+          -7.812709302203516,
+          -0.2886251239125898
+        ],
+        "AC_minus_AP": [
+          -7.830619798451887,
+          -0.11909683543245314
+        ]
+      },
+      "paired_date_bootstrap_valid_replicates": {
+        "AC_minus_A": 2000,
+        "AC_minus_AP": 2000
+      }
+    }
+  },
+  "bootstrap": {
+    "replicates": 2000,
+    "cluster": "BJT target date",
+    "seed": 20261013
+  },
+  "provenance": {
+    "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+    "rows_sha256": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+    "clp_npz_sha256": "ff11cea370fa9618d51492922deb81f8f21473ee16743c31b875475d417f2314",
+    "prediction_files": {
+      "seed42/sili/A": "3c2ecc4f0127b26a169ac5ea5f76f780059ea8d360b098fa1cb59a4f7549cd50",
+      "seed42/sili/AC": "b687c91ddeeca2f8d0fa2f8f38884f086e7d9c7fb53d1bdda3c7d545d29bfc41",
+      "seed42/sili/AP": "86bfe3a52e58940f845de38e164361840982cf2b167db03f92afd2cb858a67cc",
+      "seed42/zhujia/A": "44982b3f492640c559dde5875f1c45b1414f38cb182c4c04f0aee5713f658519",
+      "seed42/zhujia/AC": "4cfb1bb61161bd1b487365543e8538e9d8fb863f145f49a23b20074d140125ba",
+      "seed42/zhujia/AP": "6e8aad3fd741d187973a2432167084512e5b0378ffd289d4ac2bbbee032bc076",
+      "seed43/sili/A": "857847a8d11af7b4a9d334f797d4cb7269bacc9ff802d6aa40aba803844eae5e",
+      "seed43/sili/AC": "faa4224683d2b898e9ee1c1a0eb765b0ced505b7190aca7da441d337dba228ef",
+      "seed43/sili/AP": "09677bf36ee17217ac7961464fb54dd1972d58ff90d0f3635b84e854c7f78ebe",
+      "seed43/zhujia/A": "7a76259c28eb13584274c4a0fa643a4d7d2378d7fa55189d167356b792be9916",
+      "seed43/zhujia/AC": "371f4b4c5855c585c54ef6c0c27bbcd3e8f4311fa9625aedb2ec4190e877cc65",
+      "seed43/zhujia/AP": "a51daa81dde66798ece82115f10933add29059132fe0506479fcf21093fd66c2",
+      "seed44/sili/A": "3e8698a5e3667cebc6edf59f25bb7d87025760b53b682b3c38b7384c362d68e6",
+      "seed44/sili/AC": "cfb79aaf0dc0746b2d4bf04722e469a691e1146e50a97e6e3b443ce6be2630d9",
+      "seed44/sili/AP": "16016d7d67e8d87b35304631c73a9ea07fd4d5d1c060985960ad8c2fc11c0322",
+      "seed44/zhujia/A": "2ae49f478248a5db027f8c96472c6b499befe4a4626131dc78553421ba84b398",
+      "seed44/zhujia/AC": "c339714e8fdb7d3a6b7e4763c8156b386b246a5ce44ac86e80b2d67d56a2adf8",
+      "seed44/zhujia/AP": "e569fe0e1bccf03d0c652f79d620a40982ae5a3fcaa680b06aec1adb4c716788"
+    }
+  },
+  "test_payload_opened": false,
+  "caveat": "Validation-selected checkpoints; CPP CLP strata are diagnostic only and do not alter the primary common GHI cohort."
+}

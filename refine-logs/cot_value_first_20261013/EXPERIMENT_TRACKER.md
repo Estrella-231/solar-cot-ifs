@@ -17,7 +17,7 @@
 |T11|B1|当前会话|T09,T10|六臂重载与逐样本FP64验收|pilot_audit.json|CPU/GPU|PASS_PROVISIONAL；保存预测FP64独立复算与checkpoint CPU reload均完成；CPU/A800最大逐点差0.452 W m-2，RMSE差≤0.0046 W m-2，作为跨设备浮点差记录。单种子未作主结论。|
 |T12|B1|当前会话|T11|两站R-A/AC/AP seed43|6 runs|GPU|PASS；PBS 213832/213833，逐样本FP64复算完成；AC−A=-5.684、AP−A=-0.104 W m-2站点等权RMSE。|
 |T13|B1|当前会话|T11|两站R-A/AC/AP seed44|6 runs|GPU|PASS；PBS 213838 Sili、213839 Zhujia均exit_status=0；各A/AC/AP 30 epoch；新test未读取。|
-|T14|B2|当前会话|T12,T13|18臂主终点、配对CI与分层|experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md|CPU|PARTIAL_PASS；FP64、2000次BJT日期/连续2日bootstrap通过；AC−A=-3.740、AC−AP=-3.582 W m⁻²，两站三seed方向一致，季节描述分层完成且各季station-equal均改善；天气分层仍待CPP/CLP公共支持。|
+|T14|B2|当前会话|T12,T13|18臂主终点、配对CI与分层|experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md；GHI_WEATHER_STRATIFICATION_20261013.md|CPU|PASS_VALIDATION_ONLY；FP64与日期块bootstrap通过。总体AC−A=-3.740、AC−AP=-3.582 W m⁻²。季节描述分层均为负；同键CPP/CLP云况诊断中，cloudy子集840行、AC−A=-3.730 [−7.813,−0.289]、AC−AP=-3.559 [−7.831,−0.119]，clear/mixed CI跨0。该分层仅1291/4479行有CLP键，主GHI cohort保持不变；CLP非独立真值。|
 |T15|B2|当前会话|T11|固定头COT扰动与输入依赖诊断|experiments/monthly_R_station16_20261013_v1/results/COT_INPUT_DEPENDENCE_VALIDATION_20261013.md|CPU|PASS_VALIDATION_DIAGNOSTIC；物理零/中心保留外围置零/保值邻域置换/同站同月错配均已完成；置换敏感度很小，错配与置零会明显退化；结果仅为冻结头输入依赖诊断，不作因果证明。|
 |T16|B2|当前会话|T03,T06,T14|预先选16例并输出真实图像/GHI案例|event_manifest.json, figures/|CPU|PLANNED|
 |T17|B2|当前会话|T14,T15,T16|决定应用验证/错误修复/收缩结论|phase_decision.json|CPU|PLANNED|
