@@ -1,0 +1,167 @@
+{
+  "state": "INDEPENDENT_RECOMPUTATION_COMPLETE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payload_opened": false,
+  "training_jobs": {
+    "pbs_job_id": "213969.tc6000",
+    "state": "COMPLETE"
+  },
+  "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "n_station_seed_pairs": 6,
+  "validation_dates_bjt": 52,
+  "validation_metrics": {
+    "A": {
+      "rmse_by_station_mean_over_seeds": {
+        "sili": 135.15519025642686,
+        "zhujia": 112.80295448788678
+      },
+      "equal_station_mean_rmse_wm2": 123.97907237215682
+    },
+    "AGRI": {
+      "rmse_by_station_mean_over_seeds": {
+        "sili": 135.33331303777243,
+        "zhujia": 114.0034178446589
+      },
+      "equal_station_mean_rmse_wm2": 124.66836544121566
+    },
+    "AGRI_COT": {
+      "rmse_by_station_mean_over_seeds": {
+        "sili": 136.66554790166424,
+        "zhujia": 112.68491996730029
+      },
+      "equal_station_mean_rmse_wm2": 124.67523393448226
+    }
+  },
+  "paired_date_block_uncertainty": {
+    "AGRI_minus_A": {
+      "left_minus_right_equal_station_rmse_wm2": 0.6892930690588462,
+      "by_station_wm2": {
+        "sili": 0.17812278134557383,
+        "zhujia": 1.2004633567721186
+      },
+      "date_block_bootstrap_95pct_ci_wm2": [
+        -0.6917865158117277,
+        2.1376120943295707
+      ],
+      "replicates": 10000,
+      "bootstrap_unit": "common BJT validation target-date blocks; seeds averaged within station",
+      "interpretation": "validation-only; conditional on validation-selected checkpoints"
+    },
+    "AGRI_COT_minus_A": {
+      "left_minus_right_equal_station_rmse_wm2": 0.6961615623254479,
+      "by_station_wm2": {
+        "sili": 1.5103576452373868,
+        "zhujia": -0.118034520586491
+      },
+      "date_block_bootstrap_95pct_ci_wm2": [
+        -0.9693685298637916,
+        2.1086492898182105
+      ],
+      "replicates": 10000,
+      "bootstrap_unit": "common BJT validation target-date blocks; seeds averaged within station",
+      "interpretation": "validation-only; conditional on validation-selected checkpoints"
+    },
+    "AGRI_COT_minus_AGRI": {
+      "left_minus_right_equal_station_rmse_wm2": 0.006868493266601661,
+      "by_station_wm2": {
+        "sili": 1.332234863891813,
+        "zhujia": -1.3184978773586096
+      },
+      "date_block_bootstrap_95pct_ci_wm2": [
+        -2.124022180733194,
+        1.7726885395688092
+      ],
+      "replicates": 10000,
+      "bootstrap_unit": "common BJT validation target-date blocks; seeds averaged within station",
+      "interpretation": "validation-only; conditional on validation-selected checkpoints"
+    }
+  },
+  "oof_A_training_diagnostics": [
+    {
+      "station": "sili",
+      "seed": 42,
+      "n_train_rows": 24155,
+      "oof_train_rmse_wm2": 124.98400431687031,
+      "unique_train_dates": 508,
+      "fold_rmse_wm2": [
+        138.02031564867622,
+        123.0678337865812,
+        140.09258909440513,
+        96.72013944915349,
+        115.88658364288311
+      ]
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "n_train_rows": 24155,
+      "oof_train_rmse_wm2": 125.29696491425769,
+      "unique_train_dates": 508,
+      "fold_rmse_wm2": [
+        137.12026464564943,
+        123.91842885254408,
+        142.07162105773205,
+        96.26060456555327,
+        115.57752796981308
+      ]
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "n_train_rows": 24155,
+      "oof_train_rmse_wm2": 125.12694472492538,
+      "unique_train_dates": 508,
+      "fold_rmse_wm2": [
+        135.61602745800775,
+        123.89522400911997,
+        141.912427226016,
+        98.87276159987859,
+        114.92933597629325
+      ]
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "n_train_rows": 26303,
+      "oof_train_rmse_wm2": 145.6530097243394,
+      "unique_train_dates": 564,
+      "fold_rmse_wm2": [
+        142.05454510821883,
+        151.60164368569366,
+        184.14811014529292,
+        126.09593931149733,
+        107.74510989779021
+      ]
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "n_train_rows": 26303,
+      "oof_train_rmse_wm2": 144.54346392130165,
+      "unique_train_dates": 564,
+      "fold_rmse_wm2": [
+        140.055223872558,
+        151.15887272116976,
+        185.93600994418412,
+        123.33717546887098,
+        103.12180642636302
+      ]
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "n_train_rows": 26303,
+      "oof_train_rmse_wm2": 145.85076975249822,
+      "unique_train_dates": 564,
+      "fold_rmse_wm2": [
+        140.58591512689028,
+        149.64241888512294,
+        186.09208515080562,
+        123.30743005303785,
+        112.52453394304699
+      ]
+    }
+  ],
+  "oof_design": "5 contiguous date-block folds, one adjacent available train date buffered on each side, fixed 30 epochs, no validation selection",
+  "interpretation_boundary": "same-time real AGRI to GHI retrieval; not SimVP forecast-chain performance"
+}
