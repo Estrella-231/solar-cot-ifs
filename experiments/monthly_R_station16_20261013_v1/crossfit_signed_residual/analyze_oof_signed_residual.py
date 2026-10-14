@@ -50,7 +50,7 @@ def main():
     rows = read_rows(a.pack/"rows.csv")
     key_to_i = {(r["station"], r["target_time_utc"]): i for i, r in enumerate(rows)}
     cot = np.load(a.pack/"cot_log1p.npy", mmap_mode="r", allow_pickle=False)
-    runs, per_seed, subgroups = {}, [], []
+    runs, per_seed, subgroups, a_gap = {}, [], [], []
     for station in STATIONS:
         for seed in SEEDS:
             keys = [r for r in rows if r["station"] == station and r["split"] == "val"]
@@ -81,6 +81,26 @@ def main():
                    "kt": np.asarray([float(r["kt"]) for r in keys]),
                    "reload_delta": reload_delta, "metadata": meta_by_arm}
             runs[(station, seed)] = run
+            train_keys = [r for r in rows if r["station"] == station and r["split"] == "train"]
+            train_i = np.asarray([key_to_i[(station, r["target_time_utc"])] for r in train_keys], np.int64)
+            oof_dir = a.oof_root/f"seed{seed}"/station
+            oof_rows = np.load(oof_dir/"train_pack_row_indices.npy", allow_pickle=False)
+            oof_pred = np.load(oof_dir/"A_oof_train_prediction_ghi_wm2.npy", allow_pickle=False).astype(np.float64)
+            fold_ids = np.load(oof_dir/"oof_fold_id.npy", allow_pickle=False)
+            full_train = np.load(d/"A_full_train_prediction_ghi_wm2.npy", allow_pickle=False).astype(np.float64)
+            if not np.array_equal(oof_rows, train_i) or any(len(v) != len(train_i) for v in (oof_pred, fold_ids, full_train)):
+                raise ValueError(f"OOF/full-A training alignment mismatch {station}/{seed}")
+            train_truth = np.asarray([float(r["ghi"]) for r in train_keys], np.float64)
+            for fold in sorted(np.unique(fold_ids).tolist()):
+                m = fold_ids == fold
+                e_oof = oof_pred[m] - train_truth[m]
+                e_full = full_train[m] - train_truth[m]
+                a_gap.append({"station": station, "seed": seed, "fold": int(fold),
+                    "n": int(m.sum()), "oof_rmse_wm2": float(np.sqrt(np.mean(e_oof**2))),
+                    "full_A_rmse_same_rows_wm2": float(np.sqrt(np.mean(e_full**2))),
+                    "oof_bias_wm2": float(np.mean(e_oof)), "full_A_bias_same_rows_wm2": float(np.mean(e_full)),
+                    "oof_error_std_wm2": float(np.std(e_oof)), "full_A_error_std_same_rows_wm2": float(np.std(e_full)),
+                    "paired_prediction_rmse_gap_wm2": float(np.sqrt(np.mean((oof_pred[m]-full_train[m])**2)))})
             rec = {"station": station, "seed": seed, "n": len(keys),
                    "A_reload_max_abs_delta_wm2": reload_delta,
                    "best_epoch_AGRI": meta_by_arm["AGRI"]["best_epoch"],
@@ -95,7 +115,8 @@ def main():
             per_seed.append(rec)
             under = truth > pred["A"]
             high_thick_bright = (run["cot"] >= 3.0) & (run["clear"] >= 100.0) & (run["kt"] >= 0.9)
-            for subset, mask in (("A_underpredict", under),
+            over = truth < pred["A"]
+            for subset, mask in (("A_underpredict", under), ("A_overpredict", over),
                                  ("bright_thick_COT_ge3_clear_ge100_kt_ge0p9", high_thick_bright)):
                 if not mask.any(): continue
                 for arm in ("AGRI", "AGRI_COT"):
@@ -151,7 +172,8 @@ def main():
                             "oof_train_rmse_wm2":r["oof_rmse_wm2"],"unique_train_dates":r["unique_train_dates"],
                             "fold_rmse_wm2":[x["heldout_rmse_wm2"] for x in r["folds"]]})
     a.output.mkdir(parents=True,exist_ok=True)
-    for name, records in (("per_seed_metrics.csv",per_seed),("direction_subgroups.csv",subgroups)):
+    for name, records in (("per_seed_metrics.csv",per_seed),("direction_subgroups.csv",subgroups),
+                          ("oof_full_A_train_fold_gap.csv", a_gap)):
         with (a.output/name).open("w",newline="",encoding="utf-8") as f:
             w=csv.DictWriter(f,fieldnames=list(records[0]));w.writeheader();w.writerows(records)
     ordered_runs=[runs[(s,sd)] for s in STATIONS for sd in SEEDS]

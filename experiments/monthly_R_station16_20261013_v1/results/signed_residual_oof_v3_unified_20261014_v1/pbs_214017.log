@@ -1,0 +1,101 @@
+[2026-10-14 20:20:39][INFO][214017.tc6000] In prologue, JOB_ID is 214017.tc6000
+[2026-10-14 20:20:39][INFO][214017.tc6000] In prologue, the pbs_server_name is tc6000.
+tc6000
+[2026-10-14 20:20:40][INFO][214017.tc6000] ########################  Job 214017.tc6000 start to execute pre.sh!   ##########################
+[2026-10-14 20:20:40][INFO][214017.tc6000] goldenable is true, storageenable is false.
+[2026-10-14 20:20:41][INFO][214017.tc6000] Gold runs normally.
+[2026-10-14 20:20:41][INFO][214017.tc6000] The seconds that job requested is 7200.
+[2026-10-14 20:20:41][INFO][214017.tc6000] The procBillingTime of CPU&GPU is 417600.
+[2026-10-14 20:20:42][INFO][214017.tc6000] The billingTimeTotal of CPU, GPU and storage is 417600.
+[2026-10-14 20:20:43][INFO][214017.tc6000] The greserve command is : /opt/gridview//clusquota/bin//greserve -J 214017.tc6000 -u slfu -C gpu -P 1 -t 417600 -s '2026-10-14 20:20:42' -e '2026-10-14 22:20:42' 2>&1
+[2026-10-14 20:20:43][INFO][214017.tc6000] greserve command result is 0, execute greserve command output is: Successfully reserved 417600 credits for job 214017.tc6000 and created gold job id 173869
+[2026-10-14 20:20:43][INFO][214017.tc6000] make_reserve function executed successfully.
+PBS_JOBID=214017.tc6000 GPU=2 HOST=gpu3
+index, name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+2, NVIDIA A100-SXM4-40GB, 0 MiB, 40536 MiB, 0 %
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 0, "train_mse_scaled": 0.015611385111142774, "val_ghi_rmse_wm2": 135.5170333814179, "lr": 0.0009972883382072953}
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 4, "train_mse_scaled": 0.015269180191277877, "val_ghi_rmse_wm2": 133.86311324710806, "lr": 0.0009336825748732973}
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 9, "train_mse_scaled": 0.014425555412963887, "val_ghi_rmse_wm2": 132.96678642378106, "lr": 0.0007525}
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 14, "train_mse_scaled": 0.013989607714844513, "val_ghi_rmse_wm2": 130.57988644387243, "lr": 0.0005050000000000002}
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 19, "train_mse_scaled": 0.013582261280382032, "val_ghi_rmse_wm2": 129.11539220932244, "lr": 0.00025750000000000013}
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 24, "train_mse_scaled": 0.01338549561087598, "val_ghi_rmse_wm2": 127.86881698895507, "lr": 7.631742512670285e-05}
+{"station": "sili", "seed": 42, "arm": "AGRI", "epoch": 29, "train_mse_scaled": 0.013328177056693064, "val_ghi_rmse_wm2": 127.98382188198211, "lr": 1e-05}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 0, "train_mse_scaled": 0.015543989094193618, "val_ghi_rmse_wm2": 136.78117180186862, "lr": 0.0009972883382072953}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 4, "train_mse_scaled": 0.014748016188988786, "val_ghi_rmse_wm2": 132.72777591360685, "lr": 0.0009336825748732973}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 9, "train_mse_scaled": 0.014146023452292747, "val_ghi_rmse_wm2": 133.2570890236066, "lr": 0.0007525}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 14, "train_mse_scaled": 0.013833430711749832, "val_ghi_rmse_wm2": 133.5908405208899, "lr": 0.0005050000000000002}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 19, "train_mse_scaled": 0.013659601754857267, "val_ghi_rmse_wm2": 132.10274544027916, "lr": 0.00025750000000000013}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 24, "train_mse_scaled": 0.013442014880159137, "val_ghi_rmse_wm2": 132.0018213739847, "lr": 7.631742512670285e-05}
+{"station": "sili", "seed": 42, "arm": "AGRI_COT", "epoch": 29, "train_mse_scaled": 0.013399532253334819, "val_ghi_rmse_wm2": 132.039360394808, "lr": 1e-05}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 0, "train_mse_scaled": 0.01566697508590213, "val_ghi_rmse_wm2": 136.94117913016336, "lr": 0.0009972883382072953}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 4, "train_mse_scaled": 0.015277038327771249, "val_ghi_rmse_wm2": 136.26552342808503, "lr": 0.0009336825748732973}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 9, "train_mse_scaled": 0.014632989823836713, "val_ghi_rmse_wm2": 135.08632898834932, "lr": 0.0007525}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 14, "train_mse_scaled": 0.01417616476298853, "val_ghi_rmse_wm2": 131.56586830397114, "lr": 0.0005050000000000002}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 19, "train_mse_scaled": 0.013917612802346, "val_ghi_rmse_wm2": 130.67563420026576, "lr": 0.00025750000000000013}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 24, "train_mse_scaled": 0.013593224031282764, "val_ghi_rmse_wm2": 130.52211659020955, "lr": 7.631742512670285e-05}
+{"station": "sili", "seed": 43, "arm": "AGRI", "epoch": 29, "train_mse_scaled": 0.013526293432331929, "val_ghi_rmse_wm2": 130.65912009789625, "lr": 1e-05}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 0, "train_mse_scaled": 0.015625925084776116, "val_ghi_rmse_wm2": 137.5074719045598, "lr": 0.0009972883382072953}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 4, "train_mse_scaled": 0.01487188331518323, "val_ghi_rmse_wm2": 132.4880349694975, "lr": 0.0009336825748732973}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 9, "train_mse_scaled": 0.014343718348463865, "val_ghi_rmse_wm2": 133.42136510845012, "lr": 0.0007525}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 14, "train_mse_scaled": 0.013941349814462997, "val_ghi_rmse_wm2": 132.24837998347465, "lr": 0.0005050000000000002}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 19, "train_mse_scaled": 0.013760183696293653, "val_ghi_rmse_wm2": 134.09813217882453, "lr": 0.00025750000000000013}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 24, "train_mse_scaled": 0.013615729490842934, "val_ghi_rmse_wm2": 134.1920702779841, "lr": 7.631742512670285e-05}
+{"station": "sili", "seed": 43, "arm": "AGRI_COT", "epoch": 29, "train_mse_scaled": 0.013571261548013254, "val_ghi_rmse_wm2": 134.05882037962846, "lr": 1e-05}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 0, "train_mse_scaled": 0.01564234489379549, "val_ghi_rmse_wm2": 135.3355569740502, "lr": 0.0009972883382072953}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 4, "train_mse_scaled": 0.015355993996664829, "val_ghi_rmse_wm2": 134.59315512017548, "lr": 0.0009336825748732973}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 9, "train_mse_scaled": 0.014774509443228868, "val_ghi_rmse_wm2": 132.38827820911376, "lr": 0.0007525}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 14, "train_mse_scaled": 0.014101540519622846, "val_ghi_rmse_wm2": 127.99764473806393, "lr": 0.0005050000000000002}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 19, "train_mse_scaled": 0.013678372414064343, "val_ghi_rmse_wm2": 126.70740430120838, "lr": 0.00025750000000000013}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 24, "train_mse_scaled": 0.013518441444765248, "val_ghi_rmse_wm2": 126.9135868474084, "lr": 7.631742512670285e-05}
+{"station": "sili", "seed": 44, "arm": "AGRI", "epoch": 29, "train_mse_scaled": 0.013428246576969014, "val_ghi_rmse_wm2": 126.95421445942559, "lr": 1e-05}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 0, "train_mse_scaled": 0.015582625795047036, "val_ghi_rmse_wm2": 135.52746033179307, "lr": 0.0009972883382072953}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 4, "train_mse_scaled": 0.014865896694633599, "val_ghi_rmse_wm2": 130.8755554950816, "lr": 0.0009336825748732973}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 9, "train_mse_scaled": 0.014440015306157667, "val_ghi_rmse_wm2": 132.4161776193216, "lr": 0.0007525}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 14, "train_mse_scaled": 0.013956544193826867, "val_ghi_rmse_wm2": 131.4298156606089, "lr": 0.0005050000000000002}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 19, "train_mse_scaled": 0.013736169609059781, "val_ghi_rmse_wm2": 131.37759113916772, "lr": 0.00025750000000000013}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 24, "train_mse_scaled": 0.013571544325769971, "val_ghi_rmse_wm2": 131.98620360067338, "lr": 7.631742512670285e-05}
+{"station": "sili", "seed": 44, "arm": "AGRI_COT", "epoch": 29, "train_mse_scaled": 0.013486731938379284, "val_ghi_rmse_wm2": 131.26778220868346, "lr": 1e-05}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 0, "train_mse_scaled": 0.02114279110468869, "val_ghi_rmse_wm2": 111.26479178733842, "lr": 0.0009972883382072953}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 4, "train_mse_scaled": 0.01975159368832934, "val_ghi_rmse_wm2": 109.13900125267982, "lr": 0.0009336825748732973}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 9, "train_mse_scaled": 0.015055713502292428, "val_ghi_rmse_wm2": 99.59652326535719, "lr": 0.0007525}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 14, "train_mse_scaled": 0.012018530828104914, "val_ghi_rmse_wm2": 95.6513272624879, "lr": 0.0005050000000000002}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 19, "train_mse_scaled": 0.010942005043794042, "val_ghi_rmse_wm2": 95.07313100361623, "lr": 0.00025750000000000013}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 24, "train_mse_scaled": 0.010514394604493929, "val_ghi_rmse_wm2": 96.01652288063222, "lr": 7.631742512670285e-05}
+{"station": "zhujia", "seed": 42, "arm": "AGRI", "epoch": 29, "train_mse_scaled": 0.010387599235568742, "val_ghi_rmse_wm2": 95.89141145942034, "lr": 1e-05}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 0, "train_mse_scaled": 0.021067894276441, "val_ghi_rmse_wm2": 110.55953430254594, "lr": 0.0009972883382072953}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 4, "train_mse_scaled": 0.018554404890991496, "val_ghi_rmse_wm2": 114.93569520305877, "lr": 0.0009336825748732973}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 9, "train_mse_scaled": 0.01585216451301308, "val_ghi_rmse_wm2": 114.46511978127627, "lr": 0.0007525}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 14, "train_mse_scaled": 0.014066212845169056, "val_ghi_rmse_wm2": 101.63573716000387, "lr": 0.0005050000000000002}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 19, "train_mse_scaled": 0.012767155320906824, "val_ghi_rmse_wm2": 98.28993394880133, "lr": 0.00025750000000000013}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 24, "train_mse_scaled": 0.01193784085647548, "val_ghi_rmse_wm2": 98.65225299787677, "lr": 7.631742512670285e-05}
+{"station": "zhujia", "seed": 42, "arm": "AGRI_COT", "epoch": 29, "train_mse_scaled": 0.011760858279987034, "val_ghi_rmse_wm2": 97.46004539378798, "lr": 1e-05}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 0, "train_mse_scaled": 0.020828527466637645, "val_ghi_rmse_wm2": 114.71529131693056, "lr": 0.0009972883382072953}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 4, "train_mse_scaled": 0.01946612113055469, "val_ghi_rmse_wm2": 111.97187482077375, "lr": 0.0009336825748732973}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 9, "train_mse_scaled": 0.016039270771817417, "val_ghi_rmse_wm2": 107.25602524208149, "lr": 0.0007525}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 14, "train_mse_scaled": 0.014538601438147324, "val_ghi_rmse_wm2": 97.64703525198264, "lr": 0.0005050000000000002}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 19, "train_mse_scaled": 0.013645155809576662, "val_ghi_rmse_wm2": 101.86955953641883, "lr": 0.00025750000000000013}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 24, "train_mse_scaled": 0.012934090060420598, "val_ghi_rmse_wm2": 94.86037387219959, "lr": 7.631742512670285e-05}
+{"station": "zhujia", "seed": 43, "arm": "AGRI", "epoch": 29, "train_mse_scaled": 0.012764897755789891, "val_ghi_rmse_wm2": 95.69076155623752, "lr": 1e-05}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 0, "train_mse_scaled": 0.02079032731557923, "val_ghi_rmse_wm2": 114.22072752021293, "lr": 0.0009972883382072953}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 4, "train_mse_scaled": 0.018609298325714486, "val_ghi_rmse_wm2": 107.84849800111027, "lr": 0.0009336825748732973}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 9, "train_mse_scaled": 0.01543189257264944, "val_ghi_rmse_wm2": 105.85402472687032, "lr": 0.0007525}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 14, "train_mse_scaled": 0.014227515013131962, "val_ghi_rmse_wm2": 101.06244006915183, "lr": 0.0005050000000000002}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 19, "train_mse_scaled": 0.013234248235378422, "val_ghi_rmse_wm2": 108.75194684289437, "lr": 0.00025750000000000013}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 24, "train_mse_scaled": 0.012506992656853561, "val_ghi_rmse_wm2": 96.55647098249105, "lr": 7.631742512670285e-05}
+{"station": "zhujia", "seed": 43, "arm": "AGRI_COT", "epoch": 29, "train_mse_scaled": 0.012313614270577583, "val_ghi_rmse_wm2": 97.37003307991273, "lr": 1e-05}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 0, "train_mse_scaled": 0.021232625532803126, "val_ghi_rmse_wm2": 113.8076127682085, "lr": 0.0009972883382072953}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 4, "train_mse_scaled": 0.01983518704411689, "val_ghi_rmse_wm2": 125.02242886801835, "lr": 0.0009336825748732973}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 9, "train_mse_scaled": 0.016808502410955915, "val_ghi_rmse_wm2": 105.72804064620513, "lr": 0.0007525}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 14, "train_mse_scaled": 0.014785504768238667, "val_ghi_rmse_wm2": 99.78974625482323, "lr": 0.0005050000000000002}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 19, "train_mse_scaled": 0.013392684926664017, "val_ghi_rmse_wm2": 94.60247757694631, "lr": 0.00025750000000000013}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 24, "train_mse_scaled": 0.012703735347656914, "val_ghi_rmse_wm2": 94.05585739207262, "lr": 7.631742512670285e-05}
+{"station": "zhujia", "seed": 44, "arm": "AGRI", "epoch": 29, "train_mse_scaled": 0.012546626476103797, "val_ghi_rmse_wm2": 94.67696198849522, "lr": 1e-05}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 0, "train_mse_scaled": 0.021184684426516984, "val_ghi_rmse_wm2": 113.32480848814906, "lr": 0.0009972883382072953}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 4, "train_mse_scaled": 0.019220124067050967, "val_ghi_rmse_wm2": 131.58646344875825, "lr": 0.0009336825748732973}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 9, "train_mse_scaled": 0.01587588316873376, "val_ghi_rmse_wm2": 105.0237755393274, "lr": 0.0007525}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 14, "train_mse_scaled": 0.014248108922493655, "val_ghi_rmse_wm2": 103.56997090126409, "lr": 0.0005050000000000002}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 19, "train_mse_scaled": 0.013433487273831153, "val_ghi_rmse_wm2": 97.83196173726812, "lr": 0.00025750000000000013}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 24, "train_mse_scaled": 0.012778605756163654, "val_ghi_rmse_wm2": 97.10582898283666, "lr": 7.631742512670285e-05}
+{"station": "zhujia", "seed": 44, "arm": "AGRI_COT", "epoch": 29, "train_mse_scaled": 0.012608439407797135, "val_ghi_rmse_wm2": 98.11687631955274, "lr": 1e-05}
+OOF_SIGNED_RESIDUAL_COMPLETE
+OOF_SIGNED_RESIDUAL_V3_UNIFIED_COMPLETE
