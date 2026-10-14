@@ -1,0 +1,99 @@
+{
+  "state": "INDEPENDENT_RECOMPUTATION_COMPLETE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payload_opened": false,
+  "station_seed_pairs": 6,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "training_receipts": {
+    "sili": {
+      "pbs_job_id": "213950.tc6000",
+      "state": "COMPLETE",
+      "exit_status": 0,
+      "node": "node21",
+      "gpu": "NVIDIA A100-SXM4-40GB"
+    },
+    "zhujia": {
+      "pbs_job_id": "213952.tc6000",
+      "state": "COMPLETE",
+      "exit_status": 0,
+      "node": "node21",
+      "gpu": "NVIDIA A100-SXM4-40GB"
+    }
+  },
+  "cudnn_enabled": false,
+  "A_reload_tolerance_wm2": 1.0,
+  "validation_dates_bjt": 78,
+  "point_metrics": {
+    "A": {
+      "rmse_by_station_mean_over_seeds": {
+        "sili": 135.15519025642686,
+        "zhujia": 112.80295448788678
+      },
+      "equal_station_mean_rmse_wm2": 123.97907237215682
+    },
+    "AGRI": {
+      "rmse_by_station_mean_over_seeds": {
+        "sili": 131.44365473285563,
+        "zhujia": 107.7208238917403
+      },
+      "equal_station_mean_rmse_wm2": 119.58223931229796
+    },
+    "AGRI_COT": {
+      "rmse_by_station_mean_over_seeds": {
+        "sili": 130.66746174936625,
+        "zhujia": 104.40855259343084
+      },
+      "equal_station_mean_rmse_wm2": 117.53800717139855
+    }
+  },
+  "paired_date_block_uncertainty": {
+    "AGRI_residual_minus_A": {
+      "left_minus_right_rmse_wm2": -4.3968330598588565,
+      "station_equal_point_by_station": {
+        "sili": -3.7115355235712286,
+        "zhujia": -5.082130596146484
+      },
+      "date_block_bootstrap_95pct_ci_wm2": [
+        -6.102709321174017,
+        -3.101403021328616
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_unit": "BJT target-date blocks sampled in common across both stations; seeds are averaged within station",
+      "ci_interpretation": "validation-only and conditional on checkpoints already selected by validation RMSE"
+    },
+    "AGRI_COT_residual_minus_A": {
+      "left_minus_right_rmse_wm2": -6.441065200758274,
+      "station_equal_point_by_station": {
+        "sili": -4.487728507060609,
+        "zhujia": -8.394401894455939
+      },
+      "date_block_bootstrap_95pct_ci_wm2": [
+        -8.99019306694927,
+        -4.418168488963312
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_unit": "BJT target-date blocks sampled in common across both stations; seeds are averaged within station",
+      "ci_interpretation": "validation-only and conditional on checkpoints already selected by validation RMSE"
+    },
+    "COT_increment_vs_AGRI_residual": {
+      "left_minus_right_rmse_wm2": -2.0442321408994175,
+      "station_equal_point_by_station": {
+        "sili": -0.7761929834893806,
+        "zhujia": -3.3122712983094544
+      },
+      "date_block_bootstrap_95pct_ci_wm2": [
+        -3.6871776876024898,
+        -0.5334148220565861
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_unit": "BJT target-date blocks sampled in common across both stations; seeds are averaged within station",
+      "ci_interpretation": "validation-only and conditional on checkpoints already selected by validation RMSE"
+    }
+  },
+  "direction_subgroup_rule": "diagnostic masks use observed labels and retrieved COT only after prediction; neither is an input gate",
+  "baseline_A_reload_max_abs_wm2": 0.4615478515625
+}
