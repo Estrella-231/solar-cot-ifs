@@ -113,3 +113,8 @@ validation-only and does not authorize opening test.
   on node23 GPU 2. v2 has PBS `exit_status=0`; v1 log contains the completion
   sentinel. Both output manifests record `test_payload_opened=false`.
 - Independent summary and per-seed/subgroup CSVs are stored under `results/`.
+- Per-row validation keys, truth, predictions, and signed adjustments are in
+  `results/validation_predictions_v1.npz` and `results/validation_predictions_v2.npz`;
+  all 24 trained residual checkpoints are in
+  `results/residual_checkpoints_v1_v2.tar.gz` (SHA-256
+  `797be2a815aaabbffc75bd4167b47f46df238de1a373e0bd36d4078e6a2e248`).

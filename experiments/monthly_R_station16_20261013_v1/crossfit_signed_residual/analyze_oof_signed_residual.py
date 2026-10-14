@@ -154,6 +154,22 @@ def main():
     for name, records in (("per_seed_metrics.csv",per_seed),("direction_subgroups.csv",subgroups)):
         with (a.output/name).open("w",newline="",encoding="utf-8") as f:
             w=csv.DictWriter(f,fieldnames=list(records[0]));w.writeheader();w.writerows(records)
+    ordered_runs=[runs[(s,sd)] for s in STATIONS for sd in SEEDS]
+    np.savez_compressed(a.output/"validation_predictions_and_keys.npz",
+        station=np.concatenate([np.repeat(r["keys"][0]["station"],len(r["keys"])) for r in ordered_runs]).astype("U16"),
+        seed=np.concatenate([np.repeat(np.int16(sd),len(r["keys"])) for r in ordered_runs for sd in [r["metadata"]["AGRI"]["seed"]]]),
+        target_time_utc=np.concatenate([[k["target_time_utc"] for k in r["keys"]] for r in ordered_runs]).astype("U32"),
+        bjt_date=np.concatenate([r["dates"] for r in ordered_runs]).astype("U16"),
+        ghi_truth_wm2=np.concatenate([r["truth"] for r in ordered_runs]).astype(np.float32),
+        cot_center=np.concatenate([r["cot"] for r in ordered_runs]).astype(np.float32),
+        clear_sky_wm2=np.concatenate([r["clear"] for r in ordered_runs]).astype(np.float32),
+        observed_kt=np.concatenate([r["kt"] for r in ordered_runs]).astype(np.float32),
+        pred_A_wm2=np.concatenate([r["pred"]["A"] for r in ordered_runs]).astype(np.float32),
+        pred_AGRI_wm2=np.concatenate([r["pred"]["AGRI"] for r in ordered_runs]).astype(np.float32),
+        pred_AGRI_COT_wm2=np.concatenate([r["pred"]["AGRI_COT"] for r in ordered_runs]).astype(np.float32),
+        delta_AGRI_wm2=np.concatenate([r["deltas"]["AGRI"] for r in ordered_runs]).astype(np.float32),
+        delta_AGRI_COT_wm2=np.concatenate([r["deltas"]["AGRI_COT"] for r in ordered_runs]).astype(np.float32),
+        test_payload_opened=np.asarray(False))
     summary={"state":"INDEPENDENT_RECOMPUTATION_COMPLETE","split_id":pack_meta["split_id"],
         "test_payload_opened":False,"training_jobs":{"pbs_job_id":a.pbs_job_id,"state":"COMPLETE"},
         "pack_manifest_sha256":oof_status["pack_manifest_sha256"],"n_station_seed_pairs":len(runs),
