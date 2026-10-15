@@ -34,27 +34,31 @@
 
 ### Results内部顺序
 
-1. **Overall irradiance estimation performance**：逐站、分区域比较AGRI baseline和AGRI + COT；先给总体判断及绝对/相对误差差异。五站结果未齐时保留缺项。
-2. **Sensitivity to cloud optical thickness and sky conditions**：按既定参考COT分层报告误差和样本/日期支持；结合真实连续云事件解释收益和失败。厚云更大点估计不等于已证实单调规律。
-3. **Role of the COT representation**：容量和反演隐藏特征对照，区分“此方案加入COT有效”与“COT语义是唯一原因”。与第1节合并亦可，避免冗长防御性讨论。
-4. **Consistency across independently trained regions**：检查湖南和湖北是否呈现一致或不同的条件性表现；如第1节已经充分覆盖，不再重复全部数字，只分析区域差异。
-5. **Application to short-term forecasting**：先说明COT外推的实际误差，再给相同样本和匹配训练下有无COT的GHI预报表现；按1–4小时或15分钟时效展示。固定头替换仅作误差传播诊断。负结果同样回答应用边界，不能因叙事需要隐藏。
+1. **Retrieval quality of the COT input**：反演COT与CPP参考的一致性、厚云偏差，交代输入质量，不当作独立真值评价。
+2. **Overall irradiance estimation performance**：五站、分区域有无COT的绝对误差与配对增量，同时检查独立区域重复性。
+3. **Dependence on cloud optical thickness**：在既定参考支持内分层报告，保留样本/日期数。
+4. **Cloud-event analysis**：实际AGRI/COT连续场与15分钟GHI曲线，解释改善及失败。
+5. **Role of the COT representation**：辅助特征和反演特征对照，主要用表格，避免把主结果重复画一遍。
+6. **Application to short-term forecasting**：固定外推下COT质量及GHI增量，时效与输入模式明确，负结果同样保留。
 
 ## 四、图表安排
 
-| 图表 | 用途 | 内容 |
-|---|---|---|
-| Fig.1 | 读者理解物理映射 | AGRI→COT检索→局地融合→GHI；同期与预报输入明确区分 |
-| Fig.2 | 研究范围 | 湖南/湖北五站地图与可用日期覆盖 |
-| Fig.3 | 主结果 | 各站/区域有无COT的GHI误差及配对差异 |
-| Fig.4 | 条件性作用 | COT分层误差差异、样本与日期支持 |
-| Fig.5 | 物理解释 | 真实AGRI、COT连续图与对应15分钟GHI；改善和失败案例 |
-| Fig.6 | 应用边界 | COT外推误差及有无COT的GHI时效曲线，避免混为同一指标 |
-| Table1 | 数据定义 | 站点、时期、观测间隔、训练/验证/测试划分与参考支持 |
-| Table2 | 可复现方法 | 输入、关键层/维度、训练设置及各变体唯一差异 |
-| Table3 | 表示控制 | 主方法、容量对照和反演特征对照 |
+逐图位置、子图布局、版式和证据要求以[FIGURE_PLAN.md](FIGURE_PLAN.md)为准；依据[三篇全文逐图调研](references/narrative_review_20261015/FIGURE_REVIEW.md)制定。正文暂定7张图、3张表，补充材料4组候选图。按首次引用顺序编号，不预定排版页码。
 
-是否保留所有图由最终信息量决定；不以图数为目标。现有工程汇总图可以拆分，不能为复用图件而混合同期与外推证据。
+| 图表 | 首次引用位置 | 主要内容与版式 |
+|---|---|---|
+| Fig.1 | §2研究区域与数据 | 两区域五站地图+数据/CPP覆盖，通栏 |
+| Fig.2 | §3方法 | 同期估计主链、局地融合与预报小分支，通栏 |
+| Fig.3 | §5.1 COT输入质量 | 两区域参考一致性密度图与厚度偏差，2×2 |
+| Fig.4 | §5.2总体结果 | 五站绝对RMSE配对点+ΔRMSE区间，1×2 |
+| Fig.5 | §5.3厚度条件 | 分区域、分厚度的误差与增量及支持数，2×2 |
+| Fig.6 | §5.4真实云事件 | 两事件的AGRI/COT连续图与GHI曲线，通栏大图 |
+| Fig.7 | §5.6预报应用 | COT误差与GHI增量的时效曲线，2×2 |
+| Table1 | §2 | 五站数据、时期与划分 |
+| Table2 | §3–4 | 输入、模型变体、必要结构与训练设置 |
+| Table3 | §5.5 | 辅助特征与反演特征控制结果 |
+
+Fig.3–6支持同期主线，Fig.7只占一张应用图；不让外推占据论文主体。逐站完整散点、其他事件、季节/太阳几何分层及预报详情放补充。图注与正文均区分同期、forecast和诊断。没有可比数据时保留计划位置，不能以示意数据补实证图。本轮只制定图件，不修改正文或绘制结果。
 
 ## 五、已有证据与待补科学问题
 
