@@ -9,3 +9,8 @@
 5. 输入不含实测GHI；标签与晴空值来自已审计旧pack，以target为结束的三个5min记录均值，核对init/lead/target。输出非负kt乘区间clear；优化物理GHI MSE。COT标准化每臂仅train拟合。小头无Dropout。单卡先实测batch256至8192吞吐，选峰值95%内最小batch，留15%显存余量；资源足够时不盲目开多卡。
 6. 保存逐行预测、标签、init/target、lead和键，checkpoint重载一致检查；FP64报告RMSE/MAE/bias及16lead，突出1/2/3/4h。2000次目标BJT日期块配对bootstrap，以三seed RMSE差均值为统计量；说明窗口重叠及验证选模条件。
 7. 不保证正收益；分别报告T/H与A，不能因某臂退化删除。不得把旧合同、单站/小样本当全年两站新月度结果。若失败保留目录并新attempt修复；PBS账户最多3个未结束任务，提交前后实时查全队列。论文不改。
+
+
+## 2026-10-15 attempt3：密集检查点与留出日期计分
+
+根据输入/训练诊断，重跑同一旧合同 pilot 的A、输运COT、混合修正COT三臂×seed42/43/44。保持数据、头结构、初始化、优化器、batch profile、1200更新、输入与标签不变；唯一程序性改动为每10步验证，并按冻结的初始化BJT日期SHA-256分组，将验证日期约1/4用于checkpoint选择、其余约3/4留作最终计分。验证日期分组脚本固定且三臂/种子共享。checkpoint选择只看选择组；计分组只在选定checkpoint上前向一次，并按计分日期配对bootstrap。故这次可给出未参与选模的内部验证估计，但仍是旧split单站pilot，不是独立test或全论文结论。输出到新的attempt3目录，不覆盖attempt2。test载荷继续关闭。
