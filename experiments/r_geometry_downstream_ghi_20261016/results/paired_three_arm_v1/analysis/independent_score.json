@@ -1,0 +1,217 @@
+{
+  "state": "PASS_INDEPENDENT_FP64_THREE_ARM_RECOMPUTATION",
+  "rows": 4263,
+  "train_rows": 47666,
+  "validation_rows": 4263,
+  "validation_dates": 52,
+  "arms": [
+    "A_history",
+    "AC_history_old_R",
+    "AC_history_corrected_R"
+  ],
+  "main_estimator": "mean of site-specific RMSE across two stations and three paired seeds",
+  "bootstrap": "2000 paired BJT target-date multinomial cluster resamples; fixed seed set; conditional on validation checkpoint selection",
+  "groups": {
+    "all_validation": {
+      "n": 4263,
+      "target_BJT_dates": 52,
+      "rmse_station_seed_mean": {
+        "A_history": 108.23609363092781,
+        "AC_history_old_R": 107.8177655700495,
+        "AC_history_corrected_R": 107.78414787265406
+      },
+      "mae_station_seed_mean": {
+        "A_history": 66.43246574061857,
+        "AC_history_old_R": 64.25955299349296,
+        "AC_history_corrected_R": 63.83345611437318
+      },
+      "mbe_station_seed_mean": {
+        "A_history": -0.4587036807385839,
+        "AC_history_old_R": -2.4955136723078395,
+        "AC_history_corrected_R": -2.99231416402001
+      },
+      "contrasts": {
+        "AC_history_old_R - A_history": {
+          "delta_RMSE": -0.4183280608783093,
+          "relative_change_percent": -0.3864958969276535,
+          "date_cluster_CI95": [
+            -2.2363186588370345,
+            1.1355586721259585
+          ]
+        },
+        "AC_history_corrected_R - A_history": {
+          "delta_RMSE": -0.4519457582737516,
+          "relative_change_percent": -0.41755549661172436,
+          "date_cluster_CI95": [
+            -2.2937944113547566,
+            1.1013233902065482
+          ]
+        },
+        "AC_history_corrected_R - AC_history_old_R": {
+          "delta_RMSE": -0.03361769739544229,
+          "relative_change_percent": -0.031180109528054337,
+          "date_cluster_CI95": [
+            -0.36525038463361065,
+            0.2439238131365431
+          ]
+        }
+      },
+      "per_station": {
+        "sili": {
+          "A_history": {
+            "RMSE": 124.22234282674123,
+            "MAE": 67.37228523651974,
+            "MBE": 1.2027137751673356
+          },
+          "AC_history_old_R": {
+            "RMSE": 124.13057889167,
+            "MAE": 65.88003857049802,
+            "MBE": -2.4559292817230935
+          },
+          "AC_history_corrected_R": {
+            "RMSE": 123.77513129633944,
+            "MAE": 65.13216930221749,
+            "MBE": -2.8376133646254904
+          }
+        },
+        "zhujia": {
+          "A_history": {
+            "RMSE": 92.24984443511441,
+            "MAE": 65.49264624471739,
+            "MBE": -2.1201211366445034
+          },
+          "AC_history_old_R": {
+            "RMSE": 91.50495224842898,
+            "MAE": 62.63906741648791,
+            "MBE": -2.5350980628925854
+          },
+          "AC_history_corrected_R": {
+            "RMSE": 91.7931644489687,
+            "MAE": 62.53474292652887,
+            "MBE": -3.1470149634145295
+          }
+        }
+      }
+    },
+    "score_only_excluding_source_zero_suspect": {
+      "n": 4213,
+      "target_BJT_dates": 52,
+      "rmse_station_seed_mean": {
+        "A_history": 88.80997468751036,
+        "AC_history_old_R": 88.0409389621509,
+        "AC_history_corrected_R": 87.9548163480054
+      },
+      "mae_station_seed_mean": {
+        "A_history": 60.93914287607326,
+        "AC_history_old_R": 58.75698450386785,
+        "AC_history_corrected_R": 58.31586970784993
+      },
+      "mbe_station_seed_mean": {
+        "A_history": -6.758547424878681,
+        "AC_history_old_R": -8.814175489225107,
+        "AC_history_corrected_R": -9.324721040770452
+      },
+      "contrasts": {
+        "AC_history_old_R - A_history": {
+          "delta_RMSE": -0.7690357253594584,
+          "relative_change_percent": -0.8659339540016899,
+          "date_cluster_CI95": [
+            -2.5011299084942413,
+            0.8933253022892856
+          ]
+        },
+        "AC_history_corrected_R - A_history": {
+          "delta_RMSE": -0.8551583395049676,
+          "relative_change_percent": -0.9629079869845197,
+          "date_cluster_CI95": [
+            -2.6534684837216527,
+            0.8010136892521824
+          ]
+        },
+        "AC_history_corrected_R - AC_history_old_R": {
+          "delta_RMSE": -0.08612261414550915,
+          "relative_change_percent": -0.09782109909406299,
+          "date_cluster_CI95": [
+            -0.4629443252864462,
+            0.2428415975047329
+          ]
+        }
+      },
+      "per_station": {
+        "sili": {
+          "A_history": {
+            "RMSE": 86.82139766585657,
+            "MAE": 57.22396856879359,
+            "MBE": -10.06936184844592
+          },
+          "AC_history_old_R": {
+            "RMSE": 86.18277182446063,
+            "MAE": 55.649405637836004,
+            "MBE": -13.84711311697027
+          },
+          "AC_history_corrected_R": {
+            "RMSE": 85.73719054930177,
+            "MAE": 54.89816898204662,
+            "MBE": -14.225945658159334
+          }
+        },
+        "zhujia": {
+          "A_history": {
+            "RMSE": 90.79855170916414,
+            "MAE": 64.65431718335294,
+            "MBE": -3.4477330013114407
+          },
+          "AC_history_old_R": {
+            "RMSE": 89.8991060998412,
+            "MAE": 61.86456336989969,
+            "MBE": -3.7812378614799442
+          },
+          "AC_history_corrected_R": {
+            "RMSE": 90.17244214670899,
+            "MAE": 61.73357043365323,
+            "MBE": -4.423496423381568
+          }
+        }
+      }
+    }
+  },
+  "per_seed_station_equal_delta_RMSE": {
+    "42": {
+      "AC_history_old_R - A_history": -0.23042042902319082,
+      "AC_history_corrected_R - A_history": -0.2843368339408059,
+      "AC_history_corrected_R - AC_history_old_R": -0.05391640491761507
+    },
+    "43": {
+      "AC_history_old_R - A_history": -0.41313883602483514,
+      "AC_history_corrected_R - A_history": -0.25563549265411467,
+      "AC_history_corrected_R - AC_history_old_R": 0.15750334337072047
+    },
+    "44": {
+      "AC_history_old_R - A_history": -0.6114249175869801,
+      "AC_history_corrected_R - A_history": -0.8158649482263556,
+      "AC_history_corrected_R - AC_history_old_R": -0.20444003063937544
+    }
+  },
+  "test_payloads_read": 0,
+  "scientific_scope": "same-time observed three-frame local AGRI reconstruction of unchanged 15-minute GHI; not causal forecasting; R frozen; CPP is retrieval reference only",
+  "source_hashes": {
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed42/sili/A_history/validation_predictions.npz": "a10eaf9b38acd5dfa6882aa7cf782d7c19c72dd324da445fe23de948945ddafd",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed42/sili/AC_history_old_R/validation_predictions.npz": "8f613b70fa6976e247540e28b19123ca4363e3500872d89032221b647efadff7",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed42/sili/AC_history_corrected_R/validation_predictions.npz": "e21cdb7ab94d07fec56a774bc3cd8b2c4c2dafbb236bc12a9c706749460fd763",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed42/zhujia/A_history/validation_predictions.npz": "380d390ed6ba1fb751a168aa9734267037cd5c3d29590a26161f7876addaf246",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed42/zhujia/AC_history_old_R/validation_predictions.npz": "a284643fab3a75e9181f12c001939f89942745ed8836de141a37ff00c4516a01",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed42/zhujia/AC_history_corrected_R/validation_predictions.npz": "b1042be20f1fce3ad742a95d962c09e8d09eb7a7c803072b4e89b57c966f0ca3",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed43/sili/A_history/validation_predictions.npz": "51a00672315c6402c8323467e5c14bc3c25b82c7c0e50f022aa04dd10acc3a65",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed43/sili/AC_history_old_R/validation_predictions.npz": "222151c3f76bd5043fea4e1bc8d1d2eb317899f91846176392cb4930123a43f3",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed43/sili/AC_history_corrected_R/validation_predictions.npz": "c3d4333c4811056265ce5cac057a869baf1856eb9e316138ac8b292a8cbfb1da",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed43/zhujia/A_history/validation_predictions.npz": "1062f68b37eeb840091c1f9de16c44922470af693a88af413c29ee581f190693",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed43/zhujia/AC_history_old_R/validation_predictions.npz": "1a3d1006a08570363e2474990bba58b39d2807b4612c9436d27b68cf32547432",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed43/zhujia/AC_history_corrected_R/validation_predictions.npz": "d0b46478a814579e101140ebb897ccdd8f42ff032bf46870209d9a10107af06b",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed44/sili/A_history/validation_predictions.npz": "2d6cfaa428867e4770ef6a305debf736294be7169d1de2bc1447e22723fdf7dd",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed44/sili/AC_history_old_R/validation_predictions.npz": "dd0d74ea8f30b20830fbe49275d7a94ab3911459e61d8430b4090f345334c144",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed44/sili/AC_history_corrected_R/validation_predictions.npz": "9bc5c594e5ba0bc03cfcf315aa530819809d22466e77b1446858a7fbe7a8051d",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed44/zhujia/A_history/validation_predictions.npz": "cbc34b0aebbb7e2bf4aa4a8059e0e341debcd82e4ecd23b0473546dcea27e93c",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed44/zhujia/AC_history_old_R/validation_predictions.npz": "05d869d0a2f31b85dd003b5b95a88ac2631d10c0f750dd701fbd1c206bcc17b5",
+    "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/seed44/zhujia/AC_history_corrected_R/validation_predictions.npz": "a8cbcc553d2f0738b87ab71746877e1c7c6b3c9f6f97acc238684e0dfc55333a"
+  }
+}

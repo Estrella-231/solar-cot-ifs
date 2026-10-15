@@ -1,0 +1,32 @@
+{
+  "state": "COMPLETE_PAIRED_R_COT_HISTORY_BANK",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "rows": 51929,
+  "train": 47666,
+  "val": 4263,
+  "unique_station_frame_keys": 54895,
+  "unique_utc_times": 29639,
+  "history_offsets_minutes": [
+    -30,
+    -15,
+    0
+  ],
+  "input": "real observed AGRI; paired fresh old-formula / corrected-geometry R; train-fitted per-R normalization; no CPP input",
+  "output": "softplus head output interpreted as log1p(COT), full R patch center 3x3 readout; no masking, GAP, or spatial averaging",
+  "old_R_checkpoint_sha256": "2f2533577c5466f2fe00442b701de79bc3e89f03d621b8a020614cfa852f0863",
+  "corrected_R_checkpoint_sha256": "7273a21d1d0c44d0aef6002f3e32e66b68a55f9001f1828bd1f285a5c19c680a",
+  "old_R_norm_sha256": "fac273fe960078350403cf476bb30c39b0d827578f5bc906bfdcccb106a1f8de",
+  "corrected_R_norm_sha256": "a1fcb4666082d70e213ef3cd62d546c1cd162774a8fdf4583483a00019696869",
+  "source_GHI_rows_sha256": "b76fb1b827375c29d90703ed6dc1220ff92a6d239800d4f8764b989d5b7214b3",
+  "source_manifest_sha256": "223a6b748622135e27fd5320a4be0921b4b31551be6f05868b14eb59d2c8ed9a",
+  "monthly_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+  "grid_static_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+  "rows_sha256": "065014bc064075602c9a802fee5288000e349ebce9065ebe218261818880350e",
+  "frame_bank_sha256": "c096b0548afc68df75c656ffdc2360d3e2374e053d523d32c5482e80701d62cb",
+  "cot_old_sha256": "85cdc22875347f6b0f609b461959169a0a02d09ab86a00c0c8858534b42c1bb1",
+  "cot_corrected_sha256": "12126446c2567cb5f143c045e31c060a888ce8bb89685995cf03d333eebad50e",
+  "test_payloads_read": 0,
+  "all_rows_common": true,
+  "all_R_frozen": true,
+  "paired_row_mapping": "(station, exact UTC frame time)"
+}

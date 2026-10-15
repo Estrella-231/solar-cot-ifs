@@ -1,0 +1,83 @@
+{
+  "state": "PASS_REAL_AGRI_PAIRED_R_VAL_CASES",
+  "selection": "per station: minimum near-zero CPP center, maximum thick CPP center, and largest old-vs-corrected R center difference; deterministic, validation only",
+  "cases": [
+    {
+      "station": "sili",
+      "selection_rule": "clear_reference_min",
+      "target_time_utc": "2024-07-08 23:00:00",
+      "bjt": "202407090700",
+      "array_index": 1829,
+      "reference_center": 0.0,
+      "old_R_center": 0.008159326137631453,
+      "corrected_R_center": 0.009576553976458041,
+      "absolute_center_difference": 0.0014172278388265881
+    },
+    {
+      "station": "sili",
+      "selection_rule": "thick_reference_max",
+      "target_time_utc": "2025-07-09 07:00:00",
+      "bjt": "202507091500",
+      "array_index": 10173,
+      "reference_center": 68.74735260009766,
+      "old_R_center": 57.66714523426492,
+      "corrected_R_center": 52.60918672643068,
+      "absolute_center_difference": 5.057958507834243
+    },
+    {
+      "station": "sili",
+      "selection_rule": "largest_R_disagreement",
+      "target_time_utc": "2025-05-03 23:00:00",
+      "bjt": "202505040700",
+      "array_index": 6564,
+      "reference_center": 41.792823791503906,
+      "old_R_center": 59.4976997023372,
+      "corrected_R_center": 40.812339117721585,
+      "absolute_center_difference": 18.685360584615616
+    },
+    {
+      "station": "zhujia",
+      "selection_rule": "clear_reference_min",
+      "target_time_utc": "2024-06-12 03:00:00",
+      "bjt": "202406121100",
+      "array_index": 1344,
+      "reference_center": 0.0,
+      "old_R_center": 0.22010031385807788,
+      "corrected_R_center": 0.06885301178157513,
+      "absolute_center_difference": 0.15124730207650275
+    },
+    {
+      "station": "zhujia",
+      "selection_rule": "thick_reference_max",
+      "target_time_utc": "2025-03-14 05:00:00",
+      "bjt": "202503141300",
+      "array_index": 5733,
+      "reference_center": 69.75453186035156,
+      "old_R_center": 36.58394259295013,
+      "corrected_R_center": 42.52107635332545,
+      "absolute_center_difference": 5.937133760375318
+    },
+    {
+      "station": "zhujia",
+      "selection_rule": "largest_R_disagreement",
+      "target_time_utc": "2024-04-18 23:00:00",
+      "bjt": "202404190700",
+      "array_index": 362,
+      "reference_center": 56.13025665283203,
+      "old_R_center": 57.44232502663748,
+      "corrected_R_center": 40.812339117721585,
+      "absolute_center_difference": 16.62998590891589
+    }
+  ],
+  "rgb_mapping": "display RGB=[AGRI C03,C02,C01]",
+  "rgb_channels_in_pack": "first three physical AGRI channels are C01,C02,C03",
+  "prediction_transformation": "expm1(saved log1p(COT))",
+  "test_payloads_read": 0,
+  "source_hashes": {
+    "experiments/r_solar_geometry_corrected_20261015/data/paired_common_v1/rows_supervised.csv": "d6b50b78a85e879c341b79c804c2914128dc726b10b47944c2f5009df354355f",
+    "experiments/r_solar_geometry_corrected_20261015/data/paired_common_v1/x_old_geometry.npy": "06d4606623c1495d63ab015d778b5691d6f0c072e58fad79c6e559c84d450a31",
+    "experiments/r_solar_geometry_corrected_20261015/results/paired_v1/old/validation_predictions.npz": "03051989c23d50b518178b42a7f9bff07098ff2a4053f51906ae029118decc0a",
+    "experiments/r_solar_geometry_corrected_20261015/results/paired_v1/corrected/validation_predictions.npz": "2fb6db2f63e0a739dea08b232a679f20677b0b287cbd22184d4fb024c5db22dd"
+  },
+  "payload_sha256": "67a871513d4c1ba1fd3371eaf4e82b80fff031529046d853c20b95d6eddcce45"
+}

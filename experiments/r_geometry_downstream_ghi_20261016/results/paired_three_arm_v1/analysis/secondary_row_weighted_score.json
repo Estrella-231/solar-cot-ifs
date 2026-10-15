@@ -1,0 +1,40 @@
+{
+  "state": "PASS_SECOND_ROW_WEIGHTED_FP64_RECOMPUTATION",
+  "arms": [
+    "A_history",
+    "AC_history_old_R",
+    "AC_history_corrected_R"
+  ],
+  "equal_station_seed_mean_RMSE": {
+    "A_history": 108.23609363092761,
+    "AC_history_old_R": 107.81776557004929,
+    "AC_history_corrected_R": 107.78414787265389
+  },
+  "contrasts": {
+    "AC_history_old_R - A_history": {
+      "delta_RMSE": -0.4183280608783235,
+      "CI95": [
+        -2.236318658837062,
+        1.1355586721259587
+      ]
+    },
+    "AC_history_corrected_R - A_history": {
+      "delta_RMSE": -0.4519457582737232,
+      "CI95": [
+        -2.29379441135477,
+        1.1013233902065487
+      ]
+    },
+    "AC_history_corrected_R - AC_history_old_R": {
+      "delta_RMSE": -0.03361769739539966,
+      "CI95": [
+        -0.365250384633638,
+        0.2439238131365289
+      ]
+    }
+  },
+  "validation_rows": 4263,
+  "BJT_dates": 52,
+  "bootstrap": 2000,
+  "test_payloads_read": 0
+}
