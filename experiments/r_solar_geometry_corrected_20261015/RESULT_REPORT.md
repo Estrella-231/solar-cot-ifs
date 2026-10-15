@@ -40,8 +40,8 @@ the CPP reference product.
 
 The strongest causal comparison is between the two fresh retrains. Relative to
 that control, corrected geometry lowers pooled MAE by 0.056 but raises pooled
-RMSE by 0.089. This combination indicates that small absolute errors improve
-slightly on average while larger errors remain or become more influential;
+RMSE by 0.089. The average absolute error falls slightly while squared error
+rises, so the changes are uneven and the larger residuals weigh more heavily;
 the per-station and cloud-category results below show where the trade-off lies.
 The archived checkpoint is context, not the controlled geometry comparison:
 it has a different training history and normalization.
