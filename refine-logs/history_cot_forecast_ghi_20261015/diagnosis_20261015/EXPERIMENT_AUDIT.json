@@ -1,0 +1,157 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "training_protocol_and_scope_limit_claim",
+  "summary": "Saved validation predictions and metrics are internally reproducible with real station GHI, but batch repetition, coarse early validation, effective-capacity mismatch, validation reuse, and single-station old-split scope prevent a causal claim that COT itself degrades GHI.",
+  "audited_input_hashes": {
+    "EXPERIMENT_PLAN.md": "sha256:5f310dad7859bfd188caffb22ec3463d1fb4d1b29bd8dbd83a73f4a9f0d8721d",
+    "EXPERIMENT_TRACKER.md": "sha256:00297bfe7d4f90126c008a2b13d450a38306b2781c78a595586f09221fe5f4cc",
+    "RESULTS.md": "sha256:dab9d1be2681aeae7dfbb9b6a11c2e801373c51b3eb575a9832a3db48e17f528",
+    "preflight.py": "sha256:36b36384fd9d9d434ffebd51ed6f9dac6918902eff9c474f31ffb2f07656aa70",
+    "train_attempt2_as_run.py": "sha256:26d78c0b5660e333202376837a770c63eee501f002636fa9668e364b1bd5152e",
+    "independent_score.py": "sha256:24ebb3d914243c54fb7aeb2f2cc216ebe6147cc33c335eb33ca5f91d9e11d7bb",
+    "results_attempt2/source_audit.json": "sha256:f664c688ab7b8012260a3fbe78defa6844335394bbfe3375aff0846e824b7931",
+    "results_attempt2/source_manifests_audit.json": "sha256:5dbe278afd6734cd053be00276e4bc5321c47a38b68e0a5adae5f426bc63477c",
+    "results_attempt2/profile.json": "sha256:84fdccdb50e8ff844224dcd170009f9fa61c3fef0c47807f229b8c6abaae9fe8",
+    "results_attempt2/summary.json": "sha256:a97ec838fd731015ee06e88941ec07e970be44230f0f5aab20d04301def97b38",
+    "results_attempt2/independent_score.json": "sha256:993fa6d7cb920a4521ebb59bbbedacb214c29b546da74ea84bfdf1fdaa1c5554",
+    "results_attempt2/lead_summary.csv": "sha256:a7dff50d53bbad537f1aa16330aa81f9a46b11222f0261dbd3ec224b0998b6b7",
+    "results_attempt2/A_seed42/predictions.npz": "sha256:1a2b355b8d2b2bbaa4f6642915642c4b97f729c3b0095d983ec58fbb9817f1cd",
+    "results_attempt2/A_seed43/predictions.npz": "sha256:e83033ff12f9f4d4f256afd0b3d3f4644ca90e5f7c8341b12bbacf4918ebce16",
+    "results_attempt2/A_seed44/predictions.npz": "sha256:cf412e6266dc9b596735cae9d131164826d8d630278d10e1c73d18b854d7da81",
+    "results_attempt2/transport_seed42/predictions.npz": "sha256:7c2e321124ed61fd78401aa6c7b83aea9b0c2dc9bf5925bed86ba39327ce796f",
+    "results_attempt2/transport_seed43/predictions.npz": "sha256:bcf068437b4e8a0ad94dc83fd53237d0699092bad3c6f62a7f250b093bc44807",
+    "results_attempt2/transport_seed44/predictions.npz": "sha256:a083c7ac46585d09c8998d5e31d509642892d609f5a4b323b4c6e4586b2c32e5",
+    "results_attempt2/hybrid_seed42/predictions.npz": "sha256:a8f102da3cc4bad5d7b2c7be032da012d169771df263cf11ece9454193648917",
+    "results_attempt2/hybrid_seed43/predictions.npz": "sha256:e7af02cd02b3e1964b649f6106272befad7b94cc5142fcbdcff019d425fa96a8",
+    "results_attempt2/hybrid_seed44/predictions.npz": "sha256:3499f05de0dac2fac171549e5ff905f82659f9c5cbcb2d23e0fa5ca4109ade35",
+    "scripts/build_sili_cot_dynamics_bank_20260927.py": "sha256:e357b0f20c69ba0191a057ccf7ccfefd01ba8f4a065c0631f855c1af7bc270c8",
+    "scripts/build_regional_cot_ghi_pilot_20260927.py": "sha256:a5671d3cda999b85612e69ec688fe6808d997b01abe9daf30a8792b89342fcad",
+    "scripts/train_sili_history_repeat_control_20260928.py": "sha256:dfa5075a6b107989f66ac2f5dcb2461ce83498175ab5a4ff5cf1f1b0a8857d48"
+  },
+  "trace_path": ".aris/traces/experiment-audit/2026-10-15_run01/",
+  "agent_id": "/root/history_ghi_input_training_audit/fresh_experiment_integrity_reviewer",
+  "verdict_id": "/root/history_ghi_input_training_audit/fresh_experiment_integrity_reviewer",
+  "executor_model": "gpt-6.1-sol",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-15T15:25:57.4333222+08:00",
+  "date": "2026-10-15",
+  "auditor": "gpt-5.6-sol-ultra",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "severity": "low",
+      "details": "Observed station GHI is the target/evaluation source and is not a model input; unit metadata is inferred rather than explicit."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "severity": "low",
+      "details": "Metrics are recomputed in raw W/m2 without self-normalization; low-clear-sky extreme kt remains a modeling warning."
+    },
+    "result_existence": {
+      "status": "pass",
+      "severity": "low",
+      "details": "All nine predictions exist on identical 5855-row support and reproduce stored RMSE and bootstrap intervals."
+    },
+    "dead_code": {
+      "status": "warn",
+      "severity": "medium",
+      "details": "The as-run manifest alias check was vacuous; a post-run audit used the correct fields and passed."
+    },
+    "scope": {
+      "status": "warn",
+      "severity": "high",
+      "details": "Old-split Sili-only validation uses the same validation set for checkpoint selection, reporting, and bootstrap; not a new-monthly, two-station, test, or deployment result."
+    },
+    "training_protocol": {
+      "status": "warn",
+      "severity": "high",
+      "details": "Batch 8192 repeats 4041 unique rows; first validation occurs after about 202.7 effective epochs, COT arms overfit earlier, and effective capacity is not strictly matched."
+    },
+    "eval_type": "real_gt"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Under the audited old-split Sili validation protocol, saved transport and hybrid candidates have higher mean RMSE than A.",
+      "impact": "supported_with_scope_qualifier"
+    },
+    {
+      "id": "C2",
+      "claim": "Historical or forecast COT itself causes GHI degradation.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C3",
+      "claim": "The current COT arms overfit earlier and more severely on the recorded validation grid.",
+      "impact": "supported"
+    },
+    {
+      "id": "C4",
+      "claim": "The result generalizes to the new monthly split, two Hunan stations, independent test, or deployment.",
+      "impact": "unsupported"
+    }
+  ],
+  "posthoc_followup": {
+    "date": "2026-10-15",
+    "status": "warn",
+    "severity": "high",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "scope": "Post-hoc early-checkpoint replay and union selection on the same old-split Sili validation set; not independent confirmation.",
+    "audited_input_hashes": {
+      "early_replay_attempt1/summary.json": "sha256:28fea4e47683d2b65df061ec247c3e1cbdeed25c6c787cca70ad33cde03ec3b2",
+      "early_selection_diagnostic.json": "sha256:dafe66f0910108f044c7af07767efea57bada622686044ad6cce50e0f65be1b0",
+      "early_selected_predictions.npz": "sha256:165a135d76c413b42fd95853ca32077092f2827b3e3aaf0b9aaadd2a189d8432",
+      "alignment_audit.json": "sha256:999b96edfb1d629f04bc7c2e0623872ffb13649eb30653a186b7178db6eea46a",
+      "case_2312.npz": "sha256:47645fcfa727f54d21f70fea439fc21bef755aa063a15896402e78590ac37ab8",
+      "case_762.npz": "sha256:50fc2911a2f98b4c074e2e872a76cb103f3ccfc2e0f167bbba28f8abf232c7e5",
+      "case_530.npz": "sha256:404e534696b928e27cbc51ed39386c46f0534872dad4049d0783e5fe8e841413",
+      "case_3959.npz": "sha256:94df2f53485e675418d8fe0a3f57608fb0ddc5032eb023085cd12159d823d9ae",
+      "replay_early_training.py": "sha256:28e3b224831efdbee51d4023f7950df7c35649081df531619493824603265ae1",
+      "training_and_early_checkpoint_diagnosis.png": "sha256:bc3899bb9e66c4abc6d7caf6744336211cd7ccd3d489822ffb310a557469609b",
+      "case_2312_real_cloud_cot_ghi.png": "sha256:cfe61b78ae1bd7ca2f2ebc56893f17566c399772f8d266b0cc11f334f9840e63",
+      "plot_diagnosis.py": "sha256:0e36b337dda10c216c6a5c99c687811ec7fba4e19661c15f8bd723ea171528cf",
+      "rgb_stretch.json": "sha256:cb23a2be7b612dd8554dfdfa3b487de34c618049e7fabb0da60affc7614d8896"
+    },
+    "step100_replay": {
+      "status": "pass",
+      "details": "All nine step100 RMSE, MAE, and bias values match the original curves exactly. Five runs also have original saved arrays that match elementwise; four lack original step100 arrays."
+    },
+    "union_selection_fairness": {
+      "status": "pass",
+      "details": "A, transport, and hybrid each receive the same 21 candidate steps, initialization contract, training stream, validation rows and GT, and RMSE selection rule."
+    },
+    "union_results": {
+      "A_rmse": 157.0911476553734,
+      "transport_rmse": 155.37196406022534,
+      "hybrid_rmse": 156.12535885465107,
+      "transport_minus_A": -1.7191835951480527,
+      "transport_ci95": [-5.559574506631877, 2.1976784730914933],
+      "hybrid_minus_A": -0.9657888007223221,
+      "hybrid_ci95": [-4.561322916968807, 2.532427370022951]
+    },
+    "claim_impact": "The original higher-RMSE finding is restricted to the coarse 100-step checkpoint grid. The union diagnostic neither confirms a COT gain nor supports a claim that COT is generally harmful.",
+    "alignment_followup": {
+      "status": "pass_with_scope_warning",
+      "details": "Four selected validation cases reproduce time, row, canonical lead, center crop, support, geometry, and pack handoff. This is sampled evidence and does not prove all-bank physical or geographic correctness."
+    },
+    "figure_review": {
+      "status": "warn",
+      "mandatory_fixes": [
+        "Qualify the step100 exact-reproduction caption to distinguish five elementwise checks from four metric-only checks.",
+        "Move or restyle the hybrid -0.97 label so its minus sign is visible.",
+        "State that the early-curve shading is the three-seed min-max range and that the dotted training curve is one repeated 8192-row batch, not a full-train metric.",
+        "Replace physical COT with retrieval/model proxy COT, label observed AGRI to frozen R as a post-hoc proxy, and state that future observed AGRI is diagnostic-only.",
+        "Do not label sequence2312 as the largest deterioration without a saved filter; call it a high-deterioration case."
+      ]
+    }
+  }
+}
