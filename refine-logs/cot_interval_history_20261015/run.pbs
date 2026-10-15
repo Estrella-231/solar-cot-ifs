@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -N cot_interval_hist
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_interval_history_20261015_v1/logs/train_attempt1.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export LD_LIBRARY_PATH=/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}
+EXP=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_interval_history_20261015_v1
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/code/train_paired.py" --pack "$EXP/data_attempt2" --output "$EXP/results_attempt1"

@@ -1,0 +1,57 @@
+{
+  "state": "PROFILE_AND_ACTUAL_KERNEL_WITNESS_PASS",
+  "profile": [
+    {
+      "batch": 256,
+      "examples_per_second": 63738.19103956982,
+      "peak_allocated_GiB": 0.14453411102294922,
+      "peak_reserved_GiB": 0.283203125
+    },
+    {
+      "batch": 512,
+      "examples_per_second": 130470.52800739693,
+      "peak_allocated_GiB": 0.18147754669189453,
+      "peak_reserved_GiB": 0.287109375
+    },
+    {
+      "batch": 1024,
+      "examples_per_second": 262000.65134714448,
+      "peak_allocated_GiB": 0.25558948516845703,
+      "peak_reserved_GiB": 0.287109375
+    },
+    {
+      "batch": 1536,
+      "examples_per_second": 217122.41797640952,
+      "peak_allocated_GiB": 0.33074092864990234,
+      "peak_reserved_GiB": 0.5
+    },
+    {
+      "batch": 1792,
+      "examples_per_second": 438515.7239312191,
+      "peak_allocated_GiB": 0.3671865463256836,
+      "peak_reserved_GiB": 0.748046875
+    }
+  ],
+  "selected_batch": 1792,
+  "initial_function_difference": 0.0,
+  "COT_input_weight_gradient_norm": 0.029775915667414665,
+  "AGRI_gradient_by_time": [
+    0.011134758591651917,
+    0.01311328262090683,
+    0.012348027899861336
+  ],
+  "parameters": 41665,
+  "GPU": "NVIDIA A800-SXM4-80GB",
+  "torch_version": "2.3.1+cu118",
+  "geometry_contract": "corrected NOAA nominal UTC; radians-to-degrees in EOT fixed",
+  "test_payload_opened": false,
+  "source_hashes": {
+    "pack_manifest.json": "223a6b748622135e27fd5320a4be0921b4b31551be6f05868b14eb59d2c8ed9a",
+    "rows.csv": "b76fb1b827375c29d90703ed6dc1220ff92a6d239800d4f8764b989d5b7214b3",
+    "agri_raw.npy": "04831a2081d4570d6e87f2487f54c98107e2f055ec9b91043015999d048ca928",
+    "agri_valid.npy": "05bebdbc4e3bd2091bce838494dbbd4da84bb21fc849099e53981d464c390dbc",
+    "cot_log1p.npy": "fe5023b97377c6a0827a4cf37bb0515cc907be4def3efa84a2f8ea2fc8baa5aa",
+    "geometry.npy": "d9bdd7f3b01bd2441d93e650e73032f2cc9f0b275de48260c92e42769388b68d"
+  },
+  "code_sha256": "059c341d2770634ddf3a836b8d4231417a89665e5055b7c6c72dcc3e769b152e"
+}

@@ -1,0 +1,57 @@
+{
+  "state": "COMPLETE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "rows": 51929,
+  "train": 47666,
+  "val": 4263,
+  "history_offsets_minutes": [
+    -30,
+    -15,
+    0
+  ],
+  "geometry": "corrected NOAA nominal UTC; radians-to-degrees in EOT fixed",
+  "AGRI_norm_mean": [
+    0.21717080399059405,
+    0.23242130308591014,
+    0.2669117468490496,
+    0.03363898269670263,
+    0.1845015930936397,
+    0.12883250735439855,
+    238.41106499796024,
+    245.8862835476665,
+    254.08513299999385,
+    273.25887393344493,
+    274.42100056826786,
+    272.34347290997357,
+    259.4470761700122
+  ],
+  "AGRI_norm_std": [
+    0.17551536834763368,
+    0.20313905337557137,
+    0.1912647415843436,
+    0.05859332449639308,
+    0.12704814673178338,
+    0.09950964962847547,
+    7.662958989500547,
+    9.075450464111759,
+    10.714017544481424,
+    18.50999912772807,
+    19.301798717345214,
+    19.038773720874087,
+    13.400495360188627
+  ],
+  "COT_norm_mean": 1.8473266227740757,
+  "COT_norm_std": 1.4225840739217779,
+  "source_pack_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "R_geometry_not_modified": true,
+  "primary_labels_modified": false,
+  "test_payload_opened": false,
+  "coverage": {
+    "sili_train": 22930,
+    "sili_val": 2036,
+    "zhujia_train": 24736,
+    "zhujia_val": 2227
+  },
+  "schema": "[N,T=3,C,H=3,W=3]; preserve all temporal/spatial positions; no pooling"
+}

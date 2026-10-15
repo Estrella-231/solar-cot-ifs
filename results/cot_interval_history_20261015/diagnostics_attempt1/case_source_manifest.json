@@ -1,0 +1,179 @@
+{
+  "cases": [
+    {
+      "station": "sili",
+      "utc": "2026-05-05 04:15:00",
+      "category": "largest_nonzero_improvement",
+      "validation_row_index": 1853,
+      "truth": 384.3333435058594,
+      "A_seed_predictions": [
+        943.4874877929688,
+        966.0855712890625,
+        938.9041748046875
+      ],
+      "AC_seed_predictions": [
+        899.8504028320312,
+        901.8504028320312,
+        914.837158203125
+      ],
+      "mean_delta_squared_error": -47873.92532445987,
+      "raw_GHI_5min": "662|334|157"
+    },
+    {
+      "station": "sili",
+      "utc": "2025-08-22 04:15:00",
+      "category": "largest_nonzero_deterioration",
+      "validation_row_index": 1289,
+      "truth": 1191.3333740234375,
+      "A_seed_predictions": [
+        750.2135009765625,
+        744.716552734375,
+        758.9844360351562
+      ],
+      "AC_seed_predictions": [
+        686.4139404296875,
+        705.7819213867188,
+        713.386474609375
+      ],
+      "mean_delta_squared_error": 46052.71820098162,
+      "raw_GHI_5min": "1242|1186|1146"
+    },
+    {
+      "station": "zhujia",
+      "utc": "2024-09-04 06:30:00",
+      "category": "largest_nonzero_improvement",
+      "validation_row_index": 2554,
+      "truth": 636.0,
+      "A_seed_predictions": [
+        278.5782775878906,
+        366.2874450683594,
+        485.07257080078125
+      ],
+      "AC_seed_predictions": [
+        410.04595947265625,
+        521.1123046875,
+        575.2696533203125
+      ],
+      "mean_delta_squared_error": -51777.21761726402,
+      "raw_GHI_5min": "412|749|747"
+    },
+    {
+      "station": "zhujia",
+      "utc": "2024-05-29 02:45:00",
+      "category": "largest_nonzero_deterioration",
+      "validation_row_index": 2148,
+      "truth": 866.3333129882812,
+      "A_seed_predictions": [
+        560.6124267578125,
+        564.6516723632812,
+        571.7157592773438
+      ],
+      "AC_seed_predictions": [
+        482.04156494140625,
+        539.6050415039062,
+        519.6292724609375
+      ],
+      "mean_delta_squared_error": 34452.87573324144,
+      "raw_GHI_5min": "905|903|791"
+    }
+  ],
+  "frames": [
+    {
+      "case": 0,
+      "offset_minutes": -30,
+      "utc": "2026-05-05 03:45:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2026/202605/20260505/202605050345.npy",
+      "R_bank_index": 51636,
+      "scan_offset_seconds": 184.34950256347656
+    },
+    {
+      "case": 0,
+      "offset_minutes": -15,
+      "utc": "2026-05-05 04:00:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2026/202605/20260505/202605050400.npy",
+      "R_bank_index": 51637,
+      "scan_offset_seconds": 184.34950256347656
+    },
+    {
+      "case": 0,
+      "offset_minutes": 0,
+      "utc": "2026-05-05 04:15:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2026/202605/20260505/202605050415.npy",
+      "R_bank_index": 51638,
+      "scan_offset_seconds": 184.34950256347656
+    },
+    {
+      "case": 1,
+      "offset_minutes": -30,
+      "utc": "2025-08-22 03:45:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202508/20250822/202508220345.npy",
+      "R_bank_index": 35263,
+      "scan_offset_seconds": 184.35450744628906
+    },
+    {
+      "case": 1,
+      "offset_minutes": -15,
+      "utc": "2025-08-22 04:00:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202508/20250822/202508220400.npy",
+      "R_bank_index": 35264,
+      "scan_offset_seconds": 184.35549926757812
+    },
+    {
+      "case": 1,
+      "offset_minutes": 0,
+      "utc": "2025-08-22 04:15:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/202508/20250822/202508220415.npy",
+      "R_bank_index": 35265,
+      "scan_offset_seconds": 184.35549926757812
+    },
+    {
+      "case": 2,
+      "offset_minutes": -30,
+      "utc": "2024-09-04 06:00:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202409/20240904/202409040600.npy",
+      "R_bank_index": 10826,
+      "scan_offset_seconds": 159.46499633789062
+    },
+    {
+      "case": 2,
+      "offset_minutes": -15,
+      "utc": "2024-09-04 06:15:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202409/20240904/202409040615.npy",
+      "R_bank_index": 10827,
+      "scan_offset_seconds": 159.4654998779297
+    },
+    {
+      "case": 2,
+      "offset_minutes": 0,
+      "utc": "2024-09-04 06:30:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202409/20240904/202409040630.npy",
+      "R_bank_index": 10828,
+      "scan_offset_seconds": 159.46600341796875
+    },
+    {
+      "case": 3,
+      "offset_minutes": -30,
+      "utc": "2024-05-29 02:15:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202405/20240529/202405290215.npy",
+      "R_bank_index": 3954,
+      "scan_offset_seconds": 159.468994140625
+    },
+    {
+      "case": 3,
+      "offset_minutes": -15,
+      "utc": "2024-05-29 02:30:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202405/20240529/202405290230.npy",
+      "R_bank_index": 3955,
+      "scan_offset_seconds": 159.468994140625
+    },
+    {
+      "case": 3,
+      "offset_minutes": 0,
+      "utc": "2024-05-29 02:45:00",
+      "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202405/20240529/202405290245.npy",
+      "R_bank_index": 3956,
+      "scan_offset_seconds": 159.468994140625
+    }
+  ],
+  "test_payloads_read": 0
+}

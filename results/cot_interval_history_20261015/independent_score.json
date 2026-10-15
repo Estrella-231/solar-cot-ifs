@@ -1,0 +1,120 @@
+{
+  "state": "PASS_INDEPENDENT_FP64_SAVED_PREDICTION_RECOMPUTATION",
+  "groups": {
+    "all_validation": {
+      "n": 4263,
+      "target_dates": 52,
+      "A_RMSE": 108.32343951709406,
+      "AC_RMSE": 108.0651823873771,
+      "delta_RMSE": -0.25825712971695225,
+      "RMSE_improvement_percent": 0.2384129703305791,
+      "date_cluster_CI95": [
+        -2.1485844415332385,
+        1.571489968445516
+      ]
+    },
+    "sili": {
+      "n": 2036,
+      "target_dates": 44,
+      "A_RMSE": 124.2223392335078,
+      "AC_RMSE": 123.90066572960313,
+      "delta_RMSE": -0.32167350390466254,
+      "RMSE_improvement_percent": 0.25894980394789907,
+      "date_cluster_CI95": [
+        -2.2857498341383966,
+        1.0031898365442635
+      ]
+    },
+    "zhujia": {
+      "n": 2227,
+      "target_dates": 50,
+      "A_RMSE": 92.42453980068028,
+      "AC_RMSE": 92.22969904515111,
+      "delta_RMSE": -0.1948407555291709,
+      "RMSE_improvement_percent": 0.21081063097458538,
+      "date_cluster_CI95": [
+        -3.5374012348563464,
+        3.1868501748251195
+      ]
+    },
+    "exclude_suspect_zero_scoring_only": {
+      "n": 4213,
+      "target_dates": 52,
+      "A_RMSE": 88.8883503588727,
+      "AC_RMSE": 88.3831155873914,
+      "delta_RMSE": -0.5052347714812981,
+      "RMSE_improvement_percent": 0.568392561501583,
+      "date_cluster_CI95": [
+        -2.3567283259864302,
+        1.439416708212202
+      ]
+    },
+    "low_interval_variation_le25": {
+      "n": 2094,
+      "target_dates": 52,
+      "A_RMSE": 114.59949105562605,
+      "AC_RMSE": 114.30217224547793,
+      "delta_RMSE": -0.2973188101481128,
+      "RMSE_improvement_percent": 0.25944164970488015,
+      "date_cluster_CI95": [
+        -4.006295378772798,
+        2.42761059901867
+      ]
+    },
+    "high_interval_variation_gt100": {
+      "n": 673,
+      "target_dates": 44,
+      "A_RMSE": 133.26448292629797,
+      "AC_RMSE": 131.9514281087703,
+      "delta_RMSE": -1.3130548175276715,
+      "RMSE_improvement_percent": 0.9852999003897066,
+      "date_cluster_CI95": [
+        -4.817803735348994,
+        1.9702064597540123
+      ]
+    }
+  },
+  "seed_equal_station_delta_RMSE": [
+    0.5474969483198251,
+    -0.45816954226155815,
+    -0.8640987952090242
+  ],
+  "seed_delta_std": 0.7267216560033523,
+  "direction_diagnostics": {
+    "sili": {
+      "mean_abs_GHI_adjustment": 17.039078459166817,
+      "fraction_correct_up_when_A_underestimates": 0.4897238278741169,
+      "fraction_correct_down_when_A_overestimates": 0.6860387441549766,
+      "fraction_samples_with_increased_squared_error": 0.4679109364767518,
+      "flagged_zero_share_A_squared_error": 0.519630897125425,
+      "flagged_zero_share_AC_squared_error": 0.5251752121893323
+    },
+    "zhujia": {
+      "mean_abs_GHI_adjustment": 18.541226821033348,
+      "fraction_correct_up_when_A_underestimates": 0.4878361075544174,
+      "fraction_correct_down_when_A_overestimates": 0.6721956705088558,
+      "fraction_samples_with_increased_squared_error": 0.45606945068103577,
+      "flagged_zero_share_A_squared_error": 0.03847660844350955,
+      "flagged_zero_share_AC_squared_error": 0.040266121013510354
+    }
+  },
+  "main_estimator": "arithmetic mean of station-specific RMSE differences, across two stations and all three seeds",
+  "bootstrap": "2000 paired target-BJT-date multinomial cluster resamples; fixed three seeds; conditional on validation checkpoint selection",
+  "source_zero_flagged_scored": 50,
+  "source_hashes": {
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed42\\sili\\A_history\\validation_predictions.npz": "c5a85802438f6e57b3882f1f66e25170e9c8255b30a40efb5f06b29644165b1c",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed42\\sili\\AC_history\\validation_predictions.npz": "b56eb45f7fe30fd166882669314b06ff763823c270e33b33d1e9d4a7d1c345bc",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed42\\zhujia\\A_history\\validation_predictions.npz": "720162118a40639f7ea34dba9c58f284502c10d77bba69460024e9bdf33d4440",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed42\\zhujia\\AC_history\\validation_predictions.npz": "3f0c506475b9ecc466c5678606e6d7630d39446afd63f91d13dd325bab8abc55",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed43\\sili\\A_history\\validation_predictions.npz": "72f71689a3bbead20c9a21869e73d188ae435ea426b603ccb1eec65edc8bf40e",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed43\\sili\\AC_history\\validation_predictions.npz": "0001aa37b44a60d436507b1fa377dd02436692d273f03f500ddb2cddf0253360",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed43\\zhujia\\A_history\\validation_predictions.npz": "9ddd34aca779de8d288cea9406b19d82f2eeb0fe823201e13cbaf0de5f1f5412",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed43\\zhujia\\AC_history\\validation_predictions.npz": "9d1c3b0b083ce39973cc501302f49c9c10ef193e535a4ce922c701b8e78d540e",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed44\\sili\\A_history\\validation_predictions.npz": "8a71107bb8b07beb3cdb90708a4c1569ad7f7c8c60d61974c6e007db858f7322",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed44\\sili\\AC_history\\validation_predictions.npz": "17a8faf2598326b73a7eb7ffe32c418f2e4eadc6c0516bb710c72c5558fce3a2",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed44\\zhujia\\A_history\\validation_predictions.npz": "a7c6e520d2e8a00abbc474623ee6c900d7b88c5d3e44dd29fcea0a03a825ac65",
+    "results\\cot_interval_history_20261015\\results_attempt1\\seed44\\zhujia\\AC_history\\validation_predictions.npz": "5d4ec5984eee8745759b7e62a629b46d3f8108e0734aa9f7109df01df7e01f40"
+  },
+  "test_payloads_read": 0,
+  "scientific_scope": "same-time observed three-frame local AGRI reconstruction of unchanged 15min GHI, not forecasting; fixed original R bank"
+}
