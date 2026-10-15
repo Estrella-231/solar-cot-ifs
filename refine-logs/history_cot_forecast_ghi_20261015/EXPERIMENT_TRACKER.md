@@ -22,3 +22,13 @@ Luna确认214126已通过prepare、梯度见证、profile并进入实际训练�
 用户要求检查退化原因后，214153完成四例真实AGRI/R-COT回源（96帧，alignment审计各项最大差0）；214162完成原前100步重放，九组step100精确复现。发现原每100步验证相隔约203遍训练数据，5/6 COT模型早期较好点早于首次验证。补查候选点估计改善1.09%/0.61%但CI跨0，只作事后诊断。原负结果解释收窄为原检查点集合；云消散/增厚漏报与训练过拟合并存，不认定COT本身无用。图件与报告见diagnosis_20261015/DIAGNOSIS.md。
 
 - 2026-10-15：经输入和训练诊断后，准备 attempt3。选模组/最终计分组按初始化日期哈希固定分离（四分之一/四分之三），每10更新检查一次，9臂相同合同训练1200更新；保留attempt2。脚本已由旧训练程序独立派生并通过本地/远端swc py_compile、远端bash -n；CPU日期切分预检PASS（12个选择日期/1383行，48个计分日期/4472行，16个lead两侧均有样本）。PBS 214190.tc6000已运行于node22 GPU0，提交前slfu队列为空，提交后仅该作业；训练输出路径与SHA见preflight_attempt3.json。初始日志完成train准备332/332，已开始val准备。新结果仍属旧split四里站内部验证pilot。
+
+
+### attempt3完成：更密集选模 + 留出初始化日期计分
+
+- PBS `214190.tc6000` 已完成，`exit_status=0`，运行于 `node22` 的 `GPU0`；总用时约339.1秒。A、历史COT输运、历史+混合修正三臂×3个seed共9次训练，每臂1200更新；没有新建test载荷读取。
+- 选模与计分按初始化BJT日期确定性分组：12个日期/1383行仅用于选checkpoint，另48个日期/4472行仅用于最终计分。每10步验证；独立FP64脚本核对9组完全相同的逐行键、标签、时效及目标日，状态`PASS_INDEPENDENT_FP64_RECOMPUTE`。目标日期块配对bootstrap 10,000次。
+- 总体（+15至+240 min合并）A RMSE 158.76 W/m²；历史输运COT 167.22，较A增加8.46 W/m²（RMSE增加5.33%，95%日期块CI [+2.55,+15.49]）；混合修正COT 166.79，增加8.04 W/m²（RMSE增加5.06%，CI [+2.35,+14.76]）。两CI均完全大于0；三seed各自的总体RMSE也均退化。+1h点估计略好但区间跨零，+2至+4h总体变差。
+- 这是旧split、单站Sili验证pilot；它比attempt2更严格隔离了选模日期与计分日期，但不是新月度划分、不是独立test，也不能推翻同期COT反演收益或证明COT物理量无用。混合臂还使用冻结SimVP辅助，不能归因成纯COT头收益。
+- 报告：`attempt3_results.md`；独立数字：`independent_score_attempt3.json`；图：`forecast_ghi_attempt3_dateheldout.png/.pdf`；日志和GPU分配：`pbs_attempt3.log`、`allocation_attempt3.csv`；所有模型输出打包：`attempt3_artifacts.tar.gz`。
+- 结论：在修正检查点选择过疏并做日期隔离后，当前已有的COT外推输入仍未改善这条GHI预报链路；因此保留负结果，不据此扩seed或改论文结论。

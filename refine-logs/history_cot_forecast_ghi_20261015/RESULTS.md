@@ -45,3 +45,15 @@
 保留负结果，不以单独+1h点估计或某seed挑选正向结论，不自动扩大网络或增加训练。若继续研究，先对现有保存预测分解站点厚云/过境错位和系统偏差，再提出独立单因素方案；当前不能在论文中写预报已提高。
 
 工程目录：/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/history_cot_forecast_ghi_20261015_v1/results_attempt2
+
+
+## attempt3：密集选模与留出初始化日期计分（2026-10-15）
+
+此轮保留旧合同及9组模型、每臂1200更新；仅把验证频率改为每10步，并将初始化日期分为选模组与独立计分组。12个选模日期只用于检查点选择；其余48个日期、4472条共同样本仅在所选checkpoint上计分一次。全部逐行预测经独立FP64复算，并用目标BJT日期块配对bootstrap 10,000次。
+
+| 方案 | A RMSE | COT RMSE | ΔRMSE（COT−A） | RMSE变化（正值=变差） | 日期块95% CI |
+|---|---:|---:|---:|---:|---:|
+| 历史COT输运 | 158.76 | 167.22 | +8.46 W/m² | +5.33% | [+2.55,+15.49] W/m² |
+| 历史+混合修正COT | 158.76 | 166.79 | +8.04 W/m² | +5.06% | [+2.35,+14.76] W/m² |
+
+结果比attempt2的全验证结果更能避免“选模时看到了计分日期”的偏差，但范围仍是旧split的四里站单站pilot，不是新月度合同或独立test。它说明这两种现有COT预报输入在该留出日期集合上没有转化为GHI预报收益；不能据此否定同期COT反演的作用，也不能把混合臂的变化归因给COT单一因素。详见`attempt3_results.md`、`independent_score_attempt3.json`及`forecast_ghi_attempt3_dateheldout.png`。
