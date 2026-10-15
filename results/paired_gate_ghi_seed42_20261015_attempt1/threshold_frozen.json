@@ -1,0 +1,321 @@
+{
+  "state": "SELECTED",
+  "threshold": 0.2935079336166382,
+  "selection_split": "train_oof",
+  "thresholds_evaluated": 2273477,
+  "feasible_thresholds": 1021090,
+  "max_cloud_pod_drop": 0.01,
+  "max_thick_pod_drop": 0.01,
+  "max_thick_csi_drop": 0.01,
+  "baseline_metrics": {
+    "state": "EVALUATED",
+    "split": "train_oof",
+    "threshold": 0.0,
+    "cloud_cot_threshold": 0.1,
+    "thick_cot_threshold": 30.0,
+    "by_station": {
+      "sili": {
+        "valid_pixels": 1961636,
+        "reference_cloud_pixels": 1457281,
+        "reference_thick_pixels": 309475,
+        "raw": {
+          "cloud": {
+            "TP": 1403818,
+            "FP": 103702,
+            "FN": 53463,
+            "TN": 400653,
+            "POD": 0.9633131839363857,
+            "FAR": 0.06878980046699215,
+            "CSI": 0.8993166485477421
+          },
+          "thick": {
+            "TP": 210834,
+            "FP": 57722,
+            "FN": 98641,
+            "TN": 1594439,
+            "POD": 0.6812634300024235,
+            "FAR": 0.21493468773738067,
+            "CSI": 0.5741713576091307
+          },
+          "COT_RMSE": 7.145151852460967,
+          "SSE": 100147785.2166751,
+          "SSE_by_CLP": {
+            "clear": 24608994.387191914,
+            "cloud": 75538790.82948318
+          }
+        },
+        "gated": {
+          "cloud": {
+            "TP": 1403818,
+            "FP": 103702,
+            "FN": 53463,
+            "TN": 400653,
+            "POD": 0.9633131839363857,
+            "FAR": 0.06878980046699215,
+            "CSI": 0.8993166485477421
+          },
+          "thick": {
+            "TP": 210834,
+            "FP": 57722,
+            "FN": 98641,
+            "TN": 1594439,
+            "POD": 0.6812634300024235,
+            "FAR": 0.21493468773738067,
+            "CSI": 0.5741713576091307
+          },
+          "COT_RMSE": 7.145151852460967,
+          "SSE": 100147785.2166751,
+          "SSE_by_CLP": {
+            "clear": 24608994.387191914,
+            "cloud": 75538790.82948318
+          }
+        },
+        "delta_gated_minus_raw": {
+          "cloud_POD": 0.0,
+          "thick_POD": 0.0,
+          "thick_CSI": 0.0
+        },
+        "guards": {
+          "support": true,
+          "cloud_POD_protected": true,
+          "thick_POD_protected": true,
+          "thick_CSI_protected": true
+        },
+        "guards_pass": true
+      },
+      "zhujia": {
+        "valid_pixels": 1960188,
+        "reference_cloud_pixels": 1220602,
+        "reference_thick_pixels": 258612,
+        "raw": {
+          "cloud": {
+            "TP": 1133022,
+            "FP": 75170,
+            "FN": 87580,
+            "TN": 664416,
+            "POD": 0.9282485199925938,
+            "FAR": 0.062216932408094075,
+            "CSI": 0.8743991998592345
+          },
+          "thick": {
+            "TP": 169428,
+            "FP": 45823,
+            "FN": 89184,
+            "TN": 1655753,
+            "POD": 0.6551436128253909,
+            "FAR": 0.21288170554376054,
+            "CSI": 0.5565325931643865
+          },
+          "COT_RMSE": 6.656400749514671,
+          "SSE": 86851364.88088976,
+          "SSE_by_CLP": {
+            "clear": 19960566.53666415,
+            "cloud": 66890798.3442256
+          }
+        },
+        "gated": {
+          "cloud": {
+            "TP": 1133022,
+            "FP": 75170,
+            "FN": 87580,
+            "TN": 664416,
+            "POD": 0.9282485199925938,
+            "FAR": 0.062216932408094075,
+            "CSI": 0.8743991998592345
+          },
+          "thick": {
+            "TP": 169428,
+            "FP": 45823,
+            "FN": 89184,
+            "TN": 1655753,
+            "POD": 0.6551436128253909,
+            "FAR": 0.21288170554376054,
+            "CSI": 0.5565325931643865
+          },
+          "COT_RMSE": 6.656400749514671,
+          "SSE": 86851364.88088976,
+          "SSE_by_CLP": {
+            "clear": 19960566.53666415,
+            "cloud": 66890798.3442256
+          }
+        },
+        "delta_gated_minus_raw": {
+          "cloud_POD": 0.0,
+          "thick_POD": 0.0,
+          "thick_CSI": 0.0
+        },
+        "guards": {
+          "support": true,
+          "cloud_POD_protected": true,
+          "thick_POD_protected": true,
+          "thick_CSI_protected": true
+        },
+        "guards_pass": true
+      }
+    },
+    "station_equal_mean": {
+      "COT_RMSE_raw": 6.900776300987819,
+      "cloud_FAR_raw": 0.06550336643754312,
+      "COT_RMSE_gated": 6.900776300987819,
+      "cloud_FAR_gated": 0.06550336643754312,
+      "delta_COT_RMSE": 0.0
+    },
+    "guards_pass": true
+  },
+  "selected_metrics": {
+    "state": "EVALUATED",
+    "split": "train_oof",
+    "threshold": 0.2935079336166382,
+    "cloud_cot_threshold": 0.1,
+    "thick_cot_threshold": 30.0,
+    "by_station": {
+      "sili": {
+        "valid_pixels": 1961636,
+        "reference_cloud_pixels": 1457281,
+        "reference_thick_pixels": 309475,
+        "raw": {
+          "cloud": {
+            "TP": 1403818,
+            "FP": 103702,
+            "FN": 53463,
+            "TN": 400653,
+            "POD": 0.9633131839363857,
+            "FAR": 0.06878980046699215,
+            "CSI": 0.8993166485477421
+          },
+          "thick": {
+            "TP": 210834,
+            "FP": 57722,
+            "FN": 98641,
+            "TN": 1594439,
+            "POD": 0.6812634300024235,
+            "FAR": 0.21493468773738067,
+            "CSI": 0.5741713576091307
+          },
+          "COT_RMSE": 7.145151852460967,
+          "SSE": 100147785.2166751,
+          "SSE_by_CLP": {
+            "clear": 24608994.387191914,
+            "cloud": 75538790.82948318
+          }
+        },
+        "gated": {
+          "cloud": {
+            "TP": 1389246,
+            "FP": 73898,
+            "FN": 68035,
+            "TN": 430457,
+            "POD": 0.9533137397660437,
+            "FAR": 0.05050630696636831,
+            "CSI": 0.9073047631922851
+          },
+          "thick": {
+            "TP": 210625,
+            "FP": 57713,
+            "FN": 98850,
+            "TN": 1594448,
+            "POD": 0.6805880927377009,
+            "FAR": 0.21507576265754386,
+            "CSI": 0.5736162401821411
+          },
+          "COT_RMSE": 7.163663048499572,
+          "SSE": 100667370.17367253,
+          "SSE_by_CLP": {
+            "clear": 24571080.456163205,
+            "cloud": 76096289.7175094
+          }
+        },
+        "delta_gated_minus_raw": {
+          "cloud_POD": -0.009999444170341931,
+          "thick_POD": -0.0006753372647225753,
+          "thick_CSI": -0.0005551174269896597
+        },
+        "guards": {
+          "support": true,
+          "cloud_POD_protected": true,
+          "thick_POD_protected": true,
+          "thick_CSI_protected": true
+        },
+        "guards_pass": true
+      },
+      "zhujia": {
+        "valid_pixels": 1960188,
+        "reference_cloud_pixels": 1220602,
+        "reference_thick_pixels": 258612,
+        "raw": {
+          "cloud": {
+            "TP": 1133022,
+            "FP": 75170,
+            "FN": 87580,
+            "TN": 664416,
+            "POD": 0.9282485199925938,
+            "FAR": 0.062216932408094075,
+            "CSI": 0.8743991998592345
+          },
+          "thick": {
+            "TP": 169428,
+            "FP": 45823,
+            "FN": 89184,
+            "TN": 1655753,
+            "POD": 0.6551436128253909,
+            "FAR": 0.21288170554376054,
+            "CSI": 0.5565325931643865
+          },
+          "COT_RMSE": 6.656400749514671,
+          "SSE": 86851364.88088976,
+          "SSE_by_CLP": {
+            "clear": 19960566.53666415,
+            "cloud": 66890798.3442256
+          }
+        },
+        "gated": {
+          "cloud": {
+            "TP": 1127297,
+            "FP": 63627,
+            "FN": 93305,
+            "TN": 675959,
+            "POD": 0.9235582114399288,
+            "FAR": 0.05342658305651746,
+            "CSI": 0.8778006103272858
+          },
+          "thick": {
+            "TP": 168656,
+            "FP": 45749,
+            "FN": 89956,
+            "TN": 1655827,
+            "POD": 0.6521584458571141,
+            "FAR": 0.21337655371843006,
+            "CSI": 0.5541314425961277
+          },
+          "COT_RMSE": 6.736189944769377,
+          "SSE": 88945990.48107837,
+          "SSE_by_CLP": {
+            "clear": 19944841.455341294,
+            "cloud": 69001149.02573705
+          }
+        },
+        "delta_gated_minus_raw": {
+          "cloud_POD": -0.004690308552665057,
+          "thick_POD": -0.0029851669682767756,
+          "thick_CSI": -0.0024011505682588474
+        },
+        "guards": {
+          "support": true,
+          "cloud_POD_protected": true,
+          "thick_POD_protected": true,
+          "thick_CSI_protected": true
+        },
+        "guards_pass": true
+      }
+    },
+    "station_equal_mean": {
+      "COT_RMSE_raw": 6.900776300987819,
+      "cloud_FAR_raw": 0.06550336643754312,
+      "COT_RMSE_gated": 6.9499264966344745,
+      "cloud_FAR_gated": 0.05196644501144289,
+      "delta_COT_RMSE": 0.04915019564665535
+    },
+    "guards_pass": true
+  },
+  "reasons": []
+}

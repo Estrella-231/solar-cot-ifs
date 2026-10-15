@@ -1,0 +1,125 @@
+{
+  "state": "INDEPENDENT_VALIDATION_RECOMPUTE_COMPLETE",
+  "experiment": "paired raw COT vs conservative-gate COT, seed42",
+  "validation_only": true,
+  "test_payload_opened": false,
+  "sample_key_and_label_match": true,
+  "shared_target_dates_bjt": [
+    "2024-04-19",
+    "2024-04-20",
+    "2024-05-29",
+    "2024-05-30",
+    "2024-06-11",
+    "2024-06-12",
+    "2024-07-09",
+    "2024-07-10",
+    "2024-08-16",
+    "2024-08-17",
+    "2024-09-04",
+    "2024-10-25",
+    "2024-11-16",
+    "2024-11-17",
+    "2024-12-24",
+    "2024-12-25",
+    "2025-04-17",
+    "2025-04-18",
+    "2025-05-03",
+    "2025-05-04",
+    "2025-06-15",
+    "2025-06-16",
+    "2025-07-08",
+    "2025-07-09",
+    "2025-08-21",
+    "2025-08-22",
+    "2025-11-05",
+    "2025-11-06",
+    "2025-12-02",
+    "2025-12-03",
+    "2026-01-03",
+    "2026-01-04",
+    "2026-02-20",
+    "2026-02-21",
+    "2026-03-01",
+    "2026-03-02",
+    "2026-04-20",
+    "2026-04-21",
+    "2026-05-05",
+    "2026-05-06",
+    "2026-06-24",
+    "2026-06-25"
+  ],
+  "shared_target_date_count": 42,
+  "station_target_date_counts": {
+    "sili": 44,
+    "zhujia": 50
+  },
+  "stations": {
+    "sili": {
+      "raw": {
+        "n": 2128,
+        "rmse_wm2": 132.63908151356142,
+        "mae_wm2": 73.45443741578818,
+        "bias_wm2": -0.36404469042285664
+      },
+      "gate": {
+        "n": 2128,
+        "rmse_wm2": 132.71563181025184,
+        "mae_wm2": 73.52651239859318,
+        "bias_wm2": -0.26631056378854073
+      },
+      "delta_gate_minus_raw": {
+        "rmse_wm2": 0.07655029669041369,
+        "mae_wm2": 0.07207498280500602,
+        "bias_wm2": 0.09773412663431591
+      }
+    },
+    "zhujia": {
+      "raw": {
+        "n": 2351,
+        "rmse_wm2": 106.32509728470937,
+        "mae_wm2": 72.90687306165988,
+        "bias_wm2": -0.6264031345327887
+      },
+      "gate": {
+        "n": 2351,
+        "rmse_wm2": 106.90176985010719,
+        "mae_wm2": 73.43055423755577,
+        "bias_wm2": -0.07601599933730642
+      },
+      "delta_gate_minus_raw": {
+        "rmse_wm2": 0.5766725653978142,
+        "mae_wm2": 0.5236811758958879,
+        "bias_wm2": 0.5503871351954823
+      }
+    }
+  },
+  "equal_station_mean_rmse_wm2": {
+    "raw": 119.48208939913539,
+    "gate": 119.8087008301795
+  },
+  "equal_station_delta_gate_minus_raw_wm2": 0.32661143104411394,
+  "date_cluster_bootstrap": {
+    "draws": 2000,
+    "seed": 20261015,
+    "statistic": "equal-station mean of paired RMSE(gate)-RMSE(raw); within each station, resample its BJT target dates with replacement and use identical sampled dates for both arms",
+    "ci95_wm2": [
+      -0.042611785474560016,
+      0.7509583832900484
+    ],
+    "bootstrap_mean_wm2": 0.32945082417603794
+  },
+  "two_consecutive_date_block_sensitivity": {
+    "draws": 2000,
+    "seed": 20261015,
+    "statistic": "equal-station mean of paired RMSE(gate)-RMSE(raw); within each station, resample adjacent BJT date pairs and use identical sampled dates for both arms",
+    "ci95_wm2": [
+      -0.05097873135888786,
+      0.5279781812270073
+    ],
+    "bootstrap_mean_wm2": 0.2403627961391678,
+    "adjacent_date_pair_count_by_station": {
+      "sili": 22,
+      "zhujia": 24
+    }
+  }
+}
