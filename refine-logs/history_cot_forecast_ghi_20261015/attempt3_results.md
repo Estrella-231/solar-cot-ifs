@@ -20,10 +20,10 @@ Status: PASS_INDEPENDENT_FP64_RECOMPUTE. Scope: old-contract Sili validation pil
 
 ## Protocol and interpretation
 
-- Nine runs: three seeds and three arms; each run used 1200 updates, with data order, initialization, optimizer, and all architecture inputs paired. Validation was checked every 10 updates.
+- PBS 214190.tc6000 ran on node22 GPU0 at the Zhejiang Normal University college server (not Fudan); exit_status=0. Nine runs: three seeds and three arms; each run used 1200 updates, with data order, initialization, optimizer, and all architecture inputs paired. Validation was checked every 10 updates.
 - Sixty initialization dates were deterministically split by the frozen SHA256 rule into 12 checkpoint-selection dates (1383 rows) and 48 scoring dates (4472 rows). Selection used only the first group; scoring was performed once on the second.
 - Overall pooled RMSE increased 5.33% for transport COT and 5.06% for hybrid COT; both date-block confidence intervals for the RMSE difference are above zero. The +1 h point estimates are slightly favorable but uncertain; later leads are generally worse.
-- This improves protection against checkpoint-selection overfitting relative to the earlier sparse-checkpoint run, but remains an old-split, single-station exploratory pilot, not the paper-wide two-station result. The hybrid arm also uses frozen SimVP auxiliary forecasts and is not a pure COT-only head.
+- An earlier 1.09%/0.61% point-estimate improvement came from post-hoc checkpoint inspection on the same validation dates, with intervals crossing zero; it was not independent held-out evidence. This attempt improves protection against checkpoint-selection overfitting relative to the earlier sparse-checkpoint run, but remains an old-split, single-station exploratory pilot, not the paper-wide two-station result. The hybrid arm also uses frozen SimVP auxiliary forecasts and is not a pure COT-only head.
 - The result says these forecast-COT inputs did not improve GHI on this held-out subset. It does not show that COT itself lacks value in same-time irradiance retrieval. Forecast-COT evolution error and GHI-head generalization are candidate explanations, not isolated causes.
 
 Recompute script: `independent_score_attempt3.py`; figure: `forecast_ghi_attempt3_dateheldout.png`.
