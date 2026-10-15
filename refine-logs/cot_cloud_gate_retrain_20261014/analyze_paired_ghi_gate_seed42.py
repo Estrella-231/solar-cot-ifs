@@ -17,8 +17,8 @@ N_BOOT = 2000
 RNG_SEED = 20261015
 
 
-def load(station: str, arm: str) -> dict[str, np.ndarray]:
-    path = RUN / station / arm / "val_keys_truth.npz"
+def load(station: str) -> dict[str, np.ndarray]:
+    path = RUN / station / "paired_validation_predictions.npz"
     with np.load(path, allow_pickle=False) as z:
         return {k: z[k].copy() for k in z.files}
 
@@ -34,28 +34,25 @@ def metrics(y: np.ndarray, p: np.ndarray) -> dict[str, float]:
 
 
 def main() -> None:
-    data: dict[str, dict[str, dict[str, np.ndarray]]] = {}
+    pair_audit = json.loads((RUN / "paired_pack_audit.json").read_text(encoding="utf-8"))
+    training = json.loads((RUN / "pair_training_contract.json").read_text(encoding="utf-8"))
+    if pair_audit.get("state") != "PASS_PAIRED_RAW_GATE_PACKS" or pair_audit.get("test_payloads_read") != 0:
+        raise ValueError("raw/gate pack audit failed or test data was read")
+    if training.get("test_payload_opened") is not False:
+        raise ValueError("training contract does not certify test closure")
+    data: dict[str, dict[str, np.ndarray]] = {}
     date_sets = []
     station_date_counts = {}
     for station in STATIONS:
-        data[station] = {arm: load(station, arm) for arm in ("raw", "gate")}
-        raw, gate = data[station]["raw"], data[station]["gate"]
-        for key in ("station", "target_time_utc", "target_time_bjt", "ghi", "clear"):
-            if not np.array_equal(raw[key], gate[key]):
-                raise ValueError(f"paired key/label mismatch: {station}:{key}")
-        dates = np.asarray([str(x)[:10] for x in raw["target_time_bjt"]])
+        data[station] = load(station)
+        z = data[station]
+        dates = np.asarray([str(x)[:10] for x in z["target_time_bjt"]])
         station_dates = set(dates.tolist())
         date_sets.append(station_dates)
         station_date_counts[station] = len(station_dates)
-        data[station]["dates"] = dates
-        np.savez_compressed(
-            RUN / station / "paired_validation_predictions.npz",
-            target_time_utc=raw["target_time_utc"],
-            target_time_bjt=raw["target_time_bjt"],
-            ghi=raw["ghi"],
-            raw_prediction_ghi_wm2=raw["prediction_ghi_wm2"],
-            gate_prediction_ghi_wm2=gate["prediction_ghi_wm2"],
-        )
+        z["dates"] = dates
+        if not (len(z["ghi"]) == len(z["raw_prediction_ghi_wm2"]) == len(z["gate_prediction_ghi_wm2"])):
+            raise ValueError(f"paired prediction length mismatch: {station}")
     shared_dates = sorted(set.intersection(*date_sets))
     if len(shared_dates) < 3:
         raise ValueError(f"insufficient shared target dates: {len(shared_dates)}")
@@ -64,20 +61,20 @@ def main() -> None:
     for station in STATIONS:
         point[station] = {}
         for arm in ("raw", "gate"):
-            z = data[station][arm]
-            point[station][arm] = metrics(z["ghi"], z["prediction_ghi_wm2"])
+            z = data[station]
+            point[station][arm] = metrics(z["ghi"], z[f"{arm}_prediction_ghi_wm2"])
         point[station]["delta_gate_minus_raw"] = {
             key: point[station]["gate"][key] - point[station]["raw"][key]
             for key in ("rmse_wm2", "mae_wm2", "bias_wm2")
         }
 
     def date_rmse(station: str, arm: str, sampled: list[str]) -> float:
-        z = data[station][arm]
+        z = data[station]
         multiplicity = Counter(sampled)
         weights = np.asarray([multiplicity.get(d, 0) for d in data[station]["dates"]], np.float64)
         if weights.sum() <= 0:
             raise ValueError(f"bootstrap draw contains no rows for {station}")
-        error = z["prediction_ghi_wm2"].astype(np.float64) - z["ghi"].astype(np.float64)
+        error = z[f"{arm}_prediction_ghi_wm2"].astype(np.float64) - z["ghi"].astype(np.float64)
         return float(np.sqrt(np.sum(weights * error * error) / np.sum(weights)))
 
     rng = np.random.default_rng(RNG_SEED)
@@ -117,7 +114,7 @@ def main() -> None:
         "experiment": "paired raw COT vs conservative-gate COT, seed42",
         "validation_only": True,
         "test_payload_opened": False,
-        "sample_key_and_label_match": True,
+        "sample_key_and_label_match": pair_audit["state"] == "PASS_PAIRED_RAW_GATE_PACKS",
         "shared_target_dates_bjt": shared_dates,
         "shared_target_date_count": len(shared_dates),
         "station_target_date_counts": station_date_counts,
