@@ -1,46 +1,69 @@
-# 第二篇论文写作方案
+# 论文计划：COT辅助站点辐照度估计及预报应用
 
-## 论文一句话
+更新：2026-10-15。本文档组织科学论证；实验进度见[总计划](../refine-logs/cot_value_first_20261013/EXPERIMENT_PLAN.md)与[tracker](../refine-logs/cot_value_first_20261013/EXPERIMENT_TRACKER.md)。写作遵循[WRITING_REQUIREMENTS.md](WRITING_REQUIREMENTS.md)。原计划完整保存在[历史档案](planning_history/PAPER_PLAN_before_narrative_20261015.md)，不再作为当前写作提纲。
 
-固定 FY-4B/AGRI 的 SimVP 外推，研究显式云光学厚度表示在预测误差存在时的站点辐照度价值，并以四格对照检验其与 IFS 的互补。
+## 一、论文要回答什么
 
-暂定标题：**Cloud-Optical-Thickness Representations for FY-4B Solar Irradiance Nowcasting with IFS Guidance**。
-中文：**融合 IFS 的 FY-4B 辐照度短临预报：云光学厚度表示的作用**。
-标题暂不写 improves、physics-informed novel framework 或 robust；待结果与最近邻全文核验后定稿。
+**主问题：显式云光学厚度表示能否为基于多光谱卫星图像的站点GHI估计提供有用增量？**
 
-## 与第一篇的科学分工
+三个递进问题：增量在哪些云厚度/天气条件下出现？在独立训练的另一地区是否重复？当输入来自固定外推方法时，该增量保留、减弱还是消失？
 
-第一篇回答外推随机演变如何建模；第二篇回答固定外推结果如何通过云光学表示更准确地映射到站点GHI。SimVP是控制变量，COT是主检验因素，IFS是互补条件。不能用第二篇替第一篇宣称diffusion有效，也不能靠重复第一篇条件表形成独立论文。
+题目暂拟：**Cloud-optical-thickness-assisted estimation of surface solar irradiance from geostationary satellite observations**（云光学厚度辅助的静止卫星地表太阳辐照度估计）。预报部分证据齐备后再决定是否在题目加入forecasting，不预先宣称提升。
 
-## 章节结构（英文与中文相同）
+## 二、研究设计与命名
 
-| 章节 | 要回答的问题 | 必须证据 |
+湖南四里、竺家和湖北牛首、王寨、米庄，共五站；两区域独立训练、区域内日期留出评价。区域重复与零样本迁移不同。主方法采用已实现的局地COT表示，实际尺寸和结构由方法证据确定，不重新引入旧全图统计量。
+
+主要对照为 **AGRI baseline** 和 **AGRI + COT**；辅助对照为 **AGRI + auxiliary features** 与 **AGRI + retrieval features**。各组共用太阳几何。前者控制可训练头部容量，后者检查反演器隐藏表示的作用；它们不是新算法排行榜。内部A/AC/AP/AL只保留在工程映射。
+
+同期估计输入目标时刻真实AGRI及由其反演的COT。预报输入仅使用初始化时刻可获取的信息及其外推结果；真实未来输入只用于单独诊断。两类实验不能合并为同一收益。
+
+## 三、章节论证安排
+
+| 章节 | 核心问题与内容 | 所需证据 |
 |---|---|---|
-| 1 Introduction | 为何好的外推图像未必等于好的GHI，显式COT值得检验什么？ | 文献与待检验假设，避免泛泛罗列模块 |
-| 2 Related Work | COT短临、卫星/NWP耦合已经做到哪一步？ | 两篇最近邻全文对照；不得宣称首次使用COT |
-| 3 Data and Forecasting Task | 哪些站点/区间/标签，信息何时可用？ | 同M0切分；COT/IFS新覆盖；CPP检索参考属性 |
-| 4 Fixed-Backbone COT Representation | 如何从同一预测AGRI得到COT、隐特征、IFS与kt？ | 冻结S/R，4维c与同监督4维latent，GHI回算公式 |
-| 5 Experimental Protocol | 如何单独识别COT、监督、容量及IFS收益？ | 四格、AL/ALN、wide、统一样本、日期块统计 |
-| 6 Results | COT是否有用，在何种lead/云条件下有用？ | 逐样本重算结果；先主对比后误差传播/分层 |
-| 7 Discussion | 哪些收益来自显式表示，哪里受检索/外推限制？ | 同监督结果、云边增强、低太阳高度、两站范围 |
-| 8 Conclusion | 实验证据实际支持什么？ | 无证据不填写提升率、不预设结论 |
+| 1 Introduction | 为什么图像信息之外还要研究显式COT表示？已有方法与尚待回答的增量价值问题 | 聚焦多光谱估计、COT辅助估计和云属性预报文献 |
+| 2 Study regions and data | 用哪些观测、怎样对应同一站点和15分钟辐射区间？ | 五站分布、区域日期覆盖、标签/太阳几何、CPP参考覆盖 |
+| 3 Methodology | AGRI如何经过R得到COT，局地特征如何融合并输出GHI？ | 实际输入输出、R结构、局地融合、kt定义和损失；一张结构图及必要层表 |
+| 4 Experimental design | 如何公平比较表示而非训练预算和样本差异？ | 区域独立日期划分、train归一化、统一训练选模、配对样本、随机初始化、日期块区间 |
+| 5 Results | 增益大小、适用云况、跨区域重复和预报表现是什么？ | 下述五组科学比较 |
+| 6 Discussion | 这些结果说明什么、不说明什么？ | 信息冗余、参考误差、空间代表性、外推误差传播及局限 |
+| 7 Conclusions | 回答主问题，并总结应用边界 | 已完成且支持的主要结论 |
 
-## 图表（4图4表上限）
+这是目标结构；后续调整英文正文时必须同步中文对应，不能只改其中一份。
 
-- Fig.1：历史AGRI→冻结SimVP→预测AGRI→冻结R→显式COT/同监督latent→站点kt；旁接release-aware IFS，画init因果截止线。
-- Fig.2：16 lead的A/AC/AN/ACN RMSE差与CI。
-- Fig.3：R(real)与R(forecast)的COT误差随lead及厚度变化，对应GHI收益；不把oracle画成可部署方法。
-- Fig.4：稳定/转变天气与一个代表性失败日，所有模型同日同轴。
-- Table1：数据与来源、分辨率、split、样本覆盖和推理角色。
-- Table2：核心四格+校准IFS+climatology的共同样本主指标。
-- Table3：同CPP监督AL/ALN、容量匹配及显式表示的归因。
-- Table4：COT/IFS交互、分站/分时效的增量与成本。正文版紧凑，完整种子和覆盖表进补充材料。
+### Results内部顺序
 
-## 强调COT的正确写法
+1. **Overall irradiance estimation performance**：逐站、分区域比较AGRI baseline和AGRI + COT；先给总体判断及绝对/相对误差差异。五站结果未齐时保留缺项。
+2. **Sensitivity to cloud optical thickness and sky conditions**：按既定参考COT分层报告误差和样本/日期支持；结合真实连续云事件解释收益和失败。厚云更大点估计不等于已证实单调规律。
+3. **Role of the COT representation**：容量和反演隐藏特征对照，区分“此方案加入COT有效”与“COT语义是唯一原因”。与第1节合并亦可，避免冗长防御性讨论。
+4. **Consistency across independently trained regions**：检查湖南和湖北是否呈现一致或不同的条件性表现；如第1节已经充分覆盖，不再重复全部数字，只分析区域差异。
+5. **Application to short-term forecasting**：先说明COT外推的实际误差，再给相同样本和匹配训练下有无COT的GHI预报表现；按1–4小时或15分钟时效展示。固定头替换仅作误差传播诊断。负结果同样回答应用边界，不能因叙事需要隐藏。
 
-引言强调云光学状态与GHI联系；方法将COT来源、变换、空间统计和误差传递写清；结果先回答ACN对AN与同监督ALN，而非把IFS提升作为COT贡献；讨论说明CPP检索误差、散射、云边增强和同源信息限制。不要简单添加单调损失或Beer定律后自称物理一致。
+## 四、图表安排
 
-## 写作顺序与状态
+| 图表 | 用途 | 内容 |
+|---|---|---|
+| Fig.1 | 读者理解物理映射 | AGRI→COT检索→局地融合→GHI；同期与预报输入明确区分 |
+| Fig.2 | 研究范围 | 湖南/湖北五站地图与可用日期覆盖 |
+| Fig.3 | 主结果 | 各站/区域有无COT的GHI误差及配对差异 |
+| Fig.4 | 条件性作用 | COT分层误差差异、样本与日期支持 |
+| Fig.5 | 物理解释 | 真实AGRI、COT连续图与对应15分钟GHI；改善和失败案例 |
+| Fig.6 | 应用边界 | COT外推误差及有无COT的GHI时效曲线，避免混为同一指标 |
+| Table1 | 数据定义 | 站点、时期、观测间隔、训练/验证/测试划分与参考支持 |
+| Table2 | 可复现方法 | 输入、关键层/维度、训练设置及各变体唯一差异 |
+| Table3 | 表示控制 | 主方法、容量对照和反演特征对照 |
 
-现在可写任务定义、冻结外推路径、待执行实验协议和空表。先写3/4/5，再在实验完成后写6/7，最后1/2摘要/8与标题。当前 `main.tex` 与 `main_zh.md` 是结构和核心公式同步的提纲骨架，不是结果稿，也未编译为PDF。
-摘要暂用研究问题表述；没有实验数字时不能提交。服务器路径、哈希、旧错误和审稿修订仅写docs/refine-logs，不进正文。
+是否保留所有图由最终信息量决定；不以图数为目标。现有工程汇总图可以拆分，不能为复用图件而混合同期与外推证据。
+
+## 五、已有证据与待补科学问题
+
+以下为写作定位，不替代最新实验记录。湖南同期验证已有三种子、两站等权RMSE：AGRI baseline约123.980、AGRI + COT约120.240 W m⁻²，降幅3.02%。这是同期估计，不是未来预报。CPP支持的厚云子组降幅22.45%，只对应173条、25个日期；不能推广为所有厚云表现。隐藏反演特征对照尚不能支持“显式COT是唯一收益来源”。
+
+尚需补齐：湖北独立区域GHI比较；与总体样本口径对应的条件差异和真实事件图；匹配训练及选模的预报对照与COT误差传播。历史预报试验与残差变体的负结果须结合其输入和评价范围解释，不以同期结果替代，也不将不同比较的数字直接拼接。
+
+方法中已确定部分可先写；未完成结果明确占位，不推算、不编造。当前验证证据不能改名为独立测试。未来若预报收益较小，先展示对应误差证据，再讨论外推误差、检索误差及GHI输入适应，不能预定单一原因。
+
+## 六、写作交付次序
+
+先按此纲重组方法和实验设计，再写总体同期结果与条件分析；补齐区域重复和预报结果后更新摘要与结论。每次正文修改同步main.tex与main_zh.md。科学文献与措辞要求见[阅读记录](references/narrative_review_20261015/README.md)和[写作规范](WRITING_REQUIREMENTS.md)。工程路径、版本修复和作业状态留在实验记录，正文只保留支撑科学问题、复现和结论的信息。
