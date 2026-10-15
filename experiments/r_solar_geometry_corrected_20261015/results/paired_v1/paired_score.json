@@ -1,0 +1,204 @@
+{
+  "state": "PASS_INDEPENDENT_FP64_PAIRED_R_SCORE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "common_validation_rows": 1398,
+  "common_validation_pixels": 352441,
+  "unique_bjt_dates": {
+    "sili": 46,
+    "zhujia": 46
+  },
+  "primary": "equal-station mean of station RMSE; paired BJT-date cluster bootstrap",
+  "metrics": {
+    "all": {
+      "original_checkpoint": {
+        "n": 352441,
+        "rmse": 9.017799522718063,
+        "mae": 4.615449639019124,
+        "bias": 0.3458898077098024
+      },
+      "old_geometry_retrain": {
+        "n": 352441,
+        "rmse": 8.789782357242334,
+        "mae": 4.7131289243732235,
+        "bias": -0.3948281345043694
+      },
+      "corrected_geometry_retrain": {
+        "n": 352441,
+        "rmse": 8.878360398969862,
+        "mae": 4.656726782166383,
+        "bias": -0.7024758467873277
+      }
+    },
+    "by_station": {
+      "sili": {
+        "original_checkpoint": {
+          "n": 176417,
+          "rmse": 9.582868516187304,
+          "mae": 5.458570280872805,
+          "bias": 0.8501869952459354
+        },
+        "old_geometry_retrain": {
+          "n": 176417,
+          "rmse": 8.771219662709935,
+          "mae": 5.1704307865174055,
+          "bias": 0.006006264687059278
+        },
+        "corrected_geometry_retrain": {
+          "n": 176417,
+          "rmse": 9.07666080181788,
+          "mae": 5.291660362637813,
+          "bias": -0.5017300925739983
+        }
+      },
+      "zhujia": {
+        "original_checkpoint": {
+          "n": 176024,
+          "rmse": 8.413476144709422,
+          "mae": 3.770446603785858,
+          "bias": -0.15953329898906835
+        },
+        "old_geometry_retrain": {
+          "n": 176024,
+          "rmse": 8.808347245770063,
+          "mae": 4.25480606718392,
+          "bias": -0.7965574566544984
+        },
+        "corrected_geometry_retrain": {
+          "n": 176024,
+          "rmse": 8.675070380867844,
+          "mae": 4.020375617177356,
+          "bias": -0.9036697960275036
+        }
+      }
+    },
+    "by_reference_bin": {
+      "nearzero_[0,0.1)": {
+        "original_checkpoint": {
+          "n": 126856,
+          "rmse": 10.612007087854115,
+          "mae": 3.614241440342187,
+          "bias": 3.612968383687469
+        },
+        "old_geometry_retrain": {
+          "n": 126856,
+          "rmse": 8.804780534926907,
+          "mae": 3.147473200263371,
+          "bias": 3.1463184062118548
+        },
+        "corrected_geometry_retrain": {
+          "n": 126856,
+          "rmse": 9.512800524229135,
+          "mae": 3.297627861403798,
+          "bias": 3.2967086970931216
+        }
+      },
+      "thin_[0.1,5)": {
+        "original_checkpoint": {
+          "n": 49850,
+          "rmse": 1.6458252407879208,
+          "mae": 1.1765551504292302,
+          "bias": -0.3753185514893503
+        },
+        "old_geometry_retrain": {
+          "n": 49850,
+          "rmse": 1.641537952118737,
+          "mae": 1.157828422943049,
+          "bias": 0.01367385314616075
+        },
+        "corrected_geometry_retrain": {
+          "n": 49850,
+          "rmse": 1.557913849438192,
+          "mae": 1.1212080693506623,
+          "bias": -0.4772896077594581
+        }
+      },
+      "moderate_[5,30)": {
+        "original_checkpoint": {
+          "n": 125359,
+          "rmse": 6.053545417662857,
+          "mae": 4.341293112187544,
+          "bias": 0.8590798108806819
+        },
+        "old_geometry_retrain": {
+          "n": 125359,
+          "rmse": 5.755879807004823,
+          "mae": 4.160639038236907,
+          "bias": 0.7175630772558689
+        },
+        "corrected_geometry_retrain": {
+          "n": 125359,
+          "rmse": 5.4264709860372555,
+          "mae": 3.984229592900383,
+          "bias": -0.11225548207696896
+        }
+      },
+      "thick_[30,100]": {
+        "original_checkpoint": {
+          "n": 50376,
+          "rmse": 13.837660431858612,
+          "mae": 11.22189210278457,
+          "bias": -8.444591150199589
+        },
+        "old_geometry_retrain": {
+          "n": 50376,
+          "rmse": 16.13068970599343,
+          "mae": 13.54876756519696,
+          "bias": -12.48446922487534
+        },
+        "corrected_geometry_retrain": {
+          "n": 50376,
+          "rmse": 15.745495012608506,
+          "mae": 13.251276481930532,
+          "bias": -12.46473412878199
+        }
+      }
+    },
+    "paired_rmse_deltas": {}
+  },
+  "paired_rmse_deltas": {
+    "corrected_geometry_retrain_minus_old_geometry_retrain": {
+      "by_station": {
+        "sili": 0.3054411391079448,
+        "zhujia": -0.13327686490221957
+      },
+      "equal_station_mean": 0.08608213710286261,
+      "date_cluster_bootstrap_95pct": [
+        -0.2823427646257493,
+        0.4380168556694872
+      ],
+      "bootstrap_replicates": 2000
+    },
+    "corrected_geometry_retrain_minus_original_checkpoint": {
+      "by_station": {
+        "sili": -0.5062077143694239,
+        "zhujia": 0.26159423615842137
+      },
+      "equal_station_mean": -0.12230673910550127,
+      "date_cluster_bootstrap_95pct": [
+        -0.5822946117933702,
+        0.386194848633586
+      ],
+      "bootstrap_replicates": 2000
+    },
+    "old_geometry_retrain_minus_original_checkpoint": {
+      "by_station": {
+        "sili": -0.8116488534773687,
+        "zhujia": 0.39487110106064094
+      },
+      "equal_station_mean": -0.20838887620836388,
+      "date_cluster_bootstrap_95pct": [
+        -0.9625216986604944,
+        0.5806568176598327
+      ],
+      "bootstrap_replicates": 2000
+    }
+  },
+  "files": {
+    "original_checkpoint": "58ada8d2a4d44bba7909ba441624aa36a1f2a3b7a00e6385d2e0b651a9005a1a",
+    "old_geometry_retrain": "03051989c23d50b518178b42a7f9bff07098ff2a4053f51906ae029118decc0a",
+    "corrected_geometry_retrain": "2fb6db2f63e0a739dea08b232a679f20677b0b287cbd22184d4fb024c5db22dd"
+  },
+  "pack_audit_sha256": "83a888bb9b609defd477627c722d7606e95364820997e3f8e5fa372deedf8168",
+  "test_payloads_read": 0,
+  "claim_scope": "CPP-supported daytime retrieval-reference validation on the old/new geometry common pixel set"
+}

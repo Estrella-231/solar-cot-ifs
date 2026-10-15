@@ -1,0 +1,60 @@
+{
+  "state": "PASS_PAIRED_GEOMETRY_COMMON_SUPPORT",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "source_pack_status_sha256": "1b15f3e22a778f6b4d9c1546cc2d8381f14faae6c95b1350a937731efad2928b",
+  "source_pack_arrays": {
+    "x_raw.npy": "06d4606623c1495d63ab015d778b5691d6f0c072e58fad79c6e559c84d450a31",
+    "cot.npy": "43dab24e9b6c5cf9b9db09f6bce16b3dede60750b312c6e808b192ec265fb63c",
+    "mask.npy": "2614ca0b589ff3e3367f08f0e8f8ed8067226f80446f4e27f3478d5c675c340f",
+    "rows.csv": "b270713590f6af793b53df73d27e01f3f62ad8d7e60bb9a8eaace5c43fb2ebcb"
+  },
+  "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "grid_static_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+  "corrected_formula": "equation_of_time=4*rad2deg(trigonometric_expression)",
+  "corrected_geometry_source_sha256": "04779daf8cf1f7ca06b5119b603dfe51234fb9913149f617b3d37deeda4376a5",
+  "common_support": "source CPP/input-valid mask AND old-R mask AND corrected day_mask>0.5 AND corrected cosSOZ>cos80",
+  "counts": {
+    "train": {
+      "rows": 15414,
+      "old_pixels": 3921824,
+      "common_pixels": 3886399,
+      "excluded_by_common_geometry": 35425,
+      "sili": {
+        "rows": 7726,
+        "old_pixels": 1961636,
+        "common_pixels": 1941075
+      },
+      "zhujia": {
+        "rows": 7688,
+        "old_pixels": 1960188,
+        "common_pixels": 1945324
+      }
+    },
+    "val": {
+      "rows": 1398,
+      "old_pixels": 356169,
+      "common_pixels": 352441,
+      "excluded_by_common_geometry": 3728,
+      "sili": {
+        "rows": 700,
+        "old_pixels": 178019,
+        "common_pixels": 176417
+      },
+      "zhujia": {
+        "rows": 698,
+        "old_pixels": 178150,
+        "common_pixels": 176024
+      }
+    }
+  },
+  "trainval_rows": 16812,
+  "test_payloads_read": 0,
+  "hashes": {
+    "x_old_geometry.npy": "06d4606623c1495d63ab015d778b5691d6f0c072e58fad79c6e559c84d450a31",
+    "x_corrected_geometry.npy": "981a23b1f5104a7ff89c5d6eb77ca39637def02192079d4427d85bd5ef149a60",
+    "cot.npy": "43dab24e9b6c5cf9b9db09f6bce16b3dede60750b312c6e808b192ec265fb63c",
+    "common_mask.npy": "f4932f30feb335eec16b8c1ec30ba550555f2c646153e2e12b503745c95de3d2",
+    "rows_supervised.csv": "d6b50b78a85e879c341b79c804c2914128dc726b10b47944c2f5009df354355f",
+    "geometry_support.csv": "f4298a276c1366d8fdacedd575a297076959bfbc85c88aa6a033afad2a54e9bb"
+  }
+}

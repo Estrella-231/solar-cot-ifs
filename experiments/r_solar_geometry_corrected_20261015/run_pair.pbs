@@ -1,0 +1,46 @@
+#!/bin/bash
+#PBS -N R_solar_geom_pair
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/r_solar_geometry_corrected_20261015/logs/pair.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export LD_LIBRARY_PATH=/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$ROOT/experiments/monthly_R_station16_20261013_v1
+EXP=$ROOT/experiments/r_solar_geometry_corrected_20261015
+PACK=$EXP/data/paired_common_v1
+OUT=$EXP/results/paired_v1
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -f "$BASE/data/pack_trainval_v1/pack_status.json"
+test "$(sha256sum "$BASE/results/seed42_v1/best.pt" | cut -d' ' -f1)" = "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001"
+test ! -e "$PACK/pack_audit.json"
+test ! -e "$OUT/old/status.json"
+test ! -e "$OUT/corrected/status.json"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/build_paired_geometry_pack.py" \
+  --pack "$BASE/data/pack_trainval_v1" \
+  --candidates "$BASE/input/target_candidates_train_val.csv" \
+  --grid-static /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/grid_static.npz \
+  --output "$PACK"
+python - "$PACK/pack_audit.json" <<'PY'
+import json,sys
+j=json.load(open(sys.argv[1])); assert j['state']=='PASS_PAIRED_GEOMETRY_COMMON_SUPPORT'
+assert j['test_payloads_read']==0 and j['counts']['train']['common_pixels']>0 and j['counts']['val']['common_pixels']>0
+print('COMMON_SUPPORT_GATE_PASS',j['counts'])
+PY
+python -u "$EXP/train_paired_r.py" \
+  --pack "$PACK" --output "$OUT" \
+  --original-checkpoint "$BASE/results/seed42_v1/best.pt" \
+  --original-normalization "$BASE/results/seed42_v1/normalization.json" \
+  --seed 42 --epochs 50 --batch 1284
+python -u "$EXP/score_paired_r.py" --pack "$PACK" --runs "$OUT" --output "$OUT/paired_score.json" --bootstrap 2000
+test "$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["state"])' "$OUT/paired_score.json")" = "PASS_INDEPENDENT_FP64_PAIRED_R_SCORE"
+echo PAIRED_CORRECTED_SOLAR_GEOMETRY_R_COMPLETE

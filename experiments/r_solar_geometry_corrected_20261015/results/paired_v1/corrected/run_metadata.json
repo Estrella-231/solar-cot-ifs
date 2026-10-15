@@ -1,0 +1,23 @@
+{
+  "experiment": "r_solar_geometry_corrected_20261015",
+  "arm": "corrected",
+  "seed": 42,
+  "initialization": "fresh random",
+  "initialization_state_sha256": "b09c261243832c0644f55cd313806b205edd0413e036b9382dc88f1d5d069196",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "input": "13 AGRI + cosSOZ + cosRAA + day_mask",
+  "geometry": "EOT radians converted to degrees",
+  "train_rows": 15414,
+  "val_rows": 1398,
+  "train_common_pixels": 3886399,
+  "val_common_pixels": 352441,
+  "batch": 1284,
+  "epochs_max": 50,
+  "optimizer": "AdamW lr=1e-3 wd=1e-4",
+  "loss": "finite-safe masked Huber(log1p(CPP COT), delta=.1)",
+  "normalization_sha256": "a1fcb4666082d70e213ef3cd62d546c1cd162774a8fdf4583483a00019696869",
+  "pack_audit_sha256": "83a888bb9b609defd477627c722d7606e95364820997e3f8e5fa372deedf8168",
+  "test_payloads_read": 0,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "pbs_job_id": "214255.tc6000"
+}
