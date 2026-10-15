@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\pending}[1]{\textit{[Pending: #1]}}
+\title{Cloud Optical Thickness for Satellite Irradiance Estimation and Short-Term Forecasting}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Cloud optical thickness (COT) provides an explicit cloud-property representation that can complement multispectral imagery when estimating surface irradiance. We investigate its incremental value for station-level global horizontal irradiance (GHI), with synchronous satellite estimation as the primary task and short-term forecasting as an application. A cloud-product-supervised retriever generates a COT field from AGRI observations. A compact GHI network combines aligned multispectral, solar-geometric, and COT features within a $3\times3$ station neighbourhood. Matched imagery-only, additional-capacity, and retrieval-feature controls distinguish the practical input gain from possible explanations of that gain. On the completed Hunan validation cohort, the three-seed, station-equal RMSE decreased from 123.980 to 120.240 W m$^{-2}$, a reduction of 3.740 W m$^{-2}$ or 3.02\%. The shared-date-block 95\% interval for AC$-$A was $[-6.180,-1.597]$ W m$^{-2}$. A retrieval-feature control also improved performance, so the benefit is not uniquely attributable to explicit COT semantics. The study further examines optical-thickness-dependent gains and propagation of forecast-input errors. \pending{Hubei regional replication and matched trained-head GHI forecast results.}
+\end{abstract}
+\section{Introduction}
+Satellite irradiance estimation connects cloud observations to the radiation received at a ground station. A multispectral model can learn this mapping directly, but its inputs describe spectral responses rather than a single explicit measure of cloud optical thickness. This motivates a practical question: does adding a retrieved COT representation improve GHI estimation when the original imagery and solar geometry are already available?
+
+We examine COT as an additional representation learned under cloud-product supervision. Both the imagery-only and COT-augmented models receive the same local AGRI observations and deterministic geometry. The latter also receives a co-registered COT field produced by a separately trained, frozen retriever. COT therefore adds a supervised representation of the available imagery rather than an independent satellite observation. Its usefulness is assessed by the reduction in GHI error under matched data and training conditions.
+
+The primary analysis measures the overall gain and its variation across cloud optical thickness, stations, and seasons. A capacity control tests whether a comparably sized imagery-derived branch provides the same benefit. A hidden-feature control from the COT retriever examines whether the result is specific to the explicit COT output or is shared by the retriever's learned representation.
+
+The forecasting application asks how much of the estimation benefit survives when future imagery and COT must be predicted. We hold the extrapolation method fixed and distinguish COT forecast accuracy from downstream GHI accuracy. This design allows a smaller forecasting gain to be investigated through upstream prediction errors and downstream input sensitivity, without assuming in advance that either task must improve by the same percentage.
+\section{Related Work}
+The methodological context comprises clear-sky normalization, supervised cloud-property representations, and satellite image extrapolation. The Ineichen--Perez clear-sky formulation supplies the deterministic irradiance scale used in the station target \cite{ineichen}. The forecasting application adopts a fixed SimVP-family image predictor \cite{simvp,simvpv2}; changes to that predictor are not a factor in the COT comparison. Comparisons with cloud-property forecasting studies require matched reference products, units, forecast horizons, and spatial support.
+
+\pending{Complete the focused review of COT-assisted satellite irradiance estimation and cloud-property forecasting before submission.}
+\section{Data and Tasks}
+\subsection{Regional design and observations}
+The completed experiment uses Sili and Zhujia in Hunan. An independent regional replication is designed for Niushou, Wangzhai, and Mizhuang in Hubei. Each region has its own date partition, normalization, retriever, and station models; model weights are not transferred between regions. This evaluates repetition of the method under regional training rather than zero-shot geographic transfer. Hubei results and its final data coverage remain to be completed.
+
+The satellite input contains thirteen AGRI channels, C01--C06 and C09--C15. Physical channel values are taken from the region-specific geolocated grid. Station coordinates identify the relevant grid cell; the same spatial indices are used for AGRI, geometry, and COT. The COT retriever uses a $16\times16$ input patch, while the GHI network reads the central $3\times3$ neighbourhood. These are distinct spatial supports: the retrieved local COT can carry information from the wider retrieval patch.
+
+CPP supplies COT and cloud-phase labels for supervised retrieval and reference-based diagnostics. It is a retrieval product with its own uncertainty. Missing or invalid CPP values are excluded from reference-dependent calculations, whereas the main paired GHI cohort is defined without requiring CPP availability at every target.
+
+\subsection{Interval targets and solar geometry}
+Let $\tau$ denote the end of a 15-minute delivery interval. The Hunan observations are five-minute interval means stamped at their endpoints, so
+\begin{equation}
+\bar G_{s,\tau}=\frac{1}{3}\sum_{j=0}^{2}G^{(5)}_{s,\tau-5j\,\mathrm{min}},
+\qquad
+\bar G^{cs}_{s,\tau}\simeq
+\frac{1}{3}\sum_{j=0}^{2}G^{cs}_{s,\tau-(2.5+5j)\,\mathrm{min}} .
+\label{eq:interval}
+\end{equation}
+The clear-sky term uses the Ineichen--Perez model implemented in pvlib, sampled at the midpoints of the three five-minute intervals \cite{ineichen,pvlibclear}. The resulting target and reconstruction are
+\begin{equation}
+k_{s,\tau}=\bar G_{s,\tau}/\bar G^{cs}_{s,\tau},
+\qquad
+\widehat G_{s,\tau}=\widehat k_{s,\tau}\bar G^{cs}_{s,\tau}.
+\label{eq:kt}
+\end{equation}
+The clear-sky index is not capped at one. Ground irradiance is used only as a training target or evaluation label. The main cohort requires complete nonnegative GHI records, a positive interval clear-sky estimate, and solar zenith below $90^\circ$ at the station's nominal target time. A sensitivity calculation uses $\bar G^{cs}\geq100$ W m$^{-2}$. Native observation semantics for Hubei must be confirmed before applying the same interval definition.
+
+The spatial geometry features are the cosine of solar zenith, $\cos\theta_0$, and the cosine of the relative solar--viewing azimuth, $\cos\phi_r$. The retriever additionally uses a daytime flag. Geometry is attached to the satellite frame, whereas GHI represents the full preceding interval. Thus, synchronous estimation denotes an association with the same nominal satellite target, not a measurement of instantaneous GHI at the scan time.
+
+\subsection{Temporal partitions and sample definitions}
+The Hunan partition reserves separate consecutive two-day validation and test blocks within each sufficiently covered month, with a one-day buffer on either side of each block. Remaining dates are used for training; months with fewer than twenty eligible days are training-only. Normalization uses training dates alone. Retrieval training and GHI evaluation follow the same regional date mapping.
+
+Synchronous examples are unique $(s,\tau)$ pairs. The completed GHI cohort contains 50,458 training and 4,479 validation examples, with 2,128 validation examples at Sili and 2,351 at Zhujia. Forecast examples additionally carry initialization time $t$: eight observed frames ending at $t$ predict targets $\tau_k=t+k\Delta$, for $k=1,\ldots,16$ and $\Delta=15$ minutes. Their history and target frames must all belong to the same partition. Sample support is reported separately for these tasks because a valid synchronous example need not belong to a complete forecast sequence. All numerical results currently reported below are validation results.
+\section{COT Representation and Irradiance Mapping}
+\subsection{COT retrieval and local representation}
+For an observed frame $A^{obs}_\tau$, the retriever estimates a nonnegative log-COT field,
+\begin{equation}
+L^{obs}_\tau=R_\theta(A^{obs}_\tau,g_\tau),\qquad
+C^{obs}_\tau=\exp(L^{obs}_\tau)-1 .
+\label{eq:retrieval}
+\end{equation}
+The input to $R_\theta$ has shape $16\times16\times16$ in channel--row--column order: thirteen AGRI channels and three geometric/daytime channels. The model is a two-downsampling-level U-Net with feature widths 32, 64, and 128 at spatial sizes $16\times16$, $8\times8$, and $4\times4$. Each block contains two $3\times3$ bias-free convolutions, each followed by batch normalization and SiLU. Two max-pooling operations downsample the encoder features. Kernel-2, stride-2 transposed convolutions restore the resolution; the matching encoder features are concatenated at each decoder stage, whose output widths are 64 and 32. A final $1\times1$ convolution maps 32 features to one channel, and softplus enforces $L\geq0$.
+
+The Hunan retriever is initialized randomly and trained against $\log(1+C^{CPP})$. Its loss averages the Huber penalty with transition $\delta=0.1$ over valid pixels,
+\begin{equation}
+\mathcal L_R=
+\frac{\sum_{i,p}m_{i,p}\,
+\rho_{0.1}\!\left(L_{i,p}-\log(1+C^{CPP}_{i,p})\right)}
+{\sum_{i,p}m_{i,p}},
+\label{eq:retrieval-loss}
+\end{equation}
+where $p$ indexes a pixel and the denominator is required to be positive. The mask retains finite CPP COT in $[0,100]$, accepted CPP phase classes 0--2, finite geometry, valid measurements in all thirteen channels, and daytime pixels with solar zenith below $80^\circ$. Valid zero-COT references participate in training. Retrieval-channel normalization is fitted to valid training support, with the binary daytime channel left unchanged. The Hunan retriever uses seed 42, batch size 1,284, AdamW with learning rate $10^{-3}$ and weight decay $10^{-4}$, gradient clipping at 5, and mixed-precision training. Training runs for at most 50 epochs with patience 8 on validation masked Huber loss. The selected retriever is frozen before GHI training; the subsequent three-seed experiments repeat GHI-head training, not retriever training.
+
+Let $\mathcal P_s$ select the station's central $3\times3$ field. The GHI inputs are standardized using fixed training statistics:
+\begin{equation}
+X_{s,\tau,c}=\frac{\mathcal P_s A^{obs}_{\tau,c}-\mu_c}{\sigma_c},
+\qquad
+Z_{s,\tau}=\frac{\mathcal P_s L^{obs}_\tau-\mu_L}{\sigma_L}.
+\label{eq:standardization}
+\end{equation}
+The COT statistics are computed over training examples and local pixels, rather than separately for each image. This retains variation in COT magnitude between samples. Invalid AGRI entries are assigned zero after standardization. The two GHI geometry channels retain their physical cosine values. The local COT input is a nine-pixel field; it is not replaced by a spatial mean or a percentile.
+
+\subsection{Station GHI network}
+Each synchronous GHI example contains one target-time frame. The common imagery branch concatenates thirteen AGRI channels with two geometry channels and applies two $1\times1$ convolutions:
+\begin{equation}
+F_A=\sigma\!\left(W_{A,2}*
+\sigma\!\left(W_{A,1}*[X,g]\right)\right)
+\in\mathbb R^{32\times3\times3},
+\label{eq:agri-encoder}
+\end{equation}
+where $\sigma$ is SiLU and $*$ denotes convolution. The channel widths are $15\rightarrow32\rightarrow32$. The AC model adds a separate COT branch,
+\begin{equation}
+F_C=\sigma(W_C*Z)\in\mathbb R^{4\times3\times3},
+\qquad
+v=\operatorname{vec}([F_A,F_C])\in\mathbb R^{324}.
+\label{eq:cot-encoder}
+\end{equation}
+The vectorization preserves a fixed pixel order. A multilayer perceptron with widths $324\rightarrow64\rightarrow32\rightarrow1$, SiLU in the hidden layers, and softplus at the output produces $\widehat k$. Spatial positions can contribute differently through this readout; the architecture alone does not establish that cloud-motion or texture information explains its measured gain.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Implemented synchronous station heads. All branches preserve the $3\times3$ layout until vectorization. The parameter counts include only trainable GHI-head parameters.}
+\label{tab:heads}
+\begin{tabular}{llllr}
+\toprule
+Head & Common branch & Auxiliary branch & MLP widths & Parameters\\
+\midrule
+A & $15\to32\to32$ & None & $288\to64\to32\to1$ & 22,177\\
+AC & $15\to32\to32$ & COT $1\to4$ & $324\to64\to32\to1$ & 24,489\\
+AP & $15\to32\to32$ & $F_A$: $32\to4$ & $324\to64\to32\to1$ & 24,613\\
+AL & $15\to32\to32$ & R features $32\to4$ & $324\to64\to32\to1$ & 24,613\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The imagery-only model A omits the auxiliary branch. AP uses a learned $32\rightarrow4$ projection of $F_A$ instead of COT, giving a head parameter count within 0.51\% of AC. AL uses the aligned 32-channel features immediately before the frozen retriever's final COT layer, with training-only feature normalization and a $32\rightarrow4$ projection. AP controls additional GHI-head capacity; AL additionally shares the retriever's field of view and CPP supervision. Their comparison supports interpretation of the COT input gain without requiring that explicit COT be the only useful retriever representation.
+
+\subsection{GHI objective and matched training}
+Although the head returns a clear-sky index, optimization uses reconstructed physical GHI:
+\begin{equation}
+\mathcal L_H=\frac{1}{N}\sum_{i=1}^{N}
+\left(\frac{\widehat k_i\bar G^{cs}_i-\bar G_i}
+{1000\ \mathrm{W\,m^{-2}}}\right)^2 .
+\label{eq:ghi-loss}
+\end{equation}
+All included examples have unit weight. Separate station heads are trained for seeds 42, 43, and 44 with 30 complete epochs, batch size 2,000, AdamW learning rate $10^{-3}$ and weight decay $10^{-4}$, cosine annealing to $10^{-5}$, and gradient-norm clipping at 5. The checkpoint with the lowest station validation GHI RMSE is retained.
+
+For each station and seed, matched heads share the imagery-branch initialization and corresponding readout weights. Additional readout columns are initially zero, so the auxiliary branch begins as a correction to the same base function. The same epoch-wise sample permutations and optimization budget are used for every head. The COT retriever remains frozen throughout.
+
+\subsection{Fixed extrapolation and downstream error propagation}
+The forecasting pathway applies the fixed Hunan SimVP-family model to eight historical frames and deterministic geometry for the history and sixteen target times:
+\begin{equation}
+\widehat A_{t+1:t+16}=S(A_{t-7:t},g_{t-7:t+16}),
+\qquad
+\widehat L_{t+k}=R_\theta(\widehat A_{t+k},g_{t+k}).
+\label{eq:forecast}
+\end{equation}
+Here the indices advance in 15-minute steps. The regional input is $256\times256$. The implemented predictor uses two shared eight-frame prediction steps: the first consumes observed AGRI and historical geometry, and the second consumes the first eight predictions and their geometry. A shared $1\times1$ projection from three geometry channels to thirteen AGRI channels adds target-time conditioning to each predicted segment. Spatial and temporal hidden widths are 32 and 256, with four spatial stages and eight temporal blocks. The Hunan predictor was trained from random initialization for twelve epochs using valid-pixel normalized AGRI MSE; checkpoint selection used season-equal validation pixel RMSE.
+
+Predictive geometry is known from time and location and does not require future cloud observations. Predicted AGRI is inverse-standardized to physical channel values and then transformed with the retriever's own normalization. The same local crop and GHI normalization are applied.
+
+The intended forecasting comparison trains imagery-only and COT-augmented heads on corresponding forecast inputs and evaluates them on identical station--initialization--target triples. Its training specification and results remain to be completed. A separate, completed diagnostic holds an observed-input AC head fixed and crosses observed versus predicted AGRI with observed-input versus predicted-input COT. This isolates sensitivity to input replacement, but also exposes the head to a changed input distribution. It therefore quantifies error propagation rather than the gain of a trained forecasting system.
+\section{Experimental Protocol}
+\subsection{Paired GHI endpoints}
+The primary comparison is AC against A on identical station--target keys, observations, and daytime support. For model $m$, seed $r$, station $s$, and common cohort $\mathcal I_s$, the reported regional endpoint is
+\begin{equation}
+E_m=\frac{1}{N_rN_s}\sum_{r=1}^{N_r}\sum_{s=1}^{N_s}
+\sqrt{\frac{1}{|\mathcal I_s|}\sum_{i\in\mathcal I_s}
+(\widehat G_{m,r,i}-\bar G_i)^2},
+\qquad
+J=100\,\frac{E_A-E_{AC}}{E_A}.
+\label{eq:endpoint}
+\end{equation}
+Here $N_r=3$ and $N_s$ is the number of evaluated stations in the region. $J$ is the relative reduction in RMSE, not a percentage-point change in an accuracy measure. RMSE is computed within each seed and station before averaging; predictions are not ensembled before scoring. MAE and signed bias supplement the primary endpoint.
+
+Uncertainty is estimated with 2,000 paired bootstrap resamples of BJT target-date blocks, using the same date weights for every method, station, and seed. The Hunan primary analysis uses 52 distinct dates. A consecutive two-day-block calculation tests sensitivity to the resampling unit. The checkpoints were selected on validation data, so the reported intervals describe that validation cohort conditional on selection.
+
+\subsection{Optical-thickness-dependent gains}
+The thickness analysis uses the station-centre pixel and the pre-existing COT bins $[0,0.1)$, $[0.1,5)$, $[5,30)$, and $[30,100]$ for valid CPP references. These are operational near-zero, thin, moderate, and thick categories, rather than universal cloud-type definitions. CPP near-zero COT is not equated with an independent clear-sky classification. Each head is scored on precisely the same rows within a bin, using Eq.~(\ref{eq:endpoint}), and counts are reported by station and target date. No whole-patch mean is used to assign thickness.
+
+The reference-based analysis includes only valid centre-CPP matches and is accompanied by an all-cohort analysis grouped by the frozen retriever's centre COT. The latter describes model-retrieved thickness, which can itself be erroneous. Bins are not chosen from observed GHI gains. Subgroup intervals are descriptive and are not adjusted for multiple comparisons; differences between subgroup point estimates do not by themselves establish a statistically resolved trend across thickness.
+
+\subsection{Forecasting and physical cases}
+The forecasting assessment reports physical, dimensionless COT RMSE, MAE, and bias at all sixteen leads, separately for the station pixel and local fields. Values are inverse-transformed from log-COT before scoring. CPP is the reference where available; contemporaneous observed-AGRI retrievals provide a separate same-retriever comparison. Persistence, thick-cloud misses and false alarms, and valid spatial and temporal coverage accompany aggregate error scores.
+
+GHI forecast gain will be computed from separately trained forecast-input heads on matched triples. Real-image case panels link local AGRI, COT, solar geometry, and interval-mean observed and estimated GHI. Cases selected by fixed cloud-event or date rules describe physical behaviour; any cases chosen by model error are labelled as post-hoc examples. Neither future-observation replacement nor reference-mask intervention is treated as a deployable forecasting input.
+\section{Results}
+\subsection{Overall synchronous irradiance gain}
+On 4,479 common validation rows from Sili and Zhujia, A and AC obtained three-seed, station-equal RMSEs of 123.980 and 120.240 W m$^{-2}$, respectively. Adding COT reduced RMSE by 3.740 W m$^{-2}$, or 3.02\%. The paired interval for AC$-$A was $[-6.180,-1.597]$ W m$^{-2}$. AC improved at both stations in each of the three seeds. Relative to the capacity-matched AGRI auxiliary control AP, whose RMSE was 123.822 W m$^{-2}$, AC reduced RMSE by 3.582 W m$^{-2}$ (CI $[-5.977,-1.479]$).
+
+The retrieval-feature control AL obtained 119.807 W m$^{-2}$. Its difference from AC was unresolved (AL$-$AC $=-0.433$ W m$^{-2}$; station-separate date-resampling sensitivity CI $[-1.476,+0.677]$). Thus, explicit COT provides a useful representation in this experiment, while the comparison does not establish that its physical semantics are the unique source of the improvement.
+
+\subsection{Gain by reference optical thickness}
+Valid centre-CPP matches covered 1,284 of the 4,479 GHI validation examples and 46 target dates. Table~\ref{tab:thickness} shows the paired estimation results without changing the trained heads. The thick-reference group contained 173 examples across 25 dates. Its RMSE decreased from 74.929 to 58.105 W m$^{-2}$, a reduction of 16.824 W m$^{-2}$ or 22.45\%; all three seeds improved. The lower-thickness groups had smaller point-estimate reductions, approximately 1.5--1.7\%, with intervals spanning zero.
+
+\begin{table}[t]
+\centering\small
+\caption{Synchronous GHI error stratified by valid CPP COT at the station-centre pixel. Counts list Sili/Zhujia and are fixed across seeds. RMSE and its difference are in W m$^{-2}$; all intervals are descriptive paired date-block 95\% intervals.}
+\label{tab:thickness}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrl}
+\toprule
+CPP COT & Counts & Dates & A & AC & $J$ (\%) & AC$-$A interval\\
+\midrule
+$[0,0.1)$ & 143/321 & 31 & 159.165 & 156.812 & 1.48 & $[-6.238,1.157]$\\
+$[0.1,5)$ & 71/110 & 29 & 165.869 & 163.045 & 1.70 & $[-6.814,1.268]$\\
+$[5,30)$ & 316/150 & 36 & 122.509 & 120.430 & 1.70 & $[-7.179,3.030]$\\
+$[30,100]$ & 80/93 & 25 & 74.929 & 58.105 & 22.45 & $[-21.862,-12.359]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The thick-reference improvement varied by station: Sili RMSE decreased from 69.870 to 64.661 W m$^{-2}$, while Zhujia decreased from 79.987 to 51.549 W m$^{-2}$. Positive GHI bias was reduced from 14.460 to 1.648 W m$^{-2}$ at Sili and from 48.356 to 19.432 W m$^{-2}$ at Zhujia. These results are consistent with a reduction of irradiance overestimation within this reference-thick subgroup. They do not imply a uniform correction for all clouds or establish a causal thickness-response law.
+
+Grouping all 4,479 examples by the retriever's centre COT gave relative reductions of 0.33\%, 1.00\%, 6.09\%, and 24.32\% for near-zero, thin, moderate, and thick retrieved COT. This supplementary grouping uses model outputs rather than reference thickness and is interpreted accordingly. Subgroup gains cannot be averaged directly to reconstruct the overall RMSE gain.
+
+\subsection{Independent regional replication}
+\pending{Report Hubei A/AC/AP results for all three stations and three seeds, with regional sample counts, paired uncertainty, and thickness strata. State any final differences in the data and training specifications.}
+
+\subsection{Forecasting application and error propagation}
+
+For the COT forecast-chain diagnostic, the preregistered 3$\times$3 SimVP-to-R RMSE was 25.538, versus 28.252 for persistence. Their paired difference was $-2.714$ (descriptive 95\% date-block interval $[-6.476,+0.493]$) on only eight CPP-supported target dates; thick-cloud CSI was 0.082 for SimVP-to-R and 0.189 for persistence. COT is dimensionless, and CPP is a retrieval reference rather than independent truth. The interval includes zero and thick-cloud detection was worse, so these data do not establish reliable COT-forecast superiority. No trained forecast-GHI head result is available; fixed-head future-input substitutions are error-propagation diagnostics, not deployable forecast scores.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig1_cot_value_and_forecast_limits.pdf}
+\caption{Validation evidence for synchronous COT value and the current COT forecast-chain limit. (a) Paired change in three-seed, station-equal GHI RMSE for the COT head relative to the AGRI-only head (AC$-$A) and the AGRI-derived capacity control (AC$-$AP); negative values favour AC. The common cohort contains 4,479 rows across 52 BJT target dates. Error bars are paired 95\% shared-date-block bootstrap intervals. AP is a close control for added GHI-head capacity but not for the retriever's wider receptive field or CPP supervision. The R-hidden-feature control did not resolve an incremental advantage of explicit COT semantics. (b) Difference in dimensionless physical 3$\times$3 COT RMSE between SimVP-to-R and persistence-R; negative values favour SimVP-to-R. Common valid pixels are pooled within each station and lead before averaging equally over two stations and 16 leads. The interval is descriptive because CPP reference support covers only eight target dates. Thick-cloud CSI at COT$\geq30$ is 0.082 for SimVP-to-R and 0.189 for persistence-R. CPP is a retrieval reference, not independent truth; panel (b) is not a GHI forecast score.}
+\label{fig:cot-value-forecast-limits}
+\end{figure}
+\pending{Insert matched trained-head forecast-GHI results, including absolute and relative AC--A gains by lead; do not substitute fixed-head diagnostic scores.}
+
+\section{Discussion}
+The main finding is the practical value of a COT representation for synchronous satellite irradiance estimation. Its 3.02\% overall validation RMSE reduction exceeds the gain from the added-capacity control. The CPP-supported subgroup results identify optically thick reference conditions as a promising setting for this representation, with lower GHI overestimation and a larger point-estimate reduction. Reference coverage, station differences, and descriptive subgroup uncertainty remain necessary context for this finding.
+
+The hidden-feature comparison provides a complementary interpretation: useful information is present in the cloud-product-supervised retriever, and its explicit COT output offers a compact physically labelled way to provide that information to the GHI head. The experiment does not isolate a unique advantage of COT semantics over all learned retrieval features. Nor does retaining spatial coordinates by design establish that spatial texture, rather than thickness magnitude, caused the observed improvement.
+
+The forecasting gain need not equal the synchronous estimation gain because the future imagery and derived COT contain prediction error. A smaller gain, if observed in the completed matched forecasting experiment, will be examined alongside COT amplitude, cloud-position, and timing errors. The all-validation fixed-head replacement diagnostic already shows sensitivity to both predicted AGRI and predicted COT. However, that diagnostic also changes the head's input distribution; retriever error and downstream adaptation must be considered before attributing all lost gain to the extrapolation algorithm.
+
+Additional uncertainty arises from comparing a satellite scan with a 15-minute GHI interval and from using CPP as a retrieval reference. The present findings concern Hunan validation data; the independently trained Hubei replication and independent testing will determine how broadly the result can be stated.
+
+\section{Conclusion}
+Adding local retrieved COT reduced synchronous station GHI validation RMSE by 3.02\% in the completed Hunan experiment. Within the CPP-supported thick-reference subgroup, the reduction was 22.45\%, with benefits at both stations and all three seeds. These findings support COT as a useful representation for irradiance estimation while retaining the distinction between explicit physical output and other learned retriever features. The forecasting application will quantify how much of this benefit remains when both imagery and COT are predicted; its GHI gain is not yet established.
+
+\begin{thebibliography}{9}
+\bibitem{ineichen}
+P. Ineichen and R. Perez.
+A new airmass independent formulation for the Linke turbidity coefficient.
+\textit{Solar Energy}, 73:151--157, 2002.
+\bibitem{pvlibclear}
+pvlib python contributors.
+Ineichen/Perez clear-sky model documentation.
+\url{https://pvlib-python.readthedocs.io/en/stable/_modules/pvlib/clearsky.html}.
+\bibitem{simvp}
+Z. Gao, C. Tan, L. Wu, and S. Z. Li.
+SimVP: Simpler Yet Better Video Prediction.
+In \textit{Proceedings of CVPR}, pp.~3170--3180, 2022.
+\url{https://openaccess.thecvf.com/content/CVPR2022/html/Gao_SimVP_Simpler_Yet_Better_Video_Prediction_CVPR_2022_paper.html}.
+\bibitem{simvpv2}
+C. Tan, Z. Gao, S. Li, and S. Z. Li.
+SimVPv2: Towards Simple yet Powerful Spatiotemporal Predictive Learning.
+arXiv:2211.12509, 2022 (revised 2024).
+\url{https://arxiv.org/abs/2211.12509}.
+\end{thebibliography}
+\end{document}
