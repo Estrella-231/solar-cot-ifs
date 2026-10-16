@@ -1,0 +1,34 @@
+{
+  "RGB_source": "experiments\\cot_underestimate_forensics_20261016\\payload\\real_cloud_cases_and_gradients.npz",
+  "RGB_transform": {
+    "RGB_bands": [
+      "C03",
+      "C02",
+      "C01"
+    ],
+    "RGB_low": [
+      0.13147318363189697,
+      0.07061062008142471,
+      0.07686752080917358
+    ],
+    "RGB_high": [
+      0.7344107031822205,
+      0.7524021542072297,
+      0.6851461470127107
+    ],
+    "stretch": "shared across all selected contexts and times; clipped only for display",
+    "interpolation": "nearest; original 16x16 R context and exact 3x3 GHI COT inputs",
+    "COT_limits": [
+      0,
+      30.0
+    ],
+    "gradient_limits": [
+      -11.664360046386719,
+      11.664360046386719
+    ],
+    "test_payloads_read": 0
+  },
+  "case_selection": "same six prior failure anchors; no new selection",
+  "error_bars": "case plots: min-max of 3 seeds; tradeoff: paired BJT date bootstrap 95% intervals",
+  "test_payloads_read": 0
+}

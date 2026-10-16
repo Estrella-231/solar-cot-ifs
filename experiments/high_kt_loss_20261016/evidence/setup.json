@@ -1,0 +1,59 @@
+{
+  "state": "PASS_FOUR_ARM_LOSS_SETUP",
+  "rows": 51929,
+  "train": 47666,
+  "val": 4263,
+  "history_offsets_minutes": [
+    -30,
+    -15,
+    0
+  ],
+  "arms": [
+    "A_uniform",
+    "A_bright2x",
+    "AC_uniform",
+    "AC_bright2x"
+  ],
+  "parameters_each_arm": 41665,
+  "train_weight_receipt": {
+    "sili": {
+      "train_n": 22930,
+      "bright_n": 5482,
+      "mean_raw_weight": 1.2390754222869873
+    },
+    "zhujia": {
+      "train_n": 24736,
+      "bright_n": 4531,
+      "mean_raw_weight": 1.1831743717193604
+    }
+  },
+  "loss_weight": "2 if train clear>=100 and observed_kt>=0.9 else 1; station-train mean normalized",
+  "batch": 1792,
+  "epochs": 30,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "initial_output_max_abs_difference": {
+    "A_bright2x": 0.0,
+    "AC_uniform": 0.0,
+    "AC_bright2x": 0.0
+  },
+  "cot_channel_grad_witness": "PASS",
+  "COT_pool_train_mean": 1.8354828989218208,
+  "COT_pool_train_std": 1.3974485910139944,
+  "AGRI_normalization_source": "fixed data_attempt2 train-only normalization",
+  "geometry": "common corrected nominal-UTC geometry from fixed pack",
+  "frozen_R_models": {
+    "scaler_old_source": "2f2533577c5466f2fe00442b701de79bc3e89f03d621b8a020614cfa852f0863",
+    "corrected": "7273a21d1d0c44d0aef6002f3e32e66b68a55f9001f1828bd1f285a5c19c680a"
+  },
+  "bank_manifest_sha256": "fd1a621827567fa1fcf8b26a412e01b7a64f3adc93a87b12f0c0920af3ca857b",
+  "pack_rows_sha256": "b76fb1b827375c29d90703ed6dc1220ff92a6d239800d4f8764b989d5b7214b3",
+  "test_payloads_read": 0
+}
