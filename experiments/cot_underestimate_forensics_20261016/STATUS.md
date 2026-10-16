@@ -1,5 +1,12 @@
 # Status — 2026-10-16
 
+Repository-evolution correction completed: archived unified-input residual
+predictions are joined to all 4,263 current validation rows and the six fixed
+failure anchors with exact station/time/seed/truth checks. Prior partial
+repairs and unresolved failures are tracked in
+`../../docs/HIGH_GHI_UNDERESTIMATION.md`. The high-GHI problem is longstanding
+and remains unresolved; this diagnostic is not its first discovery or a fix.
+
 Completed: saved-prediction decomposition on all 4,263 validation rows; source
 five-minute-to-fifteen-minute label reconstruction; prespecified six failure/
 control pairs; current-output join to four existing CTH geometries; 48 real

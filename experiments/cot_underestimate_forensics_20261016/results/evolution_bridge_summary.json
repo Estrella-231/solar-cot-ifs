@@ -1,0 +1,49 @@
+{
+  "state": "PASS_EXACT_STATION_TIME_SEED_TRUTH_JOIN",
+  "archived_validation_rows": 4479,
+  "joined_current_validation_rows": 4263,
+  "joined_seed_rows": 12789,
+  "archived_equal_station_seed_RMSE_wm2": {
+    "pred_A_wm2": 123.97907228877237,
+    "pred_AGRI_wm2": 111.27686616439262,
+    "pred_AGRI_COT_wm2": 113.4185077573585
+  },
+  "current_selected_failure_stratum_n": 254,
+  "archived_residual_on_current_selected_failures": {
+    "pred_AGRI_wm2": {
+      "upward_fraction": 0.5091863517060368,
+      "smaller_SSE_fraction": 0.5131233595800525,
+      "mean_bias_wm2": -125.33833732504857,
+      "archived_A_mean_bias_wm2": -124.69478511184532
+    },
+    "pred_AGRI_COT_wm2": {
+      "upward_fraction": 0.4553805774278215,
+      "smaller_SSE_fraction": 0.4645669291338583,
+      "mean_bias_wm2": -137.49020846059003,
+      "archived_A_mean_bias_wm2": -124.69478511184532
+    }
+  },
+  "selected_case_count": 6,
+  "archived_AGRI_improves_all_three_seeds_case_count": 3,
+  "sources": [
+    {
+      "path": "experiments/monthly_R_station16_20261013_v1/results/signed_residual_oof_v3_unified_analysis_20261014_v1/validation_predictions_and_keys.npz",
+      "sha256": "ac07b0d4c8d14413cf0a677762714a17e0ce4aebc351cf730d5f7dd9cafe862a"
+    },
+    {
+      "path": "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/analysis/paired_validation_scoring.npz",
+      "sha256": "fe90bebd7d915f6b3a38ff59f17944e79cb6bceb57b024d2f38af500fc994976"
+    },
+    {
+      "path": "experiments/r_geometry_downstream_ghi_20261016/results/paired_three_arm_v1/validation_rows.csv",
+      "sha256": "87d4892d8d2fdefd54bc847fa92bc25e72ff350a79f4f3bbb7677497adf22df9"
+    },
+    {
+      "path": "experiments/cot_underestimate_forensics_20261016/results/selected_cases.json",
+      "sha256": "e422d38d720d875dcbdfe4cbedb1c47b67a7d4bd88bea991753b6d9b86a29a52"
+    }
+  ],
+  "interpretation": "Descriptive bridge between different training/input contracts. Not a controlled method comparison. Failure stratum selected on current outputs; conditional scores do not estimate population skill.",
+  "training_run": false,
+  "test_payloads_read": 0
+}
