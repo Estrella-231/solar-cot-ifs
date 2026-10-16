@@ -1,0 +1,122 @@
+{
+  "state": "PASS_SAVED_PREDICTIONS_DIAGNOSTIC",
+  "validation_rows": 4263,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "direction": {
+    "old_R": {
+      "all": {
+        "seed_rows": 12789,
+        "mean_adjustment": -1.9641451744272558,
+        "correct_direction_fraction": 0.5820627101415279,
+        "squared_error_improved_fraction": 0.5342090859332239
+      },
+      "A_under": {
+        "seed_rows": 6321,
+        "mean_adjustment": 2.785790908982097,
+        "correct_direction_fraction": 0.5045087802562885,
+        "squared_error_improved_fraction": 0.4655908875177978
+      },
+      "A_over": {
+        "seed_rows": 6468,
+        "mean_adjustment": -6.60612816503185,
+        "correct_direction_fraction": 0.6578540507111935,
+        "squared_error_improved_fraction": 0.6012677798392084
+      }
+    },
+    "corrected_R": {
+      "all": {
+        "seed_rows": 12789,
+        "mean_adjustment": -2.46610335651772,
+        "correct_direction_fraction": 0.5923840800688092,
+        "squared_error_improved_fraction": 0.5427320353428727
+      },
+      "A_under": {
+        "seed_rows": 6321,
+        "mean_adjustment": 2.818072438542978,
+        "correct_direction_fraction": 0.5081474450245215,
+        "squared_error_improved_fraction": 0.4695459579180509
+      },
+      "A_over": {
+        "seed_rows": 6468,
+        "mean_adjustment": -7.630184247145221,
+        "correct_direction_fraction": 0.6747062461348176,
+        "squared_error_improved_fraction": 0.6142547928262214
+      }
+    }
+  },
+  "severe_under_drop_rows": 254,
+  "helpful_under_up_rows": 415,
+  "severe_station_dates": 50,
+  "strata": [
+    {
+      "group": "all",
+      "rows": 4263,
+      "station_dates": 94,
+      "mean_AC_minus_A": -2.46610335651772,
+      "mean_delta_SSE": -96.91394398107661,
+      "near_scan_proxy_available": 4251,
+      "near_scan5_lower_by_gt50_fraction": 0.1098565043519172,
+      "within_interval_abs_change_gt100_fraction": 0.12315270935960591
+    },
+    {
+      "group": "severe_under_drop",
+      "rows": 254,
+      "station_dates": 50,
+      "mean_AC_minus_A": -27.892744395989446,
+      "mean_delta_SSE": 7174.4989652996455,
+      "near_scan_proxy_available": 254,
+      "near_scan5_lower_by_gt50_fraction": 0.25196850393700787,
+      "within_interval_abs_change_gt100_fraction": 0.2677165354330709
+    },
+    {
+      "group": "helpful_under_up",
+      "rows": 415,
+      "station_dates": 62,
+      "mean_AC_minus_A": 30.007704698800083,
+      "mean_delta_SSE": -5093.990000553359,
+      "near_scan_proxy_available": 414,
+      "near_scan5_lower_by_gt50_fraction": 0.19806763285024154,
+      "within_interval_abs_change_gt100_fraction": 0.21204819277108433
+    },
+    {
+      "group": "center_COT_ge10",
+      "rows": 2121,
+      "station_dates": 78,
+      "mean_AC_minus_A": -7.004494169901728,
+      "mean_delta_SSE": -624.7189411308616,
+      "near_scan_proxy_available": 2115,
+      "near_scan5_lower_by_gt50_fraction": 0.07565011820330969,
+      "within_interval_abs_change_gt100_fraction": 0.066006600660066
+    },
+    {
+      "group": "high_kt_ge0.8",
+      "rows": 1138,
+      "station_dates": 71,
+      "mean_AC_minus_A": -1.5446799263886248,
+      "mean_delta_SSE": 570.1059978613192,
+      "near_scan_proxy_available": 1135,
+      "near_scan5_lower_by_gt50_fraction": 0.1682819383259912,
+      "within_interval_abs_change_gt100_fraction": 0.1616871704745167
+    },
+    {
+      "group": "solar_altitude_lt20",
+      "rows": 987,
+      "station_dates": 94,
+      "mean_AC_minus_A": -8.466272923809798,
+      "mean_delta_SSE": -254.33134434405667,
+      "near_scan_proxy_available": 987,
+      "near_scan5_lower_by_gt50_fraction": 0.031408308004052685,
+      "within_interval_abs_change_gt100_fraction": 0.0121580547112462
+    }
+  ],
+  "label_mean_max_abs_vs_saved_FP32": 0.0,
+  "source_native_labels_sha256": "e9de1767f93a0b196bcdd9dde8c0379c6afe5906d251e71134bab89b3f14dd9f",
+  "selected_case_count": 16,
+  "selected_pairs": 6,
+  "main_scope": "descriptive validation diagnostics; three seeds share rows; independent heads do not identify a causal effect",
+  "test_payloads_read": 0
+}
