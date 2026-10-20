@@ -1,0 +1,159 @@
+{
+  "state": "PASS_PARTIAL_CORRECTED_SOLAR_BANKS",
+  "checked_roles": {
+    "full": {
+      "n_sequences": 407,
+      "index_sha256": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+      "keys_sha256": "1f32d09268ac1a5446bb54c717b0cc6e663ca198c3d516d9da821cc94b28f134",
+      "checkpoint_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+      "normalization_sha256": "40ef5fef39659d861a818e1783d183362be6a726bcdb42d91e4c2bca3cb58e94",
+      "utc_plus8_time_keys_match": true,
+      "arrays": {
+        "pred_agri_patch.npy": {
+          "shape": [
+            407,
+            16,
+            13,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "bb126fa0638f55894f8dbf61d2f800597719db94ce40583409abadf222827483"
+        },
+        "true_agri_patch.npy": {
+          "shape": [
+            407,
+            16,
+            13,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "58ad8da94e23002b67e465d68d4daeb34e25e2f2e96b026df34712959f2ddee7"
+        },
+        "future_geometry_patch.npy": {
+          "shape": [
+            407,
+            16,
+            3,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "4dbcf2cf8318283abaa89c9323593d8951a399deeff1281d60f5134c50a6a4f5"
+        }
+      }
+    },
+    "fold_0": {
+      "n_sequences": 823,
+      "index_sha256": "4c4d9b3375ac21dc6347904364a7d22bc8e10686c6f4bb8c262437e48adfb497",
+      "keys_sha256": "f769713e4bfb35784e6ce891887edd73313dcf416e46e843920e141f6bb3dde3",
+      "checkpoint_sha256": "2c9c625690c86c8639be8bf3312e64a2f114625de1aac1b4ef1b6fbd48b7a968",
+      "normalization_sha256": "135ef38055c8f67ac7aceaa137f28a17925d2a57a56060dab15e0390053cc0bd",
+      "utc_plus8_time_keys_match": true,
+      "arrays": {
+        "pred_agri_patch.npy": {
+          "shape": [
+            823,
+            16,
+            13,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "6e0c3a0350f60f55c6c442e88a7066bee3fb77c18b45139f6630fbb43be91974"
+        },
+        "true_agri_patch.npy": {
+          "shape": [
+            823,
+            16,
+            13,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "30900a26e517589bbdbe1355826a67357bf85ba1983eb56037d3bbbc85d2370b"
+        },
+        "future_geometry_patch.npy": {
+          "shape": [
+            823,
+            16,
+            3,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "76d4ece245bcb3b6a2eabc90822a0db8754c0abf2fe34143cdc9a14548f3345b"
+        }
+      }
+    },
+    "fold_1": {
+      "n_sequences": 797,
+      "index_sha256": "761a72cfeea95975552590e6f0d0a4ec04bf0b2912e4f6ff14bb6ea29b25588b",
+      "keys_sha256": "c0ffcaea5f79bf1eee86f24d8bda86c85e16fcaa9bf225dacf2f6754265ac7a2",
+      "checkpoint_sha256": "7eaef123d3672c839f35f149d8322154aa74a0b86edad0a9dfcfd36777d76caa",
+      "normalization_sha256": "e780d798f5e8c8c8a65bbb3702bc6edf0f16ce5918e36870bf9db3dd2400185c",
+      "utc_plus8_time_keys_match": true,
+      "arrays": {
+        "pred_agri_patch.npy": {
+          "shape": [
+            797,
+            16,
+            13,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "4836b44f73029e857a177d2c8b0e6a348dac3a8ffd45472d14dc0449171e43b8"
+        },
+        "true_agri_patch.npy": {
+          "shape": [
+            797,
+            16,
+            13,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "e2f6d5c7d49190df0ab2574786e8cf8898f407d645fbf4538cae5fdd1a63226a"
+        },
+        "future_geometry_patch.npy": {
+          "shape": [
+            797,
+            16,
+            3,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "sha256": "f5e1e02f56dae27fafd64c61f669a4332648c6c9d7d46ef833c486baed6a35cc"
+        }
+      }
+    }
+  },
+  "ready_roles": [
+    "fold_0",
+    "fold_1",
+    "full"
+  ],
+  "expected_roles": [
+    "full",
+    "fold_0",
+    "fold_1",
+    "fold_2",
+    "fold_3",
+    "fold_4"
+  ],
+  "all_ready": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}
