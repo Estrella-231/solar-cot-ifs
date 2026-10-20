@@ -1,0 +1,25 @@
+{
+  "captured_at_remote": "2026-10-21 06:41:50 CST",
+  "attempt": "attempt12",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "controller": {
+    "pid": 140574,
+    "state": "RUNNING_AUTHORIZED_STAGES",
+    "completed": ["profile", "R", "full", "fold_0", "fold_1"],
+    "failed": {},
+    "test_payloads_read": 0
+  },
+  "unfinished_pbs_jobs": [
+    {"job_id": "215314.tc6000", "role": "fold_2", "state": "R", "node": "node22", "gpu_count": 1, "elapsed": "00:42:42", "last_completed_epoch": 4, "train_loss": 0.2776097, "val_loss": 0.2604916},
+    {"job_id": "215315.tc6000", "role": "fold_3", "state": "R", "node": "node22", "gpu_count": 1, "elapsed": "00:42:39", "last_completed_epoch": 5, "train_loss": 0.2534178, "val_loss": 0.2673567},
+    {"job_id": "215316.tc6000", "role": "fold_4", "state": "R", "node": "node22", "gpu_count": 1, "elapsed": "00:16:33", "last_completed_epoch": 1, "train_loss": 0.8353159, "val_loss": 0.5377611}
+  ],
+  "unfinished_count": 3,
+  "ready_bank_roles": ["full", "fold_0", "fold_1"],
+  "forecast_cot_metrics_ready": false,
+  "paired_ghi_complete": false,
+  "error_scan": {"traceback": false, "oom": false, "cuda_error": false, "runtime_error": false},
+  "data_audit_receipt": "DATA_AUDIT_PASS_attempt12.json",
+  "previous_bank_audit_receipt": "FORECAST_BANK_AUDIT_20261021T0625CST.json"
+}

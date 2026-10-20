@@ -298,3 +298,10 @@
 - fold_1 作业 `215313.tc6000` 已完成，797个OOF验证窗口的 `S_BANK_READY` 和 `BANK_REPORT` 齐备。新增只读审计逐项核对源index与bank键、UTC文件名+8小时BJT映射、+15…+240分钟时效，以及AGRI预测/真值和未来几何数组的形状、有限值及哈希，均通过；test/buffer读取计数为0。
 - 当前已有 `full`（407窗）、`fold_0`（823窗）和 `fold_1`（797窗）三个完整bank。PBS控制器已在fold_1释放资源后提交fold_4 `215316.tc6000`；此时fold_2 `215314`、fold_3 `215315`、fold_4 `215316`共3个任务运行，未超过并发上限。fold_2/3第3轮验证损失分别为0.2764325/0.2906781；fold_4开始训练。日志扫描没有Traceback、OOM、CUDA error或RuntimeError。
 - COT精度评估和配对GHI头仍待fold_2…fold_4预测bank齐备后启动，当前尚无预报COT或GHI提升结论。审计代码及机器输出见`audit_forecast_banks_attempt12.py`和`receipts/attempt12/FORECAST_BANK_AUDIT_20261021T0625CST.json`；实时队列快照见`receipts/attempt12/LIVE_TRAINING_20261021T0628CST.json`。
+
+## 实时重训推进（2026-10-21 06:42 CST）
+
+- 实时PBS队列为 fold_2 `215314.tc6000`、fold_3 `215315.tc6000`、fold_4 `215316.tc6000`，均在 `zjnu-hpc` node22 各用1张卡；账户未结束任务为3/3。控制器PID `140574` 仍存活，状态 `RUNNING_AUTHORIZED_STAGES`，已完成 `profile/R/full/fold_0/fold_1`，失败列表为空，test载荷读取计数为0。
+- 最近完成验证轮次：fold_2 epoch 4，train/val loss `0.2776097/0.2604916`；fold_3 epoch 5，`0.2534178/0.2673567`；fold_4 epoch 1，`0.8353159/0.5377611`。三者仍在继续训练，以上仅是训练选模损失，不是COT或GHI成绩。
+- 已就绪预测bank仍为full、fold_0、fold_1；fold_2…fold_4尚未产出完整bank，因此forecast-COT评价与有/无预测COT的GHI配对训练均未开始。本轮日志未检出Traceback、OOM、CUDA error或RuntimeError。
+- 太阳几何、train/val数据恢复与时间键审计依赖已通过；本轮不改训练合同、不重提任务，控制器将在bank齐备后按既定顺序自动进入COT与GHI阶段。实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0642CST.json`。
