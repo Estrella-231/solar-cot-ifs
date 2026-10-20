@@ -311,3 +311,9 @@
 - 06:51:49 实时核验：PBS `215314/215315/215316.tc6000`（fold_2/3/4）仍在 node22 各用1张卡运行；队列为3/3。控制器PID `140574`存活，completed 为 `profile/R/full/fold_0/fold_1`，failed 为空，test载荷读取为0。
 - 最近完整验证轮次：fold_2 epoch 6，train/val loss `0.2166484/0.2615145`；fold_3 epoch 7，`0.1899431/0.2680219`；fold_4 epoch 2，`0.5774720/0.3480843`。采样时三者分别继续到第7轮49/304步、第8轮28/308步和第3轮286/308步。验证损失仅用于checkpoint选择。
 - ready预测bank仍为 full、fold_0、fold_1；预测COT评价与配对GHI训练尚未启动。日志错误扫描未发现Traceback、OOM、CUDA error或RuntimeError。收据：`receipts/attempt12/LIVE_TRAINING_20261021T0652CST.json`。
+
+## 实时训练推进（2026-10-21 06:58 CST）
+
+- 06:58:13 PBS复核：`215314/215315/215316.tc6000`（fold_2/3/4）仍在 node22 各用1张卡，队列为3/3；控制器PID `140574`存活，完成 `profile/R/full/fold_0/fold_1`，失败为空，test载荷读取为0。
+- 最新完整验证轮次：fold_2 epoch 7，train/val loss `0.1868047/0.2495359`；fold_3 epoch 8，`0.1694441/0.2677006`；fold_4 epoch 3，`0.3610181/0.2700573`。采样时分别推进到第8轮0/304步、第9轮26/308步、第4轮278/308步。这些是AGRI模型选模损失，不是预报COT指标。
+- ready预测bank仍为full、fold_0、fold_1；COT评价与GHI配对仍未开始。未发现Traceback、OOM、CUDA error或RuntimeError。详见`receipts/attempt12/LIVE_TRAINING_20261021T0658CST.json`。
