@@ -182,3 +182,13 @@
 
 - 既有作业`215308`已由PBS标记完成，控制器据此提交了S的fold_1：`215313.tc6000`于05:00:38启动，PBS分配node22，作业启动记录显示计算节点`gpu2`/局部CUDA设备1。账户未结束作业维持3项：full `215311`、fold_0 `215312`、fold_1 `215313`。
 - 当时full最新完成第5轮（验证loss `0.2451660`），fold_0第6轮（`0.2556693`）；fold_1正初始化训练。S预测bank尚无完成标记，forecast-COT和GHI配对阶段尚未运行。收据见`receipts/attempt12/LIVE_TRAINING_20261021T0500CST.json`；test/buffer读取均为0。
+
+
+## 实时训练快照（2026-10-21 05:06 CST）
+
+- NOAA train/val 几何复算与 `DATA_AUDIT_PASS_attempt12.json` 仍为 PASS；恢复数据和最终修正包未发现新的对齐/来源问题。test/buffer 保持关闭。
+- SimVP full (`215311.tc6000`) 正在 epoch 7（约 13%），最近完成 epoch 6 的验证 loss 为 `0.2669241`；当前最佳仍为 epoch 5 的 `0.2451660`。
+- SimVP fold_0 (`215312.tc6000`) 正在 epoch 8（约 4%），最近完成 epoch 7 的验证 loss 为 `0.2666648`；当前最佳仍为 epoch 6 的 `0.2556693`。
+- SimVP fold_1 (`215313.tc6000`) 正在 epoch 0（约 73%），尚无完成轮次指标。三项均在 node22 使用单 GPU；账户未结束队列为这三项，已达 PBS 上限。控制器 PID `140574` 存活，按队列名额自动推进。
+- 暂无 `S_BANK_READY`、预测 COT 评估或 GHI 配对训练完成标记；配对训练仍等待 SimVP full 与五折 OOF 预测链。日志未见 Traceback、OOM 或作业崩溃；fold_1 有 `find_unused_parameters=True` 的非致命 DDP 性能提示。
+- 轮次验证损失有波动，选模继续使用各 run 的最佳完整验证 checkpoint；此快照不是最终模型成绩，也不代表预报 COT/GHI 已有提升。
