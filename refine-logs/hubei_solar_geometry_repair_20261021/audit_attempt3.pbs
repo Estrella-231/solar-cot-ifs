@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N hb_solar_audit
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=4
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/audit_attempt3.log
+set -euo pipefail
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONUNBUFFERED=1
+B=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021
+P=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments
+/public/home/slfu/miniconda3/envs/swc/bin/python -u "$B/code_attempt3/audit_and_prepare_geometry_parallel.py" --root /tmp/hubei_solar_audit_20261021_attempt3 --stage /public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017 --metadata "$P/hubei_forecast_correctutc_20261020/time_repair_v1/time_lineage_v2.tar.gz" --grid "$B/grid_static256.npz" --rpack "$P/hubei_cloud_probability_20261020/R_pack_correctutc_attempt3"
+cp /tmp/hubei_solar_audit_20261021_attempt3/GEOMETRY_CALCULATION_REPORT.json "$B/GEOMETRY_CALCULATION_REPORT_attempt3.json"
+cp /tmp/hubei_solar_audit_20261021_attempt3/reference_cases.jsonl "$B/reference_cases_attempt3.jsonl"
+cp /tmp/hubei_solar_audit_20261021_attempt3/restore_requests.csv "$B/restore_requests_attempt3.csv"
+tar -cf "$B/preparation_attempt3.tar" -C /tmp/hubei_solar_audit_20261021_attempt3 .
+echo GEOMETRY_COMPUTATION_COMPLETE_NOT_TRAINING

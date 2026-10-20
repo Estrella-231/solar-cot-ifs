@@ -1,0 +1,10 @@
+#!/bin/bash
+#PBS -N hb_solar_data
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepare_data_attempt1.log
+set -euo pipefail
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+/public/home/slfu/miniconda3/envs/swc/bin/python -u /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/code_pipeline_v1/build_corrected_data.py --base /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021 --preparation /tmp/hubei_solar_audit_20261021_attempt3 --cache /tmp/hubei_solar_corrected_20261021_attempt1 --old-stage /public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017 --rpack /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2 --cpp-sidecar /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cpp_attempt2/cpp_supervision_trainval.npz --restored /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/restored_attempt1 --grid /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/grid_static256.npz
