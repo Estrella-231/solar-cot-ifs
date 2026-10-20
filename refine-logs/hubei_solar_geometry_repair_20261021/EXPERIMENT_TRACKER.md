@@ -192,3 +192,10 @@
 - SimVP fold_1 (`215313.tc6000`) 正在 epoch 0（约 73%），尚无完成轮次指标。三项均在 node22 使用单 GPU；账户未结束队列为这三项，已达 PBS 上限。控制器 PID `140574` 存活，按队列名额自动推进。
 - 暂无 `S_BANK_READY`、预测 COT 评估或 GHI 配对训练完成标记；配对训练仍等待 SimVP full 与五折 OOF 预测链。日志未见 Traceback、OOM 或作业崩溃；fold_1 有 `find_unused_parameters=True` 的非致命 DDP 性能提示。
 - 轮次验证损失有波动，选模继续使用各 run 的最佳完整验证 checkpoint；此快照不是最终模型成绩，也不代表预报 COT/GHI 已有提升。
+
+
+## 下游时效映射核验（2026-10-21 05:09 CST）
+
+- 对 GHI 配对阶段将复用的 `hubei_forecast_correctutc_20261020/time_repair_v1/runtime_attempt3/pack/rows.csv` 做了只读行键审计：168,790 行（153,515 train、15,275 val），`target_time_bjt - init_time_bjt == lead_minutes` 的不匹配数为 0；lead 集合恰为 +15…+240 min 的 16 个时效。
+- 因此配对组包代码的 `lead_minutes // 15 - 1` 能正确映射未来帧索引 0…15，不存在旧版 legacy 0…225 坐标造成的一帧偏移。pack manifest 标记 test/buffer payload reads 为 0；此次只读取行键/元数据，没有打开标签载荷。
+- 05:09 队列仍为 `215311` full、`215312` fold_0、`215313` fold_1 三项运行；控制器存活，尚无 SimVP bank / forecast COT / GHI 配对完成标记。
