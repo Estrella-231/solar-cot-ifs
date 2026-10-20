@@ -227,3 +227,9 @@
 - 队列复核仍为三项运行（`215311` full、`215312` fold_0、`215313` fold_1），控制器PID `140574`存活；剩余fold和下游任务尚未排入。未见训练异常或OOM。
 - full新完成第8轮，验证loss `0.2359206`，优于第7轮的当前旧最佳0.2411956；fold_0仍最新第9轮、最佳0.2526335；fold_1新完成第2轮，验证loss `0.3582111`。这些仅为SimVP验证选模信号，不是COT/GHI增益证据。
 - 当前没有S预测bank、forecast-COT评价或配对GHI结果标记；test/buffer仍关闭。
+
+## GHI配对初始化复核及训练推进（2026-10-21 05:26 CST）
+
+- 在服务器 `swc` Python环境用CPU和合成输入复核attempt12当前FA/FAC初始化代码：两臂初始state SHA相同（`e225d257...f2de70`），初始输出最大差0；FAC在初始化时对两组不同合成COT输入的输出差为0。说明预测COT臂从无COT共同预测起点开始，只有训练学习后才可能产生COT增量。收据 `receipts/attempt12/GHI_PAIR_INITIALIZATION_WITNESS_attempt12.json`；该见证不读取标签、不训练、不代表任何GHI成绩。
+- 实时PBS仍为3项R（full `215311`、fold_0 `215312`、fold_1 `215313`），controller `140574`存活。full最新第8轮（验证loss `0.2359206`）；fold_0到第10轮（`0.2494573`）；fold_1到第3轮（`0.3121215`）。暂无训练错误、OOM、S预测bank或forecast-COT/GHI结果。
+- 服务器端公平初始化见证所用 `train_paired_forecast.py` SHA-256：`3b2319b5c72f3abb00f003f8c228d3cdd6bef1ab39fb72724ae7e8fd7bec53ab`。本轮没有PBS提交；test/buffer继续关闭。

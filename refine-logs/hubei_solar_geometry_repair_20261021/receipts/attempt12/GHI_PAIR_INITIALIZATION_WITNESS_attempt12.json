@@ -1,0 +1,21 @@
+{
+  "state": "PASS_REMOTE_CPU_INITIALIZATION_WITNESS",
+  "scope": "forecast GHI paired heads FA versus FAC; initialization only",
+  "remote_code_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/code_pipeline_attempt12/train_paired_forecast.py",
+  "remote_code_sha256": "3b2319b5c72f3abb00f003f8c228d3cdd6bef1ab39fb72724ae7e8fd7bec53ab",
+  "procedure": "Construct common A base at seed 42; initialize FA and FAC independently at seed 42; copy the common AGRI encoder/readout weights and zero the auxiliary readout columns; compare parameter hashes and synthetic-input outputs on CPU.",
+  "results": {
+    "FA_initial_sha256": "e225d257ecccff4fc0465b57aee19cd9b3e4ccb63e3adf30acfdfc5658f2de70",
+    "FAC_initial_sha256": "e225d257ecccff4fc0465b57aee19cd9b3e3adf30acfdfc5658f2de70",
+    "initial_state_equal": true,
+    "FA_vs_FAC_max_abs_output": 0.0,
+    "FAC_output_max_abs_change_between_two_synthetic_COT_inputs": 0.0
+  },
+  "interpretation": "The COT arm starts at the same prediction as the no-COT arm; COT can affect predictions only after learning. This verifies initialization fairness, not a trained GHI or forecast-COT result.",
+  "synthetic_inputs_only": true,
+  "train_val_labels_read": 0,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "pbs_job_submitted": false,
+  "verification_time_bjt": "2026-10-21 05:25 CST"
+}
