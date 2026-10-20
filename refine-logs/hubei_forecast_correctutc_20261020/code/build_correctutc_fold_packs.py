@@ -34,7 +34,7 @@ def main():
         np.save(out/'target.npy',targets[take],allow_pickle=False);np.save(out/'mask.npy',masks[take],allow_pickle=False)
         with (out/'rows.csv').open('w',newline='') as f:
             w=csv.DictWriter(f,fieldnames=list(new[0]));w.writeheader();w.writerows(new)
-        counts={s:{'rows':sum(r['split']==s for r in old),'supervised_rows':sum(r['split']==s and masks[j].any() for r,j in zip(old,take))} for s in ('train','val')}
+        counts={s:{'rows':int(sum(r['split']==s for r in old)),'supervised_rows':int(sum(r['split']==s and bool(masks[j].any()) for r,j in zip(old,take)))} for s in ('train','val')}
         rec={'state':'HUBEI_R_TRAIN_VAL_CORRECT_UTC_PACK_BUILT_TEST_CLOSED','fold':fold,'rows':len(new),'counts_by_split':counts,'source_correctutc_pack_sha256':sha(a.source/'pack_status.json'),'normalization':'identical original fold train-only AGRI input normalization','heldout_train_date_overlap':0,'time_rule':status['time_rule'],'test_payloads_read':0,'buffer_payloads_read':0}
         (out/'pack_status.json').write_text(json.dumps(rec,indent=2));(out/'SHA256.json').write_text(json.dumps({n:sha(out/n) for n in ('rows.csv','x_norm.npy','norm.json','target.npy','mask.npy')},indent=2))
         records.append(rec)
