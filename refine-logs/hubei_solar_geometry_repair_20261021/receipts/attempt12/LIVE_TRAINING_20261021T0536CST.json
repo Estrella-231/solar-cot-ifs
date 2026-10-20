@@ -1,0 +1,20 @@
+{
+  "timestamp_local": "2026-10-21T05:36:39+08:00",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "queue": {
+    "unfinished_user_jobs": 3,
+    "jobs": [
+      {"pbs": "215311.tc6000", "role": "full", "state": "R", "node": "node22", "latest_epoch": 10, "train_loss": 0.1404086, "validation_loss": 0.2368077},
+      {"pbs": "215312.tc6000", "role": "fold_0", "state": "R", "node": "node22", "latest_epoch": 12, "train_loss": 0.1270051, "validation_loss": 0.2569005},
+      {"pbs": "215313.tc6000", "role": "fold_1", "state": "R", "node": "node22", "latest_epoch": 5, "train_loss": 0.2747162, "validation_loss": 0.2795315}
+    ]
+  },
+  "controller": {"pid": 140574, "alive": true, "pipeline_state": "RUNNING_AUTHORIZED_STAGES", "completed": ["profile", "R"], "failed": {}},
+  "gpu_sample": {"timestamp_local": "2026-10-21T05:35:51+08:00", "node": "node22", "gpu_index": 1, "model": "NVIDIA A800-SXM4-80GB", "utilization_percent": 100, "memory_used_mib": 55213, "assigned_role_from_live_tracker": "fold_1"},
+  "error_scan": {"traceback": false, "oom": false, "cuda_error": false, "runtime_error": false},
+  "markers": {"S_BANK_READY": false, "forecast_cot_metrics": false, "ALL_PAIRED_COMPLETE_attempt12": false},
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "scope_note": "Live training progress only; no forecast-COT or GHI improvement conclusion."
+}

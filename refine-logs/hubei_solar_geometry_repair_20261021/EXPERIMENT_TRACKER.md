@@ -245,3 +245,10 @@
 - PBS全队列仍有3项运行，controller `140574`仍存活，completed/failed阶段状态无变化；未产生预测bank或下游评估标记。
 - full最新第9轮验证loss `0.2471407`，当前best仍为第8轮 `0.2359206`；fold_0最新第11轮验证loss `0.2555291`，当前best为第10轮 `0.2494573`；fold_1新完成第4轮，验证loss `0.2856804`，较第3轮改善。训练日志错误扫描无Traceback/OOM/CUDA错误。
 - 这只是SimVP验证选模过程；几何修正是否改善预测COT，须等冻结R的forecast-COT验证评估，不以训练或AGRI验证loss替代。
+
+## 实时训练推进（2026-10-21 05:36 CST）
+
+- PBS队列仍有3项运行：full `215311.tc6000`、fold_0 `215312.tc6000`、fold_1 `215313.tc6000`；控制器PID `140574`存活，attempt12状态为`RUNNING_AUTHORIZED_STAGES`，`failed={}`。
+- 最新轮次：full第10轮（训练loss `0.1404086`、验证loss `0.2368077`）；fold_0第12轮（`0.1270051`、`0.2569005`）；fold_1第5轮（`0.2747162`、`0.2795315`）。fold_1训练日志继续更新；node22瞬时GPU采样显示GPU1为100%利用率、55,213 MiB显存，故上一快照中未更新的epoch日志不是卡死证据。
+- 本次日志扫描未发现Traceback、OOM、CUDA error或RuntimeError。`S_BANK_READY`、forecast-COT评估及GHI配对完成标记均尚未生成；当前仍处于SimVP训练阶段，不能据此声称预报COT或GHI已提升。
+- 详细实时查询结果保存在`receipts/attempt12/LIVE_TRAINING_20261021T0536CST.json`。队列已满，控制器等待空位后继续提交后续fold；test/buffer继续关闭。
