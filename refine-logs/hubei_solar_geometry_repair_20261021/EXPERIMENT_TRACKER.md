@@ -239,3 +239,9 @@
 - 全量SimVP完成第9轮，验证loss回升至 `0.2471407`（第8轮最佳 `0.2359206`），训练loss仍降至 `0.1527656`；目前只有一次未改善，未达到patience5停止条件，继续按完整验证集保存/选择best checkpoint。
 - fold_0最新第10轮验证loss `0.2494573`；fold_1最新第3轮 `0.3121215`。PBS `215311/215312/215313`仍为R，controller `140574`存活；错误检索未发现Traceback、OOM或CUDA error。
 - 尚未生成任一S预测bank、forecast-COT评估或GHI配对结果标记，test/buffer继续关闭。
+
+## 实时训练复核（2026-10-21 05:31 CST）
+
+- PBS全队列仍有3项运行，controller `140574`仍存活，completed/failed阶段状态无变化；未产生预测bank或下游评估标记。
+- full最新第9轮验证loss `0.2471407`，当前best仍为第8轮 `0.2359206`；fold_0最新第11轮验证loss `0.2555291`，当前best为第10轮 `0.2494573`；fold_1新完成第4轮，验证loss `0.2856804`，较第3轮改善。训练日志错误扫描无Traceback/OOM/CUDA错误。
+- 这只是SimVP验证选模过程；几何修正是否改善预测COT，须等冻结R的forecast-COT验证评估，不以训练或AGRI验证loss替代。
