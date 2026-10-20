@@ -1,0 +1,13 @@
+{
+  "samples": 168790,
+  "unique_station_times": 19711,
+  "source_sha256": "a133b6e8737e6ffa49ed79f17887b3698e65abdc71005877208fbb41e31a042c",
+  "finding": "source eot treats radians as minutes; correction multiplies equation-of-time radian expression by 180/pi before factor4",
+  "legacy_source_cos_residual_max_abs": 3.540798384082944e-05,
+  "legacy_source_cos_residual_p99": 3.0456583921534275e-07,
+  "stored_vs_corrected_cos_max_abs": 0.05637579703741159,
+  "label_noaa_vs_corrected_cos_max_abs": 0.004670934398820201,
+  "stored_vs_corrected_zenith_max_degrees": 3.235426202124131,
+  "stored_vs_corrected_zenith_p99_degrees": 2.764866224017895,
+  "decision": "preserve frozen S/R geometry for time-only paired experiment; source-formula parity replaces arbitrary .05 cosine threshold; known EOT error is not corrected by relabeling and must not be called high-precision solar geometry"
+}

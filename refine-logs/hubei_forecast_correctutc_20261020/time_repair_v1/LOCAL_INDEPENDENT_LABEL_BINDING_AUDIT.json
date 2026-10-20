@@ -1,0 +1,35 @@
+{
+  "state": "LOCAL_INDEPENDENT_ALL_TRAIN_VAL_GHI_BINDING_PASS",
+  "samples": 168790,
+  "split_station": {
+    "train/Niushou": 51954,
+    "train/Wangzhai": 51316,
+    "train/Mizhuang": 50245,
+    "val/Niushou": 5305,
+    "val/Wangzhai": 4883,
+    "val/Mizhuang": 5087
+  },
+  "target_dates": {
+    "train": 237,
+    "val": 22
+  },
+  "checks": [
+    "unique station/init/target",
+    "target minus init equals canonical 15..240min lead",
+    "actual BJT init/target in same declared split",
+    "original complete15 source records and mask",
+    "row GHI and clear sky exact against source labels",
+    "packed GHI and clear sky exact float32 conversion against source labels"
+  ],
+  "max_float32_ghi_rounding_wm2": 4.8828125045474735e-05,
+  "max_float32_clear_rounding_wm2": 3.051618750760099e-05,
+  "sha256": {
+    "rows.csv": "13178e19488bf286f5a6699314e59f776d461178ea76090709e3b3fe45290000",
+    "ghi_wm2.npy": "b6a50ce0177fbfcd64bfc9a49dbf027a3194af82fd4e6f0933aca56d12c49b2e",
+    "clear_sky_wm2.npy": "3d960f4bdcd24e3183e33cb1e58b7818fa5210231c012b4d98e6d2e7f3588f4c",
+    "pack_report.json": "a44727e3a59c1e99d46cc8d85e1ff79fe5eb81531bc4453e810fa573383e8a6e"
+  },
+  "metadata_archive_sha256": "9f831353234fa9c7b3eaf56836d17d2582f9468a82690710250f6779d50a0017",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

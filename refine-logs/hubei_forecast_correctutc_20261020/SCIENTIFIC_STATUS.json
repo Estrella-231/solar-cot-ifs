@@ -4,6 +4,26 @@
   "validated_sequences": 407,
   "invalidated_result": "runtime_attempt2/scored_attempt1/summary_fp64.json as a forecast claim; raw training/scoring artifacts preserved",
   "evidence": "diagnosis_v1/source_probe/local_fp64_source_recheck.json",
-  "next": "rebuild canonical BJT lineage and split/OOF binding before GHI paired retraining",
-  "test_payloads_read": 0
+  "next": "Time-only paired experiment and fixed-head diagnosis complete; no demonstrated forecast COT gain. Known EOT defect requires separately versioned upstream geometry work; do not overwrite frozen inputs.",
+  "test_payloads_read": 0,
+  "old_forecast_claim_valid": false,
+  "latest_repaired_forecast_comparison": {
+    "state": "VALIDATION_TIME_BINDING_REPAIRED_PAIRED_TRAINING_AND_DIAGNOSIS_COMPLETE",
+    "PBS": "215274.tc6000",
+    "validation_rows": 15275,
+    "validation_dates": 22,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "FA_rmse": 102.60698743356845,
+    "FAC_rmse": 104.29400672171319,
+    "COT_forecast_gain_supported": false,
+    "fixed_head_observed_image_COT_rmse": 85.98114082315824,
+    "intervention_is_offline_only": true,
+    "solar_EOT_formula_error_remains_in_frozen_S_R_geometry": true,
+    "report": "time_repair_v1/FINDINGS.md"
+  },
+  "forecast_claim_valid_meaning": "false refers to the old incorrectly timestamped forecast score; see latest_repaired_forecast_comparison for the new valid validation comparison, whose COT gain is not supported"
 }

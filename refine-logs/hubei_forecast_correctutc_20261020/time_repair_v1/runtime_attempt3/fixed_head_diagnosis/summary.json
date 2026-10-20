@@ -1,0 +1,89 @@
+{
+  "state": "FROZEN_INPUT_ATTRIBUTION_COMPLETE",
+  "scope": "validation-only offline diagnosis, interventions not deployable forecasts; observedR is not independent COT truth",
+  "rows": 15275,
+  "sequences": 407,
+  "target_dates": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302",
+    "20260420",
+    "20260421",
+    "20260503",
+    "20260504",
+    "20260628",
+    "20260629"
+  ],
+  "equal_station_seed_rmse": {
+    "FA_pred": 102.60698743583981,
+    "FAC_pred": 104.29400672754132,
+    "FAC_observedCOT": 85.98114082315824,
+    "FAC_zeroCOTslot": 175.56368792400838,
+    "FAC_permutedCOT": 246.36854031858098,
+    "FA_observedAGRI": 79.74613843497679,
+    "FAC_observedAGRI_predCOT": 90.56137208693252,
+    "FAC_observedAGRI_observedCOT": 80.14378614839582
+  },
+  "paired_two_day_ci95": {
+    "FAC_observedCOT_minus_FAC_pred": [
+      -29.99794411000604,
+      -9.032449569632515
+    ],
+    "FAC_zeroCOTslot_minus_FAC_pred": [
+      45.68426748107421,
+      99.77928039246325
+    ],
+    "FAC_permutedCOT_minus_FAC_pred": [
+      119.74961817694906,
+      163.01542990964882
+    ],
+    "FAC_observedAGRI_observedCOT_minus_FAC_pred": [
+      -37.698332078115044,
+      -13.952928091135353
+    ],
+    "FA_observedAGRI_minus_FA_pred": [
+      -35.920567852348036,
+      -12.60914431604556
+    ]
+  },
+  "cot_replay_max_abs": 0.0,
+  "ghi_replay_max_abs": 0.0001220703125,
+  "observed_R_input_reconstruction_max_abs": 1.1920928955078125e-07,
+  "checkpoint_sha256": {
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed42_attempt1/Niushou/FA_best.pt": "8ad2f7f3622ad9642df49be3c6b411479bdb6a1008a018aa94762cdc7d0526bc",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed42_attempt1/Niushou/FAC_best.pt": "3e37964a6f1c15fa339da4950a854e96b50b42782457d3aef61c6d15e70b183a",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed43_attempt1/Niushou/FA_best.pt": "34d76f3932be4e17fd15b34a60b1008b0b9ca1910cb3ef64c31167e93a85ba86",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed43_attempt1/Niushou/FAC_best.pt": "d1b6cb203544826e6e80bc39013a1b8640904f5bccd0fac46d856a99fec875cf",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed44_attempt1/Niushou/FA_best.pt": "de7688b99ee7d1f4cfa7d451ccfc76c3a9807b0a78a6fc578fd262ab0b4c0b7c",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed44_attempt1/Niushou/FAC_best.pt": "078777dbcfaa7885ae3b3177f6ea4a8da593a070f8d10d5271672711a22cb9ea",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed42_attempt1/Wangzhai/FA_best.pt": "7d76e86478688b6c81e7aa54f976fd132e4ac356e9b3d4069b205e634f189c90",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed42_attempt1/Wangzhai/FAC_best.pt": "8a488ea7b3632ef65a68477e1189012745dc879254eb6172759b54ea8b756ea6",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed43_attempt1/Wangzhai/FA_best.pt": "6e61ad33af082de5a5c882e9f341c403c31dff23af73ef21bf202f145665b901",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed43_attempt1/Wangzhai/FAC_best.pt": "2cd0b8e88974d90cf6e6cbad00025c2f5dba4964c1bf3484a9df86c905156957",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed44_attempt1/Wangzhai/FA_best.pt": "2a861f5c11a36619f8720577cab24adfa31286c6d39208017a670960b8755245",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed44_attempt1/Wangzhai/FAC_best.pt": "3a89b3187fc28a823ed4f906a243474eb6045bcbb2c596c4162aa15d3e0ff100",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed42_attempt1/Mizhuang/FA_best.pt": "781bca08241bde2fd188c538c9b95a4ce521263dfc7ae3dd245a7e754e839918",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed42_attempt1/Mizhuang/FAC_best.pt": "f37ad1eb2761e4166cb496b9961b3c2f21b2e6436b9df8aef85503e1542da4bc",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed43_attempt1/Mizhuang/FA_best.pt": "88fbd26e9ffb5d1aef021d2565028c3b4a1b59abaf74884f5c5241e0ab5b2d54",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed43_attempt1/Mizhuang/FAC_best.pt": "283d0a6e3812be5dff514062880b94720bfada2535013e14af7b0e7372aba696",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed44_attempt1/Mizhuang/FA_best.pt": "501ae20fc1e0c69736d213ccba2ee234e2300b720a4e5c2ce644aff9d94b6df7",
+    "/tmp/hb_fc_BJTfix_215274_tc6000/results/paired_seed44_attempt1/Mizhuang/FAC_best.pt": "92d4385185a8365a4c2c9abc5ad1eb4a42ebd8539a09f61681e28edeeafe5de9"
+  },
+  "true_agri_sha256": "97accf600bf0186f0cb988e503bbbb44f8e5761d50696d1e92a2c2509c8fe22a",
+  "pred_agri_sha256": "6d51a4e74799530c3304dd678e153098ee97f234068ae83b08136d2dc5e0faef",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

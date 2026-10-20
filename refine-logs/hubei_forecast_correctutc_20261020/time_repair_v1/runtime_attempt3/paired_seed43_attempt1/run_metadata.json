@@ -1,0 +1,31 @@
+{
+  "state": "HUBEI_GHI_HEADS_SEED_COMPLETE",
+  "seed": 43,
+  "epochs": 30,
+  "batch_size": 1536,
+  "pack_sha256": "a44727e3a59c1e99d46cc8d85e1ff79fe5eb81531bc4453e810fa573383e8a6e",
+  "trainer_sha256": "3b2319b5c72f3abb00f003f8c228d3cdd6bef1ab39fb72724ae7e8fd7bec53ab",
+  "parameter_counts": {
+    "FA": 24489,
+    "FAC": 24489
+  },
+  "input_mode": "forecast",
+  "stations": [
+    "Niushou",
+    "Wangzhai",
+    "Mizhuang"
+  ],
+  "arms": [
+    "FA",
+    "FAC"
+  ],
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "normalization": "station-specific train-only AGRI and log1p(COT); geometry physical",
+  "normalization_contract_sha256": "8e695ce51dfe835ca2d6d304ffc069159a6e1aab83667a93c76cb98d58d92a30",
+  "loss": "MSE((pred_kt*interval_clear_sky_GHI - observed_GHI)/1000)",
+  "target": "15-minute label in the original engineering W/m2 operating convention; sensor calibration/export metadata not independently verified",
+  "test_payloads_read": 0,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "paired_architecture": "FA/FAC both 24489 parameters; FA receives zero in normalized COT slot",
+  "elapsed_s": 22.964154958724976
+}

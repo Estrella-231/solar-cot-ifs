@@ -1,0 +1,76 @@
+{
+  "fp64_equal_station_seed_rmse_recomputed": {
+    "FA_pred": 102.60698743583981,
+    "FAC_pred": 104.29400672754132,
+    "FAC_observedCOT": 85.98114082315824,
+    "FAC_zeroCOTslot": 175.56368792400838,
+    "FAC_permutedCOT": 246.36854031858098,
+    "FA_observedAGRI": 79.74613843497679,
+    "FAC_observedAGRI_predCOT": 90.56137208693252,
+    "FAC_observedAGRI_observedCOT": 80.14378614839582
+  },
+  "diagnostic_groups_ensemble_mean_not_primary_metric": {
+    "all": {
+      "n": 15275,
+      "FA_ensemble_mean_rmse": 102.14682021758946,
+      "FAC_ensemble_mean_rmse": 103.6731229053428,
+      "fixed_FAC_observedCOT_rmse": 84.71073047298493,
+      "mean_abs_fixed_head_COT_replacement": 20.616704915876085,
+      "mean_abs_fixed_head_zero_slot": 127.6399529291165,
+      "fraction_COT_replacement_reduces_SE": 0.5936497545008184
+    },
+    "COT_log_error_le_0.25": {
+      "n": 9849,
+      "FA_ensemble_mean_rmse": 81.583486418813,
+      "FAC_ensemble_mean_rmse": 82.2512694124274,
+      "fixed_FAC_observedCOT_rmse": 81.31688484899647,
+      "mean_abs_fixed_head_COT_replacement": 4.426936659723521,
+      "mean_abs_fixed_head_zero_slot": 137.25797510151733,
+      "fraction_COT_replacement_reduces_SE": 0.5308153111991065
+    },
+    "COT_log_error_gt_1": {
+      "n": 1031,
+      "FA_ensemble_mean_rmse": 201.70439231706035,
+      "FAC_ensemble_mean_rmse": 206.47398846803185,
+      "fixed_FAC_observedCOT_rmse": 106.92271257889553,
+      "mean_abs_fixed_head_COT_replacement": 108.26250663275398,
+      "mean_abs_fixed_head_zero_slot": 62.40684884410825,
+      "fraction_COT_replacement_reduces_SE": 0.895247332686712
+    },
+    "observed_COT_ge_10": {
+      "n": 7002,
+      "FA_ensemble_mean_rmse": 91.00320414514812,
+      "FAC_ensemble_mean_rmse": 94.59787153671374,
+      "fixed_FAC_observedCOT_rmse": 70.93024616212367,
+      "mean_abs_fixed_head_COT_replacement": 23.80934702463985,
+      "mean_abs_fixed_head_zero_slot": 168.87048274904382,
+      "fraction_COT_replacement_reduces_SE": 0.601256783776064
+    },
+    "observed_GHI_ge_600": {
+      "n": 4753,
+      "FA_ensemble_mean_rmse": 85.9257435443974,
+      "FAC_ensemble_mean_rmse": 84.85237426368636,
+      "fixed_FAC_observedCOT_rmse": 82.57197892504294,
+      "mean_abs_fixed_head_COT_replacement": 5.472423048104349,
+      "mean_abs_fixed_head_zero_slot": 118.07835097432982,
+      "fraction_COT_replacement_reduces_SE": 0.5415527035556491
+    }
+  },
+  "within_same_head_response": {
+    "FAC_observedCOT": {
+      "mean_absolute_wm2": 20.623907436293393,
+      "rms_wm2": 40.667418339809096,
+      "fraction_changes_over_1_wm2": 0.6657501363884343
+    },
+    "FAC_zeroCOTslot": {
+      "mean_absolute_wm2": 127.64065917679896,
+      "rms_wm2": 151.8961601842562,
+      "fraction_changes_over_1_wm2": 0.9956355701036552
+    },
+    "FAC_permutedCOT": {
+      "mean_absolute_wm2": 166.05798611291172,
+      "rms_wm2": 239.49283268131526,
+      "fraction_changes_over_1_wm2": 0.882924168030551
+    }
+  }
+}
