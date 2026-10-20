@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "captured_at_remote": "2026-10-21 06:12:07 CST",
+  "attempt": "attempt12",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "controller": {"pid": 140574, "state": "RUNNING_AUTHORIZED_STAGES", "failed_stages": []},
+  "pbs_active": [
+    {"job_id": "215313.tc6000", "stage": "fold_1", "state": "R", "node": "node22", "gpu_count": 1, "progress": "epoch 11, 283/309 steps; epoch 10 validation loss 0.2682438"},
+    {"job_id": "215314.tc6000", "stage": "fold_2", "state": "R", "node": "node22", "gpu_count": 1, "progress": "epoch 1, 206/304 steps"},
+    {"job_id": "215315.tc6000", "stage": "fold_3", "state": "R", "node": "node22", "gpu_count": 1, "progress": "epoch 2, 32/308 steps; epoch 1 validation loss 0.5543598"}
+  ],
+  "unfinished_jobs": 3,
+  "completed_stages": ["profile", "R", "full", "fold_0"],
+  "ready_forecast_banks": {"full_validation_windows": 407, "fold_0_oof_windows": 823},
+  "pending_stages": ["fold_1", "fold_2", "fold_3", "fold_4", "forecast_cot_evaluation", "paired_ghi_heads"],
+  "forecast_cot_metrics_ready": false,
+  "paired_ghi_complete": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "error_scan": {"traceback": false, "oom": false, "cuda_error": false, "runtime_error": false},
+  "evidence": ["qstat -u slfu at 2026-10-21 06:12:07 CST", "PBS stdout/stderr and per-role train logs", "QUEUE_STATE_attempt12.json", "live node22 process/GPU query at 2026-10-21 06:10 CST"]
+}

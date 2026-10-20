@@ -285,3 +285,10 @@
 - 独立比较bank `keys.csv`与原始val index：full 407/407、fold_0 823/823，样本序号、split和24帧源路径逐行完全一致。逐窗口把24个源文件名时刻按UTC+8转换后，历史末帧等于key初始化时刻、16个后续帧逐个等于key目标时刻，lead正好为+15…+240分钟；两组总错位数0。
 - 两个bank报告均为train-only归一化、原始反归一化SimVP输出（无裁剪/插值），并记录test/buffer载荷读取为0。队列中full与fold_0已完成；fold_1、fold_2、fold_3运行中，共3个未结束任务，控制器继续工作。
 - 这是预测源与时标的质量核验，不是COT精度结果。仍等待fold_1…fold_4 OOF bank齐备后统一运行forecast-COT和GHI配对评估。机器复算结果见`receipts/attempt12/FORECAST_BANK_AUDIT_20261021T0600CST.json`。
+
+## 2026-10-21 06:12 CST 实时训练快照
+
+- attempt12 的太阳几何/时标审计已通过后，重训任务仍在 `zjnu-hpc` 的 node22 正常运行；PBS `215313.tc6000`（fold_1）、`215314.tc6000`（fold_2）、`215315.tc6000`（fold_3）各用1张卡，账户未结束作业为3/3，控制器PID `140574` 状态 `RUNNING_AUTHORIZED_STAGES`，`failed={}`。
+- fold_1第11轮进度283/309步（第10轮验证损失0.2682438）；fold_2第1轮206/304步；fold_3第2轮32/308步（第1轮验证损失0.5543598）。node22进程与GPU占用查询证明训练仍在计算；未发现Traceback、OOM、CUDA error或RuntimeError。
+- full和fold_0的预测bank已就绪并通过06:00逐样本键及+15…+240分钟时间核验；其余fold bank尚未完成。预测COT评价和有/无COT GHI配对头尚未开始，因此目前没有新的COT精度或GHI收益结论。test和buffer读取计数均为0。
+- 实时证据：`receipts/attempt12/LIVE_TRAINING_20261021T0612CST.json`。
