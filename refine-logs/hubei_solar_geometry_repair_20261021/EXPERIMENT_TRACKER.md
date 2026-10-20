@@ -169,3 +169,7 @@
 - 已对将来运行的有/无预测COT GHI头做源码级审计：FA与FAC都为24,489参数；FA的COT输入固定为零，FAC接收train拟合标准化后的预测COT。每个站点和seed运行时断言两臂初始权重哈希相同，并复用同一组训练样本顺序、batch、优化器、学习率计划、损失与更新数；每个站点分别依据完整验证集RMSE选择best checkpoint。
 - 独立评分器逐项检查站点/init/target/lead键顺序、标签与晴空量一致、FP64 RMSE/MAE/bias、checkpoint重载一致性、实际更新数及等站点等seed汇总，并计算目标日期/连续两日配对区间。两个评分脚本本地与远端SHA均一致；证据见`receipts/attempt12/GHI_PAIR_SELECTION_AUDIT_attempt12.json`。
 - 这是待运行实验的公平性/选模合同核查，不是收益结果；GHI训练尚未开始，仍等待校正SimVP full和五折OOF预测bank及其COT/OOF审计。
+
+## 训练推进（2026-10-21 04:59集群时钟）
+
+- full模型完成第5轮，验证loss `0.2451660`；fold_0仍为第5轮，验证loss `0.2640957`。两项PBS作业仍为R，队列共3项未结束；控制器PID `140574`存活，S预测bank尚未生成。
