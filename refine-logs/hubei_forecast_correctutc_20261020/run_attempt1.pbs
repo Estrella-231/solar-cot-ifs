@@ -1,0 +1,55 @@
+#!/bin/bash
+#PBS -N hb_fc_corr_v1
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_correctutc_20261020/logs/run_attempt1.log
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/experiments/hubei_forecast_correctutc_20261020
+CODE=$EXP/code_attempt1
+OLD=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_forecast_ghi_20261017/pack
+CURRENT=$PROJECT/experiments/hubei_cloud_probability_20261020
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ -z "$GPU_TEXT" ] || [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ]; then echo 'GPU_ASSIGNMENT_FAIL'; exit 32; fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+export PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+echo "START PBS=$PBS_JOBID NODE=$(hostname) GPU=$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$GPU_TEXT" --query-compute-apps=pid --format=csv,noheader)"
+LOCAL=/tmp/hb_fc_corr_${PBS_JOBID//./_}
+mkdir "$LOCAL"
+echo "NODE_LOCAL_STAGE=$LOCAL"
+cp -a "$CODE" "$LOCAL/code"
+CODE=$LOCAL/code
+(cd "$CODE" && sha256sum -c SHA256SUMS)
+python "$CODE/witness_pair.py"
+python -c 'import torch;torch.manual_seed(42);m=torch.nn.Conv2d(16,32,3,padding=1).cuda();x=torch.randn(8,16,16,16,device="cuda");y=m(x).square().mean();y.backward();assert torch.isfinite(y) and torch.isfinite(m.weight.grad).all();print("SEEDED_GPU_FORWARD_BACKWARD_PASS",torch.cuda.get_device_name(0))'
+cp "$EXP/input_attempt1/frozen_forecast_inputs.tar" "$LOCAL/"
+python "$CODE/stage_archive.py" --archive "$LOCAL/frozen_forecast_inputs.tar" --sha-file "$EXP/input_attempt1/archive_sha256.txt" --output "$LOCAL/inputs"
+cp -a "$CURRENT/R_pack_correctutc_attempt2" "$LOCAL/full_R_pack"
+mkdir "$LOCAL/full_R"
+for name in best.pt run_metadata.json status.json; do cp "$CURRENT/R_correctutc_attempt3/$name" "$LOCAL/full_R/$name"; done
+mkdir "$LOCAL/source_GHI_pack"
+for name in rows.csv pack_report.json agri_raw.npy geometry.npy ghi_wm2.npy clear_sky_wm2.npy; do cp "$OLD/$name" "$LOCAL/source_GHI_pack/$name"; done
+python "$CODE/build_correctutc_fold_packs.py" --source "$LOCAL/full_R_pack" --inputs "$LOCAL/inputs" --output "$LOCAL/fold_packs"
+mkdir "$LOCAL/R_folds" "$LOCAL/results"
+for fold in 0 1 2 3 4; do
+  python -u "$CODE/train_correctutc_r.py" --pack "$LOCAL/fold_packs/fold_$fold" --model-source "$CODE/train_cot_repaired.py" --output "$LOCAL/R_folds/fold_$fold" --seed 42 --batch 128 --epochs 50 --patience 8 --allow-variable-support
+done
+cp -a "$LOCAL/R_folds" "$EXP/R_folds_attempt1"
+python -u "$CODE/rebuild_forecast_pack.py" --inputs "$LOCAL/inputs" --fold-packs "$LOCAL/fold_packs" --fold-runs "$LOCAL/R_folds" --full-r "$LOCAL/full_R" --full-r-pack "$LOCAL/full_R_pack" --model-source "$CODE/train_cot_repaired.py" --source-pack "$LOCAL/source_GHI_pack" --output "$LOCAL/forecast_pack" --sequence-batch 128
+cp -a "$LOCAL/fold_packs" "$EXP/R_fold_packs_attempt1"
+cp -a "$LOCAL/forecast_pack" "$EXP/forecast_pack_attempt1"
+python -u "$CODE/train_paired_forecast.py" --pack "$LOCAL/forecast_pack" --output "$EXP/profile_placeholder_attempt1" --input-mode forecast --arms FA FAC --profile-only --profile-output "$EXP/profile_attempt1.json"
+for seed in 42 43 44; do
+  python -u "$CODE/train_paired_forecast.py" --pack "$LOCAL/forecast_pack" --output "$LOCAL/results/paired_seed${seed}_attempt1" --input-mode forecast --arms FA FAC --epochs 30 --batch-size 1536 --seed "$seed"
+  cp -a "$LOCAL/results/paired_seed${seed}_attempt1" "$EXP/paired_seed${seed}_attempt1"
+done
+python -u "$CODE/score_predictions.py" --experiment "$LOCAL/results" --pack "$LOCAL/forecast_pack" --output "$LOCAL/scored"
+cp -a "$LOCAL/scored" "$EXP/scored_attempt1"
+echo 'HUBEI_CORRECTUTC_FORECAST_PAIRED_ALL_COMPLETE test_payloads_read=0 buffer_payloads_read=0'
