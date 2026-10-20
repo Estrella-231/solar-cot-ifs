@@ -207,3 +207,10 @@
 - 已改为每个目标行复制有效掩膜，并加入重叠起报时刻 + 单像元 NaN 的回归用例。旧实现把该用例的支持从预期 512 像元降成 511；修复后恢复为512。
 - 本地 Windows Python 和服务器 `swc` Python 环境均运行 `test_forecast_cot_diagnostics.py`：4/4通过。修正评估器 SHA-256：`9ef61f4d6c7ffff3c479c1598ba3fe18613d9299d1457dacc7dcc10f7a779325`；测试 SHA-256：`b8ccd00e2712e70a68abceb4e977d1bdf5f1b0864c0b0bcf331cad1c75243cf6`；本地与远端文件哈希一致。
 - 修正版已同步到 attempt12 服务器代码目录。同步时 SimVP full/fold_0/fold_1 仍在运行，GHI/COT评估阶段尚未启动；故不会覆盖或重跑已有结果，后续评估将直接使用修正版。此次不提交新 PBS 任务，test/buffer载荷读取均为0。
+
+## 实时训练快照（2026-10-21 05:15 CST）
+
+- 实时读取 `DATA_AUDIT_PASS_attempt12.json`，状态仍为 `PASS_PREPARED_ATTEMPT12_TRAIN_VAL_KEYS_LABELS_AGRI_GEOMETRY`；S训练/验证帧10,473/913，R训练/验证行3,178/301，6套R角色均只用train拟合归一化。太阳几何：R复算最大绝对差0，S复算最大绝对差3.58e-7，S/R重叠最大差0，目标时刻映射差0；test与buffer载荷读取均为0。
+- `qstat -u slfu` 实时仍有3项运行：full `215311.tc6000`（node22，局部GPU4）、fold_0 `215312.tc6000`（node22，局部GPU3）、fold_1 `215313.tc6000`（node22，局部GPU1），均为单GPU。训练日志最新完整轮次分别为7/8/1；full当前最佳验证loss 0.2411956（epoch 7），fold_0当前最佳0.2556693（epoch 6），fold_1刚完成epoch 1（0.5966635）。验证loss仅用于训练选模，尚不是COT/GHI结论。
+- 队列控制器PID `140574`仍存活；其依赖顺序为full及fold_0…fold_4完成并生成预测bank后，执行修正版forecast-COT共同支持评价、OOF来源审计和配对GHI阶段。当前COT/GHI结果标记尚未生成；等待空出的PBS名额，不超3项提交。
+- 共同支持回归修复及本快照对应源码/收据已由提交 `e80ef76` 推送到 `origin/main`；修复不改模型、训练数据或训练合同。
