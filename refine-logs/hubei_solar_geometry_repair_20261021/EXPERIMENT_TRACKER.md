@@ -259,3 +259,9 @@
 - full推进至第11轮（训练loss `0.1325294`、验证loss `0.2402363`）；fold_0推进至第13轮（`0.1226863`、`0.2608019`）。两者验证loss高于各自当前最佳轮次，仍按完整验证集best-checkpoint与既定patience流程训练。
 - fold_1最新仍为第5轮（训练loss `0.2747162`、验证loss `0.2795315`）。05:40:28对node22采样时，其GPU1利用率100%、显存55,213 MiB；full/fold_0对应训练进程CPU占用分别112%/116%，表明任务仍在计算而非退出。此次未发现Traceback/OOM/CUDA error/RuntimeError。
 - COT预测评估与GHI配对阶段仍未开始，完整预测bank标记不存在。证据见`receipts/attempt12/LIVE_TRAINING_20261021T0541CST.json`；test/buffer关闭。
+
+## 实时训练推进（2026-10-21 05:49 CST）
+
+- full `215311.tc6000`到第12轮（训练loss `0.1270183`、验证loss `0.2380386`）；fold_0 `215312.tc6000`到第14轮（`0.1189363`、`0.2586390`）；fold_1 `215313.tc6000`到第7轮（`0.2143708`、`0.2590017`）。fold_1刷新当前最佳验证loss；full/ fold_0仍以此前最佳checkpoint为准。
+- `qstat -u slfu`仍为以上3项运行；控制器PID `140574`存活，`failed={}`。full和fold_0各有4轮未刷新最佳验证loss；训练按现有patience继续，并未手动终止或改合同。
+- 所有任务日志均未发现Traceback/OOM/CUDA error/RuntimeError。S预测bank、forecast-COT指标与GHI配对完成标记仍不存在；当前还没有预报COT精度或GHI收益结论。实时证据见`receipts/attempt12/LIVE_TRAINING_20261021T0549CST.json`。
