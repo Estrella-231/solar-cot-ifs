@@ -1,0 +1,19 @@
+{
+  "timestamp_local": "2026-10-21T05:54:33+08:00",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "queue": {
+    "unfinished_user_jobs": 3,
+    "jobs": [
+      {"pbs": "215311.tc6000", "role": "full", "state": "R", "node": "node22", "latest_epoch": 12, "train_loss": 0.1270183, "validation_loss": 0.2380386, "best_validation_epoch": 8, "best_validation_loss": 0.2359206},
+      {"pbs": "215312.tc6000", "role": "fold_0", "state": "R", "node": "node22", "latest_epoch": 15, "train_loss": 0.1149914, "validation_loss": 0.2589198, "best_validation_epoch": 10, "best_validation_loss": 0.2494573},
+      {"pbs": "215313.tc6000", "role": "fold_1", "state": "R", "node": "node22", "latest_epoch": 8, "train_loss": 0.1881666, "validation_loss": 0.2721530, "best_validation_epoch": 7, "best_validation_loss": 0.2590017}
+    ]
+  },
+  "controller": {"pid": 140574, "alive": true, "pipeline_state": "RUNNING_AUTHORIZED_STAGES", "completed": ["profile", "R"], "failed": {}},
+  "error_scan": {"traceback": false, "oom": false, "cuda_error": false, "runtime_error": false},
+  "markers": {"S_BANK_READY": false, "forecast_cot_metrics": false, "ALL_PAIRED_COMPLETE_attempt12": false},
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "scope_note": "No early-stop terminal evidence yet; continue observing live PBS state. No forecast-COT/GHI conclusion."
+}

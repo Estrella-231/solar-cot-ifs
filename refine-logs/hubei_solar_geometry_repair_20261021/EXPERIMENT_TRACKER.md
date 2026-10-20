@@ -265,3 +265,9 @@
 - full `215311.tc6000`到第12轮（训练loss `0.1270183`、验证loss `0.2380386`）；fold_0 `215312.tc6000`到第14轮（`0.1189363`、`0.2586390`）；fold_1 `215313.tc6000`到第7轮（`0.2143708`、`0.2590017`）。fold_1刷新当前最佳验证loss；full/ fold_0仍以此前最佳checkpoint为准。
 - `qstat -u slfu`仍为以上3项运行；控制器PID `140574`存活，`failed={}`。full和fold_0各有4轮未刷新最佳验证loss；训练按现有patience继续，并未手动终止或改合同。
 - 所有任务日志均未发现Traceback/OOM/CUDA error/RuntimeError。S预测bank、forecast-COT指标与GHI配对完成标记仍不存在；当前还没有预报COT精度或GHI收益结论。实时证据见`receipts/attempt12/LIVE_TRAINING_20261021T0549CST.json`。
+
+## 实时训练推进（2026-10-21 05:54 CST）
+
+- full `215311.tc6000`最新第12轮（训练loss `0.1270183`、验证loss `0.2380386`）；fold_0 `215312.tc6000`最新第15轮（`0.1149914`、`0.2589198`）；fold_1 `215313.tc6000`最新第8轮（`0.1881666`、`0.2721530`）。PBS实时队列仍是这三项运行，控制器`140574`存活，阶段状态无失败。
+- fold_0第15轮完成后仍处于PBS运行状态，暂未出现早停/完成标记；不依据patience猜测终止或重提。fold_1日志仍正常按约6分钟一轮更新。日志扫描无Traceback、OOM、CUDA error或RuntimeError。
+- 预测bank及COT/GHI结果标记仍缺；下游尚未开始。实时查询收据为`receipts/attempt12/LIVE_TRAINING_20261021T0554CST.json`，test/buffer继续关闭。
