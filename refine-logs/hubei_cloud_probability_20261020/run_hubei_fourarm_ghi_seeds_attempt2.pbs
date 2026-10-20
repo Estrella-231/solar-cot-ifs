@@ -1,0 +1,69 @@
+#!/bin/bash
+#PBS -N hb_fourarm_v2
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/logs/fourarm_seeds_attempt2.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/experiments/hubei_cloud_probability_20261020
+CODE=$EXP/code_attempt4
+PACK=$EXP/ghi_fourarm_pack_attempt5
+AUDIT=$EXP/audits/fourarm_pack_audit_attempt5.json
+
+test -f "$PACK/pack_report.json"
+test -f "$AUDIT"
+test -f "$CODE/train_hubei_ghi_fourarm_paired.py"
+(cd "$CODE" && sha256sum -c SHA256SUMS)
+python - "$PACK/pack_report.json" "$AUDIT" <<'PY'
+import json, sys
+pack=json.load(open(sys.argv[1]))
+audit=json.load(open(sys.argv[2]))
+if pack.get("state") != "HUBEI_GHI_FOURARM_COMMON_TRAINVAL_PACK_TEST_CLOSED":
+    raise SystemExit("unexpected pack state")
+if pack.get("rows") != 25899 or pack.get("rows_by_split") != {"train":23704,"val":2195}:
+    raise SystemExit("unexpected audited train/val pack support")
+if pack.get("excluded_rows_all_zero_agri_station_3x3") != 2:
+    raise SystemExit("all-zero AGRI quality exclusion witness missing")
+if pack.get("test_payloads_read") != 0 or pack.get("buffer_payloads_read") != 0:
+    raise SystemExit("pack test/buffer boundary failed")
+if audit.get("state") != "PASS_HUBEI_FOURARM_PACK_INDEPENDENT_COMMON_SUPPORT_AUDIT_TEST_CLOSED":
+    raise SystemExit("independent common-support audit did not PASS")
+if audit.get("retained_rows") != 25899 or audit.get("excluded_invalid_all_zero_agri_rows") != 2:
+    raise SystemExit("audit support or quality filter mismatch")
+if audit.get("test_payloads_read") != 0 or audit.get("buffer_payloads_read") != 0:
+    raise SystemExit("independent audit crossed test/buffer boundary")
+PY
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+GPU_COUNT=$(printf '%s\n' "$GPU_TEXT" | wc -l)
+if [ -z "$GPU_TEXT" ] || [ "$GPU_COUNT" -ne 1 ]; then
+  echo "REFUSE: expected exactly one assigned node22 GPU; got '$GPU_TEXT'"
+  exit 32
+fi
+GPU_ID=$GPU_TEXT
+export CUDA_VISIBLE_DEVICES="$GPU_ID"
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+echo "PBS_JOBID=$PBS_JOBID NODE=$(hostname) GPU_ID=$GPU_ID"
+nvidia-smi -i "$GPU_ID" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$GPU_ID" --query-compute-apps=pid --format=csv,noheader)"
+
+for seed in 42 43 44; do
+  OUT=$EXP/ghi_fourarm_seed${seed}_attempt2
+  if [ -e "$OUT" ]; then echo "REFUSE_EXISTING_OUTPUT=$OUT"; exit 33; fi
+done
+
+for seed in 42 43 44; do
+  OUT=$EXP/ghi_fourarm_seed${seed}_attempt2
+  python -u "$CODE/train_hubei_ghi_fourarm_paired.py" \
+    --pack "$PACK" --output "$OUT" --seed "$seed" \
+    --epochs 30 --batch-size 512
+  test -f "$OUT/run_metadata.json"
+  grep -q 'HUBEI_GHI_FOURARM_SEED_COMPLETE' "$OUT/run_metadata.json"
+done
+echo "HUBEI_FOURARM_GHI_ALL_SEEDS_COMPLETE test_payloads_read=0 buffer_payloads_read=0"

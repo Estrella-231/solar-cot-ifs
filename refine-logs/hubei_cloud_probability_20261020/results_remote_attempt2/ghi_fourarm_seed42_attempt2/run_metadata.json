@@ -1,0 +1,32 @@
+{
+  "state": "HUBEI_GHI_FOURARM_SEED_COMPLETE",
+  "seed": 42,
+  "arms": [
+    "A",
+    "AC",
+    "AM",
+    "ACM"
+  ],
+  "stations": [
+    "Niushou",
+    "Wangzhai",
+    "Mizhuang"
+  ],
+  "epochs": 30,
+  "batch_size": 512,
+  "pack_report_sha256": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61",
+  "trainer_sha256": "f2f46df092db653b8a04f99ef80308a7f98fee6a207a0f74f731c5e51f4cb895",
+  "test_payloads_read": 0,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "pairing": "same per-station initialization, row permutations, updates, optimizer and epoch-selection rule across all four arms",
+  "normalization": "per-station train-only AGRI; physical geometry; per-station train-only log1p predicted-COT and p_cloud standardization",
+  "input_switch": "same two-channel auxiliary encoder in every arm; inactive COT/p_cloud channels are exactly zero",
+  "loss": "MSE((predicted kt * interval clear-sky GHI - observed GHI)/1000); labels in W m-2",
+  "parameter_counts": {
+    "A": 24489,
+    "AC": 24489,
+    "AM": 24489,
+    "ACM": 24489
+  },
+  "elapsed_seconds": 38.713722944259644
+}
