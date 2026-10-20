@@ -233,3 +233,9 @@
 - 在服务器 `swc` Python环境用CPU和合成输入复核attempt12当前FA/FAC初始化代码：两臂初始state SHA相同（`e225d257...f2de70`），初始输出最大差0；FAC在初始化时对两组不同合成COT输入的输出差为0。说明预测COT臂从无COT共同预测起点开始，只有训练学习后才可能产生COT增量。收据 `receipts/attempt12/GHI_PAIR_INITIALIZATION_WITNESS_attempt12.json`；该见证不读取标签、不训练、不代表任何GHI成绩。
 - 实时PBS仍为3项R（full `215311`、fold_0 `215312`、fold_1 `215313`），controller `140574`存活。full最新第8轮（验证loss `0.2359206`）；fold_0到第10轮（`0.2494573`）；fold_1到第3轮（`0.3121215`）。暂无训练错误、OOM、S预测bank或forecast-COT/GHI结果。
 - 服务器端公平初始化见证所用 `train_paired_forecast.py` SHA-256：`3b2319b5c72f3abb00f003f8c228d3cdd6bef1ab39fb72724ae7e8fd7bec53ab`。本轮没有PBS提交；test/buffer继续关闭。
+
+## 实时训练复核（2026-10-21 05:28 CST）
+
+- 全量SimVP完成第9轮，验证loss回升至 `0.2471407`（第8轮最佳 `0.2359206`），训练loss仍降至 `0.1527656`；目前只有一次未改善，未达到patience5停止条件，继续按完整验证集保存/选择best checkpoint。
+- fold_0最新第10轮验证loss `0.2494573`；fold_1最新第3轮 `0.3121215`。PBS `215311/215312/215313`仍为R，controller `140574`存活；错误检索未发现Traceback、OOM或CUDA error。
+- 尚未生成任一S预测bank、forecast-COT评估或GHI配对结果标记，test/buffer继续关闭。
