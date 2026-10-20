@@ -221,3 +221,9 @@
 - GPU采样确认本实验的node22局部GPU4/3/1分别对应full/fold_0/fold_1；瞬时SM利用率分别为93%/24%/34%，显存约73.3/55.2/55.2 GiB。GPU3在前一次瞬时采样显示0%，复查时已恢复计算，未见卡死证据。
 - fold_0 新完成第9轮，验证loss `0.2526335`，较其此前最佳0.2556693更优；full仍最新第7轮、最佳0.2411956；fold_1仍最新第1轮。近期日志没有Traceback/OOM。暂时仍没有SimVP预测bank或forecast-COT/GHI结果标记。
 - 额外对远端 attempt12 整个代码目录运行 `swc/bin/python -m compileall -q`，结果 `COMPILEALL_PASS`；仅生成字节码缓存，无数据载荷读取或PBS提交。
+
+## 实时训练推进（2026-10-21 05:20 CST）
+
+- 队列复核仍为三项运行（`215311` full、`215312` fold_0、`215313` fold_1），控制器PID `140574`存活；剩余fold和下游任务尚未排入。未见训练异常或OOM。
+- full新完成第8轮，验证loss `0.2359206`，优于第7轮的当前旧最佳0.2411956；fold_0仍最新第9轮、最佳0.2526335；fold_1新完成第2轮，验证loss `0.3582111`。这些仅为SimVP验证选模信号，不是COT/GHI增益证据。
+- 当前没有S预测bank、forecast-COT评价或配对GHI结果标记；test/buffer仍关闭。
