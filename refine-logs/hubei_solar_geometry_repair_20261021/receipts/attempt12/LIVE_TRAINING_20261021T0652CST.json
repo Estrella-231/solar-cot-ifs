@@ -1,0 +1,17 @@
+{
+  "captured_at_remote": "2026-10-21 06:51:49 CST",
+  "attempt": "attempt12",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "controller": {"pid": 140574, "state": "RUNNING_AUTHORIZED_STAGES", "completed": ["profile", "R", "full", "fold_0", "fold_1"], "failed": {}, "test_payloads_read": 0},
+  "unfinished_pbs_jobs": [
+    {"job_id": "215314.tc6000", "role": "fold_2", "state": "R", "node": "node22", "gpu_count": 1, "last_completed_epoch": 6, "train_loss": 0.2166484, "val_loss": 0.2615145, "current_epoch_progress": "7, 49/304"},
+    {"job_id": "215315.tc6000", "role": "fold_3", "state": "R", "node": "node22", "gpu_count": 1, "last_completed_epoch": 7, "train_loss": 0.1899431, "val_loss": 0.2680219, "current_epoch_progress": "8, 28/308"},
+    {"job_id": "215316.tc6000", "role": "fold_4", "state": "R", "node": "node22", "gpu_count": 1, "last_completed_epoch": 2, "train_loss": 0.5774720, "val_loss": 0.3480843, "current_epoch_progress": "3, 286/308"}
+  ],
+  "unfinished_count": 3,
+  "ready_bank_roles": ["full", "fold_0", "fold_1"],
+  "forecast_cot_metrics_ready": false,
+  "paired_ghi_complete": false,
+  "error_scan": {"traceback": false, "oom": false, "cuda_error": false, "runtime_error": false}
+}

@@ -305,3 +305,9 @@
 - 最近完成验证轮次：fold_2 epoch 4，train/val loss `0.2776097/0.2604916`；fold_3 epoch 5，`0.2534178/0.2673567`；fold_4 epoch 1，`0.8353159/0.5377611`。三者仍在继续训练，以上仅是训练选模损失，不是COT或GHI成绩。
 - 已就绪预测bank仍为full、fold_0、fold_1；fold_2…fold_4尚未产出完整bank，因此forecast-COT评价与有/无预测COT的GHI配对训练均未开始。本轮日志未检出Traceback、OOM、CUDA error或RuntimeError。
 - 太阳几何、train/val数据恢复与时间键审计依赖已通过；本轮不改训练合同、不重提任务，控制器将在bank齐备后按既定顺序自动进入COT与GHI阶段。实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0642CST.json`。
+
+## 训练推进（2026-10-21 06:52 CST）
+
+- 06:51:49 实时核验：PBS `215314/215315/215316.tc6000`（fold_2/3/4）仍在 node22 各用1张卡运行；队列为3/3。控制器PID `140574`存活，completed 为 `profile/R/full/fold_0/fold_1`，failed 为空，test载荷读取为0。
+- 最近完整验证轮次：fold_2 epoch 6，train/val loss `0.2166484/0.2615145`；fold_3 epoch 7，`0.1899431/0.2680219`；fold_4 epoch 2，`0.5774720/0.3480843`。采样时三者分别继续到第7轮49/304步、第8轮28/308步和第3轮286/308步。验证损失仅用于checkpoint选择。
+- ready预测bank仍为 full、fold_0、fold_1；预测COT评价与配对GHI训练尚未启动。日志错误扫描未发现Traceback、OOM、CUDA error或RuntimeError。收据：`receipts/attempt12/LIVE_TRAINING_20261021T0652CST.json`。
