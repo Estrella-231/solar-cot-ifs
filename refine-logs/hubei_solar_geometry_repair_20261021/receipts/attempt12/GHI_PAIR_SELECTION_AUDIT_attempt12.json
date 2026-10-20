@@ -1,0 +1,23 @@
+{
+  "state": "PASS_GHI_PAIRED_TRAINING_AND_VALIDATION_SELECTION_SOURCE_AUDIT",
+  "scope": "source-level contract audit only; no GHI heads trained yet",
+  "verified_at_cluster": "2026-10-21 04:57 CST",
+  "trainer": {
+    "path": "code_pipeline_attempt12/train_paired_forecast.py",
+    "sha256_local_remote": "3b2319b5c72f3abb00f003f8c228d3cdd6bef1ab39fb72724ae7e8fd7bec53ab",
+    "input_arms": {"without_forecast_COT": "FA", "with_forecast_COT": "FAC"},
+    "capacity": "both 24,489 parameters; FA receives a zero normalized-COT input while FAC receives train-normalized log1p forecast COT",
+    "pairing": "per station and seed, identical initial model state hash and pre-generated epoch sample-order hash are asserted; same batch, AdamW, scheduler, loss and update count",
+    "selection": "each station-arm selects its best checkpoint by that station's full validation RMSE",
+    "seeds": [42, 43, 44],
+    "epochs": 30,
+    "batch_size": 1536
+  },
+  "scorer": {
+    "path": "code_pipeline_attempt12/score_predictions.py",
+    "sha256_local_remote": "3cbc7b21a1d5230ad72d17a35f76709179eec2a758ca439d183732577d46ba0a",
+    "checks": ["exact station/init/target/lead key order", "identical GHI truth and clear-sky values", "FP64 independent RMSE/MAE/bias", "checkpoint reload parity", "actual update count", "equal-station/equal-seed aggregate", "target-date and two-day-block paired intervals"]
+  },
+  "runtime_state": {"GHI_training_started": false, "waiting_for": "corrected SimVP full plus five OOF forecast banks, then forecast-COT evaluation and OOF lineage audit", "test_payloads_read": 0, "buffer_payloads_read": 0},
+  "claim_boundary": "This verifies the future experiment's source contract; it does not prove forecast-COT improves GHI."
+}
