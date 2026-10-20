@@ -1,0 +1,25 @@
+{
+  "state": "PASS_AGAINST_OFFICIAL_NOAA_JAVASCRIPT_GEOMETRIC_ANGLES",
+  "reference_url": "https://gml.noaa.gov/grad/solcalc/main.js",
+  "reference_sha256": "3832956f24724eafacf9e18173b9299b1554d6252bed0784d9c9aca6d9f54856",
+  "cases": 62802,
+  "by_split": {
+    "train": 57334,
+    "val": 5468
+  },
+  "zenith_max_abs_deg": 1.7497114868092467e-13,
+  "azimuth_max_circular_abs_deg": 2.721662895055488e-10,
+  "refraction": "disabled explicitly in reference; compare geometric not apparent zenith",
+  "worst_case": {
+    "utc": "202606260400",
+    "lat": 26.31999969482422,
+    "lon": 117.27999877929688,
+    "zenith": 4.293846751029629,
+    "azimuth": 132.87420858955616,
+    "split": "train",
+    "noaa_zenith": 4.293846751029804,
+    "noaa_azimuth": 132.87420858955576,
+    "zenith_error": 1.7497114868092467e-13,
+    "azimuth_error": 4.547473508864641e-13
+  }
+}
