@@ -252,3 +252,10 @@
 - 最新轮次：full第10轮（训练loss `0.1404086`、验证loss `0.2368077`）；fold_0第12轮（`0.1270051`、`0.2569005`）；fold_1第5轮（`0.2747162`、`0.2795315`）。fold_1训练日志继续更新；node22瞬时GPU采样显示GPU1为100%利用率、55,213 MiB显存，故上一快照中未更新的epoch日志不是卡死证据。
 - 本次日志扫描未发现Traceback、OOM、CUDA error或RuntimeError。`S_BANK_READY`、forecast-COT评估及GHI配对完成标记均尚未生成；当前仍处于SimVP训练阶段，不能据此声称预报COT或GHI已提升。
 - 详细实时查询结果保存在`receipts/attempt12/LIVE_TRAINING_20261021T0536CST.json`。队列已满，控制器等待空位后继续提交后续fold；test/buffer继续关闭。
+
+## 实时训练推进（2026-10-21 05:41 CST）
+
+- 实时PBS仍是full `215311.tc6000`、fold_0 `215312.tc6000`、fold_1 `215313.tc6000`三项运行，控制器继续存活，attempt12无失败阶段。
+- full推进至第11轮（训练loss `0.1325294`、验证loss `0.2402363`）；fold_0推进至第13轮（`0.1226863`、`0.2608019`）。两者验证loss高于各自当前最佳轮次，仍按完整验证集best-checkpoint与既定patience流程训练。
+- fold_1最新仍为第5轮（训练loss `0.2747162`、验证loss `0.2795315`）。05:40:28对node22采样时，其GPU1利用率100%、显存55,213 MiB；full/fold_0对应训练进程CPU占用分别112%/116%，表明任务仍在计算而非退出。此次未发现Traceback/OOM/CUDA error/RuntimeError。
+- COT预测评估与GHI配对阶段仍未开始，完整预测bank标记不存在。证据见`receipts/attempt12/LIVE_TRAINING_20261021T0541CST.json`；test/buffer关闭。

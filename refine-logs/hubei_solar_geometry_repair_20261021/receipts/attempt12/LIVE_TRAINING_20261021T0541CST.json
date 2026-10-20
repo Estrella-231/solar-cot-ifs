@@ -1,0 +1,26 @@
+{
+  "timestamp_local": "2026-10-21T05:41:51+08:00",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "queue": {
+    "unfinished_user_jobs": 3,
+    "jobs": [
+      {"pbs": "215311.tc6000", "role": "full", "state": "R", "node": "node22", "latest_epoch": 11, "train_loss": 0.1325294, "validation_loss": 0.2402363},
+      {"pbs": "215312.tc6000", "role": "fold_0", "state": "R", "node": "node22", "latest_epoch": 13, "train_loss": 0.1226863, "validation_loss": 0.2608019},
+      {"pbs": "215313.tc6000", "role": "fold_1", "state": "R", "node": "node22", "latest_epoch": 5, "train_loss": 0.2747162, "validation_loss": 0.2795315}
+    ]
+  },
+  "controller": {"pid": 140574, "alive": true, "pipeline_state": "RUNNING_AUTHORIZED_STAGES", "completed": ["profile", "R"], "failed": {}},
+  "gpu_process_sample": {
+    "timestamp_local": "2026-10-21T05:40:28+08:00",
+    "node": "node22",
+    "fold_1": {"gpu_index": 1, "utilization_percent": 100, "memory_used_mib": 55213, "process_pid": 2432, "process_cpu_percent": 122},
+    "fold_0": {"gpu_index": 3, "utilization_percent": 99, "memory_used_mib": 55217, "process_pid": 86697, "process_cpu_percent": 116},
+    "full": {"gpu_index": 4, "utilization_percent": 0, "memory_used_mib": 73343, "process_pid": 81724, "process_cpu_percent": 112}
+  },
+  "error_scan": {"traceback": false, "oom": false, "cuda_error": false, "runtime_error": false},
+  "markers": {"S_BANK_READY": false, "forecast_cot_metrics": false, "ALL_PAIRED_COMPLETE_attempt12": false},
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "scope_note": "Ongoing SimVP retraining only; no forecast-COT or GHI improvement conclusion."
+}
