@@ -1,0 +1,21 @@
+{
+  "state": "PASS_LOCAL_AND_REMOTE_REGRESSION_TESTS",
+  "scope": "validation forecast-COT evaluator only; model weights, data, and training contract unchanged",
+  "issue": "per-target validity-mask view was modified in place by finite-value filtering; overlapping forecast initializations could shrink shared CPP support for later rows",
+  "old_evaluator_sha256": "fb5bf109336799e7ccadec7c791564838b40b63fbb960f3c15887ea3f693531d",
+  "new_evaluator_sha256": "9ef61f4d6c7ffff3c479c1598ba3fe18613d9299d1457dacc7dcc10f7a779325",
+  "old_test_sha256": "286abe1e06eb920bbf83b4969fb771069c948c3f538c72793ac03e0430c32d2f",
+  "new_test_sha256": "b8ccd00e2712e70a68abceb4e977d1bdf5f1b0864c0b0bcf331cad1c75243cf6",
+  "regression_witness": {
+    "setup": "two validation forecast inits share one target-time R/CPP key; first forecast contains one NaN COT pixel, second forecast is finite",
+    "old_behavior_common_support_pixels": 511,
+    "expected_common_support_pixels": 512,
+    "fixed_behavior_common_support_pixels": 512
+  },
+  "local_test": "python -m unittest test_forecast_cot_diagnostics.py -v; 4 passed",
+  "remote_test": "/public/home/slfu/miniconda3/envs/swc/bin/python -m unittest test_forecast_cot_diagnostics.py -v; 4 passed",
+  "remote_code_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/code_pipeline_attempt12",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "downstream_state_at_sync": "SimVP full and fold_0/fold_1 running; forecast COT evaluator had not started"
+}

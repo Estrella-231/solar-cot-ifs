@@ -133,7 +133,10 @@ def evaluate(cot_bank: Path, s_keys_path: Path, r_val: Path, output: Path,
             persistence = np.asarray(r_pred[hi, 0], dtype=np.float64)
             offline = np.asarray(r_pred[ri, 0], dtype=np.float64)
             reference = np.asarray(cpp[ri, 0], dtype=np.float64)
-            mask = np.asarray(valid[ri, 0], dtype=bool)
+            # Several forecast initializations can share one target-time CPP mask.
+            # Make a per-row copy before adding method-specific finite checks so
+            # one forecast cannot shrink the common support of later forecasts.
+            mask = np.array(valid[ri, 0], dtype=bool, copy=True)
             mask &= np.isfinite(forecast) & np.isfinite(persistence) & np.isfinite(offline) & np.isfinite(reference)
             if not mask.any():
                 continue

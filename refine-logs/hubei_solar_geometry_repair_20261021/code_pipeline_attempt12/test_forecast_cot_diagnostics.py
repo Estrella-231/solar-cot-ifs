@@ -38,7 +38,7 @@ class ForecastCOTDiagnosticsTests(unittest.TestCase):
             first_targets = [(first_init + timedelta(minutes=15 * (i + 1))).strftime("%Y%m%d%H%M") for i in range(16)]
             s_rows = []
             for i in range(407):
-                dt = first_init if i == 0 else datetime(2025, 9, 1) + timedelta(days=i)
+                dt = first_init if i == 0 else (first_init + timedelta(minutes=15) if i == 1 else datetime(2025, 9, 1) + timedelta(days=i))
                 targets = first_targets if i == 0 else [(dt + timedelta(minutes=15 * (j + 1))).strftime("%Y%m%d%H%M") for j in range(16)]
                 s_rows.append({"split": "val", "init_time_bjt": dt.strftime("%Y%m%d%H%M"), "target_times_bjt": "|".join(targets)})
             with keys_path.open("w", newline="", encoding="utf-8") as f:
@@ -46,6 +46,9 @@ class ForecastCOTDiagnosticsTests(unittest.TestCase):
                 writer.writeheader(); writer.writerows(s_rows)
             cot = np.zeros((407, 16, 1, 16, 16), dtype=np.float32)
             cot[0] = 1.0
+            # The second sequence targets the first sequence's +30 min key at +15 min.
+            # A non-finite forecast in the first sequence must not mutate the shared CPP mask.
+            cot[0, 1, 0, 0, 0] = np.nan
             np.save(cot_path, cot)
             r_times = [first_init.strftime("%Y%m%d%H%M")] + first_targets
             with (r_dir / "val_keys.csv").open("w", newline="", encoding="utf-8") as f:
@@ -57,12 +60,12 @@ class ForecastCOTDiagnosticsTests(unittest.TestCase):
             np.save(r_dir / "val_reference_cpp_cot.npy", zero)
             np.save(r_dir / "val_valid_mask.npy", mask)
             result = evaluator.evaluate(cot_path, keys_path, r_dir, out, draws=200, seed=19)
-            self.assertEqual(result["paired_keys"], 16)
+            self.assertEqual(result["paired_keys"], 31)
             import json
             report = json.loads((out / "forecast_cot_metrics.json").read_text(encoding="utf-8"))
             entry = report["metrics"]["15|all_patch|ALL_PATCH"]
-            self.assertEqual(entry["forecast"]["n_pixels"], 256)
-            self.assertAlmostEqual(entry["forecast"]["rmse_cot"], 1.0)
+            self.assertEqual(entry["forecast"]["n_pixels"], 512)
+            self.assertAlmostEqual(entry["forecast"]["rmse_cot"], np.sqrt(0.5))
             self.assertEqual(entry["history_persistence"]["rmse_cot"], 0.0)
 
             duplicate_dir = root / "duplicate_r"

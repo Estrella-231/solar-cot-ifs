@@ -199,3 +199,11 @@
 - 对 GHI 配对阶段将复用的 `hubei_forecast_correctutc_20261020/time_repair_v1/runtime_attempt3/pack/rows.csv` 做了只读行键审计：168,790 行（153,515 train、15,275 val），`target_time_bjt - init_time_bjt == lead_minutes` 的不匹配数为 0；lead 集合恰为 +15…+240 min 的 16 个时效。
 - 因此配对组包代码的 `lead_minutes // 15 - 1` 能正确映射未来帧索引 0…15，不存在旧版 legacy 0…225 坐标造成的一帧偏移。pack manifest 标记 test/buffer payload reads 为 0；此次只读取行键/元数据，没有打开标签载荷。
 - 05:09 队列仍为 `215311` full、`215312` fold_0、`215313` fold_1 三项运行；控制器存活，尚无 SimVP bank / forecast COT / GHI 配对完成标记。
+
+
+## Forecast-COT共同支持回归修复（2026-10-21 05:13 CST）
+
+- 下游评估器静态审查发现：`valid[ri, 0]` 的视图被逐方法有限值检查原地改写。多个初始化共享同一目标时刻时，前一个预测的 NaN 会错误削减后续预测的 CPP 共同有效支持。
+- 已改为每个目标行复制有效掩膜，并加入重叠起报时刻 + 单像元 NaN 的回归用例。旧实现把该用例的支持从预期 512 像元降成 511；修复后恢复为512。
+- 本地 Windows Python 和服务器 `swc` Python 环境均运行 `test_forecast_cot_diagnostics.py`：4/4通过。修正评估器 SHA-256：`9ef61f4d6c7ffff3c479c1598ba3fe18613d9299d1457dacc7dcc10f7a779325`；测试 SHA-256：`b8ccd00e2712e70a68abceb4e977d1bdf5f1b0864c0b0bcf331cad1c75243cf6`；本地与远端文件哈希一致。
+- 修正版已同步到 attempt12 服务器代码目录。同步时 SimVP full/fold_0/fold_1 仍在运行，GHI/COT评估阶段尚未启动；故不会覆盖或重跑已有结果，后续评估将直接使用修正版。此次不提交新 PBS 任务，test/buffer载荷读取均为0。
