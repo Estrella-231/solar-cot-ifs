@@ -1,3 +1,9 @@
+# 结果有效性修订：不再作为有效预报结论
+
+2026-10-20实际源图检查确认预报库UTC时间串误写成BJT键，全部407个验证序列与GHI标签错8小时。下方数值仅保留运行历史，不能用于预报收益或退化结论。详细证据与实际云图、COT/GHI曲线见 [归因报告](../diagnosis_v1/REPORT.md)。
+
+---
+
 # Corrected-UTC COT: paired future GHI validation
 
 Historical 8 AGRI frames -> frozen SimVP future AGRI -> corrected-UTC R COT -> 15-minute GHI. No future observed AGRI/CPP input; no test/buffer payloads.

@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N hb_fc_diag
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_correctutc_20261020/diagnosis_v1/run_attempt2.log
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_forecast_correctutc_20261020
+EXP=$BASE/runtime_attempt2
+CODE=$BASE/code_attempt2
+OLD=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_forecast_ghi_20261017/pack
+CURRENT=$PROJECT/experiments/hubei_cloud_probability_20261020
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ -z "$GPU_TEXT" ] || [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ]; then echo 'GPU_ASSIGNMENT_FAIL'; exit 32; fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+export PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+echo "START PBS=$PBS_JOBID NODE=$(hostname) GPU=$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$GPU_TEXT" --query-compute-apps=pid --format=csv,noheader)"
+python -u "$BASE/diagnosis_v1/diagnose_attempt2.py" "$BASE"

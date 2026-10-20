@@ -1,0 +1,81 @@
+{
+  "state": "INVALID_FORECAST_TIME_BINDING",
+  "validation_sequences": 407,
+  "offset_minutes": 480,
+  "local_independent_source_checks": [
+    {
+      "declared_BJT": "202508230900",
+      "actual_saved_image_BJT": "202508231700",
+      "rawUTC_correct_matches_station_npz_max_abs": 0.0,
+      "rawUTC_same_digit_matches_saved_bank_max_abs": 2.2351741790771484e-08,
+      "saved_bank_vs_correct_BJT_max_abs": 54.63999938964844
+    },
+    {
+      "declared_BJT": "202511060900",
+      "actual_saved_image_BJT": "202511061700",
+      "rawUTC_correct_matches_station_npz_max_abs": 0.0,
+      "rawUTC_same_digit_matches_saved_bank_max_abs": 2.2351741790771484e-08,
+      "saved_bank_vs_correct_BJT_max_abs": 4.019989013671875
+    }
+  ],
+  "event_COT_diagnostic_only": [
+    {
+      "station": "Niushou",
+      "declared_init_BJT": "202508230500",
+      "correct_time_COT_last_frame": 11.649014472961426,
+      "saved_true_later_COT_last_frame": 7.264720916748047,
+      "predicted_later_COT_last_frame": 0.05450529232621193,
+      "correctly_time_paired_predR_vs_observedR_COT_rmse_this_event": 3.0324161052703857,
+      "valid_frames": 16
+    },
+    {
+      "station": "Wangzhai",
+      "declared_init_BJT": "202508230500",
+      "correct_time_COT_last_frame": 10.830920219421387,
+      "saved_true_later_COT_last_frame": 7.206874370574951,
+      "predicted_later_COT_last_frame": 0.05705787241458893,
+      "correctly_time_paired_predR_vs_observedR_COT_rmse_this_event": 2.8542189598083496,
+      "valid_frames": 16
+    },
+    {
+      "station": "Mizhuang",
+      "declared_init_BJT": "202508230500",
+      "correct_time_COT_last_frame": 8.356828689575195,
+      "saved_true_later_COT_last_frame": 2.6799542903900146,
+      "predicted_later_COT_last_frame": 0.062198102474212646,
+      "correctly_time_paired_predR_vs_observedR_COT_rmse_this_event": 1.1601275205612183,
+      "valid_frames": 16
+    },
+    {
+      "station": "Niushou",
+      "declared_init_BJT": "202511060500",
+      "correct_time_COT_last_frame": 50.66333770751953,
+      "saved_true_later_COT_last_frame": 14.806282043457031,
+      "predicted_later_COT_last_frame": 20.974519729614258,
+      "correctly_time_paired_predR_vs_observedR_COT_rmse_this_event": 3.0842809677124023,
+      "valid_frames": 15
+    },
+    {
+      "station": "Wangzhai",
+      "declared_init_BJT": "202511060500",
+      "correct_time_COT_last_frame": 53.705020904541016,
+      "saved_true_later_COT_last_frame": 14.862619400024414,
+      "predicted_later_COT_last_frame": 21.76329231262207,
+      "correctly_time_paired_predR_vs_observedR_COT_rmse_this_event": 4.253869533538818,
+      "valid_frames": 15
+    },
+    {
+      "station": "Mizhuang",
+      "declared_init_BJT": "202511060500",
+      "correct_time_COT_last_frame": 51.531070709228516,
+      "saved_true_later_COT_last_frame": 14.591743469238281,
+      "predicted_later_COT_last_frame": 21.9981746673584,
+      "correctly_time_paired_predR_vs_observedR_COT_rmse_this_event": 4.848092079162598,
+      "valid_frames": 15
+    }
+  ],
+  "head_input_intervention_state": "STOPPED_BEFORE_SCORING_due_to_unmatched_time_keys",
+  "same_time_10_percent_result": "separate source chain; not invalidated by this forecast-key finding",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}
