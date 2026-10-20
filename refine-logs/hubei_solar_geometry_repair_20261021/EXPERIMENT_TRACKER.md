@@ -1,3 +1,8 @@
+## 最新推进（2026-10-21，恢复完成/数据准备已排队）
+
+- 认证前 SSH 短断恢复后，attempt3 续跑器完成官方 NOAA 参考对照（见上方 JSON），并在 FD-201 CPU 节点恢复原始白天反射率。恢复包核查结果：255 个唯一 UTC 帧、1,344,223 像元，255/255 均有 C13 原始源一致性证据，最大绝对差 0；报告标记 `test_payloads_read=0`、`buffer_payloads_read=0`。压缩包已传回 node22 并解压到独立 `restored_attempt2`，没有覆盖旧缓存。
+- 修复后 train/val 数据构建 PBS **215289.tc6000** 已提交，脚本 `prepare_data_attempt2.pbs`，8 CPU、4小时、无 GPU；队列提交后回执：215284 `R`（其他 `direct_cot_P_U`，1 GPU），215289 `Q`（`hb_solar_data`）。PBS 215288 审计已完成。提交前执行器实时查了全账户队列，确认未结束作业少于3个；本任务没有终止任何作业。
+- 当前本地自动续跑状态 `DATA_PREPARATION_SUBMITTED`。它正等待 `prepared_attempt2/DATA_READY.json`；只有数据包的manifest、配对键/标签/AGRI/几何审计通过后，才启动S/R/GHI配对重训控制器。此刻修复后的模型训练尚未开始。
 ## 最新进展（2026-10-21，本轮实况）
 
 - 全量几何审计 PBS `215288.tc6000` 已完成，exit_status=0（node22 CPU-only）。覆盖 4,086 个 train 序列、407 个 val 序列，共 10,473 张唯一 AGRI 帧（train 9,560、val 913）和 3,479 条 R 样本（train 3,178、val 301）；train/val 日期键隔离通过，test/buffer 载荷读取均为 0。
@@ -23,4 +28,5 @@
 3. 重建/重训受影响 S 与 R 模型，再重跑湖北三站有无预测 COT 的相同样本配对 GHI 实验。
 
 **截至当前：正式全量审计未完成；数据恢复未完成；任何修正后的 GPU 训练和配对 GHI 重训均未开始，暂无本轮成绩。test/buffer payload reads = 0。**
+
 
