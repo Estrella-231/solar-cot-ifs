@@ -1,0 +1,30 @@
+{
+  "state": "PASS_CORRECTED_OOF_DATE_FOLD_SOURCE_PATH",
+  "observed_at_local": "2026-10-21 05:02 +08:00",
+  "remote_host": "zjnu-hpc",
+  "authoritative_date_fold_assignment": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/preparation_attempt1/metadata/train_date_folds.csv",
+  "assignment_rows": 250,
+  "heldout_fold_counts": {"0": 50, "1": 50, "2": 50, "3": 50, "4": 50},
+  "corrected_audit_script": "code_pipeline_attempt12/audit_oof_bank_lineage.py",
+  "audit_script_sha256_local_remote": "8ac2cf8b3930ab9ed29ea7292cf592def96980aa80662f8e6980f5e39f304d09",
+  "verification": {
+    "local_python_compile": "PASS",
+    "remote_swc_environment_compile": "PASS",
+    "local_synthetic_tests_passed": 4,
+    "remote_synthetic_tests_passed": 4,
+    "real_bank_lineage_audit": "PENDING_S_BANKS_AND_GHI_PACK",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "live_training_snapshot": {
+    "pbs_unfinished_count": 3,
+    "jobs": {
+      "215308.tc6000": "existing unrelated running job",
+      "215311.tc6000": "running; SimVP full; node22 GPU4; epoch 3 complete; validation loss 0.2777633",
+      "215312.tc6000": "running; SimVP fold_0; node22 GPU3; epoch 3 complete; validation loss 0.3109249"
+    },
+    "S_forecast_banks_ready": 0,
+    "paired_GHI_heads_started": false
+  },
+  "test_or_buffer_loads": 0
+}

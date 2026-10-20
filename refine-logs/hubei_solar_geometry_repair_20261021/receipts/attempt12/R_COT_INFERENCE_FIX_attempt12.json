@@ -1,0 +1,18 @@
+{
+  "state": "FIXED_BEFORE_FORECAST_COT_BANK_GENERATION",
+  "observed_bjt": "2026-10-21 04:23",
+  "issue": "The forecast-AGRI to R inference path standardized the 16 input channels and then overwrote the normalized day_mask channel with binary 0/1, unlike R training and validation.",
+  "independent_train_val_audit": "R_INFERENCE_NORMALIZATION_AUDIT_attempt12.json",
+  "audit_sha256": "2e1a9a4d62330091e58484fd9946eba6ff281cd244049e4df59059705dad0b35",
+  "rows_checked": 3479,
+  "split_counts": {"train": 3178, "val": 301},
+  "corrected_train_transform_max_abs": 0.0,
+  "legacy_binary_override_max_abs": 12.423768043518066,
+  "original_run_stages_sha256": "0d57fc9ce22dcccfe323b9b27204c45c520220dc198d291cdbfa7d787b7a7aef",
+  "original_remote_backup": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/provenance/run_stages_before_cot_daymask_fix_attempt12.py",
+  "corrected_run_stages_sha256": "f021212867646ed8af347f5255c721af9074a11836c39566b86a982e9a9f49d2",
+  "fix": "Keep the train-fitted z-score for all channels at inference. Set predicted COT to zero outside day_mask>0.5 and cosSOZ>cos(80deg). Emit source_manifest.json binding S/R/normalization/prediction/geometry/inference hashes for each role.",
+  "training_impact": "No change to completed R or currently running SimVP training; corrected path is used before the not-yet-submitted GHI/COT-bank stage.",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

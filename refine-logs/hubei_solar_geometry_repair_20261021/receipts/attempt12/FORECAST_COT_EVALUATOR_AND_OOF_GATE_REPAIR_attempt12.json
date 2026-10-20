@@ -1,0 +1,42 @@
+{
+  "state": "CODE_REPAIR_SYNCED_AND_SYNTHETIC_TESTED_NOT_YET_RUN_ON_EXPERIMENT_BANKS",
+  "observed_at_local": "2026-10-21 04:53 +08:00",
+  "remote_host": "zjnu-hpc",
+  "remote_code_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/code_pipeline_attempt12",
+  "repair_scope": [
+    "Run lead-wise forecast-COT metrics on exact validation target BJT keys and common CPP-valid pixels before GHI head training.",
+    "Report per-lead COT RMSE/MAE/bias for station pixel, station 3x3, and full 16x16 patch; compare historical COT persistence and offline observed-future AGRI-to-R retrieval reference.",
+    "Use paired target-date bootstrap for forecast-minus-baseline RMSE differences; keep CPP as retrieval reference and future-observed AGRI-to-R as offline/non-deployable reference.",
+    "Audit each GHI pack row's split, role, source sequence, init time, target time, and lead against the generated S->R forecast banks; prove train rows are sourced from the matching held-out date fold and validation rows from the full-train model.",
+    "Require an existing OOF audit report with matching SHA-256 and PASS state in the forecast-pack training gate."
+  ],
+  "local_and_remote_sha256": {
+    "evaluate_forecast_cot.py": "fb5bf109336799e7ccadec7c791564838b40b63fbb960f3c15887ea3f693531d",
+    "audit_oof_bank_lineage.py": "a76096309a5ae08f3ed35d5dc69419bb60e472968cf17fd24517295d75c44a2a",
+    "hubei_forecast_pack_gate.py": "cb915847112addedbc70bc0a7c976470ed96d0b1ea7bf795240f7da4fe91fd17",
+    "run_stages.py": "f34c8762b62b32305143e4b3741a78b32f80688584a2785b54f05683e49402f6",
+    "test_forecast_cot_diagnostics.py": "286abe1e06eb920bbf83b4969fb771069c948c3f538c72793ac03e0430c32d2f"
+  },
+  "verification": {
+    "local_python_compile": "PASS",
+    "remote_swc_python_310_compile": "PASS",
+    "synthetic_tests": 4,
+    "synthetic_tests_passed": 4,
+    "synthetic_tests_failed": 0,
+    "remote_real_bank_evaluation": "NOT_RUN_WAITING_FOR_SIMVP_BANKS",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "live_training_snapshot_cluster": {
+    "observed_at": "2026-10-21 04:40 CST",
+    "pbs_jobs": {
+      "215308.tc6000": "existing unrelated running job",
+      "215311.tc6000": "running; corrected SimVP full; node22 GPU4; epoch 2 completed",
+      "215312.tc6000": "running; corrected SimVP fold_0; node22 GPU3; epoch 2 completed"
+    },
+    "unfinished_job_count": 3,
+    "retrain_started": true,
+    "forecast_cot_bank_complete": false,
+    "paired_ghi_head_started": false
+  }
+}

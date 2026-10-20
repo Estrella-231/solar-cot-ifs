@@ -1,0 +1,40 @@
+{
+  "state": "PASS_R_INFERENCE_NORMALIZATION_MATCHES_TRAIN_VALIDATION_PACK",
+  "rows": 3479,
+  "split_counts": {
+    "train": 3178,
+    "val": 301
+  },
+  "input_shape": [
+    3479,
+    16,
+    16,
+    16
+  ],
+  "channel_order": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "cosSOZ",
+    "cosRAA",
+    "day_mask"
+  ],
+  "train_fit_normalization_sha256_file": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/norm.json",
+  "new_exact_train_transform_max_abs": 0.0,
+  "legacy_binary_daymask_override_max_abs_vs_train_transform": 12.423768043518066,
+  "day_pixels": 884875,
+  "night_pixels": 5749,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "interpretation": "Future-AGRI inference must apply the full train-fitted z-score to all 16 channels, including day_mask; only the R output is zeroed outside day_mask>0.5 and cosSOZ>cos(80deg)."
+}

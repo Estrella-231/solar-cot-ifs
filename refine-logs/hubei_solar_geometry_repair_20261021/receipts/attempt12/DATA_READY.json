@@ -1,0 +1,116 @@
+{
+  "solar_geometry_source_sha256": "a45f4225ed09b82479db9555605a10095901727c1a4cf95d510d48f6fc02f1f5",
+  "state": "CORRECTED_SOLAR_TRAIN_VAL_DATA_READY",
+  "S_cache": "/dev/shm/hubei_solar_corrected_20261021_attempt10",
+  "S_frames": 10473,
+  "S_sequences": {
+    "train": 4086,
+    "val": 407
+  },
+  "S_norms": {
+    "full": "40ef5fef39659d861a818e1783d183362be6a726bcdb42d91e4c2bca3cb58e94",
+    "fold_0": "135ef38055c8f67ac7aceaa137f28a17925d2a57a56060dab15e0390053cc0bd",
+    "fold_1": "e780d798f5e8c8c8a65bbb3702bc6edf0f16ce5918e36870bf9db3dd2400185c",
+    "fold_2": "679ab3923ac5cd1cb9daa6c5d5142d7f8bf0b2611ba3866d478353033a4a42d6",
+    "fold_3": "42c13b5ed301b1fad08d89a50be4a8e759ffd4cde95f11e9c81461aff627cf5f",
+    "fold_4": "2eab5f578e7bbffb6c0e37d697020d0eb68528cbfb6ee8a7a9fed07f4237950b"
+  },
+  "R_packs": [
+    {
+      "role": "full",
+      "train": {
+        "rows": 3178,
+        "supervised_rows": 2738,
+        "valid_pixels": 699023
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    },
+    {
+      "role": "fold_0",
+      "train": {
+        "rows": 2547,
+        "supervised_rows": 2195,
+        "valid_pixels": 560573
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    },
+    {
+      "role": "fold_1",
+      "train": {
+        "rows": 2547,
+        "supervised_rows": 2189,
+        "valid_pixels": 558735
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    },
+    {
+      "role": "fold_2",
+      "train": {
+        "rows": 2534,
+        "supervised_rows": 2188,
+        "valid_pixels": 558376
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    },
+    {
+      "role": "fold_3",
+      "train": {
+        "rows": 2551,
+        "supervised_rows": 2204,
+        "valid_pixels": 562964
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    },
+    {
+      "role": "fold_4",
+      "train": {
+        "rows": 2533,
+        "supervised_rows": 2176,
+        "valid_pixels": 555444
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    }
+  ],
+  "R_input_source_policy": "canonical full AGRI scenes for all train/val R rows; corrected S cache crop where overlapping; labels and CPP masks preserved",
+  "R_input_source_alignment_sha256": "03048cd94499c70830710646a6c9bc823764eb7789beb69c1f991259361b67b3",
+  "R_input_source_alignment_rows": 3479,
+  "R_non_S_cache_source_audit_sha256": "94fb644a2938706ad615c35c069c5d327fe5d9f32d4dfc29f8f8d5df06984486",
+  "R_non_S_cache_source_count": 560,
+  "R_non_S_cache_source_counts": {
+    "old_stage_flat": 358,
+    "recovered_fd201": 202
+  },
+  "R_only_transfer_audit_sha256": "6143722de5d8a66658c74e5f31d4a7069cdd515060c0d8afb3f81c0067547661",
+  "restoration_witness_archive_audit_sha256": "60a8d896b28bf346cdb00e62f335de3c277d3bef584bbfdf4efddce1f0bba10b",
+  "R_raw_corrected_sha256": "4afd3dc8947973814a7fa70bb431a7a7c73adda34930971fec35edd241b0715d",
+  "full_grid_aux_roundtrip_max_abs": 3.5762786865234375e-07,
+  "R_S_physical_reconstruction_max_abs": 0.0,
+  "raw_radiance_restoration_report_sha256": "0577c304043e095bbd3e66ad8e6045e7567a23adc845730a2ad6877ce0a6de3a",
+  "independent_NOAA_report_sha256": "a1581c9b0e4afaa65f98859c47ef20b93d1253b52aeb4230e88ae8753c894551",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

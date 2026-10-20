@@ -1,4 +1,115 @@
-## 最新推进（2026-10-21，恢复完成/数据准备已排队）
+## 最新推进（2026-10-21 04:40集群时钟；几何审计通过，SimVP重训进行中）
+
+- **训练集和验证集太阳几何已核验完成。** 官方NOAA JavaScript公式独立复算覆盖62,802个train/val点（train 57,334、val 5,468）；最终修复数据包独立审计 `DATA_AUDIT_PASS_attempt12.json` 为PASS，覆盖10,473帧S数据及3,479条R记录，键、标签、AGRI、几何和日期隔离通过，test/buffer读取均为0。六个修正R模型（全train及5折）已完成。
+- **上游重训已启动，但最终有/无预测COT的GHI配对头还未启动。** PBS `215311.tc6000`（node22/GPU4，SimVP full）和 `215312.tc6000`（node22/GPU3，fold_0）均为R；集群04:40时最新日志分别完成第2轮（验证loss 0.3049911）和第2轮（0.3215278），无训练异常。其它4折SimVP、预测COT bank和GHI头仍待队列控制器按依赖顺序提交。slfu队列另有既有任务 `215308.tc6000`，当前共3个未结束作业，已达上限；不再新增提交，控制器等待空位。
+- **补上GHI训练前缺失的两项审计。** 复核发现原`GHI()`在COT bank生成后会直接训练GHI头，没有执行计划要求的逐时效COT评价；此外旧pack把`DATA_READY.json`误记成OOF bank报告哈希。现已将`evaluate_forecast_cot.py`和`audit_oof_bank_lineage.py`接入GHI阶段：生成COT bank后、训练头前，先在精确target-time和共同CPP有效像元上评估+15…+240 min，报告站点像元、站点3×3、16×16场、历史COT持续性及仅离线可用的未来真实AGRI→R参考，并按目标日期配对bootstrap；随后核对训练行来自对应留出折、验证行来自full-train bank及每行init/target/lead键。CPP明确标为检索参考，不作独立真值。
+- 预测头pack gate现在读取OOF报告文件并校验实际SHA和PASS状态，不再接受任意非空哈希。五个改动文件已同步到服务器并逐项SHA一致；本地及node22 Python 3.10编译通过，4项合成对齐/指标/门禁测试通过。**这两个新增诊断尚未跑实数据**，需等全部SimVP折及验证COT bank完成；GHI配对头仍未开始。
+
+## 最新推进（2026-10-21 04:26 BJT，attempt12重训运行；修正预测COT输入预处理）
+
+- **训练/验证几何与修复数据包已经审计通过。** NOAA独立公式覆盖62,802个train/val点；`DATA_AUDIT_PASS_attempt12.json` 覆盖10,473帧S数据、4,086个train序列/407个val序列和3,479条R样本，键、标签、AGRI、几何、日期隔离及train-only归一化均PASS。修复反射率来源与SHA核对通过。test/buffer读取为0。
+- **正式重训已经开始。** 修正R全量加5折六个模型已完成。最新qstat：SimVP full PBS `215311.tc6000` 在node22/GPU4，第2轮刚开始；fold_0 PBS `215312.tc6000` 在node22/GPU3，第1轮163/306 batch。账户队列 `215308`（既有作业）、`215311`、`215312` 共3个未结束作业，达到上限；控制器会等空位再逐折提交其余S模型。当前还没有新的COT预测bank或GHI配对结果。
+- **发现并修正了一个R推理输入不一致。** R训练/验证把16个输入通道（含`day_mask`）都按train-only均值/方差标准化；旧的未来AGRI→R推理在标准化后又将`day_mask`改成0/1。独立复算全部3,479条train/val R输入后，新推理变换与训练pack完全一致（最大差0）；旧覆盖相对训练输入最大差12.4238个标准差单位。修正版在COT bank生成前应用：保留全通道z-score，只在`day_mask>0.5 && cosSOZ>cos(80°)`之外将输出COT置零，并给bank写入S/R/归一化/预测/几何/推理代码哈希。
+- 修正已同步到服务器；不会改变正在训练的SimVP或已完成的R权重。远端旧脚本已备份，修正版远端`run_stages.py` SHA-256=`f021212867646ed8af347f5255c721af9074a11836c39566b86a982e9a9f49d2`。只读审计收据在本地`receipts/attempt12/R_INFERENCE_NORMALIZATION_AUDIT_attempt12.json`，变更记录在`receipts/attempt12/R_COT_INFERENCE_FIX_attempt12.json`。
+- 下一步：按PBS≤3继续完成full和五折SimVP及预测bank；再按新方案先评估逐时效预测COT相对历史持续性（CPP仅作检索参考、验证集诊断），并完成三站有无预测COT的配对GHI头。当前未提交GHI头任务。
+
+## 最新推进（2026-10-21，attempt12数据审计通过并启动正式重训）
+
+- 最新队列推进：`215310.tc6000` 的R全量及5折训练已完成，控制器已登记 `R_READY_attempt12.json`，并提交SimVP fold_0作业 **215312.tc6000**（当前node22运行）。SimVP full `215311.tc6000` 当前第0轮约183/282 batch。实时未结束作业为既有`215308`、本任务`215311`与`215312`，正好3个；PBS `215310`为C态已完成。配对GHI头要等SimVP full/OOF模型完成。
+
+- 最新实况：R的full及fold_0–fold_4六个模型已全部完成验证选模，`R_READY_attempt12.json` 为 `CORRECTED_SOLAR_S_SIX_R_COMPLETE`，test读取为0。SimVP full正式训练在node22 GPU4推进中；最近日志为第0轮139/282 batch，训练日志持续增长、GPU4约73.3 GiB且GPU利用率高。控制器在等待登记R阶段完成后启动fold_0。
+- 实时未结束队列为既有 `215308.tc6000` 和本任务 `215311.tc6000` 两个；`215309` profile与`215310` R都已完成态。队列尚有名额，控制器会按依赖继续提交，且始终遵守三任务上限。
+
+- 实际训练已进入迭代：R全train、fold_0、fold_1、fold_2均已完成验证选模（best epoch分别21、17、16、20），R PBS `215310.tc6000` 正继续训练剩余OOF折；SimVP正式full任务 `215311.tc6000` 已开始完整训练，GPU4当前显存约73 GiB/80 GiB。单卡profile测得full batch16，fold batch12；profile是工程实测，不作为精度结果。
+- 本次实时队列仍为3个未结束：外部既有 `215308.tc6000`、本任务R `215310.tc6000` 和SimVP full `215311.tc6000`。账号并发到上限；控制器等待R/S依赖和空位后才会继续逐项提交OOF SimVP/GHI配对头。
+
+- **修正后正式重训已开始。** profile `215309.tc6000` 已完成：A800-SXM4-80GB 单卡真实批次前反向和checkpoint重载均PASS；batch16峰值分配68.48 GiB、一步8.40 s且重载差0，完整S选择batch16、五个OOF折选择batch12。基于profile结果控制器开始顺序提交训练。
+- `215310.tc6000`（node22 GPU3）正在训练修正后的R模型；全train R运行已生成并标记验证完成，现进入OOF折R训练。`215311.tc6000`（node22 GPU4）已启动修正后的SimVP full训练，日志和模型参数文件已创建。两项均使用A800，test/buffer保持关闭。GHI有/无COT配对头尚未启动，需等五折/全量S与R资产完成并生成验证预测后再进入。
+- 实时全账户队列：`215308.tc6000`（既有direct_COT_HV_in）、`215310.tc6000`（本任务R）和`215311.tc6000`（本任务S full）三个未结束作业，恰好达到上限；profile `215309` 已为C态，不计入未结束。控制器在每个单独qsub前后均重新检查队列，不会超额提交。
+
+- **attempt12最终数据审计已通过**：`DATA_AUDIT_PASS_attempt12.json` 标记 `PASS_PREPARED_ATTEMPT12_TRAIN_VAL_KEYS_LABELS_AGRI_GEOMETRY`。覆盖S 10,473帧（train 9,560 / val 913）、4,086 train与407 val序列；R 3,479行（train 3,178 / val 301）。日期分离通过；R/S重叠物理重建最大差0、S几何编码最大差`3.5763e-7`、COT目标最大差0；六套R统计只由各自train子集拟合，归一化回算误差均小于`1.34e-5`。test/buffer读取和GHI标签成员打开均为0。审计收据已下载至本地`receipts/attempt12/`。
+- 审计通过后控制器已自动提交单卡profiling **215309.tc6000**，在node22/gpu2运行，实际分配 **NVIDIA A800-SXM4-80GB GPU 3**；用户指出归属学院服务器的GPU 0未被本任务使用。profile报告尚未生成，下一步由控制器据此顺序启动修正后的S/R训练及三站配对GHI头。
+- 队列状态更正：`qstat -u slfu` 列出三条记录，但`215307.tc6000`已为完成态C，不计未结束；当前未结束任务实际为`215308.tc6000`（既有direct_COT_HV_in）和`215309.tc6000`（本任务profile），共2个。控制器也将C态过滤后再按≤3门槛提交。
+
+- **阶段推进：attempt12已生成完整修正数据包。** S全train与五折共6套train-only归一化已完成；R全train与五折6套pack均已生成，完整包写出 `CORRECTED_SOLAR_TRAIN_VAL_DATA_READY`，覆盖S 10,473帧（4,086 train/407 val序列）和R 3,479行（3,178 train/301 val）。R/S重叠的物理几何重建最大差为0；全图辅助通道回算最大差`3.58e-7`。这些是构建产物自报值，仍等独立审计复核后才放行训练。
+- 当前 PBS `215307.tc6000` 在node22运行，`audit_prepared_attempt12.py` 正以约86% CPU做独立审计；控制器 `140574` 仍处于 `WAITING_DATA`。实时账户队列只有 `215307`（本任务CPU审计）和 `215308`（既有direct_COT_HV_in）两个未结束作业。模型重训尚未启动；审计PASS后按计划自动进入profiling及训练阶段。
+
+- 继续实时核验 attempt12：全train与五折的6套 SimVP train-only 归一化均已生成，R/SimVP时间索引文件也已开始落盘；构建进程在node22持续运行（约62% CPU），当前主要剩余步骤是完成R包和最终独立数据审计。PBS `215307.tc6000` 仍为R态，`QUEUE_STATE_attempt12.json` 仍是 `WAITING_DATA`，因此没有训练作业或新预测。
+- 实时 `qstat -u slfu` 当前有两个未结束作业：`215307.tc6000`（本任务CPU数据准备，node22，8 CPU）和 `215308.tc6000`（已有 `direct_COT_HV_in`）。已结束的 `215306.tc6000` 不计入未结束数。没有提交额外作业；控制器需等待数据与审计门禁通过后才启动后续阶段。
+- 目前可确认训练/验证太阳几何公式复核、精确UTC数据恢复、560条R独有源审计、缓存SHA与几何语义核验以及6套归一化均已完成；R pack构建、最终标签/样本键/AGRI/几何独立审计仍待完成。test/buffer读取仍为0。
+
+- attempt10 PBS `215302.tc6000` 已完成10,473帧S场重建和六套train-only归一化，但R/S断言比较了R的16×16几何裁块与S的256×256全图sidecar，形状不同所以 `np.array_equal` 恒为False。这是代码尺寸比较错误，不是太阳公式或时间映射问题。全图和相同裁块的本地独立公式复算在5个时刻最大差为0；attempt10逐帧全场写入检查也已通过。
+- 只读诊断 PBS `215304.tc6000` 的临时脚本也先按同样误解比较全图与裁块，因shape无法广播而退出；没有改写任何数据。诊断帮助确认了错误边界。
+- 已在attempt12将断言修为取S全图sidecar的站点区域 `[103:119,118:134]` 后比较；同时仅在校验attempt10的10,473个缓存文件SHA及全图 `cosSOZ/cosRAA/day_mask` 与原始几何通道一致后复用缓存。node22实时检查表明attempt10缓存的10,473个data和aux文件都仍存在，避免重新生成大缓存。attempt12的19个Python源文件node22编译通过，PBS语法通过；源码tar SHA=`4eb2772724e7841218f8fabb205db200948eb073ab7ba6752a1a2f767308a824`，PBS SHA=`526b80064c7716294646cfdb75c92e5707a4bf21cb928c4d9eb980cc80094092`。
+- 数据准备 PBS **215307.tc6000** 已在node22开始运行（8 CPU、0 GPU）。提交前slfu未结束队列为空，提交后仅该项在运行；控制器 PID `140574` 为 `WAITING_DATA`。当前等待修正后的R包生成及独立key/标签/AGRI/几何审计，门禁通过后自动启动训练。
+- 当前仍没有模型重训或新GHI成绩。NOAA train/val几何公式核验、255帧恢复、560条R缺失源核验已通过；最终数据包独立审计待attempt12。test/buffer仍关闭。
+
+本节取代attempt10“运行中”的旧状态；attempt10和attempt11只作为失败过程留档。
+
+## 最新推进（2026-10-21，attempt9暴露旧缓存几何不一致；attempt10强制重建运行中）
+
+- attempt9 数据准备 PBS `215301.tc6000` 在生成 S 六套归一化后，R/S重叠时刻几何一致性断言失败；没有生成DATA_READY或独立审计PASS，也没有启动模型训练。失败位置是重用的 attempt4 S缓存辅助几何与按修正公式重算的R裁块不一致。缓存SHA通过只能证明文件未损坏，不能证明缓存语义符合修正后的几何合同。
+- 已建立隔离的 `code_pipeline_attempt10`：禁用attempt4缓存复用，强制重建10,473帧S数据与几何sidecar；重新拟合全train和五折S train-only归一化；在写入时增加全图SOZ、SOA−SAA、day-mask与sidecar一致性断言；独立审计增加所有S帧 sidecar/raw几何编码核验。attempt9失败产物和日志保留。19个Python文件本地及node22 swc/Python 3.10编译通过，PBS语法通过。attempt10源码归档SHA=`01c073f2df2f4f63005a7507d0ba0349a330de8742889192feb2d054aa5e8414`；PBS SHA=`bdd656a3b93506eae3957e81ddc45f0c54a1608bb06796f98a5c64abc0805ae6`。
+- attempt10数据准备 PBS **215302.tc6000** 正在 node22 运行（8 CPU、0 GPU，2026-10-21 03:32之后提交；qstat显示队列运行态）。提交前 `qstat -u slfu` 只有 `215298.tc6000`（1 GPU）；提交后未结束作业共2个，满足≤3限制。控制器 PID `106300` 状态 `WAITING_DATA`，仅当DATA_READY及独立审计通过后才按序启动profile和模型训练。
+- attempt9控制器已收到STOP标记，避免旧attempt继续轮询；目前仍可能在其60秒轮询周期内退出。test/buffer仍未读取。**截至目前，训练集与验证集太阳几何的独立公式核验和来源恢复已通过，但最终重建数据包还未通过独立审计，湖北三站配对重训尚未开始。**
+
+以下 attempt9 数据准备状态记录作为历史留档，由本节取代。
+
+## 最新推进（2026-10-21，attempt8失败已定位；attempt9数据准备运行中）
+
+- attempt8 数据准备 PBS `215300.tc6000` 已结束，但未生成 DATA_READY 或独立数据审计文件，也没有启动任何模型重训。失败点不是560条来源映射：该审计已通过；而是构建脚本误读不存在的 `RESTORATION_WITNESS_ARCHIVE_AUDIT_attempt8.json`。唯一已核验的有效恢复见证审计文件是 `RESTORATION_WITNESS_ARCHIVE_AUDIT_attempt7.json`（255/255 请求哈希匹配、test/buffer读取为0）。
+- 已建立隔离的 `code_pipeline_attempt9`，修正构建端、来源审计及最终数据审计所引用的见证审计文件，同时把全部新输出改到 attempt9 路径；attempt8目录、日志和失败记录均保留。19个Python源文件本地编译通过，node22上使用swc Python 3.10重新编译通过，PBS `bash -n` 通过。attempt9源码归档 SHA-256=`7811b7b1f39c99f15b8ca40a1b519011d9fe01ba22fd3c3dfc5885763c5dfe8d`；PBS文件 SHA-256=`4d5c39154451951dae22523a14125ced6a07c3c6ddfac5ecd8549d17cbc453c6`。
+- 数据准备 PBS **215301.tc6000** 正在 node22 运行（8 CPU、0 GPU，开始时间 2026-10-21 03:32:21 集群时间）；脚本和产物目录均为 attempt9。PBS 显示名称仍是复制脚本里的 `hb_solar_data8`，只是调度器标签遗留，运行的实际文件名为 `prepare_data_attempt9.pbs`。提交前实时队列只有 `215298.tc6000`（另一个1-GPU作业）；提交后共2个未结束任务。
+- attempt9 控制器 PID `89651` 处于 `WAITING_DATA`，只会在 `DATA_READY` 和独立键/标签/AGRI/几何审计 PASS 后启动profile及S/R/GHI训练。最终修正数据包还没有通过审计，故截至本条没有任何模型重训启动。
+- NOAA独立几何核验（62,802个train/val点）、255帧精确UTC恢复、以及560条R非S缓存来源核验继续有效；test/buffer载荷仍关闭。
+
+以下attempt8“构建运行中”记录现已由本节取代；保留为历史过程。
+
+## 最新推进（2026-10-21，attempt8 的 560 条来源审计通过，数据构建运行中）
+
+- attempt7 PBS `215299.tc6000` 已结束于数据构建阶段，没生成 `DATA_READY`，也没有启动模型训练。它暴露出来源清单覆盖口径错误：旧代码把“未在旧阶段R全场目录中”误当成“未在S序列缓存中”。实际有560个R行键不在S序列缓存；其中358条在旧阶段全场目录，另202条才需用已恢复的FD-201数据。数据源本身均可找到，失败是清单与路径绑定不完整。
+- attempt8 新增源审计后，560/560个非S缓存键已核验：train 530、val 30；358个旧阶段全场源、202个恢复源；BJT→UTC键、split、20×256×256形状、有限值及SHA全部通过。报告为 `R_NON_S_CACHE_SOURCE_AUDIT_attempt8.json`，SHA-256=`94fb644a2938706ad615c35c069c5d327fe5d9f32d4dfc29f8f8d5df06984486`，test/buffer读取均为0。
+- 数据准备 PBS `215300.tc6000` 在 node22 运行（8 CPU、0 GPU），已通过来源审计，当前执行修正S/R数据包构建；提交时账户仅有 `215298.tc6000` 一个未结束GPU作业。本轮队列控制器 PID `71226` 只会在 `DATA_READY` 和独立包审计通过后进入 profile/S/R/GHI训练阶段。
+- attempt8 的19个Python文件哈希、远端编译、PBS语法及三个输入归档哈希均通过。源码tar SHA=`0b3ca8bc1d42e19dccef72cf7e2be515755ef5fc4ff28017c199d052904b2347`；PBS SHA=`81ad15335c3fabea0559962fc76e72468ff469d0de565a1a6985b448620f8571`。临时准备解包放在node22 `/dev/shm`，避免根盘空间不足。
+- NOAA太阳几何公式对照和255帧精确UTC反射率恢复均已通过，但最终包独立审计仍在进行。当前仍没有模型重训作业或新GHI成绩；test/buffer继续关闭。
+
+
+## 最新推进（2026-10-21，attempt7 数据准备已提交；几何及恢复见证核验通过）
+
+- NOAA 几何公式与 62,802 个 train/val 点的独立对照已通过；恢复的 255 帧白天可见光数据及 202 个仅供 train/val 的 R 缺失源均完成哈希核对。R 输入覆盖 3,479 条，其中 3,277 条可与既有 S 缓存逐键对照；差异超过 1e-4 的 10 条均集中在已记录的 2026-01-01 可见光源差异，其他差异仅为浮点反归一化量级。
+- attempt5 因 tc6000 登录节点没有 FD-201 的规范 `/home/Data_Pool_3/...` 挂载而失败；attempt6 修正数据源路径后，又因准备归档遗漏 `RESTORATION_REQUEST_WITNESS.json` 在起始处失败。两个失败目录和日志均保留，均未启动模型重训。
+- 已核验远端 `RESTORATION_WITNESS_ARCHIVE_AUDIT_attempt7.json`：恢复见证状态 PASS、255/255 请求与恢复报告哈希相符、test/buffer 读取为0。归档 SHA-256=`59fd880be1b5f1e56a2964f0733ad068115ebda19977ef1686e82f60a6043f8f`；独立见证审计本地 SHA-256=`60a8d896b28bf346cdb00e62f335de3c277d3bef584bbfdf4efddce1f0bba10b`。
+- 新建隔离的 `code_pipeline_attempt7` 和 `prepare_data_attempt7.pbs`，在 attempt6 准备包解压后额外解开已核验的见证归档；build 和独立 audit 都要求恢复报告、见证文件和 SHA 一致。源码包 SHA-256=`3d26269da353e6aff1a3f516f755e8801f10d2943bf75e21e049ddd79dbb8362`，PBS 脚本 SHA-256=`ad93be03dc4c701caf9413dd3bb2e91ac0f0629765cbe2e03a58b168c049d7cf`。18 个 Python 文件远端逐项哈希通过，PBS `bash -n` 与 Python 3.10 编译通过。
+- 数据准备 PBS `215299.tc6000` 已实时提交并核验在 node22 运行（8 CPU、0 GPU）；提交前账户仅有 `215298.tc6000` 一个未结束 GPU 任务，提交后共2个。队列控制器 PID `49605` 等待 `DATA_READY` 和独立审计，不会跳过门禁。node22 `/tmp` 根盘余量约14 GB、`/dev/shm` 余量约164 GB；本轮大缓存仍写 `/dev/shm`，准备归档约4.4 GB。
+- 当前模型重训仍未开始。数据准备成功后，独立审计必须再次核验键、标签、AGRI源、太阳几何、日期隔离与 test/buffer=0；只有 PASS 后控制器才按已批准合同依次 profile、重训修正后的 S/R，再做湖北三站有无 COT 配对 GHI 头。test载荷保持关闭。
+
+## 最新推进（2026-10-21，attempt4键顺序断言修复；attempt5已提交）
+
+- 实时复核 PBS `215292.tc6000`：`exit_status=1`，准备过程已完成 10,473 帧缓存和六套 SimVP 归一化，但在 R/CPP 时间键断言处停止；没有生成 `DATA_READY`，attempt4 没有启动任何模型重训。
+- 定位到精确原因：R 行表和 CPP 侧车各有 3,479 个唯一 BJT 时刻，键集合完全一致（R-only=0、CPP-only=0），只是排列顺序不同；第一处顺序差在索引 792（R=`202508250615`，CPP=`202508220615`）。此前代码错误要求数组行顺序一致，虽然已有按键 LUT。
+- 新建隔离的 `code_pipeline_attempt5` / `prepared_attempt5`。将构建端和独立审计改为校验唯一时间键集合一致、按 `time_bjt` 查表对齐，并让 SimVP indexes 依据 UTC/BJT manifest 映射物理帧路径；独立审计另行校验所有 10,473 组修正帧/几何文件 SHA-256。attempt4 的代码、缓存清单和失败日志保持原样。
+- attempt5 仅在 node22 上 SHA-256 复核 attempt4 的完整 `/dev/shm` 缓存后才会复用；若缓存已不存在，则写到新的 attempt5 `/dev/shm` 目录。数据源、split、标签、模型和训练合同未改变。
+- 首次重提因 PBS 文件是 Windows CRLF 被 qsub 拒绝，未产生作业；转为 Unix LF 后 `bash -n` 和远端 Python compileall 通过，远端源码包哈希与本地一致。随后实时查询账户全队列并成功提交数据准备 **215293.tc6000**。
+- 当前实况：`215293.tc6000` 在 node22 运行，8 CPU / 0 GPU；`215290.tc6000` 为另一个已有训练任务、占 1 GPU。队列共 2 个未结束作业。attempt5 控制器 PID `117453` 处于 `WAITING_DATA`，仅当 `DATA_READY` 与独立 audit PASS 都存在时提交后续 profile/训练。当前没有模型重训完成或 COT 收益新结论；test/buffer仍关闭。
+- attempt5 源码包 SHA-256=`8f815c7d87bcea8bcfe5991f408cf1d71d5168181b20e6bee9ffc1a59be39843`（注：这是本次最终归档哈希；以 `CODE_SHA256_attempt5.json` 为准）。PBS 脚本 SHA-256=`136eaac0df1dff22e9e07e179480da850a9d0a928973e8cf2bc3f11f29e53740`（以清单为准）。
+
+## 最新推进（2026-10-21，attempt3空间不足失败；attempt4数据准备运行）
+
+- **已确认：旧 attempt2 的数据准备 PBS 215289.tc6000 以 exit_status=1 结束，未生成 `prepared_attempt2/DATA_READY.json`，所以没有启动模型训练。** 失败点是 R/S AGRI 输入对齐断言，不能将该失败写成几何审计失败。
+- 太阳几何已完成 train/val 全量 NOAA 独立核验；反射率从精确 UTC HDF 恢复已完成。两项只说明输入修复所需的上游审计通过，不等于数据包或模型训练通过。
+- 初始源差异抽查修正：4条抽查中3条 R NPZ AGRI patch 与 canonical full-scene 裁块完全一致；1条（BJT 2026-01-01 08:00）C01–C06 不一致，C09–C15 一致。故目前只能说发现行级可见光源差异，**不能概括为 R 与 S 全面使用不同处理链**。
+- 全量只读源审计已完成：3,479/3,479 个 canonical full-scene、`data16` 和旧 NPZ 输入文件均存在；`data16` 裁块与同 UTC 全图裁块 3,479/3,479 完全一致。旧 R NPZ 的 `patch` 有 10/3,479 行与 canonical 裁块不一致，10 行均为 2026-01-01 08:00–17:00 BJT 的连续训练时次；差异仅在 C01–C06，C09–C15 全部逐像元一致，最大绝对差 0.0944223。报告和逐行CSV在 `diagnostics_attempt2/R_SOURCE_AUDIT_attempt2.json`、`R_SOURCE_AUDIT_per_row_attempt2.csv`；审计只读 train/val 的 AGRI `patch`，未打开 NPZ 标签成员，test/buffer读取均为0。
+- 为避免来源混杂，新的 `code_pipeline_attempt3/build_corrected_data.py` 已改为：重叠时次直接取已修复 S 全图缓存的站点裁块；R 独有时次从同一 canonical full-scene AGRI 根目录按正确空间索引裁块；对所有 R 行重算同一 NOAA 太阳几何并使用精确 HDF 恢复的新昼间可见光。旧 R NPZ 的标签/CPP mask 保持原映射，且 R train-only 归一化仍按各折单独拟合。该数据构建需等全量源审计确认所有 canonical 文件存在后执行。
+- 新 attempt3 预处理代码、独立审计和隔离的 S/R/GHI 执行目录已完成静态检查并同步至服务器；远端源码哈希与本地清单一致，压缩包 SHA-256=`c2067ee3342980dae43b30f0603ba08a3c4b3f3609e8934c6ccd19fef4a81d17`。修复构建会统一从 canonical full-scene 产生所有R输入（与SimVP重叠时直接取已校正S缓存），并保留旧NPZ来源路径用于逐行差异记录；独立审计通过前控制器不会提交模型任务。
+- attempt3 数据准备 PBS **215291.tc6000** 已以 `exit_status=1` 结束。唯一错误为 `OSError: [Errno 28] No space left on device`：它把约18 GB缓存写入node22已满的本地根盘 `/dev/nvme0n1p4`；失败时处理到1,792/10,473帧。该日志和失败缓存均保留，部分缓存移至node22 `/dev/shm/hubei_solar_corrected_20261021_attempt3_failed`，未用来冒充完整数据。
+- 修复仅改变临时缓存位置和尝试编号：新代码把大缓存写入node22 `/dev/shm`（提交时可用224 GB），不改模型、标签、日期划分或数据来源。attempt4源码包本地/远端SHA-256一致=`f1c9f51ffaccaf05fa33d65aea9eedf3036ff326e372385fd4cd0e08f1df57a3`，远端bash语法和Python编译通过；队列控制器改为先完成单卡S性能测量再提交R任务。
+- **attempt4 数据准备 PBS 215292.tc6000** 已实时确认在 node22 运行（8 CPU、0 GPU）；最新日志进度为 **8,448/10,473 帧**，新缓存已写入 `/dev/shm`（约49 GB），根盘空间错误没有复现，尚无 `DATA_READY.json`。训练/验证最终数据包的逐项几何审计仍待构建完成后执行，所以模型重训尚未开始。
+- 太阳几何公式及独立 NOAA 参考核验已经通过（train/val共62,802个点，天顶角最大差`1.75e-13°`、方位角最大圆周差`2.72e-10°`）；但修复后实际数据包仍须在准备完成后由独立审计脚本复核，不能把公式核验等同于最终数据审计通过。
+- 实时账户队列当前有两项未结束作业：`215290.tc6000`（其他 `direct_cot_P_U`）和本任务CPU数据准备 `215292.tc6000`。attempt4自动控制器进程PID 84262正在运行，状态为 `WAITING_DATA`；只有数据包和独立几何/键/标签审计都通过后才会自动启动训练。test/buffer载荷读取仍为0。
+
+以下内容中 `attempt2` 的“正在等待DATA_READY/即将启动训练”表述已被本段取代，作为失败过程留档。
+
+## 历史推进（2026-10-21，数据准备已排队）
 
 - 认证前 SSH 短断恢复后，attempt3 续跑器完成官方 NOAA 参考对照（见上方 JSON），并在 FD-201 CPU 节点恢复原始白天反射率。恢复包核查结果：255 个唯一 UTC 帧、1,344,223 像元，255/255 均有 C13 原始源一致性证据，最大绝对差 0；报告标记 `test_payloads_read=0`、`buffer_payloads_read=0`。压缩包已传回 node22 并解压到独立 `restored_attempt2`，没有覆盖旧缓存。
 - 修复后 train/val 数据构建 PBS **215289.tc6000** 已提交，脚本 `prepare_data_attempt2.pbs`，8 CPU、4小时、无 GPU；队列提交后回执：215284 `R`（其他 `direct_cot_P_U`，1 GPU），215289 `Q`（`hb_solar_data`）。PBS 215288 审计已完成。提交前执行器实时查了全账户队列，确认未结束作业少于3个；本任务没有终止任何作业。
@@ -30,3 +141,21 @@
 **截至当前：正式全量审计未完成；数据恢复未完成；任何修正后的 GPU 训练和配对 GHI 重训均未开始，暂无本轮成绩。test/buffer payload reads = 0。**
 
 
+
+## 最新推进（2026-10-21 05:02 BJT；修正OOF日期折分来源路径）
+
+- OOF审计脚本曾引用不存在的 `prepared_attempt12/metadata/train_date_folds.csv`。已根据服务器真实目录修正为 `preparation_attempt1/metadata/train_date_folds.csv`，并同步 `audit_oof_bank_lineage.py` 到 zjnu-hpc。文件SHA-256本地/远端一致：`8ac2cf8b3930ab9ed29ea7292cf592def96980aa80662f8e6980f5e39f304d09`。
+- 权威日期折分文件已读出并核对：250个日期记录，5折各50天。修正后本地编译通过；远端使用训练环境 `/public/home/slfu/miniconda3/envs/swc/bin/python` 编译通过，4项远端合成测试全部通过。此前用于核查的系统Python 2.7不适用，但没有PBS任务因此失败，也没有提交新任务。
+- 实时队列仍有3个未结束任务：`215308.tc6000`（既有任务）、`215311.tc6000`（node22/GPU4，SimVP full，第3轮验证loss 0.2777633）及`215312.tc6000`（node22/GPU3，fold_0，第3轮验证loss 0.3109249）。S预测bank尚未产出，故实数据COT评估、OOF行级审计和GHI配对头均尚未开始；账户满额时不追加提交，控制器继续等空位。
+- 本轮路径修复见 `receipts/attempt12/OOF_DATE_FOLD_PATH_FIX_attempt12.json`。test与buffer载荷读取仍为0。
+
+## 最新实况（2026-10-21 04:48集群时钟；GPU训练与续跑控制器正常）
+
+- SimVP full `215311.tc6000` 最新完成第3轮，验证loss `0.2777633`；fold_0 `215312.tc6000` 最新完成第4轮，验证loss `0.2888934`。两项仍在node22分别使用GPU4/GPU3。三次GPU采样显示两张卡SM利用率在动态变化（GPU4为98/90/17%，GPU3为7/5/79%），显存约73/55 GiB；不是作业未启动或GPU空闲的状态。
+- PBS账户全队列仍有3项未结束（另有既有任务`215308.tc6000`），未提交新作业。远端控制器PID `140574`仍存活；源码会在每个阶段提交前重新查询全队列，满3项时等待，并按profile→R→full及五折S→COT评估/OOF审计→GHI顺序自动推进。
+- 六个关键控制/评估脚本本地与远端SHA一致；预测bank暂未生成，因此预测COT指标、OOF来源核对和GHI有/无COT配对训练都尚未进入。实时收据：`receipts/attempt12/LIVE_TRAINING_GPU_CONTROLLER_20261021T0448CST.json`。
+
+## 训练推进（2026-10-21 04:51集群时钟）
+
+- full模型推进至第4轮，验证loss `0.2504645`；fold_0仍在第4轮（验证loss `0.2888934`，该轮于04:47完成，任务仍为R）。
+- 队列仍为3项，未提交额外作业；`S_BANK_READY`仍未出现。依赖控制器保持运行，等当前任务释放资源后按队列推进其余S折。

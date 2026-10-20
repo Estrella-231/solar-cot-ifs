@@ -1,0 +1,29 @@
+{
+  "observed_at_cluster": "2026-10-21 04:48 CST",
+  "host": "zjnu-hpc",
+  "remote_base": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "pbs_queue": {
+    "unfinished_count": 3,
+    "jobs": {
+      "215308.tc6000": {"state": "R", "role": "pre-existing direct_COT_HV_in"},
+      "215311.tc6000": {"state": "R", "role": "corrected SimVP full", "node": "node22", "gpu": 4, "last_epoch": 3, "val_loss": 0.2777633},
+      "215312.tc6000": {"state": "R", "role": "corrected SimVP fold_0", "node": "node22", "gpu": 3, "last_epoch": 4, "val_loss": 0.2888934}
+    }
+  },
+  "controller": {"pid": 140574, "state": "alive", "code": "code_pipeline_attempt12/queue_controller.py", "behavior": "serially submits dependency-ready stages only after qstat recheck and with fewer than 3 unfinished jobs"},
+  "gpu_pmon_three_samples": {
+    "gpu3_fold0": {"memory_mib": 55156, "sm_util_percent": [7, 5, 79]},
+    "gpu4_full": {"memory_mib": 73276, "sm_util_percent": [98, 90, 17]}
+  },
+  "bank_and_ghi_status": {"S_BANK_READY_count": 0, "forecast_cot_evaluation": "pending", "oof_lineage_report": "pending", "paired_GHI_heads_started": false},
+  "code_sha_local_remote_match": {
+    "evaluate_forecast_cot.py": "fb5bf109336799e7ccadec7c791564838b40b63fbb960f3c15887ea3f693531d",
+    "audit_oof_bank_lineage.py": "8ac2cf8b3930ab9ed29ea7292cf592def96980aa80662f8e6980f5e39f304d09",
+    "hubei_forecast_pack_gate.py": "cb915847112addedbc70bc0a7c976470ed96d0b1ea7bf795240f7da4fe91fd17",
+    "run_stages.py": "f34c8762b62b32305143e4b3741a78b32f80688584a2785b54f05683e49402f6",
+    "test_forecast_cot_diagnostics.py": "286abe1e06eb920bbf83b4969fb771069c948c3f538c72793ac03e0430c32d2f",
+    "queue_controller.py": "0c8bc8cb23a8c71f87bb497324ab53eae04511ecb164f306b4b4263731bc796e"
+  },
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}
