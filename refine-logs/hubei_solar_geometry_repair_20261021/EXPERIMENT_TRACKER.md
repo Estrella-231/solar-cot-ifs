@@ -278,3 +278,10 @@
 - 两个PBS任务仍为R，因为已切换到验证预测bank推理：full完整验证407个窗口，fold_0为OOF验证823个窗口。两目录已有`pred_agri_patch.npy`、`true_agri_patch.npy`、`future_geometry_patch.npy`，但只有部分输出文件且无bank-ready标记，仍需等待写入/校验完成。
 - fold_1保持训练中，第9轮进度约80%（309 steps中的248 steps）；其job log实时更新。PBS队列仍是full `215311`、fold_0 `215312`、fold_1 `215313`三项，控制器PID `140574`存活、失败为空。
 - 当前没有完整`S_BANK_READY`或forecast-COT结果，COT与GHI阶段尚未开始；不以部分bank推理或AGRI验证loss替代COT指标。详细证据见`receipts/attempt12/LIVE_TRAINING_20261021T0557CST.json`。
+
+## 验证预测bank与时间键独立核验（2026-10-21 06:00 CST）
+
+- full与fold_0的预测bank均已通过阶段成功标记并完成只读数组检查：full 407个验证窗口、fold_0 OOF 823个窗口，AGRI数组形状分别为`[407/823,16,13,16,16]`，未来太阳几何为`[407/823,16,3,16,16]`；预测、真值和几何数组所有元素均为有限值。
+- 独立比较bank `keys.csv`与原始val index：full 407/407、fold_0 823/823，样本序号、split和24帧源路径逐行完全一致。逐窗口把24个源文件名时刻按UTC+8转换后，历史末帧等于key初始化时刻、16个后续帧逐个等于key目标时刻，lead正好为+15…+240分钟；两组总错位数0。
+- 两个bank报告均为train-only归一化、原始反归一化SimVP输出（无裁剪/插值），并记录test/buffer载荷读取为0。队列中full与fold_0已完成；fold_1、fold_2、fold_3运行中，共3个未结束任务，控制器继续工作。
+- 这是预测源与时标的质量核验，不是COT精度结果。仍等待fold_1…fold_4 OOF bank齐备后统一运行forecast-COT和GHI配对评估。机器复算结果见`receipts/attempt12/FORECAST_BANK_AUDIT_20261021T0600CST.json`。
