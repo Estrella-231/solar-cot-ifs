@@ -271,3 +271,10 @@
 - full `215311.tc6000`最新第12轮（训练loss `0.1270183`、验证loss `0.2380386`）；fold_0 `215312.tc6000`最新第15轮（`0.1149914`、`0.2589198`）；fold_1 `215313.tc6000`最新第8轮（`0.1881666`、`0.2721530`）。PBS实时队列仍是这三项运行，控制器`140574`存活，阶段状态无失败。
 - fold_0第15轮完成后仍处于PBS运行状态，暂未出现早停/完成标记；不依据patience猜测终止或重提。fold_1日志仍正常按约6分钟一轮更新。日志扫描无Traceback、OOM、CUDA error或RuntimeError。
 - 预测bank及COT/GHI结果标记仍缺；下游尚未开始。实时查询收据为`receipts/attempt12/LIVE_TRAINING_20261021T0554CST.json`，test/buffer继续关闭。
+
+## 训练到验证预测bank阶段（2026-10-21 05:57 CST）
+
+- 检查PBS日志后确认此前full/fold_0的训练进程已正常完成早停，不是挂起：full在第13轮触发patience5，best验证loss为`0.2359206`（epoch 8）；fold_0在第15轮触发patience5，best验证loss为`0.2494573`（epoch 10）。日志均明确写出`TEST_CLOSED: skipped`。
+- 两个PBS任务仍为R，因为已切换到验证预测bank推理：full完整验证407个窗口，fold_0为OOF验证823个窗口。两目录已有`pred_agri_patch.npy`、`true_agri_patch.npy`、`future_geometry_patch.npy`，但只有部分输出文件且无bank-ready标记，仍需等待写入/校验完成。
+- fold_1保持训练中，第9轮进度约80%（309 steps中的248 steps）；其job log实时更新。PBS队列仍是full `215311`、fold_0 `215312`、fold_1 `215313`三项，控制器PID `140574`存活、失败为空。
+- 当前没有完整`S_BANK_READY`或forecast-COT结果，COT与GHI阶段尚未开始；不以部分bank推理或AGRI验证loss替代COT指标。详细证据见`receipts/attempt12/LIVE_TRAINING_20261021T0557CST.json`。

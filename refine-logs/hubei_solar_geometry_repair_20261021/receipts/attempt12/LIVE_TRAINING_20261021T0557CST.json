@@ -1,0 +1,23 @@
+{
+  "timestamp_local": "2026-10-21T05:57:16+08:00",
+  "server": "zjnu-hpc",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "queue": {
+    "unfinished_user_jobs": 3,
+    "jobs": [
+      {"pbs": "215311.tc6000", "role": "full", "state": "R", "stage": "validation_prediction_inference", "validation_windows": 407, "training_complete": true, "best_epoch": 8, "best_validation_loss": 0.2359206},
+      {"pbs": "215312.tc6000", "role": "fold_0", "state": "R", "stage": "oof_validation_prediction_inference", "oof_validation_windows": 823, "training_complete": true, "best_epoch": 10, "best_validation_loss": 0.2494573},
+      {"pbs": "215313.tc6000", "role": "fold_1", "state": "R", "stage": "simvp_training", "latest_epoch": 9, "epoch_progress_steps": "248/309", "epoch_progress_percent_approx": 80}
+    ]
+  },
+  "controller": {"pid": 140574, "alive": true, "pipeline_state": "RUNNING_AUTHORIZED_STAGES", "completed": ["profile", "R"], "failed": {}},
+  "partial_bank_files": {
+    "full": ["pred_agri_patch.npy", "true_agri_patch.npy", "future_geometry_patch.npy"],
+    "fold_0": ["pred_agri_patch.npy", "true_agri_patch.npy", "future_geometry_patch.npy"]
+  },
+  "bank_ready_markers": false,
+  "test_closed_messages": {"full": true, "fold_0": true},
+  "forecast_cot_metrics": false,
+  "ghi_paired_complete": false,
+  "scope_note": "Training and partial validation inference only; no forecast-COT or GHI claim yet."
+}
