@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 BASE=Path('/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021')
 OLD=BASE.parent/'hubei_forecast_correctutc_20261020/time_repair_v1/runtime_attempt3'
-CODE=Path(__file__).resolve().parent;DATA=BASE/'prepared_attempt1';REPO=BASE/'simvp_code_snapshot';ROLES=['full']+[f'fold_{i}' for i in range(5)]
+CODE=Path(__file__).resolve().parent;DATA=BASE/'prepared_attempt2';REPO=BASE/'simvp_code_snapshot';ROLES=['full']+[f'fold_{i}' for i in range(5)]
 def sha(p):
  h=hashlib.sha256()
  with Path(p).open('rb') as f:
@@ -15,7 +15,7 @@ def run(cmd,**kw):print('COMMAND',json.dumps(list(map(str,cmd))),flush=True);sub
 def readready():
  d=json.loads((DATA/'DATA_READY.json').read_text());assert d['state']=='CORRECTED_SOLAR_TRAIN_VAL_DATA_READY' and d['test_payloads_read']==0 and d['buffer_payloads_read']==0;return d
 def profile():
- ready=readready();out=BASE/'S_profile_attempt1';out.mkdir(exist_ok=False);result=[];env=dict(os.environ,SIMVP_REPO=str(REPO))
+ ready=readready();out=BASE/'S_profile_attempt2';out.mkdir(exist_ok=False);result=[];env=dict(os.environ,SIMVP_REPO=str(REPO))
  for b in (4,6,8,12,16):
   cmd=[sys.executable,CODE/'profile_S.py','--batch-size',b,'--index-csv',DATA/'indexes/full.csv','--norm-npz',DATA/'norms/full.npz','--data-root',ready['S_cache'],'--report-json',out/f'batch{b}.json','--checkpoint',out/f'batch{b}.pt']
   with (out/f'batch{b}.log').open('w') as log:p=subprocess.run(list(map(str,cmd)),stdout=log,stderr=subprocess.STDOUT,env=env)
@@ -28,35 +28,35 @@ def profile():
   if target in feasible:choice[role]=dict(gpus=1,micro_batch=target,global_batch=target)
   elif target//2 in feasible:choice[role]=dict(gpus=2,micro_batch=target//2,global_batch=target)
   else:raise RuntimeError(('No shape preserves original global batch',role,feasible))
- (BASE/'S_PROFILE_READY.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_S_PROFILE_COMPLETE',results=result,choice=choice,model='unchanged SimVP gSTA 8-to-16 256x256 13+3',test_payloads_read=0),indent=2));print('S_PROFILE_READY',flush=True)
+ (BASE/'S_PROFILE_READY_attempt2.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_S_PROFILE_COMPLETE',results=result,choice=choice,model='unchanged SimVP gSTA 8-to-16 256x256 13+3',test_payloads_read=0),indent=2));print('S_PROFILE_READY',flush=True)
 def R():
- readready();root=BASE/'R_runs';root.mkdir(exist_ok=False)
+ readready();root=BASE/'R_runs_attempt2';root.mkdir(exist_ok=False)
  for role in ROLES:run([sys.executable,CODE/'train_corrected_r.py','--pack',DATA/'R_packs'/role,'--model-source',CODE/'train_cot_repaired.py','--output',root/role,'--seed',42,'--batch',128,'--epochs',50,'--patience',8,'--allow-variable-support'])
- (BASE/'R_READY.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_SIX_R_COMPLETE',roles=ROLES,test_payloads_read=0)));print('SIX_R_READY',flush=True)
+ (BASE/'R_READY_attempt2.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_SIX_R_COMPLETE',roles=ROLES,test_payloads_read=0)));print('SIX_R_READY',flush=True)
 def S(role):
- ready=readready();shape=json.loads((BASE/'S_PROFILE_READY.json').read_text())['choice'][role];ng=shape['gpus'];physical=os.environ['CUDA_VISIBLE_DEVICES'].split(',');assert len(physical)==ng
+ ready=readready();shape=json.loads((BASE/'S_PROFILE_READY_attempt2.json').read_text())['choice'][role];ng=shape['gpus'];physical=os.environ['CUDA_VISIBLE_DEVICES'].split(',');assert len(physical)==ng
  cfg=BASE/'configs'/f'{role}.py';cfg.parent.mkdir(exist_ok=True);args=dict(method='SimVP',model_type='gSTA',dataname='hbagri',pre_seq_length=8,aft_seq_length=16,total_length=24,temporal_stride=1,in_shape=[8,16,256,256],out_channels=13,metrics=['mse','mae'],hid_S=32,hid_T=256,N_T=8,N_S=4,spatio_kernel_enc=3,spatio_kernel_dec=3,drop_path=.1,lr=1e-3,opt='adamw',weight_decay=1e-4,sched='cosine',min_lr=1e-5,warmup_epoch=5,warmup_lr=1e-5,filter_bias_and_bn=False,early_stop_patience=5,metric_for_bestckpt='val_loss',no_display_method_info=True,batch_size=shape['micro_batch'],val_batch_size=shape['micro_batch'],num_workers=4,drop_last=False,gpus=list(range(ng)),seed=42,epoch=50,data_root=ready['S_cache'],index_csv=str(DATA/'indexes'/f'{role}.csv'))
- cfg.write_text('\n'.join(f'{k} = {v!r}' for k,v in args.items())+'\n');out=BASE/'S_runs'/role;out.mkdir(parents=True,exist_ok=False);(out/'cwd').mkdir();env=dict(os.environ,SIMVP_REPO=str(REPO),HUBEI_SIMVP_CONFIG=str(cfg),HUBEI_SIMVP_NORM=str(DATA/'norms'/f'{role}.npz'),HUBEI_SIMVP_RUN_CWD=str(out/'cwd'),HUBEI_SOLAR_RUN_DIR=str(out),HUBEI_SOLAR_ROLE=role,HUBEI_SOLAR_DATA_READY=str(DATA/'DATA_READY.json'))
+ cfg.write_text('\n'.join(f'{k} = {v!r}' for k,v in args.items())+'\n');out=BASE/'S_runs_attempt2'/role;out.mkdir(parents=True,exist_ok=False);(out/'cwd').mkdir();env=dict(os.environ,SIMVP_REPO=str(REPO),HUBEI_SIMVP_CONFIG=str(cfg),HUBEI_SIMVP_NORM=str(DATA/'norms'/f'{role}.npz'),HUBEI_SIMVP_RUN_CWD=str(out/'cwd'),HUBEI_SOLAR_RUN_DIR=str(out),HUBEI_SOLAR_ROLE=role,HUBEI_SOLAR_DATA_READY=str(DATA/'DATA_READY.json'))
  cmd=[sys.executable]
  if ng>1:cmd+=['-m','torch.distributed.run','--standalone','--nnodes=1',f'--nproc_per_node={ng}']
  cmd+=[CODE/'run_corrected_simvp.py']
  if ng>1:cmd+=['--dist']
- cmd+=['--gpus']+list(range(ng))+['--res_dir',BASE/'S_runs','--ex_name',role];run(cmd,env=env)
+ cmd+=['--gpus']+list(range(ng))+['--res_dir',BASE/'S_runs_attempt2','--ex_name',role];run(cmd,env=env)
  meta=json.loads((out/'run_metadata.json').read_text());assert meta['state']=='CORRECTED_SOLAR_SIMVP_TRAINING_COMPLETE'
  # No future-real fields are deployed; stored truth is for validation diagnosis only.
  index=DATA/'indexes'/('full.csv' if role=='full' else f'{role}_oof.csv')
- bank=BASE/'S_banks'/role
+ bank=BASE/'S_banks_attempt2'/role
  run([sys.executable,CODE/'infer_S.py','--repo',REPO,'--index',index,'--norm',DATA/'norms'/f'{role}.npz','--checkpoint',meta['best_checkpoint'],'--output',bank,'--batch-size',16,'--workers',4,'--splits','val'],env=env)
  (out/'S_BANK_READY.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_S_BANK_COMPLETE',role=role,checkpoint_sha256=meta['best_checkpoint_sha256'],bank=str(bank/'val'),source_index_sha256=sha(index),normalization_sha256=sha(DATA/'norms'/f'{role}.npz'),solar_geometry_corrected=True,test_payloads_read=0)));print('S_BANK_READY '+role,flush=True)
 def GHI():
  import torch
  from train_cot_repaired import COTUNet
- readready();assert json.loads((BASE/'R_READY.json').read_text())['state']=='CORRECTED_SOLAR_SIX_R_COMPLETE';pack=BASE/'GHI_pack_attempt1';pack.mkdir(exist_ok=False);cbank=BASE/'COT_banks_attempt1';cbank.mkdir();saved={};source=[];device=torch.device('cuda');torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
+ readready();assert json.loads((BASE/'R_READY_attempt2.json').read_text())['state']=='CORRECTED_SOLAR_SIX_R_COMPLETE';pack=BASE/'GHI_pack_attempt2';pack.mkdir(exist_ok=False);cbank=BASE/'COT_banks_attempt2';cbank.mkdir();saved={};source=[];device=torch.device('cuda');torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
  for role in ROLES:
-  meta=json.loads((BASE/'S_runs'/role/'S_BANK_READY.json').read_text());assert meta['solar_geometry_corrected'];bank=Path(meta['bank']);pred=np.load(bank/'pred_agri_patch.npy');geo=np.load(bank/'future_geometry_patch.npy');keys=records(bank/'keys.csv');n=len(keys);expected=407 if role=='full' else [823,797,850,809,807][int(role[-1])];assert n==expected and pred.shape==(n,16,13,16,16) and geo.shape==(n,16,3,16,16)
-  sm=json.loads((BASE/'S_runs'/role/'run_metadata.json').read_text());assert sm['solar_geometry_corrected'] and sm['random_initialization'] and sm['input_normalization_sha256']==sha(DATA/'norms'/f'{role}.npz') and sm['index_sha256']==sha(DATA/'indexes'/f'{role}.csv') and sm['best_checkpoint_sha256']==sha(sm['best_checkpoint'])==meta['checkpoint_sha256']
-  rmeta=json.loads((BASE/'R_runs'/role/'run_metadata.json').read_text());rstatus=json.loads((BASE/'R_runs'/role/'status.json').read_text());assert rstatus['state']=='COMPLETE_VALIDATION_ONLY_TEST_CLOSED' and rmeta['pack_status_sha256']==sha(DATA/'R_packs'/role/'pack_status.json') and rmeta['model_source_sha256']==sha(CODE/'train_cot_repaired.py')
-  rp=DATA/'R_packs'/role;rn=json.loads((rp/'norm.json').read_text());mu=np.array(rn['mean'],np.float32)[None,:,None,None];sd=np.array(rn['std'],np.float32)[None,:,None,None];rout=BASE/'R_runs'/role;model=COTUNet().to(device).eval();model.load_state_dict(torch.load(rout/'best.pt',map_location=device)['model']);raw=np.concatenate((pred,geo),axis=2).reshape(-1,16,16,16);answer=[]
+  meta=json.loads((BASE/'S_runs_attempt2'/role/'S_BANK_READY.json').read_text());assert meta['solar_geometry_corrected'];bank=Path(meta['bank']);pred=np.load(bank/'pred_agri_patch.npy');geo=np.load(bank/'future_geometry_patch.npy');keys=records(bank/'keys.csv');n=len(keys);expected=407 if role=='full' else [823,797,850,809,807][int(role[-1])];assert n==expected and pred.shape==(n,16,13,16,16) and geo.shape==(n,16,3,16,16)
+  sm=json.loads((BASE/'S_runs_attempt2'/role/'run_metadata.json').read_text());assert sm['solar_geometry_corrected'] and sm['random_initialization'] and sm['input_normalization_sha256']==sha(DATA/'norms'/f'{role}.npz') and sm['index_sha256']==sha(DATA/'indexes'/f'{role}.csv') and sm['best_checkpoint_sha256']==sha(sm['best_checkpoint'])==meta['checkpoint_sha256']
+  rmeta=json.loads((BASE/'R_runs_attempt2'/role/'run_metadata.json').read_text());rstatus=json.loads((BASE/'R_runs_attempt2'/role/'status.json').read_text());assert rstatus['state']=='COMPLETE_VALIDATION_ONLY_TEST_CLOSED' and rmeta['pack_status_sha256']==sha(DATA/'R_packs'/role/'pack_status.json') and rmeta['model_source_sha256']==sha(CODE/'train_cot_repaired.py')
+  rp=DATA/'R_packs'/role;rn=json.loads((rp/'norm.json').read_text());mu=np.array(rn['mean'],np.float32)[None,:,None,None];sd=np.array(rn['std'],np.float32)[None,:,None,None];rout=BASE/'R_runs_attempt2'/role;model=COTUNet().to(device).eval();model.load_state_dict(torch.load(rout/'best.pt',map_location=device)['model']);raw=np.concatenate((pred,geo),axis=2).reshape(-1,16,16,16);answer=[]
   for j in range(0,len(raw),2048):
    x=raw[j:j+2048];day=x[:,15:16]>.5;z=(x-mu)/sd;z[:,15:16]=np.where(day,z[:,15:16],0.)
    with torch.inference_mode(),torch.autocast('cuda',dtype=torch.float16):v=model(torch.from_numpy(z).to(device)).float();v=torch.expm1(v).masked_fill(~torch.from_numpy(day).to(device),0.)
@@ -69,9 +69,9 @@ def GHI():
  for n,x in [('agri_raw.npy',ag),('geometry.npy',gg),('cot.npy',cc)]:np.save(pack/n,np.asarray(x,np.float32))
  import shutil
  for n in ('rows.csv','ghi_wm2.npy','clear_sky_wm2.npy'):shutil.copyfile(OLD/'pack'/n,pack/n);assert sha(OLD/'pack'/n)==sha(pack/n)
- report=json.loads((OLD/'pack/pack_report.json').read_text());report.update(solar_geometry_corrected=True,corrected_S_and_R_retrained_from_random=True,cot_values_reused_without_change=False,source_correctutc_Rs=source,source_time_only_pack_sha256=sha(OLD/'pack/pack_report.json'),source_corrected_data_ready_sha256=sha(DATA/'DATA_READY.json'),oof_train_bank_report_sha256=sha(DATA/'DATA_READY.json'),future_real_agri_used_as_input=False,future_cpp_used_as_input=False,known_solar_limitation=None,arrays_sha256={p.name:sha(p) for p in pack.glob('*.npy')});(pack/'pack_report.json').write_text(json.dumps(report,indent=2));outputs=BASE/'GHI_runs_attempt1';outputs.mkdir(exist_ok=False)
+ report=json.loads((OLD/'pack/pack_report.json').read_text());report.update(solar_geometry_corrected=True,corrected_S_and_R_retrained_from_random=True,cot_values_reused_without_change=False,source_correctutc_Rs=source,source_time_only_pack_sha256=sha(OLD/'pack/pack_report.json'),source_corrected_data_ready_sha256=sha(DATA/'DATA_READY.json'),oof_train_bank_report_sha256=sha(DATA/'DATA_READY.json'),future_real_agri_used_as_input=False,future_cpp_used_as_input=False,known_solar_limitation=None,arrays_sha256={p.name:sha(p) for p in pack.glob('*.npy')});(pack/'pack_report.json').write_text(json.dumps(report,indent=2));outputs=BASE/'GHI_runs_attempt2';outputs.mkdir(exist_ok=False)
  for seed in (42,43,44):run([sys.executable,CODE/'train_paired_forecast.py','--pack',pack,'--output',outputs/f'paired_seed{seed}_attempt1','--input-mode','forecast','--arms','FA','FAC','--epochs',30,'--batch-size',1536,'--seed',seed])
- run([sys.executable,CODE/'score_predictions.py','--experiment',outputs,'--pack',pack,'--output',BASE/'scored_attempt1']);(BASE/'ALL_PAIRED_COMPLETE.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_PAIRED_GHI_COMPLETE',test_payloads_read=0,buffer_payloads_read=0)));print('ALL_CORRECTED_SOLAR_GHI_PAIRED_COMPLETE',flush=True)
+ run([sys.executable,CODE/'score_predictions.py','--experiment',outputs,'--pack',pack,'--output',BASE/'scored_attempt2']);(BASE/'ALL_PAIRED_COMPLETE_attempt2.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_PAIRED_GHI_COMPLETE',test_payloads_read=0,buffer_payloads_read=0)));print('ALL_CORRECTED_SOLAR_GHI_PAIRED_COMPLETE',flush=True)
 def main():
  p=argparse.ArgumentParser();p.add_argument('mode',choices=['profile','R','S','GHI']);p.add_argument('--role',choices=ROLES,default='full');a=p.parse_args()
  {'profile':profile,'R':R,'S':lambda:S(a.role),'GHI':GHI}[a.mode]()

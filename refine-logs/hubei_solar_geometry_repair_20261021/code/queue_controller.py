@@ -5,7 +5,7 @@ BASE=Path('/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
 ROLES=['full']+[f'fold_{i}' for i in range(5)]
 QSTAT='/opt/gridview/pbs/dispatcher/bin/qstat';QSUB='/opt/gridview/pbs/dispatcher/bin/qsub'
 BASEENV='/public/home/slfu/miniconda3/envs/swc';SENV='/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_cot_independent_20261017/.venv_simvp'
-STATE=BASE/'QUEUE_STATE.json'
+STATE=BASE/'QUEUE_STATE_attempt2.json'
 def save(s):
  p=STATE.with_suffix('.tmp');p.write_text(json.dumps(s,indent=2));p.replace(STATE)
 def queue():
@@ -17,19 +17,19 @@ def queue():
  return jobs
 
 def complete(k):
- p=BASE/({'profile':'S_PROFILE_READY.json','R':'R_READY.json','GHI':'ALL_PAIRED_COMPLETE.json'}.get(k,f'S_runs/{k}/S_BANK_READY.json'))
+ p=BASE/({'profile':'S_PROFILE_READY_attempt2.json','R':'R_READY_attempt2.json','GHI':'ALL_PAIRED_COMPLETE_attempt2.json'}.get(k,f'S_runs_attempt2/{k}/S_BANK_READY.json'))
  if not p.exists():return False
  try:d=json.loads(p.read_text())
  except json.JSONDecodeError:return False
  return bool(d.get('state'))
 def deps(k):
- if not (BASE/'prepared_attempt1/DATA_READY.json').exists():return False
+ if not (BASE/'prepared_attempt2/DATA_READY.json').exists():return False
  if k in ('profile','R'):return True
  if k=='GHI':return complete('R') and all(complete(r) for r in ROLES)
  return complete('profile')
 def shape(k):
  if k in ('profile','R','GHI'):return 1
- d=json.loads((BASE/'S_PROFILE_READY.json').read_text());return d['choice'][k]['gpus']
+ d=json.loads((BASE/'S_PROFILE_READY_attempt2.json').read_text());return d['choice'][k]['gpus']
 def pbs(k,g):
  mode=k if k in ('profile','R','GHI') else 'S';role=k if mode=='S' else 'full';env=SENV if mode in ('profile','S') else BASEENV;name='hb_sol_'+k.replace('_','');out=BASE/'pbs_scripts'/f'{k}.pbs';out.parent.mkdir(exist_ok=True)
  text=f'''#!/bin/bash
@@ -56,10 +56,10 @@ echo "STAGE_SUCCESS {k} test_payloads_read=0"
 
 def main():
  import fcntl
- lock=(BASE/'queue_controller.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+ lock=(BASE/'queue_controller_attempt2.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  state=json.loads(STATE.read_text()) if STATE.exists() else {'state':'WAITING_DATA','jobs':{},'completed':[],'failed':{},'owner':'hubei_solar_geometry_repair_20261021','test_payloads_read':0};keys=['profile','R']+ROLES+['GHI']
  while True:
-  if (BASE/'STOP_QUEUE').exists():state['state']='STOP_REQUESTED_NO_NEW_SUBMISSIONS';save(state);return
+  if (BASE/'STOP_QUEUE_attempt2').exists():state['state']='STOP_REQUESTED_NO_NEW_SUBMISSIONS';save(state);return
   active=queue()
   for k,info in list(state['jobs'].items()):
    if complete(k):
