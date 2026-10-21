@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -N hb_cot13d4eval
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/hubei_cot_auxiliary_retrain_attempt13_ddp4_20261021/infer_score_retry4.log
+set -euo pipefail
+
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021
+ATTEMPT=$BASE/hubei_cot_auxiliary_retrain_attempt13_ddp4_20261021
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ -z "$GPU_TEXT" ] || [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ]; then
+  echo "GPU_ASSIGNMENT_FAIL job=$PBS_JOBID host=$(hostname) value=$GPU_TEXT"
+  exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+export PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONPATH="$BASE/hubei_cot_auxiliary_retrain_attempt13/python_vendor:$ATTEMPT:$BASE/code_pipeline_attempt13:$BASE/code_pipeline_attempt12:$BASE/simvp_code_snapshot${PYTHONPATH:+:$PYTHONPATH}"
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+cd "$ATTEMPT"
+test -f "$ATTEMPT/PAIR_COMPLETE_attempt13.json"
+test -d /dev/shm/hubei_solar_corrected_20261021_attempt10
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$GPU_TEXT" --query-compute-apps=pid --format=csv,noheader)"
+"$PY" -m py_compile run_attempt13_retry4_infer_score.py infer_forecast_cot_attempt13.py score_attempt13_cot_pair_fp64.py
+"$PY" run_attempt13_retry4_infer_score.py --base "$BASE" --attempt "$ATTEMPT" --python "$PY" --repo "$BASE/simvp_code_snapshot" --stage-root /dev/shm/hubei_solar_corrected_20261021_attempt10
+echo "ATTEMPT13_RETRY4_INFER_SCORE_COMPLETE PBS=$PBS_JOBID GPU=$GPU_TEXT"
