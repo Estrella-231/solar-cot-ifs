@@ -364,3 +364,9 @@
 - 修正后的 SimVP 重训确已启动并在推进。PBS `215315.tc6000`（fold_3，node22，1 GPU）已正常完成，写出 809 个验证窗口的预测 bank；`215316.tc6000`（fold_4，node22，1 GPU）仍运行，最新第13轮 train/validation loss 为 `0.1169960/0.2502225`。当前实际未结束作业 1 个，低于3个上限；控制器 PID `140574` 存活，`failed={}`。
 - 尚未完成的部分：fold_4 预测 bank尚未就绪，因此正式 forecast-COT 评价及三站有/无预测COT配对 GHI 头训练还没有开始。控制器将继续按依赖推进；当前日志未发现训练错误。训练损失不是 COT/GHI 精度结论。
 - 实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0801CST.json`。
+
+## 2026-10-21：从已有预览定位 forecast-COT 的薄弱时效
+
+- 对现有 validation CPU FP32 预览按1小时分组，比较 SimVP→R 与历史COT持平的同键、同CPP参考支持误差。预测链的 lead-wise ΔRMSE（forecast−persistence）在全图为1–4小时 `+1.830/+0.568/+0.679/+3.073`；站点像元均值为 `+2.665/+1.264/+1.682/+4.114`。正值表示forecast更差，COT RMSE无量纲。
+- 16个时效中全图有15个误差更高；站点像元和3×3邻域各有47/48个站点-时效比较更差。4小时段退化最大。这把下一步关注点收敛到COT外推链在站点邻域和长时效上的误差，但该汇总只是full-train模型的CPU预览，不能取代修正几何下的OOF正式评估，也不能单凭此判定是云团位移、增厚/消散还是R反演误差。
+- 复核报告：`receipts/attempt12/FORECAST_COT_PREVIEW_HORIZON_DIAGNOSIS_attempt12.md`。正式评价继续等待fold_4 bank；不在OOF结果出炉前另起重复训练。
