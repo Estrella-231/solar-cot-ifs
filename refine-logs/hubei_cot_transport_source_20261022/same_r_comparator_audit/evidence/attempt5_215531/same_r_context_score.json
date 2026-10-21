@@ -1,0 +1,234 @@
+{
+  "state": "VALIDATION_ONLY_PARTIAL_COMMON_SUPPORT_SAME_R_CONTEXT_DIAGNOSTIC",
+  "comparison_status": "contextual_not_matched_simvp_training_arm",
+  "scope": "Hubei 16x16 station neighborhood; three station-center pixels; CPP retrieval reference; validation only",
+  "support": {
+    "all_g1s_validation_pairs": 4116,
+    "original_g1s_scored_pairs": 3220,
+    "matched_init_lead_pairs": 1824,
+    "matched_station_center_records": 5460,
+    "target_dates": [
+      "20250822",
+      "20250823",
+      "20250926",
+      "20250927",
+      "20251004",
+      "20251005",
+      "20251105",
+      "20251106",
+      "20251202",
+      "20251203",
+      "20260103",
+      "20260104",
+      "20260220",
+      "20260221",
+      "20260301",
+      "20260302"
+    ],
+    "target_date_count": 16,
+    "lead_counts": {
+      "15": 348,
+      "30": 330,
+      "45": 342,
+      "60": 354,
+      "75": 353,
+      "90": 332,
+      "105": 341,
+      "120": 353,
+      "135": 356,
+      "150": 338,
+      "165": 350,
+      "180": 368,
+      "195": 365,
+      "210": 323,
+      "225": 311,
+      "240": 296
+    },
+    "simvp_missing_on_original_scored_support": 1396,
+    "support_rule": "CPP target valid AND initialization-time historical COT valid; same support for all methods"
+  },
+  "methods": {
+    "cot_forecast": "G1S learned COT forecast from historical actual-AGRI-to-frozen-R COT maps",
+    "persistence": "historical COT at init time",
+    "simvp_forecast_agri_to_same_r": "attempt12 MSE-selected, corrected-geometry SimVP forecast AGRI passed through the exact G1S frozen R checkpoint"
+  },
+  "metrics": {
+    "overall_equal_station_equal_lead": {
+      "cot_forecast": {
+        "equal_station_equal_lead_rmse_cot": 13.871228984720986,
+        "station_center_records": 5460,
+        "equal_station_equal_lead_mae_cot": 9.577587537507663,
+        "equal_station_equal_lead_bias_cot": -0.31793600289782314
+      },
+      "persistence": {
+        "equal_station_equal_lead_rmse_cot": 16.09700288089836,
+        "station_center_records": 5460,
+        "equal_station_equal_lead_mae_cot": 9.504980420614872,
+        "equal_station_equal_lead_bias_cot": 7.544875159564228
+      },
+      "simvp_forecast_agri_to_same_r": {
+        "equal_station_equal_lead_rmse_cot": 16.566999547884738,
+        "station_center_records": 5460,
+        "equal_station_equal_lead_mae_cot": 9.931104132914365,
+        "equal_station_equal_lead_bias_cot": 6.842659332987991
+      }
+    },
+    "by_station": {
+      "Niushou": {
+        "cot_forecast": 13.854202689131721,
+        "persistence": 15.207880014795336,
+        "simvp_forecast_agri_to_same_r": 16.199049544306227
+      },
+      "Wangzhai": {
+        "cot_forecast": 14.169586426577544,
+        "persistence": 16.27779145307489,
+        "simvp_forecast_agri_to_same_r": 17.120211397937595
+      },
+      "Mizhuang": {
+        "cot_forecast": 13.589897838453691,
+        "persistence": 16.805337174824853,
+        "simvp_forecast_agri_to_same_r": 16.38173770141039
+      }
+    },
+    "by_lead": {
+      "15": {
+        "cot_forecast": 13.058283562473994,
+        "persistence": 15.065561943898528,
+        "simvp_forecast_agri_to_same_r": 14.649481306922093
+      },
+      "30": {
+        "cot_forecast": 13.191195831007706,
+        "persistence": 14.69549394488294,
+        "simvp_forecast_agri_to_same_r": 13.976347060265757
+      },
+      "45": {
+        "cot_forecast": 13.085122907013726,
+        "persistence": 14.342498207131017,
+        "simvp_forecast_agri_to_same_r": 15.404160094107297
+      },
+      "60": {
+        "cot_forecast": 13.677737424259481,
+        "persistence": 15.316820356697638,
+        "simvp_forecast_agri_to_same_r": 15.825896012344401
+      },
+      "75": {
+        "cot_forecast": 13.579100134381212,
+        "persistence": 15.54811398323426,
+        "simvp_forecast_agri_to_same_r": 15.390948557197126
+      },
+      "90": {
+        "cot_forecast": 13.589137986937947,
+        "persistence": 15.463676763562459,
+        "simvp_forecast_agri_to_same_r": 14.924095799796776
+      },
+      "105": {
+        "cot_forecast": 13.332611242903475,
+        "persistence": 15.465740765184313,
+        "simvp_forecast_agri_to_same_r": 15.385954941807704
+      },
+      "120": {
+        "cot_forecast": 13.726463206349932,
+        "persistence": 16.332065091720235,
+        "simvp_forecast_agri_to_same_r": 16.024302136450885
+      },
+      "135": {
+        "cot_forecast": 13.750380156755497,
+        "persistence": 16.899215284384677,
+        "simvp_forecast_agri_to_same_r": 16.312167107213273
+      },
+      "150": {
+        "cot_forecast": 13.633541883049569,
+        "persistence": 16.55601741685487,
+        "simvp_forecast_agri_to_same_r": 15.598230308098167
+      },
+      "165": {
+        "cot_forecast": 14.298580158627216,
+        "persistence": 16.079754409107448,
+        "simvp_forecast_agri_to_same_r": 17.052626346957336
+      },
+      "180": {
+        "cot_forecast": 14.250923673307518,
+        "persistence": 16.768893137916596,
+        "simvp_forecast_agri_to_same_r": 17.797519014358002
+      },
+      "195": {
+        "cot_forecast": 14.519919879433468,
+        "persistence": 17.132843006065226,
+        "simvp_forecast_agri_to_same_r": 18.085472691561964
+      },
+      "210": {
+        "cot_forecast": 14.266059194643466,
+        "persistence": 17.25101605611962,
+        "simvp_forecast_agri_to_same_r": 18.969643881541195
+      },
+      "225": {
+        "cot_forecast": 15.187983091323927,
+        "persistence": 17.22856837752006,
+        "simvp_forecast_agri_to_same_r": 20.00480448161018
+      },
+      "240": {
+        "cot_forecast": 14.792623423067631,
+        "persistence": 17.40576735009388,
+        "simvp_forecast_agri_to_same_r": 19.67034302592362
+      }
+    }
+  },
+  "paired_date_block_95ci_delta_vs_cot_forecast": {
+    "persistence": {
+      "alternative_minus_reference_rmse_cot": 2.2257738961773748,
+      "ci95_date_block": [
+        -2.952097390414806,
+        7.636261991001571
+      ],
+      "target_date_clusters": 16,
+      "draws": 5000,
+      "seed": 20261022
+    },
+    "simvp_forecast_agri_to_same_r": {
+      "alternative_minus_reference_rmse_cot": 2.695770563163752,
+      "ci95_date_block": [
+        -6.2801838968870785,
+        9.857846892282677
+      ],
+      "target_date_clusters": 16,
+      "draws": 5000,
+      "seed": 20261022
+    }
+  },
+  "attempt12_simvp_model": {
+    "checkpoint_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+    "completed_epochs": 14,
+    "selection_metric": "validation AGRI loss",
+    "config_sha256": "5de5e4fbd67770bdad1537f1d332430f05d7119c6fc4af2c82a2d97d150f9db5",
+    "same_trainval_index_and_normalization_as_attempt13": true,
+    "not_the_attempt13_mse_control_checkpoint": true,
+    "interpretation": "contextual comparator only; different SimVP checkpoint/training schedule, not a paired attempt13 MSE arm"
+  },
+  "r_lineage": {
+    "checkpoint_sha256": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9",
+    "normalization_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+    "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+    "normalization_fit": "train only",
+    "input_preprocessing": "train-fitted per-channel z-score over all 16 channels including day_mask; normalized nonfinite values set to 0",
+    "output_transform": "softplus log1p(COT), converted by expm1"
+  },
+  "input_sha256": {
+    "r_checkpoint": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9",
+    "r_norm": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+    "r_source": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+    "simvp_checkpoint": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+    "simvp_norm": "40ef5fef39659d861a818e1783d183362be6a726bcdb42d91e4c2bca3cb58e94",
+    "simvp_keys": "1f32d09268ac1a5446bb54c717b0cc6e663ca198c3d516d9da821cc94b28f134",
+    "simvp_pred": "bb126fa0638f55894f8dbf61d2f800597719db94ce40583409abadf222827483",
+    "simvp_geometry": "4dbcf2cf8318283abaa89c9323593d8951a399deeff1281d60f5134c50a6a4f5",
+    "forecast_pairs": "1d1f8df9568bbca12b17495f4fd8c37515cad20776f37cf9dde3f445fa3cebe8",
+    "bank_rows": "f5e77b9ea7c2922c56306187e7a278605097821adf5811e7859d09438b2beaf9",
+    "history_valid": "8972d9eacd66220727d931db2d4704b564009e83e20a6e0e90ee44a9de3002b0",
+    "cpp_valid": "873908c4efac930604afd57f84f77b59f3265009bcec57ec7541b05e75c97148",
+    "cot_forecast": "d45438e53ad3b50192485b338e81d9c856d2f83f428963bbc1db221ea573e845"
+  },
+  "records_sha256": "a2880b70a58803dfbe7f6e545d56999da973c0262bb1136e4479d49f2352ebf1",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "warning": "This comparison is a validation diagnostic against CPP retrieval, not a physical truth result or independent test. The SimVP comparator is a separate attempt12 MSE-selected checkpoint and covers only the exact intersecting support."
+}

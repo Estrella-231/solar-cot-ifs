@@ -1,6 +1,6 @@
 # Hubei regional COT transport and evolution candidate
 
-Status: source-coverage gate in progress; no new model training authorized before it passes.
+Status: full-region source gate remains blocked. The separate 16x16 station-patch pilot completed seed-42 training and monthly validation. Its point RMSE beats historical persistence overall, but the date-block interval crosses zero, the predeclared COT gate is not passed, and retrieved-thick cases regress substantially. Do not proceed to paired GHI training from this bank. See `station_patch_pilot_v1/RESULT_REPORT_20261022.md`.
 Date opened: 2026-10-22
 Scope: the independently trained Hubei three-station study only. Do not reuse Hunan weights, grids, CPP banks, or outcomes. Keep the current monthly train/validation split and keep all test/buffer payloads closed.
 
@@ -34,6 +34,20 @@ Produce a per-date and per-frame inventory: source present, decodable, valid-pix
 
 Use the new AGRI train/validation key index as the candidate list, not only the older 3,479-row R manifest. First compute exact CPP path existence after BJT-to-UTC conversion; then inspect quality masks and grid mapping on all eligible sequence frames. The 9,673/1,022 AGRI sequence counts above are only an upper bound until this raw-source audit passes. A separate station-patch forecaster is not to be trained on the current 59-window/three-date validation support.
 
+### G1S — Bounded station-neighborhood COT forecasting pilot
+
+The full-region G1 route remains blocked on the FD-201 source route. To make progress without relabeling the existing 16x16 product as regional data, run a separately named station-neighborhood pilot using the frozen, corrected-UTC Hubei R-COT bank and CPP retrieval sidecar. Its spatial scope is exactly the 16x16 patch containing Niushou, Wangzhai, and Mizhuang; it cannot establish full-region COT forecasting skill.
+
+The metadata-only join audit `COT_BANK_CPP_OVERLAP_AUDIT.md` passes: 22,061 train/validation R-bank rows match the AGRI index exactly; all 3,479 CPP sidecar rows match a bank key and split; and 47,932 train / 4,692 validation init-lead pairs have eight causal history frames and a full-support CPP manifest row. Validation covers 16 target dates and has 277-298 candidate pairs per lead before additional daylight/solar masks are applied. These are overlapping forecast cases, not independent weather events, and CPP remains a retrieval reference.
+
+Build a train/validation-only cache from this bank. The history input is eight actual-AGRI-to-frozen-R COT maps, their validity masks, and three deterministic geometry fields; known future geometry may be used, but future AGRI, CPP, COT labels, GHI, and target masks are never model inputs. Reuse `RetrievedCOTForecaster` with random initialization and partial per-lead CPP supervision. Mark R outputs above its [0,100] training target range invalid rather than clipping. The current R train bank is not OOF; preserve this provenance, count affected history pixels, and interpret the work as a validation pilot. Do not call the training-input R predictions independent of CPP training labels.
+
+The cache audit is a training gate: after physical masks, validation must retain at least 12 distinct target dates and at least 200 init/target pairs at each lead; otherwise stop and report the reduced support. Select stopping/checkpoint only through a date-grouped internal holdout carved from train, with a one-day purge around held-out dates. Freeze that rule before fitting; do not use the monthly validation dates to select architecture, loss weights, or epoch. Score once on common supported validation pixels against COT persistence and the forecast-AGRI-to-R result only if its R/source lineage can be matched exactly; otherwise identify it as a nonmatched contextual comparator. Report physical-unit RMSE/MAE/bias, date-block paired intervals, per-lead and per-site results, and thick-cloud behavior. Any later GHI application must use the same forecast AGRI, geometry, sample keys, head, labels, and training schedule in paired no-COT/COT arms.
+
+This G1S route is an exploratory station-patch branch. It does not release G1/G2/G3 full-region work or independent-test claims. Its monthly validation result is complete: the overall point estimate beats persistence, but uncertainty includes no improvement and the CPP-retrieved thick stratum is worse. The forecast-AGRI-to-R comparator was not included in the saved scoring report. The GHI gate is therefore NOT PASSED; do not start paired GHI training or expand seeds.
+
+The same-R context comparator is now complete on the exact 1,824-key common intersection, documented in `same_r_comparator_audit/SAME_R_CONTEXT_DIAGNOSTIC_20261022.md`. It uses the attempt12 MSE-selected SimVP validation AGRI bank passed through the exact G1S R, not the matched attempt13 MSE-control checkpoint. The future-COT RMSE point estimate is lower than both persistence and this contextual comparator, but both date-block intervals cross zero, MAE does not beat persistence, and CPP-retrieved thick-cloud RMSE materially regresses. Therefore this closes the requested contextual comparison but does **not** pass the G1S COT gate. Do not train paired GHI heads or expand seeds.
+
 ### G2 — Build one immutable regional train/validation cache
 
 After G1 passes, extract each unique allowed AGRI/CPP timestamp once. Preserve original CPP masks and retrieval metadata. Match the corrected full-region AGRI and solar geometry by exact timestamp. Store train and validation separately, fit normalization on train only, and publish a manifest with row keys, missing-source list, coverage, and hashes. Transfer once to node-local storage before training; do not repeatedly stream the bank from a shared drive.
@@ -61,7 +75,7 @@ Only after G4 passes, generate causal train/validation forecast-COT banks. Compa
 
 ## Multi-GPU execution policy
 
-The model work is potentially multi-hour. Once the regional-data gates pass, use a single PBS job requesting 4 A800s on node22 if available; node22 is the Zhejiang Normal University college server. Profile 1/2/4-worker throughput briefly first and select the fastest stable configuration. Previous attempt13 migration measured about 2.07x epoch-speedup on four A800s versus one, so four cards are a justified starting candidate, not an unconditional allocation. Keep global batch, total updates, LR schedule, and masked-loss numerator/denominator identical across worker counts. Preserve complete checkpoints before any resume or migration.
+For long GPU jobs, first inspect the live queue and allocated-node availability, then profile 2/4 GPUs early (and include 1 GPU as a speed baseline when practical). Use the fastest stable configuration; multi-GPU is preferred when it improves wall-clock throughput while preserving global batch, optimizer updates, LR schedule, and masked-loss numerator/denominator. Node22 is the Zhejiang Normal University college server. For this particular 16x16 station-patch pilot, identical global-batch=32 profiles measured 1 GPU at 2,041.58 samples/s, 2 GPUs at 1,845.11, and 4 GPUs at 1,572.77, so one GPU was the fastest measured choice; this result is model-specific, not a general claim against multi-GPU. Preserve complete checkpoints before any resume or migration.
 
 Immediately before and after every qsub, inspect the full slfu queue and keep at most three unfinished jobs across the workspace. Do not cancel other users' work. Query assigned GPUs and nvidia-smi inside the allocation; never infer that node22 GPUs are free from an empty account queue. Use Luna for routine monitoring after a task is actually running. Source extraction and manifest audits remain CPU tasks.
 
@@ -75,4 +89,6 @@ Immediately before and after every qsub, inspect the full slfu queue and keep at
 
 ## Current next step
 
-Recover access to the original Hubei CPP source and complete G1. Until then, the useful work is provenance/interface review and cache-builder preparation; no GPU job should be submitted.
+1. G1S training, hardware profile, validation metrics, provenance, and GHI no-go are recorded in `station_patch_pilot_v1/RESULT_REPORT_20261022.md` and the tracker; the same-R context follow-up is recorded separately.
+2. The local sidecar/interface audit is complete: `CPP_SOURCE_INTERFACE_AUDIT_20261022.md` records the retained fields and the minimum regional inventory. A fresh probe using the configured `FD-201` alias reached TCP port 22 but the server closed the SSH connection during key exchange, before authentication or any remote command. This remains a route blocker, not evidence CPP is absent. Retry the read-only route later; do not substitute Hunan products.
+3. No new R/E training or GHI retraining is justified while the source gate and G1S COT gate are closed. Once a session is available, perform the frozen train/validation inventory before any regional cache or training. Do not fabricate regional fields or cloud-height corrections.

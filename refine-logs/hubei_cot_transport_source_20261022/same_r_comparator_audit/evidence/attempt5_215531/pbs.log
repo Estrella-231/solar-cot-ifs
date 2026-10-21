@@ -1,0 +1,68 @@
+[2026-10-22 03:17:35][INFO][215531.tc6000] In prologue, JOB_ID is 215531.tc6000
+[2026-10-22 03:17:35][INFO][215531.tc6000] In prologue, the pbs_server_name is tc6000.
+tc6000
+[2026-10-22 03:17:36][INFO][215531.tc6000] ########################  Job 215531.tc6000 start to execute pre.sh!   ##########################
+[2026-10-22 03:17:36][INFO][215531.tc6000] goldenable is true, storageenable is false.
+[2026-10-22 03:17:36][INFO][215531.tc6000] Gold runs normally.
+[2026-10-22 03:17:37][INFO][215531.tc6000] The seconds that job requested is 1800.
+[2026-10-22 03:17:37][INFO][215531.tc6000] The procBillingTime of CPU&GPU is 104400.
+[2026-10-22 03:17:37][INFO][215531.tc6000] The billingTimeTotal of CPU, GPU and storage is 104400.
+[2026-10-22 03:17:38][INFO][215531.tc6000] The greserve command is : /opt/gridview//clusquota/bin//greserve -J 215531.tc6000 -u slfu -C gpu -P 1 -t 104400 -s '2026-10-22 03:17:38' -e '2026-10-22 03:47:38' 2>&1
+[2026-10-22 03:17:38][INFO][215531.tc6000] greserve command result is 0, execute greserve command output is: Successfully reserved 104400 credits for job 215531.tc6000 and created gold job id 176708
+[2026-10-22 03:17:38][INFO][215531.tc6000] make_reserve function executed successfully.
+PBS_HOSTNAME=gpu2
+SAME_R_CONTEXT_START job=215531.tc6000 node=gpu2 gpu_ids=0
+index, name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+0, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+R_INFERRED 256/1824
+R_INFERRED 512/1824
+R_INFERRED 768/1824
+R_INFERRED 1024/1824
+R_INFERRED 1280/1824
+R_INFERRED 1536/1824
+R_INFERRED 1792/1824
+R_INFERRED 1824/1824
+{
+  "cot_forecast": {
+    "equal_station_equal_lead_rmse_cot": 13.871228984720986,
+    "station_center_records": 5460,
+    "equal_station_equal_lead_mae_cot": 9.577587537507663,
+    "equal_station_equal_lead_bias_cot": -0.31793600289782314
+  },
+  "persistence": {
+    "equal_station_equal_lead_rmse_cot": 16.09700288089836,
+    "station_center_records": 5460,
+    "equal_station_equal_lead_mae_cot": 9.504980420614872,
+    "equal_station_equal_lead_bias_cot": 7.544875159564228
+  },
+  "simvp_forecast_agri_to_same_r": {
+    "equal_station_equal_lead_rmse_cot": 16.566999547884738,
+    "station_center_records": 5460,
+    "equal_station_equal_lead_mae_cot": 9.931104132914365,
+    "equal_station_equal_lead_bias_cot": 6.842659332987991
+  }
+}
+{
+  "persistence": {
+    "alternative_minus_reference_rmse_cot": 2.2257738961773748,
+    "ci95_date_block": [
+      -2.952097390414806,
+      7.636261991001571
+    ],
+    "target_date_clusters": 16,
+    "draws": 5000,
+    "seed": 20261022
+  },
+  "simvp_forecast_agri_to_same_r": {
+    "alternative_minus_reference_rmse_cot": 2.695770563163752,
+    "ci95_date_block": [
+      -6.2801838968870785,
+      9.857846892282677
+    ],
+    "target_date_clusters": 16,
+    "draws": 5000,
+    "seed": 20261022
+  }
+}
+COMPLETE records=5460 dates=16 output=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt5/output
+SAME_R_CONTEXT_COMPLETE job=215531.tc6000

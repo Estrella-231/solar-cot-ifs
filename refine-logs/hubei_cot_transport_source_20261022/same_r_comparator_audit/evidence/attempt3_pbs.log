@@ -1,0 +1,22 @@
+[2026-10-22 03:15:39][INFO][215529.tc6000] In prologue, JOB_ID is 215529.tc6000
+[2026-10-22 03:15:39][INFO][215529.tc6000] In prologue, the pbs_server_name is tc6000.
+tc6000
+[2026-10-22 03:15:40][INFO][215529.tc6000] ########################  Job 215529.tc6000 start to execute pre.sh!   ##########################
+[2026-10-22 03:15:40][INFO][215529.tc6000] goldenable is true, storageenable is false.
+[2026-10-22 03:15:40][INFO][215529.tc6000] Gold runs normally.
+[2026-10-22 03:15:41][INFO][215529.tc6000] The seconds that job requested is 1800.
+[2026-10-22 03:15:41][INFO][215529.tc6000] The procBillingTime of CPU&GPU is 104400.
+[2026-10-22 03:15:41][INFO][215529.tc6000] The billingTimeTotal of CPU, GPU and storage is 104400.
+[2026-10-22 03:15:42][INFO][215529.tc6000] The greserve command is : /opt/gridview//clusquota/bin//greserve -J 215529.tc6000 -u slfu -C gpu -P 1 -t 104400 -s '2026-10-22 03:15:42' -e '2026-10-22 03:45:42' 2>&1
+[2026-10-22 03:15:43][INFO][215529.tc6000] greserve command result is 0, execute greserve command output is: Successfully reserved 104400 credits for job 215529.tc6000 and created gold job id 176706
+[2026-10-22 03:15:43][INFO][215529.tc6000] make_reserve function executed successfully.
+PBS_HOSTNAME=gpu2
+SAME_R_CONTEXT_START job=215529.tc6000 node=gpu2 gpu_ids=0
+index, name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+0, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+Traceback (most recent call last):
+  File "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt3/run_same_r_context_comparator.py", line 399, in <module>
+    main()
+  File "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt3/run_same_r_context_comparator.py", line 160, in main
+    raise FileExistsError(f"Refusing to overwrite {out}")
+FileExistsError: Refusing to overwrite /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt3/output

@@ -1,0 +1,22 @@
+[2026-10-22 03:16:31][INFO][215530.tc6000] In prologue, JOB_ID is 215530.tc6000
+[2026-10-22 03:16:31][INFO][215530.tc6000] In prologue, the pbs_server_name is tc6000.
+tc6000
+[2026-10-22 03:16:32][INFO][215530.tc6000] ########################  Job 215530.tc6000 start to execute pre.sh!   ##########################
+[2026-10-22 03:16:32][INFO][215530.tc6000] goldenable is true, storageenable is false.
+[2026-10-22 03:16:32][INFO][215530.tc6000] Gold runs normally.
+[2026-10-22 03:16:33][INFO][215530.tc6000] The seconds that job requested is 1800.
+[2026-10-22 03:16:33][INFO][215530.tc6000] The procBillingTime of CPU&GPU is 104400.
+[2026-10-22 03:16:33][INFO][215530.tc6000] The billingTimeTotal of CPU, GPU and storage is 104400.
+[2026-10-22 03:16:34][INFO][215530.tc6000] The greserve command is : /opt/gridview//clusquota/bin//greserve -J 215530.tc6000 -u slfu -C gpu -P 1 -t 104400 -s '2026-10-22 03:16:34' -e '2026-10-22 03:46:34' 2>&1
+[2026-10-22 03:16:34][INFO][215530.tc6000] greserve command result is 0, execute greserve command output is: Successfully reserved 104400 credits for job 215530.tc6000 and created gold job id 176707
+[2026-10-22 03:16:34][INFO][215530.tc6000] make_reserve function executed successfully.
+PBS_HOSTNAME=gpu2
+SAME_R_CONTEXT_START job=215530.tc6000 node=gpu2 gpu_ids=0
+index, name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+0, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+Traceback (most recent call last):
+  File "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt4/run_same_r_context_comparator.py", line 399, in <module>
+    main()
+  File "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt4/run_same_r_context_comparator.py", line 179, in main
+    raise ValueError(f"Input hash mismatch for {k}: {found_hashes.get(k)} != {expected}")
+ValueError: Input hash mismatch for simvp_checkpoint: None != 3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a

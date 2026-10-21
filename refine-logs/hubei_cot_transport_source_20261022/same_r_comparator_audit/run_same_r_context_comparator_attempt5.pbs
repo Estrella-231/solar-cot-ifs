@@ -1,0 +1,59 @@
+#!/bin/bash
+#PBS -N cot_sameR_ctx5
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/same_r_comparator_attempt5/pbs.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/experiments
+GEOM=$EXP/hubei_solar_geometry_repair_20261021
+G1S=$EXP/hubei_cot_station_patch_forecast_20261022
+RBASE=$EXP/hubei_cloud_probability_20261020
+LOCAL=$G1S/same_r_comparator_attempt5
+SCRIPT=$LOCAL/run_same_r_context_comparator.py
+INPUT=$LOCAL/input/validation_forecast_predictions.npz
+CACHE=$G1S/cache_attempt5/cache
+SIMVP=$GEOM/S_banks_attempt12/full/val
+RCKPT=$RBASE/R_correctutc_attempt3/best.pt
+RSOURCE=$RBASE/code_attempt4/train_cot_repaired.py
+RNORM=$RBASE/R_pack_correctutc_attempt2/norm.json
+OUT=$LOCAL/output
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+
+HOSTNAME_VALUE=$(hostname); echo "PBS_HOSTNAME=$HOSTNAME_VALUE"
+test -f "$SCRIPT"
+test -f "$INPUT"
+test -f "$CACHE/cache_report.json"
+test -f "$SIMVP/pred_agri_patch.npy"
+test -f "$RCKPT"
+test -f "$RSOURCE"
+test ! -e "$OUT"
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+GPU_TEXT=$(qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | tr -d '[:space:]' | cut -d/ -f2 | sort -un)
+GPU_COUNT=$(printf '%s\n' "$GPU_TEXT" | sed '/^$/d' | wc -l)
+test "$GPU_COUNT" -eq 1
+export CUDA_VISIBLE_DEVICES=$(printf '%s\n' "$GPU_TEXT" | paste -sd, -)
+echo "SAME_R_CONTEXT_START job=$PBS_JOBID node=$(hostname) gpu_ids=$GPU_TEXT"
+nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-compute-apps=pid --format=csv,noheader)"
+
+"$PY" "$SCRIPT" \
+  --base "$SIMVP" \
+  --cache "$CACHE" \
+  --r-checkpoint "$RCKPT" \
+  --r-source "$RSOURCE" \
+  --r-norm "$RNORM" \
+  --cot-forecast "$INPUT" \
+  --output "$OUT" \
+  --batch 256
+test -f "$OUT/same_r_context_score.json"
+test -f "$OUT/paired_validation_records.csv"
+echo "SAME_R_CONTEXT_COMPLETE job=$PBS_JOBID"
