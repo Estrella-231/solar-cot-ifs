@@ -12,6 +12,8 @@ It then writes `cpp_cot.npy` and `cpp_valid.npy` alongside historical R-COT and 
 
 The desktop SSH configuration has an entry named `FD-201` pointing to `10.158.205.201` with user `zjnu` and the configured `id_ed25519_fd201` identity. The lowercase `fd201` name used in the earlier probe is not the configured alias. Retrying with the exact alias resolved and opened TCP port 22, but the remote closed the connection during SSH key exchange (`kex_exchange_identification: Connection closed by remote host`) before authentication or any remote command. Thus the source was not reached, and this result says nothing about whether CPP files exist or are readable on the server.
 
+The configured `FD-107` alias was also tested as a read-only fallback; SSH reported `Connection closed by 10.158.205.107 port 22` before the command ran. This provides no evidence about its mount contents either.
+
 The reachable ZJNU login remains a separate machine and does not mount the original `/home/Data_Pool_3` source root. The last successful historical extraction from FD-201 proves that source was readable in that earlier session for 3,479 train/validation timestamps, but those exported data are only station-local 16×16 crops.
 
 ## Minimum raw-source inventory needed to unlock G1
