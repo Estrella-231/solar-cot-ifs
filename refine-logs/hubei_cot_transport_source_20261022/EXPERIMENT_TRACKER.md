@@ -50,3 +50,9 @@ Last updated: 2026-10-22
 
 
 - OOF attempt3 evidence package: `oof_history_inference_attempt3/evidence/OOF_HISTORY_INPUT_ORIGIN_REPORT.md`, `oof_history_input_origin.png/.pdf`, date-level table and JSON summary; remote PBS output, fold shards, fold receipts, and train-only v3 independent audit are preserved under `oof_history_inference_attempt3/evidence/remote_215541/`. The v3 audit reproduces the job metrics while avoiding validation-bank value scans.
+
+## Live follow-through check (2026-10-22)
+
+- Rechecked the configured `FD-201` and `FD-107` routes with bounded, read-only SSH probes; both still close the connection before any remote command executes. On reachable `zjnu-hpc` (`tc6000`), `/home/Data_Pool_3` and the expected raw CPP root are absent. This confirms the current route/mount blocker only; it does not establish that upstream CPP is absent.
+- `qstat -u slfu` returned no unfinished jobs. The scheduler shows node22 GPUs 0 and 2 allocated to other users (`213684.tc6000`, `213751.tc6000`) and node23 GPU 1 allocated to another user (`213683.tc6000`). The login node has no `nvidia-smi`, and no GPU was allocated to this task; therefore no physical idle-GPU claim is made.
+- No PBS task was submitted: the current experiment plan gates regional training on a readable full-resolution CPP source and passed time/grid/QC inventory. Continue with source-route recovery; once that gate passes, use the planned early multi-GPU profile and preserve the global batch/update/loss contract. Keep test and buffer closed.
