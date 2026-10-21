@@ -37,3 +37,8 @@ The loss-alignment candidate passes the local COT continuation gate only if all 
 4. COT≥30 RMSE is no worse than both the matched log-only arm and persistence, and no station has a consistent material regression.
 
 If any condition fails, stop tuning this loss/model on these validation dates. No GHI head is trained in this attempt. A passing patch diagnostic still does not unlock full-region claims; the raw full-resolution Hubei CPP source and its time/grid/QC inventory must be restored first. Test and buffer payloads remain closed.
+
+
+## Execution receipt
+
+PBS `215536.tc6000` was allocated node22 A800 GPU IDs 4, 3, and 0, then exited with status 1 after 50.383 seconds. Each model launcher created `train.log` inside its output directory before invoking the trainer, so the trainer correctly refused the non-empty directory. No optimizer updates or checkpoints were produced. The PBS and per-run failure logs are preserved in `evidence/failure_215536/`. The execution-only correction and fresh output root are in `persistence_residual_attempt14_retry01/EXPERIMENT_PLAN.md` and its PBS script.
