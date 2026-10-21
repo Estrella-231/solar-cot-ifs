@@ -1,0 +1,38 @@
+{
+  "local_observed_time": "2026-10-21 08:01 CST",
+  "server_observed_time": "2026-10-21 08:00:53 CST",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "controller_pid": 140574,
+  "controller_state": "RUNNING_AUTHORIZED_STAGES",
+  "completed_stages": ["profile", "R", "full", "fold_0", "fold_1", "fold_2", "fold_3"],
+  "failed_stages": {},
+  "test_payloads_read": 0,
+  "solar_geometry_audit": {
+    "state": "PASS_AGAINST_OFFICIAL_NOAA_JAVASCRIPT_GEOMETRIC_ANGLES",
+    "train_points": 57334,
+    "validation_points": 5468,
+    "zenith_max_abs_deg": 1.7497114868092467e-13,
+    "azimuth_max_circular_abs_deg": 2.721662895055488e-10
+  },
+  "prepared_data_audit": {
+    "state": "PASS_PREPARED_ATTEMPT12_TRAIN_VAL_KEYS_LABELS_AGRI_GEOMETRY",
+    "S_frames": 10473,
+    "S_train_frames": 9560,
+    "S_val_frames": 913,
+    "R_rows": 3479,
+    "R_train_rows": 3178,
+    "R_val_rows": 301,
+    "train_val_disjoint": true,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "pbs_jobs": [
+    {"job": "215315.tc6000", "role": "fold_3", "state": "C", "exit_status": 0, "node": "node22", "gpus": 1, "val_windows": 809, "bank_ready": true},
+    {"job": "215316.tc6000", "role": "fold_4", "state": "R", "node": "node22", "gpus": 1, "cuda_visible_devices": "1", "last_epoch": 13, "train_loss": 0.1169960, "validation_loss": 0.2502225}
+  ],
+  "unfinished_job_count_observed": 1,
+  "queue_limit": 3,
+  "runtime_error": "none found in current controller, fold_4 training and PBS logs",
+  "formal_forecast_cot_evaluation": "waiting for fold_4 bank",
+  "paired_ghi_training": "not started; controller proceeds after forecast-COT dependencies"
+}

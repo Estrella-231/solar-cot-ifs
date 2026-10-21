@@ -357,3 +357,10 @@
 - 当前 fold_3 `215315.tc6000` 在 node22 单卡运行至 epoch 16（train/val loss `0.1123414/0.2782141`）；fold_4 `215316.tc6000` 在 node22 单卡运行至 epoch 12（`0.1233377/0.2478260`）。PBS保留表中另显示fold_2为C，实际未结束任务为2项，低于3项上限。当前日志无训练异常。
 - 还需 fold_3、fold_4 bank完成后才运行完整forecast-COT评价；后续配对GHI训练仍未启动，控制器将按依赖自动提交。训练轮次损失不代表COT/GHI精度收益。
 - 实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0752CST.json`。
+
+## 2026-10-21 08:01 CST：太阳几何复核通过，修正后训练继续
+
+- 训练集和验证集太阳几何核对已完成：NOAA 官方几何角公式复核覆盖 train 57,334 点、validation 5,468 点；天顶角最大差 `1.75e-13°`，方位角最大环形差 `2.72e-10°`。修正数据包审计覆盖 S 10,473 帧、R 3,479 行，键/标签/AGRI/几何一致且 train/val 不交叉；test/buffer 读取为0。
+- 修正后的 SimVP 重训确已启动并在推进。PBS `215315.tc6000`（fold_3，node22，1 GPU）已正常完成，写出 809 个验证窗口的预测 bank；`215316.tc6000`（fold_4，node22，1 GPU）仍运行，最新第13轮 train/validation loss 为 `0.1169960/0.2502225`。当前实际未结束作业 1 个，低于3个上限；控制器 PID `140574` 存活，`failed={}`。
+- 尚未完成的部分：fold_4 预测 bank尚未就绪，因此正式 forecast-COT 评价及三站有/无预测COT配对 GHI 头训练还没有开始。控制器将继续按依赖推进；当前日志未发现训练错误。训练损失不是 COT/GHI 精度结论。
+- 实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0801CST.json`。
