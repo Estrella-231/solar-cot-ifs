@@ -35,3 +35,10 @@ Cloud-height projection is a separate later calculation. It requires an identifi
 ## Decision
 
 Keep full-region G1 blocked until a read-only source session succeeds and the inventory above passes. Do not train a regional R/transport model or start GHI-head experiments from the 16×16 sidecar. The station-patch contextual same-R diagnostic is complete separately; it does not release this source gate.
+
+## Follow-up read-only inventory on ZJNU (2026-10-22)
+
+- Fresh `FD-201` and `FD-107` probes again closed before a remote command could run. On `zjnu-hpc`, `qstat -u slfu` returned no jobs; this is queue evidence only and does not prove any GPU is free.
+- The reachable pool `/public/home/slfu/ttzhou/swc/Data_Pool_3` exists. Within its FY-4B tree, the only visible branch is `AGRI`; under `AGRI/L2`, the only product branch is `CLP/2023/202301`. It contains one filename-visible 4-km CLP file for 2023-01-23 06:30 UTC. A recursive filename search found zero files with `CPP` in their names.
+- The inventory used directory entries and filenames/sizes only; no NetCDF variables or test/buffer payloads were opened. This one old CLP file is neither a CPP COT reference field nor date-complete for the frozen 2025–2026 Hubei train/validation manifest. It cannot satisfy G1 or replace the CPP sidecar.
+- **Decision unchanged:** full-region source gate remains blocked on the original CPP route. No training job was submitted and no GPU was used. Continue source-route recovery; do not infer upstream CPP absence from this ZJNU mount.
