@@ -14,6 +14,8 @@ The desktop SSH configuration has an entry named `FD-201` pointing to `10.158.20
 
 The configured `FD-107` alias was also tested as a read-only fallback; SSH reported `Connection closed by 10.158.205.107 port 22` before the command ran. This provides no evidence about its mount contents either.
 
+On the follow-up route check, the additional configured aliases `FD-172` (`10.158.205.122`) and `FD-248` (`10.158.205.248`) were also probed in batch mode. Both connections closed before `hostname`, identity, or filesystem commands ran. These two routes therefore provide no evidence about CPP availability or their mounts; they are recorded as currently unreachable from this workstation.
+
 The reachable ZJNU login remains a separate machine and does not mount the original `/home/Data_Pool_3` source root. The last successful historical extraction from FD-201 proves that source was readable in that earlier session for 3,479 train/validation timestamps, but those exported data are only station-local 16×16 crops.
 
 ## Minimum raw-source inventory needed to unlock G1
