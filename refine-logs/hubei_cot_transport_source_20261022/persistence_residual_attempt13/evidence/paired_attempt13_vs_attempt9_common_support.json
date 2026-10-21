@@ -1,0 +1,140 @@
+{
+  "state": "VALIDATION_ONLY_PAIRED_FP64_RESCORE_ATTEMPT13_VS_ATTEMPT9",
+  "reference_warning": "CPP is a retrieval reference, not independent cloud truth.",
+  "scope": "1,824-key common support previously used by the contextual audit; not an independent test.",
+  "records": 5460,
+  "unique_init_target_lead_keys": 1824,
+  "dates_bjt": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302"
+  ],
+  "prediction_init_keys": 786,
+  "methods": [
+    "attempt9_learned",
+    "attempt13_persistence_residual",
+    "persistence"
+  ],
+  "overall": {
+    "attempt9_learned": {
+      "equal_station_equal_lead_rmse": 13.871228984720986,
+      "equal_station_equal_lead_mae": 9.577587537507663,
+      "equal_station_equal_lead_bias": -0.31793600289782314
+    },
+    "attempt13_persistence_residual": {
+      "equal_station_equal_lead_rmse": 12.946871868971792,
+      "equal_station_equal_lead_mae": 7.9444115181981365,
+      "equal_station_equal_lead_bias": 2.1996673217847795
+    },
+    "persistence": {
+      "equal_station_equal_lead_rmse": 16.09700288089836,
+      "equal_station_equal_lead_mae": 9.504980420614872,
+      "equal_station_equal_lead_bias": 7.544875159564228
+    }
+  },
+  "by_station_equal_lead_rmse": {
+    "Niushou": {
+      "attempt9_learned": 13.854202689131721,
+      "attempt13_persistence_residual": 12.129872294287734,
+      "persistence": 15.207880014795336
+    },
+    "Wangzhai": {
+      "attempt9_learned": 14.169586426577544,
+      "attempt13_persistence_residual": 13.25630463906306,
+      "persistence": 16.27779145307489
+    },
+    "Mizhuang": {
+      "attempt9_learned": 13.589897838453691,
+      "attempt13_persistence_residual": 13.45443867356458,
+      "persistence": 16.80533717482485
+    }
+  },
+  "paired_date_block_intervals": {
+    "attempt9_minus_attempt13": {
+      "point_delta_rmse_favor_attempt13_if_positive": 0.9243571157491939,
+      "date_block_ci95": [
+        -1.22980349336759,
+        2.3207498326687035
+      ],
+      "bootstrap_replicates": 5000
+    },
+    "persistence_minus_attempt13": {
+      "point_delta_rmse_favor_attempt13_if_positive": 3.1501310119265664,
+      "date_block_ci95": [
+        -2.136709280085546,
+        7.321197952620017
+      ],
+      "bootstrap_replicates": 5000
+    }
+  },
+  "by_cpp_retrieved_thickness": {
+    "near_zero_lt1": {
+      "station_lead_cells": 48,
+      "rmse": {
+        "attempt9_learned": 9.405111438585967,
+        "attempt13_persistence_residual": 10.531301691892136,
+        "persistence": 15.766942951477162
+      },
+      "bias": {
+        "attempt9_learned": 4.862781671188437,
+        "attempt13_persistence_residual": 4.695528332813687,
+        "persistence": 5.861915916258574
+      }
+    },
+    "thin_1_10": {
+      "station_lead_cells": 48,
+      "rmse": {
+        "attempt9_learned": 4.630656882705287,
+        "attempt13_persistence_residual": 4.105794319132178,
+        "persistence": 5.209948194135227
+      },
+      "bias": {
+        "attempt9_learned": 2.311908227339695,
+        "attempt13_persistence_residual": 1.3201467423231241,
+        "persistence": 2.481118730383098
+      }
+    },
+    "moderate_10_30": {
+      "station_lead_cells": 48,
+      "rmse": {
+        "attempt9_learned": 11.823513064781892,
+        "attempt13_persistence_residual": 9.581495460669975,
+        "persistence": 19.136921655934675
+      },
+      "bias": {
+        "attempt9_learned": 9.03531755435269,
+        "attempt13_persistence_residual": 5.290914425816117,
+        "persistence": 15.49911255730044
+      }
+    },
+    "thick_ge30": {
+      "station_lead_cells": 48,
+      "rmse": {
+        "attempt9_learned": 23.41454039831451,
+        "attempt13_persistence_residual": 21.439085512763132,
+        "persistence": 18.551319112754825
+      },
+      "bias": {
+        "attempt9_learned": -22.47680258568039,
+        "attempt13_persistence_residual": -5.482210362317173,
+        "persistence": 7.771840997391663
+      }
+    }
+  },
+  "bootstrap_seed": 20261022,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

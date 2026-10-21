@@ -1,0 +1,85 @@
+#!/bin/bash
+#PBS -N hb_cot_resid13
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=16:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/pbs.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022
+CODE=$BASE/cache_attempt6
+NEWCODE=$BASE/persistence_residual_attempt13/code
+ATTEMPT=$BASE/persistence_residual_attempt13
+SHARED_CACHE=$BASE/cache_attempt5/cache
+AUDIT=$BASE/cache_attempt5/cache_audit/cache_audit.json
+PROFILE=$BASE/gpu_training_attempt8/profile_v8
+RUN=$ATTEMPT/train_seed42
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+
+mkdir -p "$ATTEMPT" "$RUN"
+exec > >(tee -a "$ATTEMPT/training_${PBS_JOBID}.log") 2>&1
+echo "PERSISTENCE_RESIDUAL_ATTEMPT13_START job=$PBS_JOBID host=$(hostname)"
+set -x
+trap 'status=$?; echo ATTEMPT13_ERR line=$LINENO command=$BASH_COMMAND status=$status; exit $status' ERR
+
+test -f "$CODE/train_station_patch_cot_forecaster.py"
+test -f "$PROJECT/scripts/retrieved_cot_forecaster_20261013.py"
+test -f "$SHARED_CACHE/cache_report.json"
+test -f "$AUDIT"
+test -f "$PROFILE/profile_1gpu.json"
+test -f "$PROFILE/profile_2gpu.json"
+test -f "$PROFILE/profile_4gpu.json"
+test -f "$NEWCODE/run_train_candidate.py"
+test -f "$NEWCODE/persistence_residual_cot_forecaster_20261022.py"
+test ! -f "$RUN/training_complete.json"
+test ! -f "$RUN/last.pt"
+
+"$PY" - <<'PY' "$AUDIT" "$PROFILE"
+import json, sys
+audit=json.load(open(sys.argv[1]))
+profiles=[json.load(open(f"{sys.argv[2]}/profile_{n}gpu.json")) for n in (1,2,4)]
+assert audit.get('state') == 'PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED', audit
+assert audit.get('test_payloads_read') == 0 and audit.get('buffer_payloads_read') == 0, audit
+assert audit.get('trainval_rows') == 22061 and audit.get('val', audit.get('forecast_pairs',{}).get('val',{})).get('unique_target_dates',16) >= 12, audit
+assert [p.get('global_batch') for p in profiles] == [32,32,32], profiles
+assert profiles[0]['global_samples_per_second'] > profiles[1]['global_samples_per_second'] > profiles[2]['global_samples_per_second'], profiles
+print('TRAINVAL_CACHE_AND_SINGLE_GPU_THROUGHPUT_GATES_PASS')
+PY
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$NEWCODE:$CODE:$PROJECT/scripts${PYTHONPATH:+:$PYTHONPATH}"
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+GPU_TEXT=$(qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | tr -d '[:space:]' | cut -d/ -f2 | sort -un)
+GPU_COUNT=$(printf '%s\n' "$GPU_TEXT" | sed '/^$/d' | wc -l)
+test "$GPU_COUNT" -eq 1
+export CUDA_VISIBLE_DEVICES=$(printf '%s\n' "$GPU_TEXT" | paste -sd, -)
+echo "ASSIGNED_NODE22_GPU_IDS=$GPU_TEXT CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-compute-apps=pid --format=csv,noheader)"
+
+LOCAL_ROOT="/tmp/cot_residual_${PBS_JOBID}"
+LOCAL_CACHE=$LOCAL_ROOT/cache
+mkdir -p "$LOCAL_CACHE" "$LOCAL_ROOT/cache_audit"
+cp -a "$SHARED_CACHE"/. "$LOCAL_CACHE"/
+cp "$AUDIT" "$LOCAL_ROOT/cache_audit/cache_audit.json"
+cd "$NEWCODE"
+"$PY" run_train_candidate.py "$CODE/train_station_patch_cot_forecaster.py" \
+  --mode train --cache "$LOCAL_CACHE" --output "$RUN" \
+  --global-batch 32 --seed 42 --width 96 --lr 1e-4 --min-lr 1e-6 \
+  --weight-decay 1e-4 --max-epochs 10 --patience 8 --min-delta 1e-3 \
+  --loader-workers 0
+test -f "$RUN/training_complete.json"
+test -f "$RUN/best.pt"
+test -f "$RUN/validation_forecast_predictions.npz"
+
+"$PY" "$CODE/evaluate_station_patch_cot_validation.py" \
+  --cache "$LOCAL_CACHE" --predictions "$RUN/validation_forecast_predictions.npz" \
+  --output "$RUN/validation_score.json" --bootstrap 5000 --seed 42
+sha256sum "$RUN/best.pt" "$RUN/last.pt" "$RUN/validation_forecast_predictions.npz" \
+  "$RUN/validation_score.json" "$RUN/training_complete.json" > "$RUN/SHA256SUMS"
+echo "PERSISTENCE_RESIDUAL_ATTEMPT13_COMPLETE job=$PBS_JOBID gpu_count=$GPU_COUNT global_batch=32"

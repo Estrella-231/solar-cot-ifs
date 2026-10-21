@@ -1,0 +1,21 @@
+{
+  "state": "PASS_NORMALIZED_AND_PHYSICAL_COT_BOUNDS",
+  "prediction_shape": [
+    786,
+    16,
+    1,
+    16,
+    16
+  ],
+  "init_keys": 786,
+  "scaled_log_cot_min": 0.0,
+  "scaled_log_cot_max": 1.0,
+  "physical_cot_min": 0.0,
+  "physical_cot_max_fp64": 100.00000000000003,
+  "full_saved_array_count_fp64_gt100": 4078,
+  "max_fp64_excess_over_100": 2.842170943040401e-14,
+  "scorer_flagged_values_outside_0_100_on_validation_pairs": 3468,
+  "interpretation": "All normalized values obey [0,1]. The tiny expm1 excess at the exact upper endpoint is floating-point round-off, not a physical forecast above 100.",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

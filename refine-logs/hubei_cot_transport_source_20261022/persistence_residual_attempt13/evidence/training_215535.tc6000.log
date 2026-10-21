@@ -1,0 +1,652 @@
+PERSISTENCE_RESIDUAL_ATTEMPT13_START job=215535.tc6000 host=gpu2
++ trap 'status=$?; echo ATTEMPT13_ERR line=$LINENO command=$BASH_COMMAND status=$status; exit $status' ERR
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt6/train_station_patch_cot_forecaster.py
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/scripts/retrieved_cot_forecaster_20261013.py
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache/cache_report.json
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache_audit/cache_audit.json
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/gpu_training_attempt8/profile_v8/profile_1gpu.json
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/gpu_training_attempt8/profile_v8/profile_2gpu.json
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/gpu_training_attempt8/profile_v8/profile_4gpu.json
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/code/run_train_candidate.py
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/code/persistence_residual_cot_forecaster_20261022.py
++ test '!' -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/training_complete.json
++ test '!' -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/last.pt
++ /public/home/slfu/miniconda3/envs/swc/bin/python - /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache_audit/cache_audit.json /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/gpu_training_attempt8/profile_v8
+TRAINVAL_CACHE_AND_SINGLE_GPU_THROUGHPUT_GATES_PASS
++ source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+++ export CONDA_EXE=/public/home/slfu/miniconda3/bin/conda
+++ CONDA_EXE=/public/home/slfu/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/public/home/slfu/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/public/home/slfu/miniconda3/bin/python
+++ '[' -z '' ']'
+++ export CONDA_SHLVL=0
+++ CONDA_SHLVL=0
+++ '[' -n '' ']'
+++++ dirname /public/home/slfu/miniconda3/bin/conda
++++ dirname /public/home/slfu/miniconda3/bin
+++ PATH=/public/home/slfu/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/opt/gridview//pbs/dispatcher-sched/bin:/opt/gridview//pbs/dispatcher-sched/sbin:/opt/gridview//pbs/dispatcher/bin/lsf_cmd:/opt/gridview//pbs/dispatcher/bin:/opt/gridview//pbs/dispatcher/sbin:/opt/gridview/clusconf/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/public/home/qliang/software/soft_cy/cuda/bin:/opt/ibutils/bin:/public/home/slfu/.local/bin:/public/home/slfu/bin
+++ export PATH
+++ '[' -z '' ']'
+++ PS1=
++ conda activate swc
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate swc
++ '[' -n '' ']'
++ local ask_conda
+++ PS1=
+++ __conda_exe shell.posix activate swc
+++ __add_sys_prefix_to_path
+++ '[' -n '' ']'
++++ dirname /public/home/slfu/miniconda3/bin/conda
+++ SYSP=/public/home/slfu/miniconda3/bin
++++ dirname /public/home/slfu/miniconda3/bin
+++ SYSP=/public/home/slfu/miniconda3
+++ '[' -n '' ']'
+++ PATH=/public/home/slfu/miniconda3/bin:/public/home/slfu/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/opt/gridview//pbs/dispatcher-sched/bin:/opt/gridview//pbs/dispatcher-sched/sbin:/opt/gridview//pbs/dispatcher/bin/lsf_cmd:/opt/gridview//pbs/dispatcher/bin:/opt/gridview//pbs/dispatcher/sbin:/opt/gridview/clusconf/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/public/home/qliang/software/soft_cy/cuda/bin:/opt/ibutils/bin:/public/home/slfu/.local/bin:/public/home/slfu/bin
+++ export PATH
+++ /public/home/slfu/miniconda3/bin/conda shell.posix activate swc
++ ask_conda='PS1='\''(swc) '\''
+export PATH='\''/public/home/slfu/miniconda3/envs/swc/bin:/public/home/slfu/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/opt/gridview/pbs/dispatcher-sched/bin:/opt/gridview/pbs/dispatcher-sched/sbin:/opt/gridview/pbs/dispatcher/bin/lsf_cmd:/opt/gridview/pbs/dispatcher/bin:/opt/gridview/pbs/dispatcher/sbin:/opt/gridview/clusconf/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/public/home/qliang/software/soft_cy/cuda/bin:/opt/ibutils/bin:/public/home/slfu/.local/bin:/public/home/slfu/bin'\''
+export CONDA_PREFIX='\''/public/home/slfu/miniconda3/envs/swc'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''swc'\''
+export CONDA_PROMPT_MODIFIER='\''(swc) '\''
+export CONDA_EXE='\''/public/home/slfu/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/public/home/slfu/miniconda3/bin/python'\'''
++ eval 'PS1='\''(swc) '\''
+export PATH='\''/public/home/slfu/miniconda3/envs/swc/bin:/public/home/slfu/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/opt/gridview/pbs/dispatcher-sched/bin:/opt/gridview/pbs/dispatcher-sched/sbin:/opt/gridview/pbs/dispatcher/bin/lsf_cmd:/opt/gridview/pbs/dispatcher/bin:/opt/gridview/pbs/dispatcher/sbin:/opt/gridview/clusconf/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/public/home/qliang/software/soft_cy/cuda/bin:/opt/ibutils/bin:/public/home/slfu/.local/bin:/public/home/slfu/bin'\''
+export CONDA_PREFIX='\''/public/home/slfu/miniconda3/envs/swc'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''swc'\''
+export CONDA_PROMPT_MODIFIER='\''(swc) '\''
+export CONDA_EXE='\''/public/home/slfu/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/public/home/slfu/miniconda3/bin/python'\'''
+++ PS1='(swc) '
+++ export PATH=/public/home/slfu/miniconda3/envs/swc/bin:/public/home/slfu/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/opt/gridview/pbs/dispatcher-sched/bin:/opt/gridview/pbs/dispatcher-sched/sbin:/opt/gridview/pbs/dispatcher/bin/lsf_cmd:/opt/gridview/pbs/dispatcher/bin:/opt/gridview/pbs/dispatcher/sbin:/opt/gridview/clusconf/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/public/home/qliang/software/soft_cy/cuda/bin:/opt/ibutils/bin:/public/home/slfu/.local/bin:/public/home/slfu/bin
+++ PATH=/public/home/slfu/miniconda3/envs/swc/bin:/public/home/slfu/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/opt/gridview/pbs/dispatcher-sched/bin:/opt/gridview/pbs/dispatcher-sched/sbin:/opt/gridview/pbs/dispatcher/bin/lsf_cmd:/opt/gridview/pbs/dispatcher/bin:/opt/gridview/pbs/dispatcher/sbin:/opt/gridview/clusconf/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/public/home/qliang/software/soft_cy/cuda/bin:/opt/ibutils/bin:/public/home/slfu/.local/bin:/public/home/slfu/bin
+++ export CONDA_PREFIX=/public/home/slfu/miniconda3/envs/swc
+++ CONDA_PREFIX=/public/home/slfu/miniconda3/envs/swc
+++ export CONDA_SHLVL=1
+++ CONDA_SHLVL=1
+++ export CONDA_DEFAULT_ENV=swc
+++ CONDA_DEFAULT_ENV=swc
+++ export 'CONDA_PROMPT_MODIFIER=(swc) '
+++ CONDA_PROMPT_MODIFIER='(swc) '
+++ export CONDA_EXE=/public/home/slfu/miniconda3/bin/conda
+++ CONDA_EXE=/public/home/slfu/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/public/home/slfu/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/public/home/slfu/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
++ PYTHONUNBUFFERED=1
++ OMP_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ MKL_NUM_THREADS=1
++ export PYTHONPATH=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/code:/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt6:/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/scripts
++ PYTHONPATH=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/code:/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt6:/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/scripts
++ export LD_PRELOAD=/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8
++ LD_PRELOAD=/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8
+++ qstat -f 215535.tc6000
+++ tr -d '[:space:]'
+++ grep -oE 'node22-gpu/[0-9]+'
+++ cut -d/ -f2
+++ sort -un
++ GPU_TEXT=0
+++ printf '%s\n' 0
+++ wc -l
+++ sed '/^$/d'
++ GPU_COUNT=1
++ test 1 -eq 1
+++ printf '%s\n' 0
+++ paste -sd, -
++ export CUDA_VISIBLE_DEVICES=0
++ CUDA_VISIBLE_DEVICES=0
++ echo 'ASSIGNED_NODE22_GPU_IDS=0 CUDA_VISIBLE_DEVICES=0'
+ASSIGNED_NODE22_GPU_IDS=0 CUDA_VISIBLE_DEVICES=0
++ nvidia-smi -i 0 --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+index, name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+0, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+++ nvidia-smi -i 0 --query-compute-apps=pid --format=csv,noheader
++ test -z ''
++ LOCAL_ROOT=/tmp/cot_residual_215535.tc6000
++ LOCAL_CACHE=/tmp/cot_residual_215535.tc6000/cache
++ mkdir -p /tmp/cot_residual_215535.tc6000/cache /tmp/cot_residual_215535.tc6000/cache_audit
++ cp -a /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache/. /tmp/cot_residual_215535.tc6000/cache/
++ cp /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache_audit/cache_audit.json /tmp/cot_residual_215535.tc6000/cache_audit/cache_audit.json
++ cd /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/code
++ /public/home/slfu/miniconda3/envs/swc/bin/python run_train_candidate.py /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt6/train_station_patch_cot_forecaster.py --mode train --cache /tmp/cot_residual_215535.tc6000/cache --output /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42 --global-batch 32 --seed 42 --width 96 --lr 1e-4 --min-lr 1e-6 --weight-decay 1e-4 --max-epochs 10 --patience 8 --min-delta 1e-3 --loader-workers 0
+PERSISTENCE_RESIDUAL_SMOKE_PASS shape/bounds/invalid-mask/learnable-residual
+{
+  "train_only_selection_split": {
+    "train_init_dates": 152,
+    "inner_holdout_dates": [
+      "20251024",
+      "20251025",
+      "20251026",
+      "20251027",
+      "20251028",
+      "20251029",
+      "20251030",
+      "20251031",
+      "20251101",
+      "20251102",
+      "20251103",
+      "20251108",
+      "20251109",
+      "20251114",
+      "20251115",
+      "20251116",
+      "20251117",
+      "20251118",
+      "20251119",
+      "20251120",
+      "20251121",
+      "20251122",
+      "20251123",
+      "20251124",
+      "20251125",
+      "20251126",
+      "20251127",
+      "20251128",
+      "20251129",
+      "20251130",
+      "20251205"
+    ],
+    "purged_dates_plus_minus_one_day": [
+      "20251023"
+    ],
+    "fit_dates": [
+      "20250801",
+      "20250802",
+      "20250803",
+      "20250804",
+      "20250805",
+      "20250806",
+      "20250807",
+      "20250812",
+      "20250813",
+      "20250814",
+      "20250815",
+      "20250816",
+      "20250817",
+      "20250818",
+      "20250819",
+      "20250820",
+      "20250825",
+      "20250826",
+      "20250827",
+      "20250828",
+      "20250829",
+      "20250830",
+      "20250831",
+      "20250901",
+      "20250902",
+      "20250903",
+      "20250904",
+      "20250905",
+      "20250906",
+      "20250907",
+      "20250908",
+      "20250909",
+      "20250910",
+      "20250911",
+      "20250912",
+      "20250913",
+      "20250914",
+      "20250915",
+      "20250920",
+      "20250921",
+      "20250922",
+      "20250923",
+      "20250924",
+      "20250929",
+      "20250930",
+      "20251001",
+      "20251002",
+      "20251007",
+      "20251008",
+      "20251009",
+      "20251010",
+      "20251011",
+      "20251012",
+      "20251013",
+      "20251014",
+      "20251019",
+      "20251020",
+      "20251021",
+      "20251022",
+      "20251207",
+      "20251208",
+      "20251209",
+      "20251210",
+      "20251211",
+      "20251212",
+      "20251217",
+      "20251218",
+      "20251219",
+      "20251220",
+      "20251221",
+      "20251222",
+      "20251223",
+      "20251224",
+      "20251225",
+      "20251226",
+      "20251227",
+      "20251228",
+      "20251229",
+      "20251230",
+      "20251231",
+      "20260101",
+      "20260106",
+      "20260107",
+      "20260108",
+      "20260109",
+      "20260110",
+      "20260111",
+      "20260112",
+      "20260113",
+      "20260114",
+      "20260115",
+      "20260116",
+      "20260117",
+      "20260118",
+      "20260119",
+      "20260120",
+      "20260125",
+      "20260126",
+      "20260127",
+      "20260128",
+      "20260129",
+      "20260130",
+      "20260131",
+      "20260201",
+      "20260206",
+      "20260207",
+      "20260208",
+      "20260209",
+      "20260210",
+      "20260211",
+      "20260212",
+      "20260215",
+      "20260216",
+      "20260217",
+      "20260218",
+      "20260223",
+      "20260224",
+      "20260225",
+      "20260226",
+      "20260227"
+    ],
+    "holdout_fraction_by_dates": 0.20394736842105263,
+    "selection_scope": "central contiguous 20% of sorted train init dates; purge +/-1 calendar day"
+  },
+  "train_only_selection_support": {
+    "pairs_by_lead": [
+      240,
+      241,
+      241,
+      239,
+      237,
+      239,
+      239,
+      238,
+      236,
+      238,
+      239,
+      237,
+      235,
+      237,
+      238,
+      236
+    ],
+    "valid_pixels_by_lead": [
+      61051,
+      61307,
+      61307,
+      60795,
+      60283,
+      60795,
+      60795,
+      60539,
+      60027,
+      60539,
+      60795,
+      60283,
+      59771,
+      60283,
+      60539,
+      60027
+    ],
+    "target_dates_by_lead": [
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31
+    ],
+    "minimum_pairs_per_lead": 235,
+    "minimum_target_dates_per_lead": 31
+  }
+}
+{"epoch": 1, "global_step": 181, "train_loss_mean_of_global_updates": 0.05903697111618124, "inner_holdout_equal_lead_rmse_cot": 8.867582933255349, "best_inner_holdout_rmse": 8.867582933255349, "improved": true, "bad_epochs": 0, "lr": 9.757729755661011e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 2, "global_step": 362, "train_loss_mean_of_global_updates": 0.04863109345964635, "inner_holdout_equal_lead_rmse_cot": 8.844622764653481, "best_inner_holdout_rmse": 8.844622764653481, "improved": true, "bad_epochs": 0, "lr": 9.05463412215599e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 3, "global_step": 543, "train_loss_mean_of_global_updates": 0.04807187528323732, "inner_holdout_equal_lead_rmse_cot": 8.909023768874148, "best_inner_holdout_rmse": 8.844622764653481, "improved": false, "bad_epochs": 1, "lr": 7.959536998847742e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 4, "global_step": 724, "train_loss_mean_of_global_updates": 0.04654265256876445, "inner_holdout_equal_lead_rmse_cot": 8.850770141178938, "best_inner_holdout_rmse": 8.844622764653481, "improved": false, "bad_epochs": 2, "lr": 6.57963412215599e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 5, "global_step": 905, "train_loss_mean_of_global_updates": 0.04468054940810849, "inner_holdout_equal_lead_rmse_cot": 8.82459136164865, "best_inner_holdout_rmse": 8.82459136164865, "improved": true, "bad_epochs": 0, "lr": 5.05e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 6, "global_step": 1086, "train_loss_mean_of_global_updates": 0.04351264681893488, "inner_holdout_equal_lead_rmse_cot": 8.904073209203617, "best_inner_holdout_rmse": 8.82459136164865, "improved": false, "bad_epochs": 1, "lr": 3.5203658778440106e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 7, "global_step": 1267, "train_loss_mean_of_global_updates": 0.04132594166128016, "inner_holdout_equal_lead_rmse_cot": 8.84875515729719, "best_inner_holdout_rmse": 8.82459136164865, "improved": false, "bad_epochs": 2, "lr": 2.1404630011522586e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 8, "global_step": 1448, "train_loss_mean_of_global_updates": 0.03991275700581008, "inner_holdout_equal_lead_rmse_cot": 9.183345528487607, "best_inner_holdout_rmse": 8.82459136164865, "improved": false, "bad_epochs": 3, "lr": 1.0453658778440107e-05, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 9, "global_step": 1629, "train_loss_mean_of_global_updates": 0.03806040697417207, "inner_holdout_equal_lead_rmse_cot": 9.159188179212425, "best_inner_holdout_rmse": 8.82459136164865, "improved": false, "bad_epochs": 4, "lr": 3.4227024433899e-06, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{"epoch": 10, "global_step": 1810, "train_loss_mean_of_global_updates": 0.03758918137922471, "inner_holdout_equal_lead_rmse_cot": 9.389136244300792, "best_inner_holdout_rmse": 8.82459136164865, "improved": false, "bad_epochs": 5, "lr": 1e-06, "fit_windows": 5793, "inner_holdout_windows": 1338, "world_size": 1, "global_batch": 32}
+{
+  "state": "COMPLETE_TRAINED_STATION_PATCH_COT_PILOT",
+  "scope": "Hubei shared 16x16 station-neighborhood patch; not full region or independent test.",
+  "split": "monthly train/val; test and buffer payloads closed",
+  "selected_checkpoint": "best.pt",
+  "selected_epoch": 5,
+  "global_step": 1810,
+  "world_size": 1,
+  "global_batch": 32,
+  "seed": 42,
+  "fit_windows": 5793,
+  "inner_holdout_windows": 1338,
+  "inner_split": {
+    "train_init_dates": 152,
+    "inner_holdout_dates": [
+      "20251024",
+      "20251025",
+      "20251026",
+      "20251027",
+      "20251028",
+      "20251029",
+      "20251030",
+      "20251031",
+      "20251101",
+      "20251102",
+      "20251103",
+      "20251108",
+      "20251109",
+      "20251114",
+      "20251115",
+      "20251116",
+      "20251117",
+      "20251118",
+      "20251119",
+      "20251120",
+      "20251121",
+      "20251122",
+      "20251123",
+      "20251124",
+      "20251125",
+      "20251126",
+      "20251127",
+      "20251128",
+      "20251129",
+      "20251130",
+      "20251205"
+    ],
+    "purged_dates_plus_minus_one_day": [
+      "20251023"
+    ],
+    "fit_dates": [
+      "20250801",
+      "20250802",
+      "20250803",
+      "20250804",
+      "20250805",
+      "20250806",
+      "20250807",
+      "20250812",
+      "20250813",
+      "20250814",
+      "20250815",
+      "20250816",
+      "20250817",
+      "20250818",
+      "20250819",
+      "20250820",
+      "20250825",
+      "20250826",
+      "20250827",
+      "20250828",
+      "20250829",
+      "20250830",
+      "20250831",
+      "20250901",
+      "20250902",
+      "20250903",
+      "20250904",
+      "20250905",
+      "20250906",
+      "20250907",
+      "20250908",
+      "20250909",
+      "20250910",
+      "20250911",
+      "20250912",
+      "20250913",
+      "20250914",
+      "20250915",
+      "20250920",
+      "20250921",
+      "20250922",
+      "20250923",
+      "20250924",
+      "20250929",
+      "20250930",
+      "20251001",
+      "20251002",
+      "20251007",
+      "20251008",
+      "20251009",
+      "20251010",
+      "20251011",
+      "20251012",
+      "20251013",
+      "20251014",
+      "20251019",
+      "20251020",
+      "20251021",
+      "20251022",
+      "20251207",
+      "20251208",
+      "20251209",
+      "20251210",
+      "20251211",
+      "20251212",
+      "20251217",
+      "20251218",
+      "20251219",
+      "20251220",
+      "20251221",
+      "20251222",
+      "20251223",
+      "20251224",
+      "20251225",
+      "20251226",
+      "20251227",
+      "20251228",
+      "20251229",
+      "20251230",
+      "20251231",
+      "20260101",
+      "20260106",
+      "20260107",
+      "20260108",
+      "20260109",
+      "20260110",
+      "20260111",
+      "20260112",
+      "20260113",
+      "20260114",
+      "20260115",
+      "20260116",
+      "20260117",
+      "20260118",
+      "20260119",
+      "20260120",
+      "20260125",
+      "20260126",
+      "20260127",
+      "20260128",
+      "20260129",
+      "20260130",
+      "20260131",
+      "20260201",
+      "20260206",
+      "20260207",
+      "20260208",
+      "20260209",
+      "20260210",
+      "20260211",
+      "20260212",
+      "20260215",
+      "20260216",
+      "20260217",
+      "20260218",
+      "20260223",
+      "20260224",
+      "20260225",
+      "20260226",
+      "20260227"
+    ],
+    "holdout_fraction_by_dates": 0.20394736842105263,
+    "selection_scope": "central contiguous 20% of sorted train init dates; purge +/-1 calendar day"
+  },
+  "inner_holdout_support": {
+    "pairs_by_lead": [
+      240,
+      241,
+      241,
+      239,
+      237,
+      239,
+      239,
+      238,
+      236,
+      238,
+      239,
+      237,
+      235,
+      237,
+      238,
+      236
+    ],
+    "valid_pixels_by_lead": [
+      61051,
+      61307,
+      61307,
+      60795,
+      60283,
+      60795,
+      60795,
+      60539,
+      60027,
+      60539,
+      60795,
+      60283,
+      59771,
+      60283,
+      60539,
+      60027
+    ],
+    "target_dates_by_lead": [
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31,
+      31
+    ],
+    "minimum_pairs_per_lead": 235,
+    "minimum_target_dates_per_lead": 31
+  },
+  "R_train_predictions_are_oof": false,
+  "cpp_role": "retrieval reference, not independent cloud truth",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "validation_init_windows": 786,
+  "validation_predictions_sha256": "f70066a28b3726ed320898bb12201ae29de60a32e207229b67296b239fe47089",
+  "cache_report_sha256": "b5f55d09beb7cac4d4484d4d38c1af90357230d3584cbc4158790166c2aa1c75"
+}
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/training_complete.json
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/best.pt
++ test -f /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/validation_forecast_predictions.npz
++ /public/home/slfu/miniconda3/envs/swc/bin/python /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt6/evaluate_station_patch_cot_validation.py --cache /tmp/cot_residual_215535.tc6000/cache --predictions /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/validation_forecast_predictions.npz --output /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/validation_score.json --bootstrap 5000 --seed 42
+{
+  "forecast_rmse_cot": 11.99112013887717,
+  "persistence_rmse_cot": 15.379317230170292,
+  "forecast_bias_cot": 1.0264457012947228,
+  "persistence_bias_cot": 7.424730091890432,
+  "delta_rmse_forecast_minus_persistence": -3.3881970912931223,
+  "relative_rmse_reduction_percent_vs_persistence": 22.030868084613957,
+  "date_block_bootstrap_replicates": 5000,
+  "delta_rmse_95pct_percentile_ci": [
+    -7.165343751076468,
+    1.0599706363090078
+  ],
+  "bootstrap_seed": 42
+}
+{
+  "1": {
+    "forecast_rmse_cot": 11.414280318034088,
+    "persistence_rmse_cot": 14.733296413392702,
+    "n_station_lead_cells": 3
+  },
+  "2": {
+    "forecast_rmse_cot": 11.830390126525709,
+    "persistence_rmse_cot": 15.51627937682539,
+    "n_station_lead_cells": 3
+  },
+  "3": {
+    "forecast_rmse_cot": 12.004016619046576,
+    "persistence_rmse_cot": 15.454116085227312,
+    "n_station_lead_cells": 3
+  },
+  "4": {
+    "forecast_rmse_cot": 12.290156128805137,
+    "persistence_rmse_cot": 16.116004423983973,
+    "n_station_lead_cells": 3
+  }
+}
+saved=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/validation_score.json pairs=3220 dates=16 center_pixel_pairs=9644
++ sha256sum /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/best.pt /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/last.pt /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/validation_forecast_predictions.npz /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/validation_score.json /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/persistence_residual_attempt13/train_seed42/training_complete.json
++ echo 'PERSISTENCE_RESIDUAL_ATTEMPT13_COMPLETE job=215535.tc6000 gpu_count=1 global_batch=32'
+PERSISTENCE_RESIDUAL_ATTEMPT13_COMPLETE job=215535.tc6000 gpu_count=1 global_batch=32
