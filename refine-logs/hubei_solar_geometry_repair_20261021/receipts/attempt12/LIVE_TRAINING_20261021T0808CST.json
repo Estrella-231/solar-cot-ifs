@@ -1,0 +1,19 @@
+{
+  "local_observed_time": "2026-10-21 08:26 CST",
+  "server_observed_time": "2026-10-21 08:08:28 CST",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "controller_pid": 140574,
+  "controller_state": "RUNNING_AUTHORIZED_STAGES",
+  "completed_stages": ["profile", "R", "full", "fold_0", "fold_1", "fold_2", "fold_3"],
+  "failed_stages": {},
+  "test_payloads_read": 0,
+  "pbs_jobs": [
+    {"job": "215316.tc6000", "role": "fold_4", "state": "R", "node": "node22", "gpus": 1, "cuda_visible_devices": "1", "last_epoch": 15, "train_loss": 0.1090604, "validation_loss": 0.2497328}
+  ],
+  "unfinished_job_count_observed": 1,
+  "queue_limit": 3,
+  "fold_3_bank": {"state": "ready", "validation_windows": 809, "test_payloads_read": 0, "buffer_payloads_read": 0},
+  "runtime_error": "none found in controller, fold_4 training and PBS logs",
+  "formal_forecast_cot_evaluation": "waiting for fold_4 bank",
+  "paired_ghi_training": "not started; waits for forecast-COT bank evaluation"
+}

@@ -370,3 +370,8 @@
 - 对现有 validation CPU FP32 预览按1小时分组，比较 SimVP→R 与历史COT持平的同键、同CPP参考支持误差。预测链的 lead-wise ΔRMSE（forecast−persistence）在全图为1–4小时 `+1.830/+0.568/+0.679/+3.073`；站点像元均值为 `+2.665/+1.264/+1.682/+4.114`。正值表示forecast更差，COT RMSE无量纲。
 - 16个时效中全图有15个误差更高；站点像元和3×3邻域各有47/48个站点-时效比较更差。4小时段退化最大。这把下一步关注点收敛到COT外推链在站点邻域和长时效上的误差，但该汇总只是full-train模型的CPU预览，不能取代修正几何下的OOF正式评估，也不能单凭此判定是云团位移、增厚/消散还是R反演误差。
 - 复核报告：`receipts/attempt12/FORECAST_COT_PREVIEW_HORIZON_DIAGNOSIS_attempt12.md`。正式评价继续等待fold_4 bank；不在OOF结果出炉前另起重复训练。
+
+## 2026-10-21 08:08 CST 实时状态
+
+- PBS `215316.tc6000`（fold_4）仍在 node22 单卡运行，第15轮 train/validation loss `0.1090604/0.2497328`；训练未见异常。fold_3 已完成，809个验证窗口的bank已写好。控制器PID `140574`存活，已完成阶段包含full及fold_0…fold_3，失败列表为空；账户当前未结束作业1/3，test载荷读取0。
+- fold_4 bank仍是当前门槛；正式OOF forecast-COT评价及三站配对GHI头训练尚未启动。具体现场快照见 `receipts/attempt12/LIVE_TRAINING_20261021T0808CST.json`。
