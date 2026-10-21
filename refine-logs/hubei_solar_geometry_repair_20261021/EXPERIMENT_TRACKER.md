@@ -317,3 +317,43 @@
 - 06:58:13 PBS复核：`215314/215315/215316.tc6000`（fold_2/3/4）仍在 node22 各用1张卡，队列为3/3；控制器PID `140574`存活，完成 `profile/R/full/fold_0/fold_1`，失败为空，test载荷读取为0。
 - 最新完整验证轮次：fold_2 epoch 7，train/val loss `0.1868047/0.2495359`；fold_3 epoch 8，`0.1694441/0.2677006`；fold_4 epoch 3，`0.3610181/0.2700573`。采样时分别推进到第8轮0/304步、第9轮26/308步、第4轮278/308步。这些是AGRI模型选模损失，不是预报COT指标。
 - ready预测bank仍为full、fold_0、fold_1；COT评价与GHI配对仍未开始。未发现Traceback、OOM、CUDA error或RuntimeError。详见`receipts/attempt12/LIVE_TRAINING_20261021T0658CST.json`。
+
+## 2026-10-21 07:23 CST：提前验证 forecast-COT 并修正下游接口
+
+- full-train SimVP验证bank（407窗）和corrected-R full checkpoint已就绪，因此在不占训练GPU的单线程CPU上，隔离生成FP32 forecast-COT预览bank并运行正式forecast-COT评价器。评价器通过：112个lead/scope/station指标行、1,164个精确配对的`(init,target,lead)`键；CPP common-valid support下全时效共297,604个有效16×16像元记录。test/buffer读取均为0。
+- 预览全时效像元加权COT RMSE：SimVP预测AGRI→R为10.564，历史COT持平为9.229，离线真实未来AGRI→R为8.684。三站站点像元forecast/persistence RMSE分别为牛首12.118/9.512、王寨11.903/9.547、米庄10.659/9.090。该预览指向当前预测链仍较差，不能写成COT或GHI增益；CPP只是检索参考，且正式GPU FP16评估尚待完整bank齐备后复算。明细和解释见`receipts/attempt12/FORECAST_COT_PREVIEW_CPU_attempt12.md`及同名JSON/CSV。
+- 预览暴露了正式下游调用的目录接口错误：评价器需要`R_runs_attempt12/full/{val_keys.csv,...}`，但原调用传入`R_runs_attempt12/full/val`，曾查找不存在的`full/val/val_keys.csv`。已把`run_stages.py`的`--r-validation`改为R运行根目录；原版已留存，修正版已同步服务器。两端`py_compile`通过；按修正参数重跑评价器通过（112行、1,164配对键），因此不会等到GHI阶段再失败。修复收据：`receipts/attempt12/RUN_STAGES_PATH_FIX_attempt12.json`；源文件原/新SHA-256分别为`f34c8762…e49402f6`和`23e08552…95a2146d`。
+- 07:22实时PBS仍为fold_2/3/4三项运行（`215314/215315/215316.tc6000`，node22各1张卡）；controller `140574`存活、failed为空。最新验证轮次为fold_2 epoch10、fold_3 epoch11、fold_4 epoch7；三个预测bank尚未ready。未发现Traceback/OOM/CUDA error。正式GPU FP16 COT评价与配对GHI训练仍待这些OOF bank齐备后自动推进。
+
+## 实时训练状态（2026-10-21 07:26 CST）
+
+- 训练/验证几何审计通过：10,473个AGRI样本帧（train 9,560、val 913）与3,479条R样本（train 3,178、val 301）逐键核对；R几何最大差0，S几何最大差3.58e-7，目标时间差0，train/val无交叉。独立NOAA公式复核覆盖62,802个时空点（train 57,334、val 5,468），天顶角最大误差1.75e-13°、方位角最大环形误差2.72e-10°。
+- corrected-R、full SimVP及fold_0/1阶段已完成；fold_2/3/4在node22各用1张GPU继续训练（PBS 215314/215315/215316.tc6000），控制器PID 140574仍运行，当前3/3并发，无失败；最近完整epoch分别为10/12/8。训练loss仅用于AGRI checkpoint选模。
+- 正式forecast-COT最终评价和三站配对GHI头尚未启动；需等fold_2/3/4预测bank完成后按控制器顺序继续。test/buffer读取仍为0。实时收据：receipts/attempt12/LIVE_TRAINING_20261021T0726CST.json。
+
+## 实时训练状态（2026-10-21 07:35 CST）
+
+- PBS 215314/215315/215316.tc6000（fold_2/3/4）均在node22运行，各用1张卡；控制器PID 140574存活，3/3并发，failed为空，test读取0。最近完整epoch为fold_2=12、fold_3=13、fold_4=9；尚无fold_2…4预测bank，因此正式COT评价和配对GHI训练仍未开始。
+
+## 2026-10-21 实时重训推进（服务器 07:45 CST）
+
+- 训练集/验证集数据恢复和太阳几何审计已通过：S 10,473帧（train 9,560、val 913），R 3,479行（train 3,178、val 301）；R几何逐行差0，S最大差3.58e-7，目标时刻差0、train/val不交叉。独立NOAA公式复核62,802个时空点通过（天顶角最大误差1.75e-13°，方位角环形误差2.72e-10°）。
+- 已经按修正后的数据和几何开始重训，不在等待：corrected R、全量SimVP及fold_0/1完成；PBS控制器PID 140574仍运行，attempt12状态`RUNNING_AUTHORIZED_STAGES`，失败列表为空，test载荷读取0。
+- 当前PBS占用3/3：215314（fold_2，node22，1 GPU）训练已在第13轮按patience正常停止，正在完成OOF预测bank；215315（fold_3，node22，1 GPU）最新完成第15轮；215316（fold_4，node22，1 GPU）最新完成第10轮。现有完整S bank为full 407窗、fold_0 823窗、fold_1 797窗；fold_2/3/4的bank报告尚未齐备。
+- 正式forecast-COT评价及FA/FAC配对GHI头尚未开始。控制器将等三个OOF bank生成后先做COT验证评分和来源审计，再自动进入三站配对GHI训练；无需再次确认，也不会另行重复提交。
+- 本次实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0745CST.json`。此前CPU预览只用于提前诊断，不替代正式GPU/OOF结果；目前不能宣称修正后COT或GHI已有提升。
+
+## 2026-10-21 实时推进（服务器 07:47 CST）
+
+- 215314（fold_2）已完成第13轮训练并进入850个OOF验证窗的预测推理；`pred_agri_patch.npy`、`true_agri_patch.npy`、`future_geometry_patch.npy` 已出现，但 `BANK_REPORT.json` 与 `S_BANK_READY` 尚未生成。215315（fold_3）最新完成第15轮，215316（fold_4）最新完成第11轮。三项仍在node22运行，队列3/3；控制器PID 140574存活，状态`RUNNING_AUTHORIZED_STAGES`、failed为空。
+- 对CPU FP32预览CSV按时效复核：forecast COT RMSE点估计在16个时效中有15个高于历史持平；日期块区间明确高于0的时效为+15、+30、+45、+75和+240 min。多数15分钟时效仅覆盖4个目标日期；+60/+120/+180/+240覆盖14–16日。因此这是定位问题的先导诊断，正式GPU/OOF结果仍待bank齐备，不能当作最终结论。
+- 修正预览报告中的单位笔误：COT RMSE及其差值为无量纲，不是W m⁻²；数值未改。更新文件`receipts/attempt12/FORECAST_COT_PREVIEW_CPU_attempt12.md`。
+- 本次状态收据：`receipts/attempt12/LIVE_TRAINING_20261021T0747CST.json`。
+
+## 2026-10-21 07:52 CST 实时推进与 fold_2 bank 审计
+
+- 修正后的 train/val 太阳几何与数据键审计已通过；attempt12 重训继续自动推进，无需重复提交。PBS 控制器 PID `140574` 存活，状态 `RUNNING_AUTHORIZED_STAGES`，失败列表为空，test payload 读取计数为 0。
+- fold_2 `215314.tc6000` 已以 `exit_status=0` 完成，850 个 OOF 验证窗口的预测 bank 已生成。独立审计覆盖 full、fold_0、fold_1、fold_2 四个 bank，结果 `PASS_PARTIAL_CORRECTED_SOLAR_BANKS`：源索引与 bank 键逐行相符、UTC→BJT与 +15…+240 min 键一致，预测/真值/几何数组形状正确且有限；test/buffer读取均为 0。机器审计见 `receipts/attempt12/FORECAST_BANK_AUDIT_PARTIAL_20261021T0750CST.json`。
+- 当前 fold_3 `215315.tc6000` 在 node22 单卡运行至 epoch 16（train/val loss `0.1123414/0.2782141`）；fold_4 `215316.tc6000` 在 node22 单卡运行至 epoch 12（`0.1233377/0.2478260`）。PBS保留表中另显示fold_2为C，实际未结束任务为2项，低于3项上限。当前日志无训练异常。
+- 还需 fold_3、fold_4 bank完成后才运行完整forecast-COT评价；后续配对GHI训练仍未启动，控制器将按依赖自动提交。训练轮次损失不代表COT/GHI精度收益。
+- 实时收据：`receipts/attempt12/LIVE_TRAINING_20261021T0752CST.json`。

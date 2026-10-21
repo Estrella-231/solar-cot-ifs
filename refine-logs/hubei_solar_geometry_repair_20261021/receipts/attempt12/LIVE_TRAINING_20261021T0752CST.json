@@ -1,0 +1,62 @@
+{
+  "local_observed_time": "2026-10-21 08:10 CST",
+  "server_observed_time": "2026-10-21 07:52:31 CST",
+  "experiment_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "controller_pid": 140574,
+  "controller_state": "RUNNING_AUTHORIZED_STAGES",
+  "completed_stages": [
+    "profile",
+    "R",
+    "full",
+    "fold_0",
+    "fold_1",
+    "fold_2"
+  ],
+  "failed_stages": {},
+  "test_payloads_read": 0,
+  "pbs_jobs": [
+    {
+      "exit_status": 0,
+      "result": "850 OOF windows; S_BANK_READY; partial bank audit PASS",
+      "role": "fold_2",
+      "node": "node22",
+      "state": "C",
+      "job": "215314.tc6000",
+      "gpus": 1
+    },
+    {
+      "last_epoch": 16,
+      "state": "R",
+      "job": "215315.tc6000",
+      "node": "node22",
+      "train_loss": 0.1123414,
+      "role": "fold_3",
+      "validation_loss": 0.2782141,
+      "gpus": 1
+    },
+    {
+      "last_epoch": 12,
+      "state": "R",
+      "job": "215316.tc6000",
+      "node": "node22",
+      "train_loss": 0.1233377,
+      "role": "fold_4",
+      "validation_loss": 0.247826,
+      "gpus": 1
+    }
+  ],
+  "unfinished_job_count": 2,
+  "queue_limit": 3,
+  "ready_banks": {
+    "fold_0": 823,
+    "fold_2": 850,
+    "full": 407,
+    "fold_1": 797
+  },
+  "partial_bank_audit_state": "PASS_PARTIAL_CORRECTED_SOLAR_BANKS",
+  "partial_bank_audit_path": "receipts/attempt12/FORECAST_BANK_AUDIT_PARTIAL_20261021T0750CST.json",
+  "partial_bank_audit_sha256": "6E8A2794FC16C2ED199D55D01FF23557EEFE05818B55208C75BE25FB2D9B3600",
+  "official_forecast_cot_evaluation": "waiting for fold_3 and fold_4 banks",
+  "paired_ghi": "not started; controller will schedule after dependency completion",
+  "runtime_error": "none found in current fold_3/fold_4 logs"
+}
