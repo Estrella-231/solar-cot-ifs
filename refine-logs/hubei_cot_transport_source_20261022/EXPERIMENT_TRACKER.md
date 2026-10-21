@@ -60,3 +60,8 @@ Last updated: 2026-10-22
 - No PBS task was submitted: the current experiment plan gates regional training on a readable full-resolution CPP source and passed time/grid/QC inventory. Continue with source-route recovery; once that gate passes, use the planned early multi-GPU profile and preserve the global batch/update/loss contract. Keep test and buffer closed.
 - Additional configured route check: `FD-172` (`10.158.205.122`) and `FD-248` (`10.158.205.248`) also closed before command execution. The reachable node has no raw CPP mount, so the four checked aliases do not unlock the inventory. No test/buffer payload was accessed.
 - A read-only TCP probe from `tc6000` to port 22 on all four configured data-node IPs timed out. This shows the current route blocker also exists from the reachable compute network; no remote authentication or CPP payload access occurred.
+
+## Follow-up artifact and route audit (2026-10-22)
+
+- The staged attempt14 package contains epoch-level training loss/inner-holdout RMSE and aggregate validation score JSONs, but no per-example inner-holdout forecast array. No train-only residual calibration can be reproduced from the currently staged outputs without another inference/export run. The existing monthly validation cohort remains frozen for model/loss/blend tuning.
+- Fresh read-only probes to `FD-201` and `FD-107` again closed before remote commands. On reachable `zjnu-hpc`, the expected full-resolution CPP root remained absent at server time 2026-10-22 06:25 CST; `qstat -u slfu` showed no jobs. An empty account queue does not establish free GPU allocation. No PBS job was submitted; the full-region CPP source/time/grid/QC gate remains the next unlock.
