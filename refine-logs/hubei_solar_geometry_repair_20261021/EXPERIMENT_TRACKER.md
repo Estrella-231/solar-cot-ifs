@@ -650,3 +650,11 @@ PBS `215504.tc6000` 用node22的4张A800（GPU 0/3/4/5）完成6,271帧历史AGR
 - AGRI审计作业215510.tc6000在node4 CPU正常结束；test/buffer读取均为0。该审计对保存的全场逐样本误差充分统计做FP64复算，并校验局地patch数组，不声称重新推理原始全场预测。
 - 后续转入条件性湖北区域COT路线，计划与tracker见 `../hubei_cot_transport_source_20261022/`。现有cpp_attempt2仅有16x16站点目标；元数据中的原始CPP目录 `/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP` 在当前zjnu-hpc不可见。FD-107/201/172/248的SSH探测被对端关闭；直接访问10.65.129.39（未使用其配置别名）时公钥认证失败，而zjnu-hpc别名可登录但看不到原始CPP路径。这是访问/路径受阻，不代表源数据缺失。恢复区域源以前不做256区域R/E训练，不用湖南缓存替代。
 - 本轮未提交GPU任务。实时slfu队列查询无列出作业；后续数据门通过后，长训练优先评估4×A800 node22，保持全局batch、更新数和损失归约一致，并先核对物理GPU分配。
+
+## 2026-10-22：湖北CPP来源和COT序列支持复核
+
+- 纠正来源解释：历史记录显示FD-201在2026-10-20曾读取原始CPP NetCDF，并对正确UTC的3,479个train/val键完成16×16站点裁片（失败0）。这证明这些键的产品当时可读，但不等同于已完成256×256区域缓存，也不代表当前FD-201连接仍可用。当前可达的学院服务器tc6000不挂载`/home/Data_Pool_3`原始根；当前桌面SSH配置也不能解析`fd201`。因此阻塞是访问/转运路线，不是数据不存在。
+- 从学院服务器取回并核验train/val-only的AGRI键清单，22,061行（train 20,206、val 1,855），SHA-256=`8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183`，test/buffer payload未读取。
+- 现有3,479行CPP裁片中，剔除22个训练零有效像元帧后，可组成764个重叠train 8→16序列；validation仅59个重叠序列，覆盖3个初始化日期（15个60分钟步长序列、4个不重叠6小时序列）。该validation支持不足以训练选模或得出稳健四小时总体结论。
+- 全部AGRI键在最后已知CPP产品时间（BJT 2026-03-02 18:00）前，理论上有9,673个train和1,022个validation 24帧连续AGRI候选窗；这只是时间键上限，尚未核实每帧原始CPP文件、质量掩膜和网格映射，不得当作已标注窗口。
+- 可复核脚本和结果见`../hubei_cot_transport_source_20261022/audit_hubei_cpp_sequence_support_20261022.py`、`CPP_LOCAL_SEQUENCE_SUPPORT_AUDIT.md`及同目录JSON。下一步恢复FD-201原始CPP读取/转运路线，按完整train/val AGRI索引核验产品支持；在覆盖门通过前不启动GPU训练。node22最新实时队列无列出作业，本轮无qsub。
