@@ -4,6 +4,10 @@
 
 ## Result
 
+![Train-only persistence error and thick-threshold transitions](evidence/train_only_transition_audit_attempt1.png)
+
+*The left panel compares historical persistence with future CPP COT at each station pixel. The right panel shows the share of supported center records crossing or retaining the COT=30 threshold at each lead; categories are defined by the initialization-time frozen-R value and future CPP retrieval.*
+
 The audit used 41,933 training init/lead pairs from 152 target dates (2025-08-01 to 2026-02-27), yielding 98,371 supported station-center records across Niushou, Wangzhai, and Mizhuang. The current COT value at initialization came from the cached frozen-R AGRI-to-COT bank; future targets are CPP retrieval COT. The training R bank is in-sample, and CPP is a retrieval reference, so both the source mismatch and retrieval uncertainty limit physical interpretation.
 
 | Forecast lead group | Persistence RMSE (COT) | Persistence MAE | Mean target minus history COT |

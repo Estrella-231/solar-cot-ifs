@@ -1,0 +1,20 @@
+{
+  "input": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_transport_source_20261022\\train_only_transition_audit\\evidence\\train_only_transition_audit_attempt1.json",
+  "source_state": "TRAIN_ONLY_CPP_REFERENCE_COT_TRANSITION_AUDIT",
+  "scope": "Hubei 16x16 station-patch center pixels; train split only",
+  "transforms": [
+    "per-lead site-center persistence RMSE read from FP64 audit JSON",
+    "threshold event rate = event count / all valid station-center records at each lead"
+  ],
+  "uncertainty": "none; descriptive train-only overlapping records, no independent-event inference",
+  "held_out_value_reads": {
+    "validation": 0,
+    "test": 0,
+    "buffer": 0
+  },
+  "outputs": [
+    "train_only_transition_audit_attempt1.png",
+    "train_only_transition_audit_attempt1.pdf"
+  ],
+  "alt_text": "Two-panel train-only plot. Historical persistence RMSE against future CPP COT increases with lead at all three Hubei station pixels. The share crossing from historical COT below 30 to future CPP COT at least 30 rises from about 2.3 percent at 15 minutes to 6.6 percent at four hours, while thick-cloud retention falls. Records overlap and CPP is a retrieval reference, not independent truth."
+}
