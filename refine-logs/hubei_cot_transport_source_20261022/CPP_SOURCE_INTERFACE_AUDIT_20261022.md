@@ -16,6 +16,8 @@ The configured `FD-107` alias was also tested as a read-only fallback; SSH repor
 
 On the follow-up route check, the additional configured aliases `FD-172` (`10.158.205.122`) and `FD-248` (`10.158.205.248`) were also probed in batch mode. Both connections closed before `hostname`, identity, or filesystem commands ran. These two routes therefore provide no evidence about CPP availability or their mounts; they are recorded as currently unreachable from this workstation.
 
+A read-only TCP reachability probe from `tc6000` to port 22 on all four configured `10.158.205.*` endpoints timed out. No downstream SSH authentication or filesystem command was attempted. This narrows the current blocker to network reachability from the reachable compute host as well; it still does not imply that CPP is absent upstream.
+
 The reachable ZJNU login remains a separate machine and does not mount the original `/home/Data_Pool_3` source root. The last successful historical extraction from FD-201 proves that source was readable in that earlier session for 3,479 train/validation timestamps, but those exported data are only station-local 16×16 crops.
 
 ## Minimum raw-source inventory needed to unlock G1
