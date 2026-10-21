@@ -1,0 +1,43 @@
+{
+  "checked_at_bjt": "2026-10-21T07:26:55+08:00",
+  "geometry_audit": {
+    "data_audit_state": "PASS_PREPARED_ATTEMPT12_TRAIN_VAL_KEYS_LABELS_AGRI_GEOMETRY",
+    "S_frames": 10473,
+    "S_train_frames": 9560,
+    "S_val_frames": 913,
+    "R_rows": 3479,
+    "R_train_rows": 3178,
+    "R_val_rows": 301,
+    "R_S_overlap_rows": 2919,
+    "R_geometry_max_abs": 0.0,
+    "S_geometry_max_abs": 3.5762786865234375e-07,
+    "target_max_abs": 0.0,
+    "train_val_disjoint": true,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "independent_noaa_reference": {
+    "state": "PASS_AGAINST_OFFICIAL_NOAA_JAVASCRIPT_GEOMETRIC_ANGLES",
+    "cases": 62802,
+    "train_cases": 57334,
+    "val_cases": 5468,
+    "zenith_max_abs_deg": 1.7497114868092467e-13,
+    "azimuth_max_circular_abs_deg": 2.721662895055488e-10
+  },
+  "training": {
+    "controller_pid": 140574,
+    "controller_state": "RUNNING_AUTHORIZED_STAGES",
+    "completed_stages": ["profile", "R", "full", "fold_0", "fold_1"],
+    "failed_stages": {},
+    "test_payloads_read": 0,
+    "active_pbs": [
+      {"job_id":"215314.tc6000","stage":"fold_2","state":"R","node":"node22","gpus":1,"last_complete_epoch":10,"train_loss":0.1420806,"val_loss":0.2554576},
+      {"job_id":"215315.tc6000","stage":"fold_3","state":"R","node":"node22","gpus":1,"last_complete_epoch":12,"train_loss":0.1278386,"val_loss":0.2406958},
+      {"job_id":"215316.tc6000","stage":"fold_4","state":"R","node":"node22","gpus":1,"last_complete_epoch":8,"train_loss":0.1643045,"val_loss":0.2533897}
+    ],
+    "active_jobs": 3,
+    "maximum_unfinished_jobs": 3,
+    "forecast_cot_final_evaluation_started": false,
+    "paired_ghi_heads_started": false
+  }
+}

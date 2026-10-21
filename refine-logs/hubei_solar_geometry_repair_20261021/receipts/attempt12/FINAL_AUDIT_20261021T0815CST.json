@@ -1,0 +1,69 @@
+{
+  "checked_at_bjt": "2026-10-21T08:15:48+08:00",
+  "state": "ALL_CORRECTED_SOLAR_PAIRED_COMPLETE",
+  "geometry": {
+    "state": "PASS_AGAINST_OFFICIAL_NOAA_JAVASCRIPT_GEOMETRIC_ANGLES",
+    "noaa_cases": 62802,
+    "train_cases": 57334,
+    "validation_cases": 5468,
+    "zenith_max_abs_deg": 1.7497114868092467e-13,
+    "azimuth_max_circular_abs_deg": 2.721662895055488e-10,
+    "data_audit": "PASS_PREPARED_ATTEMPT12_TRAIN_VAL_KEYS_LABELS_AGRI_GEOMETRY",
+    "S_frames": 10473,
+    "S_train_frames": 9560,
+    "S_validation_frames": 913,
+    "R_rows": 3479,
+    "R_train_rows": 3178,
+    "R_validation_rows": 301,
+    "R_geometry_max_abs": 0.0,
+    "S_geometry_max_abs": 3.5762786865234375e-07,
+    "target_time_max_abs": 0.0,
+    "train_validation_disjoint": true
+  },
+  "training": {
+    "corrected_S_and_R_and_oof_banks_complete": true,
+    "paired_GHI_heads": "3 stations x 3 seeds x 2 arms",
+    "pbs_job": "215320.tc6000",
+    "pbs_node": "node22",
+    "gpu": "NVIDIA A800-SXM4-80GB GPU0",
+    "pbs_state": "C",
+    "exit_status": 0,
+    "controller_failed_stages": {},
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "paired_ghi_validation": {
+    "input_mode": "corrected-solar SimVP predicted future AGRI -> corrected-solar correct-UTC R -> forecast GHI",
+    "scope": "reused validation, not independent test",
+    "rmse_equal_station_equal_seed_without_cot_wm2": 95.7027543336981,
+    "rmse_equal_station_equal_seed_with_forecast_cot_wm2": 95.60887716090764,
+    "difference_with_minus_without_wm2": -0.0938771727904566,
+    "relative_rmse_reduction_percent": 0.09809244618302622,
+    "target_date_paired_ci95_difference_wm2": [-2.2712070072629436, 2.2819593700671064],
+    "two_day_block_paired_ci95_difference_wm2": [-2.0068826212911137, 2.1512877005626034],
+    "station_relative_reduction_percent": {
+      "Niushou": 0.5591872490721577,
+      "Wangzhai": -0.6738588045195175,
+      "Mizhuang": 0.4255437219382958
+    }
+  },
+  "forecast_cot_validation_diagnostic": {
+    "support": "CPP common-valid pixels; CPP is retrieval reference, not independent truth",
+    "scope": "pooled pixel-weighted RMSE by four-lead horizon, dimensionless COT",
+    "paired_init_target_lead_keys": 1164,
+    "horizons": {
+      "1h": {"simvp_to_R": 10.255, "history_persistence": 8.946, "offline_future_agri_to_R": 8.169},
+      "2h": {"simvp_to_R": 9.787, "history_persistence": 9.238, "offline_future_agri_to_R": 8.224},
+      "3h": {"simvp_to_R": 10.194, "history_persistence": 9.617, "offline_future_agri_to_R": 9.052},
+      "4h": {"simvp_to_R": 12.063, "history_persistence": 9.086, "offline_future_agri_to_R": 9.304}
+    }
+  },
+  "source_receipts": [
+    "LIVE_TRAINING_20261021T0726CST.json",
+    "DATA_AUDIT_PASS_attempt12.json",
+    "summary_fp64.json",
+    "RESULTS.md",
+    "forecast_cot_metrics.json",
+    "forecast_cot_metrics.csv"
+  ]
+}

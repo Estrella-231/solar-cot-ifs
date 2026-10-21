@@ -375,3 +375,11 @@
 
 - PBS `215316.tc6000`（fold_4）仍在 node22 单卡运行，第15轮 train/validation loss `0.1090604/0.2497328`；训练未见异常。fold_3 已完成，809个验证窗口的bank已写好。控制器PID `140574`存活，已完成阶段包含full及fold_0…fold_3，失败列表为空；账户当前未结束作业1/3，test载荷读取0。
 - fold_4 bank仍是当前门槛；正式OOF forecast-COT评价及三站配对GHI头训练尚未启动。具体现场快照见 `receipts/attempt12/LIVE_TRAINING_20261021T0808CST.json`。
+
+## 2026-10-21 08:15 CST：修正太阳几何后的 OOF COT 与三站 GHI 配对重训完成
+
+- **几何和数据门禁通过。** NOAA 独立公式复核覆盖 62,802 个时空点（train 57,334、validation 5,468），天顶角最大差 `1.75e-13°`、方位角最大环形差 `2.72e-10°`。数据包逐键核验 S 10,473 帧（train 9,560、val 913）、R 3,479 行（train 3,178、val 301），R 几何差0、S几何最大差 `3.58e-7`、目标时刻差0、train/val不交叉；test/buffer读取0。证据：`receipts/attempt12/LIVE_TRAINING_20261021T0726CST.json`、`DATA_AUDIT_PASS_attempt12.json`。
+- **重训和验证已完成。** 控制器为 `ALL_CORRECTED_SOLAR_PAIRED_COMPLETE`，失败为空。五折日期留出 SimVP bank、冻结修正R和预测 COT bank均已生成；三站×三种子 FA/FAC 头训练、逐样本预测和 FP64 重算完成。PBS `215320.tc6000`（node22 GPU0，A800）`exit_status=0`；test/buffer读取0。最终结果见 `receipts/attempt12/RESULTS.md` 与 `summary_fp64.json`。
+- **GHI配对结果没有显示稳定收益。** 等站点、等种子 RMSE：无预测COT `95.703 W/m²`，加预测COT `95.609 W/m²`，点估计只下降 `0.094 W/m²`（`0.098%`）。按目标日期配对的95%区间为 `[-2.271,+2.282] W/m²`，连续两日分组区间为 `[-2.007,+2.151] W/m²`，均跨0。三站变化分别为牛首 `+0.56%`、王寨 `-0.67%`、米庄 `+0.43%`（正值代表RMSE下降）。不能据此声称有稳定的COT预报增益。
+- **COT外推自身仍是优先瓶颈。** 在复用validation、与CPP共同有效像元支持的诊断中，SimVP未来AGRI→R 的COT RMSE（无量纲）在1/2/3/4小时分别为 `10.255/9.787/10.194/12.063`；历史COT持平为 `8.946/9.238/9.617/9.086`。CPP只是卫星检索参考、不是独立真值；这些不是test结论。证据：`receipts/attempt12/forecast_cot_metrics.json`、`.csv`。
+- 下一步先用已保存的同键云图、预测/参考COT轨迹和GHI逐样本误差，分解站点邻域的位移误差、厚度变化误差和反演链误差；定位清楚前不再盲目扩GHI头训练。完整结果整理见 `ATTEMPT12_RESULTS_20261021.md`。

@@ -1,0 +1,275 @@
+{
+  "state": "CORRECTUTC_FORECAST_PAIRED_FP64_RESCORING_COMPLETE",
+  "input_mode": "corrected-solar SimVP predicted future AGRI -> corrected-solar correct-UTC R -> forecast GHI",
+  "scope": "reused validation; not independent test",
+  "rmse_equal_station_equal_seed": {
+    "FA": 95.7027543336981,
+    "FAC": 95.60887716090764
+  },
+  "FAC_minus_FA": -0.0938771727904566,
+  "relative_gain_percent": 0.09809244618302622,
+  "stations": [
+    {
+      "station": "Niushou",
+      "FA": 88.06201153752828,
+      "FAC": 87.56957999773397,
+      "FAC_minus_FA": -0.4924315397943104,
+      "gain_percent": 0.5591872490721577
+    },
+    {
+      "station": "Wangzhai",
+      "FA": 96.21852077127083,
+      "FAC": 96.86689774506648,
+      "FAC_minus_FA": 0.6483769737956493,
+      "gain_percent": -0.6738588045195175
+    },
+    {
+      "station": "Mizhuang",
+      "FA": 102.82773069229518,
+      "FAC": 102.3901537399225,
+      "FAC_minus_FA": -0.43757695237268024,
+      "gain_percent": 0.4255437219382958
+    }
+  ],
+  "target_dates": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302",
+    "20260420",
+    "20260421",
+    "20260503",
+    "20260504",
+    "20260628",
+    "20260629"
+  ],
+  "bootstrap": {
+    "single_target_date": {
+      "resamples": 10000,
+      "valid_resamples": 10000,
+      "groups": [
+        [
+          "20250822"
+        ],
+        [
+          "20250823"
+        ],
+        [
+          "20250926"
+        ],
+        [
+          "20250927"
+        ],
+        [
+          "20251004"
+        ],
+        [
+          "20251005"
+        ],
+        [
+          "20251105"
+        ],
+        [
+          "20251106"
+        ],
+        [
+          "20251202"
+        ],
+        [
+          "20251203"
+        ],
+        [
+          "20260103"
+        ],
+        [
+          "20260104"
+        ],
+        [
+          "20260220"
+        ],
+        [
+          "20260221"
+        ],
+        [
+          "20260301"
+        ],
+        [
+          "20260302"
+        ],
+        [
+          "20260420"
+        ],
+        [
+          "20260421"
+        ],
+        [
+          "20260503"
+        ],
+        [
+          "20260504"
+        ],
+        [
+          "20260628"
+        ],
+        [
+          "20260629"
+        ]
+      ],
+      "FAC_minus_FA_ci95": [
+        -2.2712070072629436,
+        2.2819593700671064
+      ],
+      "relative_gain_percent_ci95": [
+        -2.4343727698561204,
+        2.4094456482429103
+      ]
+    },
+    "consecutive_two_day_blocks": {
+      "resamples": 10000,
+      "valid_resamples": 10000,
+      "groups": [
+        [
+          "20250822",
+          "20250823"
+        ],
+        [
+          "20250926",
+          "20250927"
+        ],
+        [
+          "20251004",
+          "20251005"
+        ],
+        [
+          "20251105",
+          "20251106"
+        ],
+        [
+          "20251202",
+          "20251203"
+        ],
+        [
+          "20260103",
+          "20260104"
+        ],
+        [
+          "20260220",
+          "20260221"
+        ],
+        [
+          "20260301",
+          "20260302"
+        ],
+        [
+          "20260420",
+          "20260421"
+        ],
+        [
+          "20260503",
+          "20260504"
+        ],
+        [
+          "20260628",
+          "20260629"
+        ]
+      ],
+      "FAC_minus_FA_ci95": [
+        -2.0068826212911137,
+        2.1512877005626034
+      ],
+      "relative_gain_percent_ci95": [
+        -2.3600454739082948,
+        2.154207691275246
+      ]
+    }
+  },
+  "pair_checks": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 1020,
+      "validation_rows": 5305
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 1020,
+      "validation_rows": 4883
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 990,
+      "validation_rows": 5087
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 1020,
+      "validation_rows": 5305
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 1020,
+      "validation_rows": 4883
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 990,
+      "validation_rows": 5087
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 1020,
+      "validation_rows": 5305
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 1020,
+      "validation_rows": 4883
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "same_initial_weights": true,
+      "same_epoch_orders": true,
+      "updates_each": 990,
+      "validation_rows": 5087
+    }
+  ],
+  "pack_report_sha256": "9449d75d5a2eb23398bf969f8eed2fb77156fbcd89a9f4fcb6f9c4274ea7eaee",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}
