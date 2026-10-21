@@ -30,7 +30,7 @@ Persistence errors are concentrated at higher initial R-COT values. In the histo
 
 ## Access and calculation scope
 
-- Read only train timestamps and train forecast-pair values. Validation model/label values read: 0; test and buffer payload values read: 0.
+- Read split/key metadata from the bank and pair CSV indexes, then accessed numeric model/label arrays only at train init/target indexes. Validation model/label array values read: 0; test and buffer payload values read: 0.
 - Support is the intersection of valid initialization-time history COT and valid future CPP COT at each station-center pixel. Leads are +15 through +240 minutes.
 - Values were converted from cached normalized `log1p(COT)/log(101)` to physical COT in FP64, then RMSE/MAE/bias and threshold transitions were recomputed.
 - Reproduce with `audit_train_cot_transitions.py`; the saved machine-readable output is `evidence/train_only_transition_audit_attempt1.json`.
