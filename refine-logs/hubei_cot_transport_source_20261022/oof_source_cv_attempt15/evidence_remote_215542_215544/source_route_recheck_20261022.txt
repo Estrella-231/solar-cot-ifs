@@ -1,0 +1,14 @@
+Read-only source-route check, 2026-10-22 CST
+
+FD-201: SSH BatchMode probe exited 255 before remote `date` or filesystem command ran; no source payload read.
+FD-107: SSH BatchMode probe exited 255 before remote `date` or filesystem command ran; no source payload read.
+
+Reachable host: zjnu-hpc (`tc6000`). `qstat -u slfu` showed no unfinished job after attempt15 scoring.
+- `/home/Data_Pool_3`: absent.
+- `/public/home/slfu/ttzhou/swc/Data_Pool_3`: present and listable.
+- The mounted tree contains `chenyi/Auxiliary_data`, `chenyi/calipso_swc`, `chenyi/data/FY/FY4B/AGRI`, and `yangzx/Data/ERA5`, `yangzx/Dataset` among the inspected directories.
+- A filename-only search to depth 14 found no filename containing `CPP` or `COT` under the mounted Data_Pool_3.
+- The visible CLP tree contains exactly one file: `chenyi/data/FY/FY4B/AGRI/L2/CLP/2023/202301/FY4B-_AGRI--_N_DISK_1330E_L2-_CLP-_MULT_NOM_20230123063000_20230123064459_4000M_V0001.NC` (543,633 bytes).
+- Both `/public/home/slfu/ttzhou/swc/Data_Pool_3/chenyi/GHI/data/hubei` and `/public/home/slfu/ttzhou/swc/Data_Pool_3/chenyi/data/hubei` are absent.
+
+This check only listed paths and names/sizes; it did not open any CPP/CLP payload, GHI label, test, or buffer file. The shared mount is newly visible but does not contain the required Hubei CPP source/date coverage, so the source gate remains blocked.

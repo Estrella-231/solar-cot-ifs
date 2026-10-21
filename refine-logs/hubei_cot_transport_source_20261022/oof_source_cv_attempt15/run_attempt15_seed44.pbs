@@ -1,0 +1,121 @@
+#!/bin/bash
+#PBS -N hb_oof15_s44
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=16:gpus=2
+#PBS -l walltime=00:45:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/oof_source_cv_attempt15/seed44.pbs.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+ATTEMPT=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022/oof_source_cv_attempt15
+CACHE_BUILD=$ATTEMPT/cache_build_v1
+TRAINER=$ATTEMPT/scripts/train_station_patch_cot_forecaster.py
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+RUNROOT=$ATTEMPT/training
+LOGROOT=$ATTEMPT/logs
+
+mkdir -p "$LOGROOT"
+trap 'status=$?; echo OOF15_SEED44_ERR line=$LINENO command=$BASH_COMMAND status=$status; exit $status' ERR
+echo "OOF_SOURCE_CV_ATTEMPT15_SEED44_START job=$PBS_JOBID host=$(hostname)"
+test -f "$CACHE_BUILD/BUILD_MANIFEST.json"
+test -f "$CACHE_BUILD/CACHE_AUDIT.json"
+test -f "$TRAINER"
+test -d "$RUNROOT/fullr_control_seed42"
+test -d "$RUNROOT/fullr_control_seed43"
+test -d "$RUNROOT/oof_train_source_seed42"
+test -d "$RUNROOT/oof_train_source_seed43"
+test ! -e "$RUNROOT/fullr_control_seed44"
+test ! -e "$RUNROOT/oof_train_source_seed44"
+test ! -e "$ATTEMPT/pair_complete.json"
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$ATTEMPT/scripts:$PROJECT/scripts${PYTHONPATH:+:$PYTHONPATH}"
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+GPU_TEXT=$(qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | sort -Vu | cut -d/ -f2)
+mapfile -t GPU_IDS <<< "$GPU_TEXT"
+test "${#GPU_IDS[@]}" -eq 2
+printf 'ALLOCATED_NODE22_GPU_IDS=%s\n' "${GPU_IDS[*]}"
+nvidia-smi -i "$(IFS=,; echo "${GPU_IDS[*]}")" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+for gpu in "${GPU_IDS[@]}"; do
+  test -z "$(nvidia-smi -i "$gpu" --query-compute-apps=pid --format=csv,noheader)"
+done
+
+LOCAL_ROOT="/tmp/oof_source_cv_attempt15_seed44_${PBS_JOBID}"
+LOCAL_CACHE_ROOT="$LOCAL_ROOT/cache_build_v1"
+mkdir -p "$LOCAL_ROOT"
+cp -a "$CACHE_BUILD" "$LOCAL_CACHE_ROOT"
+sha256sum "$LOCAL_CACHE_ROOT"/fullr_control/cache/*npy "$LOCAL_CACHE_ROOT"/oof_train_source/cache/*npy > "$LOGROOT/local_cache_sha256_${PBS_JOBID}.txt"
+
+# The first-wave receipts are reconstructed before submission from the
+# preserved epoch logs, checkpoints and predictions. Refuse to proceed unless
+# all four are present and the two seed-44 outputs are still absent.
+for arm in fullr_control oof_train_source; do
+  for seed in 42 43; do
+    test -f "$RUNROOT/${arm}_seed${seed}/training_complete.json"
+    test -f "$RUNROOT/${arm}_seed${seed}/outer_train_holdout_predictions.npz"
+  done
+done
+
+run_one() {
+  local gpu="$1" arm="$2" out cache
+  out="$RUNROOT/${arm}_seed44"
+  cache="$LOCAL_CACHE_ROOT/$arm/cache"
+  test ! -e "$out"
+  mkdir -p "$out"
+  (
+    export CUDA_VISIBLE_DEVICES="$gpu"
+    "$PY" "$TRAINER" --mode train --cache "$cache" --output "$out" \
+      --global-batch 32 --seed 44 --width 96 --lr 1e-4 --min-lr 1e-6 \
+      --weight-decay 1e-4 --max-epochs 10 --patience 11 --min-delta 1e-3 \
+      --loader-workers 0 > "$LOGROOT/${arm}_seed44.log" 2>&1
+    test -f "$out/training_complete.json"
+    test -f "$out/best.pt" && test -f "$out/last.pt"
+    test -f "$out/outer_train_holdout_predictions.npz"
+    "$PY" - "$out/training_complete.json" <<'PY'
+import json, sys
+d=json.load(open(sys.argv[1], encoding="utf-8"))
+assert d["seed"] == 44 and d["global_batch"] == 32 and d["world_size"] == 1, d
+assert d["global_step"] == 1350 and d["train_config"]["max_epochs"] == 10, d
+assert d["test_payloads_read"] == 0 and d["buffer_payloads_read"] == 0, d
+PY
+    sha256sum "$out/best.pt" "$out/last.pt" "$out/outer_train_holdout_predictions.npz" "$out/training_complete.json" > "$out/SHA256SUMS"
+    echo "OOF15_RUN_COMPLETE arm=$arm seed=44 gpu=$gpu"
+  )
+}
+
+run_one "${GPU_IDS[0]}" fullr_control & p1=$!
+run_one "${GPU_IDS[1]}" oof_train_source & p2=$!
+run_rc=0
+wait "$p1" || run_rc=1
+wait "$p2" || run_rc=1
+test "$run_rc" -eq 0
+
+"$PY" - "$ATTEMPT" "$PBS_JOBID" "${GPU_IDS[*]}" <<'PY'
+import glob, json, os, sys
+root, job, gpu_ids = sys.argv[1:]
+runs = glob.glob(os.path.join(root, "training", "*_seed*"))
+expected = {f"{arm}_seed{seed}" for arm in ("fullr_control", "oof_train_source") for seed in (42, 43, 44)}
+assert {os.path.basename(p) for p in runs} == expected, runs
+records = [json.load(open(os.path.join(p, "training_complete.json"), encoding="utf-8")) for p in runs]
+assert {r["global_step"] for r in records} == {1350}
+assert all(r["global_batch"] == 32 and r["world_size"] == 1 for r in records)
+assert all(r["train_config"]["max_epochs"] == 10 and r["test_payloads_read"] == 0 and r["buffer_payloads_read"] == 0 for r in records)
+receipt = {"state":"COMPLETE_OOF_SOURCE_CV_TRAINING", "job_id":job,
+           "node":os.uname().nodename, "allocated_gpu_ids":gpu_ids,
+           "models_completed":6, "optimizer_steps_per_model":1350,
+           "global_batch":32, "max_epochs":10, "test_payloads_read":0,
+           "buffer_payloads_read":0, "official_monthly_validation_payloads_read":0,
+           "first_wave_receipts_reconstructed":4,
+           "first_wave_original_pbs_job":"215542.tc6000"}
+open(os.path.join(root,"pair_complete.json"),"x",encoding="utf-8").write(json.dumps(receipt,indent=2)+"\n")
+print(json.dumps(receipt,indent=2))
+PY
+
+sha256sum "$RUNROOT"/*/best.pt "$RUNROOT"/*/last.pt \
+  "$RUNROOT"/*/outer_train_holdout_predictions.npz \
+  "$RUNROOT"/*/training_complete.json > "$ATTEMPT/TRAINING_SHA256SUMS.txt"
+echo "OOF_SOURCE_CV_ATTEMPT15_SEED44_COMPLETE job=$PBS_JOBID gpu_ids=${GPU_IDS[*]}"
