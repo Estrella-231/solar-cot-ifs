@@ -1,0 +1,130 @@
+{
+  "state": "COMPLETE_TRAIN_ONLY_OOF_R_COT_BANK",
+  "scope": "Hubei train-only 16x16 R-COT predictions from date-held-out folds",
+  "n_train_frames": 20206,
+  "n_validation_metadata_rows_seen": 1855,
+  "validation_prediction_values_read": 0,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "cpp_target_or_qc_payloads_read": 0,
+  "full_r_bank_prediction_values_read": 0,
+  "split_counts_from_metadata": {
+    "train": 20206,
+    "val": 1855
+  },
+  "shape_cot": [
+    20206,
+    1,
+    16,
+    16
+  ],
+  "dtype_cot": "float32",
+  "shape_day_mask": [
+    20206,
+    1,
+    16,
+    16
+  ],
+  "dtype_day_mask": "bool",
+  "source_bank_rows_csv": "experiments\\hubei_r_runtime_gate_20261015_v1\\cot_bank_full_trainval_v1\\rows.csv",
+  "source_bank_rows_sha256": "7e76d876eae46bdd58ffdb3131dc8036b2b72bfeb0bed4fb1bd2a2632ee8fb77",
+  "fold_sources": [
+    {
+      "fold": 0,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_0\\rows.csv",
+      "sha256": "db8520d98f73358be2bff064f40c844a478a14ecdae180be9303ab367aecdab7"
+    },
+    {
+      "fold": 0,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_0\\cot_oof.npy",
+      "sha256": "9a5e49414c035cea53a46008224d0d6227c3d4569d0708960e008222bf8501cb"
+    },
+    {
+      "fold": 0,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_0\\day_mask.npy",
+      "sha256": "e6ba7c6e644ba4cf8c6fb7633c185b3026ef1b88bfae922131d502adebc5a237"
+    },
+    {
+      "fold": 1,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_1\\rows.csv",
+      "sha256": "9993ac99af8bac994293892476afb4501ea605dea9222d5cad83693509fb1b3c"
+    },
+    {
+      "fold": 1,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_1\\cot_oof.npy",
+      "sha256": "c1a8edd082de699309e0af02855849a13467b25db5b49f8b4fdb97c427d03e60"
+    },
+    {
+      "fold": 1,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_1\\day_mask.npy",
+      "sha256": "595ec0de2dfb988f69100aa08ce52f5f126c9ed2e7327eff16208bc5d56d4bca"
+    },
+    {
+      "fold": 2,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_2\\rows.csv",
+      "sha256": "d1853974a08ba5204af6cf5c4d3606d8a89ce231dc5f8e69999f814f54294980"
+    },
+    {
+      "fold": 2,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_2\\cot_oof.npy",
+      "sha256": "13033a2cb8253dff619018b50703e2f3bc3e375d95ffa6908739e8609ba890ae"
+    },
+    {
+      "fold": 2,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_2\\day_mask.npy",
+      "sha256": "6d3f23f943715587540452a65ccb3c957ccc3d84eb8582004b0e19d79937cd46"
+    },
+    {
+      "fold": 3,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_3\\rows.csv",
+      "sha256": "98f56dd85863e788d5b0f5d7e21c78cb237741de20143d7e4f6dabd798ec2ed5"
+    },
+    {
+      "fold": 3,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_3\\cot_oof.npy",
+      "sha256": "fe01639b6441dd71a206250e0167767f111c262ff5fef9cbe3d22493c448981e"
+    },
+    {
+      "fold": 3,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_3\\day_mask.npy",
+      "sha256": "863746d1bb962cf24fd1fe9dae6f28f1d65f9e982207800d9e092c42c6e9b01e"
+    },
+    {
+      "fold": 4,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_4\\rows.csv",
+      "sha256": "dad7ecdd86d77b5ae2f025b075175f1e4d7d8c47f0977696b8b67d47055ea2ca"
+    },
+    {
+      "fold": 4,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_4\\cot_oof.npy",
+      "sha256": "ea22653221c4514e594a68c281f25e40a0c6da550b76836518315b2cbf8e05eb"
+    },
+    {
+      "fold": 4,
+      "file": "refine-logs\\hubei_cot_transport_source_20261022\\oof_history_inference_attempt3\\evidence\\remote_215541\\oof_train\\fold_4\\day_mask.npy",
+      "sha256": "5a0a1ea15ec217a25ca61db424f9c0d278510dc9144abc3c5d25030f2f6dc4d5"
+    }
+  ],
+  "fold_frame_counts": {
+    "0": 4174,
+    "1": 4052,
+    "2": 4008,
+    "3": 4031,
+    "4": 3941
+  },
+  "heldout_fold_counts": {
+    "0": 4174,
+    "1": 4052,
+    "2": 4008,
+    "3": 4031,
+    "4": 3941
+  },
+  "cot_min_raw": 0.0,
+  "cot_max_raw": 12648.736328125,
+  "cot_values_outside_0_100_preserved_not_clipped": 2564,
+  "history_validity_note": "Apply the existing day/SZA/finite/[0,100] validity rule downstream; raw OOF values are preserved here.",
+  "outputs": {
+    "cot_pred_train_oof.npz": "62ff023ee299af4e613c84b371bba5873788a1e036a3dd8619a494dca245143a",
+    "rows_train.csv": "ca45300f1344a8d160966a02fd265c976d6f1c7ede383a7102705c4bde0ae981"
+  }
+}
