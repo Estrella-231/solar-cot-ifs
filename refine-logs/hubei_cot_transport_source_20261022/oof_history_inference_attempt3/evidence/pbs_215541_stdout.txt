@@ -1,0 +1,43 @@
+[2026-10-22 05:30:22][INFO][215541.tc6000] In prologue, JOB_ID is 215541.tc6000
+[2026-10-22 05:30:22][INFO][215541.tc6000] In prologue, the pbs_server_name is tc6000.
+tc6000
+[2026-10-22 05:30:23][INFO][215541.tc6000] ########################  Job 215541.tc6000 start to execute pre.sh!   ##########################
+[2026-10-22 05:30:23][INFO][215541.tc6000] goldenable is true, storageenable is false.
+[2026-10-22 05:30:23][INFO][215541.tc6000] Gold runs normally.
+[2026-10-22 05:30:24][INFO][215541.tc6000] The seconds that job requested is 2700.
+[2026-10-22 05:30:24][INFO][215541.tc6000] The procBillingTime of CPU&GPU is 604800.
+[2026-10-22 05:30:24][INFO][215541.tc6000] The billingTimeTotal of CPU, GPU and storage is 604800.
+[2026-10-22 05:30:25][INFO][215541.tc6000] The greserve command is : /opt/gridview//clusquota/bin//greserve -J 215541.tc6000 -u slfu -C gpu -P 1 -t 604800 -s '2026-10-22 05:30:25' -e '2026-10-22 06:15:25' 2>&1
+[2026-10-22 05:30:25][INFO][215541.tc6000] greserve command result is 0, execute greserve command output is: Successfully reserved 604800 credits for job 215541.tc6000 and created gold job id 176728
+[2026-10-22 05:30:25][INFO][215541.tc6000] make_reserve function executed successfully.
+STAGE=bootstrap job=215541.tc6000 node=gpu2
+
+tc6000:
+                                                                                          Req'd    Req'd       Elap
+Job ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time
+----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------
+215540.tc6000           slfu        gpu              hb_oof_hist_cot   46535     1     24   64gb  00:45:00 C       --
+215541.tc6000           slfu        gpu              hb_oof_hist_cot   49406     1     24   64gb  00:45:00 R  00:00:00
+STAGE=queue_gate unfinished=1 limit=3
+STAGE=allocated_gpus ids=0,1,3,4
+index, name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+0, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+1, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+3, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+4, NVIDIA A800-SXM4-80GB, 2 MiB, 81920 MiB, 0 %
+FOLD_COMPLETE fold=0 gpu=0
+FOLD_COMPLETE fold=1 gpu=1
+FOLD_COMPLETE fold=3 gpu=4
+FOLD_COMPLETE fold=2 gpu=3
+FOLD_COMPLETE fold=4 gpu=0
+{
+  "state": "COMPLETE_OOF_HISTORY_INPUT_DISTRIBUTION_DIAGNOSTIC",
+  "train_rows": 20206,
+  "common_daytime_inrange_pixels": 2545664,
+  "MAE": 2.926384794853407,
+  "RMSE": 5.967576241017655,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}
+{"state": "COMPLETE_OOF_HISTORY_INPUT_DISTRIBUTION_DIAGNOSTIC", "pbs_job_id": "215541.tc6000", "node": "gpu2", "gpu_ids": [0, 1, 3, 4], "gpu_workers": {"0": {"allocated_gpu": 0, "log_bytes": 1775}, "1": {"allocated_gpu": 1, "log_bytes": 1750}, "3": {"allocated_gpu": 4, "log_bytes": 1751}, "2": {"allocated_gpu": 3, "log_bytes": 1749}, "4": {"allocated_gpu": 0, "log_bytes": 1752}}, "parallelism": 4, "batch_per_worker": 256, "train_rows": 20206, "val_rows_inferred": 0, "test_payloads_read": 0, "buffer_payloads_read": 0, "cpp_target_or_quality_payloads_read": 0, "ghi_labels_read": 0, "elapsed_seconds": 56.50225901603699, "staged_rows_sha256": "8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183", "fold_map_sha256": "c86bd6713d5afea1d6864cc4ef6048a93b596051ea4358e7954f39c32b054122", "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05", "comparison_bank_sha256": "da9a3b61914b6ec293088459cecbb611bf40ce2b07e376554959aa4484760ace"}
+STAGE=inference_complete

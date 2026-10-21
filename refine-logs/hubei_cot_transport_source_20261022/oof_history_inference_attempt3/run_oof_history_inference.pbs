@@ -1,0 +1,68 @@
+#!/bin/bash
+#PBS -N hb_oof_hist_cot
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=24:gpus=4
+#PBS -l mem=64gb
+#PBS -l walltime=00:45:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/oof_history_inference_attempt3/pbs.out.log
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/hubei_cot_station_patch_forecast_20261022/oof_history_inference_attempt3
+PROJECT_EXP=$ROOT/experiments
+CUR=$PROJECT_EXP/hubei_cot_station_patch_forecast_20261022/oof_history_input_audit_attempt1
+FULL=$PROJECT_EXP/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3
+AGRI_ROOT=$PROJECT_EXP/hubei_cloud_probability_20261020/agri_trainval_staged
+RROOT=$PROJECT_EXP/hubei_forecast_correctutc_20261020/runtime_attempt2
+MODEL=$PROJECT_EXP/hubei_cloud_probability_20261020/code_attempt2/train_cot_repaired.py
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$EXP/logs"
+LOG=$EXP/logs/run_${PBS_JOBID}.log
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap job=$PBS_JOBID node=$(hostname)"
+QTXT=$($QSTAT -u slfu)
+printf '%s\n' "$QTXT"
+UNFINISHED=$(printf '%s\n' "$QTXT" | awk '$1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+echo "STAGE=queue_gate unfinished=$UNFINISHED limit=3"
+GPU_IDS_TEXT=
+GPU_COUNT=0
+for attempt in $(seq 1 15); do
+  # PBS may publish exec_gpus a few seconds after the job enters execution.
+  GPU_IDS_TEXT=$($QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, - || true)
+  GPU_COUNT=$(printf '%s' "$GPU_IDS_TEXT" | awk -F, '{if ($0 == "") print 0; else print NF}')
+  if [ "$GPU_COUNT" -eq 4 ]; then break; fi
+  sleep 2
+done
+test "$GPU_COUNT" -eq 4
+echo "STAGE=allocated_gpus ids=$GPU_IDS_TEXT"
+nvidia-smi -i "$GPU_IDS_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -d "$AGRI_ROOT"
+test -s "$CUR/agri_paths_trainval_staged.csv"
+test -s "$CUR/date_folds.csv"
+test -s "$FULL/cot_pred_trainval_full.npy"
+test -s "$FULL/rows.csv"
+test -s "$FULL/BANK_REPORT.json"
+for i in 0 1 2 3 4; do
+  test -s "$RROOT/R_folds_attempt1/fold_$i/best.pt"
+  test -s "$RROOT/R_folds_attempt1/fold_$i/run_metadata.json"
+  test -s "$RROOT/R_folds_attempt1/fold_$i/status.json"
+  test -s "$RROOT/R_fold_packs_attempt1/fold_$i/norm.json"
+  test -s "$RROOT/R_fold_packs_attempt1/fold_$i/SHA256.json"
+  test -s "$RROOT/R_fold_packs_attempt1/fold_$i/pack_status.json"
+done
+test "$(sha256sum "$MODEL" | cut -d' ' -f1)" = "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05"
+test ! -e "$EXP/results"
+mkdir -p "$EXP/results"
+"$PY" "$EXP/run_oof_history_inference.py" \
+  --staged-rows "$CUR/agri_paths_trainval_staged.csv" \
+  --fold-map "$CUR/date_folds.csv" \
+  --agri-root "$AGRI_ROOT" \
+  --fold-pack-root "$RROOT/R_fold_packs_attempt1" \
+  --fold-run-root "$RROOT/R_folds_attempt1" \
+  --model-source "$MODEL" --full-bank "$FULL" --script-dir "$EXP" \
+  --output "$EXP/results/oof_train" --logs "$EXP/logs" \
+  --gpu-ids "$GPU_IDS_TEXT" --batch 256 --python "$PY"
+echo "STAGE=inference_complete"
