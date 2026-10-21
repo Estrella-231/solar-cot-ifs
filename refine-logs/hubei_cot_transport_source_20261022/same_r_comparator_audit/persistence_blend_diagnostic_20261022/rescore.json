@@ -1,0 +1,203 @@
+{
+  "state": "POSTHOC_FIXED_BLEND_VALIDATION_DIAGNOSTIC_NOT_MODEL_SELECTION",
+  "alpha_forecast": 0.5,
+  "records": 5460,
+  "unique_station_init_target_lead_keys": 5460,
+  "target_dates_bjt": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302"
+  ],
+  "common_support_as_input": true,
+  "metrics": {
+    "overall_equal_station_equal_lead": {
+      "cot_forecast": {
+        "equal_station_equal_lead_rmse_cot": 13.871228984720986,
+        "equal_station_equal_lead_mae_cot": 9.577587537507663,
+        "equal_station_equal_lead_bias_cot": -0.31793600289782314
+      },
+      "persistence": {
+        "equal_station_equal_lead_rmse_cot": 16.09700288089836,
+        "equal_station_equal_lead_mae_cot": 9.504980420614872,
+        "equal_station_equal_lead_bias_cot": 7.544875159564228
+      },
+      "blend_50_50": {
+        "equal_station_equal_lead_rmse_cot": 12.109927002623065,
+        "equal_station_equal_lead_mae_cot": 7.608439488594599,
+        "equal_station_equal_lead_bias_cot": 3.613469578333202
+      }
+    },
+    "by_lead": {
+      "15": {
+        "cot_forecast": 13.058283562473994,
+        "persistence": 15.065561943898528,
+        "blend_50_50": 11.894504345778097
+      },
+      "30": {
+        "cot_forecast": 13.191195831007706,
+        "persistence": 14.69549394488294,
+        "blend_50_50": 11.75857931557774
+      },
+      "45": {
+        "cot_forecast": 13.085122907013728,
+        "persistence": 14.342498207131017,
+        "blend_50_50": 11.109476383322132
+      },
+      "60": {
+        "cot_forecast": 13.677737424259483,
+        "persistence": 15.316820356697638,
+        "blend_50_50": 12.088464601779437
+      },
+      "75": {
+        "cot_forecast": 13.579100134381212,
+        "persistence": 15.54811398323426,
+        "blend_50_50": 12.519373432994989
+      },
+      "90": {
+        "cot_forecast": 13.589137986937947,
+        "persistence": 15.463676763562459,
+        "blend_50_50": 12.36608556001003
+      },
+      "105": {
+        "cot_forecast": 13.332611242903475,
+        "persistence": 15.465740765184309,
+        "blend_50_50": 11.396184904510676
+      },
+      "120": {
+        "cot_forecast": 13.726463206349928,
+        "persistence": 16.332065091720235,
+        "blend_50_50": 12.349047163125407
+      },
+      "135": {
+        "cot_forecast": 13.750380156755499,
+        "persistence": 16.899215284384677,
+        "blend_50_50": 13.046218007147656
+      },
+      "150": {
+        "cot_forecast": 13.633541883049565,
+        "persistence": 16.556017416854868,
+        "blend_50_50": 12.427871190106195
+      },
+      "165": {
+        "cot_forecast": 14.298580158627216,
+        "persistence": 16.079754409107448,
+        "blend_50_50": 11.032324336283734
+      },
+      "180": {
+        "cot_forecast": 14.250923673307517,
+        "persistence": 16.768893137916596,
+        "blend_50_50": 12.199602616659453
+      },
+      "195": {
+        "cot_forecast": 14.519919879433468,
+        "persistence": 17.132843006065226,
+        "blend_50_50": 12.425830017891647
+      },
+      "210": {
+        "cot_forecast": 14.266059194643466,
+        "persistence": 17.251016056119624,
+        "blend_50_50": 12.452376782017723
+      },
+      "225": {
+        "cot_forecast": 15.187983091323927,
+        "persistence": 17.22856837752006,
+        "blend_50_50": 12.195198969967416
+      },
+      "240": {
+        "cot_forecast": 14.792623423067631,
+        "persistence": 17.40576735009388,
+        "blend_50_50": 12.497694414796714
+      }
+    },
+    "by_cpp_retrieved_target_thickness": {
+      "near_zero_lt1": {
+        "records": 2449,
+        "station_lead_cells": 48,
+        "equal_station_equal_lead_rmse_cot": {
+          "cot_forecast": 9.405111438585967,
+          "persistence": 15.766942951477162,
+          "blend_50_50": 12.462278578232414
+        },
+        "equal_station_equal_lead_bias_cot": {
+          "cot_forecast": 4.862781671188437,
+          "persistence": 5.861915916258574,
+          "blend_50_50": 5.3623487937235055
+        }
+      },
+      "thin_1_10": {
+        "records": 834,
+        "station_lead_cells": 48,
+        "equal_station_equal_lead_rmse_cot": {
+          "cot_forecast": 4.630656882705287,
+          "persistence": 5.209948194135227,
+          "blend_50_50": 4.478038883209357
+        },
+        "equal_station_equal_lead_bias_cot": {
+          "cot_forecast": 2.311908227339695,
+          "persistence": 2.481118730383098,
+          "blend_50_50": 2.396513478861397
+        }
+      },
+      "moderate_10_30": {
+        "records": 1058,
+        "station_lead_cells": 48,
+        "equal_station_equal_lead_rmse_cot": {
+          "cot_forecast": 11.823513064781892,
+          "persistence": 19.136921655934675,
+          "blend_50_50": 14.9966830112064
+        },
+        "equal_station_equal_lead_bias_cot": {
+          "cot_forecast": 9.03531755435269,
+          "persistence": 15.49911255730044,
+          "blend_50_50": 12.267215055826567
+        }
+      },
+      "thick_ge30": {
+        "records": 1119,
+        "station_lead_cells": 48,
+        "equal_station_equal_lead_rmse_cot": {
+          "cot_forecast": 23.41454039831451,
+          "persistence": 18.551319112754825,
+          "blend_50_50": 11.95688515805566
+        },
+        "equal_station_equal_lead_bias_cot": {
+          "cot_forecast": -22.47680258568039,
+          "persistence": 7.771840997391663,
+          "blend_50_50": -7.352480794144365
+        }
+      }
+    }
+  },
+  "paired_date_block_intervals": {
+    "blend_minus_forecast": {
+      "point_delta_rmse_cot": -1.7613019820979208,
+      "ci95_date_block": [
+        -7.663385663098734,
+        3.3828292100666015
+      ]
+    },
+    "blend_minus_persistence": {
+      "point_delta_rmse_cot": -3.9870758782752933,
+      "ci95_date_block": [
+        -6.480463046842389,
+        0.23549773873664162
+      ]
+    }
+  },
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 20261023,
+  "warning": "Single fixed 50/50 arithmetic blend on previously evaluated validation data. No alpha search, no checkpoint selection, not independent confirmation, not a GHI result, and CPP is a retrieval reference rather than independent truth."
+}
