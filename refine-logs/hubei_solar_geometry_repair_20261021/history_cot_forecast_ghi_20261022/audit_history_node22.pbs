@@ -1,0 +1,35 @@
+#!/bin/bash
+#PBS -N hb_histcot_qa
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=4:gpus=1
+#PBS -l walltime=00:15:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/audit_node22.log
+set -euo pipefail
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021
+OUT=$BASE/history_cot_forecast_ghi_20261022
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+CODE=$BASE/code_pipeline_attempt12
+DATA=$BASE/prepared_attempt12
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES=$(printf '%s\n' "$GPU_TEXT" | paste -sd, -)
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+echo "HIST_COT_AUDIT_START job=$PBS_JOBID host=$(hostname) allocated=node22-gpu/$GPU_TEXT"
+nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -d /dev/shm/hubei_solar_corrected_20261021_attempt10/data
+test -d /dev/shm/hubei_solar_corrected_20261021_attempt10/aux
+"$PY" "$OUT/audit_history_frame_coverage.py" \
+  --stage-manifest "$DATA/stage_manifest.csv" \
+  --ghi-rows "$BASE/GHI_pack_attempt12/rows.csv" \
+  --output "$OUT/history_coverage_node22.json" --check-files
+"$PY" "$OUT/smoke_history_r_inference.py" \
+  --stage-manifest "$DATA/stage_manifest.csv" \
+  --checkpoint "$BASE/R_runs_attempt12/full/best.pt" \
+  --normalization "$DATA/R_packs/full/norm.json" \
+  --model-source "$CODE/train_cot_repaired.py" \
+  --output "$OUT/history_r_smoke.json"
+echo "HIST_COT_AUDIT_PASS job=$PBS_JOBID"

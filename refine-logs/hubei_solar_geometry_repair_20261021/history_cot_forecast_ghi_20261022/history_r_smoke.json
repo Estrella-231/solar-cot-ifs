@@ -1,0 +1,53 @@
+{
+  "state": "PASS_FROZEN_CORRECTED_R_TRAIN_VAL_SMOKE",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "records": [
+    {
+      "split": "train",
+      "bjt": "202508010800",
+      "utc": "202508010000",
+      "input_shape": [
+        16,
+        16,
+        16
+      ],
+      "output_shape": [
+        1,
+        1,
+        16,
+        16
+      ],
+      "valid_pixels": 256,
+      "cot_min": 0.013557964004576206,
+      "cot_max": 0.40601420402526855,
+      "data_sha256": "4e26097f2d6eb1bddbfd57ce61cb5936813f8c19f31000fdcd5b355cebffee2a",
+      "aux_sha256": "2923490ce95bce982655b508f029af6d15b9d966c2b03a8f29e53a848cb4b887"
+    },
+    {
+      "split": "val",
+      "bjt": "202508220800",
+      "utc": "202508220000",
+      "input_shape": [
+        16,
+        16,
+        16
+      ],
+      "output_shape": [
+        1,
+        1,
+        16,
+        16
+      ],
+      "valid_pixels": 256,
+      "cot_min": 0.013611027970910072,
+      "cot_max": 2.558581829071045,
+      "data_sha256": "8c8d7f3445aa2f7bc278efdf84dabf5984b4ecbf1b6fd1ef696be0864aaf74fb",
+      "aux_sha256": "28b783aba5b50815c62b3b999ae68acc8fd3c8caf659d192a097be4f18f5f692"
+    }
+  ],
+  "checkpoint_sha256": "d8f25a34ac1bf6fdd9005d2ea9d52d02dd3c2c24e4758e6cd74061121d6b5d0b",
+  "normalization_sha256": "4db7bb624a7a11edb7c337fa108a0a426a5018a2b885c520e894b988d3394446",
+  "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

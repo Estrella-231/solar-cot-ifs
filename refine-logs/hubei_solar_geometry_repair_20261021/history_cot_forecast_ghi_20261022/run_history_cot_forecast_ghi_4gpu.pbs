@@ -1,0 +1,83 @@
+#!/bin/bash
+#PBS -N hcotghi4
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=32:gpus=4
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/history_cot_forecast_ghi_attempt1.log
+set -euo pipefail
+
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021
+OUT=$BASE/history_cot_forecast_ghi_20261022
+PACK=$BASE/GHI_pack_attempt12
+DATA=$BASE/prepared_attempt12
+CODE=$BASE/code_pipeline_attempt12
+R_CKPT=$BASE/R_runs_attempt12/full/best.pt
+R_NORM=$DATA/R_packs/full/norm.json
+R_SOURCE=$CODE/train_cot_repaired.py
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+BANK=$OUT/history_bank_attempt1
+TRAIN=$OUT/training_attempt1
+SCORED=$OUT/scored_attempt1
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+
+fail_record() {
+  rc=$?
+  mkdir -p "$OUT"
+  printf '{"state":"FAILED","job_id":"%s","exit_code":%s,"host":"%s"}\n' \
+    "${PBS_JOBID:-unknown}" "$rc" "$(hostname)" > "$OUT/attempt1_failure.json"
+  exit "$rc"
+}
+trap fail_record ERR
+
+GPU_TEXT=$($QSTAT -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, -)
+IFS=, read -r -a GPU_IDS <<< "$GPU_TEXT"
+if [[ "${#GPU_IDS[@]}" -ne 4 || "$(printf '%s\n' "${GPU_IDS[@]}" | sort -un | wc -l)" -ne 4 ]]; then
+  echo "Expected four distinct node22 A800 allocations, got: $GPU_TEXT" >&2
+  exit 2
+fi
+
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONUNBUFFERED=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+echo "HISTORY_COT_GHI_START job=$PBS_JOBID host=$(hostname) requested_gpus=4 allocated=node22-gpu/$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -d /dev/shm/hubei_solar_corrected_20261021_attempt10/data
+test -d /dev/shm/hubei_solar_corrected_20261021_attempt10/aux
+test -f "$DATA/stage_manifest.csv"
+test -f "$PACK/rows.csv"
+test -f "$PACK/pack_report.json"
+test -f "$R_CKPT"
+test -f "$R_NORM"
+test -f "$R_SOURCE"
+test ! -e "$BANK"
+test ! -e "$TRAIN"
+test ! -e "$SCORED"
+
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+"$PY" -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node=4 \
+  "$OUT/build_history_cot_bank.py" \
+  --stage-manifest "$DATA/stage_manifest.csv" \
+  --ghi-rows "$PACK/rows.csv" \
+  --checkpoint "$R_CKPT" --normalization "$R_NORM" --model-source "$R_SOURCE" \
+  --output "$BANK" --batch-frames 64
+
+export CUDA_VISIBLE_DEVICES="${GPU_IDS[0]}"
+"$PY" "$OUT/audit_history_cot_bank.py" \
+  --bank "$BANK" --stage-manifest "$DATA/stage_manifest.csv" --ghi-rows "$PACK/rows.csv" \
+  --checkpoint "$R_CKPT" --normalization "$R_NORM" --model-source "$R_SOURCE" \
+  --output "$BANK/bank_audit.json"
+
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+"$PY" "$OUT/run_paired_trials.py" \
+  --pack "$PACK" --history-bank "$BANK" --trainer "$OUT/train_history_cot_pair.py" \
+  --output "$TRAIN" --cuda-devices "$GPU_TEXT" --epochs 30 --batch-size 1536 --profile-updates 64
+
+"$PY" "$OUT/score_history_cot_pairs.py" \
+  --training-root "$TRAIN" --pack "$PACK" --output "$SCORED" --bootstrap-draws 5000
+
+printf '{"state":"HISTORY_COT_GHI_ATTEMPT1_COMPLETE","job_id":"%s","host":"%s","allocated_gpu_ids":"%s","allocated_gpu_count":4,"test_payloads_read":0,"buffer_payloads_read":0}\n' \
+  "$PBS_JOBID" "$(hostname)" "$GPU_TEXT" > "$OUT/attempt1_complete.json"
+echo "HISTORY_COT_GHI_PASS job=$PBS_JOBID host=$(hostname) gpu_ids=$GPU_TEXT"

@@ -1,0 +1,144 @@
+{
+  "state": "INDEPENDENT_SAVED_VALIDATION_PREDICTION_AUDIT_PASS",
+  "method": "fresh_numpy_fp64_recalculation_from_18_saved_validation_npz_bundles",
+  "all_3_stations_x_3_seeds_x_2_arms_audited": true,
+  "validation_rows_in_pack": 15275,
+  "row_counts_per_station": {
+    "Niushou": 5305,
+    "Wangzhai": 4883,
+    "Mizhuang": 5087
+  },
+  "common_key_order_truth_clear_sky_hash_checks": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "n_each_arm": 5305,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "n_each_arm": 5305,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "n_each_arm": 5305,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "n_each_arm": 4883,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "n_each_arm": 4883,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "n_each_arm": 4883,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "n_each_arm": 5087,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "n_each_arm": 5087,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "n_each_arm": 5087,
+      "same_key_order": true,
+      "same_truth": true,
+      "same_clear_sky": true,
+      "prediction_hashes_match_score_receipt": true
+    }
+  ],
+  "equal_station_equal_seed_mean_rmse_wm2": {
+    "FA_HIST": 100.91762001270124,
+    "FAC_HIST": 99.20229626522324
+  },
+  "paired_delta_fac_minus_fa_wm2": -1.7153237474779877,
+  "relative_rmse_improvement_pct": 1.699726714980109,
+  "independent_date_bootstrap_95pct_delta_ci_wm2": [
+    -3.887747742928039,
+    0.30981529438220673
+  ],
+  "independent_date_bootstrap_95pct_improvement_ci_pct": [
+    -0.31463600604107234,
+    4.086010108651568
+  ],
+  "bootstrap_draws": 5000,
+  "bootstrap_dates_bjt": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302",
+    "20260420",
+    "20260421",
+    "20260503",
+    "20260504",
+    "20260628",
+    "20260629"
+  ],
+  "agrees_with_primary_score": {
+    "FA_HIST_rmse": true,
+    "FAC_HIST_rmse": true,
+    "paired_delta": true,
+    "delta_ci": true,
+    "improvement_ci": true
+  },
+  "validation_only": true,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "source_prediction_count": 18
+}

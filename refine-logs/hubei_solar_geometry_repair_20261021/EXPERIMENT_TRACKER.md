@@ -1,11 +1,17 @@
-## 最新推进（2026-10-21 04:40集群时钟；几何审计通过，SimVP重训进行中）
+## 2026-10-21 09:05 CST — validation event diagnosis complete; next retrain prepared
 
-- **训练集和验证集太阳几何已核验完成。** 官方NOAA JavaScript公式独立复算覆盖62,802个train/val点（train 57,334、val 5,468）；最终修复数据包独立审计 `DATA_AUDIT_PASS_attempt12.json` 为PASS，覆盖10,473帧S数据及3,479条R记录，键、标签、AGRI、几何和日期隔离通过，test/buffer读取均为0。六个修正R模型（全train及5折）已完成。
-- **上游重训已启动，但最终有/无预测COT的GHI配对头还未启动。** PBS `215311.tc6000`（node22/GPU4，SimVP full）和 `215312.tc6000`（node22/GPU3，fold_0）均为R；集群04:40时最新日志分别完成第2轮（验证loss 0.3049911）和第2轮（0.3215278），无训练异常。其它4折SimVP、预测COT bank和GHI头仍待队列控制器按依赖顺序提交。slfu队列另有既有任务 `215308.tc6000`，当前共3个未结束作业，已达上限；不再新增提交，控制器等待空位。
-- **补上GHI训练前缺失的两项审计。** 复核发现原`GHI()`在COT bank生成后会直接训练GHI头，没有执行计划要求的逐时效COT评价；此外旧pack把`DATA_READY.json`误记成OOF bank报告哈希。现已将`evaluate_forecast_cot.py`和`audit_oof_bank_lineage.py`接入GHI阶段：生成COT bank后、训练头前，先在精确target-time和共同CPP有效像元上评估+15…+240 min，报告站点像元、站点3×3、16×16场、历史COT持续性及仅离线可用的未来真实AGRI→R参考，并按目标日期配对bootstrap；随后核对训练行来自对应留出折、验证行来自full-train bank及每行init/target/lead键。CPP明确标为检索参考，不作独立真值。
-- 预测头pack gate现在读取OOF报告文件并校验实际SHA和PASS状态，不再接受任意非空哈希。五个改动文件已同步到服务器并逐项SHA一致；本地及node22 Python 3.10编译通过，4项合成对齐/指标/门禁测试通过。**这两个新增诊断尚未跑实数据**，需等全部SimVP折及验证COT bank完成；GHI配对头仍未开始。
+- Attempt12 geometry-repair retraining and paired GHI experiment already completed: NOAA check passed for 62,802 train/val points; corrected train/val data audit passed; PBS `215320.tc6000` exited 0 on node22 A800 GPU0. Do not repeat the identical run.
+- Added a validation-only event figure for 2025-09-27 13:30 BJT, showing observed/forecast AGRI C02, offline future AGRI→R COT, forecast AGRI→R COT, station COT trajectories, and the frozen-head GHI response. It is explicitly an illustrative event, not a population result. Details and limits: `forecast_cot_trajectory_diagnostic_attempt12/ATTEMPT12_FORECAST_COT_DIAGNOSIS.md`.
+- The event shows pronounced lead-dependent COT phase/amplitude mismatch; across all validation support, forecast-COT RMSE also exceeds history persistence at each 1–4 h horizon. The overall GHI change remains only −0.094 W/m² (−0.098%), with both date-block intervals crossing zero. CPP and future AGRI→R remain retrieval references, not independent truth.
+- Next separate candidate: matched corrected-geometry AGRI-MSE vs AGRI-MSE+CPP-supported COT auxiliary loss through frozen R, with train-only gradient-ratio weight and the same architecture, initialization, sample order and optimization budget. Gate on forecast-COT skill and AGRI/cloud-regime safeguards before OOF/GHI continuation. Plan and implementation are being prepared; no new PBS run has been submitted.
+- A live SSH attempt at 09:00 CST was actively closed by `10.65.129.39:22`; the last successful full `qstat -u slfu` check at 08:58 had no unfinished tasks. Because PBS must be checked immediately before submission, no new job is submitted while SSH is unavailable. Test/buffer reads remain zero.
+## 最新状态（2026-10-21 08:48 CST，服务器复核）
 
-## 最新推进（2026-10-21 04:26 BJT，attempt12重训运行；修正预测COT输入预处理）
+- **训练集和验证集太阳几何核对已完成并通过。** NOAA 独立公式复算 62,802 个时空点（train 57,334、validation 5,468）；天顶角最大差 `1.75e-13°`、方位角最大环形差 `2.72e-10°`。修复数据包审计覆盖 S 10,473 帧、R 3,479 行，时间键、标签、AGRI、几何、train/validation隔离均通过，test/buffer读取为0。收据见 `receipts/attempt12/FINAL_AUDIT_20261021T0815CST.json` 和 `DATA_AUDIT_PASS_attempt12.json`。
+- **修正太阳几何后的重训和有/无预测 COT 配对实验均已完成。** PBS `215320.tc6000` 在 node22 的 A800 GPU0 正常退出（exit status 0）；服务器存在 `ALL_PAIRED_COMPLETE_attempt12.json`，当前 `qstat -u slfu` 无未结束任务。验证集三站等权 RMSE 为无预测 COT `95.703 W/m²`、加预测 COT `95.609 W/m²`，相对下降 `0.098%`；日期配对及两日块95%区间均跨零，因此尚未证明稳定收益。test/buffer仍未读取。
+- 旧的04:40及更早进度记录保留作历史快照；它们不代表当前状态。详细重训结果见 `ATTEMPT12_RESULTS_20261021.md`。
+
+## 历史快照（2026-10-21 04:26 BJT，attempt12重训运行；修正预测COT输入预处理）
 
 - **训练/验证几何与修复数据包已经审计通过。** NOAA独立公式覆盖62,802个train/val点；`DATA_AUDIT_PASS_attempt12.json` 覆盖10,473帧S数据、4,086个train序列/407个val序列和3,479条R样本，键、标签、AGRI、几何、日期隔离及train-only归一化均PASS。修复反射率来源与SHA核对通过。test/buffer读取为0。
 - **正式重训已经开始。** 修正R全量加5折六个模型已完成。最新qstat：SimVP full PBS `215311.tc6000` 在node22/GPU4，第2轮刚开始；fold_0 PBS `215312.tc6000` 在node22/GPU3，第1轮163/306 batch。账户队列 `215308`（既有作业）、`215311`、`215312` 共3个未结束作业，达到上限；控制器会等空位再逐折提交其余S模型。当前还没有新的COT预测bank或GHI配对结果。
@@ -384,6 +390,214 @@
 - **COT外推自身仍是优先瓶颈。** 在复用validation、与CPP共同有效像元支持的诊断中，SimVP未来AGRI→R 的COT RMSE（无量纲）在1/2/3/4小时分别为 `10.255/9.787/10.194/12.063`；历史COT持平为 `8.946/9.238/9.617/9.086`。CPP只是卫星检索参考、不是独立真值；这些不是test结论。证据：`receipts/attempt12/forecast_cot_metrics.json`、`.csv`。
 - 下一步先用已保存的同键云图、预测/参考COT轨迹和GHI逐样本误差，分解站点邻域的位移误差、厚度变化误差和反演链误差；定位清楚前不再盲目扩GHI头训练。完整结果整理见 `ATTEMPT12_RESULTS_20261021.md`。
 
+## 2026-10-21：冻结 FAC 头的 COT 输入替换诊断完成
+
+- 在相同验证键上复用 seed-42 FAC checkpoint，仅替换 COT 输入：SimVP→R forecast COT、历史 AGRI→R 的 persistence COT、观测未来 AGRI→R 的离线 oracle COT。AGRI、几何、标签、头部权重与归一化保持不变；未来 AGRI→R 明确不可部署。
+- 需同时有 init 与 target 两个 R validation 时间键，所以共同支持仅覆盖 Niushou 992/5305（18.7%）、Wangzhai 874/4883（17.9%）、Mizhuang 909/5087（17.9%）行。三站等权 RMSE：forecast COT 122.58 W/m²，history persistence 137.12，offline future AGRI→R 117.75；oracle相对forecast低3.94%。15个共同目标日期的日期簇95%区间为[-10.63,-1.39] W/m²。由于仅约18%验证覆盖、使用单种子，属于受限验证反事实诊断，不能替代全验证FA/FAC主比较或称为可部署收益。
+- 结果说明固定 GHI 头会响应 COT，且在该子集更好的离线未来COT输入可降低误差；预测 COT 质量是可能瓶颈，但还不能据此证明因果归因。全验证配对结果仍为 FA/FAC 95.703/95.609 W/m²（0.098%，日期块区间跨零）。
+- 保存预测的FP64独立复算通过：2,775行、45个站点/时效/输入源指标行、键唯一，test载荷读数0。CPU FP32复现A800 autocast预测最大差不超过0.238 W/m²，预测数组复算RMS差不超过0.084 W/m²。
+- 报告与资产：`fixed_head_cot_substitution_attempt12/REPORT.md`、`summary.json`、`metrics_by_station_horizon.csv`、`paired_predictions_common_validation.csv`、`independent_fp64_audit.json`；实现与审计脚本位于同目录上一级。服务器PBS队列在本次诊断核对时为空；本诊断使用登录端CPU推理，没有提交训练作业。
+- 后续继续对齐真实AGRI场、COT轨迹和GHI逐时效误差，定位输运位置、云厚变化和GHI头误差的贡献；此诊断不放行test，也不等价于重训。
+
+## 2026-10-21 09:58 CST：attempt13 单因素配对重训已提交
+
+- 按用户授权启动 attempt13：在已核对的湖北 train/val 划分与修正太阳几何上，配对比较原 AGRI MSE 与 `AGRI MSE + λ×冻结R-COT辅助损失`。两臂 seed42、同一初始化/样本顺序/优化器/固定50轮更新；COT辅助监督只使用按目标时刻精确对齐的 train/val CPP common-valid 像元。测试与缓冲载荷继续关闭。
+- 本次实时 `qstat -u slfu` 提交前队列为0/3；PBS `215337.tc6000` 已提交到 `gpu` 队列，请求 node22、8 CPU、1 GPU、36小时。提交后队列为1/3，作业状态 `Q`。当前只能确认排队，不能称训练已开始；等待node22/GPU分配后确认输入预检和profile日志。
+- 提交前的本地与服务器 `py_compile` 均通过；12个训练/预处理脚本的本地/远端 SHA-256 一致。服务器长期资产存在，attempt13 输出路径为空。提交收据：`hubei_cot_auxiliary_retrain_attempt13/receipts/SUBMITTED_215337.json`。
+- 修复了两个会污染结果的实现细节：R pack 的CPP目标是 `physical_COT/100`，attempt13 sidecar 乘回100后再计算 `log1p` 辅助损失；显存profile按实际两次8帧递推并拼入未来几何，严格检查总输出16帧。物理COT验证RMSE选模字段已纠正命名。
+- 几何和数据准备依据仍是 attempt12 已通过的逐样本/逐太阳角审计；attempt13会在获分配的node22上重新检查训练/验证文件缓存，若节点本地缓存缺失则只在独立 attempt13 路径恢复，不覆盖 attempt12。若输入门禁、profile或训练报错，保留日志/失败收据，修复后续跑。
+
+## 2026-10-21 09:59 CST：PBS 启动断言修复
+
+- PBS `215337.tc6000` 已退出，`tracejob` 记录 `Exit_status=1`、运行19秒。日志显示作业实际获得 PBS 分配 `node22-gpu/1` 并到达 attempt13 启动脚本；随后我错误地要求 `hostname -s` 字面值必须为 `node22`，但计算节点返回 `gpu2`，因此在数据预检、profile和训练前退出。
+- 这是资源名与主机别名不一致的包装脚本错误，不是几何、数据、GPU计算或模型训练失败。已保留原日志 `attempt13_pair.log` 和失败收据 `hubei_cot_auxiliary_retrain_attempt13/receipts/FAILED_215337.json`。attempt13尚无 `prepared_inputs.json`、训练run目录或checkpoint，故无实验产物被覆盖。
+- 修复为以 PBS `qstat -f` 中明确匹配 `node22-gpu/<id>` 的资源分配作校验，不再检查主机名字符串；重试使用独立日志 `attempt13_retry1.log`。先做远端 `bash -n` 与目录/输出检查，再实时查队列；并发未满3项时自动重提。
+
+## 2026-10-21 10:08 CST：train/val预检通过，profile依赖待修
+
+- 重试 PBS `215340.tc6000` 已在 node22 完成输入预检后退出（`Exit_status=1`，约31秒）；不是数据错误。node22上复用的 attempt12 训练/验证缓存通过路径和几何见证，10,473帧的原始数据不需重新恢复。CPP sidecar复核PASS：train 4,086窗、val 407窗，目标时间逐帧精确对齐，物理单位由R pack的 `COT/100` 恢复至 `[0,100]`；19,481个带有效CPP支持的目标帧逐项与R pack相等，test/buffer读取0。完整收据位于远端 `hubei_cot_auxiliary_retrain_attempt13/prepared_inputs.json` 与 `cpp_target_sidecar/manifest.json`。
+- profile 失败点为环境依赖：OpenSTL 的包初始化会导入 `cv2`，但服务器 `swc` 环境没有OpenCV（`ModuleNotFoundError`）。失败日志保留在 `attempt13_retry1.log` 与 `profile/batch_16.log`，没有模型训练、没有run目录/权重输出。
+- 正在把 `opencv-python-headless==4.10.0.84` 装到 attempt13 私有 `python_vendor/`，不改共享conda环境；PBS启动时只对本作业加入该私有路径。输入预检脚本已改成只读复核已有PASS收据，profile新写入`profile_retry1/`以保留旧失败记录。待依赖安装及导入见证通过后，再核队列并提交一次GPU profile/配对训练。
+
+
+
+## 2026-10-21 12:28+08:00 CST：历史核查与 attempt13 retry3 状态
+
+- 用户询问的“AGRI 像元 MSE + 冻结 R-COT 辅助损失”此前已在湖南实际训练过，不是首次探索。历史记录 `refine-logs/cot_aware_simvp_20261017/EXPERIMENT_TRACKER.md` 的 04:24、04:30、05:59、06:10 CST 给出同一 3,140 窗口 / 46 CPP 日期公共验证支持：原 SimVP、等预算 AGRI-MSE 微调、混合标签 COT 辅助、CPP-only COT 辅助的站点 3×3 COT RMSE 依次为 10.664161、10.750112、10.740627、10.743569。辅助候选没有改善总体 COT RMSE；CPP-only 相对 MSE 差 −0.006542、日期块95%区间 [−0.030278,+0.012902] 跨零，厚云 CSI 有小幅改善，但近零虚警率显著增加 +0.001726 [ +0.000819,+0.002897 ]，预设总体门槛未通过。该湖南验证结果是负向/未证实结果，不是湖北结果或独立测试。
+- 历史核查结论：当前 attempt13 是修正太阳几何、湖北自身 R/数据及湖北三站上的区域复核；检索未发现此前已完成的湖北同类配对训练。不把辅助损失称作新方法；若湖北也不改善，按跨区域未复现如实报告。
+- 215337 因 hostname 字面断言失败；215340 因缺 `cv2` 退出；215352 的兼容 shim 没放在 Python 实际启动路径，导入预检退出。这三次均未进入训练，保留原日志和失败收据，test/buffer读取均为0。私有 `python_vendor` 已补齐依赖并将 timm API shim 放到其启动路径；conda 激活后的完全同序导入 smoke 现为 PASS。共享 `swc` 环境未修改。
+- PBS `215355.tc6000` 于提交前实时核对全账户队列为0/3，提交后1/3；当前 qstat 状态 `R`，请求 node22:ppn8:gpus1、36小时。实际启动日志确认 node22-gpu/1，`nvidia-smi` 为 NVIDIA A800-SXM4-80GB（编号1，80GiB）。数据和 CPP 预检PASS：4,086 train、407 validation、19,481个物理COT目标与R pack精确核对，test/buffer读取0。
+- 联合单步 profile 通过：batch16、峰值69.291GiB、19.30秒；SimVP梯度有限非零，冻结R参数无梯度。`PAIR_STARTED_attempt13.json` 写明两臂各50轮、每臂12,800更新、seed42同初始化。当前只看到 `START_ARM mse_control`，MSE臂训练已启动；COT-aux臂尚未开始，暂时无checkpoint和验证结果。现场收据 `receipts/LIVE_215355.json`，提交收据 `receipts/SUBMITTED_215355.json`。
+
+
+### 2026-10-21T12:29+08:00 CST 实时运行核验
+
+PBS `215355.tc6000` 仍为 `R`，slfu账户未结束任务1/3。MSE-control臂已进入第1轮训练，最新日志到 epoch 0 的 46/282 batch；初始化和 profile 没有报错。单步速率仍处早期热身，暂不据此给全程ETA。COT-aux臂尚未启动；暂无checkpoint或验证结果。该进展不改变湖南历史实验的负向/未证实结论。test/buffer读取计数仍为0。现场收据更新至 `receipts/LIVE_215355.json`。
+
+### 2026-10-21：attempt12下游 GHI 头替换诊断纳入 attempt13 解释
+
+核对 `fixed_head_cot_substitution_attempt12/REPORT.md`：固定同一GHI头、AGRI/太阳几何/标签和预处理，只替换COT。在约18%的受限共同验证行上，离线未来AGRI→R COT的等站RMSE为117.75 W/m²，SimVP→R预测COT为122.58 W/m²；两者 RMSE 差（离线未来输入减预测 COT 输入）的95%日期簇区间为−10.63至−1.39 W/m²。该离线来源在起报时不可得，不能当部署成绩或独立COT真值。结果说明GHI头对COT输入有响应，并与预测COT链限制部分下游收益相容，但不能证明其为唯一瓶颈。单个云团案例的COT增厚/消散时序明显错位，也仅作机制线索。详见 `hubei_cot_auxiliary_retrain_attempt13_retry4/HISTORY_AUDIT_PHYSICS_CONSTRAINT_AND_PERSISTENCE_20261021.md`；当前attempt13继续按既定门槛运行。
+
+## 2026-10-21 13:43 CST: attempt13 retry4 live snapshot
+
+- Luna read-only live check of `qstat -u slfu`: `215356.tc6000` running on node22 with one GPU; `215359.tc6000` held on `afterok:215356`; `215369.tc6000` complete. Two unfinished PBS tasks, below the three-task account limit.
+- `215356` remains in the MSE-control arm: epoch 6 completed, epoch 7 at about 125/282 batches. Epoch 6 is the current intermediate best with physical validation COT RMSE 11.81630. This is not a paired or final result.
+- COT-aux training has not started; no paired forecast bank or score is available. The dependent scoring job has not run. Test/buffer payload reads remain zero; no PBS job was modified.
+
+## 2026-10-21 14:00 CST: attempt13 independent code audit and live refresh
+
+- Read-only code audit: WARN, no core training/scoring blocker. retry4 launcher path, exact future timestamp joins, frozen-R gradient flow, physical-unit COT model selection, and common-support COT comparison pass. See `ATTEMPT13_CODE_AUDIT_20261021.md` for evidence and caveats.
+- The currently queued scorer omits the experiment plan's AGRI degradation guard and full attempt12 baseline comparison. It also does not bind actual COT-bank arrays, geometry, and selected checkpoints end-to-end to their receipts. Treat its output as a COT-only diagnostic until a post-training AGRI guard and hash audit are added. Correct the release condition to all three Hubei stations.
+- Same initialization/configuration/update count are recorded, but exact per-batch and DropPath RNG-stream equality is not witnessed (`deterministic=False`). Do not claim identical random trajectories.
+- Live `qstat -u slfu`: 2/3 unfinished. `215356.tc6000` is R on `node22:ppn8:gpus1`; `215359.tc6000` is H after `215356`. Latest remote log: MSE-control epoch 9 at about 208/282 combined train/validation batches; epoch 8 `val_cot_rmse=11.78668` is only an intermediate best. COT-aux has not started; no paired score or final result exists. Test/buffer reads remain zero; no PBS job was modified.
+
+## 2026-10-21：attempt12“过平/过弱”同键空间纹理与变化幅度复核
+
+- 以 attempt12 full-train validation COT bank、冻结R的 validation 输出和BJT键重新计算；bank、keys、CPP数组与mask SHA均匹配来源manifest/评估receipt。精确连接1,164个(init,target,lead)键，覆盖16个+15…+240 min时效；只读validation，不读取test/buffer。
+- 结果分清了两种“1/2/3/4小时”口径：旧主表数字是连续一小时窗口（+15…+60、+75…+120、+135…+180、+195…+240 min），并非+60/+120/+180/+240单帧。由当前逐帧哈希数据聚合后逐项重现旧值；具体窗口已写回 `ATTEMPT12_RESULTS_20261021.md` 和 `hubei_cot_auxiliary_retrain_attempt13_retry4/HISTORY_AUDIT_PHYSICS_CONSTRAINT_AND_PERSISTENCE_20261021.md`，逐帧数据见新审计报告。
+- 与未来AGRI→R离线代理相比，预测场在+60/+120/+180/+240 min的空间标准差比为0.677/0.595/0.519/0.530，邻像元梯度RMS比为0.776/0.680/0.680/0.750，说明预测空间纹理较平滑；但预测COT增量RMS比为1.258/1.037/1.084/1.398，变化幅度并不统一偏弱。增量相对离线R代理的through-origin相关为0.325/0.454/0.682/0.675，提示变化的空间位置/时机仍不够一致。CPP与未来AGRI→R都只是参考/代理，不是独立真值。
+- 逐点lead对CPP参考的RMSE中，+60 min预测略好于持平（11.055 vs 11.505），+120/+180/+240则更差（12.100/11.562、11.903/11.642、14.259/11.434）；连续小时窗口仍四组都输给持平。不能用某个粒度选择性宣称改善。
+- 该分析只量化了“过平”和变化失配，未证明缺少物理定律是原因，也未测试严格云输运/守恒/辐射闭合。历史空间梯度、时间变化和冻结R-COT辅助监督试验已做；当前湖北 attempt13 retry4 的配对辅助监督才是已在途的受控训练，先等其完整COT/AGRI门槛，再决定是否单独开展运动/演变约束。
+- 可复现产物：`cot_texture_dynamics_audit_attempt12/analyze_texture_dynamics_attempt12.py`、`TEXTURE_DYNAMICS_AUDIT_20261021.md`、`texture_dynamics_by_lead.csv`、`horizon_bin_rmse.csv`、`texture_dynamics_summary.json`、PNG/PDF图。此为复用validation诊断，不是新test结论。
+
+## 2026-10-21 13:59 CST：attempt13 AGRI 护栏独立复核准备
+
+- 新增 `hubei_cot_auxiliary_retrain_attempt13_retry4/audit_attempt13_agri_guard_fp64.py`，只读核验两臂 validation bank 的407行键顺序、真实AGRI标签、目标几何、train-only归一化和索引合同；对保存的16×16物理AGRI patch及三站3×3邻域计算FP64逐时效RMSE/MAE/bias，并单独报告 BANK_REPORT 中全场归一化空间指标。不会访问CPP或test/buffer，也不参与选模。
+- 本地 `py_compile` 与合成数值 smoke 通过。脚本明确禁止把目前仅保存的 patch 物理RMSE或 pooled normalized full-field RMSE误称为预注册的“全场物理单位AGRI护栏”；该全场物理门仍未解决，不能以此放行后续GHI训练。
+- 13:59:25 CST 实时 `qstat -u slfu` 仍为2/3：`215356.tc6000` 在运行，`215359.tc6000` 等待前置作业；没有提交、取消或修改PBS作业。两臂验证bank尚未生成，脚本未对真实产物运行。test/buffer读取保持0。
+- 14:02:12 CST 再次实时复核：队列仍2/3，`215356.tc6000`运行、`215359.tc6000`依赖挂起。MSE-control已完成epoch 11，当前epoch 12约168/282合并训练/验证batch（约60%）；epoch 11物理 `val_cot_rmse=11.56415` 刷新单臂阶段best，COT-aux尚未启动。该best为中途选模值，不是配对实验结果。test/buffer读取仍为0。
+
+## 2026-10-21 14:28 CST: attempt13 retry4 live refresh
+
+- Live `qstat -u slfu`: 2/3 unfinished. `215356.tc6000` remains R on node22 with one GPU; dependent scorer `215359.tc6000` remains H after `215356`.
+- Remote run directory contains only `runs/mse_control/training.log`; latest tail is MSE-control epoch 13 at about 167/282 combined train/validation batches (~59%). COT-aux has not started, and there is no paired score or final validation result.
+- Existing best from epoch 11 (`val_cot_rmse=11.56415`) is an intermediate single-arm value only. Do not interpret it as evidence for or against the paired COT-aux hypothesis.
+- No PBS job was submitted, cancelled, or modified. Test/buffer payload reads remain 0.
+
+## 2026-10-21 14:33 CST: post-hoc AGRI guard preparation and live refresh
+
+- Added `hubei_cot_auxiliary_retrain_attempt13_retry4/infer_S_physical_agri_guard_attempt13.py` as an independent copy of the frozen attempt12 validation inference path. It preserves the 16x16 banks for R and additionally streams full 256x256 validation errors in original AGRI units, reporting per-channel/per-lead RMSE, MAE, and bias; it intentionally does not pool unlike channel units. The frozen attempt12 source and running attempt13 code were not modified.
+- Verification: `py_compile` PASS; extracted helper AST synthetic smoke PASS (16 leads x 13 channels, expected RMSE/MAE/bias recovered). No real bank exists yet, so this is prepared code only, not an AGRI guard result.
+- Live `qstat -u slfu` at 14:33 local: 2/3 unfinished. `215356.tc6000` R on node22 GPU1, elapsed 1:48:14; `215359.tc6000` H after `215356`. Latest remote log is MSE-control epoch 14 at about 107/282 combined train/validation batches (~38%); no COT-aux log, pair receipt, or score yet.
+- No PBS job was submitted, cancelled, or modified. Test/buffer payload reads remain 0.
+
+## 2026-10-21 14:36 CST: attempt13 retry4 live refresh
+
+- Live `qstat -u slfu`: 2/3 unfinished jobs. `215356.tc6000` remains R on node22 with one GPU; dependent scorer `215359.tc6000` remains H after `215356` and has not started.
+- MSE-control is currently in epoch 14, batch 193/282. The last fully completed validation is epoch 13 with physical `val_cot_rmse=12.00`; the best logged value remains epoch 11 at `11.56415`. These are single-arm training diagnostics, not paired evidence.
+- `runs/cot_aux` is absent; no COT-auxiliary training log, paired receipt, or evaluation score exists yet. `retry4.log` confirms the training setup and the test/buffer payload read counters remain 0.
+- No PBS job was submitted, cancelled, or modified.
+
+## 2026-10-21 14:43 CST: attempt13 retry4 live refresh
+
+- Live queue remains 2/3: `215356.tc6000` R and `215359.tc6000` H behind its `afterok` dependency.
+- MSE-control completed epoch 14 (`val_cot_rmse=12.40`) and is in epoch 15, about batch 187/282 at snapshot time. The best remains epoch 11 (`11.56415`); no new best was logged.
+- COT-auxiliary has not started; no paired score or completion receipt exists. Current run logs continue to report `test_payloads_read=0` and `buffer_payloads_read=0`.
+- No PBS job was modified.
+
+## 2026-10-21 14:46 CST: attempt13 retry4 live refresh
+
+- Live queue remains 2/3: `215356.tc6000` R on node22 GPU1; dependent scorer `215359.tc6000` H. `tracejob` shows the training job started at 12:26:54 but the accounting log is permission denied; `qstat` confirms it remains running.
+- MSE-control completed epoch 15 (`val_cot_rmse=11.80`) and entered epoch 16. Best remains epoch 11 (`11.56415`), checkpoint at `runs/mse_control/checkpoints/best-epoch=11-val_loss=0.240.ckpt` (also `best.ckpt`/`last.ckpt`). COT-aux has not started and has no checkpoint or best metric.
+- No `PAIR_COMPLETE`, prediction bank, scoring receipt, or inference/evaluation log exists. Test and buffer payload read counters remain 0.
+- No PBS job was modified.
+
+## 2026-10-21 14:49 CST: Luna live refresh for attempt13 retry4
+
+- The full account queue remains at 2/3 unfinished jobs: `215356.tc6000` is running on one GPU at node22; dependent scorer `215359.tc6000` is held until the training job completes.
+- MSE-control reached epoch 16, about 129/282 combined train/validation batches. The last completed epoch 15 validation COT RMSE was 11.80; the single-arm best remains epoch 11 at 11.56415. COT-aux has not started.
+- There is still no paired prediction bank, `PAIR_COMPLETE`, or score. Test/buffer read counters remain 0. This confirms training progress only and does not determine whether auxiliary COT supervision helps.
+- No PBS job was submitted, cancelled, or modified.
+
+## 2026-10-21 15:16 CST: paired full-field AGRI guard prepared
+
+- Luna's read-only 15:14 CST snapshot: `qstat -u slfu` has 2/3 unfinished jobs; `215356.tc6000` is running on node22 GPU1, MSE-control has started epoch 20 (epoch 19 validation COT RMSE 12.50; best remains epoch 11 at 11.56415), and `215359.tc6000` waits for `215356`. COT-aux and the COT scorer have not started; no paired bank/score receipt exists; test/buffer reads remain 0.
+- The remote validation index, train-only normalization, both checkpoint paths, and SimVP snapshot were confirmed present by Luna; the validation index has 4,086 train / 407 val rows and no test/buffer rows. The new guard scripts have not yet been staged remotely.
+- Code review found that the earlier guard inference retained full-field physical per-channel/per-lead aggregates but not per-window error sums; therefore it could not compute paired date-block uncertainty over the complete scene. Added versioned `infer_S_physical_agri_guard_attempt13_v2.py`, which stores compact per-sequence normalized and physical AGRI SSE/SAE/bias sufficient statistics while still streaming the full field, plus `audit_attempt13_agri_guard_fp64_v2.py`, which verifies exact common keys/targets/geometry and calculates paired date-block intervals for normalized full-field RMSE and physical per-channel/per-lead RMSE. Added `run_attempt13_agri_guard_retry4.py` and a PBS wrapper that require both the successful paired-training receipt and successful COT-score receipt before post-hoc validation inference; no test/buffer inputs are allowed.
+- Local `py_compile` and a deterministic synthetic paired-bootstrap check passed. These are code-preparation checks only, not AGRI or COT performance results. No PBS job was submitted or modified in this step; stage and queue the guard only after the dependent scoring job is verified and the account-wide unfinished-job count is checked.
+
+## 2026-10-21 16:06 CST：attempt12 预测过平/物理约束假设的历史核对补充
+
+- 复核了直接 forecast-vs-history-persistence 结果、湖南时间变化/空间梯度/COT辅助监督历史实验，以及 attempt12 同键纹理、时间增量和新增未来参考场对齐诊断；没有新训练、PBS提交或 test/buffer 读取。
+- 新增 `cot_texture_dynamics_audit_attempt12/ORACLE_ALIGNMENT_DIAGNOSTIC_ATTEMPT12.md`、`oracle_alignment_attempt12.py`、逐时效/逐例CSV和JSON收据；1,164个验证 init-target-lead 键、16个目标日期，CPP仅定义共同掩膜，未来 AGRI→R仅作离线代理。
+- 新的中心12×12代理支持上，预测/历史持平 RMSE 为5.624/5.975，日期块95%区间跨零；oracle平移/幅值/联合 RMSE 为5.154/2.367/2.182。oracle使用了不可用的未来目标，仅说明幅值和配准误差有潜在空间，不能作为部署成绩。此支持与全16×16 CPP主评分不同，不能直接横向比数。
+- 当前判断：历史确实测试过未来 COT 与持平、时间变化损失、空间梯度损失及冻结R-COT辅助监督；其中“空间场偏平”有验证代理证据，但时间变化幅度并非普遍太弱；显式云水守恒、输运方程或辐射闭合尚未直接测试。因此“缺少云物理约束导致输给持平”仍是假设，而非已证明原因。
+- 详见 `hubei_cot_auxiliary_retrain_attempt13_retry4/HISTORY_AUDIT_PHYSICS_CONSTRAINT_AND_PERSISTENCE_20261021.md`；所有分析仍是 validation/proxy 诊断，不是独立测试结论。
+
+## 2026-10-21 16:21 CST：attempt12 OOF forecast-COT / CPP 键配对审计
+
+- 只读审计 `attempt12_oof_cot_calibration_audit/ATTEMPT12_OOF_COT_CPP_KEY_ALIGNMENT_AUDIT_20261021.md`：只解析 CSV/JSON key/manifest，并仅读取 NPY header；未加载图像数值载荷，test/buffer路径未访问，读取计数保持0。完整逐折明细和复现脚本位于同目录 `remote_key_audit.json`、`audit_attempt12_oof_cpp_key_alignment.py`。
+- 关键路径修正：`R_runs_attempt12/fold_i/val_keys.csv` 是该R模型的验证集行键，不是OOF训练目标；与相应OOF预测帧均无时间交集。OOF训练标签必须从 `prepared_attempt12/R_packs/full/rows.csv` 按 `split=train` 与 `heldout_fold=i` 筛选，并使用同一行 `index` 对应的 `target.npy`、`mask.npy`。Full pack行表、数组头、mask/target哈希和构建时的行顺序合同已记录。
+- 五折OOF共有4,086序列/65,376个潜在预测帧；按 `(init_time_bjt,target_time_bjt,lead)` 键与对应留出fold的CPP行合并后，17,616帧找到目标键，其中17,129个目标mask非空、487个为零有效像元；无重复预测元组、无CPP重复时间键、无错误15分钟时效、无日期fold错配。其余47,760帧没有对应CPP时刻，不能填补或当有监督样本。
+- full-train validation COT bank shape为407×16×1×16×16；按target BJT键与264行R validation CPP/mask对齐，1,828预测帧匹配到197个有效参考时刻，均有非空mask。拟与历史持平比较时，固定使用已存在的1,164个forecast/history/reference共同键；validation不得参与校准拟合。
+- 资产可支持不重训的train-only两参数log1p affine COT校准候选。报告给出基于五折OOF训练对的预定拟合建议；本轮没有拟合参数、没有打分，也没有宣称优于历史持平。
+- 16:21:59 CST只读 `qstat -u slfu` 为2/3未结束作业：`215356.tc6000` 在node22 R，8 CPU/1 GPU；依赖评分 `215359.tc6000` 为H。无PBS提交、取消或修改。
+
+## 2026-10-21：attempt12 train-only OOF COT校准完成（验证未改善）
+
+- 按 `attempt12_oof_cot_calibration_run_20261021/EXPERIMENT_PLAN.md`，只用五折日期留出的训练OOF预测与相同heldout fold的CPP/mask监督，拟合单一全局 `log1p(COT)`仿射变换；149个BJT训练目标日期、4,382,924个有效像元，日期等权。系数为 `slope=0.86956, intercept=0.17836`，没有使用验证集拟合或调参。
+- 训练OOF日期交叉验证的 `log1p` RMSE为0.91540→0.89863，4/5折下降、1折微升；这一变化未转成验证物理COT RMSE收益。
+- 在与持平基线相同的1,164个(init,target,lead)验证键、16个目标日期和CPP共同有效像元上，全16×16场RMSE为raw 10.567、校准10.755、历史持平9.229。校准−raw差为+0.188，日期块95%CI [−3.881,+4.505]；raw−持平为+1.338，CI [−0.388,+2.941]。结果不支持全局校准提高COT，也未证实raw稳定优于持平。
+- +240 min raw/calibration/persistence点估计为14.259/11.586/11.434，但校准−raw区间[−5.626,+1.598]跨零； near-zero CPP区域的预测虚警率由11.03%升至11.26%。站点像元变化方向混合。
+- 报告、方案、可复现脚本、FP64逐时效/空间范围CSV和收据位于 `attempt12_oof_cot_calibration_run_20261021/`。仅复制既有train OOF与validation数组到一次性本地缓存后计算，缓存已删；test/buffer读数0；未训练、未提交PBS、未改变现有作业。
+- 结论：停止这个全局幅值校准候选，不在同一validation日期上调更灵活的映射。历史上已经做过时间变化、空间梯度、冻结R-COT辅助监督，但并未做显式云水守恒/辐射闭合。下一项等attempt13同预算配对结果完成后再定；当前仍有两项PBS作业，保持原作业不动。
+
+## 2026-10-21 16:31 CST：attempt13 retry4 实时状态
+
+- 实时 `qstat -u slfu`：未结束作业2/3。`215356.tc6000` 仍在 node22 单GPU运行，elapsed 04:04:37；依赖评分作业 `215359.tc6000` 为 H，等待训练结束。
+- 远端训练日志最近完整记录到 MSE-control epoch 34（global step 8960）；epoch 35 已启动，当前记录约1/282 batch。`runs/cot_aux/training.log` 尚不存在，表示 COT-aux 臂尚未开始。该状态属于进度，不是配对技能结果。
+- 当前不提交、不修改或取消任何作业；等现有50轮配对训练及评分依赖完成后，再按原定COT与持平/attempt12共同支持、以及AGRI护栏核验。
+
+## 2026-10-21 16:34 CST：attempt13 retry4 训练继续
+
+- 远端新快照：`215356.tc6000` 仍运行，配对评分 `215359.tc6000` 仍依赖等待；账户队列最近核验为2/3未结束任务。
+- MSE-control 已完成 epoch 35（global step 9216）；COT-aux 尚未启动，尚无双臂预测bank、配对分数或完成收据。epoch验证日志只作进度记录，不当作候选效果结论。
+- 不提交或改动PBS任务，继续等待既定配对合同完成；之后先复核COT共同支持评分和AGRI护栏，再判断是否进入GHI下游。
+
+## 2026-10-21 16:37 CST：attempt13 retry4 MSE-control 进度
+
+- 实时远端 `qstat -u slfu` 显示未结束作业2/3：`215356.tc6000` 为 R，`215359.tc6000` 为 H（afterok 依赖）。
+- 训练日志在16:37持续更新；MSE-control 正进行 epoch 36，约145/282 batch。COT-aux 臂尚未启动，`PAIR_COMPLETE` 尚不存在，故目前仍无成对技能结果。
+- 仅记录现场进度，不据单臂训练日志调整模型或追加训练；原配对作业保持运行。
+
+## 2026-10-21 16:39 CST：attempt13 retry4 MSE-control 进度
+
+- 实时PBS账户队列为2/3；`215356.tc6000`继续运行，评分依赖`215359.tc6000`仍为H。
+- 远端日志更新时间为16:39，MSE-control 正在 epoch 36（约245/282 batch）；COT-aux训练日志和`PAIR_COMPLETE`仍不存在。
+- 当前仍无成对COT结果；保持现有作业不变，等待控制臂和辅助臂按50轮合同跑完。
+
+## 2026-10-21 17:07 CST：attempt13 retry4 实时复核
+
+- 实时 `qstat -u slfu` 显示未结束任务2/3：`215356.tc6000` 为R，node22单GPU；`215359.tc6000` 为H，等待训练成功后执行验证评分。
+- 训练日志已完成MSE-control epoch 37（global step 9728），epoch 38约144/282 batch；COT-aux日志尚不存在，`PAIR_COMPLETE` 与 `PAIR_FAILURE` 均不存在。当前是单臂训练进度，没有配对COT结果。
+- 不新增或修改作业。继续等两臂完成及后续评分，再核对COT持平比较、AGRI护栏和来源/哈希；训练中验证指标不作COT技能结论。
+
+## 2026-10-21 17:16 CST：排定 attempt13 AGRI 验证护栏
+
+- 发现后续完整场 AGRI 护栏的四个脚本尚未同步到服务器；此前未提交。已单独同步 attempt13 retry4 的 PBS/runner/inference/audit 文件，远端 SHA-256 与本地一致，`bash -n` 和服务器 `swc` Python `py_compile` 均通过。
+- 提交前 `qstat -u slfu` 为2/3；PBS `215424.tc6000` 已提交，依赖 `afterok:215359.tc6000`。提交后队列为3/3：`215356`训练R，`215359` COT评分H并依赖训练，`215424` AGRI护栏H并依赖COT评分。未触碰其他作业。
+- AGRI护栏只对冻结双臂模型做共同验证集整场AGRI推理与FP64配对审计，不训练、不读取CPP或test/buffer。当前 MSE-control epoch 38已完成，epoch 39约253/282 batch；COT-aux 尚未开始，仍无成对结果。
+
+## 2026-10-21: attempt13 retry4 index/sidecar key audit
+
+- Read-only live audit compared every `train`/`val` row of the prepared SimVP index with the corresponding CPP-COT sidecar row: sample index, split, initialization timestamp, and all 16 future timestamps. Train: 4,086/4,086 rows, 0 mismatches; validation: 407/407 rows, 0 mismatches. The inspected `HBAGRIDataset` preserves CSV order within each split and returns its row index, which the COT-loss wrapper uses to select the sidecar row. Thus the target COT samples are aligned to the same sequence and future times used by SimVP.
+- Prepared index SHA-256: `a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8`; exact per-file hashes and method are in `hubei_cot_auxiliary_retrain_attempt13_retry4/INDEX_SIDECAR_ALIGNMENT_AUDIT_20261021.md`.
+- This removes a key-indexing ambiguity; it is not evidence that CPP is independent truth or that COT auxiliary supervision improves forecast skill. Test/buffer payloads were not read.
+
+## 2026-10-21：attempt13 后续 COT 改进路线审阅（条件性，不启动训练）
+
+- 重新核对 `cot_dynamics_20260924/EXPERIMENT_PLAN.md` 的 D020 与 attempt12 oracle 对齐诊断。D020 的方法核心是固定历史运动搬运 + 学习 `log1p(COT)` 增厚/消散残差；它在湖南因上游 COT halo/R 输入一致性门槛未过而保持 GATED，不能当作已经验证的湖北结果，也不能直接复制旧大视场拼接。
+- Attempt12 的中心 12×12 未来 R 代理 oracle 中，逐例幅值校正 RMSE 2.367、限幅平移 RMSE 5.154；这只提示幅值/演变可能比小范围位置平移有更多可恢复空间，使用未来代理，不是可部署成绩或独立真值。与逐lead偏差变号的结果合看，不把问题简化成“所有时效都太平”。
+- 条件性下一方向：若 attempt13 的 COT-aux 未同时超过 matched MSE 与历史持平，不在同一验证集上反复调 `lambda_COT`；先为湖北定义一项单因素的 transport-plus-source-term COT 演变试验，并通过固定16×16 R 输入/上游有效覆盖见证后再考虑训练。若 attempt13 通过既定门槛，则优先完成预测 COT 到 GHI 的配对应用，不并行扩展COT骨干。
+- 现场仍是 attempt13 retry4：`215356.tc6000` R，MSE-control epoch 44 的 260/282 批次；`215359` COT评分和 `215424` AGRI护栏均 H 等待依赖，账户未结束作业3/3。当前仍无辅助臂、配对完成或评分收据；未提交新PBS，test/buffer读取为0。
+
+## 2026-10-21：MSE对照完成、COT辅助臂已启动；补充旧链厚度误差分解
+
+- 远端实时队列3/3：215356运行，215359/215424依赖等待。MSE-control日志确认50轮、global step 12800、正常结束，并跳过test；PAIR_STARTED记录completed_arms=[mse_control]。COT-aux已真实启动，快照为epoch 6（第7轮）159/282批次；两臂初始化SHA一致，仍无PAIR_COMPLETE/PAIR_FAILURE或最终配对评分。辅助臂最近每轮7:07/7:16/7:22，按此吞吐剩余训练约5小时20分；评分和AGRI护栏随后自动执行，耗时另计。
+- 在本地已有attempt12验证数组上新增CPP厚度分层诊断（不涉及正在训练的候选）。1,164共同键、16目标日期、297,604像元—预报记录；原48个整幅RMSE/像元数独立复算一致。按目标CPP COT <1/1–10/10–30/≥30，预测与持平RMSE分别8.161/8.630、6.018/4.709、12.504/8.583、15.278/14.460。中等厚度区域预测bias +7.869，厚云区域−10.907，故“全部云都太弱”的解释不成立。
+- CPP COT 10–30层贡献相对持平净新增平方误差约85.85%；这是条件验证诊断，不能作为全年误差占比或独立test结论。各层仅8–10个目标日期，CPP仍是检索参考。新结果用于辨别需检验的机制，不按此反复调validation上的lambda。
+- 代码、每日期充分统计、5000次日期簇配对CI、输入SHA和报告：cot_texture_dynamics_audit_attempt12/thickness_stratified_attempt12.py 与 thickness_stratified/。未新增或取消作业，test/buffer读取0；论文未修改。
+
 ## 2026-10-21：用户授权COT辅助臂迁移4×A800（正在验证）
 
 - 新迁移目录：hubei_cot_auxiliary_retrain_attempt13_ddp4_20261021。原MSE-control已完成50轮/12800更新，保持只读复用；原COT-aux作业215356继续运行，尚未停止。
@@ -406,3 +620,24 @@
 - 后续215454于22:05:37失败：缺缓存根目录的旧格式stage_manifest.csv；215455因依赖失败未运行。原data/aux仍存在，权威新清单在prepared_attempt12，属于入口格式/位置不匹配，并非训练数据丢失。失败日志保留。
 - 新建独立兼容清单视图，核对20946文件存在及215664个train/val索引路径，无数据复制/改写，不改旧清单/共享代码。215501评分已R、215502 AGRI检查H依赖评分；提交前后全账户0→1→2未结束任务，未触碰他人作业。最终模型效果仍待保存预测的独立配对评分，不将训练选模指标当已完成收益。
 - 详细证据：hubei_cot_auxiliary_retrain_attempt13_ddp4_20261021/STATUS_AND_SPEED_20261021.md及receipts/TRAINING_SPEED_AUDIT.json、MANIFEST_FIX_PASS.json。test/buffer读取0，未修改论文。
+
+## 2026-10-22：历史 COT→GHI 配对实验数据可用性审计通过
+
+新实验子目录 `history_cot_forecast_ghi_20261022/` 的train/val历史帧键与节点本地缓存审计通过。PBS `215503.tc6000` 在node22/A800-GPU0正常退出（exit_status=0）：6,271个历史帧键、71,328个data/aux引用路径全部存在；缺键、split错配、重复键、BJT/UTC错位均为0。冻结修正R在train和val输入上各完成一次推理smoke，张量形状正确且输出有限非负。test/buffer载荷均未读取。详见子目录 `EXPERIMENT_TRACKER.md` 与两份node22收据。下一步构建历史帧bank并做多卡吞吐profile。
+
+## 2026-10-22：四卡历史bank已生成，独立审计发现FP16批形状差异
+
+PBS `215504.tc6000` 用node22的4张A800（GPU 0/3/4/5）完成6,271帧历史AGRI/几何/COT bank，但在单帧FP16独立重放时与bank输出差 `2.7007e-4 COT`，因此以exit_status=1停止在审计门，未启动GHI训练。bank内容、失败日志与收据保留；修订审计将使用相同64帧批形状及cuDNN确定性设置复核。qstat当前无未结束任务，下一项是单GPU短审计；通过后再开四卡profile和配对训练。详情见子目录 `history_cot_forecast_ghi_20261022/EXPERIMENT_TRACKER.md`。该历史COT输入诊断不等同于预测未来COT完整链路结果。
+
+修订审计由PBS `215506.tc6000` 单卡GPU0完成，`exit_status=0`。严格按bank rank0的64帧批形状、相同FP16 autocast及cuDNN确定性设置独立重放，train/val输入及COT最大绝对差均为0；168,790个GHI行与1,350,320条历史帧连接、6,271帧键、bank哈希通过。test/buffer仍关闭。现在提交四卡profile及9组配对GHI训练，保留attempt1失败产物不覆盖。
+
+四卡长作业 `215507.tc6000` 已在node22运行，分配A800 GPU 0/3/4/5；提交前账户未结束队列为0、提交后为1。它先完成1/2/4 worker吞吐profile，再训练三站×三种子的有无历史COT配对头，保持batch=1536、30轮和每对相同行序/初始化/更新数。该阶段为历史COT可利用性诊断，不等同于未来预测COT完整链路成绩。
+
+## 2026-10-22：四卡历史COT→GHI配对训练与独立验证复算完成
+
+- PBS `215507.tc6000` 已在浙师大学院服务器 node22 正常完成，`exit_status=0`，实际分配4张A800（GPU 0/3/4/5），墙钟13分47秒。profile总吞吐：1/2/4 worker分别651,737/704,951/938,328 examples/s；4 worker相对2 worker约+33.1%、相对1 worker约+44.0%。因此保留四卡并行独立配对工作者，但单模型batch、30轮、样本顺序与更新合同均未改变。
+- 牛首、王寨、米庄×seed42/43/44共9组配对全完成。保存预测评分的站点等权、种子等权 RMSE 为零COT对照100.918、历史COT输入99.202 W/m²，点差−1.715 W/m²（降低1.70%）；MAE 68.414→67.000，bias +2.729→+3.305 W/m²。
+- 5,000次BJT目标日期配对bootstrap的95% RMSE差区间为[−3.888,+0.310] W/m²，相对改善区间[−0.315%,+4.086%]，均跨零。九对、三站和四小时段的点差方向一致，但统计不确定性仍允许零收益/轻微退化；故仅报告探索性验证点估计，不称稳定增益。
+- 独立 NumPy/FP64 审计重新读取18份验证预测，核验15,275行共同验证键、两臂顺序/真值/晴空因子、评分哈希与区间复算；和主评分完全一致。test/buffer读取均0。
+- **边界：**本轮输入是过去8帧真实AGRI经冻结修正R反演的历史COT，不是未来预测COT。不能用本轮1.70%替代 attempt12 预测COT的0.098%点估计或解释为其解决；两者输入来源、表征和头部合同不同。现阶段兼容的解释只是“历史COT作为辅助序列可能有用，预测未来COT的GHI收益仍不确定”，不能将底图外推认定为唯一原因。
+- 结果说明、图、汇总评分和独立复算见 `history_cot_forecast_ghi_20261022/RESULTS_ATTEMPT2_20261022.md` 与 `results_attempt2/`。由于日期块区间跨零，不在同一验证合同上继续增加种子或搜参；若要验证泛化，先冻结新的、未用于本轮选模的验证日期合同。PBS后续仍按队列上限及实时profile决定多卡并行。

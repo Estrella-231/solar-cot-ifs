@@ -1,0 +1,150 @@
+{
+  "state": "HISTORY_COT_PAIRED_TRAINING_COMPLETE",
+  "profile": {
+    "state": "HISTORY_COT_GHI_1_2_4_GPU_PROFILE_COMPLETE",
+    "profile_results": [
+      {
+        "workers": 1,
+        "assigned_gpu_ids": [
+          "0"
+        ],
+        "aggregate_examples_per_second": 651736.7942036297,
+        "wall_seconds_including_startup": 105.83479782938957,
+        "worker_receipts": [
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_1/gpu_slot0_Niushou.json"
+        ]
+      },
+      {
+        "workers": 2,
+        "assigned_gpu_ids": [
+          "0",
+          "3"
+        ],
+        "aggregate_examples_per_second": 704951.3906541443,
+        "wall_seconds_including_startup": 155.3848359347321,
+        "worker_receipts": [
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_2/gpu_slot0_Niushou.json",
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_2/gpu_slot1_Wangzhai.json"
+        ]
+      },
+      {
+        "workers": 4,
+        "assigned_gpu_ids": [
+          "0",
+          "3",
+          "4",
+          "5"
+        ],
+        "aggregate_examples_per_second": 938327.5445173145,
+        "wall_seconds_including_startup": 353.81240241602063,
+        "worker_receipts": [
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_4/gpu_slot0_Niushou.json",
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_4/gpu_slot1_Wangzhai.json",
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_4/gpu_slot2_Mizhuang.json",
+          "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/throughput_profile/workers_4/gpu_slot3_Niushou.json"
+        ]
+      }
+    ],
+    "selected_workers": 4,
+    "selection": "highest worker count within 5 percent of peak aggregate measured examples/s",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "selected_workers": 4,
+  "pairs_expected": 9,
+  "completed_pairs": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "gpu": "0",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Niushou_seed42",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Niushou_seed42.log",
+      "wall_seconds": 71.07886171340942,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "gpu": "3",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Wangzhai_seed42",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Wangzhai_seed42.log",
+      "wall_seconds": 71.17701578140259,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "gpu": "4",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Mizhuang_seed42",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Mizhuang_seed42.log",
+      "wall_seconds": 71.17941474914551,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "gpu": "5",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Niushou_seed43",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Niushou_seed43.log",
+      "wall_seconds": 71.18151712417603,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "gpu": "4",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Niushou_seed44",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Niushou_seed44.log",
+      "wall_seconds": 68.77631974220276,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "gpu": "0",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Wangzhai_seed43",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Wangzhai_seed43.log",
+      "wall_seconds": 70.01295590400696,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "gpu": "3",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Mizhuang_seed43",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Mizhuang_seed43.log",
+      "wall_seconds": 71.01753807067871,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "gpu": "5",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Wangzhai_seed44",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Wangzhai_seed44.log",
+      "wall_seconds": 74.02282238006592,
+      "state": "PAIR_COMPLETE"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "gpu": "4",
+      "exit_code": 0,
+      "output": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Mizhuang_seed44",
+      "log": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/history_cot_forecast_ghi_20261022/training_attempt2/pairs/Mizhuang_seed44.log",
+      "wall_seconds": 50.07103085517883,
+      "state": "PAIR_COMPLETE"
+    }
+  ],
+  "failed_pairs": [],
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}
