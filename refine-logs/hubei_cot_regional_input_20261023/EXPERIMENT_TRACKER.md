@@ -101,3 +101,9 @@ prepare_g4_keys.py连接本轮完整修正AGRI清单和已恢复区域CPP清单�
 ### G3完成与冻结
 
 215752已C/exit0，总291.026s；最终epoch39/global_step600，内部R_select最佳epoch31。285有效月度val帧/16日期，实际CPP物理COT对保存预测FP64计分完成：全域RMSE8.490809，三站像元10.046469/9.934704/9.405174；非forecast/GHI结果。逐帧误差和第二实现聚合150指标最大差8.88e-15。站点厚云仍偏薄、中等云偏厚，完整分层不隐藏。R_RESULT_REPORT.md给出意义、局限、checkpoint/代码来源；best.pt哈希ed7be2ea2c987557d3753b3eb7d8d0f9ffb4513b63e4afedfcbb54be132600e2。下一项G4共同键未来COT比较，不自动把反演分数当预报收益。
+
+### G4冻结三路线推理已提交：215753
+
+615张val历史原始区域图及aux从node22本地复制到node23本地，3,709,603,840 tar字节、84.989秒，两端exit0；1230文件hash全匹配。首次CPU准备因目的端未上传corrected_agri_manifest.csv在写任何选择/复制前退出；上传既有清单后完成，非源数据缺失。没有重建AGRI、读NAS或读test/buffer。
+
+固定比较协议G4_FIXED_COMPARISON.md：同一新区域R、既有修正S、历史C13相位运动；val503起报/2936时效对，评价CPP参考共同像元的持平/输运/SimVP→R，另保留来源覆盖。运动符号及回溯CPU检查通过，已按PBS实时队列空、物理卡空闲提交215753.tc6000（node23，16CPU，4 A100）。执行g4_attempt1；history/forecast分片，实际G4成绩以保存预测及scores/REPORT.json为准。没有训练/GHI收益结论。失效来源不填晴空，各时效支持不混淆，test/buffer仍关闭。
