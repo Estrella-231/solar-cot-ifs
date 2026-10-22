@@ -33,6 +33,7 @@ def main():
     ap.add_argument('--pack', type=Path, required=True); ap.add_argument('--roles', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True); ap.add_argument('--resume', type=Path)
     ap.add_argument('--profile-only', action='store_true'); ap.add_argument('--profile-steps', type=int, default=10)
+    ap.add_argument('--witness-only', action='store_true')
     a = ap.parse_args()
     torch.set_num_threads(1)
     dist.init_process_group('nccl'); rank = dist.get_rank(); world = dist.get_world_size()
@@ -66,7 +67,8 @@ def main():
     ddp = DDP(model, device_ids=[local_rank])
     opt = torch.optim.AdamW(ddp.parameters(), lr=1e-3, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=50*batches)
-    scaler = torch.cuda.amp.GradScaler()
+    assert not (a.profile_only and a.witness_only)
+    scaler = torch.cuda.amp.GradScaler(enabled=not a.witness_only)
     binding = dict(pack_hash_file_sha256=sha(a.pack/'SHA256.json'), roles_sha256=sha(a.roles),
                    model_source_sha256=sha(Path(__file__).with_name('regional_model.py')),
                    global_batch=128, batches_per_epoch=batches, max_epochs=50, seed=42)
@@ -74,7 +76,7 @@ def main():
     best_model = None
     if a.resume:
         ck = torch.load(a.resume, map_location='cpu')
-        assert ck['binding'] == binding and not a.profile_only
+        assert ck['binding'] == binding and not (a.profile_only or a.witness_only)
         model.load_state_dict(ck['model']); opt.load_state_dict(ck['optimizer'])
         scheduler.load_state_dict(ck['scheduler']); scaler.load_state_dict(ck['scaler'])
         start_epoch=ck['epoch']+1; step=ck['global_step']; best=ck['best']; stale=ck['stale']; best_epoch=ck['best_epoch']
@@ -84,16 +86,16 @@ def main():
         write_json(a.out/'run_metadata.json', dict(**binding, world=world, gpu=torch.cuda.get_device_name(),
                    pbs_job_id=os.environ.get('PBS_JOBID'), architecture='UNet base16, two downs, SyncBN, softplus log1p COT',
                    optimizer='AdamW lr1e-3 wd1e-4', selection='lowest R_select valid-pixel Huber(delta .1), patience8',
-                   precision='fp16 AMP, finite unscaled gradients required', resume=str(a.resume),
+                   precision='fp32 witness' if a.witness_only else 'fp16 AMP, finite unscaled gradients required', resume=str(a.resume),
                    supported_rows={k:len(v) for k,v in indices.items()}, reference='CPP retrieval, not independent truth',
-                   test_payloads_read=0, GHI_labels_read=0, profile_only=a.profile_only))
+                   test_payloads_read=0, GHI_labels_read=0, profile_only=a.profile_only, witness_only=a.witness_only))
 
     def tensors(ids):
         return tuple(torch.from_numpy(np.array(v[ids], copy=True)).to(device) for v in (x, y, mask))
 
     def update(ids):
         xx, yy, mm = tensors(ids); opt.zero_grad(set_to_none=True)
-        with torch.autocast('cuda', dtype=torch.float16): pred = ddp(xx)
+        with torch.autocast('cuda', dtype=torch.float16, enabled=not a.witness_only): pred = ddp(xx)
         num, count = loss_parts(pred, yy, mm); dist.all_reduce(count)
         assert count > 0 and torch.isfinite(num)
         scaler.scale(ddp_loss(num,count,world)).backward(); scaler.unscale_(opt)
@@ -120,6 +122,30 @@ def main():
         dist.all_reduce(totals); assert totals[1]>0
         return float(totals[0]/totals[1])
 
+    if a.witness_only:
+        ddp.train(); ids=np.resize(indices['R_fit'],128)
+        local=ids[rank*128//world:(rank+1)*128//world]
+        num,count=update(local)
+        totals=torch.tensor([num,count],device=device,dtype=torch.float64); dist.all_reduce(totals)
+        if rank==0:
+            save(a.out/'witness.pt',dict(binding=binding,model=model.state_dict(),optimizer=opt.state_dict(),
+                 scheduler=scheduler.state_dict(),scaler=scaler.state_dict(),epoch=0,global_step=1,
+                 gradients={k:v.grad.detach().cpu().clone() for k,v in model.named_parameters()}))
+        dist.barrier()
+        update(local)
+        expected={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}
+        ck=torch.load(a.out/'witness.pt',map_location='cpu')
+        model.load_state_dict(ck['model']); opt.load_state_dict(ck['optimizer'])
+        scheduler.load_state_dict(ck['scheduler']); scaler.load_state_dict(ck['scaler'])
+        assert ck['global_step']==scheduler.last_epoch==1
+        update(local)
+        err=max(float((v.detach().cpu()-expected[k]).abs().max()) for k,v in model.state_dict().items())
+        assert err<1e-7, err
+        if rank==0:
+            write_json(a.out/'WITNESS.json',dict(state='PASS_GPU_GLOBAL_STEP_AND_CHECKPOINT_REPLAY',world=world,
+                       global_batch=128,global_valid_pixels=int(totals[1]),global_huber=float(totals[0]/totals[1]),
+                       resume_second_step_max_abs_difference=err,precision='fp32 witness',monthly_val_scored=False))
+        dist.barrier(); dist.destroy_process_group(); return
     if a.profile_only:
         ddp.train(); ids=np.resize(indices['R_fit'],128)
         for _ in range(3): update(ids[rank*128//world:(rank+1)*128//world])
@@ -127,8 +153,23 @@ def main():
         for _ in range(a.profile_steps): update(ids[rank*128//world:(rank+1)*128//world])
         torch.cuda.synchronize(); seconds=torch.tensor(time.monotonic()-start,device=device); dist.all_reduce(seconds,op=dist.ReduceOp.MAX)
         memory=torch.tensor(torch.cuda.max_memory_allocated(),device=device); dist.all_reduce(memory,op=dist.ReduceOp.MAX)
+        if rank==0:
+            save(a.out/'amp_resume.pt',dict(model=model.state_dict(),optimizer=opt.state_dict(),scheduler=scheduler.state_dict(),
+                 scaler=scaler.state_dict(),global_step=scheduler.last_epoch))
+        dist.barrier()
+        local=ids[rank*128//world:(rank+1)*128//world]
+        update(local); expected={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}
+        ck=torch.load(a.out/'amp_resume.pt',map_location='cpu')
+        model.load_state_dict(ck['model']);opt.load_state_dict(ck['optimizer'])
+        scheduler.load_state_dict(ck['scheduler']);scaler.load_state_dict(ck['scaler'])
+        assert scheduler.last_epoch==ck['global_step']
+        update(local)
+        resume_error=max(float((v.detach().cpu()-expected[k]).abs().max()) for k,v in model.state_dict().items())
+        error=torch.tensor(resume_error,device=device);dist.all_reduce(error,op=dist.ReduceOp.MAX)
+        assert error<1e-7,float(error)
         if rank==0: write_json(a.out/'PROFILE.json',dict(world=world,global_batch=128,steps=a.profile_steps,seconds=float(seconds),
                                 frames_per_second=128*a.profile_steps/float(seconds),max_allocated_bytes=int(memory),
+                                amp_checkpoint_replay_max_abs_difference=float(error),
                                 reset_before_formal_training_required=True, val_scored=False))
         dist.destroy_process_group(); return
     start=time.monotonic()
