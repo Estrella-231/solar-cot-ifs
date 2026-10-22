@@ -97,3 +97,7 @@ node23本地包逐文件哈希PASS；14,128,332,800字节传输完成，不再�
 prepare_g4_keys.py连接本轮完整修正AGRI清单和已恢复区域CPP清单，要求8帧历史AGRI均存在且与目标CPP同split；未来CPP只在对应评分时效要求，不要求24帧CPP连续。得到train 27224个init/target配对、4529个起报/152目标日期；val 2936配对、503起报/16目标日期。val +60/+120/+180/+240分别216/188/160/132条候选，随时效不同，不能假装是完全相同样本。
 
 此清单仅是元数据候选；没有读取标签或test/buffer，尚未核验运动来源覆盖和共同逐像元mask，不是有效评分样本数或预测精度。G4各方法须在同一init/target和像元交集评价，先冻结R再生成；不得根据单方法误差删行。G4_CANDIDATE_KEYS.csv、G4_KEY_REPORT.json保存输入/输出哈希。215752已实时推进至epoch20/global_step315，尚未完成选模或评分。
+
+### G3完成与冻结
+
+215752已C/exit0，总291.026s；最终epoch39/global_step600，内部R_select最佳epoch31。285有效月度val帧/16日期，实际CPP物理COT对保存预测FP64计分完成：全域RMSE8.490809，三站像元10.046469/9.934704/9.405174；非forecast/GHI结果。逐帧误差和第二实现聚合150指标最大差8.88e-15。站点厚云仍偏薄、中等云偏厚，完整分层不隐藏。R_RESULT_REPORT.md给出意义、局限、checkpoint/代码来源；best.pt哈希ed7be2ea2c987557d3753b3eb7d8d0f9ffb4513b63e4afedfcbb54be132600e2。下一项G4共同键未来COT比较，不自动把反演分数当预报收益。
