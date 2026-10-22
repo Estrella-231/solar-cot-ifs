@@ -1,0 +1,488 @@
+{
+  "state": "INDEPENDENT_FP64_G4_SAVED_PAIRS_ANALYSIS",
+  "dates": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302"
+  ],
+  "reference": "CPP retrieval, not independent truth",
+  "scope": "validation future COT, no GHI",
+  "test_payloads_read": 0,
+  "bootstrap_replicates": 5000,
+  "bootstrap_unit": "target BJT date; draws shared across sites/leads/methods",
+  "by_scope": {
+    "1x1": {
+      "reference_pixel_records": 7672,
+      "common_pixel_records": 7669,
+      "persistence_available": 7672,
+      "transport_available": 7669,
+      "common_coverage_fraction": 0.9996089676746611,
+      "methods": {
+        "persistence": {
+          "equal_station_equal_lead_rmse": 10.043288297900586,
+          "by_station": {
+            "Niushou": {
+              "rmse": 10.167448815883457,
+              "mae": 6.633616560571803,
+              "bias": 2.852398035727883
+            },
+            "Wangzhai": {
+              "rmse": 10.359131526276899,
+              "mae": 6.679487011434954,
+              "bias": 3.192057579989577
+            },
+            "Mizhuang": {
+              "rmse": 9.603284551541403,
+              "mae": 5.79881433028525,
+              "bias": 3.0512855926434925
+            }
+          },
+          "exact_hours": {
+            "1": {
+              "equal_station_rmse": 10.594010703254456,
+              "n": 577
+            },
+            "2": {
+              "equal_station_rmse": 10.500075411273128,
+              "n": 493
+            },
+            "3": {
+              "equal_station_rmse": 9.823459241244478,
+              "n": 409
+            },
+            "4": {
+              "equal_station_rmse": 9.783532581551238,
+              "n": 325
+            }
+          },
+          "hourly_lead_bands": {
+            "1": 10.203588315822566,
+            "2": 10.498386003818435,
+            "3": 9.835057729150977,
+            "4": 9.636121142810369
+          }
+        },
+        "transport": {
+          "equal_station_equal_lead_rmse": 12.070292704556437,
+          "by_station": {
+            "Niushou": {
+              "rmse": 12.326292774051666,
+              "mae": 8.2731020689451,
+              "bias": 2.571244821071864
+            },
+            "Wangzhai": {
+              "rmse": 12.186114260315927,
+              "mae": 8.170569718375933,
+              "bias": 2.919027449555962
+            },
+            "Mizhuang": {
+              "rmse": 11.698471079301717,
+              "mae": 7.417224979242123,
+              "bias": 3.0432611730271084
+            }
+          },
+          "exact_hours": {
+            "1": {
+              "equal_station_rmse": 10.930918226604618,
+              "n": 577
+            },
+            "2": {
+              "equal_station_rmse": 12.910086336863026,
+              "n": 493
+            },
+            "3": {
+              "equal_station_rmse": 12.935452420452345,
+              "n": 409
+            },
+            "4": {
+              "equal_station_rmse": 12.618089875044413,
+              "n": 325
+            }
+          },
+          "hourly_lead_bands": {
+            "1": 10.47679494064476,
+            "2": 12.094606282265039,
+            "3": 13.060406555898192,
+            "4": 12.649363039417763
+          }
+        },
+        "forecast": {
+          "equal_station_equal_lead_rmse": 18.157870112381282,
+          "by_station": {
+            "Niushou": {
+              "rmse": 18.50158357609196,
+              "mae": 11.364205867188131,
+              "bias": 2.563337665806463
+            },
+            "Wangzhai": {
+              "rmse": 18.29181252542083,
+              "mae": 11.255484834938486,
+              "bias": 3.1415088166706364
+            },
+            "Mizhuang": {
+              "rmse": 17.680214235631055,
+              "mae": 10.50037169672246,
+              "bias": 3.4546698627515458
+            }
+          },
+          "exact_hours": {
+            "1": {
+              "equal_station_rmse": 15.075031100854588,
+              "n": 577
+            },
+            "2": {
+              "equal_station_rmse": 17.93832828469038,
+              "n": 493
+            },
+            "3": {
+              "equal_station_rmse": 20.98398015460801,
+              "n": 409
+            },
+            "4": {
+              "equal_station_rmse": 21.064799367906392,
+              "n": 325
+            }
+          },
+          "hourly_lead_bands": {
+            "1": 14.92172423429772,
+            "2": 16.13999376057534,
+            "3": 20.53626665480677,
+            "4": 21.03349579984531
+          }
+        }
+      },
+      "comparisons": {
+        "transport_minus_persistence": {
+          "delta_rmse": 2.02700440665585,
+          "ci95": [
+            0.5549959958798707,
+            3.1088635394965087
+          ],
+          "relative_reduction_percent": -20.182676694440495
+        },
+        "forecast_minus_persistence": {
+          "delta_rmse": 8.114581814480696,
+          "ci95": [
+            2.5320276696078046,
+            12.41814251793708
+          ],
+          "relative_reduction_percent": -80.79606572856162
+        }
+      },
+      "bootstrap_valid_replicates": 5000,
+      "thickness": {
+        "near_zero": {
+          "persistence": {
+            "n": 2973,
+            "pooled_rmse": 7.200252043645879,
+            "bias": 2.372593463367866
+          },
+          "transport": {
+            "n": 2973,
+            "pooled_rmse": 7.970191282579742,
+            "bias": 2.8899387093882645
+          },
+          "forecast": {
+            "n": 2973,
+            "pooled_rmse": 13.163568180172753,
+            "bias": 5.12190342515003
+          }
+        },
+        "thin": {
+          "persistence": {
+            "n": 1543,
+            "pooled_rmse": 7.90705368865937,
+            "bias": 4.230391280420868
+          },
+          "transport": {
+            "n": 1543,
+            "pooled_rmse": 9.272889509227529,
+            "bias": 4.778273314938537
+          },
+          "forecast": {
+            "n": 1543,
+            "pooled_rmse": 8.61653584252003,
+            "bias": 2.02626665887137
+          }
+        },
+        "moderate": {
+          "persistence": {
+            "n": 1298,
+            "pooled_rmse": 16.875169336881992,
+            "bias": 14.890006310905932
+          },
+          "transport": {
+            "n": 1298,
+            "pooled_rmse": 19.438079357574054,
+            "bias": 17.324134863945783
+          },
+          "forecast": {
+            "n": 1298,
+            "pooled_rmse": 25.962302954858455,
+            "bias": 23.145325138994327
+          }
+        },
+        "thick": {
+          "persistence": {
+            "n": 1855,
+            "pooled_rmse": 9.358335418274432,
+            "bias": -5.571815925652348
+          },
+          "transport": {
+            "n": 1855,
+            "pooled_rmse": 12.366536372143035,
+            "bias": -8.94407334514959
+          },
+          "forecast": {
+            "n": 1855,
+            "pooled_rmse": 22.49115410512333,
+            "bias": -13.022584040208221
+          }
+        }
+      }
+    },
+    "3x3": {
+      "reference_pixel_records": 69032,
+      "common_pixel_records": 69005,
+      "persistence_available": 69032,
+      "transport_available": 69005,
+      "common_coverage_fraction": 0.999608877042531,
+      "methods": {
+        "persistence": {
+          "equal_station_equal_lead_rmse": 10.038139096897984,
+          "by_station": {
+            "Niushou": {
+              "rmse": 10.181280498072125,
+              "mae": 6.64357081965865,
+              "bias": 2.9384861288155486
+            },
+            "Wangzhai": {
+              "rmse": 10.309362917394006,
+              "mae": 6.645991238437445,
+              "bias": 3.1676820442891005
+            },
+            "Mizhuang": {
+              "rmse": 9.623773875227823,
+              "mae": 5.8645873868593865,
+              "bias": 2.9888371515786187
+            }
+          },
+          "exact_hours": {
+            "1": {
+              "equal_station_rmse": 10.569318320618429,
+              "n": 5192
+            },
+            "2": {
+              "equal_station_rmse": 10.483963934454017,
+              "n": 4436
+            },
+            "3": {
+              "equal_station_rmse": 9.835184052923386,
+              "n": 3680
+            },
+            "4": {
+              "equal_station_rmse": 9.769022943492667,
+              "n": 2924
+            }
+          },
+          "hourly_lead_bands": {
+            "1": 10.181751063528386,
+            "2": 10.484433540881422,
+            "3": 9.855591274710344,
+            "4": 9.630780508471782
+          }
+        },
+        "transport": {
+          "equal_station_equal_lead_rmse": 11.969133758805036,
+          "by_station": {
+            "Niushou": {
+              "rmse": 12.176796945351935,
+              "mae": 8.183688298680597,
+              "bias": 2.528765481036492
+            },
+            "Wangzhai": {
+              "rmse": 12.05665911916413,
+              "mae": 8.05583014263081,
+              "bias": 2.899413911099117
+            },
+            "Mizhuang": {
+              "rmse": 11.673945211899042,
+              "mae": 7.457818431038472,
+              "bias": 2.968717443583316
+            }
+          },
+          "exact_hours": {
+            "1": {
+              "equal_station_rmse": 10.899220038977438,
+              "n": 5192
+            },
+            "2": {
+              "equal_station_rmse": 12.807154991357978,
+              "n": 4436
+            },
+            "3": {
+              "equal_station_rmse": 12.770016142416692,
+              "n": 3680
+            },
+            "4": {
+              "equal_station_rmse": 12.42953254707208,
+              "n": 2924
+            }
+          },
+          "hourly_lead_bands": {
+            "1": 10.462725466052888,
+            "2": 12.029914808147234,
+            "3": 12.90957529264252,
+            "4": 12.474319468377502
+          }
+        },
+        "forecast": {
+          "equal_station_equal_lead_rmse": 18.0438091350588,
+          "by_station": {
+            "Niushou": {
+              "rmse": 18.421117736228393,
+              "mae": 11.302584732038664,
+              "bias": 2.674356281234144
+            },
+            "Wangzhai": {
+              "rmse": 18.077777626856417,
+              "mae": 11.10178983800373,
+              "bias": 3.0759542930126846
+            },
+            "Mizhuang": {
+              "rmse": 17.632532042091597,
+              "mae": 10.523473585361248,
+              "bias": 3.3375485048789306
+            }
+          },
+          "exact_hours": {
+            "1": {
+              "equal_station_rmse": 14.998110675389881,
+              "n": 5192
+            },
+            "2": {
+              "equal_station_rmse": 17.817704746094332,
+              "n": 4436
+            },
+            "3": {
+              "equal_station_rmse": 20.849960612756593,
+              "n": 3680
+            },
+            "4": {
+              "equal_station_rmse": 20.89055356478441,
+              "n": 2924
+            }
+          },
+          "hourly_lead_bands": {
+            "1": 14.849653206088151,
+            "2": 16.034665104085946,
+            "3": 20.412995740830226,
+            "4": 20.877922489230883
+          }
+        }
+      },
+      "comparisons": {
+        "transport_minus_persistence": {
+          "delta_rmse": 1.930994661907052,
+          "ci95": [
+            0.5176953310817076,
+            3.0272221479315498
+          ],
+          "relative_reduction_percent": -19.23658004005717
+        },
+        "forecast_minus_persistence": {
+          "delta_rmse": 8.005670038160817,
+          "ci95": [
+            2.458149676308299,
+            12.270161150190976
+          ],
+          "relative_reduction_percent": -79.75253142920438
+        }
+      },
+      "bootstrap_valid_replicates": 5000,
+      "thickness": {
+        "near_zero": {
+          "persistence": {
+            "n": 27202,
+            "pooled_rmse": 7.180380286785451,
+            "bias": 2.3871278465352166
+          },
+          "transport": {
+            "n": 27202,
+            "pooled_rmse": 7.93249630201326,
+            "bias": 2.8891472139894225
+          },
+          "forecast": {
+            "n": 27202,
+            "pooled_rmse": 13.057105485011318,
+            "bias": 5.039796295509933
+          }
+        },
+        "thin": {
+          "persistence": {
+            "n": 13773,
+            "pooled_rmse": 8.207669149562875,
+            "bias": 4.392810592533117
+          },
+          "transport": {
+            "n": 13773,
+            "pooled_rmse": 9.834314853034318,
+            "bias": 5.0238774770408225
+          },
+          "forecast": {
+            "n": 13773,
+            "pooled_rmse": 8.366869391859506,
+            "bias": 2.0576075958508744
+          }
+        },
+        "moderate": {
+          "persistence": {
+            "n": 11425,
+            "pooled_rmse": 16.850290138990122,
+            "bias": 14.826294474043554
+          },
+          "transport": {
+            "n": 11425,
+            "pooled_rmse": 19.044593644394894,
+            "bias": 16.98051139310307
+          },
+          "forecast": {
+            "n": 11425,
+            "pooled_rmse": 26.150346863918276,
+            "bias": 23.475348272806958
+          }
+        },
+        "thick": {
+          "persistence": {
+            "n": 16605,
+            "pooled_rmse": 9.36978117750094,
+            "bias": -5.528119817728984
+          },
+          "transport": {
+            "n": 16605,
+            "pooled_rmse": 12.310168954620769,
+            "bias": -8.908516147665514
+          },
+          "forecast": {
+            "n": 16605,
+            "pooled_rmse": 22.34929647229216,
+            "bias": -13.060606559588459
+          }
+        }
+      }
+    }
+  }
+}
