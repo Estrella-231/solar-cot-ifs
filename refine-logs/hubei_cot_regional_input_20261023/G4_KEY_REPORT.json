@@ -1,0 +1,59 @@
+{
+  "state": "CAUSAL_TRAIN_VAL_REFERENCE_KEY_CANDIDATES_NOT_PIXEL_QC",
+  "source_sha256": {
+    "corrected_agri_manifest.csv": "e3eba8158d6bc4676665a0f254b1dc54fce5d526b53b0bd6051d7cd16a5471e0",
+    "selected_cpp_agri.csv": "d5d7d0b9b63b56d92d88dd424a79b278af36c2936de819868ca81d36492eb64a"
+  },
+  "key_sha256": "76b4f644838894ce2e33edd48278b35be1d709802d6cfb73b7e42b3c5c4f9dd3",
+  "rule": "8 corrected AGRI history keys in same split; CPP only at target; no future input",
+  "test_buffer_payloads_read": 0,
+  "all_payloads_read": 0,
+  "counts": {
+    "train": {
+      "pairs": 27224,
+      "initializations": 4529,
+      "target_dates": 152,
+      "per_lead": {
+        "15": 2266,
+        "30": 2119,
+        "45": 2076,
+        "60": 2031,
+        "75": 1985,
+        "90": 1838,
+        "105": 1795,
+        "120": 1750,
+        "135": 1704,
+        "150": 1557,
+        "165": 1514,
+        "180": 1469,
+        "195": 1423,
+        "210": 1276,
+        "225": 1233,
+        "240": 1188
+      }
+    },
+    "val": {
+      "pairs": 2936,
+      "initializations": 503,
+      "target_dates": 16,
+      "per_lead": {
+        "15": 240,
+        "30": 225,
+        "45": 221,
+        "60": 216,
+        "75": 212,
+        "90": 197,
+        "105": 193,
+        "120": 188,
+        "135": 184,
+        "150": 169,
+        "165": 165,
+        "180": 160,
+        "195": 156,
+        "210": 141,
+        "225": 137,
+        "240": 132
+      }
+    }
+  }
+}

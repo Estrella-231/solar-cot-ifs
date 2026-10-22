@@ -91,3 +91,9 @@ node23本地包逐文件哈希PASS；14,128,332,800字节传输完成，不再�
 按预定吞吐规则选4卡，submit_training.py实时检查全账户空队列、node23物理GPU3—7空闲后提交215752.tc6000。请求node23四A100-SXM4-40GB、8CPU、2小时上限；随机初始化区域R，固定global batch128、最多750更新、内部日期选模，不延续profile参数。PBS先核对实际分配卡，再训练，完成后同一作业独立FP64计分原CPP。运行目录r_region_seed42_attempt1、日志train_attempt1.log、分数r_region_seed42_attempt1_scores。
 
 这不是GHI训练或预报增益；后续仍需G4共同样本下的未来COT对照，通过后才进入G5配对GHI。test/buffer未打开。提交记录、代码哈希、profile终态和资源记录见TRAIN_SUBMISSION_attempt1.json。
+
+### G4时间键准备（不读载荷）
+
+prepare_g4_keys.py连接本轮完整修正AGRI清单和已恢复区域CPP清单，要求8帧历史AGRI均存在且与目标CPP同split；未来CPP只在对应评分时效要求，不要求24帧CPP连续。得到train 27224个init/target配对、4529个起报/152目标日期；val 2936配对、503起报/16目标日期。val +60/+120/+180/+240分别216/188/160/132条候选，随时效不同，不能假装是完全相同样本。
+
+此清单仅是元数据候选；没有读取标签或test/buffer，尚未核验运动来源覆盖和共同逐像元mask，不是有效评分样本数或预测精度。G4各方法须在同一init/target和像元交集评价，先冻结R再生成；不得根据单方法误差删行。G4_CANDIDATE_KEYS.csv、G4_KEY_REPORT.json保存输入/输出哈希。215752已实时推进至epoch20/global_step315，尚未完成选模或评分。
