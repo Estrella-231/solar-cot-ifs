@@ -2,8 +2,12 @@
 
 This prepares data statistics; it neither trains R nor scores GHI.
 """
-import argparse, csv, hashlib, json
+import argparse, csv, hashlib, json, os
 from pathlib import Path
+# These 65k-element per-frame moments do not benefit from dozens of BLAS
+# threads. Limit future invocations before importing NumPy; leave live audits.
+for variable in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS'):
+    os.environ[variable] = '1'
 import numpy as np
 
 
@@ -47,6 +51,7 @@ def main():
     mean = total/count; std = float(np.sqrt(max(0., total2/count-mean*mean)))
     assert std > 0
     result = dict(state='PASS_INDEPENDENT_PACKAGE_AND_TRAIN_STATISTICS', frames=len(rows),
+                  audit_code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                   train_log1p_cot=dict(count=count, mean=mean, population_std=std,
                                        fitting_scope='train valid pixels only; not yet an adopted R input normalization'),
                   coverage=coverage, test_payloads_read=0, GHI_labels_read=0,
