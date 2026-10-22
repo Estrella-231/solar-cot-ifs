@@ -188,3 +188,9 @@ A read-only inventory found that the reachable `Data_Pool_3` mount exposes only 
 - Subsequent user approval triggered the proposed downstream-only plan. CPU215680 wrote all arrays then failed at final receipt; hashes verified and finalization repaired without rebuilding values. GPU215681 completed36 heads and scoring on node22/A800 0/1/3/4 in107s, exit0. No upstream model retraining, test/buffer reads or manuscript edits.
 - Equal-site/equal-seed forecast GHI RMSE: no COT105.595270, historical COT103.669917, history+capacity-control correction103.782946, history+future-COT correction103.808491 W/m². Historical gain point1.823%, all9 paired directions favorable, but date-block CI[-4.734,+0.670] crosses zero. Future-COT correction does not beat capacity control; delta+0.025545, CI[-0.003134,+0.058625].
 - All36 saved predictions and budget/initialization/row-key conditions passed local second-implementation audit; max RMSE difference1.42e-14. Follow predeclared stop: close this future-COT fusion candidate without width/threshold/seed tuning. Historical-COT evidence remains exploratory on reused development dates. Full report and checkpoints index: `../hubei_forecast_cot_increment_20261022/RESULT_REPORT.md`.
+
+### 2026-10-23区域来源恢复与G3执行
+
+先前FD路由阻塞已解除，不能继续把缺少可读CPP当作当前停止原因。详见../hubei_cot_regional_input_20261023/EXPERIMENT_TRACKER.md：3124帧区域CPP恢复、共同旧参考复核和两端独立审计完成，attempt2区域输入本地包通过。day_mask二值归一化问题在首次GPU训练前修复，只改二值通道，未修改旧实验。
+
+215751 node23四A100 profile终态C/exit0；2/4卡全局损失/梯度及断点核验通过，4卡570.398 vs2卡197.614帧/秒。按既定G3协议215752随机初始化区域R已启动，同全局batch128/最多750更新，内部日期选模，外层val仅最终评分。G4时间键准备完成，不把元数据候选数量当有效像元样本量。旧站点patch负候选仍封存；GHI新训练须等G4 COT对照通过，test/buffer关闭。
