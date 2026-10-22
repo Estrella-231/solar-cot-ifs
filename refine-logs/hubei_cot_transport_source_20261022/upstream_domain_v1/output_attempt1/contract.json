@@ -1,0 +1,68 @@
+{
+  "scope": "exploratory validation CPP-history source-domain diagnostic, NOT R-chain or GHI skill",
+  "manifest_sha256": "8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183",
+  "script_sha256": "d9ffc88e1df10d98eddf50b2540333b9d18b67fdd1868cd93e10472276efcba2",
+  "grid_sha256": "debd89ee89afaa6b24fb56e7130720e3a319fdb619f92ec59686b3a00f7de90b",
+  "init_bjt": [
+    "2025-08-22T10:00:00",
+    "2025-08-23T10:00:00",
+    "2025-09-26T10:00:00",
+    "2025-09-27T10:00:00",
+    "2025-10-04T10:00:00",
+    "2025-11-05T10:00:00",
+    "2025-11-06T10:00:00",
+    "2025-12-02T10:00:00",
+    "2025-12-03T10:00:00",
+    "2026-01-03T10:00:00",
+    "2026-01-04T10:00:00",
+    "2026-02-20T10:00:00",
+    "2026-02-21T10:00:00",
+    "2026-03-01T10:00:00",
+    "2026-03-02T10:00:00",
+    "2026-04-20T10:00:00",
+    "2026-04-21T10:00:00",
+    "2026-05-03T10:00:00",
+    "2026-05-04T10:00:00"
+  ],
+  "selection": "10:00 BJT each validation date with 24 authorized AGRI timestamps, before any CPP read",
+  "domains": {
+    "16": [
+      103,
+      118,
+      16,
+      16
+    ],
+    "64": [
+      79,
+      94,
+      64,
+      64
+    ],
+    "256": [
+      0,
+      0,
+      256,
+      256
+    ]
+  },
+  "motion": "median of seven full-region consecutive historical raw C13 phase-correlation shifts (20-channel raw index 12)",
+  "interpolation": "bilinear physical COT; all interpolation weight must have finite [0,100] source",
+  "stations": {
+    "Niushou": [
+      111,
+      124
+    ],
+    "Wangzhai": [
+      112,
+      126
+    ],
+    "Mizhuang": [
+      110,
+      128
+    ]
+  },
+  "daylight": "NOAA UTC solar cosine > cos(80 degrees)",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "training": false
+}
