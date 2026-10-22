@@ -1,0 +1,23 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 1808, 100\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 88\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "node": "node23",
+  "gpus": 4,
+  "purpose": "frozen R history inference and train-only pair pack; no E/GHI training",
+  "code_sha256": {
+    "cache_history_r.py": "0c28b7423f3b21005ca35cf73452d66e6b4f0402b9d286fbc2710c26c349be6f",
+    "build_pair_pack.py": "26fed612468680472a7710229a29e2c16022b27fa2b064460f5985d3076a1877",
+    "run_cache.py": "1443b5f8301288885b34fa7b7054cb8bbb085fea49d03d8ef63c3257f4442e1b",
+    "cache_node23_attempt1.pbs": "f0454e2097001044d54d5c9718242b2f6a65773240aa32187c0ccf4223ef303e"
+  },
+  "job_id": "215754.tc6000",
+  "queue_after": [
+    {
+      "id": "215754.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=4",
+      "requested_gpus": 4
+    }
+  ],
+  "test_payloads_read": 0
+}
