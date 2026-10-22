@@ -1,0 +1,225 @@
+{
+  "state": "FROZEN_WEIGHTS_DATES_PRIOR_TO_NEW_PERIOD_NO_NEW_SCORES",
+  "S": {
+    "state": "CORRECTED_SOLAR_SIMVP_TRAINING_COMPLETE",
+    "role": "full",
+    "random_initialization": true,
+    "best_checkpoint": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_runs_attempt12/full/checkpoints/best.ckpt",
+    "best_checkpoint_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+    "callback_best_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_runs_attempt12/full/checkpoints/best-epoch=08-val_loss=0.236.ckpt",
+    "callback_best_score": 0.23592057824134827,
+    "global_updates": 3584,
+    "completed_epochs": 14,
+    "configured_max_epochs": 50,
+    "micro_batch": 16,
+    "world_size": 1,
+    "input_normalization_sha256": "40ef5fef39659d861a818e1783d183362be6a726bcdb42d91e4c2bca3cb58e94",
+    "index_sha256": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+    "config_sha256": "5de5e4fbd67770bdad1537f1d332430f05d7119c6fc4af2c82a2d97d150f9db5",
+    "solar_geometry_corrected": true,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "S_date_range_BJT": [
+    "2025-08-01 08:00:00",
+    "2026-07-14 19:15:00"
+  ],
+  "S_index": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/full.csv",
+  "S_index_sha256": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+  "S_norm_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/norms/full.npz",
+  "S_norm_sha256": "40ef5fef39659d861a818e1783d183362be6a726bcdb42d91e4c2bca3cb58e94",
+  "R_checkpoint": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/best.pt",
+  "R_checkpoint_sha256": "d8f25a34ac1bf6fdd9005d2ea9d52d02dd3c2c24e4758e6cd74061121d6b5d0b",
+  "R_norm_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/norm.json",
+  "R_norm_sha256": "4db7bb624a7a11edb7c337fa108a0a426a5018a2b885c520e894b988d3394446",
+  "R_date_range_BJT": [
+    "2025-08-01 06:00:00",
+    "2026-03-02 18:00:00"
+  ],
+  "GHI_heads": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed42/G0_best.pt",
+      "sha256": "d88953a3db44c37b8adc4127383383ca7e05caa35aa762ac8f364f3b8fe5064c",
+      "chosen_epoch": 6,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed42/run_config.json",
+      "norm_source_sha256": "68f8e1c9d81f85519848c56cc30674d9eb33421cfb675cfd9b82885cb27061e3"
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed42/G1_best.pt",
+      "sha256": "121f15bb870fdf0d51d72bf613c421c375048b16612ba4944c55975c8fdc03a5",
+      "chosen_epoch": 6,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed42/run_config.json",
+      "norm_source_sha256": "68f8e1c9d81f85519848c56cc30674d9eb33421cfb675cfd9b82885cb27061e3"
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed43/G0_best.pt",
+      "sha256": "15b8aaa84b6bd34959f637faff58eb4154157b512280ba62c1d462d9ec83f5a4",
+      "chosen_epoch": 7,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed43/run_config.json",
+      "norm_source_sha256": "36f784fdb2c1ddfe8d3ebc2138dd07cfd57642e6d9c14edcce1e300f35259c0e"
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed43/G1_best.pt",
+      "sha256": "07af8a845278c819f998ccdf1066746449b11f2d39839a85d900a493ffa9a62b",
+      "chosen_epoch": 7,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed43/run_config.json",
+      "norm_source_sha256": "36f784fdb2c1ddfe8d3ebc2138dd07cfd57642e6d9c14edcce1e300f35259c0e"
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed44/G0_best.pt",
+      "sha256": "f48296f1a4a6ed3d28da44ee7da474952a2fdffca7b9954b6b944593a4df7040",
+      "chosen_epoch": 5,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed44/run_config.json",
+      "norm_source_sha256": "adf3e335db1027f5c31f256fb9c1f1b6801474c12349b0006abb3da5e046e4a9"
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed44/G1_best.pt",
+      "sha256": "407561bcd40bc2693a86a5779910ab6f8e2ef8355b6765573de12a23e84bd0f8",
+      "chosen_epoch": 5,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Niushou_seed44/run_config.json",
+      "norm_source_sha256": "adf3e335db1027f5c31f256fb9c1f1b6801474c12349b0006abb3da5e046e4a9"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed42/G0_best.pt",
+      "sha256": "2c350de87adace7742d302ef38665a033f1fa40b49a9a8b1bbafca6d0e0506be",
+      "chosen_epoch": 10,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed42/run_config.json",
+      "norm_source_sha256": "8d794c5a5b56504171a9a80e10b02437ec55c568b245018e641b8fb4b1c7e86d"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed42/G1_best.pt",
+      "sha256": "77637325b581c4c2fcb3099c699e1fcfc1ab82b8777fe283bc7978a18be10dea",
+      "chosen_epoch": 10,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed42/run_config.json",
+      "norm_source_sha256": "8d794c5a5b56504171a9a80e10b02437ec55c568b245018e641b8fb4b1c7e86d"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed43/G0_best.pt",
+      "sha256": "adfe9fadf572f6a99a2014113b0248b067a545e716694a0634391b034c5da7da",
+      "chosen_epoch": 7,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed43/run_config.json",
+      "norm_source_sha256": "d3163d40003504787bc9e97da59450241a55371e555dae2b92368fd926bdac1a"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed43/G1_best.pt",
+      "sha256": "1434bf3de57f8769a226e55d9fb23ac91bf53c607ce9054eb8b25f4661b4da87",
+      "chosen_epoch": 12,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed43/run_config.json",
+      "norm_source_sha256": "d3163d40003504787bc9e97da59450241a55371e555dae2b92368fd926bdac1a"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed44/G0_best.pt",
+      "sha256": "620a807f661116e135da7d84440b080fe7e650bd2c5a0d47c15711af461ff0b7",
+      "chosen_epoch": 7,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed44/run_config.json",
+      "norm_source_sha256": "b7944b5c63c804a858657c53cb861f9315b976886a218e9e90401d7458d1b35e"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed44/G1_best.pt",
+      "sha256": "640f0d1c991bcd3bd58b0446a0b68534716debc1d9516ba0d724cfb92ccfc3ee",
+      "chosen_epoch": 13,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Wangzhai_seed44/run_config.json",
+      "norm_source_sha256": "b7944b5c63c804a858657c53cb861f9315b976886a218e9e90401d7458d1b35e"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed42/G0_best.pt",
+      "sha256": "bb6c8179694614ea852b90e61438b57413b32a28d9ba978ae0d6a89a99336113",
+      "chosen_epoch": 14,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed42/run_config.json",
+      "norm_source_sha256": "77167aae40fa79d53acf473b4a4315bcb8875a51a828828a1e879828d7204c53"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed42/G1_best.pt",
+      "sha256": "2e920f2f5f52ae8fab65786783875b5a8ec99197624faf3b6b6afac897214427",
+      "chosen_epoch": 10,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed42/run_config.json",
+      "norm_source_sha256": "77167aae40fa79d53acf473b4a4315bcb8875a51a828828a1e879828d7204c53"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed43/G0_best.pt",
+      "sha256": "fd9ddc699b4e25889308de01d59d7e15c8d0c7338a3e338f02ab578dcbc5cc9e",
+      "chosen_epoch": 15,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed43/run_config.json",
+      "norm_source_sha256": "637970af9c14849f6f8d0ad751c50568a07e23c45df90b6bbb0afa02134513a7"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed43/G1_best.pt",
+      "sha256": "45f83755bfc6f168c463f14efe8a51d24c4b5a9f057cd25ce628569d474781c7",
+      "chosen_epoch": 21,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed43/run_config.json",
+      "norm_source_sha256": "637970af9c14849f6f8d0ad751c50568a07e23c45df90b6bbb0afa02134513a7"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "G0",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed44/G0_best.pt",
+      "sha256": "5be1b585fe418705b0474eb5f596f8465ba522ce51ff3efa2e3e3e83cca013aa",
+      "chosen_epoch": 18,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed44/run_config.json",
+      "norm_source_sha256": "b31bbee24951f598c2646738b66561d24d72968a62b4a1413604f98b51eacf8b"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "G1",
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed44/G1_best.pt",
+      "sha256": "8c1a21cf511ac21a9b1258824056a7590ff4874f8048f408f8cda63acfe92959",
+      "chosen_epoch": 26,
+      "norm_source": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/training_attempt1/pairs/Mizhuang_seed44/run_config.json",
+      "norm_source_sha256": "b31bbee24951f598c2646738b66561d24d72968a62b4a1413604f98b51eacf8b"
+    }
+  ],
+  "old_test_payloads_read": 0,
+  "old_buffer_payloads_read": 0,
+  "new_period_scores_computed": 0,
+  "prior_contact_note": "This binds actual current source dates; full historical project contact inventory remains separate."
+}

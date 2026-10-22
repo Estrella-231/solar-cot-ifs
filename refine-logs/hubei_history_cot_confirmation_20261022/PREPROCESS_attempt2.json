@@ -1,0 +1,277 @@
+{
+  "state": "READY_WITH_EXPLICIT_SOURCE_GAPS",
+  "expected": 2025,
+  "written": 2021,
+  "unreadable": [
+    {
+      "time_BJT": "2026-07-27 09:30:00",
+      "reason": "all explicit same-UTC source read attempts failed"
+    },
+    {
+      "time_BJT": "2026-07-27 14:30:00",
+      "reason": "all explicit same-UTC source read attempts failed"
+    },
+    {
+      "time_BJT": "2026-07-27 14:00:00",
+      "reason": "all explicit same-UTC source read attempts failed"
+    },
+    {
+      "time_BJT": "2026-07-27 14:15:00",
+      "reason": "all explicit same-UTC source read attempts failed"
+    }
+  ],
+  "retry_audit": [
+    {
+      "time_BJT": "2026-07-27 09:30:00",
+      "attempts": [
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727013000_20260727014459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_0_0",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727013000_20260727014459_4000M.HDF",
+              "error": "IndexError('NOMChannel02 not found in /')"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727013000_20260727014459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_0_1",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727013000_20260727014459_4000M.HDF",
+              "error": "IndexError('NOMChannel02 not found in /')"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727013000_20260727014459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_0_2",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727013000_20260727014459_4000M.HDF",
+              "error": "IndexError('NOMChannel02 not found in /')"
+            }
+          ]
+        }
+      ],
+      "recovered": false
+    },
+    {
+      "time_BJT": "2026-07-27 14:30:00",
+      "attempts": [
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727063000_20260727064459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_1_0",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727063000_20260727064459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727063000_20260727064459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_1_1",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727063000_20260727064459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727063000_20260727064459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_1_2",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727063000_20260727064459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        }
+      ],
+      "recovered": false
+    },
+    {
+      "time_BJT": "2026-07-27 14:00:00",
+      "attempts": [
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727060000_20260727061459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_2_0",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727060000_20260727061459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727060000_20260727061459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_2_1",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727060000_20260727061459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727060000_20260727061459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_2_2",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727060000_20260727061459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        }
+      ],
+      "recovered": false
+    },
+    {
+      "time_BJT": "2026-07-27 14:15:00",
+      "attempts": [
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727061500_20260727062959_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_3_0",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727061500_20260727062959_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727061500_20260727062959_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_3_1",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727061500_20260727062959_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727061500_20260727062959_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_3_2",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260727/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260727061500_20260727062959_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        }
+      ],
+      "recovered": false
+    },
+    {
+      "time_BJT": "2026-08-10 15:30:00",
+      "attempts": [
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_4_0",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_4_1",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_4_2",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2026/20260810/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260810073000_20260810074459_4000M_V0001.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_4_3",
+          "exit_code": 0,
+          "state": "RECOVERED"
+        }
+      ],
+      "recovered": true
+    },
+    {
+      "time_BJT": "2026-08-11 09:30:00",
+      "attempts": [
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_5_0",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_5_1",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_5_2",
+          "exit_code": 1,
+          "failure": [
+            {
+              "source": "/home/Data_Pool/data/FY/FY4B/real_time_data/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M.HDF",
+              "error": "AssertionError()"
+            }
+          ]
+        },
+        {
+          "path": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM/2026/20260811/FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260811013000_20260811014459_4000M_V0001.HDF",
+          "trial": "/tmp/hubei_history_cot_new_period_ready_20261022_attempt2/read_5_3",
+          "exit_code": 0,
+          "state": "RECOVERED"
+        }
+      ],
+      "recovered": true
+    }
+  ],
+  "prior_report_sha256": "c2d2070faa8483345fcf46bf24d7ce0cafdb15036a74d074664d47c087dcd054",
+  "frame_manifest_sha256": "054de93dae91789f3c843b76891969582a6fcefac95a7512befafc9fca425d84",
+  "policy": "No channel renaming or interpolation; unresolved HDFs invalidate all history windows needing them, equally for both models; fixed before model scoring",
+  "old_test_payloads_read": 0,
+  "old_buffer_payloads_read": 0,
+  "new_period_scores_computed": 0
+}
