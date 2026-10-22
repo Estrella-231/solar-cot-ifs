@@ -43,6 +43,8 @@ def main():
     if rank == 0:
         a.out.mkdir(parents=True, exist_ok=False)
         assert json.loads((a.pack/'REPORT.json').read_text())['state'] == 'REGIONAL_R_PACK_BUILT_NOT_TRAINED'
+        assert json.loads((a.pack/'NORMALIZATION_AUDIT.json').read_text())['state']=='PASS_NORMALIZED_CONTEXT_FP16_RANGE'
+        norm=json.loads((a.pack/'norm.json').read_text());assert norm['mean'][15]==0 and norm['std'][15]==1
         for name, digest in json.loads((a.pack/'SHA256.json').read_text()).items():
             assert sha(a.pack/name) == digest, name
     dist.barrier()

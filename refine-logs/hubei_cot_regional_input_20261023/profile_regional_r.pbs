@@ -7,7 +7,7 @@
 #PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/profile_attempt1.log
 set -euo pipefail
 BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023
-PACK=/dev/shm/hubei_regional_r_pack_20261023_attempt1
+PACK=/dev/shm/hubei_regional_r_pack_20261023_attempt2
 export CUDA_VISIBLE_DEVICES=$(qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, -)
 test "$(echo "$CUDA_VISIBLE_DEVICES" | tr ',' '\n' | wc -l)" -eq 4
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1

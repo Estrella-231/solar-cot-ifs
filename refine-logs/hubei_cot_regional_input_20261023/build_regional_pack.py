@@ -73,6 +73,10 @@ def main():
             print('PACKED', i+1, n, flush=True)
     assert count > 0
     mean = sums/count; std = np.maximum(np.sqrt(np.maximum(squares/count-mean*mean, 0)), 1e-6)
+    fitted_mean=mean.copy();fitted_std=std.copy()
+    # A binary day channel is constant on the supervised daylight pixels.
+    # Do not turn legitimate night context into -1e6 by standardizing it.
+    mean[15]=0.;std[15]=1.
     for i in range(n):
         x[i] = (x[i]-mean.astype(np.float32)[:, None, None])/std.astype(np.float32)[:, None, None]
         assert np.isfinite(x[i]).all()
@@ -82,6 +86,8 @@ def main():
         w = csv.DictWriter(f, fieldnames=['index']+list(rows[0])); w.writeheader()
         w.writerows(dict(index=i, **r) for i, r in enumerate(rows))
     norm = dict(input_channels=NAMES, mean=mean.tolist(), std=std.tolist(),
+                train_fitted_mean=fitted_mean.tolist(),train_fitted_std=fitted_std.tolist(),
+                binary_channel_policy='day_mask identity 0/1; other channels train supported-pixel normalization',
                 fit_split='train only', fit_pixels=count,
                 fit_mask='CPP valid daylight SZA<80 and all selected thermal channels >0',
                 target_transform='log1p(physical COT); no target standardization', test_used=False)
@@ -93,6 +99,7 @@ def main():
                   counts={s: sum(r['split'] == s for r in rows) for s in ('train', 'val')},
                   valid_pixels={s: sum(r['valid_pixels'] for r in support if r['split'] == s) for s in ('train', 'val')},
                   excluded_thermal_invalid_supervision_pixels=excluded_ir,
+                  normalization_policy='train-supported moments except binary day_mask identity',
                   manifest_sha256=sha(a.manifest), cpp_report_sha256=sha(a.cpp_ready/'REPORT.json'),
                   test_payloads_read=0, GHI_labels_read=0, trained=False)
     (a.out/'REPORT.json').write_text(json.dumps(report, indent=2))

@@ -1,0 +1,32 @@
+{
+  "state": "PROFILE_COMPLETE_NO_TRAINING",
+  "selected_world": 4,
+  "speedup_4_vs_2": 2.8864249058298883,
+  "profiles": {
+    "2": {
+      "world": 2,
+      "global_batch": 128,
+      "steps": 10,
+      "seconds": 6.477277755737305,
+      "frames_per_second": 197.6138816752499,
+      "max_allocated_bytes": 3990995968,
+      "amp_checkpoint_replay_max_abs_difference": 0.0,
+      "reset_before_formal_training_required": true,
+      "val_scored": false
+    },
+    "4": {
+      "world": 4,
+      "global_batch": 128,
+      "steps": 10,
+      "seconds": 2.244048595428467,
+      "frames_per_second": 570.3976298051618,
+      "max_allocated_bytes": 2063711232,
+      "amp_checkpoint_replay_max_abs_difference": 0.0,
+      "reset_before_formal_training_required": true,
+      "val_scored": false
+    }
+  },
+  "selection_rule": "use4 if at least15 percent faster; otherwise2",
+  "auto_start_training": false,
+  "global_batch": 128
+}

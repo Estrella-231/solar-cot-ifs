@@ -1,0 +1,1144 @@
+{
+  "state": "FAIL_BINARY_STANDARDIZATION_OR_INPUT_RANGE",
+  "day_mask_mean": 1.0,
+  "day_mask_std": 1e-06,
+  "day_mask_identity": false,
+  "groups": {
+    "R_fit": {
+      "frames": 1999,
+      "supported_frames": 1935,
+      "above_fp16_range_frames": 96,
+      "supported_above_fp16_range_frames": 50,
+      "max_abs_input": 1000000.0,
+      "max_abs_day_input": 1000000.0
+    },
+    "purged": {
+      "frames": 515,
+      "supported_frames": 493,
+      "above_fp16_range_frames": 30,
+      "supported_above_fp16_range_frames": 18,
+      "max_abs_input": 1000000.0,
+      "max_abs_day_input": 1000000.0
+    },
+    "R_select": {
+      "frames": 314,
+      "supported_frames": 308,
+      "above_fp16_range_frames": 16,
+      "supported_above_fp16_range_frames": 10,
+      "max_abs_input": 1000000.0,
+      "max_abs_day_input": 1000000.0
+    },
+    "monthly_val": {
+      "frames": 296,
+      "supported_frames": 285,
+      "above_fp16_range_frames": 15,
+      "supported_above_fp16_range_frames": 4,
+      "max_abs_input": 1000000.0,
+      "max_abs_day_input": 1000000.0
+    }
+  },
+  "bad_frames": [
+    {
+      "time_bjt": "202508011900",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508011915",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508021900",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508021915",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508031900",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508031915",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508041900",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508051900",
+      "role": "R_select",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508061900",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508071900",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508141845",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508141900",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508151845",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508151900",
+      "role": "R_select",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508161845",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508161900",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508171845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508171900",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508181845",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508181900",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508191845",
+      "role": "R_select",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508191900",
+      "role": "R_select",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508201845",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508201900",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508251845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508261845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508271845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508281845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508291845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508311830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508311845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509011830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509011845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509021830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509021845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509031830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509031845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509051830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509051845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509061830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509061845",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509071830",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509081830",
+      "role": "R_select",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509111830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509121830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509131815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509131830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509141815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509141830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509201815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509211815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509221815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509221830",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509231815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509241815",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509301800",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510011800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510021800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510071800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510081800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510091800",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510101800",
+      "role": "R_select",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510111800",
+      "role": "purged",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510201800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511141700",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511151700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511161700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511171700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511181700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511191700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511201700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511211700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511251700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511261700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511281700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511291700",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202511301700",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512051700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512061700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512071700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512081700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512091700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512101700",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512111700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512121700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512170800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512171700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512180800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512181700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512190800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512191700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512200800",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512210800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512211700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512220800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512221700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512230800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512231700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512240800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512241700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512250800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512251700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512260800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512261700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512270800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512271700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512280800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512281700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512290800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512291700",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512300800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512301700",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512310800",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601010800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601060800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601070800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601080800",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601090800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601100800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601110800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601120800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601130800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601140800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601150800",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601160800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601170800",
+      "role": "R_select",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601180800",
+      "role": "purged",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601190800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601200800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601250800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601260800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601270800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601280800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601290800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602161800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602171800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602181800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602231800",
+      "role": "R_fit",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602241800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602251800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602261800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602271800",
+      "role": "R_fit",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508221845",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508221900",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202508231845",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509261800",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509261815",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509271800",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202509271815",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510041800",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202510051800",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512021700",
+      "role": "monthly_val",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202512031700",
+      "role": "monthly_val",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601030800",
+      "role": "monthly_val",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202601040800",
+      "role": "monthly_val",
+      "supported": true,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602201800",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    },
+    {
+      "time_bjt": "202602211800",
+      "role": "monthly_val",
+      "supported": false,
+      "max_abs": 1000000.0,
+      "max_abs_day": 1000000.0
+    }
+  ],
+  "pack": "/dev/shm/hubei_regional_r_pack_20261023_attempt1",
+  "training_started": false,
+  "test_payloads_read": 0
+}

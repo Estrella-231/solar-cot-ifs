@@ -1,0 +1,28 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 1808, 100\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 88\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "world": 4,
+  "node": "node23",
+  "source_sha256": {
+    "regional_model.py": "94cbbd66997b0bf86fd52865db03735f22c6b8a4452729f1d2d11d7d5447b23c",
+    "train_regional_r.py": "6ba74117c8d61f91ce023cb16456b8405e059f214370c8bc614220cc7cd11e67",
+    "score_regional_r.py": "ea1172427a96087fb290cfedcb24c821ab352bddc39703b1e7504ebd056cbf32",
+    "R_INTERNAL_ROLES.json": "a9457ec42994b5965ecc23c76d62e9d0ea9328f89c1bc47f878ea35afa12c82a",
+    "train_node23_attempt1.pbs": "00f234b3fea23d1a289277009ab1d154065423b09fac9a9f2c26dc476bd43051"
+  },
+  "profile_job": "215751.tc6000",
+  "profile_terminal": "Job Id: 215751.tc6000\n    Job_Name = rregionprof\n    Job_Owner = slfu@tc6000\n    resources_used.cput = 00:04:08\n    resources_used.mem = 14391308kb\n    resources_used.vmem = 169825556kb\n    resources_used.walltime = 00:04:08\n    job_state = C\n    queue = gpu\n    server = tc6000\n    Checkpoint = u\n    ctime = Fri Oct 23 03:34:09 2026\n    Error_Path = tc6000:/public/home/slfu/ttzhou/swc/irradiance_forecast/Solar\n\tCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/profile_\n\tattempt1.log\n    exec_host = node23/40+node23/41+node23/42+node23/43+node23/44+node23/45+no\n\tde23/46+node23/47\n    exec_port = 15003+15003+15003+15003+15003+15003+15003+15003\n    exec_gpus = node23-gpu/6+node23-gpu/5+node23-gpu/4+node23-gpu/3\n    Hold_Types = n\n    Join_Path = oe\n    Keep_Files = n\n    Mail_Points = a\n    mtime = Fri Oct 23 03:38:19 2026\n    Output_Path = tc6000:/public/home/slfu/ttzhou/swc/irradiance_forecast/Sola\n\trCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/profile\n\t_attempt1.log\n    Priority = 0\n    qtime = Fri Oct 23 03:34:09 2026\n    Rerunable = True\n    Resource_List.nodect = 1\n    Resource_List.nodes = node23:ppn=8:gpus=4\n    Resource_List.walltime = 00:40:00\n    session_id = 28526\n    Variable_List = PBS_O_QUEUE=gpu,PBS_O_HOME=/public/home/slfu,\n\tPBS_O_LOGNAME=slfu,\n\tPBS_O_PATH=/usr/lib64/qt-3.3/bin:/opt/gridview//pbs/dispatcher-sched/\n\tbin:/opt/gridview//pbs/dispatcher-sched/sbin:/opt/gridview//pbs/dispat\n\tcher/bin/lsf_cmd:/opt/gridview//pbs/dispatcher/bin:/opt/gridview//pbs/\n\tdispatcher/sbin:/public/software/compiler/intel/intel-compiler-2017.5.\n\t239/bin/intel64:/opt/gridview/clusquota//bin:/opt/gridview/clusquota//\n\tsbin:/opt/gridview/clusconf/bin:/usr/local/bin:/usr/bin:/opt/ibutils/b\n\tin,PBS_O_MAIL=/var/mail/slfu,PBS_O_SHELL=/bin/bash,\n\tPBS_O_LANG=en_US.UTF-8,PBS_O_WORKDIR=/public/home/slfu,\n\tPBS_O_HOST=tc6000,PBS_O_SERVER=tc6000\n    etime = Fri Oct 23 03:34:09 2026\n    exit_status = 0\n    submit_args = /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS\n\t_20260907/experiments/hubei_cot_regional_input_20261023/profile_node23\n\t_attempt1.pbs\n    start_time = Fri Oct 23 03:34:14 2026\n    start_count = 1\n    fault_tolerant = False\n    comp_time = Fri Oct 23 03:38:19 2026\n    job_radix = 0\n    total_runtime = 248.374909\n    submit_host = tc6000\n    gpu_flags = 1\n\n",
+  "purpose": "random-init regional COT retrieval; not GHI benefit",
+  "job_id": "215752.tc6000",
+  "queue_after": [
+    {
+      "id": "215752.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=4",
+      "requested_gpus": 4
+    }
+  ],
+  "global_batch": 128,
+  "max_updates": 750,
+  "test_payloads_read": 0
+}

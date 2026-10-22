@@ -75,3 +75,19 @@ CPU/Gloo两进程检查完成：有效像元计数分别1与3，掩膜外含NaN�
 目的tar仅有源/目的机器时钟不同的mtime未来警告，不用于物理时间对齐，也不影响以UTC/BJT键和载荷hash核对。需等两端真实退出码及目的端hash审计后再判转运完成。
 
 源端独立矩统计曾默认启用大量BLAS线程；未修改或停止已运行分析。后续目的端audit_ready_statistics.py在导入NumPy前固定一CPU线程并记录代码hash，部署时目的端审核尚未启动，源端原审计代码未热改。本优化仅减少小向量统计的线程开销，不改变样本、掩膜或训练设置。
+
+### G2转运、初版归一化问题及修复
+
+转运完成，两端exit0，475580779压缩字节、381.253秒。目的端独立audit PASS，attempt1 CPU打包完成；未提交GPU。检查实际上下文发现day_mask由仅白天train像元标准化（mean1/std1e-6），导致R_fit50个有监督帧、R_select10个、val4个出现−1e6，超FP16范围。此处是本轮新包问题，不是历史模型或前述新时段分站差异的原因。
+
+已完成attempt2重建，二值day_mask保留0/1；其余15通道逐帧完全一致，rows/target/mask/support文件hash不变。全量上下文audit PASS：最大绝对输入31.98265，三组均无超FP16值。attempt1原样保留，所有GPU入口仅接受attempt2。详见NORMALIZATION_AUDIT_attempt1.json、G2_ATTEMPT2_COMPLETE.json和attempt2 NORMALIZATION_AUDIT。
+
+实时slfu全队列为空；node22仅GPU0空闲，不申请4卡；node23物理GPU3—7空闲，调度器仍有其他账户作业，绝不终止。已启动学院本地盘node22→node23单次数据包复制（会话89791），复制后逐文件hash核验，再实时重新查队列/物理卡提交4卡profile。源/目的/tmpfs均为本地盘，不再读复旦NAS；约14GB数据包只复制一次。正式训练尚未启动。
+
+### G3正式训练已提交：215752
+
+node23本地包逐文件哈希PASS；14,128,332,800字节传输完成，不再读取原NAS。215751四卡profile已C/exit0：2/4卡全局损失相对差4.17e-8、梯度最大差4.95e-6；FP32/AMP断点二步重放通过。2卡197.614帧/秒、4卡570.398帧/秒，训练短测约2.886倍，非全流程加速。
+
+按预定吞吐规则选4卡，submit_training.py实时检查全账户空队列、node23物理GPU3—7空闲后提交215752.tc6000。请求node23四A100-SXM4-40GB、8CPU、2小时上限；随机初始化区域R，固定global batch128、最多750更新、内部日期选模，不延续profile参数。PBS先核对实际分配卡，再训练，完成后同一作业独立FP64计分原CPP。运行目录r_region_seed42_attempt1、日志train_attempt1.log、分数r_region_seed42_attempt1_scores。
+
+这不是GHI训练或预报增益；后续仍需G4共同样本下的未来COT对照，通过后才进入G5配对GHI。test/buffer未打开。提交记录、代码哈希、profile终态和资源记录见TRAIN_SUBMISSION_attempt1.json。
