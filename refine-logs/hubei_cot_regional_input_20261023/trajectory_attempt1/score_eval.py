@@ -51,7 +51,8 @@ def main():
                 vals = np.array([pred[index[(r['init'], r['target'], int(r['lead']))], STATIONS.index(r['station']), int(r['dr'])+1, int(r['dc'])+1] for r in rows])
             names.append(name); values.append(vals); sources[name] = sha(path)
     pred = np.array(values)
-    ref = np.array([float(r['reference']) for r in rows])
+    # CSV writes missing CPP as an empty cell; preserve it as missing, never clear sky.
+    ref = np.array([float(r['reference']) if r['reference'].strip() else np.nan for r in rows])
     common = np.array([r['common'] == '1' for r in rows])
     center = np.array([r['dr'] == '0' and r['dc'] == '0' for r in rows])
     assert np.isfinite(pred[:, common]).all() and np.isfinite(ref[common]).all()

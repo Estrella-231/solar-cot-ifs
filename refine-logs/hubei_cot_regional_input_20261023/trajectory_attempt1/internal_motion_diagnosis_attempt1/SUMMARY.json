@@ -1,0 +1,97 @@
+{
+  "state": "TRAIN_INTERNAL_FIXED_MOTION_DIAGNOSIS_COMPLETE",
+  "select_pairs": 2840,
+  "common_station_records": 7617,
+  "score_definition": "pooled station records, descriptive internal analysis; not outer validation main metric",
+  "summary": {
+    "all": {
+      "n": 7617,
+      "persistence_rmse": 6.7332216183383595,
+      "transport_rmse": 7.7655087347381375,
+      "transport_bias": 2.537782059542118,
+      "transport_better_fraction": 0.48759354076408035
+    },
+    "near_zero": {
+      "n": 3350,
+      "persistence_rmse": 1.7566404158161113,
+      "transport_rmse": 1.6607066255693468,
+      "transport_bias": 0.6236388428994534,
+      "transport_better_fraction": 0.5146268656716418
+    },
+    "thin": {
+      "n": 1945,
+      "persistence_rmse": 4.413792645074074,
+      "transport_rmse": 4.284287939705991,
+      "transport_bias": -0.4332250434205868,
+      "transport_better_fraction": 0.5084832904884319
+    },
+    "moderate": {
+      "n": 1227,
+      "persistence_rmse": 10.599499204486357,
+      "transport_rmse": 16.2262152874578,
+      "transport_bias": 13.498182711156929,
+      "transport_better_fraction": 0.3602281988590057
+    },
+    "thick": {
+      "n": 1095,
+      "persistence_rmse": 12.059391620955077,
+      "transport_rmse": 9.132818437301395,
+      "transport_bias": 1.3894505449156542,
+      "transport_better_fraction": 0.5105022831050229
+    },
+    "Niushou": {
+      "n": 2539,
+      "persistence_rmse": 6.748027632338596,
+      "transport_rmse": 7.819720885018577,
+      "transport_bias": 2.5500982891119546,
+      "transport_better_fraction": 0.4899566758566365
+    },
+    "Wangzhai": {
+      "n": 2539,
+      "persistence_rmse": 6.658336001864983,
+      "transport_rmse": 7.6739992919069975,
+      "transport_bias": 2.5067972181966027,
+      "transport_better_fraction": 0.4580543521071288
+    },
+    "Mizhuang": {
+      "n": 2539,
+      "persistence_rmse": 6.792606631068849,
+      "transport_rmse": 7.8019919172028205,
+      "transport_bias": 2.556450671317798,
+      "transport_better_fraction": 0.5147695943284758
+    }
+  },
+  "motion_quantiles": [
+    0.0005914540379031753,
+    0.05829772653788637,
+    0.16520635102176112,
+    2.561922671363765,
+    7.615551649822511
+  ],
+  "target_dates": [
+    "20250805",
+    "20250815",
+    "20250819",
+    "20250908",
+    "20250929",
+    "20251010",
+    "20251012",
+    "20251013",
+    "20251114",
+    "20251129",
+    "20251130",
+    "20251210",
+    "20251220",
+    "20251231",
+    "20260108",
+    "20260115",
+    "20260117",
+    "20260210",
+    "20260212"
+  ],
+  "seconds": 0.4086246690712869,
+  "outer_validation_payloads_read": 0,
+  "test_payloads_read": 0,
+  "GHI_labels_read": 0,
+  "new_training_runs": 0
+}

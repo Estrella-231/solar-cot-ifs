@@ -15,6 +15,7 @@ with tempfile.TemporaryDirectory(prefix='trajectory_score_fixture_') as temp:
                     for dc in [-1,0,1]:
                         rows.append(dict(init=init,target=target,date=day,station=station,lead=lead,dr=dr,dc=dc,
                                          reference=value,common=1,persistence=value+2,transport=value+3,forecast=value+5))
+    rows[0]['reference']='';rows[0]['common']=0
     baseline=root/'baseline.csv'
     with baseline.open('w',newline='') as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)

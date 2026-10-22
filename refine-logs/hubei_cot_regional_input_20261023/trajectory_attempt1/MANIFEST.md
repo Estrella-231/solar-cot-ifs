@@ -3,3 +3,13 @@
 - EXPERIMENT_PLAN_20261023.md：首次拟合前固定的G4轨迹对照与停止条件。
 - EXPERIMENT_PLAN.md：当前协议同内容入口。
 - EXPERIMENT_TRACKER.md：实际执行状态，不将待办写成完成。
+- fits_attempt1/：六个训练臂/种子独立best/last、逐轮记录、STEP0、COMPLETE及冻结ARM_SELECTION；权重不纳入Git。
+- FITS_FINAL_AUDIT_attempt1.json：读取真实best/last与训练记录后的预算、来源和内部选模核对。
+- build_eval_pack.py、infer_eval.py、run_eval.py：内部选模冻结后才准备纯历史云场和已知目标几何，六模型独立推理。
+- score_eval.py：FP64共同像元配对、站点/时效/云厚分层、目标日期块区间与预定继续条件。
+- check_score_fixture.py：合成算术与错位键拒绝检查，仅工程验证。
+- EVAL_SUBMISSION_attempt1.json、eval_node23_attempt1.pbs：215758资源前后核对及精确执行命令。
+- RESULT_REPORT.md：未来COT相对SimVP改善、相对持平失败及厚云负结果的解释与范围。
+- eval_attempt1/：六个冻结模型保存的2936条预测、完成记录和日志；scores_cpu_repair_attempt2为仅CPU修复空字段后的分层/配对统计。
+- score_eval_failed_attempt1.py、eval_attempt1.log：原CPU字段解析失败证据，不覆盖。
+- INDEPENDENT_RECALC_attempt2.json、independent_recalc.py：从实际预测独立FP64复算九个主指标。
