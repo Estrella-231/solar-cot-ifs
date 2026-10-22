@@ -42,3 +42,9 @@ Keep full-region G1 blocked until a read-only source session succeeds and the in
 - The reachable pool `/public/home/slfu/ttzhou/swc/Data_Pool_3` exists. Within its FY-4B tree, the only visible branch is `AGRI`; under `AGRI/L2`, the only product branch is `CLP/2023/202301`. It contains one filename-visible 4-km CLP file for 2023-01-23 06:30 UTC. A recursive filename search found zero files with `CPP` in their names.
 - The inventory used directory entries and filenames/sizes only; no NetCDF variables or test/buffer payloads were opened. This one old CLP file is neither a CPP COT reference field nor date-complete for the frozen 2025–2026 Hubei train/validation manifest. It cannot satisfy G1 or replace the CPP sidecar.
 - **Decision unchanged:** full-region source gate remains blocked on the original CPP route. No training job was submitted and no GPU was used. Continue source-route recovery; do not infer upstream CPP absence from this ZJNU mount.
+
+### Route recheck after CPD sample identification (2026-10-22 08:50 CST)
+
+- Workstation SSH to the configured `FD-201` alias again closed at `10.158.205.201:22` before any remote command executed.
+- From `zjnu-hpc`, TCP port 22 on `10.158.205.201` again timed out. This confirms the route is still unavailable from both current paths; it does not establish whether the source archive exists.
+- No CPP/CPD payload was read, no authentication attempt or order was made, and no PBS/GPU task was submitted. The official train-only CPD sample identified in `OFFICIAL_NSMC_SOURCE_ROUTE_AUDIT_20261022.md` remains the next source artifact needed.

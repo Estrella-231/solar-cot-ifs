@@ -145,3 +145,8 @@ A read-only inventory found that the reachable `Data_Pool_3` mount exposes only 
 - The current logged-out portal view offers a selectable file list and `去购物车`, but no directly exposed single-file download action. No login, cart/order action, or payload download occurred. Obtaining a sample remains the immediate external dependency for validating CPD fields and grid metadata.
 - Live `qstat -fx -u slfu` at 08:45:17 CST returned no unfinished account jobs. Node22/node23 each advertise eight GPUs, but their scheduler records list jobs 213684/213751 and 213683 and do not expose per-GPU availability. No GPU job was submitted.
 - **Next action:** inspect one authorized train-only CPD NetCDF header and join it to AGRI key 202508042345; after field/QC/time/grid checks, inventory full train/validation coverage on CPU. Only then profile the regional workload on 2/4 GPUs and expand to the fastest stable count while preserving the approved global batch, optimizer updates, LR schedule, and distributed loss denominator. Test/buffer remain closed.
+
+### Source-route retry (2026-10-22 08:50 CST)
+
+- Rechecked `FD-201` from the workstation: SSH was closed before a command ran. Rechecked TCP/22 from `zjnu-hpc`: timed out. This is a route failure, not evidence that the original CPP archive is absent.
+- No model run or GPU submission is justified until either the read-only CPP route returns or the official train-only CPD sample is made available for field/QC/grid inspection. Existing station-patch COT models remain gate-failed and frozen; do not route them into GHI training.
