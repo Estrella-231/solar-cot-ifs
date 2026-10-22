@@ -1,0 +1,24 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 0, 0\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 92\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "server": "ZJNU college",
+  "node": "node23",
+  "gpus": 3,
+  "purpose": "C dates only, 9 frozen G0 forwards and fixed coefficient replay; no fitting or selection",
+  "hashes": {
+    "attribution_attempt1/PLAN.md": "e51d2c5b5f22e75ff1081cf8e579a98921cb2f43c7b7067d94822ff74be7c8f7",
+    "attribution_attempt1/replay_station.py": "9bff433d596588c1fffb64955f1d38a011387c24202fa264d990b81c2bcda16a",
+    "attribution_attempt1/run.py": "08ada0d02f7e25eef05659c91196d2287602e82d244de6593df77e815569eff8",
+    "attribution_attempt1/replay.pbs": "7d05a2d35441e775c060be543c4abe11057846dcc35a89a8851e684419c0a066"
+  },
+  "job_id": "215762.tc6000",
+  "queue_after": [
+    {
+      "id": "215762.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=3",
+      "requested_gpus": 3
+    }
+  ],
+  "test_buffer_payloads_read": 0
+}
