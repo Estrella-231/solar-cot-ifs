@@ -20,9 +20,11 @@ After that small source contract passes, inventory all permitted train/validatio
 ## Public sources
 
 - [FY-4B product catalogue](https://satellite.nsmc.org.cn/DataPortal/en/code/FY4B.html) — lists AGRI CPD and full-disk AGRI L1 products.
+- [FY-4B AGRI CPD dataset detail](https://satellite.nsmc.org.cn/dataportal/cn/support/dataset.html?code=FY4B-_AGRI--_N_DISK_1330E_L2-_CPD-_MULT_NOM_YYYYMMDDhhmmss_YYYYMMDDhhmmss_4000M_V0001.NC) — product class, level, nominal projection, resolution, format and retrieval-purpose description.
 - [FY-4B data overview](https://data.nsmc.org.cn/DataPortal/cn/data/dataset.html?satelliteCode=FY4B) — indexed coverage/count summary for FY-4B datasets.
 - [AGRI instrument and product documentation index](https://sac347.nsmc.org.cn/nsmc/cn/instrument/AGRI.html) — instrument cadence, product portal and public format-document links.
 - [NSMC data-service FAQ](https://data.nsmc.org.cn/DataPortal/cn/support/faq.html) — account, download/order and service conditions.
+- [NSMC document search](https://satellite.nsmc.org.cn/DataPortal/cn/support/searchdoc.html) — searched for a CPD format manual.
 - [FY-4B product introduction](https://sac347.nsmc.org.cn/nsmc/cn/theme/FY4B_product.html) — general instrument/product descriptions.
 
 ## Not established
