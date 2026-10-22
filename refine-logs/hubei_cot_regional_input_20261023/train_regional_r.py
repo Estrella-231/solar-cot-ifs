@@ -71,7 +71,10 @@ def main():
     scaler = torch.cuda.amp.GradScaler(enabled=not a.witness_only)
     binding = dict(pack_hash_file_sha256=sha(a.pack/'SHA256.json'), roles_sha256=sha(a.roles),
                    model_source_sha256=sha(Path(__file__).with_name('regional_model.py')),
-                   global_batch=128, batches_per_epoch=batches, max_epochs=50, seed=42)
+                   trainer_source_sha256=sha(__file__),
+                   global_batch=128, batches_per_epoch=batches, max_epochs=50, seed=42,
+                   optimizer_contract=dict(name='AdamW',initial_lr=1e-3,weight_decay=1e-4),
+                   loss_contract='global valid-pixel Huber(log1p COT), delta0.1',gradient_clip=5.)
     start_epoch = 0; step = 0; best = float('inf'); stale = 0; best_epoch = -1
     best_model = None
     if a.resume:
