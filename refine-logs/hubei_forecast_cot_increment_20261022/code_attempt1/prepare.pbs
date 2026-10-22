@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -N cotincprep
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/prepare_attempt1.log
+set -euo pipefail
+EXP=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+/public/home/slfu/miniconda3/envs/swc/bin/python "$EXP/code_attempt1/prepare.py" --pack "$BASE/GHI_pack_attempt12" --bank "$BASE/history_cot_forecast_ghi_20261022/history_bank_attempt1" --out "$EXP/prepared_attempt1"

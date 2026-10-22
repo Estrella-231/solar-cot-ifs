@@ -1,0 +1,127 @@
+{
+  "station": "Mizhuang",
+  "seed": 43,
+  "epochs": 30,
+  "batch": 1536,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "eta_min": 1e-05,
+  "selection": "G0/G1 F_select; G2/G3 C_select only",
+  "data_meta": {
+    "base_norm": {
+      "fit_split": "train only",
+      "future_agri_mean": [
+        0.2532385911466527,
+        0.2652873679369798,
+        0.30966061603547257,
+        0.03337759711698025,
+        0.21042126659554675,
+        0.1541224951795616,
+        236.93674779091035,
+        244.3928231492442,
+        252.84942076523402,
+        272.54677065433805,
+        273.7127343144435,
+        271.7877791330064,
+        258.0530167695869
+      ],
+      "future_agri_std": [
+        0.16897918244780635,
+        0.19310813199835483,
+        0.17630986325993953,
+        0.03968170061909369,
+        0.10813484764659437,
+        0.08685380057175604,
+        5.741540208794291,
+        6.964265174813831,
+        8.73609966198348,
+        16.851434827401736,
+        17.55201316325355,
+        17.272085086912917,
+        11.551098249253783
+      ],
+      "history_agri_mean": [
+        0.25844795463480735,
+        0.2700618105183187,
+        0.3028555443855007,
+        0.031506631979607645,
+        0.21220337893750052,
+        0.15610434241848067,
+        237.00059731344942,
+        244.72407975653522,
+        253.38148599319004,
+        273.0631535333285,
+        274.25921586912165,
+        272.4099204725428,
+        258.3939947869438
+      ],
+      "history_agri_std": [
+        0.17197966459817218,
+        0.19734719847115062,
+        0.18334387762618987,
+        0.04772458073870866,
+        0.11585190297755701,
+        0.090037121669204,
+        5.797387937288073,
+        7.177101106465771,
+        8.945481962002347,
+        17.406731082297675,
+        18.13539615711487,
+        17.78094750277073,
+        11.730246819305732
+      ],
+      "history_cot_log1p_mean": 1.5505058841735795,
+      "history_cot_log1p_std": 1.3983022006979098,
+      "history_cot_fit_support": "valid day_mask>0.5 and cosSOZ>cos80 pixels only; invalid inputs set to standardized zero in both arms",
+      "history_norm_frame_count": 3854,
+      "station_center_rc_in_patch": [
+        7,
+        10
+      ]
+    },
+    "future_cot_norm": {
+      "fit": "C_fit only",
+      "log1p_mean": 1.7907278199363212,
+      "log1p_std": 1.269505533998485
+    },
+    "role_counts": {
+      "C_fit": 2641,
+      "C_select": 2752,
+      "F_fit": 34514,
+      "F_select": 2014,
+      "purged": 8324,
+      "val": 5087
+    },
+    "role_dates": {
+      "C_fit": 12,
+      "C_select": 12,
+      "F_fit": 161,
+      "F_select": 12,
+      "purged": 38,
+      "val": 22
+    },
+    "cot_feature_slot": [
+      279,
+      297
+    ],
+    "fusion_feature_dim": 308,
+    "row_sha256": "deff06422167dac926fe7169473f24a20038facea4e3be136adf743684b595c4",
+    "arrays": {
+      "future": "b7858bdec49139a4b5d0c9fb1d7ea3620388b4481b1d4022c8ce2c56d49381de",
+      "history": "ca3c5a0852a31a0311e365730b85987e1cdf3f998a1a14903d85f5c1fc5c3b1f",
+      "cot": "a9d4baa05b14cb723caccbabf1dc51ab582fc1c840b4ca0943f4ba4c4387f689",
+      "ghi": "3f06be32ec9466084afb594231a4b848d1095c191f595374189feaa69dbc042f",
+      "clear": "647d6713722b02e5bd7fac6dce78304399c7ea1b7ee2a2175e8f009a2162eee2",
+      "fusion_features": "32f23f8b9e63caef18bbaad4e0c4ffd5b4311d50a899b926b13c018194d9ad56",
+      "forecast_available": "620995a1e198fd0a9e5063c96be96b2c99038075cbf617c0cb54cfdacfbf6bd9",
+      "roles": "c1ea282e8b7a0973ab7d791abfe3057c576e8e642fbb9c55770d4d3c53ab7725"
+    },
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "trainer_sha256": "54044a1f2312d9a28fcef3e1d6c6da84e84e6fc6c33279666246096c86d72893",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "physical_gpu": "1",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

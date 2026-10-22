@@ -1,0 +1,127 @@
+{
+  "station": "Wangzhai",
+  "seed": 42,
+  "epochs": 30,
+  "batch": 1536,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "eta_min": 1e-05,
+  "selection": "G0/G1 F_select; G2/G3 C_select only",
+  "data_meta": {
+    "base_norm": {
+      "fit_split": "train only",
+      "future_agri_mean": [
+        0.2569844662220098,
+        0.2697947617384539,
+        0.3134583613757918,
+        0.03449155490313254,
+        0.20835756840631736,
+        0.15296497798499814,
+        236.8984272719065,
+        244.26043728185397,
+        252.5753145001101,
+        271.96702386740145,
+        273.1415272337329,
+        271.2040636699988,
+        257.71730225221376
+      ],
+      "future_agri_std": [
+        0.17124320829444675,
+        0.1963560545079426,
+        0.17920477887027056,
+        0.04001752492300413,
+        0.10725720944697523,
+        0.08649972949266678,
+        5.616377553189642,
+        6.83268155956358,
+        8.643747331002494,
+        16.81779447560457,
+        17.516146912078128,
+        17.1953215186476,
+        11.450008313111171
+      ],
+      "history_agri_mean": [
+        0.26447397474628215,
+        0.27524977712505855,
+        0.30221316487828176,
+        0.03315019023251972,
+        0.20581360406122595,
+        0.15317380459202784,
+        236.9730930281946,
+        244.59329912683694,
+        253.12372572355767,
+        272.36008104007044,
+        273.51880724865845,
+        271.7101831775695,
+        258.0512306039346
+      ],
+      "history_agri_std": [
+        0.17582495338894014,
+        0.20352156001650376,
+        0.19179852572129172,
+        0.049965197823483076,
+        0.11658567926101795,
+        0.09081829606478077,
+        5.824381298524324,
+        7.272671977049747,
+        9.144473247143344,
+        17.51203875070143,
+        18.2566447649148,
+        17.92753685462407,
+        11.899617705722358
+      ],
+      "history_cot_log1p_mean": 1.5954520859080603,
+      "history_cot_log1p_std": 1.4022052733151487,
+      "history_cot_fit_support": "valid day_mask>0.5 and cosSOZ>cos80 pixels only; invalid inputs set to standardized zero in both arms",
+      "history_norm_frame_count": 3926,
+      "station_center_rc_in_patch": [
+        9,
+        8
+      ]
+    },
+    "future_cot_norm": {
+      "fit": "C_fit only",
+      "log1p_mean": 1.8112591720794913,
+      "log1p_std": 1.315402571637292
+    },
+    "role_counts": {
+      "C_fit": 2590,
+      "C_select": 2602,
+      "F_fit": 35881,
+      "F_select": 2073,
+      "purged": 8170,
+      "val": 4883
+    },
+    "role_dates": {
+      "C_fit": 12,
+      "C_select": 12,
+      "F_fit": 162,
+      "F_select": 12,
+      "purged": 37,
+      "val": 21
+    },
+    "cot_feature_slot": [
+      279,
+      297
+    ],
+    "fusion_feature_dim": 308,
+    "row_sha256": "f58d20da00ecef7b1ed21df22fd364e9d7980a6f69759b4c28849e6f412d7f56",
+    "arrays": {
+      "future": "ac29fe1279d6d206087156a661afbf5b80dc99ab329f514ec8efd04d1fd8488c",
+      "history": "eb0afcd63b939ec6fad575e07b51591d7585ad15293e95649f635f4efd704619",
+      "cot": "216082414cba0ad3333e2ed1a3b6bd3588c153efa6109679bab8b512bd377888",
+      "ghi": "ef829611787694cd3de3dc11dad4e648b57d92958bf03249649a5a04a82ce232",
+      "clear": "12fbd56bb8e2fe2d7d5b7f3215b8d359f106465e88254a2245150cd9960ac3bc",
+      "fusion_features": "de44dd8cec1a11b15c15eaedf1614bdb0d4e354eb5856c24ca09db1c5b79d3e5",
+      "forecast_available": "fc907f98992f6b61f0997dd4a3ca12cff37147348b2d82a43c06cfcf32a201e5",
+      "roles": "dc71ed3e9c14aabfab973b363fcb0777f4e6f9b7bbd5f3f53c85cdad063eeda5"
+    },
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "trainer_sha256": "54044a1f2312d9a28fcef3e1d6c6da84e84e6fc6c33279666246096c86d72893",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "physical_gpu": "1",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

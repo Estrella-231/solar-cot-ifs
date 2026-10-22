@@ -1,0 +1,127 @@
+{
+  "station": "Niushou",
+  "seed": 43,
+  "epochs": 30,
+  "batch": 1536,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "eta_min": 1e-05,
+  "selection": "G0/G1 F_select; G2/G3 C_select only",
+  "data_meta": {
+    "base_norm": {
+      "fit_split": "train only",
+      "future_agri_mean": [
+        0.25877444199737565,
+        0.27176329267326993,
+        0.3159000276200421,
+        0.034930032429933915,
+        0.2088432655369394,
+        0.1534073626970123,
+        236.85161971644118,
+        244.20114216982293,
+        252.44611778976338,
+        271.5465344840404,
+        272.6855953930257,
+        270.786703796763,
+        257.4392277626705
+      ],
+      "future_agri_std": [
+        0.17172099263829213,
+        0.196459326403162,
+        0.17867831999809464,
+        0.040505141419964925,
+        0.10722030254264114,
+        0.08647057079942574,
+        5.693944911038464,
+        6.9360912561302746,
+        8.748364885529794,
+        16.84494561073413,
+        17.56863319728101,
+        17.26027558821843,
+        11.528255864550289
+      ],
+      "history_agri_mean": [
+        0.26309209582008586,
+        0.2760822967636807,
+        0.31573363225043355,
+        0.033387978242411964,
+        0.20952272757923837,
+        0.15363794156075858,
+        236.9651796750612,
+        244.4837170829369,
+        253.04710853865535,
+        272.10687751503497,
+        273.28239587031965,
+        271.5081936223888,
+        257.903249168439
+      ],
+      "history_agri_std": [
+        0.17835582537069378,
+        0.20530596929475928,
+        0.18770035651345537,
+        0.05051592788880589,
+        0.11614776369074332,
+        0.09132454008778104,
+        5.860219472903575,
+        7.317701349711093,
+        9.196184070192794,
+        17.497757156016434,
+        18.265209985724272,
+        17.943718491260345,
+        11.962424294785308
+      ],
+      "history_cot_log1p_mean": 1.6076881126372422,
+      "history_cot_log1p_std": 1.400695828223867,
+      "history_cot_fit_support": "valid day_mask>0.5 and cosSOZ>cos80 pixels only; invalid inputs set to standardized zero in both arms",
+      "history_norm_frame_count": 3944,
+      "station_center_rc_in_patch": [
+        8,
+        6
+      ]
+    },
+    "future_cot_norm": {
+      "fit": "C_fit only",
+      "log1p_mean": 1.8177829194333144,
+      "log1p_std": 1.3033268608575186
+    },
+    "role_counts": {
+      "C_fit": 2691,
+      "C_select": 2912,
+      "F_fit": 35868,
+      "F_select": 2061,
+      "purged": 8422,
+      "val": 5305
+    },
+    "role_dates": {
+      "C_fit": 12,
+      "C_select": 12,
+      "F_fit": 163,
+      "F_select": 12,
+      "purged": 38,
+      "val": 22
+    },
+    "cot_feature_slot": [
+      279,
+      297
+    ],
+    "fusion_feature_dim": 308,
+    "row_sha256": "63d4ef2f82464964b8416d0b4872f7f0ee9dda08815806a2121a743339f551d1",
+    "arrays": {
+      "future": "e4e986d3a7f162d592aed47235c2902d0128aed86b7477b67b3393dac6532910",
+      "history": "84dce8bb02a9b033f57cd3f4d30203018d4988e5d44e90a8944a01c14de9868d",
+      "cot": "dc90d3db3caa030259504b94dd5553f1a333e9bd81a6a75f8c9bd9d5254be0bb",
+      "ghi": "181de894e51b92f6df62b1d5e5589ad7edce8f0cb0f1f975de56af5cbf7de2fa",
+      "clear": "fd4cae73a1287fffc124c2cd74668d764c72ff8f69a309efae3ad3ff1c51cba6",
+      "fusion_features": "1292e84df414e71477529455484268bf595233275c0dadfb71ddedd8259b413d",
+      "forecast_available": "94ba8a938a91c11bac2499cdf62b599982fcabd0a266c019238cfc22b795871c",
+      "roles": "03be9e5bb4d1aca0c250f9ee771c2286325cd9e0002480b9d781c7d1e6d3deb0"
+    },
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "trainer_sha256": "54044a1f2312d9a28fcef3e1d6c6da84e84e6fc6c33279666246096c86d72893",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "physical_gpu": "4",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

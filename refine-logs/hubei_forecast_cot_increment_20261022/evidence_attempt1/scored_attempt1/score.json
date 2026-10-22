@@ -1,0 +1,161 @@
+{
+  "state": "COMPLETE_FP64_PAIRED_VALIDATION_SCORE",
+  "scope": "development validation, no independent test",
+  "equal_station_equal_seed_rmse": {
+    "G0": 105.59526991743428,
+    "G1": 103.66991747704496,
+    "G2": 103.78294612750922,
+    "G3": 103.8084912290716
+  },
+  "comparisons": {
+    "G1_minus_G0": {
+      "rmse_difference": -1.925352440389318,
+      "relative_rmse_reduction_percent": 1.823332088544083,
+      "ci95_date_block": [
+        -4.734324322064453,
+        0.6704442948870067
+      ],
+      "by_station": [
+        {
+          "station": "Niushou",
+          "relative_change_percent": -0.7406289331652105
+        },
+        {
+          "station": "Wangzhai",
+          "relative_change_percent": -3.0987423237808454
+        },
+        {
+          "station": "Mizhuang",
+          "relative_change_percent": -1.5558175263943208
+        }
+      ],
+      "improving_seed_count": 3,
+      "passes_statistical_and_site_gate": false
+    },
+    "G3_minus_G2": {
+      "rmse_difference": 0.025545101562386208,
+      "relative_rmse_reduction_percent": -0.02461396839803509,
+      "ci95_date_block": [
+        -0.0031338430108398536,
+        0.05862478832578011
+      ],
+      "by_station": [
+        {
+          "station": "Niushou",
+          "relative_change_percent": 0.03660553772559805
+        },
+        {
+          "station": "Wangzhai",
+          "relative_change_percent": 0.04830714201058406
+        },
+        {
+          "station": "Mizhuang",
+          "relative_change_percent": -0.007698687780277602
+        }
+      ],
+      "improving_seed_count": 0,
+      "passes_statistical_and_site_gate": false
+    },
+    "G3_minus_G1": {
+      "rmse_difference": 0.13857375202664457,
+      "relative_rmse_reduction_percent": -0.1336682379990517,
+      "ci95_date_block": [
+        -0.4896553107426815,
+        1.0007177586207432
+      ],
+      "by_station": [
+        {
+          "station": "Niushou",
+          "relative_change_percent": 0.41761243409765836
+        },
+        {
+          "station": "Wangzhai",
+          "relative_change_percent": 0.3130136123884686
+        },
+        {
+          "station": "Mizhuang",
+          "relative_change_percent": -0.2758939283304507
+        }
+      ],
+      "improving_seed_count": 0,
+      "passes_statistical_and_site_gate": false
+    },
+    "G2_minus_G1": {
+      "rmse_difference": 0.11302865046425836,
+      "relative_rmse_reduction_percent": -0.10902743362295464,
+      "ci95_date_block": [
+        -0.5064955097156734,
+        0.9484225995248713
+      ],
+      "by_station": [
+        {
+          "station": "Niushou",
+          "relative_change_percent": 0.38086747778380836
+        },
+        {
+          "station": "Wangzhai",
+          "relative_change_percent": 0.26457865998887886
+        },
+        {
+          "station": "Mizhuang",
+          "relative_change_percent": -0.2682158896540887
+        }
+      ],
+      "improving_seed_count": 1,
+      "passes_statistical_and_site_gate": false
+    },
+    "G3_minus_G0": {
+      "rmse_difference": -1.7867786883626735,
+      "relative_rmse_reduction_percent": 1.6921010664206593,
+      "ci95_date_block": [
+        -4.815472582252615,
+        1.1604908752086367
+      ],
+      "by_station": [
+        {
+          "station": "Niushou",
+          "relative_change_percent": -0.32610945758296817
+        },
+        {
+          "station": "Wangzhai",
+          "relative_change_percent": -2.795428196678651
+        },
+        {
+          "station": "Mizhuang",
+          "relative_change_percent": -1.8274190486335495
+        }
+      ],
+      "improving_seed_count": 3,
+      "passes_statistical_and_site_gate": false
+    }
+  },
+  "target_dates": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302",
+    "20260420",
+    "20260421",
+    "20260503",
+    "20260504",
+    "20260628",
+    "20260629"
+  ],
+  "paired_station_seed_rows": 45825,
+  "unique_station_rows": 15275,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "source_manifest_sha256": "f72b236a2607b8f6aa01eff6070694404d8dbd4eb8e3221f9592365e5db3ab29"
+}

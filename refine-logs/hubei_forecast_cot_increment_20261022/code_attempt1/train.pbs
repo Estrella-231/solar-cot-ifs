@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -N cotinc4gpu
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=32:gpus=4
+#PBS -l walltime=03:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022/train_attempt1.log
+set -euo pipefail
+EXP=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_forecast_cot_increment_20261022
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+test -f "$EXP/prepared_attempt1/PREPARATION.json"
+test ! -e "$EXP/training_attempt1"
+GPU_TEXT=$(qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, -)
+IFS=, read -r -a GPU_IDS <<< "$GPU_TEXT"
+test "${#GPU_IDS[@]}" -eq 4
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,uuid,name,memory.used,memory.total,utilization.gpu --format=csv > "$EXP/resource_attempt1.txt"
+"$PY" "$EXP/code_attempt1/preflight.py" --prepared "$EXP/prepared_attempt1" --gpus "$GPU_TEXT" --output "$EXP/PREFLIGHT_attempt1.json"
+LOCAL=/dev/shm/hubei_cot_increment_${PBS_JOBID%%.*}
+test ! -e "$LOCAL"
+mkdir "$LOCAL"
+cp -a "$EXP/prepared_attempt1" "$LOCAL/prepared"
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+"$PY" "$EXP/code_attempt1/run.py" --prepared "$LOCAL/prepared" --gpus "$GPU_TEXT" --out "$EXP/training_attempt1"
+"$PY" "$EXP/code_attempt1/score.py" --training "$EXP/training_attempt1" --out "$EXP/scored_attempt1"
+echo "FOUR_ARM_EXPERIMENT_COMPLETE job=$PBS_JOBID gpus=$GPU_TEXT"
