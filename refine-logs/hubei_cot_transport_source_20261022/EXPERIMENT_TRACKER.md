@@ -122,3 +122,10 @@ A read-only inventory found that the reachable `Data_Pool_3` mount exposes only 
 - Fresh workstation probes using the configured `FD-201` and `FD-107` routes reached TCP port 22 but both remote endpoints closed SSH before any command ran. The reachable `zjnu-hpc` login (`tc6000`) returned successfully, but neither candidate original CPP root exists on that host.
 - This confirms the current route/mount blocker only; it is not evidence that the CPP archive is absent upstream. No payloads were opened and no PBS/GPU job was submitted. Keep regional G1/G2 and downstream regional COT training gated until the source route or a verified train/validation export is available.
 - Evidence: `FD_ROUTE_RECHECK_20261022.md`.
+
+## Official NSMC alternative source route (2026-10-22)
+
+- Public catalogue review identified FY-4B AGRI L2 `CPD` (daytime cloud particle/optical/microphysical properties, full disk) as a candidate official alternative. The official data overview also lists overlapping FY-4B AGRI L1 4-km archive coverage for the frozen 2025-08 through 2026-05 train/validation period.
+- CPD's exact optical-depth field, unit, QA semantics, format/version and date coverage are not yet verified: the accessible AGRI documentation index exposes format links for related products but none for CPD. The metadata cannot pass the full-resolution source gate.
+- The NSMC FAQ requires an audited real-name account for orders/downloads; no login, order, download, or test/buffer access was attempted. Next: obtain CPD format documentation and inspect a small train-only sample/header, then inventory permitted dates and exact time/grid joins before considering any GPU work.
+- No PBS/GPU task was submitted. For any later long run, benchmark 2/4 GPUs and expand only if throughput improves; preserve global batch and update count. Details and public links: `OFFICIAL_NSMC_SOURCE_ROUTE_AUDIT_20261022.md`.
