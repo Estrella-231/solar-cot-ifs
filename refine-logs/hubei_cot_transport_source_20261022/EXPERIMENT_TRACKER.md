@@ -150,3 +150,11 @@ A read-only inventory found that the reachable `Data_Pool_3` mount exposes only 
 
 - Rechecked `FD-201` from the workstation: SSH was closed before a command ran. Rechecked TCP/22 from `zjnu-hpc`: timed out. This is a route failure, not evidence that the original CPP archive is absent.
 - No model run or GPU submission is justified until either the read-only CPP route returns or the official train-only CPD sample is made available for field/QC/grid inspection. Existing station-patch COT models remain gate-failed and frozen; do not route them into GHI training.
+
+### Live source and resource recheck (2026-10-22 08:56 CST)
+
+- A fresh read-only SSH retry from the workstation again reached neither `FD-201` nor `FD-107`; both closed the connection before command execution. This is unchanged route failure, not evidence that the archive is absent.
+- `zjnu-hpc` returned `qstat -fx -u slfu` with no unfinished `slfu` jobs. `pbsnodes` lists allocations from jobs `213684` and `213751` on node22 and `213683` on node23; the node records do not expose per-GPU free status. No GPU availability is inferred and no task was submitted.
+- A fresh official NSMC documentation search still exposes no FY-4B CPD-specific format guide. A generic FY-4 cloud-optics introduction found in search is FY-4A material, so it cannot establish the FY-4B CPD field, unit, QC, or projection contract.
+- The 16x16 pilot's completed fixed-global-batch profile remains the only relevant throughput evidence: 1/2/4 A800s measured 2,041.58/1,845.11/1,572.77 samples/s. Thus multi-GPU is not appropriate for that small model; the future full-region workload must be profiled separately after the CPD/CPP source gate passes.
+- Current state remains `G1 BLOCKED / G1S GATE NOT PASSED`; no retraining or paired GHI experiment is authorized by these source/resource checks. Test and buffer remain closed.
