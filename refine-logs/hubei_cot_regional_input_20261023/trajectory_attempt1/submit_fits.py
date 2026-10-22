@@ -5,9 +5,9 @@ P=Path(__file__).resolve().parent;BASE=P.parent
 spec=importlib.util.spec_from_file_location('regional_queue',BASE/'submit_profile.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 receipt=P/'FITS_SUBMISSION_attempt1.json';intent=P/'FITS_SUBMISSION_INTENT_attempt1.json'
 assert not receipt.exists() and not intent.exists()
-profile=json.loads((P/'PROFILE_DECISION_attempt1.json').read_text());assert profile['state']=='PASS_TRAJECTORY_2_4_GPU_CORRECTNESS_AND_SPEED'
+profile=json.loads((P/'PROFILE_DECISION_attempt2.json').read_text());assert profile['state']=='PASS_TRAJECTORY_2_4_GPU_CORRECTNESS_AND_SPEED'
 world=profile['selected_world'];assert world in (2,4)
-profile_job=json.loads((P/'PROFILE_SUBMISSION_attempt1.json').read_text())['job_id']
+profile_job=json.loads((P/'PROFILE_SUBMISSION_attempt2.json').read_text())['job_id']
 status=subprocess.run(['qstat','-f',profile_job],text=True,capture_output=True)
 before=module.queue();assert not any(r['id']==profile_job for r in before)
 if status.returncode:

@@ -2,7 +2,7 @@
 import argparse,hashlib,json,os,subprocess,sys
 from pathlib import Path
 ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);ap.add_argument('--world',type=int,required=True);a=ap.parse_args()
-decision=json.loads((a.root/'PROFILE_DECISION_attempt1.json').read_text())
+decision=json.loads((a.root/'PROFILE_DECISION_attempt2.json').read_text())
 assert decision['state']=='PASS_TRAJECTORY_2_4_GPU_CORRECTNESS_AND_SPEED' and decision['selected_world']==a.world
 pack=json.loads((a.root/'PAIR_PACK_COMPLETE.json').read_text())['pack']
 out=a.root/'fits_attempt1';out.mkdir(exist_ok=False);finished=[]

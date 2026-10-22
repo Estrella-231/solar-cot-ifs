@@ -21,6 +21,7 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--pack',type=Path,required=True);ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--arm',choices=['full','repeat_last'],required=True);ap.add_argument('--seed',type=int,required=True)
     ap.add_argument('--resume',type=Path);ap.add_argument('--profile-only',action='store_true');ap.add_argument('--witness-only',action='store_true')
+    ap.add_argument('--witness-init',type=Path)
     a=ap.parse_args();assert not(a.profile_only and a.witness_only)
     torch.set_num_threads(1);dist.init_process_group('nccl');rank=dist.get_rank();world=dist.get_world_size()
     assert world in (2,4) and 128%world==0
@@ -85,10 +86,20 @@ def main():
     ids=np.resize(indices['fit'],128);localids=ids[rank*128//world:(rank+1)*128//world]
     if a.profile_only or a.witness_only:
         assert a.resume is None
+        shared_state_sha256=None
+        if a.witness_init:
+            assert a.witness_only
+            ck=torch.load(a.witness_init,map_location='cpu')
+            for key in ['pack_hash_file_sha256','model_source_sha256','arm','seed','global_batch']:
+                assert ck['binding'][key]==binding[key],key
+            model.load_state_dict(ck['model']);opt.load_state_dict(ck['optimizer'])
+            scheduler.load_state_dict(ck['scheduler']);scaler.load_state_dict(ck['scaler'])
+            shared_state_sha256=sha(a.witness_init)
         ddp.train()
-        for _ in range(3):update(localids)
+        for _ in range(0 if a.witness_init else 3):update(localids)
         torch.cuda.synchronize();dist.barrier();started=time.monotonic();torch.cuda.reset_peak_memory_stats()
-        for _ in range(10):num,count=update(localids)
+        timed_steps=1 if a.witness_init else 10
+        for _ in range(timed_steps):num,count=update(localids)
         torch.cuda.synchronize();seconds=torch.tensor(time.monotonic()-started,device=device);dist.all_reduce(seconds,op=dist.ReduceOp.MAX)
         totals=torch.tensor([num,count],device=device,dtype=torch.float64);dist.all_reduce(totals)
         if rank==0:
@@ -101,9 +112,9 @@ def main():
         error=torch.tensor(err,device=device);dist.all_reduce(error,op=dist.ReduceOp.MAX);assert error<1e-7,float(error)
         memory=torch.tensor(torch.cuda.max_memory_allocated(),device=device);dist.all_reduce(memory,op=dist.ReduceOp.MAX)
         if rank==0:write(a.out/'PROFILE.json',dict(state='PASS_PROFILE_AND_FULL_STATE_REPLAY',world=world,global_batch=128,
-            frames_per_second=1280/float(seconds),seconds=float(seconds),memory_bytes=int(memory),resume_max_abs=float(error),
+            frames_per_second=128*timed_steps/float(seconds),seconds=float(seconds),memory_bytes=int(memory),resume_max_abs=float(error),
             global_loss=float(totals[0]/totals[1]),global_count=int(totals[1]),precision='fp32' if a.witness_only else 'fp16 AMP',
-            outer_val_read=False,training_started=False))
+            outer_val_read=False,training_started=False,shared_state_sha256=shared_state_sha256))
         dist.destroy_process_group();return
     if best_model is None:
         best=evaluate();best_model={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}

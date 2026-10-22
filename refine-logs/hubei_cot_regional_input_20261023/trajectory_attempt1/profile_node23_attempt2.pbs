@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N trajprofile
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8:gpus=4
+#PBS -l walltime=00:40:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/profile_attempt2.log
+set -euo pipefail
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023
+PACK=/dev/shm/hubei_regional_r_pack_20261023_attempt2
+export CUDA_VISIBLE_DEVICES=$(qstat -f "$PBS_JOBID" | grep -oE 'node23-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, -)
+test "$(echo "$CUDA_VISIBLE_DEVICES" | tr ',' '\n' | wc -l)" -eq 4
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB=$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib
+export LD_PRELOAD="$CUDNN_LIB/libcudnn_ops_infer.so.8:$CUDNN_LIB/libcudnn_ops_train.so.8:$CUDNN_LIB/libcudnn_cnn_infer.so.8:$CUDNN_LIB/libcudnn_cnn_train.so.8:$CUDNN_LIB/libcudnn_adv_infer.so.8:$CUDNN_LIB/libcudnn_adv_train.so.8:$CUDNN_LIB/libcudnn.so.8"
+python "$BASE/check_allocated_gpus.py"
+for N in 2 4; do
+ python -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node="$N" "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/train_trajectory.py" --pack /dev/shm/hubei_trajectory_pair_pack_20261023_attempt2 --out "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/profile${N}_fp32_attempt2" --arm full --seed 42 --witness-only --witness-init "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/profile2_fp32_attempt1/checkpoint.pt"
+done
+for N in 2 4; do
+ python -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node="$N" "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/train_trajectory.py" --pack /dev/shm/hubei_trajectory_pair_pack_20261023_attempt2 --out "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/profile${N}_amp_attempt2" --arm full --seed 42 --profile-only
+done
+python "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_attempt1/compare_profiles.py" --attempt 2
