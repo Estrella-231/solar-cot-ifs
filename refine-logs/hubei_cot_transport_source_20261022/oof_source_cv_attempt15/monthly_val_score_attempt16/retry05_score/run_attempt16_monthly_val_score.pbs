@@ -1,0 +1,115 @@
+#!/bin/bash
+#PBS -N cot_oof16_score
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/oof_source_cv_attempt15/monthly_val_score_attempt16/retry05_score/logs/pbs.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022
+ATTEMPT15=$BASE/oof_source_cv_attempt15
+ATTEMPT16=$ATTEMPT15/monthly_val_score_attempt16
+SOURCE_ROOT=$ATTEMPT16/retry04
+SCORE_ROOT=$ATTEMPT16/retry05_score
+CACHE_ATTEMPT5=$BASE/cache_attempt5
+CACHE=$CACHE_ATTEMPT5/cache
+TRAINING_ROOT=$ATTEMPT15/training
+PREDICTION_ROOT=$SOURCE_ROOT/predictions
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+
+trap 'status=$?; echo SCORE_ONLY_ERR line=$LINENO command=$BASH_COMMAND status=$status; exit $status' ERR
+echo "ATTEMPT16_FROZEN_MONTHLY_SCORE_ONLY_START job=$PBS_JOBID host=$(hostname)"
+test -d "$PREDICTION_ROOT"
+test -f "$CACHE/cache_report.json"
+test -f "$CACHE_ATTEMPT5/cache_audit/cache_audit.json"
+test -f "$SCORE_ROOT/score_monthly_validation_attempt16.py"
+test -f "$SCORE_ROOT/infer_frozen_monthly_validation.py"
+test ! -e "$SCORE_ROOT/monthly_validation_score.json"
+test ! -e "$SCORE_ROOT/score_execution_receipt.json"
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$SCORE_ROOT:$ATTEMPT15/scripts:$PROJECT/scripts"
+cd "$SCORE_ROOT"
+
+"$PY" - "$CACHE" "$CACHE_ATTEMPT5/cache_audit/cache_audit.json" "$TRAINING_ROOT" "$PREDICTION_ROOT" "$SOURCE_ROOT/infer_frozen_monthly_validation.py" <<'PY'
+import hashlib, json, pathlib, sys
+cache, audit_path, training_root, prediction_root, infer_script = map(pathlib.Path, sys.argv[1:])
+report = json.load(open(cache / "cache_report.json", encoding="utf-8"))
+audit = json.load(open(audit_path, encoding="utf-8"))
+assert report["state"] == "COMPLETE_HUBEI_STATION_PATCH_COT_GEOMETRY_CACHE_TRAINVAL_ONLY"
+assert audit["state"] == "PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED"
+for obj in (report, audit):
+    assert obj.get("test_payloads_read") == 0 and obj.get("buffer_payloads_read") == 0
+split = report["split"]
+assert split["val"] == 1855 and split["test_payloads_read"] == split["buffer_payloads_read"] == 0
+assert split["train"] == 20206
+names = [f"{arm}_seed{seed}" for arm in ("fullr_control", "oof_train_source") for seed in (42,43,44)]
+manifest = {"state":"PASS_FROZEN_PREDICTIONS_READY_FOR_CPU_SCORE_ONLY",
+            "inference_source_job":"215551.tc6000",
+            "prediction_source_root":str(prediction_root),
+            "test_payloads_read":0,"buffer_payloads_read":0,"optimizer_updates":0,
+            "predictions":{}}
+for name in names:
+    npz, side = prediction_root / f"{name}.npz", prediction_root / f"{name}.json"
+    assert npz.is_file() and side.is_file(), name
+    rec = json.load(open(side, encoding="utf-8"))
+    assert rec["state"] == "COMPLETE_FROZEN_MONTHLY_VALIDATION_INFERENCE", name
+    assert rec["model_name"] == name, name
+    assert rec["test_payloads_read"] == rec["buffer_payloads_read"] == rec["optimizer_updates"] == 0, name
+    assert rec["future_cpp_values_or_masks_loaded_for_inference"] is False, name
+    assert rec["official_monthly_validation_cache_used_for_inference"] is True, name
+    ph = hashlib.sha256(npz.read_bytes()).hexdigest()
+    assert rec["prediction_sha256"] == ph, name
+    cp = pathlib.Path(rec["checkpoint"])
+    assert cp.is_absolute() and cp.parent.parent == training_root.resolve(), (name, cp)
+    complete = json.load(open(cp.parent / "training_complete.json", encoding="utf-8"))
+    assert complete["state"] == "COMPLETE_TRAINED_HUBEI_INTERNAL_TRAIN_DATE_HOLDOUT_COT_DIAGNOSTIC", name
+    assert complete["seed"] == int(name.rsplit("seed",1)[1]) and complete["global_step"] == 1350, name
+    assert complete["global_batch"] == 32 and complete["world_size"] == 1, name
+    assert complete.get("official_monthly_validation_payloads_read", 0) == 0, name
+    assert "official monthly validation, test, and buffer not read" in complete.get("split", ""), name
+    assert complete["test_payloads_read"] == complete["buffer_payloads_read"] == 0, name
+    ch = hashlib.sha256(cp.read_bytes()).hexdigest()
+    assert complete["best_checkpoint_sha256"] == ch and rec["checkpoint_sha256"] == ch, name
+    manifest["predictions"][name] = {"prediction_sha256":ph,"checkpoint_sha256":ch,
+                                     "receipt_sha256":hashlib.sha256(side.read_bytes()).hexdigest()}
+manifest["inference_script_sha256"] = hashlib.sha256(infer_script.read_bytes()).hexdigest()
+pathlib.Path("prediction_input_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
+print("SCORE_ONLY_PREFLIGHT_PASS: six hash-verified frozen predictions; train/val only; no future CPP in inference.")
+PY
+
+"$PY" "$SCORE_ROOT/score_monthly_validation_attempt16.py" \
+  --cache "$CACHE" \
+  --training-root "$TRAINING_ROOT" \
+  --prediction-root "$PREDICTION_ROOT" \
+  --output-dir "$SCORE_ROOT" \
+  --bootstrap 5000 \
+  --bootstrap-seed 20261022
+
+"$PY" - "$PBS_JOBID" "$SCORE_ROOT" <<'PY'
+import hashlib, json, pathlib, socket, sys
+jobid, root = sys.argv[1], pathlib.Path(sys.argv[2])
+def sha(p):
+    h=hashlib.sha256()
+    with open(p,"rb") as f:
+        for b in iter(lambda:f.read(1<<20),b""): h.update(b)
+    return h.hexdigest()
+score=json.load(open(root/"monthly_validation_score.json",encoding="utf-8"))
+assert score["state"] == "COMPLETE_FP64_FROZEN_ATTEMPT15_MONTHLY_VALIDATION_SCORE"
+assert score["test_payloads_read"] == score["buffer_payloads_read"] == score["optimizer_updates"] == 0
+receipt={"state":"COMPLETE_CPU_ONLY_SAVED_PREDICTION_SCORE",
+         "pbs_job_id":jobid,"host":socket.gethostname(),"queue":"normal",
+         "source_inference_job":"215551.tc6000","gpu_requested":False,
+         "prediction_input_manifest_sha256":sha(root/"prediction_input_manifest.json"),
+         "score_json_sha256":sha(root/"monthly_validation_score.json"),
+         "common_scored_keys_sha256":sha(root/"common_scored_keys.csv"),
+         "test_payloads_read":0,"buffer_payloads_read":0,"optimizer_updates":0,
+         "interpretation":"Frozen monthly-validation COT diagnostic against CPP retrieval reference; not independent test, full-region physical truth, or GHI evidence."}
+(root/"score_execution_receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
+print("SCORE_ONLY_RECEIPT_WRITTEN",json.dumps(receipt,ensure_ascii=False))
+PY
