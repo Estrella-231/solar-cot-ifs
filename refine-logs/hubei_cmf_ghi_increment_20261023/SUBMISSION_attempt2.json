@@ -1,0 +1,27 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 0, 0\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 88\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "server": "ZJNU college",
+  "node": "node23",
+  "gpus": 3,
+  "purpose": "C dates only, 9 frozen G0 forwards + CPU ridge; no neural-network training",
+  "hashes": {
+    "EXPERIMENT_PLAN.md": "552e06a21a19bcff95faf7135662632840c23f8afae819f1dfd495ea33326f3a",
+    "REPAIR_PROTOCOL_attempt2.md": "9a22cdceebab9b1cd5c0ce67eae65e1b02cacf5481d7342f12a77d2f8a88cb52",
+    "code_attempt2/cmf.py": "f0b54fde54ea90c8baeb5b47578f48cd528a80aa1702488b5f6dfb2ecb0e91b2",
+    "code_attempt2/screen_station.py": "2b3c34c9d0a95fcb36f026cf3a2c77cea3981c6f65fa7a26efd24708018d89de",
+    "code_attempt2/run.py": "634fdf608b6d15f689d994e7c35e97ac7aaa2881bb8cda831dfda300154ec02b",
+    "code_attempt2/score.py": "1e31fd20613210df272e859484bc359154488b1c727eefea71b54ce6259bec69",
+    "screen_attempt2.pbs": "a556d24fb63bd634d10c1fb67cf050e064b42f6e1cadf6efab6a223ead8177c6"
+  },
+  "job_id": "215761.tc6000",
+  "queue_after": [
+    {
+      "id": "215761.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=3",
+      "requested_gpus": 3
+    }
+  ],
+  "test_buffer_payloads_read": 0
+}
