@@ -1,0 +1,1 @@
+CPU attempt1 was intentionally interrupted (own PID137796) after identifying repeated full NPZ decompression inside the pair loop; no final score/paired-array file existed. analyze_slow_attempt1.py preserves original. Only caching reference arrays changed; no keys, formulas, masks or samples changed. Raw preparation and frozen R inference are retained.

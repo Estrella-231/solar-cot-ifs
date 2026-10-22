@@ -147,3 +147,11 @@ trajectory_attempt1六组训练已完成（215757 C/exit0、node23四A100，18:5
 据此新单因素日期内残差目标pilot（hubei_date_centered_cot_20261023），raw/center×无/有futureCOT，共同修复epoch0与太阳available、其余输入/初始化/预算配对。215764三A100、C/exit0、36s，36小头各60updates。仅C_select：G1 102.888750；raw无/有102.871998/102.873256；center无/有102.477216/102.504780。center有−G1=−0.383969，CI[−1.705503,+1.063972]；center有−无=+0.027564，CI[−0.428081,+0.510943]，继续条件失败。全部预测独立FP64复算差1.42e−14，封存目标变换，不开official val/新时段/test，不调中心化强度。部分修正失效缓解不等于预测COT有效，目标仍未完成。
 
 215765日期覆盖候选完成：hubei_cot_calibration_coverage_20261023。只按元数据将未进入G1 F_fit/F_select的原train日期纳入修正拟合，12天扩为50/49/50天；四组small/large×无/有futureCOT，同一G1、同归一化、同9922参数、同60完整batch更新/92160槽，step0有效。三A100、C/exit0、46s。仅C_select：G1 102.888750，small无/有102.871729/102.873089，large无/有102.570535/102.595038；large有−G1=−0.293711，CI[−1.483414,+0.820059]，large有−无=+0.024503，CI[−0.464021,+0.456084]，三seed均未胜过同容量无futureCOT。预设条件失败、候选封存；独立点分数差1.42e−14，原C前向最大差1.14e−4已通过事先数值门槛。未读official val/新时段/outerbuffer/test，不再在该C_select调小头，转回未来COT来源及条件信息的新证据核查；不重复已有离线真实图替换。目标未达成。
+
+## 同折R真实图参考及预测域COT校正准备
+
+215766在学院node23三A100完成冻结五折R推理，C/exit0、40s；原始2491帧、41104候选记录、40273共同有效站点记录。新参考与每条预测使用相同OOF R及归一化，五折重放均通过事前数值门槛。仅训练日期：C_fit持平/预测COT RMSE10.414/10.009，C_select10.674/8.995；C_select厚云召回约26%—37%。这些是同R代理参考，非CPP真值/GHI增益/独立测试。实际云图、COT/GHI轨迹和全部日期分数已保存，见hubei_matched_R_dynamics_20261023/RESULT_REPORT.md。独立math.fsum脚本补齐，目标仍未达成。
+
+接续NEXT_COT_DOMAIN_PLAN.md，新增hubei_forecast_domain_cot_20261023准备F_fit/F_select同折R监督。原train元数据112411条（F_fit106263/F_select6148）、6959帧全部可找到；F日期与原C及扩展C_fit日期不重叠。node22低优先级CPU提取已启动；尚未启动校正训练。冻结S/R/G1，不新增读取official val、新时段、outerbuffer/test。完成提取和冻结R推理后才准备校正训练；COT条件未通过不启动新GHI训练。
+
+215767现已完成F域冻结R参考：学院node23三A100（实际0/3/4），C/exit0、30秒，6959帧全量时间键、patch哈希、太阳mask及源R哈希通过独立数组审查。最大forecast重放RMSE0.000269、max0.002528 COT；未拟合任何模型。PROGRESS.md记录后续34通道输入打包及训练前step0/恢复/吞吐检查，仍无新增GHI收益。原始数据不缺，阶段状态由准备中改为参考已完成；下一项是校正器输入及小规模训练工程检查，不重复生成参考或重跑R。
