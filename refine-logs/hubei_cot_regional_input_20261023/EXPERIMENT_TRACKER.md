@@ -127,3 +127,9 @@ prepare_g4_keys.py连接本轮完整修正AGRI清单和已恢复区域CPP清单�
 trajectory_attempt1六组训练已完成（215757 C/exit0、node23四A100，18:53）。内部冻结repeat_last；215758六组预测完成，CPU参考空字段解析失败后，仅修复缺测读取并原支持复算，不重训。三seed未来COT RMSE11.3120，比SimVP→R18.1579好，但高于持平10.0433，三站及厚云均未通过预定继续条件。独立原预测FP64复算最大差3.55e−15。该候选按原协议封存，不自动开GHI，不将COT结果称作GHI收益；总目标仍未达成。
 
 已继续在训练内部select19日期进行不训练的运动归因：中等云固定输运显著高估，厚云却有改善，需区分运动与学习厚度修正，不能凭外层验证一概否定历史运动。完整证据、模型/代码与实际预测见trajectory_attempt1/RESULT_REPORT.md。test/buffer持续关闭。
+
+## 接续内部归因及GHI输入源核对
+
+215759四A100冻结重放完成、exit0；内部学习修正总体可改善，但厚云已被下调，外层输运偏薄时进一步下调造成退化。证据见trajectory_attempt1/INTERNAL_ATTRIBUTION_REPORT.md。之后仅用历史可见误差的可靠性规则CPU内部筛选未通过；未打开外层验证，不继续扫规则。
+
+新区域R也不能假定优于当前GHI来源：4778共同键下现有旧R预测COT RMSE12.6851，新区域R17.8443，日期区间跨0，三站点均不利新R。实际同S预测AGRI相差很小、几何相同，完整输入/来源/样本边界见ghi_source_followup_attempt1/RESULT_REPORT.md。保留旧R与原负结果；未启新GHI训练，目标未达成，后续回到GHI端明确新单因素及同容量控制，而非继续在旧外层验证换COT损失。

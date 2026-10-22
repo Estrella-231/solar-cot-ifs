@@ -1,0 +1,24 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 0, 0\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 91\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "node": "node23",
+  "server": "ZJNU college",
+  "gpus": 4,
+  "new_training_runs": 0,
+  "purpose": "frozen six-model train-internal thickness and motion attribution only",
+  "code_sha256": {
+    "internal_replay.py": "b23b5803811d69adf14a28abbe17f06144749e8df793c6d984edc598b08b21ce",
+    "run_internal_replay.py": "1e0ecbaafc1f33894f9f6519be24c077e0b06a9a1717852e70a1fd418eb356d3",
+    "internal_replay_node23_attempt1.pbs": "34a038f0230b06fb1deedcd27e797a582b4d00109417a04e63b96a3851a3263c"
+  },
+  "job_id": "215759.tc6000",
+  "queue_after": [
+    {
+      "id": "215759.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=4",
+      "requested_gpus": 4
+    }
+  ],
+  "test_payloads_read": 0
+}

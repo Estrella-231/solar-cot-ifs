@@ -1,0 +1,82 @@
+{
+  "state": "PAST_ONLY_RELIABILITY_INTERNAL_SCREEN_COMPLETE",
+  "methods": [
+    "persistence",
+    "transport",
+    "reliability"
+  ],
+  "main_rmse": [
+    6.938681618971152,
+    7.9199160707763125,
+    6.8876916237431445
+  ],
+  "delta_ci95": [
+    -0.679861993847502,
+    0.7979230553255464
+  ],
+  "by_site": {
+    "Niushou": [
+      6.955854520666963,
+      7.9629859692982325,
+      6.957554899845869
+    ],
+    "Wangzhai": [
+      6.873412284654713,
+      7.820586454195494,
+      6.886282658448769
+    ],
+    "Mizhuang": [
+      6.986778051591783,
+      7.97617578883521,
+      6.819237312934794
+    ]
+  },
+  "thick_n": 1095,
+  "thick_rmse": [
+    12.059391620955084,
+    9.1328184373014,
+    9.441262971355657
+  ],
+  "thick_bias": [
+    -3.680981821115881,
+    1.3894505449156551,
+    -1.0164229783155165
+  ],
+  "active_q_fraction": 0.741499277930944,
+  "q_mean": 0.25032247695196375,
+  "gates": {
+    "ci_upper_below_zero": false,
+    "every_site_not_worse": false,
+    "thick_not_worse": true
+  },
+  "may_advance_to_outer_validation": false,
+  "rows": 7617,
+  "target_dates": [
+    "20250805",
+    "20250815",
+    "20250819",
+    "20250908",
+    "20250929",
+    "20251010",
+    "20251012",
+    "20251013",
+    "20251114",
+    "20251129",
+    "20251130",
+    "20251210",
+    "20251220",
+    "20251231",
+    "20260108",
+    "20260115",
+    "20260117",
+    "20260210",
+    "20260212"
+  ],
+  "seconds": 3.6316021820530295,
+  "plan_sha256": "aacafb28440b0040e379b657d8faaca933cafc71a6fe0ce17fc183f100d651e5",
+  "code_sha256": "1df45444fe9cf4455da0bbd3b8d31bfc17d9411e34d068c1bf479dd6f2cf752c",
+  "outer_validation_payloads_read": 0,
+  "test_buffer_payloads_read": 0,
+  "GHI_labels_read": 0,
+  "note": "Internal development screening only; q uses past R-COT errors, not future CPP; no parameters fitted"
+}

@@ -1,0 +1,1252 @@
+{
+  "state": "PASS_INDEPENDENT_TRAIN_INTERNAL_REPLAY_ANALYSIS",
+  "checks": [
+    {
+      "name": "seed42_full",
+      "station_sse_recomputed": true,
+      "frame_sums_match_receipt": true,
+      "prediction_sha256": "ba2c836cbee5f29dbe5495d93d45b05bc1afae9a1423511654139c2979cdf829"
+    },
+    {
+      "name": "seed43_full",
+      "station_sse_recomputed": true,
+      "frame_sums_match_receipt": true,
+      "prediction_sha256": "253b9495d2a0cec1f5c5f8a5c4a305ea71723c6908281c450b00211170d01275"
+    },
+    {
+      "name": "seed44_full",
+      "station_sse_recomputed": true,
+      "frame_sums_match_receipt": true,
+      "prediction_sha256": "86e8a851885de691ad61ebc1cfdb3ce664194d9d0fc5e544b8e70079036cdce3"
+    },
+    {
+      "name": "seed42_repeat_last",
+      "station_sse_recomputed": true,
+      "frame_sums_match_receipt": true,
+      "prediction_sha256": "cad434d8c281dbf0102f9068d896711190882ba518ef5d4350ddcf706b621578"
+    },
+    {
+      "name": "seed43_repeat_last",
+      "station_sse_recomputed": true,
+      "frame_sums_match_receipt": true,
+      "prediction_sha256": "99f2476be4f863a06dbcda72f524b63ae7de4a362bd1e60ae6ce57db5c390b11"
+    },
+    {
+      "name": "seed44_repeat_last",
+      "station_sse_recomputed": true,
+      "frame_sums_match_receipt": true,
+      "prediction_sha256": "e7848db96c34e29043e6d10a48d75b21a85b74b4cfb18b6c7ce9d4fb31c34df4"
+    }
+  ],
+  "seed_mean": {
+    "full": {
+      "region_common": {
+        "all": {
+          "n_per_seed": 157412382,
+          "rmse_seed_mean": {
+            "persistence": 9.753995869454384,
+            "transport": 10.066426651979056,
+            "learned": 9.321376790653522
+          },
+          "bias_seed_mean": {
+            "persistence": -0.5441732575583085,
+            "transport": -0.18375690623305505,
+            "learned": -0.640245781481617
+          },
+          "mean_learned_minus_transport": -0.45648887524856246
+        },
+        "near_zero": {
+          "n_per_seed": 67208477,
+          "rmse_seed_mean": {
+            "persistence": 3.2216911569037325,
+            "transport": 3.5284349002878916,
+            "learned": 3.6660487042841834
+          },
+          "bias_seed_mean": {
+            "persistence": 0.8448029009307653,
+            "transport": 0.983739058948946,
+            "learned": 2.0368078419833378
+          },
+          "mean_learned_minus_transport": 1.0530687830343908
+        },
+        "thin": {
+          "n_per_seed": 36924766,
+          "rmse_seed_mean": {
+            "persistence": 7.073487092702941,
+            "transport": 7.876926670438334,
+            "learned": 5.925026644038372
+          },
+          "bias_seed_mean": {
+            "persistence": 1.054316807420348,
+            "transport": 1.650327108865606,
+            "learned": 2.214454781895652
+          },
+          "mean_learned_minus_transport": 0.5641276730300426
+        },
+        "moderate": {
+          "n_per_seed": 33108760,
+          "rmse_seed_mean": {
+            "persistence": 11.94700787592887,
+            "transport": 12.293418857899582,
+            "learned": 9.425151258979122
+          },
+          "bias_seed_mean": {
+            "persistence": 0.7064777670306297,
+            "transport": 1.198415940037497,
+            "learned": -0.8140437478953059
+          },
+          "mean_learned_minus_transport": -2.0124596879328074
+        },
+        "thick": {
+          "n_per_seed": 20170379,
+          "rmse_seed_mean": {
+            "persistence": 19.545420270620497,
+            "transport": 19.68955783977477,
+            "learned": 20.568932772777387
+          },
+          "bias_seed_mean": {
+            "persistence": -10.151446795695179,
+            "transport": -9.700225478840172,
+            "learned": -14.500947755634195
+          },
+          "mean_learned_minus_transport": -4.8007222767940405
+        }
+      },
+      "station_common": {
+        "all": {
+          "n_per_seed": 7617,
+          "rmse_seed_mean": {
+            "persistence": 6.733221618338365,
+            "transport": 7.765508059529087,
+            "learned": 6.327643758332332
+          },
+          "bias_seed_mean": {
+            "persistence": 0.6537418766112155,
+            "transport": 2.5377808218343527,
+            "learned": 1.509777880248402
+          },
+          "mean_learned_minus_transport": -1.0280029415859502
+        },
+        "near_zero": {
+          "n_per_seed": 3350,
+          "rmse_seed_mean": {
+            "persistence": 1.7566404158161122,
+            "transport": 1.6607055693186241,
+            "learned": 2.6998714548885983
+          },
+          "bias_seed_mean": {
+            "persistence": 0.6779622437462981,
+            "transport": 0.6236385224826231,
+            "learned": 1.7142979626414332
+          },
+          "mean_learned_minus_transport": 1.0906594401588106
+        },
+        "thin": {
+          "n_per_seed": 1945,
+          "rmse_seed_mean": {
+            "persistence": 4.413792645074073,
+            "transport": 4.284288120205384,
+            "learned": 4.0068585000067145
+          },
+          "bias_seed_mean": {
+            "persistence": -0.5424279567691621,
+            "transport": -0.4332261091195601,
+            "learned": 1.2658540690215843
+          },
+          "mean_learned_minus_transport": 1.6990801781411438
+        },
+        "moderate": {
+          "n_per_seed": 1227,
+          "rmse_seed_mean": {
+            "persistence": 10.59949920448636,
+            "transport": 16.22621360136168,
+            "learned": 10.252711872256645
+          },
+          "bias_seed_mean": {
+            "persistence": 6.352140038822685,
+            "transport": 13.49818040758889,
+            "learned": 7.813562583110655
+          },
+          "mean_learned_minus_transport": -5.684617824478241
+        },
+        "thick": {
+          "n_per_seed": 1095,
+          "rmse_seed_mean": {
+            "persistence": 12.059391620955076,
+            "transport": 9.132818237622695,
+            "learned": 10.470552780042127
+          },
+          "bias_seed_mean": {
+            "persistence": -3.6809818211158754,
+            "transport": 1.3894473896999744,
+            "learned": -5.746344762301803
+          },
+          "mean_learned_minus_transport": -7.135792152001778
+        }
+      }
+    },
+    "repeat_last": {
+      "region_common": {
+        "all": {
+          "n_per_seed": 157412382,
+          "rmse_seed_mean": {
+            "persistence": 9.753995869454384,
+            "transport": 10.066426651979056,
+            "learned": 9.244459978505565
+          },
+          "bias_seed_mean": {
+            "persistence": -0.5441732575583085,
+            "transport": -0.18375690623305505,
+            "learned": -0.5522058481242477
+          },
+          "mean_learned_minus_transport": -0.36844894189119265
+        },
+        "near_zero": {
+          "n_per_seed": 67208477,
+          "rmse_seed_mean": {
+            "persistence": 3.2216911569037325,
+            "transport": 3.5284349002878916,
+            "learned": 3.5757125921494057
+          },
+          "bias_seed_mean": {
+            "persistence": 0.8448029009307653,
+            "transport": 0.983739058948946,
+            "learned": 1.980152151104191
+          },
+          "mean_learned_minus_transport": 0.9964130921552448
+        },
+        "thin": {
+          "n_per_seed": 36924766,
+          "rmse_seed_mean": {
+            "persistence": 7.073487092702941,
+            "transport": 7.876926670438334,
+            "learned": 5.976181848198352
+          },
+          "bias_seed_mean": {
+            "persistence": 1.054316807420348,
+            "transport": 1.650327108865606,
+            "learned": 2.1685058983011234
+          },
+          "mean_learned_minus_transport": 0.5181787894355173
+        },
+        "moderate": {
+          "n_per_seed": 33108760,
+          "rmse_seed_mean": {
+            "persistence": 11.94700787592887,
+            "transport": 12.293418857899582,
+            "learned": 9.591096119768162
+          },
+          "bias_seed_mean": {
+            "persistence": 0.7064777670306297,
+            "transport": 1.198415940037497,
+            "learned": -0.6450701114493923
+          },
+          "mean_learned_minus_transport": -1.8434860514868863
+        },
+        "thick": {
+          "n_per_seed": 20170379,
+          "rmse_seed_mean": {
+            "persistence": 19.545420270620497,
+            "transport": 19.68955783977477,
+            "learned": 20.192101923674816
+          },
+          "bias_seed_mean": {
+            "persistence": -10.151446795695179,
+            "transport": -9.700225478840172,
+            "learned": -13.81833973336805
+          },
+          "mean_learned_minus_transport": -4.118114254527877
+        }
+      },
+      "station_common": {
+        "all": {
+          "n_per_seed": 7617,
+          "rmse_seed_mean": {
+            "persistence": 6.733221618338365,
+            "transport": 7.765508059529087,
+            "learned": 6.432835546903985
+          },
+          "bias_seed_mean": {
+            "persistence": 0.6537418766112155,
+            "transport": 2.5377808218343527,
+            "learned": 1.8114294642413646
+          },
+          "mean_learned_minus_transport": -0.7263513575929913
+        },
+        "near_zero": {
+          "n_per_seed": 3350,
+          "rmse_seed_mean": {
+            "persistence": 1.7566404158161122,
+            "transport": 1.6607055693186241,
+            "learned": 2.5737376110767833
+          },
+          "bias_seed_mean": {
+            "persistence": 0.6779622437462981,
+            "transport": 0.6236385224826231,
+            "learned": 1.66769647498175
+          },
+          "mean_learned_minus_transport": 1.0440579524991251
+        },
+        "thin": {
+          "n_per_seed": 1945,
+          "rmse_seed_mean": {
+            "persistence": 4.413792645074073,
+            "transport": 4.284288120205384,
+            "learned": 3.6513553076121856
+          },
+          "bias_seed_mean": {
+            "persistence": -0.5424279567691621,
+            "transport": -0.4332261091195601,
+            "learned": 0.9134605394221901
+          },
+          "mean_learned_minus_transport": 1.34668664854175
+        },
+        "moderate": {
+          "n_per_seed": 1227,
+          "rmse_seed_mean": {
+            "persistence": 10.59949920448636,
+            "transport": 16.22621360136168,
+            "learned": 11.489448924945968
+          },
+          "bias_seed_mean": {
+            "persistence": 6.352140038822685,
+            "transport": 13.49818040758889,
+            "learned": 9.183299686179025
+          },
+          "mean_learned_minus_transport": -4.314880721409866
+        },
+        "thick": {
+          "n_per_seed": 1095,
+          "rmse_seed_mean": {
+            "persistence": 12.059391620955076,
+            "transport": 9.132818237622695,
+            "learned": 9.758135836308124
+          },
+          "bias_seed_mean": {
+            "persistence": -3.6809818211158754,
+            "transport": 1.3894473896999744,
+            "learned": -4.414351074137173
+          },
+          "mean_learned_minus_transport": -5.803798463837146
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "arm": "full",
+      "seed": 42,
+      "scopes": {
+        "region_common": {
+          "all": {
+            "n": 157412382,
+            "rmse": {
+              "persistence": 9.753995869454384,
+              "transport": 10.066426651979056,
+              "learned": 9.300208334635657
+            },
+            "bias": {
+              "persistence": -0.5441732575583085,
+              "transport": -0.18375690623305505,
+              "learned": -0.6394302219918675
+            },
+            "mean_learned_minus_transport": -0.45567331575881265
+          },
+          "near_zero": {
+            "n": 67208477,
+            "rmse": {
+              "persistence": 3.2216911569037325,
+              "transport": 3.5284349002878916,
+              "learned": 3.6445586306743722
+            },
+            "bias": {
+              "persistence": 0.8448029009307653,
+              "transport": 0.983739058948946,
+              "learned": 2.1194674237188993
+            },
+            "mean_learned_minus_transport": 1.1357283647699532
+          },
+          "thin": {
+            "n": 36924766,
+            "rmse": {
+              "persistence": 7.073487092702941,
+              "transport": 7.876926670438335,
+              "learned": 5.7588468790640315
+            },
+            "bias": {
+              "persistence": 1.054316807420348,
+              "transport": 1.650327108865606,
+              "learned": 2.071649197654387
+            },
+            "mean_learned_minus_transport": 0.4213220887887758
+          },
+          "moderate": {
+            "n": 33108760,
+            "rmse": {
+              "persistence": 11.94700787592887,
+              "transport": 12.293418857899582,
+              "learned": 9.550417499410289
+            },
+            "bias": {
+              "persistence": 0.7064777670306297,
+              "transport": 1.198415940037497,
+              "learned": -0.9580400392421553
+            },
+            "mean_learned_minus_transport": -2.1564559792796545
+          },
+          "thick": {
+            "n": 20170379,
+            "rmse": {
+              "persistence": 19.545420270620497,
+              "transport": 19.68955783977477,
+              "learned": 20.501738158201555
+            },
+            "bias": {
+              "persistence": -10.151446795695179,
+              "transport": -9.700225478840172,
+              "learned": -14.272218488983585
+            },
+            "mean_learned_minus_transport": -4.571993010143412
+          }
+        },
+        "station_common": {
+          "all": {
+            "n": 7617,
+            "rmse": {
+              "persistence": 6.733221618338364,
+              "transport": 7.765508059529087,
+              "learned": 6.384571857077904
+            },
+            "bias": {
+              "persistence": 0.6537418766112155,
+              "transport": 2.5377808218343527,
+              "learned": 1.743739478674872
+            },
+            "mean_learned_minus_transport": -0.7940413431594802
+          },
+          "near_zero": {
+            "n": 3350,
+            "rmse": {
+              "persistence": 1.7566404158161122,
+              "transport": 1.6607055693186241,
+              "learned": 2.6850867563515477
+            },
+            "bias": {
+              "persistence": 0.677962243746298,
+              "transport": 0.6236385224826231,
+              "learned": 1.797531532137877
+            },
+            "mean_learned_minus_transport": 1.1738930096552558
+          },
+          "thin": {
+            "n": 1945,
+            "rmse": {
+              "persistence": 4.413792645074073,
+              "transport": 4.284288120205384,
+              "learned": 4.114268869349143
+            },
+            "bias": {
+              "persistence": -0.5424279567691621,
+              "transport": -0.4332261091195601,
+              "learned": 1.3891092890812475
+            },
+            "mean_learned_minus_transport": 1.8223353982008104
+          },
+          "moderate": {
+            "n": 1227,
+            "rmse": {
+              "persistence": 10.59949920448636,
+              "transport": 16.22621360136168,
+              "learned": 10.71143313266502
+            },
+            "bias": {
+              "persistence": 6.352140038822685,
+              "transport": 13.49818040758889,
+              "learned": 8.246409132206939
+            },
+            "mean_learned_minus_transport": -5.251771275381958
+          },
+          "thick": {
+            "n": 1095,
+            "rmse": {
+              "persistence": 12.059391620955076,
+              "transport": 9.132818237622695,
+              "learned": 10.14211537424743
+            },
+            "bias": {
+              "persistence": -3.6809818211158754,
+              "transport": 1.3894473896999744,
+              "learned": -5.077469037512627
+            },
+            "mean_learned_minus_transport": -6.466916427212599
+          }
+        }
+      },
+      "regional_training_objective": 0.0087709138825677,
+      "objective_replay_abs_difference": 4.101521015181797e-10
+    },
+    {
+      "arm": "full",
+      "seed": 43,
+      "scopes": {
+        "region_common": {
+          "all": {
+            "n": 157412382,
+            "rmse": {
+              "persistence": 9.753995869454384,
+              "transport": 10.066426651979056,
+              "learned": 9.327014748056353
+            },
+            "bias": {
+              "persistence": -0.5441732575583085,
+              "transport": -0.18375690623305505,
+              "learned": -0.5462750580781137
+            },
+            "mean_learned_minus_transport": -0.3625181518450598
+          },
+          "near_zero": {
+            "n": 67208477,
+            "rmse": {
+              "persistence": 3.2216911569037325,
+              "transport": 3.5284349002878916,
+              "learned": 3.652996734128565
+            },
+            "bias": {
+              "persistence": 0.8448029009307653,
+              "transport": 0.983739058948946,
+              "learned": 1.855991312350803
+            },
+            "mean_learned_minus_transport": 0.8722522534018572
+          },
+          "thin": {
+            "n": 36924766,
+            "rmse": {
+              "persistence": 7.073487092702941,
+              "transport": 7.876926670438335,
+              "learned": 6.178310774705878
+            },
+            "bias": {
+              "persistence": 1.054316807420348,
+              "transport": 1.650327108865606,
+              "learned": 2.3560974183342696
+            },
+            "mean_learned_minus_transport": 0.7057703094686518
+          },
+          "moderate": {
+            "n": 33108760,
+            "rmse": {
+              "persistence": 11.94700787592887,
+              "transport": 12.293418857899582,
+              "learned": 9.533053209847775
+            },
+            "bias": {
+              "persistence": 0.7064777670306297,
+              "transport": 1.198415940037497,
+              "learned": -0.42305571903404976
+            },
+            "mean_learned_minus_transport": -1.6214716590715514
+          },
+          "thick": {
+            "n": 20170379,
+            "rmse": {
+              "persistence": 19.545420270620497,
+              "transport": 19.68955783977477,
+              "learned": 20.381129565659
+            },
+            "bias": {
+              "persistence": -10.151446795695179,
+              "transport": -9.700225478840172,
+              "learned": -14.066186020831028
+            },
+            "mean_learned_minus_transport": -4.365960541990872
+          }
+        },
+        "station_common": {
+          "all": {
+            "n": 7617,
+            "rmse": {
+              "persistence": 6.733221618338364,
+              "transport": 7.765508059529087,
+              "learned": 6.372334709220032
+            },
+            "bias": {
+              "persistence": 0.6537418766112155,
+              "transport": 2.5377808218343527,
+              "learned": 1.5046954667656867
+            },
+            "mean_learned_minus_transport": -1.0330853550686665
+          },
+          "near_zero": {
+            "n": 3350,
+            "rmse": {
+              "persistence": 1.7566404158161122,
+              "transport": 1.6607055693186241,
+              "learned": 2.6970400082340915
+            },
+            "bias": {
+              "persistence": 0.677962243746298,
+              "transport": 0.6236385224826231,
+              "learned": 1.5590902570625946
+            },
+            "mean_learned_minus_transport": 0.9354517345799722
+          },
+          "thin": {
+            "n": 1945,
+            "rmse": {
+              "persistence": 4.413792645074073,
+              "transport": 4.284288120205384,
+              "learned": 3.9706072787033633
+            },
+            "bias": {
+              "persistence": -0.5424279567691621,
+              "transport": -0.4332261091195601,
+              "learned": 1.2570601468274747
+            },
+            "mean_learned_minus_transport": 1.6902862559470337
+          },
+          "moderate": {
+            "n": 1227,
+            "rmse": {
+              "persistence": 10.59949920448636,
+              "transport": 16.22621360136168,
+              "learned": 10.424671116192021
+            },
+            "bias": {
+              "persistence": 6.352140038822685,
+              "transport": 13.49818040758889,
+              "learned": 8.119015349211539
+            },
+            "mean_learned_minus_transport": -5.379165058377351
+          },
+          "thick": {
+            "n": 1095,
+            "rmse": {
+              "persistence": 12.059391620955076,
+              "transport": 9.132818237622695,
+              "learned": 10.508784082254527
+            },
+            "bias": {
+              "persistence": -3.6809818211158754,
+              "transport": 1.3894473896999744,
+              "learned": -5.633516721340144
+            },
+            "mean_learned_minus_transport": -7.022964111040122
+          }
+        }
+      },
+      "regional_training_objective": 0.008819809435892332,
+      "objective_replay_abs_difference": 3.768526324332555e-10
+    },
+    {
+      "arm": "full",
+      "seed": 44,
+      "scopes": {
+        "region_common": {
+          "all": {
+            "n": 157412382,
+            "rmse": {
+              "persistence": 9.753995869454384,
+              "transport": 10.066426651979056,
+              "learned": 9.336907289268554
+            },
+            "bias": {
+              "persistence": -0.5441732575583085,
+              "transport": -0.18375690623305505,
+              "learned": -0.7350320643748699
+            },
+            "mean_learned_minus_transport": -0.5512751581418149
+          },
+          "near_zero": {
+            "n": 67208477,
+            "rmse": {
+              "persistence": 3.2216911569037325,
+              "transport": 3.5284349002878916,
+              "learned": 3.700590748049613
+            },
+            "bias": {
+              "persistence": 0.8448029009307653,
+              "transport": 0.983739058948946,
+              "learned": 2.1349647898803115
+            },
+            "mean_learned_minus_transport": 1.1512257309313618
+          },
+          "thin": {
+            "n": 36924766,
+            "rmse": {
+              "persistence": 7.073487092702941,
+              "transport": 7.876926670438335,
+              "learned": 5.837922278345206
+            },
+            "bias": {
+              "persistence": 1.054316807420348,
+              "transport": 1.650327108865606,
+              "learned": 2.2156177296983
+            },
+            "mean_learned_minus_transport": 0.5652906208327002
+          },
+          "moderate": {
+            "n": 33108760,
+            "rmse": {
+              "persistence": 11.94700787592887,
+              "transport": 12.293418857899582,
+              "learned": 9.191983067679299
+            },
+            "bias": {
+              "persistence": 0.7064777670306297,
+              "transport": 1.198415940037497,
+              "learned": -1.0610354854097124
+            },
+            "mean_learned_minus_transport": -2.2594514254472164
+          },
+          "thick": {
+            "n": 20170379,
+            "rmse": {
+              "persistence": 19.545420270620497,
+              "transport": 19.68955783977477,
+              "learned": 20.82393059447161
+            },
+            "bias": {
+              "persistence": -10.151446795695179,
+              "transport": -9.700225478840172,
+              "learned": -15.164438757087979
+            },
+            "mean_learned_minus_transport": -5.464213278247835
+          }
+        },
+        "station_common": {
+          "all": {
+            "n": 7617,
+            "rmse": {
+              "persistence": 6.733221618338364,
+              "transport": 7.765508059529087,
+              "learned": 6.226024708699062
+            },
+            "bias": {
+              "persistence": 0.6537418766112155,
+              "transport": 2.5377808218343527,
+              "learned": 1.2808986953046482
+            },
+            "mean_learned_minus_transport": -1.2568821265297039
+          },
+          "near_zero": {
+            "n": 3350,
+            "rmse": {
+              "persistence": 1.7566404158161122,
+              "transport": 1.6607055693186241,
+              "learned": 2.717487600080156
+            },
+            "bias": {
+              "persistence": 0.677962243746298,
+              "transport": 0.6236385224826231,
+              "learned": 1.7862720987238279
+            },
+            "mean_learned_minus_transport": 1.1626335762412034
+          },
+          "thin": {
+            "n": 1945,
+            "rmse": {
+              "persistence": 4.413792645074073,
+              "transport": 4.284288120205384,
+              "learned": 3.9356993519676364
+            },
+            "bias": {
+              "persistence": -0.5424279567691621,
+              "transport": -0.4332261091195601,
+              "learned": 1.1513927711560308
+            },
+            "mean_learned_minus_transport": 1.584618880275587
+          },
+          "moderate": {
+            "n": 1227,
+            "rmse": {
+              "persistence": 10.59949920448636,
+              "transport": 16.22621360136168,
+              "learned": 9.622031367912893
+            },
+            "bias": {
+              "persistence": 6.352140038822685,
+              "transport": 13.49818040758889,
+              "learned": 7.075263267913487
+            },
+            "mean_learned_minus_transport": -6.422917139675413
+          },
+          "thick": {
+            "n": 1095,
+            "rmse": {
+              "persistence": 12.059391620955076,
+              "transport": 9.132818237622695,
+              "learned": 10.760758883624423
+            },
+            "bias": {
+              "persistence": -3.6809818211158754,
+              "transport": 1.3894473896999744,
+              "learned": -6.528048528052638
+            },
+            "mean_learned_minus_transport": -7.917495917752615
+          }
+        }
+      },
+      "regional_training_objective": 0.00883284821083208,
+      "objective_replay_abs_difference": 3.5469817187550046e-10
+    },
+    {
+      "arm": "repeat_last",
+      "seed": 42,
+      "scopes": {
+        "region_common": {
+          "all": {
+            "n": 157412382,
+            "rmse": {
+              "persistence": 9.753995869454384,
+              "transport": 10.066426651979056,
+              "learned": 9.257450346383424
+            },
+            "bias": {
+              "persistence": -0.5441732575583085,
+              "transport": -0.18375690623305505,
+              "learned": -0.24467793536952404
+            },
+            "mean_learned_minus_transport": -0.06092102913646887
+          },
+          "near_zero": {
+            "n": 67208477,
+            "rmse": {
+              "persistence": 3.2216911569037325,
+              "transport": 3.5284349002878916,
+              "learned": 3.645793794550523
+            },
+            "bias": {
+              "persistence": 0.8448029009307653,
+              "transport": 0.983739058948946,
+              "learned": 2.0511444317734147
+            },
+            "mean_learned_minus_transport": 1.0674053728244646
+          },
+          "thin": {
+            "n": 36924766,
+            "rmse": {
+              "persistence": 7.073487092702941,
+              "transport": 7.876926670438335,
+              "learned": 6.19752890607963
+            },
+            "bias": {
+              "persistence": 1.054316807420348,
+              "transport": 1.650327108865606,
+              "learned": 2.300576400934331
+            },
+            "mean_learned_minus_transport": 0.6502492920687246
+          },
+          "moderate": {
+            "n": 33108760,
+            "rmse": {
+              "persistence": 11.94700787592887,
+              "transport": 12.293418857899582,
+              "learned": 9.936478813218024
+            },
+            "bias": {
+              "persistence": 0.7064777670306297,
+              "transport": 1.198415940037497,
+              "learned": -0.1425356027462682
+            },
+            "mean_learned_minus_transport": -1.340951542783764
+          },
+          "thick": {
+            "n": 20170379,
+            "rmse": {
+              "persistence": 19.545420270620497,
+              "transport": 19.68955783977477,
+              "learned": 19.80272903261812
+            },
+            "bias": {
+              "persistence": -10.151446795695179,
+              "transport": -9.700225478840172,
+              "learned": -12.721560571703737
+            },
+            "mean_learned_minus_transport": -3.0213350928635756
+          }
+        },
+        "station_common": {
+          "all": {
+            "n": 7617,
+            "rmse": {
+              "persistence": 6.733221618338364,
+              "transport": 7.765508059529087,
+              "learned": 6.689190797292719
+            },
+            "bias": {
+              "persistence": 0.6537418766112155,
+              "transport": 2.5377808218343527,
+              "learned": 2.257015091960374
+            },
+            "mean_learned_minus_transport": -0.2807657298739815
+          },
+          "near_zero": {
+            "n": 3350,
+            "rmse": {
+              "persistence": 1.7566404158161122,
+              "transport": 1.6607055693186241,
+              "learned": 2.5621534704345748
+            },
+            "bias": {
+              "persistence": 0.677962243746298,
+              "transport": 0.6236385224826231,
+              "learned": 1.7215412289165932
+            },
+            "mean_learned_minus_transport": 1.0979027064339661
+          },
+          "thin": {
+            "n": 1945,
+            "rmse": {
+              "persistence": 4.413792645074073,
+              "transport": 4.284288120205384,
+              "learned": 3.824960034233786
+            },
+            "bias": {
+              "persistence": -0.5424279567691621,
+              "transport": -0.4332261091195601,
+              "learned": 0.9744888810107764
+            },
+            "mean_learned_minus_transport": 1.407714990130333
+          },
+          "moderate": {
+            "n": 1227,
+            "rmse": {
+              "persistence": 10.59949920448636,
+              "transport": 16.22621360136168,
+              "learned": 12.67667871813607
+            },
+            "bias": {
+              "persistence": 6.352140038822685,
+              "transport": 13.49818040758889,
+              "learned": 10.326897263298555
+            },
+            "mean_learned_minus_transport": -3.17128314429033
+          },
+          "thick": {
+            "n": 1095,
+            "rmse": {
+              "persistence": 12.059391620955076,
+              "transport": 9.132818237622695,
+              "learned": 9.225762749851672
+            },
+            "bias": {
+              "persistence": -3.6809818211158754,
+              "transport": 1.3894473896999744,
+              "learned": -2.8693725817732414
+            },
+            "mean_learned_minus_transport": -4.258819971473218
+          }
+        }
+      },
+      "regional_training_objective": 0.008685527156180857,
+      "objective_replay_abs_difference": 3.8457798404167853e-10
+    },
+    {
+      "arm": "repeat_last",
+      "seed": 43,
+      "scopes": {
+        "region_common": {
+          "all": {
+            "n": 157412382,
+            "rmse": {
+              "persistence": 9.753995869454384,
+              "transport": 10.066426651979056,
+              "learned": 9.237438648673551
+            },
+            "bias": {
+              "persistence": -0.5441732575583085,
+              "transport": -0.18375690623305505,
+              "learned": -0.6836421141413284
+            },
+            "mean_learned_minus_transport": -0.49988520790827273
+          },
+          "near_zero": {
+            "n": 67208477,
+            "rmse": {
+              "persistence": 3.2216911569037325,
+              "transport": 3.5284349002878916,
+              "learned": 3.555060321779275
+            },
+            "bias": {
+              "persistence": 0.8448029009307653,
+              "transport": 0.983739058948946,
+              "learned": 2.009257777057084
+            },
+            "mean_learned_minus_transport": 1.0255187181081389
+          },
+          "thin": {
+            "n": 36924766,
+            "rmse": {
+              "persistence": 7.073487092702941,
+              "transport": 7.876926670438335,
+              "learned": 5.763909138671709
+            },
+            "bias": {
+              "persistence": 1.054316807420348,
+              "transport": 1.650327108865606,
+              "learned": 2.079277447474092
+            },
+            "mean_learned_minus_transport": 0.4289503386084872
+          },
+          "moderate": {
+            "n": 33108760,
+            "rmse": {
+              "persistence": 11.94700787592887,
+              "transport": 12.293418857899582,
+              "learned": 9.462899909936388
+            },
+            "bias": {
+              "persistence": 0.7064777670306297,
+              "transport": 1.198415940037497,
+              "learned": -0.9414197935732983
+            },
+            "mean_learned_minus_transport": -2.13983573361079
+          },
+          "thick": {
+            "n": 20170379,
+            "rmse": {
+              "persistence": 19.545420270620497,
+              "transport": 19.68955783977477,
+              "learned": 20.396371358974164
+            },
+            "bias": {
+              "persistence": -10.151446795695179,
+              "transport": -9.700225478840172,
+              "learned": -14.291277318651533
+            },
+            "mean_learned_minus_transport": -4.591051839811358
+          }
+        },
+        "station_common": {
+          "all": {
+            "n": 7617,
+            "rmse": {
+              "persistence": 6.733221618338364,
+              "transport": 7.765508059529087,
+              "learned": 6.332302190479893
+            },
+            "bias": {
+              "persistence": 0.6537418766112155,
+              "transport": 2.5377808218343527,
+              "learned": 1.6788348314707724
+            },
+            "mean_learned_minus_transport": -0.8589459903635863
+          },
+          "near_zero": {
+            "n": 3350,
+            "rmse": {
+              "persistence": 1.7566404158161122,
+              "transport": 1.6607055693186241,
+              "learned": 2.647507937913956
+            },
+            "bias": {
+              "persistence": 0.677962243746298,
+              "transport": 0.6236385224826231,
+              "learned": 1.7121854157116387
+            },
+            "mean_learned_minus_transport": 1.0885468932290172
+          },
+          "thin": {
+            "n": 1945,
+            "rmse": {
+              "persistence": 4.413792645074073,
+              "transport": 4.284288120205384,
+              "learned": 3.5580914037153306
+            },
+            "bias": {
+              "persistence": -0.5424279567691621,
+              "transport": -0.4332261091195601,
+              "learned": 0.9086128434522026
+            },
+            "mean_learned_minus_transport": 1.3418389525717633
+          },
+          "moderate": {
+            "n": 1227,
+            "rmse": {
+              "persistence": 10.59949920448636,
+              "transport": 16.22621360136168,
+              "learned": 11.058980466211851
+            },
+            "bias": {
+              "persistence": 6.352140038822685,
+              "transport": 13.49818040758889,
+              "learned": 8.734543446601018
+            },
+            "mean_learned_minus_transport": -4.7636369609878715
+          },
+          "thick": {
+            "n": 1095,
+            "rmse": {
+              "persistence": 12.059391620955076,
+              "transport": 9.132818237622695,
+              "learned": 9.897123345747994
+            },
+            "bias": {
+              "persistence": -3.6809818211158754,
+              "transport": 1.3894473896999744,
+              "learned": -4.961345224488692
+            },
+            "mean_learned_minus_transport": -6.3507926141886655
+          }
+        }
+      },
+      "regional_training_objective": 0.008658477166136649,
+      "objective_replay_abs_difference": 3.7194474930557497e-10
+    },
+    {
+      "arm": "repeat_last",
+      "seed": 44,
+      "scopes": {
+        "region_common": {
+          "all": {
+            "n": 157412382,
+            "rmse": {
+              "persistence": 9.753995869454384,
+              "transport": 10.066426651979056,
+              "learned": 9.238490940459721
+            },
+            "bias": {
+              "persistence": -0.5441732575583085,
+              "transport": -0.18375690623305505,
+              "learned": -0.7282974948618907
+            },
+            "mean_learned_minus_transport": -0.5445405886288364
+          },
+          "near_zero": {
+            "n": 67208477,
+            "rmse": {
+              "persistence": 3.2216911569037325,
+              "transport": 3.5284349002878916,
+              "learned": 3.526283660118418
+            },
+            "bias": {
+              "persistence": 0.8448029009307653,
+              "transport": 0.983739058948946,
+              "learned": 1.880054244482075
+            },
+            "mean_learned_minus_transport": 0.8963151855331307
+          },
+          "thin": {
+            "n": 36924766,
+            "rmse": {
+              "persistence": 7.073487092702941,
+              "transport": 7.876926670438335,
+              "learned": 5.967107499843718
+            },
+            "bias": {
+              "persistence": 1.054316807420348,
+              "transport": 1.650327108865606,
+              "learned": 2.1256638464949464
+            },
+            "mean_learned_minus_transport": 0.47533673762934026
+          },
+          "moderate": {
+            "n": 33108760,
+            "rmse": {
+              "persistence": 11.94700787592887,
+              "transport": 12.293418857899582,
+              "learned": 9.373909636150072
+            },
+            "bias": {
+              "persistence": 0.7064777670306297,
+              "transport": 1.198415940037497,
+              "learned": -0.8512549380286103
+            },
+            "mean_learned_minus_transport": -2.0496708780661055
+          },
+          "thick": {
+            "n": 20170379,
+            "rmse": {
+              "persistence": 19.545420270620497,
+              "transport": 19.68955783977477,
+              "learned": 20.377205379432173
+            },
+            "bias": {
+              "persistence": -10.151446795695179,
+              "transport": -9.700225478840172,
+              "learned": -14.442181309748884
+            },
+            "mean_learned_minus_transport": -4.741955830908697
+          }
+        },
+        "station_common": {
+          "all": {
+            "n": 7617,
+            "rmse": {
+              "persistence": 6.733221618338364,
+              "transport": 7.765508059529087,
+              "learned": 6.277013652939345
+            },
+            "bias": {
+              "persistence": 0.6537418766112155,
+              "transport": 2.5377808218343527,
+              "learned": 1.4984384692929478
+            },
+            "mean_learned_minus_transport": -1.0393423525414058
+          },
+          "near_zero": {
+            "n": 3350,
+            "rmse": {
+              "persistence": 1.7566404158161122,
+              "transport": 1.6607055693186241,
+              "learned": 2.5115514248818194
+            },
+            "bias": {
+              "persistence": 0.677962243746298,
+              "transport": 0.6236385224826231,
+              "learned": 1.5693627803170178
+            },
+            "mean_learned_minus_transport": 0.9457242578343922
+          },
+          "thin": {
+            "n": 1945,
+            "rmse": {
+              "persistence": 4.413792645074073,
+              "transport": 4.284288120205384,
+              "learned": 3.57101448488744
+            },
+            "bias": {
+              "persistence": -0.5424279567691621,
+              "transport": -0.4332261091195601,
+              "learned": 0.8572798938035913
+            },
+            "mean_learned_minus_transport": 1.2905060029231532
+          },
+          "moderate": {
+            "n": 1227,
+            "rmse": {
+              "persistence": 10.59949920448636,
+              "transport": 16.22621360136168,
+              "learned": 10.73268759048998
+            },
+            "bias": {
+              "persistence": 6.352140038822685,
+              "transport": 13.49818040758889,
+              "learned": 8.488458348637499
+            },
+            "mean_learned_minus_transport": -5.009722058951395
+          },
+          "thick": {
+            "n": 1095,
+            "rmse": {
+              "persistence": 12.059391620955076,
+              "transport": 9.132818237622695,
+              "learned": 10.151521413324705
+            },
+            "bias": {
+              "persistence": -3.6809818211158754,
+              "transport": 1.3894473896999744,
+              "learned": -5.412335416149585
+            },
+            "mean_learned_minus_transport": -6.801782805849553
+          }
+        }
+      },
+      "regional_training_objective": 0.008650852165184629,
+      "objective_replay_abs_difference": 3.9850521667272876e-10
+    }
+  ],
+  "scope": "train-internal select, not outer-validation/test or GHI evidence",
+  "new_training_runs": 0,
+  "test_buffer_payloads_read": 0
+}

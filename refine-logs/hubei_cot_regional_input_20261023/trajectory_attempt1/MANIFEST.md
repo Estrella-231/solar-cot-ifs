@@ -13,3 +13,9 @@
 - eval_attempt1/：六个冻结模型保存的2936条预测、完成记录和日志；scores_cpu_repair_attempt2为仅CPU修复空字段后的分层/配对统计。
 - score_eval_failed_attempt1.py、eval_attempt1.log：原CPU字段解析失败证据，不覆盖。
 - INDEPENDENT_RECALC_attempt2.json、independent_recalc.py：从实际预测独立FP64复算九个主指标。
+- INTERNAL_ATTRIBUTION_REPORT.md：六模型内部重放、厚云下调、日期条件变化及接回GHI来源的综合解释。
+- internal_replay_attempt1/：2744行/模型的实际物理预测、3×3参考/掩膜、逐帧分层误差和、收据；analysis_attempt1/SUMMARY.json为独立CPU分解。
+- internal_replay_attempt1/CONDITIONAL_SHIFT.json：已有内部/外层预测的条件变化描述，未改变模型或选样。
+- internal_replay.py、run_internal_replay.py、analyze_internal_replay.py、compare_internal_external.py：冻结重放与分析复现。
+- ../causal_reliability_attempt1：无需训练的历史运动可靠性内部筛选，未通过，不进入外层验证。
+- ../ghi_source_followup_attempt1：现有GHI使用的旧R未来COT与新区域R共同键及实际AGRI/几何数值核对。

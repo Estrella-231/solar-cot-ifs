@@ -1,0 +1,71 @@
+{
+  "state": "EXISTING_GHI_COT_SOURCE_MATCHED_AUDIT_COMPLETE",
+  "methods": [
+    "old_ghi_input_cot",
+    "regional_forecast_cot"
+  ],
+  "main_rmse": [
+    12.685133603344669,
+    17.84433089543242
+  ],
+  "delta_regional_minus_old": 5.159197292087752,
+  "date_ci95": [
+    -0.4751872530381411,
+    8.913009164034145
+  ],
+  "rows": 4778,
+  "eligible_g4_common_center_rows": 7669,
+  "missing_old_ghi_key_rows": 2891,
+  "old_invalid_cot_rows": 0,
+  "dates": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302"
+  ],
+  "same_S_checkpoint": true,
+  "S_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+  "old_R_sha256": "d8f25a34ac1bf6fdd9005d2ea9d52d02dd3c2c24e4758e6cd74061121d6b5d0b",
+  "new_R_sha256": "ed7be2ea2c987557d3753b3eb7d8d0f9ffb4513b63e4afedfcbb54be132600e2",
+  "by_site": {
+    "Niushou": [
+      12.820047098906393,
+      17.836715407741956
+    ],
+    "Wangzhai": [
+      13.273847950439464,
+      17.724045851826546
+    ],
+    "Mizhuang": [
+      11.961505760688151,
+      17.97223142672876
+    ]
+  },
+  "thick_n": 1135,
+  "thick_rmse": [
+    17.219148360665493,
+    21.960859404093718
+  ],
+  "scope": "Existing validation intersection only; R packages differ in region, training/config/norm; not a context-size-only ablation",
+  "GHI_predictions_read": 0,
+  "GHI_training_started": false,
+  "test_buffer_payloads_read": 0,
+  "sources": {
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/GHI_pack_attempt12/pack_report.json": "9449d75d5a2eb23398bf969f8eed2fb77156fbcd89a9f4fcb6f9c4274ea7eaee",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/GHI_pack_attempt12/rows.csv": "13178e19488bf286f5a6699314e59f776d461178ea76090709e3b3fe45290000",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/GHI_pack_attempt12/cot.npy": "94dec72dabf1f68032cce07fe87914038401f4bad3a4ac263ada7e24751b6968",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/G4_MODEL_FREEZE.json": "cc0b92d2890c1268ba524385dcc71e33ec99053468a03440d187ce56203e80c1"
+  }
+}
