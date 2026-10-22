@@ -47,3 +47,13 @@ PID2318421已结束，终态`FAILED_RETAIN_PARTIAL`，不是训练失败。首�
 198个错误均为NetCDF/HDF读取错误：196条RuntimeError、2条OSError(-101)。时间/网格检查未发现新增错误，成功帧坐标差0。此处不能据此宣布文件永久损坏或CPP来源缺失；finalizer PID2347947仍活，已见19条`PASS_LOCAL_STAGED_RETRY`，暂未见重读错误。完整源hash仅对重读顺序复制的文件计算；原始成功项保留裁块/轴hash，不混称全源文件hash。
 
 独立统计等待器和G2转运继续会话95827仍在等待。只有最终198失败全部修复并且全量参考核对通过后才会转运。未因部分成功缩小样本或提前启动区域R。
+
+### G3训练实现与CPU检查
+
+为避免数据准备完成后再空等实现，已补`regional_model.py`、`train_regional_r.py`及`R_TRAINING_PROTOCOL.md`。仍是新随机初始化的原base16两层下采样UNet（119233参数），训练256×256整幅区域，非旧R权重扩大视场。固定全局batch128、最多50轮、AdamW及cosine更新计划、内部选模patience8；profile与正式训练目录分离，profile不接续为正式权重。
+
+不读载荷的日期分组已冻结：R_fit1999帧/106日期、R_select314帧/19日期、邻日缓冲515帧/27日期，外层val296帧/16日期。内部选模不使用外层val；外层train输入统计沿G2（包含内部选模输入，不包含外层val），不把内部选模叫完全隔离OOF或独立测试。
+
+CPU/Gloo两进程检查完成：有效像元计数分别1与3，掩膜外含NaN，DDP缩放后梯度与单进程4像元全局均值差0；见DDP_LOSS_WITNESS.json。新旧结构仅用相同随机权重严格映射，64×64随机输入前向差0；屏蔽NaN的反向全部梯度有限，见MODEL_CPU_WITNESS.json。不读取旧checkpoint；这两项不证明CUDA/SyncBN或训练已通过，正式GPU运行仍须profile及实际检查。
+
+最新直接读取重读进度115/198成功恢复，finalizer与独立audit等待器均存活，未见重读失败。源数据依赖尚未全量PASS，训练未提交。
