@@ -1,0 +1,136 @@
+{
+  "state": "PASS_NEW_INPUT_ALIGNMENT_AND_GPU_HEAD_REPLAY",
+  "station_checks": {
+    "Niushou": {
+      "center_rc": [
+        8,
+        6
+      ],
+      "full_rc": [
+        111,
+        124
+      ],
+      "grid_lat": 32.08000183105469,
+      "grid_lon": 112.04000091552734,
+      "rows": 17528,
+      "max_geometry_error": 8.940696716308594e-08,
+      "new_history_cot_normalized_center_quantiles": [
+        -1.1394176483154297,
+        -1.1323866844177246,
+        0.0,
+        1.4780194759368896,
+        1.753780484199524
+      ],
+      "new_history_valid_fraction_mean": 0.738356724478929
+    },
+    "Wangzhai": {
+      "center_rc": [
+        9,
+        8
+      ],
+      "full_rc": [
+        112,
+        126
+      ],
+      "grid_lat": 32.040000915527344,
+      "grid_lon": 112.12000274658203,
+      "rows": 18178,
+      "max_geometry_error": 8.940696716308594e-08,
+      "new_history_cot_normalized_center_quantiles": [
+        -1.1293340921401978,
+        -1.1223819255828857,
+        0.0,
+        1.4268375635147095,
+        1.7441943883895874
+      ],
+      "new_history_valid_fraction_mean": 0.7330533856554321
+    },
+    "Mizhuang": {
+      "center_rc": [
+        7,
+        10
+      ],
+      "full_rc": [
+        110,
+        128
+      ],
+      "grid_lat": 32.119998931884766,
+      "grid_lon": 112.19999694824219,
+      "rows": 12441,
+      "max_geometry_error": 5.960464477539063e-08,
+      "new_history_cot_normalized_center_quantiles": [
+        -1.0987590551376343,
+        -1.0949325561523438,
+        0.0,
+        0.7638956308364868,
+        1.8773733377456665
+      ],
+      "new_history_valid_fraction_mean": 0.73418535487501
+    }
+  },
+  "full_frame_geometry_max_abs_error": 3.5762786865234375e-07,
+  "head_replay_max_abs_error_wm2": 0.0,
+  "chronological_history_minutes": [
+    -105,
+    -90,
+    -75,
+    -60,
+    -45,
+    -30,
+    -15,
+    0
+  ],
+  "agri_channels": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15"
+  ],
+  "target_interval": "(target-15min,target]",
+  "past_only": true,
+  "counterfactual": "G1 fixed head with standardized-zero COT; off-manifold diagnostic, not deployable forecast/model result",
+  "cases": [
+    {
+      "init": "2026-08-06 07:15:00",
+      "reason": "largest three-station sign contrast; diagnostic selection",
+      "file": "case_20260806_0715.npz",
+      "available_future_frames": 16
+    },
+    {
+      "init": "2026-07-17 06:00:00",
+      "reason": "second distinct contrast date",
+      "file": "case_20260717_0600.npz",
+      "available_future_frames": 16
+    },
+    {
+      "init": "2026-07-15 06:45:00",
+      "reason": "third distinct contrast date",
+      "file": "case_20260715_0645.npz",
+      "available_future_frames": 16
+    },
+    {
+      "init": "2026-07-30 10:15:00",
+      "reason": "daytime sign-contrast case; selected by error for mechanism illustration",
+      "file": "case_20260730_1015.npz",
+      "available_future_frames": 0
+    },
+    {
+      "init": "2026-07-18 13:00:00",
+      "reason": "daytime sign-contrast case; selected by error for mechanism illustration",
+      "file": "case_20260718_1300.npz",
+      "available_future_frames": 16
+    }
+  ],
+  "observed_future_R": "retrieved from already available actual new-date AGRI, offline diagnostic only; not CPP truth",
+  "old_test_payloads_read": 0,
+  "old_buffer_payloads_read": 0
+}
