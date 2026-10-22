@@ -15,7 +15,7 @@ n=len(keys);start=time.monotonic()
 log=np.lib.format.open_memmap(a.out/'history_log.npy',mode='w+',dtype='float32',shape=(n,256,256))
 valid=np.lib.format.open_memmap(a.out/'history_valid.npy',mode='w+',dtype='bool',shape=(n,256,256))
 c13=np.empty((n,256,256),np.float32);seen=set()
-for folder in sorted(a.cache.glob('shard*')):
+for folder in sorted(p for p in a.cache.glob('shard*') if p.is_dir()):
     receipt=json.loads((folder/'COMPLETE.json').read_text());assert receipt['state']=='FROZEN_R_TRAIN_HISTORY_CACHED'
     assert sha(folder/'history.npz')==receipt['sha256']
     with np.load(folder/'history.npz') as z:
@@ -60,7 +60,7 @@ with (a.out/'pairs.csv').open('w',newline='') as f:
     w=csv.DictWriter(f,fieldnames=list(pairs[0]));w.writeheader();w.writerows(pairs)
 (a.out/'history_keys.json').write_text(json.dumps(keys));(a.out/'target_keys.json').write_text(json.dumps(target_keys))
 hashes={p.name:sha(p) for p in a.out.iterdir() if p.is_file()};(a.out/'SHA256.json').write_text(json.dumps(hashes,indent=2))
-report=dict(state='TRAIN_ONLY_TRAJECTORY_PAIR_PACK_COMPLETE_NOT_TRAINED',history_frames=n,target_frames=m,
+report=dict(state='TRAIN_ONLY_TRAJECTORY_PAIR_PACK_COMPLETE_NOT_TRAINED',pack=str(a.out),history_frames=n,target_frames=m,
     pairs=dict(Counter(r['role'] for r in pairs)),initializations=len(inits),phase_pairs=len(pair_motion),
     R_frozen=True,source_selection_sha256=sha(P/'SELECTION.json'),motion_witness=witness(),seconds=time.monotonic()-start,
     test_buffer_payloads_read=0,outer_validation_payloads_read=0,GHI_labels_read=0)

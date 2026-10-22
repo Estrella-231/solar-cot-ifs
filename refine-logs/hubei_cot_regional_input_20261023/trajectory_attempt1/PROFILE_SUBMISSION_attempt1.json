@@ -1,0 +1,24 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 1808, 100\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 88\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "node": "node23",
+  "gpus": 4,
+  "purpose": "2/4 GPU trajectory masked-loss, gradient, checkpoint and throughput; no formal fit",
+  "cache_job_terminal": "PBS record purged; no live account job; verified cache receipts and CPU repair preserved. qstat: Unknown Job Id Error 215754.tc6000\n",
+  "code_sha256": {
+    "trajectory_model.py": "eeb5cb50bc56a00646a6f6fd676a979dd1e794b631bc57579af9d63d0b51b4a5",
+    "train_trajectory.py": "4c35f136996c6cc594e10b781b933fc0313eb88e0b24233ac0611a7ff3ee7d38",
+    "compare_profiles.py": "cab8da55a7af3c5dcd04d3d79c4ccc16d874f2d225bdfa7fedb54f9e40b24698",
+    "profile_node23_attempt1.pbs": "16a7bffefc545f5f54429bafc38dbe3da3c43f1dda8b21c5c648a1b0a30bbd8e"
+  },
+  "job_id": "215755.tc6000",
+  "queue_after": [
+    {
+      "id": "215755.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=4",
+      "requested_gpus": 4
+    }
+  ],
+  "test_payloads_read": 0
+}
