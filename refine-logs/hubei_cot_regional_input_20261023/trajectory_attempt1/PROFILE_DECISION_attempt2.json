@@ -1,0 +1,44 @@
+{
+  "state": "PASS_TRAJECTORY_2_4_GPU_CORRECTNESS_AND_SPEED",
+  "gradient_relative_l2": 0.00011905232829055773,
+  "gradient_max_abs": 3.523746272549033e-08,
+  "loss_relative_difference": 1.651620732121189e-08,
+  "profiles": {
+    "2": {
+      "state": "PASS_PROFILE_AND_FULL_STATE_REPLAY",
+      "world": 2,
+      "global_batch": 128,
+      "frames_per_second": 983.7490510585908,
+      "seconds": 1.3011448383331299,
+      "memory_bytes": 4559591936,
+      "resume_max_abs": 0.0,
+      "global_loss": 0.003544627455994487,
+      "global_count": 8388608,
+      "precision": "fp16 AMP",
+      "outer_val_read": false,
+      "training_started": false,
+      "shared_state_sha256": null
+    },
+    "4": {
+      "state": "PASS_PROFILE_AND_FULL_STATE_REPLAY",
+      "world": 4,
+      "global_batch": 128,
+      "frames_per_second": 1163.3690557618547,
+      "seconds": 1.1002527475357056,
+      "memory_bytes": 2347093504,
+      "resume_max_abs": 0.0,
+      "global_loss": 0.003542893100529909,
+      "global_count": 8388608,
+      "precision": "fp16 AMP",
+      "outer_val_read": false,
+      "training_started": false,
+      "shared_state_sha256": null
+    }
+  },
+  "speedup_4_vs_2": 1.1825872202976753,
+  "selected_world": 4,
+  "global_batch": 128,
+  "shared_state_sha256": "0f6dea99b31faf3991636ffc620ab337b066d3ed8f42b4a7c352eb37cf423d93",
+  "selection_rule": "4 GPUs if at least15 percent faster, else2",
+  "formal_training_started": false
+}

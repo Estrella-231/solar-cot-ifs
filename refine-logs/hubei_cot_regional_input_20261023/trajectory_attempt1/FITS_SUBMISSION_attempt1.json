@@ -1,0 +1,27 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 1808, 100\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 92\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "node": "node23",
+  "gpus": 4,
+  "profile_job_terminal": "Job Id: 215756.tc6000\n    Job_Name = trajprofile\n    Job_Owner = slfu@tc6000\n    resources_used.cput = 00:02:55\n    resources_used.mem = 7257472kb\n    resources_used.vmem = 96565720kb\n    resources_used.walltime = 00:03:00\n    job_state = C\n    queue = gpu\n    server = tc6000\n    Checkpoint = u\n    ctime = Fri Oct 23 04:39:47 2026\n    Error_Path = tc6000:/public/home/slfu/ttzhou/swc/irradiance_forecast/Solar\n\tCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/trajecto\n\try_attempt1/profile_attempt2.log\n    exec_host = node23/40+node23/41+node23/42+node23/43+node23/44+node23/45+no\n\tde23/46+node23/47\n    exec_port = 15003+15003+15003+15003+15003+15003+15003+15003\n    exec_gpus = node23-gpu/6+node23-gpu/5+node23-gpu/4+node23-gpu/3\n    Hold_Types = n\n    Join_Path = oe\n    Keep_Files = n\n    Mail_Points = a\n    mtime = Fri Oct 23 04:42:48 2026\n    Output_Path = tc6000:/public/home/slfu/ttzhou/swc/irradiance_forecast/Sola\n\trCOTIFS_20260907/experiments/hubei_cot_regional_input_20261023/traject\n\tory_attempt1/profile_attempt2.log\n    Priority = 0\n    qtime = Fri Oct 23 04:39:47 2026\n    Rerunable = True\n    Resource_List.nodect = 1\n    Resource_List.nodes = node23:ppn=8:gpus=4\n    Resource_List.walltime = 00:40:00\n    session_id = 31126\n    Variable_List = PBS_O_QUEUE=gpu,PBS_O_HOME=/public/home/slfu,\n\tPBS_O_LOGNAME=slfu,\n\tPBS_O_PATH=/usr/lib64/qt-3.3/bin:/opt/gridview//pbs/dispatcher-sched/\n\tbin:/opt/gridview//pbs/dispatcher-sched/sbin:/opt/gridview//pbs/dispat\n\tcher/bin/lsf_cmd:/opt/gridview//pbs/dispatcher/bin:/opt/gridview//pbs/\n\tdispatcher/sbin:/public/software/compiler/intel/intel-compiler-2017.5.\n\t239/bin/intel64:/opt/gridview/clusquota//bin:/opt/gridview/clusquota//\n\tsbin:/opt/gridview/clusconf/bin:/usr/local/bin:/usr/bin:/opt/ibutils/b\n\tin,PBS_O_MAIL=/var/mail/slfu,PBS_O_SHELL=/bin/bash,\n\tPBS_O_LANG=en_US.UTF-8,PBS_O_WORKDIR=/public/home/slfu,\n\tPBS_O_HOST=tc6000,PBS_O_SERVER=tc6000\n    etime = Fri Oct 23 04:39:47 2026\n    exit_status = 0\n    submit_args = /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS\n\t_20260907/experiments/hubei_cot_regional_input_20261023/trajectory_att\n\tempt1/profile_node23_attempt2.pbs\n    start_time = Fri Oct 23 04:39:51 2026\n    start_count = 1\n    fault_tolerant = False\n    comp_time = Fri Oct 23 04:42:48 2026\n    job_radix = 0\n    total_runtime = 180.238194\n    submit_host = tc6000\n    gpu_flags = 1\n\n",
+  "purpose": "six fixed-budget seed-matched trajectory fits; internal selection only",
+  "global_batch": 128,
+  "max_updates_per_fit": 2000,
+  "code_sha256": {
+    "trajectory_model.py": "eeb5cb50bc56a00646a6f6fd676a979dd1e794b631bc57579af9d63d0b51b4a5",
+    "train_trajectory.py": "d5cdebb99a9dbf2ee316a80b792af6495386620435cb2ac4c9d08377bcce785b",
+    "run_paired_fits.py": "2cde4de51883a2aeff33f47860522f6d645d642f15945a43cfe0dcf8b1c62ece",
+    "EXPERIMENT_PLAN_20261023.md": "1bb94e6aa2e8a6543390ab3eb1f59d502801ba2f19b9edee1275a65a6a4d94c8",
+    "fits_node23_attempt1.pbs": "190bfc24bc8874cfeec90bfbe3fe3a08da217bbdd3fc6e136e3c8f3a19e13c6e"
+  },
+  "job_id": "215757.tc6000",
+  "queue_after": [
+    {
+      "id": "215757.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=8:gpus=4",
+      "requested_gpus": 4
+    }
+  ],
+  "test_payloads_read": 0
+}

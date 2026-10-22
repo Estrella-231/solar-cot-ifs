@@ -119,3 +119,5 @@ prepare_g4_keys.py连接本轮完整修正AGRI清单和已恢复区域CPP清单�
 后续独立目录trajectory_attempt1：已冻结20通道显式逐历史输运/full与repeat_last等容量对照、三种子、相同物理COT损失/global batch128/最多2000更新。仅train内106拟合/19选模日期；19420fit/2840select配对、4598历史帧已转运并校验，冻结R四卡缓存太阳几何差0。CPU数据包首轮因glob误入日志失败，复用有效缓存写全新attempt2修复完成，未重跑GPU。
 
 模型CPU回溯与独立SciPy、step0和删除旧帧对照均通过。215755跨卡比较略超门槛，发现比较对象是分别更新13步后不同权重；完整失败保留，不放宽门槛。215756现正以共同非零梯度权重做同一步2/4卡重验并重测AMP/断点恢复。正式六拟合尚未启动。当前最新状态统一见trajectory_attempt1/EXPERIMENT_TRACKER.md，不将源码已实现或profile当训练完成。外层val/test/GHI未被新候选读取，GHI收益仍待验证。
+
+215756同权重重验已C/exit0通过原门槛，选择4卡（AMP比2卡快18.26%）；215757正式区域轨迹六个配对拟合已提交，固定global batch128/每组最多2000更新。最新收据与进度见trajectory_attempt1；不能把早先profile失败状态当作仍未推进。COT/GHI科学增益仍未得到新证据。
