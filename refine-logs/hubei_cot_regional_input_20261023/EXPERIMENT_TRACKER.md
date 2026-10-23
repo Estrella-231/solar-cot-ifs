@@ -165,3 +165,7 @@ trajectory_attempt1六组训练已完成（215757 C/exit0、node23四A100，18:5
 hubei_cot_direction_identifiability_20261023已完成CPU固定线性探针，区别于旧有云/晴及GHI方向模型。仅F_fit，163目标日期/103948站点记录；月内连续3块OOF且±1日隔离，输入现有34通道的3×3逐值，不使用GHI或真实未来图输入。三类为同R参考减原预测<-3/±3内/>3，固定类别等权ridge0.01，无调参。均衡准确率63.89%，日期簇CI[60.23%,67.38%]；上调precision51.24%/recall48.44%，保持precision92.01%，下调precision31.50%。有可辨信息但误判仍多，不是COT/GHI精度。三站与三折完整保留；独立混淆矩阵/日期CI差0，130因果输入冷重放max1.78e−15。无新增GPU/PBS，未读F_select/C_select/外层val/新时段/outerbuffer/test。
 
 下一单因素已冻结在NEXT_DIRECTIONAL_CORRECTION_PLAN.md：以F_fit OOF分类、完整F_fit分类对应F_select，只限制同容量残差允许方向，保持类别时严格回原COT；不把线性分数当概率，不重复晴空清零，不更改600更新和原继续条件。方向图及该残差模型尚未生成/训练。总体预报GHI增益仍未达成；上阶段无约束候选保持封存。
+
+215780已完成方向约束候选：hubei_directional_cot_correction_20261023，学院node23三A100、C/exit0、1分48秒，三seed各600更新。全103948站点OOF滑窗方向相同；实际43639有效训练场，新旧pack/初始化/采样/预算完全相同。残差网络7249参数外另有921系数冻结线性方向分支，不能称总系统无额外模型。方向/严格保持/缺效/恢复profile及全best冷重放通过。F_select原14.07309、无约束13.55167、方向约束13.67067；方向约束−原=−0.40242 CI[−1.02298,+1.26536]，相对无约束+0.11900 CI[−0.07987,+0.33343]，厚云FAR亦未通过，封存不进GHI。近零COT仅约8%—9%记录发生修改，但改时平均约5.2—5.4 COT，仍使该组MSE增加9—10；方向分类在F_select上调precision42%—53%，不能依据旧OOF63.9%均衡准确率直接声称可用。独立点/日期CI差3.55e−15/0，last实际600更新，权重冷重放max3.81e−5。未生成失败校正器C_select输出、未新增读取外层val/新时段/test。
+
+下一项转回固定GHI头响应，见NEXT_FIXED_HEAD_RESPONSE_PLAN.md：旧attempt12 seed42仅18% val覆盖，不代表当前large条件修正头；利用已准备同fold C日期参考，三seed同输入替换原forecast/init持平/实际目标R，不训练、不部署、不开测试。该诊断尚未执行；不再在原F_select调方向阈值或幅度，总目标仍未完成。
