@@ -42,3 +42,7 @@ S/R/G1均冻结，physical/task同5369参数MLP、同初始化/样本顺序、gl
 215819.tc6000，浙师大学院node23三A100物理3/4/5，PBS C/exit0、walltime约2分5秒；三站并行训练计时80.47秒。CPU 27份教师检查通过；81份last全部600次优化器更新，同设备冷重放0。独立CPU全部81权重重建预测最大差0.00026703W/m²；FP64点复算差0，日期CI复算差5.62e−14。RUN_STATUS.json三worker均exit0；监控最初未读到该文件，实际文件存在，不是作业缺少结束收据。
 
 checkpoint/逐样本OOF本地training_attempt1只读保存，Git忽略大权重；远端完整位置：/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_task_aligned_cot_20261023/training_attempt1/。权重哈希索引见INDEPENDENT_AUDIT.json。训练、输入变换、评分、审计为train_station.py/model.py/score.py/audit.py。原输入与教师来源见PLAN.md；只复用既有swc环境，未安装软件。
+
+## 后续目标匹配诊断
+
+见target_diagnostic_attempt1/REPORT.md：实际参考COT创新本身可将G1离线118.799降至101.839，不能将教师方向本身无效当已证实原因。当前任务校正器拟合域有纠错、留出域退化，直接AGRI残差也同样泛化失败。未重训或调整215819。
