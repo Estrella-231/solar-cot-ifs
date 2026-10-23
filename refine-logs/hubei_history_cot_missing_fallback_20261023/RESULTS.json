@@ -1,0 +1,269 @@
+{
+  "state": "POSTHOC_MISSING_INPUT_POLICY_SCORED",
+  "summary": {
+    "primary": {
+      "rmse": {
+        "G0_no_COT": 160.78678665589973,
+        "G1_history_COT": 161.92594475999442,
+        "history_QA_fallback": 160.70311375743003
+      },
+      "comparisons": {
+        "history_QA_fallback_minus_G0_no_COT": {
+          "delta_rmse": -0.08367289846970039,
+          "relative_change_percent": -0.05203966085146616,
+          "ci95": [
+            -1.5864180238321268,
+            1.676272586547975
+          ]
+        },
+        "history_QA_fallback_minus_G1_history_COT": {
+          "delta_rmse": -1.2228310025643907,
+          "relative_change_percent": -0.755179168092468,
+          "ci95": [
+            -2.0431805033731485,
+            -0.5047800272493908
+          ]
+        },
+        "G1_history_COT_minus_G0_no_COT": {
+          "delta_rmse": 1.1391581040946903,
+          "relative_change_percent": 0.7084898751864577,
+          "ci95": [
+            -0.32474268085543007,
+            2.8899037934469547
+          ]
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G0_no_COT": 153.70230685023418,
+          "G1_history_COT": 151.7786754936925,
+          "history_QA_fallback": 152.31598121016538
+        },
+        "Wangzhai": {
+          "G0_no_COT": 163.854093702609,
+          "G1_history_COT": 167.235656131582,
+          "history_QA_fallback": 165.16737114232978
+        },
+        "Mizhuang": {
+          "G0_no_COT": 164.80395941485605,
+          "G1_history_COT": 166.76350265470876,
+          "history_QA_fallback": 164.62598891979488
+        }
+      },
+      "dates": [
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-18",
+        "2026-07-19",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-25",
+        "2026-07-26",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-08-02",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-08",
+        "2026-08-09"
+      ]
+    },
+    "supplementary": {
+      "rmse": {
+        "G0_no_COT": 170.20586829816608,
+        "G1_history_COT": 169.00264338911995,
+        "history_QA_fallback": 168.36151545944242
+      },
+      "comparisons": {
+        "history_QA_fallback_minus_G0_no_COT": {
+          "delta_rmse": -1.8443528387236654,
+          "relative_change_percent": -1.0836012043325849,
+          "ci95": [
+            -3.7677130757252706,
+            0.3574944925179276
+          ]
+        },
+        "history_QA_fallback_minus_G1_history_COT": {
+          "delta_rmse": -0.6411279296775376,
+          "relative_change_percent": -0.37935970516235207,
+          "ci95": [
+            -2.7524009626292703,
+            0.7609947000005156
+          ]
+        },
+        "G1_history_COT_minus_G0_no_COT": {
+          "delta_rmse": -1.2032249090461278,
+          "relative_change_percent": -0.7069232812456971,
+          "ci95": [
+            -3.545980612465199,
+            1.508737922322066
+          ]
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G0_no_COT": 152.2882230592086,
+          "G1_history_COT": 145.71601939142863,
+          "history_QA_fallback": 147.76210025829934
+        },
+        "Wangzhai": {
+          "G0_no_COT": 188.1235135371235,
+          "G1_history_COT": 192.28926738681128,
+          "history_QA_fallback": 188.96093066058552
+        }
+      },
+      "dates": [
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-08-17",
+        "2026-08-18"
+      ]
+    }
+  },
+  "prediction_sources": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "G0",
+      "sha256": "3951035be7d10dea5cd396968dff4f9fc022097c58a3606d3a5a21d267dd3cdc",
+      "checkpoint_sha256": "d88953a3db44c37b8adc4127383383ca7e05caa35aa762ac8f364f3b8fe5064c"
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "G1",
+      "sha256": "4bc2710774396de35d717a7d71cf91de39864adb259965518d447ca4289f9d1d",
+      "checkpoint_sha256": "121f15bb870fdf0d51d72bf613c421c375048b16612ba4944c55975c8fdc03a5"
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "G0",
+      "sha256": "bf77b9b4482ea9e48bbf752bedf2bf3f4428c09a09ea0be05f5af5410e5dd65e",
+      "checkpoint_sha256": "15b8aaa84b6bd34959f637faff58eb4154157b512280ba62c1d462d9ec83f5a4"
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "G1",
+      "sha256": "ef4c3b836a77ce7bc405b1a6c2535fa1c32e276704bf6e9a22ea8a7311ca745f",
+      "checkpoint_sha256": "07af8a845278c819f998ccdf1066746449b11f2d39839a85d900a493ffa9a62b"
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "G0",
+      "sha256": "9f48767a4e084da5a6eae0423cee5b5f91444b1b9c37409ee502af0569b00566",
+      "checkpoint_sha256": "f48296f1a4a6ed3d28da44ee7da474952a2fdffca7b9954b6b944593a4df7040"
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "G1",
+      "sha256": "5292e6501238cdd660776b51659fa01b7cb2483f25f3136e8f39bcd43ffde18f",
+      "checkpoint_sha256": "407561bcd40bc2693a86a5779910ab6f8e2ef8355b6765573de12a23e84bd0f8"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "G0",
+      "sha256": "6856ac9dd88ea3cb97a27b3817b338af34a3fb13c6f01f919994094adf9ee495",
+      "checkpoint_sha256": "2c350de87adace7742d302ef38665a033f1fa40b49a9a8b1bbafca6d0e0506be"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "G1",
+      "sha256": "5ba8a52cd4484551929ebc6ebea54025924d2c017edd0af054278854e4de398e",
+      "checkpoint_sha256": "77637325b581c4c2fcb3099c699e1fcfc1ab82b8777fe283bc7978a18be10dea"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "G0",
+      "sha256": "d752a55dfaf02d58814d8f1059d6e456fc9b5e1a454bd9a8e7f08e2b54e75ae4",
+      "checkpoint_sha256": "adfe9fadf572f6a99a2014113b0248b067a545e716694a0634391b034c5da7da"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "G1",
+      "sha256": "beaae815ddb06866069661b012640a765836f71bd81e826f6f28c8178d1f78df",
+      "checkpoint_sha256": "1434bf3de57f8769a226e55d9fb23ac91bf53c607ce9054eb8b25f4661b4da87"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "G0",
+      "sha256": "8b980616cc025547c40465f61aef6e88ca79d25063994b537643a947915d8eac",
+      "checkpoint_sha256": "620a807f661116e135da7d84440b080fe7e650bd2c5a0d47c15711af461ff0b7"
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "G1",
+      "sha256": "960ea309f60adaed1478a9c7eecffe5f3d865d22c8de589395032cc9c58a8a0c",
+      "checkpoint_sha256": "640f0d1c991bcd3bd58b0446a0b68534716debc1d9516ba0d724cfb92ccfc3ee"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "G0",
+      "sha256": "395cf031c2c41bcee99a270126b45c35db1ea7dcbeecddf51594c2192daaded9",
+      "checkpoint_sha256": "bb6c8179694614ea852b90e61438b57413b32a28d9ba978ae0d6a89a99336113"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "G1",
+      "sha256": "c701f38cadf1b7d51e69bb8df7a46b230a32e25278244434573fe2893b1e039b",
+      "checkpoint_sha256": "2e920f2f5f52ae8fab65786783875b5a8ec99197624faf3b6b6afac897214427"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "G0",
+      "sha256": "bc7d7fa825e14d8ca0b81ff15021f02cda60eb6229eca1a5190f9af16a940c5a",
+      "checkpoint_sha256": "fd9ddc699b4e25889308de01d59d7e15c8d0c7338a3e338f02ab578dcbc5cc9e"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "G1",
+      "sha256": "6c025147d9a1430e17ffa8b5c37fd925928a8104f4d2979ead50feada0b93b65",
+      "checkpoint_sha256": "45f83755bfc6f168c463f14efe8a51d24c4b5a9f057cd25ce628569d474781c7"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "G0",
+      "sha256": "24fe897eb95208e0579886a969551ea1d1620673e3b0b9c4facb623d5267cfcb",
+      "checkpoint_sha256": "5be1b585fe418705b0474eb5f596f8465ba522ce51ff3efa2e3e3e83cca013aa"
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "G1",
+      "sha256": "be525cd71fe13521bb229fd3d2747939284ae0f612b7e6fbc4ad33e406b22045",
+      "checkpoint_sha256": "8c1a21cf511ac21a9b1258824056a7590ff4874f8048f408f8cda63acfe92959"
+    }
+  ],
+  "source_model_freeze_sha256": "cc0b92d2890c1268ba524385dcc71e33ec99053468a03440d187ce56203e80c1",
+  "grid_sha256": "b6dc23fc8537472566541e42c05fde3a69cf3b5857c0fb2b68567b9846d6c7ba",
+  "new_model_fits": 0,
+  "independent_confirmation": false,
+  "test_payloads_read": 0
+}
