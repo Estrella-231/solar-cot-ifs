@@ -1,0 +1,32 @@
+{
+  "source_sha256": "54cea43c5b266d0eec115582ed32bc808725ca04c88049239ff34a3ec0904a85",
+  "selection": {
+    "init": "202508061200",
+    "rule": "Earliest C_fit date with scored rows at all three stations and all17 satellite/R frames; initialization closest to 12:00 BJT, earlier tie; no errors used",
+    "strict_first_attempt": "No common initialization had all16 GHI labels in all3 stations; no data fabricated. Preserve partial GHI labels as gaps.",
+    "common_satellite_complete_initializations": 828,
+    "target_leads": [
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      105,
+      120,
+      135,
+      150,
+      165,
+      180,
+      195,
+      210,
+      225,
+      240
+    ],
+    "usage": "OOF explanatory case, not frequency estimate or independent test"
+  },
+  "display": "Fixed C03/C02/C01 square-root 0..0.7 false colour; native 16x16 pixels; no enhancement/smoothing",
+  "GHI": "Right-ending 15min means; three-base means only for plotting, not ensemble scoring",
+  "limits": "Raw R-COT can exceed100; it is not independent truth. Actual future image/COT paths are offline. One calendar case does not estimate overall gain.",
+  "destination": "Provisional research diagnostic, no journal-specific export claim"
+}

@@ -1,0 +1,664 @@
+{
+  "state": "COLD_CROSS_SOURCE_COMPLETE",
+  "summary": {
+    "all": {
+      "rmse": {
+        "G1": 118.79928401912305,
+        "context": 124.84961677738569,
+        "forecast_train_forecast_infer": 124.30732525827105,
+        "observed_train_observed_infer_OFFLINE": 99.569196450474,
+        "observed_train_forecast_infer": 124.9123582453363,
+        "forecast_train_observed_infer_OFFLINE": 119.6195281753044
+      },
+      "comparisons": {
+        "observed_train_forecast_infer_minus_context": {
+          "delta_rmse": 0.06274146795061597,
+          "ci95": [
+            -5.743949889545637,
+            5.436641194732952
+          ],
+          "relative_change_percent": 0.05025363278645667
+        },
+        "observed_train_forecast_infer_minus_forecast_train_forecast_infer": {
+          "delta_rmse": 0.6050329870652575,
+          "ci95": [
+            -4.810666920642603,
+            5.465398498270614
+          ],
+          "relative_change_percent": 0.4867235183511509
+        },
+        "observed_train_forecast_infer_minus_G1": {
+          "delta_rmse": 6.113074226213257,
+          "ci95": [
+            1.483629598479217,
+            10.380483697774311
+          ],
+          "relative_change_percent": 5.1457163876755585
+        },
+        "forecast_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -4.687797082966654,
+          "ci95": [
+            -7.550589437606501,
+            -2.160902496540011
+          ],
+          "relative_change_percent": -3.7711350262157994
+        },
+        "observed_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -24.738128807797054,
+          "ci95": [
+            -36.97223501440839,
+            -13.915996107699192
+          ],
+          "relative_change_percent": -19.90078119402786
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G1": 118.66465878774477,
+          "context": 123.87895694819603,
+          "forecast_train_forecast_infer": 123.54150132414281,
+          "observed_train_observed_infer_OFFLINE": 95.03414851484406,
+          "observed_train_forecast_infer": 123.8021025924027,
+          "forecast_train_observed_infer_OFFLINE": 117.58483015431382
+        },
+        "Wangzhai": {
+          "G1": 126.1849880968209,
+          "context": 136.06556960674618,
+          "forecast_train_forecast_infer": 135.26155946689082,
+          "observed_train_observed_infer_OFFLINE": 104.89647805214945,
+          "observed_train_forecast_infer": 135.31244809676255,
+          "forecast_train_observed_infer_OFFLINE": 128.07814354040673
+        },
+        "Mizhuang": {
+          "G1": 111.54820517280349,
+          "context": 114.60432377721487,
+          "forecast_train_forecast_infer": 114.11891498377948,
+          "observed_train_observed_infer_OFFLINE": 98.77696278442848,
+          "observed_train_forecast_infer": 115.62252404684371,
+          "forecast_train_observed_infer_OFFLINE": 113.19561083119264
+        }
+      },
+      "dates": [
+        "20250806",
+        "20250814",
+        "20250815",
+        "20250817",
+        "20250906",
+        "20250908",
+        "20250912",
+        "20250913",
+        "20251008",
+        "20251012",
+        "20251013",
+        "20251109",
+        "20251114",
+        "20251115",
+        "20251117",
+        "20251206",
+        "20251208",
+        "20251217",
+        "20251219",
+        "20260106",
+        "20260108",
+        "20260114",
+        "20260115",
+        "20260117",
+        "20260206",
+        "20260208",
+        "20260214",
+        "20260215",
+        "20260217",
+        "20260306",
+        "20260308",
+        "20260314",
+        "20260315",
+        "20260317",
+        "20260406",
+        "20260408",
+        "20260414",
+        "20260415",
+        "20260417",
+        "20260506",
+        "20260508",
+        "20260511",
+        "20260512",
+        "20260612",
+        "20260617",
+        "20260619",
+        "20260706",
+        "20260708",
+        "20260711",
+        "20260712"
+      ],
+      "rows": 32838
+    },
+    "1h": {
+      "rmse": {
+        "G1": 101.9745930924634,
+        "context": 107.76709506765518,
+        "forecast_train_forecast_infer": 107.21383189434331,
+        "observed_train_observed_infer_OFFLINE": 94.12629314289008,
+        "observed_train_forecast_infer": 103.01069206938465,
+        "forecast_train_observed_infer_OFFLINE": 105.72025868507818
+      },
+      "comparisons": {
+        "observed_train_forecast_infer_minus_context": {
+          "delta_rmse": -4.756402998270531,
+          "ci95": [
+            -10.064394861595064,
+            0.055959523325516305
+          ],
+          "relative_change_percent": -4.413594887460315
+        },
+        "observed_train_forecast_infer_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -4.203139824958669,
+          "ci95": [
+            -9.135287246683546,
+            0.2331054665025931
+          ],
+          "relative_change_percent": -3.9203335527646876
+        },
+        "observed_train_forecast_infer_minus_G1": {
+          "delta_rmse": 1.0360989769212523,
+          "ci95": [
+            -2.682524560724329,
+            5.179690161385282
+          ],
+          "relative_change_percent": 1.0160363924980764
+        },
+        "forecast_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -1.4935732092651364,
+          "ci95": [
+            -2.6494125549699286,
+            -0.47901074628217993
+          ],
+          "relative_change_percent": -1.3930788433501928
+        },
+        "observed_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -13.087538751453238,
+          "ci95": [
+            -19.356765734743828,
+            -7.505309058954471
+          ],
+          "relative_change_percent": -12.206949905820641
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G1": 100.53383105440327,
+          "context": 105.4645758088811,
+          "forecast_train_forecast_infer": 105.01440060888088,
+          "observed_train_observed_infer_OFFLINE": 88.72483211593828,
+          "observed_train_forecast_infer": 99.58602058581126,
+          "forecast_train_observed_infer_OFFLINE": 102.60364437790724
+        },
+        "Wangzhai": {
+          "G1": 101.38678595130358,
+          "context": 113.09737909086202,
+          "forecast_train_forecast_infer": 111.8988504957901,
+          "observed_train_observed_infer_OFFLINE": 97.18713508262374,
+          "observed_train_forecast_infer": 107.634382217241,
+          "forecast_train_observed_infer_OFFLINE": 110.2383290561361
+        },
+        "Mizhuang": {
+          "G1": 104.00316227168332,
+          "context": 104.73933030322245,
+          "forecast_train_forecast_infer": 104.72824457835895,
+          "observed_train_observed_infer_OFFLINE": 96.4669122301082,
+          "observed_train_forecast_infer": 101.81167340510166,
+          "forecast_train_observed_infer_OFFLINE": 104.31880262119121
+        }
+      },
+      "dates": [
+        "20250806",
+        "20250814",
+        "20250815",
+        "20250817",
+        "20250906",
+        "20250908",
+        "20250912",
+        "20250913",
+        "20251008",
+        "20251012",
+        "20251013",
+        "20251109",
+        "20251114",
+        "20251115",
+        "20251117",
+        "20251206",
+        "20251208",
+        "20251217",
+        "20251219",
+        "20260106",
+        "20260108",
+        "20260114",
+        "20260115",
+        "20260117",
+        "20260206",
+        "20260208",
+        "20260214",
+        "20260215",
+        "20260217",
+        "20260306",
+        "20260308",
+        "20260314",
+        "20260315",
+        "20260317",
+        "20260406",
+        "20260408",
+        "20260414",
+        "20260415",
+        "20260417",
+        "20260506",
+        "20260508",
+        "20260511",
+        "20260512",
+        "20260612",
+        "20260617",
+        "20260619",
+        "20260706",
+        "20260708",
+        "20260711",
+        "20260712"
+      ],
+      "rows": 8184
+    },
+    "2h": {
+      "rmse": {
+        "G1": 120.76011224634993,
+        "context": 125.85771113938947,
+        "forecast_train_forecast_infer": 125.37415525894488,
+        "observed_train_observed_infer_OFFLINE": 99.94099256492395,
+        "observed_train_forecast_infer": 125.00619768412083,
+        "forecast_train_observed_infer_OFFLINE": 121.01458346267479
+      },
+      "comparisons": {
+        "observed_train_forecast_infer_minus_context": {
+          "delta_rmse": -0.8515134552686305,
+          "ci95": [
+            -6.63493928226913,
+            4.275370048907563
+          ],
+          "relative_change_percent": -0.6765683624466723
+        },
+        "observed_train_forecast_infer_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -0.3679575748240467,
+          "ci95": [
+            -5.677863262178499,
+            4.376387977881803
+          ],
+          "relative_change_percent": -0.29348758048585166
+        },
+        "observed_train_forecast_infer_minus_G1": {
+          "delta_rmse": 4.246085437770901,
+          "ci95": [
+            -0.8564353676305042,
+            9.019749166073638
+          ],
+          "relative_change_percent": 3.516132403975347
+        },
+        "forecast_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -4.359571796270089,
+          "ci95": [
+            -6.780056953325731,
+            -2.1116241589819085
+          ],
+          "relative_change_percent": -3.477249188451903
+        },
+        "observed_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -25.433162694020936,
+          "ci95": [
+            -35.641945848561434,
+            -15.17510610200816
+          ],
+          "relative_change_percent": -20.28580981582039
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G1": 121.48254647948981,
+          "context": 124.40946049553493,
+          "forecast_train_forecast_infer": 124.0583803386311,
+          "observed_train_observed_infer_OFFLINE": 96.19300638454156,
+          "observed_train_forecast_infer": 124.12009503681543,
+          "forecast_train_observed_infer_OFFLINE": 118.30355549126159
+        },
+        "Wangzhai": {
+          "G1": 127.66111137976948,
+          "context": 137.08662669919062,
+          "forecast_train_forecast_infer": 135.84233039331096,
+          "observed_train_observed_infer_OFFLINE": 104.48400737053379,
+          "observed_train_forecast_infer": 134.22010135177928,
+          "forecast_train_observed_infer_OFFLINE": 129.6962697844012
+        },
+        "Mizhuang": {
+          "G1": 113.13667887979052,
+          "context": 116.0770462234429,
+          "forecast_train_forecast_infer": 116.22175504489257,
+          "observed_train_observed_infer_OFFLINE": 99.14596393969647,
+          "observed_train_forecast_infer": 116.67839666376778,
+          "forecast_train_observed_infer_OFFLINE": 115.04392511236153
+        }
+      },
+      "dates": [
+        "20250806",
+        "20250814",
+        "20250815",
+        "20250817",
+        "20250906",
+        "20250908",
+        "20250912",
+        "20250913",
+        "20251008",
+        "20251012",
+        "20251013",
+        "20251109",
+        "20251114",
+        "20251115",
+        "20251117",
+        "20251206",
+        "20251208",
+        "20251217",
+        "20251219",
+        "20260106",
+        "20260108",
+        "20260114",
+        "20260115",
+        "20260117",
+        "20260206",
+        "20260208",
+        "20260214",
+        "20260215",
+        "20260217",
+        "20260306",
+        "20260308",
+        "20260314",
+        "20260315",
+        "20260317",
+        "20260406",
+        "20260408",
+        "20260414",
+        "20260415",
+        "20260417",
+        "20260506",
+        "20260508",
+        "20260511",
+        "20260512",
+        "20260612",
+        "20260617",
+        "20260619",
+        "20260706",
+        "20260708",
+        "20260711",
+        "20260712"
+      ],
+      "rows": 8248
+    },
+    "3h": {
+      "rmse": {
+        "G1": 126.66902813028507,
+        "context": 132.49849171812014,
+        "forecast_train_forecast_infer": 131.99903072589242,
+        "observed_train_observed_infer_OFFLINE": 103.97697984197055,
+        "observed_train_forecast_infer": 134.91876479155556,
+        "forecast_train_observed_infer_OFFLINE": 126.80251156429179
+      },
+      "comparisons": {
+        "observed_train_forecast_infer_minus_context": {
+          "delta_rmse": 2.4202730734354247,
+          "ci95": [
+            -4.740495684746614,
+            9.333924172279463
+          ],
+          "relative_change_percent": 1.8266419806380663
+        },
+        "observed_train_forecast_infer_minus_forecast_train_forecast_infer": {
+          "delta_rmse": 2.9197340656631354,
+          "ci95": [
+            -3.603859812035025,
+            9.154934868264895
+          ],
+          "relative_change_percent": 2.211935988928748
+        },
+        "observed_train_forecast_infer_minus_G1": {
+          "delta_rmse": 8.24973666127049,
+          "ci95": [
+            2.3090122730727414,
+            13.650730209062903
+          ],
+          "relative_change_percent": 6.512828576205099
+        },
+        "forecast_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -5.196519161600634,
+          "ci95": [
+            -8.493626344159681,
+            -2.0888924110571865
+          ],
+          "relative_change_percent": -3.9367858483685847
+        },
+        "observed_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -28.022050883921878,
+          "ci95": [
+            -42.84510610705831,
+            -14.268164857677116
+          ],
+          "relative_change_percent": -21.228982311326305
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G1": 126.207043875149,
+          "context": 131.8987574651937,
+          "forecast_train_forecast_infer": 131.70223220404182,
+          "observed_train_observed_infer_OFFLINE": 99.14995932023373,
+          "observed_train_forecast_infer": 134.23273778740125,
+          "forecast_train_observed_infer_OFFLINE": 124.95039903746168
+        },
+        "Wangzhai": {
+          "G1": 137.36068924180884,
+          "context": 146.34211720934252,
+          "forecast_train_forecast_infer": 145.79345849826973,
+          "observed_train_observed_infer_OFFLINE": 110.72215010430978,
+          "observed_train_forecast_infer": 147.56031642779882,
+          "forecast_train_observed_infer_OFFLINE": 137.3520836757556
+        },
+        "Mizhuang": {
+          "G1": 116.43935127389739,
+          "context": 119.25460047982426,
+          "forecast_train_forecast_infer": 118.50140147536564,
+          "observed_train_observed_infer_OFFLINE": 102.05883010136809,
+          "observed_train_forecast_infer": 122.96324015946657,
+          "forecast_train_observed_infer_OFFLINE": 118.10505197965811
+        }
+      },
+      "dates": [
+        "20250806",
+        "20250814",
+        "20250815",
+        "20250817",
+        "20250906",
+        "20250908",
+        "20250912",
+        "20250913",
+        "20251008",
+        "20251012",
+        "20251013",
+        "20251109",
+        "20251114",
+        "20251115",
+        "20251117",
+        "20251206",
+        "20251208",
+        "20251217",
+        "20251219",
+        "20260106",
+        "20260108",
+        "20260114",
+        "20260115",
+        "20260117",
+        "20260206",
+        "20260208",
+        "20260214",
+        "20260215",
+        "20260217",
+        "20260306",
+        "20260308",
+        "20260314",
+        "20260315",
+        "20260317",
+        "20260406",
+        "20260408",
+        "20260414",
+        "20260415",
+        "20260417",
+        "20260506",
+        "20260508",
+        "20260511",
+        "20260512",
+        "20260612",
+        "20260617",
+        "20260619",
+        "20260706",
+        "20260708",
+        "20260711",
+        "20260712"
+      ],
+      "rows": 8244
+    },
+    "4h": {
+      "rmse": {
+        "G1": 123.86358440222034,
+        "context": 131.49033591211244,
+        "forecast_train_forecast_infer": 130.81936892891994,
+        "observed_train_observed_infer_OFFLINE": 99.88859995158366,
+        "observed_train_forecast_infer": 133.8412730953756,
+        "forecast_train_observed_infer_OFFLINE": 123.68906841463195
+      },
+      "comparisons": {
+        "observed_train_forecast_infer_minus_context": {
+          "delta_rmse": 2.35093718326317,
+          "ci95": [
+            -5.36768113691292,
+            10.042522102900175
+          ],
+          "relative_change_percent": 1.7879163262876752
+        },
+        "observed_train_forecast_infer_minus_forecast_train_forecast_infer": {
+          "delta_rmse": 3.02190416645567,
+          "ci95": [
+            -4.055435488040086,
+            10.17015186374912
+          ],
+          "relative_change_percent": 2.309982222967011
+        },
+        "observed_train_forecast_infer_minus_G1": {
+          "delta_rmse": 9.977688693155272,
+          "ci95": [
+            2.8312010794868887,
+            17.586293648670342
+          ],
+          "relative_change_percent": 8.055385076500677
+        },
+        "forecast_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -7.130300514287995,
+          "ci95": [
+            -11.52936227322762,
+            -2.9878227735407643
+          ],
+          "relative_change_percent": -5.450492975671062
+        },
+        "observed_train_observed_infer_OFFLINE_minus_forecast_train_forecast_infer": {
+          "delta_rmse": -30.930768977336285,
+          "ci95": [
+            -50.26391504244265,
+            -14.692386044711304
+          ],
+          "relative_change_percent": -23.643875697139592
+        }
+      },
+      "by_station": {
+        "Niushou": {
+          "G1": 124.60073792414484,
+          "context": 131.8433386371955,
+          "forecast_train_forecast_infer": 131.46233379208067,
+          "observed_train_observed_infer_OFFLINE": 95.74288673215067,
+          "observed_train_forecast_infer": 134.0217841890561,
+          "forecast_train_observed_infer_OFFLINE": 123.14526157661378
+        },
+        "Wangzhai": {
+          "G1": 134.76079750573138,
+          "context": 144.81156364182132,
+          "forecast_train_forecast_infer": 144.45564811953736,
+          "observed_train_observed_infer_OFFLINE": 106.6050011905445,
+          "observed_train_forecast_infer": 147.54462978645972,
+          "forecast_train_observed_infer_OFFLINE": 133.07198003291964
+        },
+        "Mizhuang": {
+          "G1": 112.22921777678478,
+          "context": 117.81610545732049,
+          "forecast_train_forecast_infer": 116.54012487514181,
+          "observed_train_observed_infer_OFFLINE": 97.31791193205582,
+          "observed_train_forecast_infer": 119.95740531061097,
+          "forecast_train_observed_infer_OFFLINE": 114.84996363436242
+        }
+      },
+      "dates": [
+        "20250806",
+        "20250814",
+        "20250815",
+        "20250817",
+        "20250906",
+        "20250908",
+        "20250912",
+        "20250913",
+        "20251008",
+        "20251012",
+        "20251013",
+        "20251109",
+        "20251114",
+        "20251115",
+        "20251117",
+        "20251206",
+        "20251208",
+        "20251217",
+        "20251219",
+        "20260106",
+        "20260108",
+        "20260114",
+        "20260115",
+        "20260117",
+        "20260206",
+        "20260208",
+        "20260214",
+        "20260215",
+        "20260217",
+        "20260306",
+        "20260308",
+        "20260314",
+        "20260315",
+        "20260317",
+        "20260406",
+        "20260408",
+        "20260414",
+        "20260415",
+        "20260417",
+        "20260506",
+        "20260508",
+        "20260511",
+        "20260512",
+        "20260612",
+        "20260617",
+        "20260619",
+        "20260706",
+        "20260708",
+        "20260711",
+        "20260712"
+      ],
+      "rows": 8162
+    }
+  },
+  "replay_max": 0.0,
+  "new_fits": 0,
+  "test_payloads_read": 0,
+  "claim": "Posthoc train-date exploration; only forecast-infer arms use causal inputs"
+}
