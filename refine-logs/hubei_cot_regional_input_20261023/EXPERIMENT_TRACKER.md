@@ -195,3 +195,9 @@ hubei_cot_direction_identifiability_20261023已完成CPU固定线性探针，区
 仅large C_fit内32838记录/50日期，固定日期三折与±1日排除，三站三冻结G1来源三臂共81次CPU ridge；无GPU训练、未用C_select选模评分。G1/context/forecast_COT/实际图R-COT离线等权RMSE118.799/124.850/124.307/99.569。预测COT相对context−0.542 CI[−1.492,+0.384]，且仍差于G1+5.508，不能宣称预报改善。实际图R-COT相对G1离线−19.230 CI[−30.442,−9.216]；同一实际源训练映射改喂预测COT后124.912，收益消失。交叉源为主分析后单独冻结的事后诊断，无重新拟合。81模型统计/日期/系数冷重放max0，独立增广最小二乘系数差2.28e−14，点/日期CI独立复算<6e−14。
 
 真实图案例按日历/覆盖选择2025-08-06 12:00，图含实际与SimVP AGRI、三站COT轨迹及15min GHI，缺测断线、实际未来明确离线。报告hubei_cot_conditional_information_20261023/RESULT_REPORT.md；不得与2026新时段历史COT确认混为一个实验。新时段根因与实际事件见hubei_history_cot_confirmation_20261022/diagnosis_20261023/REPORT.md。下一候选仅计划，尚未实现训练，直接AGRI同容量对照未冻结前不启动；总目标未完成。
+
+## 冻结GHI响应引导COT候选已启动
+
+hubei_task_aligned_cot_20261023补齐AGRI-only直接残差近似容量对照，PLAN在结果前冻结。27教师CPU double前向/有限差分/零初始化/缺效/非零梯度/两步状态恢复通过；首次检查因本地probe未同步远端而FileNotFound，补同步原权重后通过，无重拟合或改阈值。215819.tc6000已实时R，浙师大学院node23三A100物理5/4/3，按站点并行81个小拟合，各600更新/global128；只large C_fit三折日期OOF。队列提交前0后1，无test或新时期调参。Luna只读监控已派发。没有新收益结论；等待完整预测与独立评分。
+
+215819已C/exit0，PBS约2分5秒，三站并行训练80.47秒；81个last均600更新、同设备冷重放0。独立CPU全部81权重回放max0.00026703W/m²、FP64点差0/日期CI差5.62e−14。原G1/physical/task/direct_AGRI等权RMSE118.799/128.044/130.284/131.827。task−G1+11.484 CI[+5.745,+17.713]；task−physical+2.240 CI[−1.204,+6.237]。COT/FAR/高GHI保护均未过，候选封存，不扫系数或更新数，不进C_select/新时段/test。完整报告hubei_task_aligned_cot_20261023/RESULT_REPORT.md；原目标仍未完成。监控首次未读到RUN_STATUS，实际文件存在且三worker均exit0。
