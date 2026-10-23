@@ -1,0 +1,33 @@
+{
+  "recorded_UTC": "2026-10-23T06:10:40.888034+00:00",
+  "FD107": {
+    "host": "10.158.205.107",
+    "port": 22,
+    "user": "zjnu",
+    "command": "ssh -o BatchMode=yes -o ConnectTimeout=12 FD-107 hostname",
+    "exit_code": 1,
+    "error": "Connection closed by 10.158.205.107 port 22"
+  },
+  "FD201": {
+    "host": "10.158.205.201",
+    "port": 22,
+    "user": "zjnu",
+    "command": "ssh -o BatchMode=yes -o ConnectTimeout=12 FD-201 hostname",
+    "exit_code": 1,
+    "error": "Connection closed by 10.158.205.201 port 22"
+  },
+  "college_check": "CPP_NOT_VISIBLE_AT_DOCUMENTED_PATH",
+  "claim": "Source access unavailable, not evidence that files are absent",
+  "new_GPU_jobs": 0,
+  "FD107_key_check": {
+    "identity_file_exists": true,
+    "effective_identity": "~/.ssh/id_ed25519_fd107",
+    "identities_only": true,
+    "password_authentication_used": false,
+    "keys_modified": false,
+    "debug_result": "TCP Connection established, then kex_exchange_identification: Connection closed by remote host; no public-key authentication phase reached",
+    "exit_code": 255
+  },
+  "retry_not_before_UTC": "2026-10-23T06:34:30.473934+00:00",
+  "early_retry_exception": "Human confirms connection/access restored"
+}
