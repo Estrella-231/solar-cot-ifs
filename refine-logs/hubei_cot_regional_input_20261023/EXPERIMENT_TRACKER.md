@@ -155,3 +155,7 @@ trajectory_attempt1六组训练已完成（215757 C/exit0、node23四A100，18:5
 接续NEXT_COT_DOMAIN_PLAN.md，新增hubei_forecast_domain_cot_20261023准备F_fit/F_select同折R监督。原train元数据112411条（F_fit106263/F_select6148）、6959帧全部可找到；F日期与原C及扩展C_fit日期不重叠。node22低优先级CPU提取已启动；尚未启动校正训练。冻结S/R/G1，不新增读取official val、新时段、outerbuffer/test。完成提取和冻结R推理后才准备校正训练；COT条件未通过不启动新GHI训练。
 
 215767现已完成F域冻结R参考：学院node23三A100（实际0/3/4），C/exit0、30秒，6959帧全量时间键、patch哈希、太阳mask及源R哈希通过独立数组审查。最大forecast重放RMSE0.000269、max0.002528 COT；未拟合任何模型。PROGRESS.md记录后续34通道输入打包及训练前step0/恢复/吞吐检查，仍无新增GHI收益。原始数据不缺，阶段状态由准备中改为参考已完成；下一项是校正器输入及小规模训练工程检查，不重复生成参考或重跑R。
+
+215768已完成预测域COT校正三seed，各global batch128/600更新，学院node23三A100、C/exit0、2分钟。F域去重44531拟合/2528选模云场，130输入重建差0；step0/梯度/NaN mask/断点两步恢复通过。同R代理F_select等站等15min时效：持平14.57114、原预测14.07309、三seed13.43496/13.54881/13.67123，均值13.55167。相对原预测−0.52143，日期CI[−1.16294,+1.18615]跨0；牛首seed43、王寨seed43/44厚云FAR增加超预定2pp，候选封存，不挑seed进入GHI。厚云误差改善伴随近零/薄云恶化，1—10参考COT样本约96%—97%被上调；12日期中4改善8恶化（当日可用组描述分数）。独立保存预测fsum及日期bootstrap复算差0/2.78e−17。详见hubei_forecast_domain_cot_20261023/RESULT_REPORT.md；未新增读取C_select校正、外层val、新时段、outerbuffer/test，目标仍未完成。后续需承接已有判云/条件修正记录提出未重复因素，不能继续在该F_select扫参数或无条件加厚。
+
+215768冷权重/优化器审查亦完成：三个last均实际600参数更新、scheduler600/LR0，采样顺序一致且初始化不同；全部best选模场CPU冷重放最大差3.81e−5 COT（预设容差1e−3）。CHECKPOINT_AUDIT.json与独立点分数/日期区间核验均通过，负结果并非训练没执行或预测与权重不对应。

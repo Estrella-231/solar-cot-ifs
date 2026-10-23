@@ -1,0 +1,36 @@
+{
+  "state": "PASS_COLD_CHECKPOINT_UPDATES_ORDER_AND_PREDICTIONS",
+  "seeds": [
+    {
+      "seed": 42,
+      "actual_optimizer_steps": [
+        600
+      ],
+      "scheduler_last_epoch": 600,
+      "best_step": 350,
+      "CPU_cold_replay_max_abs_COT": 3.0517578125e-05
+    },
+    {
+      "seed": 43,
+      "actual_optimizer_steps": [
+        600
+      ],
+      "scheduler_last_epoch": 600,
+      "best_step": 450,
+      "CPU_cold_replay_max_abs_COT": 3.0517578125e-05
+    },
+    {
+      "seed": 44,
+      "actual_optimizer_steps": [
+        600
+      ],
+      "scheduler_last_epoch": 600,
+      "best_step": 150,
+      "CPU_cold_replay_max_abs_COT": 3.814697265625e-05
+    }
+  ],
+  "same_sampling_order": true,
+  "distinct_initializations": true,
+  "cold_replay_tolerance_COT": 0.001,
+  "outer_payloads_read": 0
+}
