@@ -231,3 +231,9 @@ hubei_history_cot_missing_fallback_20261023：先复核直接COT/区域输运及
 FD107/201均SSH Connection closed，学院文档原CPP路径不可见，不称数据缺失；已异步询问MotionPro状态。原区域train manifest已绑定20250806 10:15—12:00 BJT八历史CTH源，提取代码接口准备并通过语法检查，未执行源读取。便携CPP虽含CTH模型但需要ERA5环境场，不能直接视作业务因果高度输入。源恢复后先核单位/QA/网格/时间；无来源不虚构投影，不自动GPU训练。报告同目录REPORT.md及ACCESS_RECEIPT.json。总目标未完成。
 
 补充源核查：既有FD107免密配置与密钥文件仍在，debug为TCP建立后KEX前关闭，未到公钥认证，不重建密钥。记录15分钟退避，若用户确认恢复可提前重试。旧窗口平均报告的差值列参照标签混用已由原审计JSON算术复核并单列勘误，原数据与无稳健收益判断不变。
+
+## CTH提取器真实NetCDF合成回归完成
+
+修正旧接口仅检查8行而未拒绝重复历史的漏洞，现严格有序唯一−105..0分钟、train与BJT−8h先验校验。原代码保留attempt1，未改变旧模型/几何结果。学院swc下私有.reader_deps_v1（netCDF4 1.7.2/cftime1.6.4，wheel SHA验证、NumPy复用）通过8项真实NetCDF文件格式的合成回归：坐标反序/packed缩放/m或km原单位/NaN及有效0/缺失QA/错维度与网格/非train和错时区/禁止覆盖。最大值误差1.78e−15，源SHA不变。只生成临时夹具，未读真实CPP/GHI/test、无GPU/PBS，不称精度提升。
+
+达到退避时限后FD107和201实时重查仍Connection closed，记录ACCESS_RECHECK_20261023.json并延长30分钟退避；用户确认恢复可提前重试。8个train高度源读取仍待访问，不能把工程测试当真实CTH通过。报告hubei_cot_geometry_support_20261023/READER_VALIDATION_REPORT.md。总目标active未达成。

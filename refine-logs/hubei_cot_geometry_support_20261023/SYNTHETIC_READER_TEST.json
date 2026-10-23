@@ -1,0 +1,48 @@
+{
+  "state": "SYNTHETIC_NETCDF_READER_PASS",
+  "checks": [
+    {
+      "name": "real_NetCDF4_packed_scale_units_descending_crop_fill_zero_QA_source_preservation",
+      "state": "PASS",
+      "max_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "duplicate_history_rejected",
+      "state": "PASS"
+    },
+    {
+      "name": "nontrain_rejected_before_source_read",
+      "state": "PASS"
+    },
+    {
+      "name": "wrong_UTC_rejected_before_source_read",
+      "state": "PASS"
+    },
+    {
+      "name": "future_or_gap_rejected_before_source_read",
+      "state": "PASS"
+    },
+    {
+      "name": "existing_output_not_overwritten",
+      "state": "PASS"
+    },
+    {
+      "name": "swapped_dimension_names_rejected",
+      "state": "PASS"
+    },
+    {
+      "name": "unmatched_geographic_grid_rejected",
+      "state": "PASS"
+    }
+  ],
+  "netCDF4_version": "1.7.2",
+  "numpy_version": "1.26.4",
+  "input_data": "generated temporary synthetic NetCDF only",
+  "actual_CPP_opened": false,
+  "GHI_labels_opened": false,
+  "test_payloads_opened": false,
+  "source_code_sha256": {
+    "extract_height_source.py": "f6b8b79cc0c93510c46b5b8b78e7b4d2193ae5c542a13af4d0f9d7c11a265c80",
+    "test_reader.py": "352892df3fd930f719354d6412cece3828181557419b7876c53a95494ff9b955"
+  }
+}

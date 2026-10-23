@@ -45,3 +45,7 @@ extract_height_source.py接受已绑定8时刻请求及固定grid，只按LAT/LO
 本轮取得的是新的输入几何量化结果和源读取准备，不是任何COT/GHI精度提升。实际投影及其配对预报尚未执行，用户总目标仍未完成。访问恢复后先读这8份train源、核实高度语义与QA；若源/时间不可绑定则保留具体原因，不伪造高度，不启动新GPU作业，不开test。旧小头、平均、相位和输运负结果均保留。
 
 产物：geometry_sensitivity.csv、RESULTS.json、HEIGHT_SOURCE_REQUEST.json、ACCESS_RECEIPT.json及脚本；未改论文正文。
+
+## 后续CPU工程核验
+
+源提取器已补充历史8帧唯一/连续检查，并通过真实NetCDF格式的合成回归；详见READER_VALIDATION_REPORT.md。该更新不代表实际CPP提取完成；达到退避时限后FD107/201仍关闭连接，记录于ACCESS_RECHECK_20261023.json。
