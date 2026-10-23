@@ -159,3 +159,9 @@ trajectory_attempt1六组训练已完成（215757 C/exit0、node23四A100，18:5
 215768已完成预测域COT校正三seed，各global batch128/600更新，学院node23三A100、C/exit0、2分钟。F域去重44531拟合/2528选模云场，130输入重建差0；step0/梯度/NaN mask/断点两步恢复通过。同R代理F_select等站等15min时效：持平14.57114、原预测14.07309、三seed13.43496/13.54881/13.67123，均值13.55167。相对原预测−0.52143，日期CI[−1.16294,+1.18615]跨0；牛首seed43、王寨seed43/44厚云FAR增加超预定2pp，候选封存，不挑seed进入GHI。厚云误差改善伴随近零/薄云恶化，1—10参考COT样本约96%—97%被上调；12日期中4改善8恶化（当日可用组描述分数）。独立保存预测fsum及日期bootstrap复算差0/2.78e−17。详见hubei_forecast_domain_cot_20261023/RESULT_REPORT.md；未新增读取C_select校正、外层val、新时段、outerbuffer/test，目标仍未完成。后续需承接已有判云/条件修正记录提出未重复因素，不能继续在该F_select扫参数或无条件加厚。
 
 215768冷权重/优化器审查亦完成：三个last均实际600参数更新、scheduler600/LR0，采样顺序一致且初始化不同；全部best选模场CPU冷重放最大差3.81e−5 COT（预设容差1e−3）。CHECKPOINT_AUDIT.json与独立点分数/日期区间核验均通过，负结果并非训练没执行或预测与权重不对应。
+
+## F_fit内部COT修正方向可辨识性
+
+hubei_cot_direction_identifiability_20261023已完成CPU固定线性探针，区别于旧有云/晴及GHI方向模型。仅F_fit，163目标日期/103948站点记录；月内连续3块OOF且±1日隔离，输入现有34通道的3×3逐值，不使用GHI或真实未来图输入。三类为同R参考减原预测<-3/±3内/>3，固定类别等权ridge0.01，无调参。均衡准确率63.89%，日期簇CI[60.23%,67.38%]；上调precision51.24%/recall48.44%，保持precision92.01%，下调precision31.50%。有可辨信息但误判仍多，不是COT/GHI精度。三站与三折完整保留；独立混淆矩阵/日期CI差0，130因果输入冷重放max1.78e−15。无新增GPU/PBS，未读F_select/C_select/外层val/新时段/outerbuffer/test。
+
+下一单因素已冻结在NEXT_DIRECTIONAL_CORRECTION_PLAN.md：以F_fit OOF分类、完整F_fit分类对应F_select，只限制同容量残差允许方向，保持类别时严格回原COT；不把线性分数当概率，不重复晴空清零，不更改600更新和原继续条件。方向图及该残差模型尚未生成/训练。总体预报GHI增益仍未达成；上阶段无约束候选保持封存。
