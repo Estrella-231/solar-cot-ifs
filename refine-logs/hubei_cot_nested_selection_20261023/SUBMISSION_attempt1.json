@@ -1,0 +1,28 @@
+{
+  "queue_before": [],
+  "physical_before": "0, NVIDIA A100-SXM4-40GB, 1808, 100\n1, NVIDIA A100-SXM4-40GB, 1808, 100\n2, NVIDIA A100-SXM4-40GB, 520, 89\n3, NVIDIA A100-SXM4-40GB, 0, 0\n4, NVIDIA A100-SXM4-40GB, 0, 0\n5, NVIDIA A100-SXM4-40GB, 0, 0\n6, NVIDIA A100-SXM4-40GB, 0, 0\n7, NVIDIA A100-SXM4-40GB, 0, 0\n",
+  "server": "ZJNU college",
+  "node": "node23",
+  "gpus": 4,
+  "purpose": "243 inner plus 81 outer fixed-budget fits; profile 2 versus 4 independent GPU slots",
+  "hashes": {
+    "PLAN.md": "906bc8fd5858298007f0af9194c07a2c8fa9e1630387d8a12b9b91e0d763d352",
+    "model.py": "d8292a6e05fb31a5acbea7ad46b1b6a5f03af89d9c1f15ba0baae25276c59e63",
+    "worker.py": "8bbe1e79086fc3eb385ccede8903df05266245f8696e8d0aa97a4a95b3007d08",
+    "run.py": "fa42942fb92426447dd0c59f7a3ca831a3bc776ab901bc9dd555ec0e1ad3660b",
+    "prepared_attempt1/COMPLETE.json": "4cebd6a5b7d83700e238272528c2635bbf4fb06af25415c0d4b2f4eb513951dd",
+    "INNER_PARTITIONS.json": "54f2a8a2a055ed85131e7d267a0e927ada11ca70fcf9a8da531c1eb53fe0895e",
+    "freeze_selection.py": "c66cb2daa31c6004195b5fe88019b710a19fd7f3e546a66c997910fa3e817ee1",
+    "replay.pbs": "189aa4b8f2c32c6c664ad6c122b9c57755c77b2911191af7d81a45f38095b649"
+  },
+  "job_id": "215827.tc6000",
+  "queue_after": [
+    {
+      "id": "215827.tc6000",
+      "state": "Q",
+      "nodes": "node23:ppn=12:gpus=4",
+      "requested_gpus": 4
+    }
+  ],
+  "test_payloads_read": 0
+}

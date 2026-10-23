@@ -1,0 +1,103 @@
+{
+  "physical": "3,4,5,6",
+  "gpu_names": [
+    "NVIDIA A100-SXM4-40GB",
+    "NVIDIA A100-SXM4-40GB",
+    "NVIDIA A100-SXM4-40GB",
+    "NVIDIA A100-SXM4-40GB"
+  ],
+  "preflight": {
+    "seconds": 20.931556871160865,
+    "workers": [
+      {
+        "task": [
+          "Niushou",
+          0,
+          "preflight"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "slots": 1
+  },
+  "profile": {
+    "2": {
+      "seconds": 18.63705897796899,
+      "workers": [
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots2_case1"
+          ],
+          "exit_code": 0
+        },
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots2_case0"
+          ],
+          "exit_code": 0
+        },
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots2_case3"
+          ],
+          "exit_code": 0
+        },
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots2_case2"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "slots": 2
+    },
+    "4": {
+      "seconds": 9.824864640831947,
+      "workers": [
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots4_case0"
+          ],
+          "exit_code": 0
+        },
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots4_case3"
+          ],
+          "exit_code": 0
+        },
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots4_case1"
+          ],
+          "exit_code": 0
+        },
+        {
+          "task": [
+            "Niushou",
+            0,
+            "slots4_case2"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "slots": 4
+    }
+  },
+  "chosen_slots": 4,
+  "pbs_job": "215827.tc6000"
+}
