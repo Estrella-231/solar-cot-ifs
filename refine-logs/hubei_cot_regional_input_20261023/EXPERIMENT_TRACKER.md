@@ -237,3 +237,7 @@ FD107/201均SSH Connection closed，学院文档原CPP路径不可见，不称�
 修正旧接口仅检查8行而未拒绝重复历史的漏洞，现严格有序唯一−105..0分钟、train与BJT−8h先验校验。原代码保留attempt1，未改变旧模型/几何结果。学院swc下私有.reader_deps_v1（netCDF4 1.7.2/cftime1.6.4，wheel SHA验证、NumPy复用）通过8项真实NetCDF文件格式的合成回归：坐标反序/packed缩放/m或km原单位/NaN及有效0/缺失QA/错维度与网格/非train和错时区/禁止覆盖。最大值误差1.78e−15，源SHA不变。只生成临时夹具，未读真实CPP/GHI/test、无GPU/PBS，不称精度提升。
 
 达到退避时限后FD107和201实时重查仍Connection closed，记录ACCESS_RECHECK_20261023.json并延长30分钟退避；用户确认恢复可提前重试。8个train高度源读取仍待访问，不能把工程测试当真实CTH通过。报告hubei_cot_geometry_support_20261023/READER_VALIDATION_REPORT.md。总目标active未达成。
+
+## 当前执行阻塞审计
+
+7f1efd1已推送，读取器及独立CPU环境准备完成。本轮学院实时SSH正常，但已绑定首份历史CTH原路径仍不可读，height_extract_attempt1无完成记录。本地仅四份既有2024湖南官方CTH案例，不能替代所需2025湖北历史；区域pack未存CTH，便携生产器环境场因果来源未绑定。复旦按ACCESS_RECHECK退避，不提前重复连接。原始高度访问问题已连续多轮，当前可独立推进的读取准备已完成；暂停自动无效推进并将总目标标记blocked（非用户暂停、非完成）。恢复条件为复旦访问恢复或八份已绑定train源的可读副本；目标收益仍未证实。证据CURRENT_BLOCKER.json，未新增GPU/test或重调封存候选。
