@@ -1,0 +1,39 @@
+{
+  "state": "PASS_SOURCE_AND_PREPARED_SCOPE",
+  "checks": [
+    {
+      "station": "Niushou",
+      "actual_training_rows": 11113,
+      "actual_Cselect_views": 0,
+      "view_hash_matches": true
+    },
+    {
+      "station": "Wangzhai",
+      "actual_training_rows": 10760,
+      "actual_Cselect_views": 0,
+      "view_hash_matches": true
+    },
+    {
+      "station": "Mizhuang",
+      "actual_training_rows": 10965,
+      "actual_Cselect_views": 0,
+      "view_hash_matches": true
+    }
+  ],
+  "predict_names": [
+    "available",
+    "base",
+    "features_arm",
+    "ii",
+    "j",
+    "len",
+    "model",
+    "range",
+    "select",
+    "tclear",
+    "torch"
+  ],
+  "trainer_sha256": "c42c63635189cd6319e4898f00fc8cbcc24f6dcb37e027f9b0cd4f3f6d88825e",
+  "limitation": "Static closure and prepared-view provenance check; physical forecast tensors are separately checked by cold checkpoint replay",
+  "test_payloads_read": 0
+}

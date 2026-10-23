@@ -1,0 +1,550 @@
+{
+  "state": "SCORED",
+  "summary": {
+    "all": {
+      "rmse": {
+        "G1": 102.88874963746679,
+        "forecast_no_COT": 102.57053533090935,
+        "forecast_future_COT": 102.59503836777463,
+        "dual_no_COT": 102.68594420946961,
+        "dual_future_COT": 102.67996202448577
+      },
+      "comparison": {
+        "dual_future_COT_minus_dual_no_COT": {
+          "delta_rmse": -0.005982184983835737,
+          "ci95": [
+            -0.31092161884413905,
+            0.32208286322492014
+          ],
+          "relative_change_percent": -0.005825709672235835
+        },
+        "forecast_future_COT_minus_forecast_no_COT": {
+          "delta_rmse": 0.024503036865283434,
+          "ci95": [
+            -0.4640212623233545,
+            0.45608394089355386
+          ],
+          "relative_change_percent": 0.02388896264042817
+        },
+        "dual_future_COT_minus_forecast_future_COT": {
+          "delta_rmse": 0.08492365671114044,
+          "ci95": [
+            -0.568872796022357,
+            0.8139581172681737
+          ],
+          "relative_change_percent": 0.08277559817924107
+        },
+        "dual_no_COT_minus_forecast_no_COT": {
+          "delta_rmse": 0.11540887856025961,
+          "ci95": [
+            -0.36875229301382434,
+            0.626196981281356
+          ],
+          "relative_change_percent": 0.11251659961404314
+        },
+        "dual_future_COT_minus_G1": {
+          "delta_rmse": -0.20878761298101267,
+          "ci95": [
+            -1.0252903541697536,
+            0.5718626359207303
+          ],
+          "relative_change_percent": -0.2029256004341451
+        }
+      },
+      "by_station_rmse": {
+        "Niushou": {
+          "G1": 93.64249742611331,
+          "forecast_no_COT": 93.60730979359971,
+          "forecast_future_COT": 93.59277385029786,
+          "dual_no_COT": 93.63500693232157,
+          "dual_future_COT": 93.63058895910149
+        },
+        "Wangzhai": {
+          "G1": 111.11828636392617,
+          "forecast_no_COT": 111.06244335224301,
+          "forecast_future_COT": 111.0568286210068,
+          "dual_no_COT": 110.96316515963731,
+          "dual_future_COT": 110.95973210670537
+        },
+        "Mizhuang": {
+          "G1": 103.90546512236091,
+          "forecast_no_COT": 103.04185284688536,
+          "forecast_future_COT": 103.13551263201929,
+          "dual_no_COT": 103.45966053644996,
+          "dual_future_COT": 103.4495650076505
+        }
+      },
+      "seed_equal_station_delta": [
+        -0.02526247549556615,
+        -0.0030739174211286504,
+        0.010389837965230223
+      ],
+      "dates": [
+        "20250816",
+        "20250914",
+        "20251014",
+        "20251116",
+        "20251218",
+        "20260116",
+        "20260216",
+        "20260316",
+        "20260416",
+        "20260513",
+        "20260618",
+        "20260713"
+      ],
+      "rows": 8266
+    },
+    "1h": {
+      "rmse": {
+        "G1": 96.07283096373175,
+        "forecast_no_COT": 95.72016299143303,
+        "forecast_future_COT": 95.82731482301185,
+        "dual_no_COT": 95.67762769744797,
+        "dual_future_COT": 95.62717340813322
+      },
+      "comparison": {
+        "dual_future_COT_minus_dual_no_COT": {
+          "delta_rmse": -0.05045428931475726,
+          "ci95": [
+            -0.3298803569470451,
+            0.2214428783582674
+          ],
+          "relative_change_percent": -0.05273363327350511
+        },
+        "forecast_future_COT_minus_forecast_no_COT": {
+          "delta_rmse": 0.10715183157881825,
+          "ci95": [
+            -0.2599550676275705,
+            0.4343382139756184
+          ],
+          "relative_change_percent": 0.1119428010046386
+        },
+        "dual_future_COT_minus_forecast_future_COT": {
+          "delta_rmse": -0.20014141487862958,
+          "ci95": [
+            -0.9216207350631578,
+            0.3311011792157024
+          ],
+          "relative_change_percent": -0.20885633208890253
+        },
+        "dual_no_COT_minus_forecast_no_COT": {
+          "delta_rmse": -0.04253529398505407,
+          "ci95": [
+            -0.5409131821557931,
+            0.3647249496299695
+          ],
+          "relative_change_percent": -0.0444371307525504
+        },
+        "dual_future_COT_minus_G1": {
+          "delta_rmse": -0.4456575555985296,
+          "ci95": [
+            -1.2121392276420384,
+            0.30787776109587583
+          ],
+          "relative_change_percent": -0.46387469915065704
+        }
+      },
+      "by_station_rmse": {
+        "Niushou": {
+          "G1": 78.47129327779348,
+          "forecast_no_COT": 78.4080329610564,
+          "forecast_future_COT": 78.40649260782331,
+          "dual_no_COT": 78.4812008329988,
+          "dual_future_COT": 78.48048921304738
+        },
+        "Wangzhai": {
+          "G1": 104.0879335248929,
+          "forecast_no_COT": 103.8909839104313,
+          "forecast_future_COT": 103.89259776097884,
+          "dual_no_COT": 103.28684835876247,
+          "dual_future_COT": 103.23916093241262
+        },
+        "Mizhuang": {
+          "G1": 105.65926608850884,
+          "forecast_no_COT": 104.86147210281139,
+          "forecast_future_COT": 105.18285410023343,
+          "dual_no_COT": 105.26483390058263,
+          "dual_future_COT": 105.16187007893961
+        }
+      },
+      "seed_equal_station_delta": [
+        -0.1256938139842371,
+        0.007324264750446711,
+        -0.03299331871049086
+      ],
+      "dates": [
+        "20250816",
+        "20250914",
+        "20251014",
+        "20251116",
+        "20251218",
+        "20260116",
+        "20260216",
+        "20260316",
+        "20260416",
+        "20260513",
+        "20260618",
+        "20260713"
+      ],
+      "rows": 2063
+    },
+    "2h": {
+      "rmse": {
+        "G1": 107.21481421523711,
+        "forecast_no_COT": 106.40530748571243,
+        "forecast_future_COT": 106.49314959360284,
+        "dual_no_COT": 106.72177301674118,
+        "dual_future_COT": 106.85271720890711
+      },
+      "comparison": {
+        "dual_future_COT_minus_dual_no_COT": {
+          "delta_rmse": 0.13094419216592712,
+          "ci95": [
+            -0.3078178060282678,
+            0.5382221373443098
+          ],
+          "relative_change_percent": 0.12269679228940067
+        },
+        "forecast_future_COT_minus_forecast_no_COT": {
+          "delta_rmse": 0.08784210789040969,
+          "ci95": [
+            -0.6046665809263096,
+            0.6586733390798244
+          ],
+          "relative_change_percent": 0.08255425407441841
+        },
+        "dual_future_COT_minus_forecast_future_COT": {
+          "delta_rmse": 0.3595676153042717,
+          "ci95": [
+            -0.544727075701908,
+            1.119419853874936
+          ],
+          "relative_change_percent": 0.33764389228456704
+        },
+        "dual_no_COT_minus_forecast_no_COT": {
+          "delta_rmse": 0.3164655310287543,
+          "ci95": [
+            -0.39493872801300683,
+            0.8762949710862225
+          ],
+          "relative_change_percent": 0.29741517458727884
+        },
+        "dual_future_COT_minus_G1": {
+          "delta_rmse": -0.3620970063300035,
+          "ci95": [
+            -1.3272459465497708,
+            0.4290724087813591
+          ],
+          "relative_change_percent": -0.33773038640264597
+        }
+      },
+      "by_station_rmse": {
+        "Niushou": {
+          "G1": 94.7395189981617,
+          "forecast_no_COT": 94.69354946888409,
+          "forecast_future_COT": 94.68472487501367,
+          "dual_no_COT": 94.72485432408445,
+          "dual_future_COT": 94.72012222817916
+        },
+        "Wangzhai": {
+          "G1": 115.14839007820945,
+          "forecast_no_COT": 114.99321513247908,
+          "forecast_future_COT": 114.99349673733745,
+          "dual_no_COT": 114.63292612872579,
+          "dual_future_COT": 114.61513264728724
+        },
+        "Mizhuang": {
+          "G1": 111.75653356934019,
+          "forecast_no_COT": 109.52915785577407,
+          "forecast_future_COT": 109.80122716845734,
+          "dual_no_COT": 110.80753859741333,
+          "dual_future_COT": 111.22289675125491
+        }
+      },
+      "seed_equal_station_delta": [
+        0.38626270488836195,
+        0.0052071736549142615,
+        0.0013626979545051654
+      ],
+      "dates": [
+        "20250816",
+        "20250914",
+        "20251014",
+        "20251116",
+        "20251218",
+        "20260116",
+        "20260216",
+        "20260316",
+        "20260416",
+        "20260513",
+        "20260618",
+        "20260713"
+      ],
+      "rows": 2073
+    },
+    "3h": {
+      "rmse": {
+        "G1": 108.82493961140325,
+        "forecast_no_COT": 108.33686989002788,
+        "forecast_future_COT": 108.29162262369134,
+        "dual_no_COT": 108.6042584270768,
+        "dual_future_COT": 108.59480824764267
+      },
+      "comparison": {
+        "dual_future_COT_minus_dual_no_COT": {
+          "delta_rmse": -0.009450179434125516,
+          "ci95": [
+            -0.46848885655467,
+            0.5156000822395312
+          ],
+          "relative_change_percent": -0.008701481480555273
+        },
+        "forecast_future_COT_minus_forecast_no_COT": {
+          "delta_rmse": -0.04524726633654552,
+          "ci95": [
+            -0.662842849580408,
+            0.5071812216360083
+          ],
+          "relative_change_percent": -0.041765343952138156
+        },
+        "dual_future_COT_minus_forecast_future_COT": {
+          "delta_rmse": 0.30318562395133597,
+          "ci95": [
+            -0.3524870650183523,
+            1.1594867604950074
+          ],
+          "relative_change_percent": 0.27997144802687224
+        },
+        "dual_no_COT_minus_forecast_no_COT": {
+          "delta_rmse": 0.26738853704891596,
+          "ci95": [
+            -0.3180628321051042,
+            0.8923453126424596
+          ],
+          "relative_change_percent": 0.24681213082891063
+        },
+        "dual_future_COT_minus_G1": {
+          "delta_rmse": -0.2301313637605773,
+          "ci95": [
+            -1.1886308024115788,
+            0.7856141661096214
+          ],
+          "relative_change_percent": -0.2114693236516696
+        }
+      },
+      "by_station_rmse": {
+        "Niushou": {
+          "G1": 101.62529430357972,
+          "forecast_no_COT": 101.58753163327727,
+          "forecast_future_COT": 101.56969457401698,
+          "dual_no_COT": 101.6093199232879,
+          "dual_future_COT": 101.60427072897893
+        },
+        "Wangzhai": {
+          "G1": 116.76456423051752,
+          "forecast_no_COT": 116.75625910690557,
+          "forecast_future_COT": 116.7466925991164,
+          "dual_no_COT": 116.8282082962105,
+          "dual_future_COT": 116.8364135862101
+        },
+        "Mizhuang": {
+          "G1": 108.08496030011247,
+          "forecast_no_COT": 106.66681892990077,
+          "forecast_future_COT": 106.55848069794058,
+          "dual_no_COT": 107.37524706173203,
+          "dual_future_COT": 107.34374042773896
+        }
+      },
+      "seed_equal_station_delta": [
+        -0.03866637192457745,
+        -0.008463085432940906,
+        0.01877891905510391
+      ],
+      "dates": [
+        "20250816",
+        "20250914",
+        "20251014",
+        "20251116",
+        "20251218",
+        "20260116",
+        "20260216",
+        "20260316",
+        "20260416",
+        "20260513",
+        "20260618",
+        "20260713"
+      ],
+      "rows": 2052
+    },
+    "4h": {
+      "rmse": {
+        "G1": 98.13942438606712,
+        "forecast_no_COT": 98.65008613694168,
+        "forecast_future_COT": 98.57805158243,
+        "dual_no_COT": 98.48095240289416,
+        "dual_future_COT": 98.35228588153542
+      },
+      "comparison": {
+        "dual_future_COT_minus_dual_no_COT": {
+          "delta_rmse": -0.12866652135873835,
+          "ci95": [
+            -0.4792955638574963,
+            0.29697049929797925
+          ],
+          "relative_change_percent": -0.13065117489151623
+        },
+        "forecast_future_COT_minus_forecast_no_COT": {
+          "delta_rmse": -0.07203455451167429,
+          "ci95": [
+            -0.6487739925597982,
+            0.3650568406692169
+          ],
+          "relative_change_percent": -0.07302026519437899
+        },
+        "dual_future_COT_minus_forecast_future_COT": {
+          "delta_rmse": -0.22576570089458414,
+          "ci95": [
+            -1.8014199423304214,
+            1.206979472112809
+          ],
+          "relative_change_percent": -0.2290222795748864
+        },
+        "dual_no_COT_minus_forecast_no_COT": {
+          "delta_rmse": -0.16913373404752008,
+          "ci95": [
+            -1.577110073161442,
+            0.9666948969673668
+          ],
+          "relative_change_percent": -0.17144813620612043
+        },
+        "dual_future_COT_minus_G1": {
+          "delta_rmse": 0.21286149546830302,
+          "ci95": [
+            -0.677057552253974,
+            1.2319111772573115
+          ],
+          "relative_change_percent": 0.2168970286914762
+        }
+      },
+      "by_station_rmse": {
+        "Niushou": {
+          "G1": 97.80716700895289,
+          "forecast_no_COT": 97.80662268891228,
+          "forecast_future_COT": 97.77952827372496,
+          "dual_no_COT": 97.80180485811847,
+          "dual_future_COT": 97.79532963247829
+        },
+        "Wangzhai": {
+          "G1": 108.10222422410192,
+          "forecast_no_COT": 108.22705214484644,
+          "forecast_future_COT": 108.21295077155777,
+          "dual_no_COT": 108.6929034876577,
+          "dual_future_COT": 108.73325702975593
+        },
+        "Mizhuang": {
+          "G1": 88.50888192514655,
+          "forecast_no_COT": 89.9165835770663,
+          "forecast_future_COT": 89.74167570200723,
+          "dual_no_COT": 88.94814886290628,
+          "dual_future_COT": 88.52827098237208
+        }
+      },
+      "seed_equal_station_delta": [
+        -0.4164765943643687,
+        -0.01535568242826931,
+        0.04583271271646557
+      ],
+      "dates": [
+        "20250816",
+        "20250914",
+        "20251014",
+        "20251116",
+        "20251218",
+        "20260116",
+        "20260216",
+        "20260316",
+        "20260416",
+        "20260513",
+        "20260618",
+        "20260713"
+      ],
+      "rows": 2078
+    }
+  },
+  "high_GHI_guard": [
+    {
+      "station": "Niushou",
+      "rows": 217,
+      "absolute_bias_increase": 0.08161642552990855
+    },
+    {
+      "station": "Wangzhai",
+      "rows": 434,
+      "absolute_bias_increase": 0.4813337724453106
+    },
+    {
+      "station": "Mizhuang",
+      "rows": 370,
+      "absolute_bias_increase": -0.09736434852592879
+    }
+  ],
+  "conditions": {
+    "point_improves": true,
+    "ci_below_zero": false,
+    "station_guard": true,
+    "seeds_guard": true,
+    "high_GHI_guard": true
+  },
+  "continue_candidate": false,
+  "checks": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "original_prediction_max_error": 0.0
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "original_prediction_max_error": 0.0
+    }
+  ],
+  "independent_point_scoring": "math.fsum vs numpy per station/seed/arm",
+  "test_payloads_read": 0,
+  "claim": "Repeated training-internal development dates; not independent forecast confirmation"
+}

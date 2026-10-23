@@ -1,0 +1,1250 @@
+{
+  "state": "SCORED",
+  "summary": {
+    "all": {
+      "all": {
+        "rmse": {
+          "forecast_G1": 102.88874962814083,
+          "forecast_no_COT": 102.5705353211726,
+          "forecast_forecast_COT": 102.59503835465888,
+          "forecast_observed_COT_OFFLINE": 102.86544594094289,
+          "observed_G1_OFFLINE": 88.6796445766154,
+          "observed_no_COT_OFFLINE": 88.67758433111382,
+          "observed_forecast_COT_OFFLINE": 88.78722958570759,
+          "observed_observed_COT_OFFLINE": 88.8159952102108
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.2704075862840085,
+            "ci95": [
+              0.055717170860176066,
+              0.5482270876080388
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.028765624503208187,
+            "ci95": [
+              -0.20243876678972902,
+              0.22882072100269465
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": 0.024503033486283243,
+            "ci95": [
+              -0.4640212523933361,
+              0.45608393122407653
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.13841087909698047,
+            "ci95": [
+              -0.4319313641764211,
+              0.5683985738126744
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.10964525459377228,
+            "ci95": [
+              -0.3035960417489317,
+              0.41948973967131853
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -13.892950990058779,
+            "ci95": [
+              -21.695954510879144,
+              -5.983668865468008
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -14.209105051525427,
+            "ci95": [
+              -22.244207919424408,
+              -6.146134900732671
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 93.64249739813543,
+            "forecast_no_COT": 93.60730976438947,
+            "forecast_forecast_COT": 93.59277381912462,
+            "forecast_observed_COT_OFFLINE": 93.58360941046449,
+            "observed_G1_OFFLINE": 83.29445330837352,
+            "observed_no_COT_OFFLINE": 83.26873626001021,
+            "observed_forecast_COT_OFFLINE": 83.25464803059175,
+            "observed_observed_COT_OFFLINE": 83.24864369161578
+          },
+          "Wangzhai": {
+            "forecast_G1": 111.11828636392617,
+            "forecast_no_COT": 111.06244335224301,
+            "forecast_forecast_COT": 111.05682863044355,
+            "forecast_observed_COT_OFFLINE": 111.03930952671679,
+            "observed_G1_OFFLINE": 92.23381968337269,
+            "observed_no_COT_OFFLINE": 92.03115874415816,
+            "observed_forecast_COT_OFFLINE": 92.02760921876829,
+            "observed_observed_COT_OFFLINE": 92.01618105204032
+          },
+          "Mizhuang": {
+            "forecast_G1": 103.90546512236091,
+            "forecast_no_COT": 103.04185284688536,
+            "forecast_forecast_COT": 103.13551261440848,
+            "forecast_observed_COT_OFFLINE": 103.97341888564739,
+            "observed_G1_OFFLINE": 90.51066073809999,
+            "observed_no_COT_OFFLINE": 90.73285798917306,
+            "observed_forecast_COT_OFFLINE": 91.07943150776275,
+            "observed_observed_COT_OFFLINE": 91.1831608869763
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -50.57950652122822,
+          "ci95": [
+            -107.03219494213853,
+            -7.623080058404302
+          ],
+          "by_station": {
+            "Niushou": 0.7201736817290415,
+            "Wangzhai": 1.7515098437694785,
+            "Mizhuang": -154.21020308918318
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 8266
+      },
+      "1h": {
+        "rmse": {
+          "forecast_G1": 96.07283094265371,
+          "forecast_no_COT": 95.72016296932678,
+          "forecast_forecast_COT": 95.82731481052745,
+          "forecast_observed_COT_OFFLINE": 95.9259077983017,
+          "observed_G1_OFFLINE": 89.48029656466612,
+          "observed_no_COT_OFFLINE": 89.46792398383023,
+          "observed_forecast_COT_OFFLINE": 89.57682023496552,
+          "observed_observed_COT_OFFLINE": 89.58599781542598
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.0985929877742393,
+            "ci95": [
+              0.014212781777291638,
+              0.21587942635152713
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.009177580460459467,
+            "ci95": [
+              -0.16057745323362002,
+              0.13201366264409461
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": 0.10715184120067534,
+            "ci95": [
+              -0.25995506151501,
+              0.43433821971417114
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.11807383159575124,
+            "ci95": [
+              -0.2420750040095765,
+              0.3918139044794788
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.10889625113529178,
+            "ci95": [
+              -0.2342709036063148,
+              0.38278265934393507
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -6.252238985496547,
+            "ci95": [
+              -10.485478656258334,
+              -2.122341016273309
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -6.59253437798759,
+            "ci95": [
+              -10.711203405620568,
+              -2.5609848826849917
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 78.47129321455935,
+            "forecast_no_COT": 78.40803289473762,
+            "forecast_forecast_COT": 78.40649254235592,
+            "forecast_observed_COT_OFFLINE": 78.40333130863911,
+            "observed_G1_OFFLINE": 74.08519145698739,
+            "observed_no_COT_OFFLINE": 74.0227399117329,
+            "observed_forecast_COT_OFFLINE": 74.02049696439279,
+            "observed_observed_COT_OFFLINE": 74.0191075361389
+          },
+          "Wangzhai": {
+            "forecast_G1": 104.0879335248929,
+            "forecast_no_COT": 103.8909839104313,
+            "forecast_forecast_COT": 103.89259776405093,
+            "forecast_observed_COT_OFFLINE": 103.88371123645315,
+            "observed_G1_OFFLINE": 96.69033081964669,
+            "observed_no_COT_OFFLINE": 96.28032345159188,
+            "observed_forecast_COT_OFFLINE": 96.28597858477588,
+            "observed_observed_COT_OFFLINE": 96.28167528025155
+          },
+          "Mizhuang": {
+            "forecast_G1": 105.65926608850884,
+            "forecast_no_COT": 104.86147210281139,
+            "forecast_forecast_COT": 105.18285412517552,
+            "forecast_observed_COT_OFFLINE": 105.49068084981279,
+            "observed_G1_OFFLINE": 97.6653674173643,
+            "observed_no_COT_OFFLINE": 98.10070858816592,
+            "observed_forecast_COT_OFFLINE": 98.4239851557279,
+            "observed_observed_COT_OFFLINE": 98.45721062988753
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -19.019803290539535,
+          "ci95": [
+            -44.6775082543515,
+            -1.086242935108321
+          ],
+          "by_station": {
+            "Niushou": 0.2852654258980086,
+            "Wangzhai": 0.9780775533211757,
+            "Mizhuang": -58.32275285083779
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2063
+      },
+      "2h": {
+        "rmse": {
+          "forecast_G1": 107.2148142131503,
+          "forecast_no_COT": 106.40530748316378,
+          "forecast_forecast_COT": 106.4931495596691,
+          "forecast_observed_COT_OFFLINE": 106.7384036729781,
+          "observed_G1_OFFLINE": 90.08194040199328,
+          "observed_no_COT_OFFLINE": 89.77026444532021,
+          "observed_forecast_COT_OFFLINE": 89.80355708587722,
+          "observed_observed_COT_OFFLINE": 89.86601745836151
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.24525411330898805,
+            "ci95": [
+              0.044878483827829996,
+              0.4899983753551856
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.06246037248429559,
+            "ci95": [
+              -0.08035610661619615,
+              0.18905647961547023
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": 0.08784207650532494,
+            "ci95": [
+              -0.6046665651863605,
+              0.6586732958255392
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.09575301304130335,
+            "ci95": [
+              -0.5708180588549665,
+              0.5439952482998853
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.03329264055700776,
+            "ci95": [
+              -0.5297847107084523,
+              0.3998224745001137
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -16.635043037843573,
+            "ci95": [
+              -24.269284390973386,
+              -7.9306892875676205
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -17.132873811157026,
+            "ci95": [
+              -24.80355788347953,
+              -8.370457928865587
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 94.73951899190125,
+            "forecast_no_COT": 94.69354946123816,
+            "forecast_forecast_COT": 94.68472487445791,
+            "forecast_observed_COT_OFFLINE": 94.67448258838373,
+            "observed_G1_OFFLINE": 82.86441778251644,
+            "observed_no_COT_OFFLINE": 82.8082538011449,
+            "observed_forecast_COT_OFFLINE": 82.79980372467034,
+            "observed_observed_COT_OFFLINE": 82.79246272304154
+          },
+          "Wangzhai": {
+            "forecast_G1": 115.14839007820945,
+            "forecast_no_COT": 114.99321513247908,
+            "forecast_forecast_COT": 114.99349676968359,
+            "forecast_observed_COT_OFFLINE": 114.97265493973215,
+            "observed_G1_OFFLINE": 92.51629036328632,
+            "observed_no_COT_OFFLINE": 92.1790941643173,
+            "observed_forecast_COT_OFFLINE": 92.18189521148658,
+            "observed_observed_COT_OFFLINE": 92.16718189828288
+          },
+          "Mizhuang": {
+            "forecast_G1": 111.75653356934019,
+            "forecast_no_COT": 109.52915785577407,
+            "forecast_forecast_COT": 109.80122703486575,
+            "forecast_observed_COT_OFFLINE": 110.56807349081839,
+            "observed_G1_OFFLINE": 94.86511306017711,
+            "observed_no_COT_OFFLINE": 94.32344537049839,
+            "observed_forecast_COT_OFFLINE": 94.4289723214747,
+            "observed_observed_COT_OFFLINE": 94.63840775376015
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -42.185376145418864,
+          "ci95": [
+            -93.75748193086784,
+            -4.129996357097262
+          ],
+          "by_station": {
+            "Niushou": 0.7278032712617156,
+            "Wangzhai": 2.002849403296447,
+            "Mizhuang": -129.28678111081476
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2073
+      },
+      "3h": {
+        "rmse": {
+          "forecast_G1": 108.82493961169186,
+          "forecast_no_COT": 108.33686989055364,
+          "forecast_forecast_COT": 108.29162263765468,
+          "forecast_observed_COT_OFFLINE": 108.67624412213978,
+          "observed_G1_OFFLINE": 90.79759272996472,
+          "observed_no_COT_OFFLINE": 90.57277177727416,
+          "observed_forecast_COT_OFFLINE": 90.6498349095788,
+          "observed_observed_COT_OFFLINE": 90.69995413933789
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.3846214844850948,
+            "ci95": [
+              0.06620349988799994,
+              0.7539698791526078
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.050119229759090445,
+            "ci95": [
+              -0.22920946536300732,
+              0.2972112413812297
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": -0.045247252898960255,
+            "ci95": [
+              -0.6628427889102901,
+              0.5071812454188798
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.1271823620637349,
+            "ci95": [
+              -0.6248436200276888,
+              0.673765935816166
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.07706313230464445,
+            "ci95": [
+              -0.4999138295603849,
+              0.5174688321660329
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -17.764098113279488,
+            "ci95": [
+              -29.216616245115567,
+              -6.858995792939229
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -18.02734688172714,
+            "ci95": [
+              -29.88035444429935,
+              -6.928419378862341
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 101.62529430444556,
+            "forecast_no_COT": 101.5875316348546,
+            "forecast_forecast_COT": 101.56969456070415,
+            "forecast_observed_COT_OFFLINE": 101.55785974936843,
+            "observed_G1_OFFLINE": 89.05472940015096,
+            "observed_no_COT_OFFLINE": 89.0414471784296,
+            "observed_forecast_COT_OFFLINE": 89.02299861930014,
+            "observed_observed_COT_OFFLINE": 89.01486116768616
+          },
+          "Wangzhai": {
+            "forecast_G1": 116.76456423051752,
+            "forecast_no_COT": 116.75625910690557,
+            "forecast_forecast_COT": 116.74669260109602,
+            "forecast_observed_COT_OFFLINE": 116.72371657539288,
+            "observed_G1_OFFLINE": 91.32972077223742,
+            "observed_no_COT_OFFLINE": 91.1997205890339,
+            "observed_forecast_COT_OFFLINE": 91.19161925947503,
+            "observed_observed_COT_OFFLINE": 91.17587885507726
+          },
+          "Mizhuang": {
+            "forecast_G1": 108.08496030011247,
+            "forecast_no_COT": 106.66681892990077,
+            "forecast_forecast_COT": 106.55848075116391,
+            "forecast_observed_COT_OFFLINE": 107.74715604165804,
+            "observed_G1_OFFLINE": 92.00832801750575,
+            "observed_no_COT_OFFLINE": 91.47714756435896,
+            "observed_forecast_COT_OFFLINE": 91.73488684996126,
+            "observed_observed_COT_OFFLINE": 91.90912239525028
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -72.73990012373179,
+          "ci95": [
+            -156.65169863779346,
+            -9.780792458919985
+          ],
+          "by_station": {
+            "Niushou": 0.9671045415167706,
+            "Wangzhai": 2.481340026799444,
+            "Mizhuang": -221.66814493951156
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2052
+      },
+      "4h": {
+        "rmse": {
+          "forecast_G1": 98.13942436826932,
+          "forecast_no_COT": 98.65008611856517,
+          "forecast_forecast_COT": 98.57805156114846,
+          "forecast_observed_COT_OFFLINE": 98.95662552414724,
+          "observed_G1_OFFLINE": 83.4245227543189,
+          "observed_no_COT_OFFLINE": 84.05637457631616,
+          "observed_forecast_COT_OFFLINE": 84.30262258443092,
+          "observed_observed_COT_OFFLINE": 84.2915248306089
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.3785739629987859,
+            "ci95": [
+              0.06930426992034348,
+              0.7706736574766896
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": -0.011097753822014056,
+            "ci95": [
+              -0.4225204945843572,
+              0.3635831343059485
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": -0.07203455741671405,
+            "ci95": [
+              -0.6487739865253165,
+              0.3650568340920838
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.23515025429274772,
+            "ci95": [
+              -0.575446062812112,
+              0.9311636446942719
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.24624800811476177,
+            "ci95": [
+              -0.3566930743674575,
+              0.6980309110659542
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -14.593711542249011,
+            "ci95": [
+              -24.196655252639744,
+              -5.3774590200396055
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -14.714901613950417,
+            "ci95": [
+              -24.931930175352623,
+              -5.342207948610131
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 97.80716695555952,
+            "forecast_no_COT": 97.80662263378275,
+            "forecast_forecast_COT": 97.77952821916496,
+            "forecast_observed_COT_OFFLINE": 97.76931794364937,
+            "observed_G1_OFFLINE": 86.25365717088062,
+            "observed_no_COT_OFFLINE": 86.27690581652855,
+            "observed_forecast_COT_OFFLINE": 86.25178199293406,
+            "observed_observed_COT_OFFLINE": 86.24531015571294
+          },
+          "Wangzhai": {
+            "forecast_G1": 108.10222422410192,
+            "forecast_no_COT": 108.22705214484644,
+            "forecast_forecast_COT": 108.21295077155777,
+            "forecast_observed_COT_OFFLINE": 108.19644724670826,
+            "observed_G1_OFFLINE": 88.3065012070565,
+            "observed_no_COT_OFFLINE": 88.39576958955375,
+            "observed_forecast_COT_OFFLINE": 88.38025528879,
+            "observed_observed_COT_OFFLINE": 88.3686805702067
+          },
+          "Mizhuang": {
+            "forecast_G1": 88.50888192514655,
+            "forecast_no_COT": 89.9165835770663,
+            "forecast_forecast_COT": 89.74167569272254,
+            "forecast_observed_COT_OFFLINE": 90.90411138208414,
+            "observed_G1_OFFLINE": 75.71340988501957,
+            "observed_no_COT_OFFLINE": 77.4964483228661,
+            "observed_forecast_COT_OFFLINE": 78.27583047156872,
+            "observed_observed_COT_OFFLINE": 78.26058376590701
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -69.59126756773357,
+          "ci95": [
+            -140.87591640823874,
+            -13.508125891025417
+          ],
+          "by_station": {
+            "Niushou": 0.8933801716554323,
+            "Wangzhai": 1.5514027682399198,
+            "Mizhuang": -211.21858564309605
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2078
+      }
+    },
+    "common": {
+      "all": {
+        "rmse": {
+          "forecast_G1": 103.79050859531168,
+          "forecast_no_COT": 103.46891981291839,
+          "forecast_forecast_COT": 103.49368783014997,
+          "forecast_observed_COT_OFFLINE": 103.76698157096821,
+          "observed_G1_OFFLINE": 89.44328542855231,
+          "observed_no_COT_OFFLINE": 89.44123746626721,
+          "observed_forecast_COT_OFFLINE": 89.55205927034325,
+          "observed_observed_COT_OFFLINE": 89.58113697151742
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.27329374081824653,
+            "ci95": [
+              0.056424363088794394,
+              0.5537703667758106
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.029077701174173853,
+            "ci95": [
+              -0.20474958859931255,
+              0.23133555330921532
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": 0.02476801723157962,
+            "ci95": [
+              -0.4691266079264246,
+              0.4608145819946393
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.139899505250213,
+            "ci95": [
+              -0.4383740917741129,
+              0.5743762156340697
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.11082180407603914,
+            "ci95": [
+              -0.3075010456296443,
+              0.42373609756876407
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -14.027682346651176,
+            "ci95": [
+              -21.911450414827023,
+              -6.052674572480166
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -14.347223166759363,
+            "ci95": [
+              -22.463682109365443,
+              -6.210099975651826
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 94.38967906827611,
+            "forecast_no_COT": 94.35413596924809,
+            "forecast_forecast_COT": 94.33945280243968,
+            "forecast_observed_COT_OFFLINE": 94.33019547106615,
+            "observed_G1_OFFLINE": 83.94640331555263,
+            "observed_no_COT_OFFLINE": 83.92041779568471,
+            "observed_forecast_COT_OFFLINE": 83.90618474853797,
+            "observed_observed_COT_OFFLINE": 83.90011855082618
+          },
+          "Wangzhai": {
+            "forecast_G1": 112.07452020068337,
+            "forecast_no_COT": 112.01811362622091,
+            "forecast_forecast_COT": 112.01244223423255,
+            "forecast_observed_COT_OFFLINE": 111.99474629955866,
+            "observed_G1_OFFLINE": 93.00715933708943,
+            "observed_no_COT_OFFLINE": 92.80241127587813,
+            "observed_forecast_COT_OFFLINE": 92.79882517307665,
+            "observed_observed_COT_OFFLINE": 92.78727923527903
+          },
+          "Mizhuang": {
+            "forecast_G1": 104.90732651697552,
+            "forecast_no_COT": 104.03450984328616,
+            "forecast_forecast_COT": 104.12916845377765,
+            "forecast_observed_COT_OFFLINE": 104.9760029422798,
+            "observed_G1_OFFLINE": 91.37629363301488,
+            "observed_no_COT_OFFLINE": 91.6008833272388,
+            "observed_forecast_COT_OFFLINE": 91.95116788941516,
+            "observed_observed_COT_OFFLINE": 92.05601312844708
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -51.61244024146577,
+          "ci95": [
+            -109.1934222811593,
+            -7.784800586390737
+          ],
+          "by_station": {
+            "Niushou": 0.7332677486701868,
+            "Wangzhai": 1.7844278048099416,
+            "Mizhuang": -157.35501627787744
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 8111
+      },
+      "1h": {
+        "rmse": {
+          "forecast_G1": 96.07283094265371,
+          "forecast_no_COT": 95.72016296932678,
+          "forecast_forecast_COT": 95.82731481052745,
+          "forecast_observed_COT_OFFLINE": 95.9259077983017,
+          "observed_G1_OFFLINE": 89.48029656466612,
+          "observed_no_COT_OFFLINE": 89.46792398383023,
+          "observed_forecast_COT_OFFLINE": 89.57682023496552,
+          "observed_observed_COT_OFFLINE": 89.58599781542598
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.0985929877742393,
+            "ci95": [
+              0.014212781777291638,
+              0.21587942635152713
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.009177580460459467,
+            "ci95": [
+              -0.16057745323362002,
+              0.13201366264409461
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": 0.10715184120067534,
+            "ci95": [
+              -0.25995506151501,
+              0.43433821971417114
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.11807383159575124,
+            "ci95": [
+              -0.2420750040095765,
+              0.3918139044794788
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.10889625113529178,
+            "ci95": [
+              -0.2342709036063148,
+              0.38278265934393507
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -6.252238985496547,
+            "ci95": [
+              -10.485478656258334,
+              -2.122341016273309
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -6.59253437798759,
+            "ci95": [
+              -10.711203405620568,
+              -2.5609848826849917
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 78.47129321455935,
+            "forecast_no_COT": 78.40803289473762,
+            "forecast_forecast_COT": 78.40649254235592,
+            "forecast_observed_COT_OFFLINE": 78.40333130863911,
+            "observed_G1_OFFLINE": 74.08519145698739,
+            "observed_no_COT_OFFLINE": 74.0227399117329,
+            "observed_forecast_COT_OFFLINE": 74.02049696439279,
+            "observed_observed_COT_OFFLINE": 74.0191075361389
+          },
+          "Wangzhai": {
+            "forecast_G1": 104.0879335248929,
+            "forecast_no_COT": 103.8909839104313,
+            "forecast_forecast_COT": 103.89259776405093,
+            "forecast_observed_COT_OFFLINE": 103.88371123645315,
+            "observed_G1_OFFLINE": 96.69033081964669,
+            "observed_no_COT_OFFLINE": 96.28032345159188,
+            "observed_forecast_COT_OFFLINE": 96.28597858477588,
+            "observed_observed_COT_OFFLINE": 96.28167528025155
+          },
+          "Mizhuang": {
+            "forecast_G1": 105.65926608850884,
+            "forecast_no_COT": 104.86147210281139,
+            "forecast_forecast_COT": 105.18285412517552,
+            "forecast_observed_COT_OFFLINE": 105.49068084981279,
+            "observed_G1_OFFLINE": 97.6653674173643,
+            "observed_no_COT_OFFLINE": 98.10070858816592,
+            "observed_forecast_COT_OFFLINE": 98.4239851557279,
+            "observed_observed_COT_OFFLINE": 98.45721062988753
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -19.019803290539535,
+          "ci95": [
+            -44.6775082543515,
+            -1.086242935108321
+          ],
+          "by_station": {
+            "Niushou": 0.2852654258980086,
+            "Wangzhai": 0.9780775533211757,
+            "Mizhuang": -58.32275285083779
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2063
+      },
+      "2h": {
+        "rmse": {
+          "forecast_G1": 107.2148142131503,
+          "forecast_no_COT": 106.40530748316378,
+          "forecast_forecast_COT": 106.4931495596691,
+          "forecast_observed_COT_OFFLINE": 106.7384036729781,
+          "observed_G1_OFFLINE": 90.08194040199328,
+          "observed_no_COT_OFFLINE": 89.77026444532021,
+          "observed_forecast_COT_OFFLINE": 89.80355708587722,
+          "observed_observed_COT_OFFLINE": 89.86601745836151
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.24525411330898805,
+            "ci95": [
+              0.044878483827829996,
+              0.4899983753551856
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.06246037248429559,
+            "ci95": [
+              -0.08035610661619615,
+              0.18905647961547023
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": 0.08784207650532494,
+            "ci95": [
+              -0.6046665651863605,
+              0.6586732958255392
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.09575301304130335,
+            "ci95": [
+              -0.5708180588549665,
+              0.5439952482998853
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.03329264055700776,
+            "ci95": [
+              -0.5297847107084523,
+              0.3998224745001137
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -16.635043037843573,
+            "ci95": [
+              -24.269284390973386,
+              -7.9306892875676205
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -17.132873811157026,
+            "ci95": [
+              -24.80355788347953,
+              -8.370457928865587
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 94.73951899190125,
+            "forecast_no_COT": 94.69354946123816,
+            "forecast_forecast_COT": 94.68472487445791,
+            "forecast_observed_COT_OFFLINE": 94.67448258838373,
+            "observed_G1_OFFLINE": 82.86441778251644,
+            "observed_no_COT_OFFLINE": 82.8082538011449,
+            "observed_forecast_COT_OFFLINE": 82.79980372467034,
+            "observed_observed_COT_OFFLINE": 82.79246272304154
+          },
+          "Wangzhai": {
+            "forecast_G1": 115.14839007820945,
+            "forecast_no_COT": 114.99321513247908,
+            "forecast_forecast_COT": 114.99349676968359,
+            "forecast_observed_COT_OFFLINE": 114.97265493973215,
+            "observed_G1_OFFLINE": 92.51629036328632,
+            "observed_no_COT_OFFLINE": 92.1790941643173,
+            "observed_forecast_COT_OFFLINE": 92.18189521148658,
+            "observed_observed_COT_OFFLINE": 92.16718189828288
+          },
+          "Mizhuang": {
+            "forecast_G1": 111.75653356934019,
+            "forecast_no_COT": 109.52915785577407,
+            "forecast_forecast_COT": 109.80122703486575,
+            "forecast_observed_COT_OFFLINE": 110.56807349081839,
+            "observed_G1_OFFLINE": 94.86511306017711,
+            "observed_no_COT_OFFLINE": 94.32344537049839,
+            "observed_forecast_COT_OFFLINE": 94.4289723214747,
+            "observed_observed_COT_OFFLINE": 94.63840775376015
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -42.185376145418864,
+          "ci95": [
+            -93.75748193086784,
+            -4.129996357097262
+          ],
+          "by_station": {
+            "Niushou": 0.7278032712617156,
+            "Wangzhai": 2.002849403296447,
+            "Mizhuang": -129.28678111081476
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2073
+      },
+      "3h": {
+        "rmse": {
+          "forecast_G1": 108.82493961169186,
+          "forecast_no_COT": 108.33686989055364,
+          "forecast_forecast_COT": 108.29162263765468,
+          "forecast_observed_COT_OFFLINE": 108.67624412213978,
+          "observed_G1_OFFLINE": 90.79759272996472,
+          "observed_no_COT_OFFLINE": 90.57277177727416,
+          "observed_forecast_COT_OFFLINE": 90.6498349095788,
+          "observed_observed_COT_OFFLINE": 90.69995413933789
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.3846214844850948,
+            "ci95": [
+              0.06620349988799994,
+              0.7539698791526078
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": 0.050119229759090445,
+            "ci95": [
+              -0.22920946536300732,
+              0.2972112413812297
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": -0.045247252898960255,
+            "ci95": [
+              -0.6628427889102901,
+              0.5071812454188798
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.1271823620637349,
+            "ci95": [
+              -0.6248436200276888,
+              0.673765935816166
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.07706313230464445,
+            "ci95": [
+              -0.4999138295603849,
+              0.5174688321660329
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -17.764098113279488,
+            "ci95": [
+              -29.216616245115567,
+              -6.858995792939229
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -18.02734688172714,
+            "ci95": [
+              -29.88035444429935,
+              -6.928419378862341
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 101.62529430444556,
+            "forecast_no_COT": 101.5875316348546,
+            "forecast_forecast_COT": 101.56969456070415,
+            "forecast_observed_COT_OFFLINE": 101.55785974936843,
+            "observed_G1_OFFLINE": 89.05472940015096,
+            "observed_no_COT_OFFLINE": 89.0414471784296,
+            "observed_forecast_COT_OFFLINE": 89.02299861930014,
+            "observed_observed_COT_OFFLINE": 89.01486116768616
+          },
+          "Wangzhai": {
+            "forecast_G1": 116.76456423051752,
+            "forecast_no_COT": 116.75625910690557,
+            "forecast_forecast_COT": 116.74669260109602,
+            "forecast_observed_COT_OFFLINE": 116.72371657539288,
+            "observed_G1_OFFLINE": 91.32972077223742,
+            "observed_no_COT_OFFLINE": 91.1997205890339,
+            "observed_forecast_COT_OFFLINE": 91.19161925947503,
+            "observed_observed_COT_OFFLINE": 91.17587885507726
+          },
+          "Mizhuang": {
+            "forecast_G1": 108.08496030011247,
+            "forecast_no_COT": 106.66681892990077,
+            "forecast_forecast_COT": 106.55848075116391,
+            "forecast_observed_COT_OFFLINE": 107.74715604165804,
+            "observed_G1_OFFLINE": 92.00832801750575,
+            "observed_no_COT_OFFLINE": 91.47714756435896,
+            "observed_forecast_COT_OFFLINE": 91.73488684996126,
+            "observed_observed_COT_OFFLINE": 91.90912239525028
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -72.73990012373179,
+          "ci95": [
+            -156.65169863779346,
+            -9.780792458919985
+          ],
+          "by_station": {
+            "Niushou": 0.9671045415167706,
+            "Wangzhai": 2.481340026799444,
+            "Mizhuang": -221.66814493951156
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 2052
+      },
+      "4h": {
+        "rmse": {
+          "forecast_G1": 101.67354646600234,
+          "forecast_no_COT": 102.20724233987829,
+          "forecast_forecast_COT": 102.13196512569635,
+          "forecast_observed_COT_OFFLINE": 102.52778625053962,
+          "observed_G1_OFFLINE": 86.36355505242608,
+          "observed_no_COT_OFFLINE": 87.02437432575145,
+          "observed_forecast_COT_OFFLINE": 87.28196624282845,
+          "observed_observed_COT_OFFLINE": 87.2703933243801
+        },
+        "comparisons": {
+          "forecast_observed_COT_OFFLINE_minus_forecast_forecast_COT": {
+            "delta_rmse": 0.39582112484326615,
+            "ci95": [
+              0.07311618451869144,
+              0.8088360686091605
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_forecast_COT_OFFLINE": {
+            "delta_rmse": -0.011572918448351288,
+            "ci95": [
+              -0.44433497747962747,
+              0.379687460190831
+            ]
+          },
+          "forecast_forecast_COT_minus_forecast_no_COT": {
+            "delta_rmse": -0.07527721418193778,
+            "ci95": [
+              -0.6839322672200666,
+              0.37747875949643744
+            ]
+          },
+          "observed_observed_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.2460189986286423,
+            "ci95": [
+              -0.603013446810985,
+              0.9668200751338885
+            ]
+          },
+          "observed_forecast_COT_OFFLINE_minus_observed_no_COT_OFFLINE": {
+            "delta_rmse": 0.2575919170769936,
+            "ci95": [
+              -0.3785750074692647,
+              0.728481421021556
+            ]
+          },
+          "observed_no_COT_OFFLINE_minus_forecast_no_COT": {
+            "delta_rmse": -15.18286801412684,
+            "ci95": [
+              -25.164328483200194,
+              -5.590885644423567
+            ]
+          },
+          "observed_G1_OFFLINE_minus_forecast_G1": {
+            "delta_rmse": -15.309991413576256,
+            "ci95": [
+              -25.95285980636119,
+              -5.573632168141598
+            ]
+          }
+        },
+        "by_station": {
+          "Niushou": {
+            "forecast_G1": 101.12296351396644,
+            "forecast_no_COT": 101.12240279498269,
+            "forecast_forecast_COT": 101.09416941508432,
+            "forecast_observed_COT_OFFLINE": 101.0835290278792,
+            "observed_G1_OFFLINE": 89.12062032172561,
+            "observed_no_COT_OFFLINE": 89.14487241054336,
+            "observed_forecast_COT_OFFLINE": 89.11867634753234,
+            "observed_observed_COT_OFFLINE": 89.11192690388145
+          },
+          "Wangzhai": {
+            "forecast_G1": 111.86640467558767,
+            "forecast_no_COT": 111.99636079014175,
+            "forecast_forecast_COT": 111.98168023657622,
+            "forecast_observed_COT_OFFLINE": 111.96449882562524,
+            "observed_G1_OFFLINE": 91.28666715189063,
+            "observed_no_COT_OFFLINE": 91.37971043083746,
+            "observed_forecast_COT_OFFLINE": 91.36354024469432,
+            "observed_observed_COT_OFFLINE": 91.35147614511364
+          },
+          "Mizhuang": {
+            "forecast_G1": 92.03127120845289,
+            "forecast_no_COT": 93.50296343451042,
+            "forecast_forecast_COT": 93.32004572542843,
+            "forecast_observed_COT_OFFLINE": 94.53533089811445,
+            "observed_G1_OFFLINE": 78.68337768366199,
+            "observed_no_COT_OFFLINE": 80.5485401358735,
+            "observed_forecast_COT_OFFLINE": 81.36368213625866,
+            "observed_observed_COT_OFFLINE": 81.34777692414514
+          }
+        },
+        "COT_source_MSE_interaction": {
+          "point": -75.6650194266346,
+          "ci95": [
+            -153.44524482065736,
+            -14.694720542315626
+          ],
+          "by_station": {
+            "Niushou": 0.9625107801778844,
+            "Wangzhai": 1.6715113696530655,
+            "Mizhuang": -229.62908042973473
+          }
+        },
+        "dates": [
+          "20250816",
+          "20250914",
+          "20251014",
+          "20251116",
+          "20251218",
+          "20260116",
+          "20260216",
+          "20260316",
+          "20260416",
+          "20260513",
+          "20260618",
+          "20260713"
+        ],
+        "rows": 1923
+      }
+    }
+  },
+  "coverage": {
+    "Niushou": {
+      "rows": 2912,
+      "common": 2860,
+      "geometry_max": 8.195638656616211e-08
+    },
+    "Wangzhai": {
+      "rows": 2602,
+      "common": 2554,
+      "geometry_max": 5.960464477539063e-08
+    },
+    "Mizhuang": {
+      "rows": 2752,
+      "common": 2697,
+      "geometry_max": 6.146728992462158e-08
+    }
+  },
+  "independent_point_max_difference": 1.4210854715202004e-14,
+  "new_fits": 0,
+  "test_payloads_read": 0,
+  "claim": "Observed future AGRI/COT branches are offline conditional diagnostics only"
+}
