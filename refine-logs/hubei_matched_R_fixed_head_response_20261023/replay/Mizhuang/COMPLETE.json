@@ -1,0 +1,88 @@
+{
+  "state": "CURRENT_FIXED_HEAD_SAME_FOLD_COT_RESPONSE_COMPLETE",
+  "station": "Mizhuang",
+  "rows": 2752,
+  "reference_found": 2752,
+  "joint_available_rows": 2697,
+  "original_available_rows": 2697,
+  "raw_physical_reconstruction_max_difference": 4.067366091931035e-06,
+  "receipts": [
+    {
+      "seed": 42,
+      "base_sha256": "2e920f2f5f52ae8fab65786783875b5a8ec99197624faf3b6b6afac897214427",
+      "heads": [
+        {
+          "arm": "large_no_future_COT",
+          "step": 13,
+          "sha256": "21e557c721152ab332deb6b658e96a3367d89eecc7f8b66f5929aaea11b528f3"
+        },
+        {
+          "arm": "large_future_COT",
+          "step": 13,
+          "sha256": "50a3b22ba53ca678c817b223410d08ebfbe22b7317d2e262a1e9b1180a896a6f"
+        }
+      ],
+      "saved_prediction_max_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_forecast_feature_reconstruction_GHI_difference": 5.691101250704378e-05
+    },
+    {
+      "seed": 43,
+      "base_sha256": "45f83755bfc6f168c463f14efe8a51d24c4b5a9f057cd25ce628569d474781c7",
+      "heads": [
+        {
+          "arm": "large_no_future_COT",
+          "step": 13,
+          "sha256": "cc5282190f17870784b07b5fd7114d94d7a3c86fe509ae3f7700630ef5363531"
+        },
+        {
+          "arm": "large_future_COT",
+          "step": 24,
+          "sha256": "93c91150c8503753f22267f8c6271992cd57d4940bf1da455e590ca46200fddc"
+        }
+      ],
+      "saved_prediction_max_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_forecast_feature_reconstruction_GHI_difference": 6.798284448450431e-05
+    },
+    {
+      "seed": 44,
+      "base_sha256": "8c1a21cf511ac21a9b1258824056a7590ff4874f8048f408f8cda63acfe92959",
+      "heads": [
+        {
+          "arm": "large_no_future_COT",
+          "step": 9,
+          "sha256": "4ab1c764ccea772173c713af0c565252107fa64ea3ade8653ff3db9a990fde74"
+        },
+        {
+          "arm": "large_future_COT",
+          "step": 26,
+          "sha256": "d7acf6eb7a581921b66cfd62cb1c48495f87fa0e1ea017ff18a5956921545f2a"
+        }
+      ],
+      "saved_prediction_max_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_forecast_feature_reconstruction_GHI_difference": 6.662963278358802e-05
+    }
+  ],
+  "source_meta_sha256": "95fb7d11701561ae7e152e59e183b55b4fe0e8ad99e8268a9a620e1b4055c78c",
+  "matched_reference_sha256": "6a57d7139e00fad3469dbc759403ab443e34c0c47641b8ca3a91d51bbc5c4a07",
+  "same_fold_reference_receipts_sha256": "ef8a489b9237e25d78ff9210fb94a715aef75e1fe9979b95237d9016b95f29e8",
+  "trainer_sources": {
+    "train.py": "54044a1f2312d9a28fcef3e1d6c6da84e84e6fc6c33279666246096c86d72893",
+    "history_base.py": "c83e966bdb16f8afc351f808c336e7ddb949f033777799b318be06e5ae3fd4f2"
+  },
+  "upstream_training": false,
+  "new_fits": 0,
+  "official_val_new_period_outerbuffer_test_payloads_read": 0,
+  "claim": "Observed target R replacement is offline, not deployable forecast or independent truth"
+}

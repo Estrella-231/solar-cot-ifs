@@ -1,0 +1,88 @@
+{
+  "state": "CURRENT_FIXED_HEAD_SAME_FOLD_COT_RESPONSE_COMPLETE",
+  "station": "Niushou",
+  "rows": 2912,
+  "reference_found": 2912,
+  "joint_available_rows": 2860,
+  "original_available_rows": 2860,
+  "raw_physical_reconstruction_max_difference": 4.623196531383655e-06,
+  "receipts": [
+    {
+      "seed": 42,
+      "base_sha256": "121f15bb870fdf0d51d72bf613c421c375048b16612ba4944c55975c8fdc03a5",
+      "heads": [
+        {
+          "arm": "large_no_future_COT",
+          "step": 1,
+          "sha256": "1e10d4ed3843260fc08568b2b54ed7a1caf410e8d25e71d7c672e2cd1fd42dd7"
+        },
+        {
+          "arm": "large_future_COT",
+          "step": 1,
+          "sha256": "5e071f86d891a44af6d15da66f729f72de83d4792ccb44457707ef170a09c4c8"
+        }
+      ],
+      "saved_prediction_max_differences": [
+        8.291291305795312e-05,
+        8.291291305795312e-05,
+        8.291291305795312e-05
+      ],
+      "joint_forecast_feature_reconstruction_GHI_difference": 1.4240393284126185e-05
+    },
+    {
+      "seed": 43,
+      "base_sha256": "07af8a845278c819f998ccdf1066746449b11f2d39839a85d900a493ffa9a62b",
+      "heads": [
+        {
+          "arm": "large_no_future_COT",
+          "step": 3,
+          "sha256": "6a5200d83ea8e42f42d1285aa2a94d81e09d1c9bf05d73880ae730362fbf38a4"
+        },
+        {
+          "arm": "large_future_COT",
+          "step": 3,
+          "sha256": "431be3a268ae3c130b7c702cca759988ac42d0a2d12b357a2d8a05d5256ace1f"
+        }
+      ],
+      "saved_prediction_max_differences": [
+        0.00011360977805452421,
+        0.00011360977805452421,
+        0.00011360977805452421
+      ],
+      "joint_forecast_feature_reconstruction_GHI_difference": 5.646370482281782e-05
+    },
+    {
+      "seed": 44,
+      "base_sha256": "407561bcd40bc2693a86a5779910ab6f8e2ef8355b6765573de12a23e84bd0f8",
+      "heads": [
+        {
+          "arm": "large_no_future_COT",
+          "step": 0,
+          "sha256": "67321868517998ddeaf7c177359026ca42e4468ec889917b9c776ca31a38c175"
+        },
+        {
+          "arm": "large_future_COT",
+          "step": 0,
+          "sha256": "8531d0d9401d5187d5b5049af52b6cd20fc37c3955ad19421d139b22f6f9fab6"
+        }
+      ],
+      "saved_prediction_max_differences": [
+        8.291291305795312e-05,
+        8.291291305795312e-05,
+        8.291291305795312e-05
+      ],
+      "joint_forecast_feature_reconstruction_GHI_difference": 0.0
+    }
+  ],
+  "source_meta_sha256": "6a846548afb6fa7047f49b899a64664d12747fa3ef3e11807c98a59ea4b5184b",
+  "matched_reference_sha256": "6a57d7139e00fad3469dbc759403ab443e34c0c47641b8ca3a91d51bbc5c4a07",
+  "same_fold_reference_receipts_sha256": "ef8a489b9237e25d78ff9210fb94a715aef75e1fe9979b95237d9016b95f29e8",
+  "trainer_sources": {
+    "train.py": "54044a1f2312d9a28fcef3e1d6c6da84e84e6fc6c33279666246096c86d72893",
+    "history_base.py": "c83e966bdb16f8afc351f808c336e7ddb949f033777799b318be06e5ae3fd4f2"
+  },
+  "upstream_training": false,
+  "new_fits": 0,
+  "official_val_new_period_outerbuffer_test_payloads_read": 0,
+  "claim": "Observed target R replacement is offline, not deployable forecast or independent truth"
+}

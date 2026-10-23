@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -N cotresponse
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8:gpus=3
+#PBS -l walltime=00:10:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_matched_R_fixed_head_response_20261023/replay.log
+set -euo pipefail
+export CUDA_VISIBLE_DEVICES=$(qstat -f "$PBS_JOBID" | grep -oE 'node23-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, -)
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB=$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib
+export LD_PRELOAD="$CUDNN_LIB/libcudnn_ops_infer.so.8:$CUDNN_LIB/libcudnn_ops_train.so.8:$CUDNN_LIB/libcudnn_cnn_infer.so.8:$CUDNN_LIB/libcudnn_cnn_train.so.8:$CUDNN_LIB/libcudnn_adv_infer.so.8:$CUDNN_LIB/libcudnn_adv_train.so.8:$CUDNN_LIB/libcudnn.so.8"
+python -u "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_matched_R_fixed_head_response_20261023/run.py" --root "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_matched_R_fixed_head_response_20261023" --gpus "$CUDA_VISIBLE_DEVICES"
