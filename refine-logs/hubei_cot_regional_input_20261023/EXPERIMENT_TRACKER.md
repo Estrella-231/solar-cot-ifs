@@ -241,3 +241,7 @@ FD107/201均SSH Connection closed，学院文档原CPP路径不可见，不称�
 ## 当前执行阻塞审计
 
 7f1efd1已推送，读取器及独立CPU环境准备完成。本轮学院实时SSH正常，但已绑定首份历史CTH原路径仍不可读，height_extract_attempt1无完成记录。本地仅四份既有2024湖南官方CTH案例，不能替代所需2025湖北历史；区域pack未存CTH，便携生产器环境场因果来源未绑定。复旦按ACCESS_RECHECK退避，不提前重复连接。原始高度访问问题已连续多轮，当前可独立推进的读取准备已完成；暂停自动无效推进并将总目标标记blocked（非用户暂停、非完成）。恢复条件为复旦访问恢复或八份已绑定train源的可读副本；目标收益仍未证实。证据CURRENT_BLOCKER.json，未新增GPU/test或重调封存候选。
+
+## 用户确认MotionPro连接后，真实云高源已恢复
+
+FD107/201现场hostname为3090/4090，107既有swc环境直接完成原8份train历史CTH提取，未占GPU/PBS。源访问阻塞解除，CURRENT_BLOCKER.json仅保留历史记录，现状见ACCESS_RECOVERY.json。真实CTH单位km；10:15湖北256²三字段全NaN，其余7帧有限且范围内，无QA/内嵌时间。独立源标量与裁块72值完全一致，最大差0；缺测不填。报告ACTUAL_SOURCE_REPORT.md，manifest与逐值复核已保存。下一项为源生产经纬映射/是否已有视差校正及7帧历史快照几何归因，不把文件名当发布时间、不重复旧湖南投影，不新增GHI训练或收益声明。
