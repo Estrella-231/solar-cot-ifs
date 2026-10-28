@@ -1,0 +1,405 @@
+{
+  "scope": "16 selected Hunan validation windows; frozen corrected R and same-time trained paired GHI heads, no forecast-adapted retraining",
+  "rows": 432,
+  "stations": {
+    "zhujia": 240,
+    "sili": 192
+  },
+  "unique_dates": [
+    "2024-05-30",
+    "2024-06-12",
+    "2024-07-10",
+    "2024-11-17",
+    "2025-01-05",
+    "2025-02-10",
+    "2025-03-14",
+    "2025-06-16",
+    "2025-07-09",
+    "2025-11-05",
+    "2025-12-03",
+    "2026-01-04",
+    "2026-03-02",
+    "2026-04-21",
+    "2026-06-25"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "aggregation": "RMSE per station/seed then mean; not pooled RMSE or seed ensemble",
+  "comparisons": {
+    "dydiff_add_COT": {
+      "delta_rmse_after_minus_before": -6.4041042534800665,
+      "date_block_95CI": [
+        -11.754733143610537,
+        -0.4466745250107955
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 127.64716213920917,
+      "after_macro_rmse_Wm2": 121.24305788572912,
+      "relative_rmse_reduction_pct": 5.017036137862495,
+      "by_station": {
+        "sili": {
+          "before_rmse": 134.0264215664063,
+          "after_rmse": 126.37517269320779,
+          "delta_rmse": -7.6512488731985115,
+          "relative_reduction_pct": 5.708761588779369,
+          "seed_deltas": [
+            -7.090002585693867,
+            -8.653445411614626,
+            -7.21029862228707
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 121.26790271201207,
+          "after_rmse": 116.11094307825046,
+          "delta_rmse": -5.156959633761616,
+          "relative_reduction_pct": 4.252534692554553,
+          "seed_deltas": [
+            -5.0604289042735076,
+            -5.126367789086359,
+            -5.284082207924968
+          ]
+        }
+      }
+    },
+    "simvp_add_COT": {
+      "delta_rmse_after_minus_before": -4.47684544745082,
+      "date_block_95CI": [
+        -8.811308230566818,
+        0.13310839203398578
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 135.6162509039378,
+      "after_macro_rmse_Wm2": 131.139405456487,
+      "relative_rmse_reduction_pct": 3.30111282210709,
+      "by_station": {
+        "sili": {
+          "before_rmse": 140.88302180091907,
+          "after_rmse": 132.92691707351824,
+          "delta_rmse": -7.956104727400827,
+          "relative_reduction_pct": 5.647312661027068,
+          "seed_deltas": [
+            -7.189992563361869,
+            -7.833362964641822,
+            -8.844958654198877
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 130.34948000695655,
+          "after_rmse": 129.35189383945578,
+          "delta_rmse": -0.9975861675007707,
+          "relative_reduction_pct": 0.765316568541379,
+          "seed_deltas": [
+            0.011516163412863989,
+            -1.6563644782618354,
+            -1.3479101876533832
+          ]
+        }
+      }
+    },
+    "observed_add_COT": {
+      "delta_rmse_after_minus_before": -3.418814154719565,
+      "date_block_95CI": [
+        -8.82615161165892,
+        1.4899805152999284
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 99.573628657531,
+      "after_macro_rmse_Wm2": 96.15481450281145,
+      "relative_rmse_reduction_pct": 3.433453416143012,
+      "by_station": {
+        "sili": {
+          "before_rmse": 98.09039553880409,
+          "after_rmse": 90.99412379799998,
+          "delta_rmse": -7.096271740804113,
+          "relative_reduction_pct": 7.234420558531506,
+          "seed_deltas": [
+            -6.584031509666573,
+            -7.636961024333488,
+            -7.067822688412292
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 101.05686177625795,
+          "after_rmse": 101.31550520762293,
+          "delta_rmse": 0.25864343136498746,
+          "relative_reduction_pct": -0.25593851502892456,
+          "seed_deltas": [
+            -0.6745446841694758,
+            1.3023297731953107,
+            0.14814520506912743
+          ]
+        }
+      }
+    },
+    "dydiff_oracle_COT_replace_forecast": {
+      "delta_rmse_after_minus_before": -9.772165947000445,
+      "date_block_95CI": [
+        -20.429211145420524,
+        -0.882636185373603
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 121.24305788572912,
+      "after_macro_rmse_Wm2": 111.47089193872868,
+      "relative_rmse_reduction_pct": 8.059979777325182,
+      "by_station": {
+        "sili": {
+          "before_rmse": 126.37517269320779,
+          "after_rmse": 119.94949502585713,
+          "delta_rmse": -6.425677667350655,
+          "relative_reduction_pct": 5.084604460205033,
+          "seed_deltas": [
+            -5.007679164539979,
+            -5.7397942514680835,
+            -8.529559586043874
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 116.11094307825046,
+          "after_rmse": 102.99228885160022,
+          "delta_rmse": -13.118654226650236,
+          "relative_reduction_pct": 11.29837884256026,
+          "seed_deltas": [
+            -14.299396681585407,
+            -12.5176669216944,
+            -12.53889907667093
+          ]
+        }
+      }
+    },
+    "dydiff_history_COT_replace_forecast": {
+      "delta_rmse_after_minus_before": 10.818117179927853,
+      "date_block_95CI": [
+        -1.6550685627297557,
+        21.315939805180914
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 121.24305788572912,
+      "after_macro_rmse_Wm2": 132.06117506565698,
+      "relative_rmse_reduction_pct": -8.922669362334856,
+      "by_station": {
+        "sili": {
+          "before_rmse": 126.37517269320779,
+          "after_rmse": 131.76113206973972,
+          "delta_rmse": 5.385959376531929,
+          "relative_reduction_pct": -4.2618809230884676,
+          "seed_deltas": [
+            5.029070128992743,
+            6.092581394416527,
+            5.0362266061865455
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 116.11094307825046,
+          "after_rmse": 132.36121806157425,
+          "delta_rmse": 16.25027498332379,
+          "relative_reduction_pct": -13.995472392617007,
+          "seed_deltas": [
+            15.212263350409145,
+            17.45162757785215,
+            16.086934021710007
+          ]
+        }
+      }
+    },
+    "dydiff_vs_simvp_no_COT": {
+      "delta_rmse_after_minus_before": -7.969088764728629,
+      "date_block_95CI": [
+        -23.46999795979037,
+        8.924971565722435
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 135.6162509039378,
+      "after_macro_rmse_Wm2": 127.64716213920917,
+      "relative_rmse_reduction_pct": 5.876204888139438,
+      "by_station": {
+        "sili": {
+          "before_rmse": 140.88302180091907,
+          "after_rmse": 134.0264215664063,
+          "delta_rmse": -6.856600234512769,
+          "relative_reduction_pct": 4.86687476380354,
+          "seed_deltas": [
+            -6.864538505771776,
+            -7.297040776354692,
+            -6.4082214214118665
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 130.34948000695655,
+          "after_rmse": 121.26790271201207,
+          "delta_rmse": -9.08157729494448,
+          "relative_reduction_pct": 6.967098982258932,
+          "seed_deltas": [
+            -10.418784141417916,
+            -7.881217606750269,
+            -8.944730136665257
+          ]
+        }
+      }
+    },
+    "dydiff_vs_simvp_with_COT": {
+      "delta_rmse_after_minus_before": -9.896347570757875,
+      "date_block_95CI": [
+        -25.150634475911723,
+        6.422430661352645
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive selected-validation interval",
+      "before_macro_rmse_Wm2": 131.139405456487,
+      "after_macro_rmse_Wm2": 121.24305788572912,
+      "relative_rmse_reduction_pct": 7.546433153566158,
+      "by_station": {
+        "sili": {
+          "before_rmse": 132.92691707351824,
+          "after_rmse": 126.37517269320779,
+          "delta_rmse": -6.551744380310453,
+          "relative_reduction_pct": 4.9288319661298265,
+          "seed_deltas": [
+            -6.764548528103774,
+            -8.117123223327496,
+            -4.77356138950006
+          ]
+        },
+        "zhujia": {
+          "before_rmse": 129.35189383945578,
+          "after_rmse": 116.11094307825046,
+          "delta_rmse": -13.240950761205326,
+          "relative_reduction_pct": 10.236379513421923,
+          "seed_deltas": [
+            -15.490729209104288,
+            -11.351220917574793,
+            -12.880902156936841
+          ]
+        }
+      }
+    }
+  },
+  "test_payloads_read": 0
+}

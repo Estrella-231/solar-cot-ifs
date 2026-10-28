@@ -1,5 +1,15 @@
 # 湖南DyDiff推进记录
 
+## 最新：COT/GHI冻结头诊断完成（216596，CPU）
+
+用户要求看COT和GHI收益，已完成16个原固定窗口的同键SimVP、修正几何R及M00/M10同容量三帧头回放，未新增训练或GPU；湖南216594继续。CPU216596 node7/16CPU、65.5秒完成，512 COT记录、432 GHI记录（四里192/竺家240），test读取0。来源及全部代码、逐样本输出和图见cot_ghi_diagnostic/。
+
+独立保存预测FP64评分：DyDiff输入下无COT127.647→加预测COT121.243 W/m²，降低5.017%，两站六配对均改善；日期块区间Δ[−11.755,−0.447]，仅15日小样本验证回放，非全年/独立test或DyDiff适配重训。四里下降5.709%、竺家4.253%；15日期11好4差，去掉任一日期仍为负差。同期已训头重载最大差0.000245W/m²；新构建真实分支相对旧保存预测最大差0.064606W/m²，保留CPU/R批次漂移。
+
+COT主站点像元对正确连接CPP（160记录/14日）的等站RMSE：DyDiff11.014、SimVP9.973、历史持平11.567；DyDiff没有整体优于SimVP，差区间跨0。GHI共同键上的COT方向一致，不能把GHI5%归因于COT普通RMSE更低。固定AC头换未来真实图→R的oracle为111.471，仅归因；历史COT持平为132.061。7月9日真实轨迹仍有厚云漏报和GHI突降未命中，保留负例。
+
+下一步应在完整冻结湖南val检验是否保持，当前不修改论文或开启test。完整报告cot_ghi_diagnostic/RESULTS.md；未改变湖南正在运行的8卡训练。
+
 ## 当前：正式湖南八卡训练已启动（216594）
 
 216594日志已出现HUNAN_FORMAL_8GPU_START，正式runs/seed42_150ep_hunan_v1/run_metadata.json已生成并回收FORMAL_RUN_METADATA_216594.json。PBS状态R、exec_gpus为node21 GPU0—7；world8/global80/per-GPU10，35320train/3140val，442步/轮，150epoch/66300计划更新，test_payloads_read=0。修复后的8卡合成断点恢复一致检查PASS；真实full-size pilot保存step2、准确加载step2并完成step3再次保存，之后新建正式随机初始化训练，未复用湖北权重。真实pilot单步约2.29秒，不以此代替整轮含加载/验证总耗时。完整记录见本目录代码、PBS三个attempt、归一化及跨区域结果。

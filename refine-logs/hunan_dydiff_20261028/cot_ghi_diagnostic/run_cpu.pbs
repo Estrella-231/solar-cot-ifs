@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#PBS -N hn_dy_cot_ghi
+#PBS -q normal
+#PBS -l nodes=node7:ppn=16
+#PBS -l walltime=04:00:00
+#PBS -j oe
+set -eo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export CUDA_VISIBLE_DEVICES="" PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+export OMP_NUM_THREADS=12 MKL_NUM_THREADS=12 OPENBLAS_NUM_THREADS=1
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028
+cd "$BASE/cot_ghi_diagnostic"
+python -u evaluate_cpu.py --output "$BASE/cot_ghi_diagnostic/attempt1" > "$BASE/cot_ghi_diagnostic/cpu_${PBS_JOBID}.log" 2>&1

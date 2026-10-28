@@ -256,6 +256,8 @@ FD107/201现场hostname为3090/4090，107既有swc环境直接完成原8份train
 
 ## 用户新增湖南DyDiff独立底图（2026-10-28）
 
+湖南新增收益诊断已完成：CPU216596使用预先固定16窗口、修正湖南R与三帧同容量M00/M10三种子，在432 GHI共同记录/15日上独立FP64得到DyDiff无COT127.647、加预测COT121.243 W/m²（下降5.017%，日期块差区间[−11.755,−0.447]）；两站六配对均改善。CPP共同站点COT误差为DyDiff11.014/SimVP9.973（160记录/14日），没有整体变好。均为选定val窗口与同期训练冻结头的回放，非全验证或适配重训、非独立test。来源与反例图见hunan_dydiff_20261028/cot_ghi_diagnostic/RESULTS.md；八卡216594未受影响，未新增GPU。
+
 **当前正式状态：216594.tc6000已在node21 GPU0—7八张A100上启动150epoch湖南训练，global80、per-GPU10；正式启动标记及run_metadata均已核实并回收，测试保存step2→恢复后step3成功。此前各attempt和下方“未开始”仅为历史，当前证据见hunan_dydiff_20261028/EXPERIMENT_TRACKER.md与FORMAL_RUN_METADATA_216594.json。**
 
 最新执行覆盖下方准备状态：用户取消重复全量扫描后，已适配湖南原QA与修正太阳几何，复用同一train归一化，按需节点本地缓存。node21八卡任务216594接续测试与150epoch自动训练流程，global80、442更新/轮；前两次测试任务216590/216591因过严optimizer逐位比较、NCCL Python RNG对象收集失败分别封存，未开始正式训练，修复不改变梯度或样本设置。正式启动以hunan_dydiff_20261028 tracker和runs正式目录为准。
