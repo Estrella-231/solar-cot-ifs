@@ -1,0 +1,113 @@
+{
+  "state": "PASS_EXISTING_DEVELOPMENT_VALIDATION_ONLY",
+  "no_COT_rmse": 98.42292255225736,
+  "with_COT_rmse": 97.51234775631518,
+  "paired_delta_rmse": -0.9105747959421819,
+  "relative_reduction_percent": 0.9251653703523333,
+  "paired_date_bootstrap_95pct": [
+    -3.1507352171539305,
+    1.9053763780095956
+  ],
+  "bootstrap_draws": 5000,
+  "bootstrap_seed": 20261028,
+  "dates": [
+    "20250822",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302",
+    "20260420",
+    "20260421"
+  ],
+  "unique_station_rows": 10849,
+  "station_seed_scores": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "rows": 3810,
+      "no_COT": 94.05595624274686,
+      "with_COT": 94.26755518016449,
+      "delta": 0.2115989374176337
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "rows": 3810,
+      "no_COT": 95.63413142859524,
+      "with_COT": 94.47131440479511,
+      "delta": -1.1628170238001303
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "rows": 3810,
+      "no_COT": 97.09719067274722,
+      "with_COT": 95.82113585085852,
+      "delta": -1.2760548218886925
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "rows": 3365,
+      "no_COT": 95.56662934494628,
+      "with_COT": 95.47201618908227,
+      "delta": -0.09461315586401042
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "rows": 3365,
+      "no_COT": 96.16767683883269,
+      "with_COT": 93.5907204982255,
+      "delta": -2.5769563406071967
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "rows": 3365,
+      "no_COT": 96.78247538597367,
+      "with_COT": 98.06581832177307,
+      "delta": 1.2833429357993964
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "rows": 3674,
+      "no_COT": 104.16668339412176,
+      "with_COT": 102.39720255271759,
+      "delta": -1.7694808414041745
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "rows": 3674,
+      "no_COT": 103.50193634302323,
+      "with_COT": 101.78026848495261,
+      "delta": -1.7216678580706173
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "rows": 3674,
+      "no_COT": 102.83362331932926,
+      "with_COT": 101.74509832426749,
+      "delta": -1.0885249950617748
+    }
+  ],
+  "heads_retrained": false,
+  "input": "DyDiff forecast AGRI -> frozen R -> COT",
+  "model_training": "heads trained on same-target observed AGRI with or without R COT; evaluated on forecasts",
+  "test_payloads_read": 0,
+  "interval_units": "W/m2",
+  "hashes_verified": 18
+}
