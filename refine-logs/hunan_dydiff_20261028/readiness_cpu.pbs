@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -N hunan_dydiff_check
+#PBS -q normal
+#PBS -l nodes=node7:ppn=4
+#PBS -l walltime=00:20:00
+#PBS -j oe
+set -euo pipefail
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028
+cd "$BASE"
+exec > readiness_cpu.log 2>&1
+/public/home/slfu/miniconda3/envs/swc/bin/python readiness_cpu.py \
+ --root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data \
+ --manifests /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hunan_monthly_block_20261002/manifests_v1 \
+ --grid grid_static_hunan.npz --output READINESS_CPU.json

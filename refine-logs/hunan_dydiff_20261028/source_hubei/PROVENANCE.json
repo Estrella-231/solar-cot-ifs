@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/thuml/dynamical-diffusion",
+  "commit": "2b677fbb494171111b141878f3a9ebaf2b4ff313",
+  "mechanism": "Official cosine/cosine-0.5 temporal mixing and eta=0 DDIM; adaptation uses direct mixed-v prediction",
+  "adaptations": [
+    "13-channel identity first stage, no pretrained VAE",
+    "matched factorized DiT backbone with explicit clean historical image/QA condition, solar geometry, history role and first-future marker",
+    "All-frame direct mixed-v MSE, replacing official epsilon parameterization to preserve high-SNR and terminal gradients",
+    "fixed AGRI 8-to-16 task, train-only normalization",
+    "EMA weights and distributed training/resume"
+  ],
+  "official_limitations": "The pinned repository includes DiT YAML configurations but no core/dit/video_dit.py. This is a mechanism-verified AGRI adaptation, not the complete official latent UNet/DiT pipeline. This adaptation additionally uses direct mixed-v MSE and trainable full-resolution paths.",
+  "references_sha256": {
+    "dydiff_turbulence.py": "67dcdebe1237c4fe852b40d9724c7864bcc5c80b2d832988ce0ead8bf427f739",
+    "ddim_dydiff.py": "5214a249d1669f8a8faa4da572c6db87814ea6151962993ce888e88fc89f5c7f",
+    "video_dit_S_ratio05_1st_mask_svd_lr1e-4.yaml": "5ca4c22c25a6ac4c7801e06ec731d194404d397093898c0730a6d7e3fa97995b",
+    "util.py": "382ad979e9b516cedee19d091c2aeb386488f7e7d1c2c2874c87425e44fdf19b",
+    "dydiff.py": "f0a211c2c39800a21fa49656a12765e2542b890c9a8b386d5a9feebde333edb7",
+    "dydiff_ema_cosine_ratio05_1st_mask_svd_lr1e-4.yaml": "08d73b13290e793a0b824b2f793e7a0249e5e6065011e268ed2f0488b3ee9d61"
+  },
+  "backbone_attribution": "Reuses our MIT-licensed DFoT adaptation; see LICENSE.backbone. This repo is forked from Boyuan Chen's research template https://github.com/buoyancy99/research-template; https://boyuan.space/",
+  "revision": "v5_trainable_full_resolution_paths",
+  "corrections": [
+    "Full-resolution VP epsilon preconditioner around compressive learned stem",
+    "Stable mixed-v sampler identities with fixed terminal prior",
+    "Warmup EMA and raw/EMA paired validation",
+    "Fresh initialization; no v2 weight reuse",
+    "Direct v objective avoids implicit alpha squared suppression of high noise learning",
+    "Trainable noisy-state and causal mixed-persistence pixel paths remove rank bottleneck in learned velocity itself"
+  ],
+  "region": "Hubei",
+  "dataset": "full_observation_monthly_2d_buffer1d_seed42_v1",
+  "initialization": "random seed42; independent full-data run",
+  "objective": "direct mixed-v MSE, alpha*M_t(epsilon)-sigma*M_t(x0)",
+  "scope": "all Hubei observation directory, no COT/GHI matching",
+  "old_subset_weights_reused": false,
+  "normalization": "refit train-only after full numeric QA"
+}
