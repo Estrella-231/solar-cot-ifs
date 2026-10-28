@@ -20,6 +20,8 @@ from model import AGRIDyDiff, ModelConfig
 from diffusion import DynamicalDiffusion
 from samplers import BlockDistributedBatchSampler, StridedValidationSampler
 
+_CHECKPOINT_CPU_GROUP = None
+
 
 def ema_decay_for_update(update, maximum=0.999):
     if update < 1 or not 0 <= maximum < 1:
@@ -152,7 +154,9 @@ def save_checkpoint(path, raw, ema, optimizer, epoch, next_batch, step, best, si
              "torch_cpu": torch.get_rng_state(), "torch_cuda": torch.cuda.get_rng_state().cpu()}
     if world > 1:
         rng = [None] * world if rank == 0 else None
-        dist.gather_object(state, rng, dst=0)
+        # RNG states are small Python/CPU objects. Do not route them through
+        # NCCL's CUDA object-gather staging on a memory-heavy eight-GPU run.
+        dist.gather_object(state, rng, dst=0, group=_CHECKPOINT_CPU_GROUP)
     else:
         rng = [state]
     if rank == 0:
@@ -168,6 +172,7 @@ def save_checkpoint(path, raw, ema, optimizer, epoch, next_batch, step, best, si
 
 
 def main():
+    global _CHECKPOINT_CPU_GROUP
     p = argparse.ArgumentParser()
     p.add_argument("--output", required=True)
     p.add_argument("--calibration")
@@ -192,6 +197,7 @@ def main():
     device = torch.device("cuda", local_rank)
     if world > 1:
         dist.init_process_group("nccl")
+        _CHECKPOINT_CPU_GROUP = dist.new_group(backend="gloo")
     if not a.smoke and world != a.expected_world_size:
         raise RuntimeError(f"formal run requires {a.expected_world_size} allocated GPUs")
     calibration = json.loads(Path(a.calibration).read_text()) if a.calibration else None

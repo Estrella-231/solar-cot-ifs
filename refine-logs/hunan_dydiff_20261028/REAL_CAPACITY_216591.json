@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "world_size": 8,
+  "batch_per_gpu": 10,
+  "global_batch": 80,
+  "gpu_name": "NVIDIA A100-SXM4-40GB",
+  "total_gib": 39.58612060546875,
+  "target_fraction": 0.96,
+  "purpose": "real-data capacity gate; optimizer weights discarded",
+  "train_sequences_read": 10,
+  "test_payloads_read": 0,
+  "records": [
+    {
+      "batch_per_gpu": 10,
+      "peak_reserved_gib": 34.701171875,
+      "peak_allocated_gib": 27.562725067138672,
+      "loss": 2.3037638664245605,
+      "elapsed_seconds": 23.292286646086723,
+      "stable_with_3gib_ddp_margin": true
+    }
+  ],
+  "source_synthetic_calibration": {
+    "batch_per_gpu": 10,
+    "purpose": "Hunan A100 bounded real-batch profile"
+  }
+}

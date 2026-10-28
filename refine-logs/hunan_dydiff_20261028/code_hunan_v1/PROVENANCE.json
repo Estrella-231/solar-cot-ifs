@@ -4,6 +4,7 @@
   "random_initialization": true,
   "source_files": {
     "allocated_gpus.py": "f95b75bc477b911c9ab57a2aa7575fac172326a58202a36167832193b4744d81",
+    "cross_region_eval.py": "08bb4b745baee40d9eb0ba573f7831b4c550ee1b898c7a90af0678989c17e044",
     "data.py": "a8061a6a748c08ffb50cabc37571f947b554996d714abfd5fc2249446218b524",
     "dataset.py": "b26faf1b3569f723603b3cb8bf836b8f832f4222c8f58dd24dd027f18b223d8b",
     "ddp_gradient_gate.py": "e42d0b47ac13672465687851624cdd9a205600a60596f52ee2ba6af7f5cf7e03",
@@ -12,8 +13,8 @@
     "real_batch_profile.py": "6b7a61b329123bc327d181b896fa9844928ce9e67dd1c8ecb491582f0eec98cf",
     "samplers.py": "f8c24e312aa5e0ae65f162ebfc0e98c33ff5493f4a3660fccc8dc4d7de4a1ca6",
     "solar_geometry_noaa.py": "a45f4225ed09b82479db9555605a10095901727c1a4cf95d510d48f6fc02f1f5",
-    "train.py": "e0adc366cad78cc65203d07d02224ed3ee9a44caac824fad0d0f9ce9a3c86d00",
-    "verify_resume.py": "ac2b87d30846bca8742770cc4cf2fac5629872742f5da7a4ad66be0338699721"
+    "train.py": "4b8f7673fec8b1586cc15acbe051a202fea69d21dc002596a370f72a4b00d8d2",
+    "verify_resume.py": "299dce693ff80823cacf75174c8f9ddcaba2214d2cff327912d0dbb160877f79"
   },
   "normalization_policy": "reuse frozen Hunan monthly train QA+finite moments, no full scan/refit",
   "raw_timestamp": "UTC",
@@ -21,7 +22,15 @@
   "geometry": "corrected NOAA recomputation on demand; Hunan grid",
   "test_payloads_read": 0,
   "node_local_cache": "/tmp/slfu_hunan_dydiff_20261028_v1",
-  "pbs_job": "216590.tc6000",
+  "pbs_job": "216594.tc6000",
   "pbs_requested_gpus": 8,
-  "formal_epochs": 150
+  "formal_epochs": 150,
+  "prior_attempts": {
+    "216590.tc6000": "optimizer bit-exact comparison too strict; model and EMA exact",
+    "216591.tc6000": "NCCL Python RNG object gather failed after two real pilot steps; full training not started"
+  },
+  "checkpoint_object_transport": "dedicated CPU Gloo group; training gradients NCCL unchanged",
+  "formal_global_batch": 80,
+  "steps_per_epoch": 442,
+  "planned_updates": 66300
 }
