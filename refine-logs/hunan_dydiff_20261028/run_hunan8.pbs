@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#PBS -N hunan_dydiff8
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=40:gpus=8
+#PBS -l walltime=336:00:00
+#PBS -j oe
+set -eo pipefail
+export LC_ALL=C LANG=C PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028
+CODE="$BASE/code_hunan_v1"
+cd "$CODE"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+export EXPECTED_GPUS=8
+export CUDA_VISIBLE_DEVICES=$(python allocated_gpus.py)
+test -n "$CUDA_VISIBLE_DEVICES"
+export HUNAN_DY_CACHE=/tmp/slfu_hunan_dydiff_20261028_v1
+mkdir -p "$HUNAN_DY_CACHE" "$BASE/evidence" "$BASE/runs"
+export TMPDIR=/tmp/slfu_hunan_dydiff_tmp_${PBS_JOBID%%.*}
+mkdir -p "$TMPDIR"
+GATE="$BASE/evidence/launch_${PBS_JOBID}"
+mkdir -p "$GATE"
+exec > "$BASE/launch_${PBS_JOBID}.log" 2>&1
+echo "account=$(id -un) job=$PBS_JOBID host=$(hostname) gpus=$CUDA_VISIBLE_DEVICES"
+nvidia-smi --id="$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.total --format=csv
+# Existing frozen train/val metadata, QA and train normalization are reused.
+# There is NO new full payload scan or normalization fit.
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 ddp_gradient_gate.py
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 train.py --smoke --output "$GATE/resume" --epochs 2 --batch-size 1 --workers 0 --val-batch 1 --sampling-steps 2 --stop-after-steps 1
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 train.py --smoke --output "$GATE/resume" --epochs 2 --batch-size 1 --workers 0 --val-batch 1 --sampling-steps 2
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 train.py --smoke --output "$GATE/reference" --epochs 2 --batch-size 1 --workers 0 --val-batch 1 --sampling-steps 2
+python -u verify_resume.py --resumed "$GATE/resume" --reference "$GATE/reference" --output "$GATE/resume_pass.json"
+python -u real_batch_profile.py --output "$GATE/real_capacity.json"
+# Fixed-size eight-rank actual-input backward/save/resume. Pilot weights isolated.
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 train.py --output "$GATE/real_pilot" --calibration "$GATE/real_capacity.json" --expected-world-size 8 --epochs 150 --workers 2 --val-batch 2 --stop-after-steps 2
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 train.py --output "$GATE/real_pilot" --calibration "$GATE/real_capacity.json" --expected-world-size 8 --epochs 150 --workers 2 --val-batch 2 --stop-after-steps 3
+RUN="$BASE/runs/seed42_150ep_hunan_v1"
+mkdir -p "$RUN"
+nvidia-smi --id="$CUDA_VISIBLE_DEVICES" --query-gpu=timestamp,index,name,memory.used,memory.total,utilization.gpu --format=csv -l 60 > "$RUN/gpu_${PBS_JOBID}.csv" &
+MONITOR=$!
+trap 'kill "$MONITOR" 2>/dev/null || true' EXIT
+echo "HUNAN_FORMAL_8GPU_START"
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 train.py --output "$RUN" --calibration "$GATE/real_capacity.json" --expected-world-size 8 --epochs 150 --workers 2 --val-batch 2 --forecast-every 5 --sampling-steps 25 --checkpoint-every 100 --seed 42 --lr 0.0001 --ema-decay 0.999 --stop-file "$RUN/STOP_REQUESTED"

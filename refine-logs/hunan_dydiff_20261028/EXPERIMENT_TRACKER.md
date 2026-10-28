@@ -1,3 +1,9 @@
 # 湖南DyDiff推进记录
 
+## 最新：216590八卡适配启动
+
+用户明确取消重复全量源数据检查，适配湖南输入后node21测试通过即8卡开跑。已完成code_hunan_v1：复用冻结湖南train/val、原始QA和同train归一化，修正NOAA几何按UTC及湖南grid重算，原图UTC连接BJT质量位，按需本地缓存；不重新扫描全部帧，不重新拟合归一化，不读test载荷。训练日志loss修正为跨rank求和再平均，与实际全局有效像元梯度一致。
+
+提交前slfu全队列为空，node21八张A10040GB均0MiB/0%。PBS216590.tc6000已分配node21 GPU0—7，状态R，40CPU，8卡不等/空rank有效像元梯度测试已PASS。后续顺序为8卡断点精确恢复、少量真实批次容量及8卡pilot自动续训，然后随机初始化湖南正式150epoch。以launch日志的HUNAN_FORMAL_8GPU_START和正式run_metadata/progress为正式训练启动证据；仅PBS为R不能代替正式训练开始。原CPU216589保留只读。例行监控交Luna，本轮不创建/恢复自动化。
+
 2026-10-28：用户授权湖南独立底图。source_hubei六核心SHA与同门epoch150来源相同。学院GPU/队列实时核对完成；node21空闲8 A10040GB，node23空闲7，node22无可确认空闲。CPU216589正常队列初请求node21未运行，核对后仅对自身Q任务qalter到node7四CPU，C/exit0约30秒。全元数据和6帧头/网格PASS，但1验证帧IR全部不在有效范围，完整数值QC未完成。source adapter、train norm、本地缓存与2/4/8卡真实吞吐仍待做；未开正式训练、未读test。见EXPERIMENT_PLAN.md、READINESS_CPU.json和RESOURCE_SNAPSHOT.json。
