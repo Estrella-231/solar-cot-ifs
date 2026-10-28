@@ -17,9 +17,9 @@ for off,vals,col,label in [(-width/2,before,'#607D8B','Without COT'),(width/2,af
  bars=ax.bar(x+off,vals,width,color=col,label=label)
  for bar,v in zip(bars,vals):ax.text(bar.get_x()+bar.get_width()/2,v+1,f'{v:.2f}',ha='center',va='bottom')
 ax.set_xticks(x,['Hunan SimVP','Hubei DyDiff on Hunan']);ax.set_ylim(0,155);ax.set_ylabel('GHI RMSE (W m$^{-2}$)');ax.legend(frameon=False,loc='upper right')
-ax.set_title('Paired forecast replay on selected Hunan validation windows',fontsize=11)
+ax.set_title('Paired forecast replay: selected mostly-morning windows',fontsize=11)
 ax.grid(axis='y',alpha=.15);ax.set_axisbelow(True)
-fig.supxlabel('432 records / 15 target dates / 2 stations / 3 fixed head seeds\nSame-capacity frozen heads; no forecast-input retraining',fontsize=8)
+fig.supxlabel('432 records / 15 target dates / 2 stations / 3 fixed head seeds\n15 of 16 initializations at 08:00 BJT; no forecast-input retraining',fontsize=8)
 for ext in ('png','pdf'):fig.savefig(OUT/f'paired_ghi_cot_gain.{ext}',bbox_inches='tight')
 plt.close(fig)
 

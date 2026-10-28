@@ -1,0 +1,858 @@
+{
+  "status": "PASS_FIXED_HEAD_SENSITIVITY_AUDIT",
+  "scope": "same selected432validation records; frozen M10 heads, controls intentionally alter input consistency; not independent method performance",
+  "conditions": {
+    "real_predicted_COT": {
+      "macro_RMSE_Wm2": 121.24305788572912,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 125.55066316881425
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 126.40972711177622
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 127.16512779903286
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 115.79953763006138
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 116.01801457188444
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 116.51527703280557
+        }
+      ]
+    },
+    "future_COT_train_mean": {
+      "macro_RMSE_Wm2": 152.72268405008433,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 145.80984004839638
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 146.57539460721864
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 150.03206758208785
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 154.84307412896337
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 160.2390439149984
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 158.8366840188413
+        }
+      ]
+    },
+    "all_COT_train_mean": {
+      "macro_RMSE_Wm2": 154.3384337414917,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 147.27087762045548
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 148.2269512523831
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 151.70984280850843
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 156.45842473063584
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 161.96871241138416
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 160.39579362558337
+        }
+      ]
+    },
+    "shuffled_future_COT_00": {
+      "macro_RMSE_Wm2": 185.97313934650867,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 151.17860181754165
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 150.4878809588781
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 155.4853954950623
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 214.9757478004018
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 221.89354028009976
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 221.8176697270686
+        }
+      ]
+    },
+    "shuffled_future_COT_01": {
+      "macro_RMSE_Wm2": 188.51132332978145,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 158.35945010949595
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 159.0511105764248
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 164.22130287398556
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 212.75972187275454
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 217.82984516568672
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 218.84650938034105
+        }
+      ]
+    },
+    "shuffled_future_COT_02": {
+      "macro_RMSE_Wm2": 186.61983908600337,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 162.64425648027418
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 165.1055511984536
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 168.65930835736265
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 203.43564952932755
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 209.423473611439
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 210.45079533916305
+        }
+      ]
+    },
+    "shuffled_future_COT_03": {
+      "macro_RMSE_Wm2": 189.63372936639936,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 148.9743003793318
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 150.00650336532317
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 153.75392527919308
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 223.81892375735075
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 230.5465130771511
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 230.70221034004624
+        }
+      ]
+    },
+    "shuffled_future_COT_04": {
+      "macro_RMSE_Wm2": 197.66079883433716,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 160.40310244770916
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 162.11927850934075
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 166.3958623065089
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 227.30808856685329
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 234.3476412799092
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 235.3908198957017
+        }
+      ]
+    },
+    "shuffled_future_COT_05": {
+      "macro_RMSE_Wm2": 186.93964903257827,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 160.41837028745437
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 163.74999274554796
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 168.49157180163127
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 205.35329860204106
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 210.84078088084124
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 212.78387987795364
+        }
+      ]
+    },
+    "shuffled_future_COT_06": {
+      "macro_RMSE_Wm2": 189.18040625525975,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 150.64924422743118
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 153.8549629433851
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 157.96502803696072
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 218.89703490328608
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 227.26008697463794
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 226.4560804458575
+        }
+      ]
+    },
+    "shuffled_future_COT_07": {
+      "macro_RMSE_Wm2": 185.89296084169416,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 160.06480553697227
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 161.1503606033408
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 166.1324263237152
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 205.00463637091485
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 212.42329311338176
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 210.58224310184
+        }
+      ]
+    },
+    "shuffled_future_COT_08": {
+      "macro_RMSE_Wm2": 189.65256097992247,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 158.96494399445348
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 160.62334497654547
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 164.51886757724427
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 212.6107436825957
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 220.59571155399294
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 220.601754094703
+        }
+      ]
+    },
+    "shuffled_future_COT_09": {
+      "macro_RMSE_Wm2": 188.51302036640593,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 153.76784106628926
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 155.87170593021474
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 158.70992110076836
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 216.65527158714306
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 222.14818636973587
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 223.92519614428429
+        }
+      ]
+    },
+    "shuffled_future_COT_10": {
+      "macro_RMSE_Wm2": 195.65269612879717,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 158.56290021871246
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 161.90995053555284
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 164.30734716096086
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 225.7373894671126
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 231.5936741696419
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 231.80491522080249
+        }
+      ]
+    },
+    "shuffled_future_COT_11": {
+      "macro_RMSE_Wm2": 191.22985038554103,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 160.63647290675362
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 161.48794894293889
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 167.0757005758023
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 214.55813460124088
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 221.6446022517787
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 221.97624303473182
+        }
+      ]
+    },
+    "shuffled_future_COT_12": {
+      "macro_RMSE_Wm2": 191.2945563655915,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 160.7168973837278
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 163.1524794023162
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 168.92868767486826
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 214.25665290784275
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 219.67637241098728
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 221.03624841380687
+        }
+      ]
+    },
+    "shuffled_future_COT_13": {
+      "macro_RMSE_Wm2": 188.62569759792652,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 158.77976484515702
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 158.7064442351945
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 165.1021138637917
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 210.97416774678996
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 217.84573083217592
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 220.34596406445004
+        }
+      ]
+    },
+    "shuffled_future_COT_14": {
+      "macro_RMSE_Wm2": 191.4326621540722,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 160.37503228196195
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 160.46150981832753
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 166.02110294654545
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 215.3349579983347
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 222.37981656368876
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 224.0235533155748
+        }
+      ]
+    },
+    "shuffled_future_COT_15": {
+      "macro_RMSE_Wm2": 193.67864579046673,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 168.92420150931355
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 169.7777443219412
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 174.0934630128794
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 212.9084434912536
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 217.81718605133455
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 218.55083635607815
+        }
+      ]
+    },
+    "shuffled_future_COT_16": {
+      "macro_RMSE_Wm2": 190.10316946705987,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 163.13751372102942
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 162.81261841186745
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 168.0248759553532
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 211.84893561744153
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 216.94392081775035
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 217.85115227891737
+        }
+      ]
+    },
+    "shuffled_future_COT_17": {
+      "macro_RMSE_Wm2": 187.01926564488554,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 152.53329997192455
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 153.17362017820057
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 156.87130089314135
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 216.54299511671076
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 220.9702101589539
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 222.02416755038203
+        }
+      ]
+    },
+    "shuffled_future_COT_18": {
+      "macro_RMSE_Wm2": 195.14426448118243,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 166.92431853440903
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 168.8296968495299
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 171.82298172729844
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 217.12010175698094
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 223.26874553380244
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 222.899742485074
+        }
+      ]
+    },
+    "shuffled_future_COT_19": {
+      "macro_RMSE_Wm2": 187.98618241847427,
+      "per_run": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "RMSE": 158.74954995160286
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "RMSE": 162.42827656668902
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "RMSE": 165.38865626566002
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "RMSE": 209.62204715599628
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "RMSE": 216.02108622957707
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "RMSE": 215.7074783413202
+        }
+      ]
+    }
+  },
+  "shuffle_summary": {
+    "n": 20,
+    "mean_RMSE_Wm2": 190.03722089364436,
+    "sample_std": 3.323900662944448,
+    "min_RMSE": 185.89296084169416,
+    "max_RMSE": 197.66079883433716
+  },
+  "canary_independent_feature_comparison": {
+    "truth": {
+      "equal": true,
+      "max_abs_delta": 0.0
+    },
+    "clear": {
+      "equal": true,
+      "max_abs_delta": 0.0
+    },
+    "observed": {
+      "equal": false,
+      "max_abs_delta": 5969.1171875
+    },
+    "dydiff": {
+      "equal": true,
+      "max_abs_delta": 0.0
+    },
+    "dydiff_oracle_cot": {
+      "equal": false,
+      "max_abs_delta": 51.15771484375
+    },
+    "dydiff_history_cot": {
+      "equal": true,
+      "max_abs_delta": 0.0
+    },
+    "simvp": {
+      "equal": true,
+      "max_abs_delta": 0.0
+    },
+    "simvp_oracle_cot": {
+      "equal": false,
+      "max_abs_delta": 51.15771484375
+    },
+    "simvp_history_cot": {
+      "equal": true,
+      "max_abs_delta": 0.0
+    }
+  },
+  "test_payloads_read": 0,
+  "interpretation": "Aligned predicted COT affects this frozen head; large mean/shuffle penalties are not deployable gains and do not isolate physical semantics,16x16context,supervision or effective capacity."
+}

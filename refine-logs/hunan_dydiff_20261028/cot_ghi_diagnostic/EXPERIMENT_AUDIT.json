@@ -1,0 +1,77 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-28",
+  "agent_id": "/root/audit_hunan_5pct",
+  "reviewer_model": "session_inherited_not_explicitly_reported",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "selected_morning_reused_validation_and_nonunique_attribution",
+  "summary": "Saved5.017percent point estimate and fixed-head controls verified; not an overall or independent-test improvement and not proven larger than observed-image COT benefit.",
+  "audited_input_hashes": {
+    "evaluate_cpu.py": "sha256:2129c8110598a79d32814f0014bfb24cbb9593e24fed2511248784f856f7bab8",
+    "score_saved.py": "sha256:05901ea127762d7c7b647aa6d0d98f853aa75da93c2b7530b0497c920bf4d63f",
+    "attempt1/ghi_predictions.npz": "sha256:cab2cca65577b6284aeeddb982a10d08a1c0e03873f4744ee2f9db9ac278845d",
+    "attempt1/ghi_rows.csv": "sha256:80fd1e232089d0d3d794bb3db3fb70f1b4c1928393e87106cea503a988de728f",
+    "attempt1/ghi_scores_fp64.json": "sha256:04e81e7851fbfef6e618cc9b33075fd0ef468d63a330c57ef42bbf617f35fcf1",
+    "NUMERIC_AUDIT.json": "sha256:e31d809a77e041986c6c3d305497b0fe374018fbd2425823a3592ecfef621733",
+    "audit_feature_capture.py": "sha256:b302d77de56f0fa6432f9e425992905adc199be8ad59a3ce1d0aadbf9626b87d",
+    "audit_counterfactuals.py": "sha256:84b2ee05376d347804c3abdc162ae2e48ded4216d255d588d09c3503f1bfcda1",
+    "audit_counterfactuals1/predictions.npz": "sha256:83bbddedca39bfec95447075d6f317be5e72e7cc89edc6e5cf429f65af724083",
+    "audit_counterfactuals1/receipt.json": "sha256:e3ff791a9f1872b08adeda693dc90a8d34e27dfcb08f2d6114b01e29d6fe9261",
+    "audit_features1/features.npz": "sha256:6b1b03f2dddf2ffd48e4c4c40ad7a47ea0786601d6871112c97a847f95c42460",
+    "audit_canary1/features.npz": "sha256:d1623768e42d5ddb8ad3d93289a3a0d8bb0e91b2a69be47f8bf064dbb096715c",
+    "COUNTERFACTUAL_AUDIT.json": "sha256:ff3a5342036c16bee4ed0a70791c17cc0b50aba546dabadf55bed2c0392f275c"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "Real station labels match saved rows and original labels; no evaluator future-observation or QA dependence detected."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "FP64 physical-unit RMSE, fixed train normalization, per-station/seed macro, baseline RMSE denominator."
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "All7scores and date intervals independently reproduced,12head hashes matched."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "Measured outputs and executed scripts available."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "15of16initializations08:00BJT; reused validation; same-time trained heads; 1upstream member; R context/effective capacity not isolated."
+    },
+    "eval_type": "GHI real_gt, CPP retrieval_reference, sameR model_response_proxy"
+  },
+  "claims": [
+    {
+      "id": "selected_432_rows_5pct",
+      "impact": "supported_with_scope"
+    },
+    {
+      "id": "overall_forecast_5pct",
+      "impact": "unsupported"
+    },
+    {
+      "id": "forecast_COT_more_beneficial_than_real_images",
+      "impact": "unsupported"
+    },
+    {
+      "id": "fixed_head_uses_aligned_COT",
+      "impact": "supported_sensitivity_only"
+    }
+  ],
+  "test_payloads_read": 0,
+  "trace_path": "EXPERIMENT_AUDIT.md",
+  "verdict_id": "audit_hunan_5pct_20261028",
+  "executor_model": "session_model_not_explicitly_reported",
+  "executor_family": "openai",
+  "auditor": "fresh_same_family_agent_ultra"
+}

@@ -1,0 +1,14 @@
+{
+  "corrected_R_sha256": "7273a21d1d0c44d0aef6002f3e32e66b68a55f9001f1828bd1f285a5c19c680a",
+  "R_normalization_sha256": "a1fcb4666082d70e213ef3cd62d546c1cd162774a8fdf4583483a00019696869",
+  "simvp_checkpoint_sha256": "f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4",
+  "GHI_pack_sha256": "223a6b748622135e27fd5320a4be0921b4b31551be6f05868b14eb59d2c8ed9a",
+  "GHI_rows_sha256": "b76fb1b827375c29d90703ed6dc1220ff92a6d239800d4f8764b989d5b7214b3",
+  "head_setup_sha256": "e4f88b8fe4f5a0212b4e07320587226153f0ca8bca43e982270037582dfcdce6",
+  "geometry": "R and GHI use their corrected trained NOAA convention: night SOA0, day_mask SOZ<85; SimVP retains original trained geometry only",
+  "CPP_join": "full rows_supervised.csv index joined by station/UTC target, val only; no filtered-local indexing",
+  "future_validity": "offline scoring only; predicted AGRI input mask is finite prediction, never actual future QA",
+  "heads_training": "frozen same-time observed three-frame inputs; no DyDiff/SimVP-adapted retraining",
+  "test_payloads_read": 0,
+  "script_sha256": "b302d77de56f0fa6432f9e425992905adc199be8ad59a3ce1d0aadbf9626b87d"
+}

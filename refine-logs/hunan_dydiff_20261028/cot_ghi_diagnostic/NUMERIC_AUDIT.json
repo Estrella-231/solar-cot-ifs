@@ -1,0 +1,72 @@
+{
+  "status": "PASS_NUMERIC_RECOMPUTATION_WITH_SCOPE_WARNING",
+  "coverage_comparison": {
+    "full_validation_observed_same_heads": {
+      "before_RMSE": 89.48542709546142,
+      "after_RMSE": 88.26364668531124,
+      "delta_RMSE": -1.2217804101501741,
+      "relative_reduction_pct": 1.3653400892268204
+    },
+    "same_432_observed": {
+      "before_RMSE": 99.573628657531,
+      "after_RMSE": 96.15481450281145,
+      "delta_RMSE": -3.4188141547195556,
+      "relative_reduction_pct": 3.433453416143012
+    },
+    "same_432_forecast": {
+      "before_RMSE": 127.64716213920917,
+      "after_RMSE": 121.24305788572912,
+      "delta_RMSE": -6.404104253480057,
+      "relative_reduction_pct": 5.017036137862495
+    }
+  },
+  "interaction": {
+    "delta_forecast_COT_effect_minus_observed_COT_effect": -2.985290098760501,
+    "paired_date_95CI": [
+      -6.603410287537677,
+      1.1996912891378608
+    ]
+  },
+  "lead_groups": {
+    "15_30_min_some_history_inputs": {
+      "n": 54,
+      "before_RMSE": 60.03499270110842,
+      "after_RMSE": 52.35100867445768,
+      "delta_RMSE": -7.683984026650741,
+      "relative_reduction_pct": 12.799175415755272
+    },
+    "45_240_min_all_three_images_forecast": {
+      "n": 378,
+      "before_RMSE": 134.43049301180216,
+      "after_RMSE": 127.84857351638739,
+      "delta_RMSE": -6.581919495414766,
+      "relative_reduction_pct": 4.8961506782816855
+    }
+  },
+  "suspect_long_zero_records": 0,
+  "exact_zero_GHI_records": 0,
+  "selection_actual_init_times_BJT": {
+    "08:00": 15,
+    "10:45": 1
+  },
+  "GHI_record_init_times_BJT": {
+    "08:00": 400,
+    "10:45": 32
+  },
+  "full_source_prediction_hashes": {
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed42\\sili\\M00\\validation_predictions.npz": "5e782e928b8f7d9d45da5fdbfde040942759287decca9416576415cb6c1bfa07",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed42\\sili\\M10\\validation_predictions.npz": "f21df98989d17c880b68f2729e2e7abf50a75ddb0eca7cad6e43d07354c5201f",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed43\\sili\\M00\\validation_predictions.npz": "549fbac4b1f3c2d00b4705a0998d0f7420603639d0aa5d3eaff7b9733e6c315f",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed43\\sili\\M10\\validation_predictions.npz": "629d47007ee8fe754920eeb48b075c666e204cff4f9790031e637354cd733deb",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed44\\sili\\M00\\validation_predictions.npz": "cefaf2ddb583d7213c781809fc8740fc3d4ae511369f1a2accc4d18c462252ee",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed44\\sili\\M10\\validation_predictions.npz": "83bd4f0b08fd4ac12f4dd274b197ae83848010824a1ca59fceedecd01003c36b",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed42\\zhujia\\M00\\validation_predictions.npz": "c52060fb981b19ed1b45e8dab2cb5ae199f6f13352a77af19ca812cb88f22192",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed42\\zhujia\\M10\\validation_predictions.npz": "320d5850a7d09374c85bf205a19d346f9121f0b0ef7fee241b8e748eccdcb59e",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed43\\zhujia\\M00\\validation_predictions.npz": "7d22e361d368837dbd6116368c2e0a62d4632cb946d17d5d4129ce2fc167918c",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed43\\zhujia\\M10\\validation_predictions.npz": "cced16d0194c6c0729514a952a0d3188953b9ccb819eaebb9450013d8cb0fa98",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed44\\zhujia\\M00\\validation_predictions.npz": "9d0bac2d1b17c8e7d4f9fd6f30af6697585500ca22b66dfbea2a66f5479a7b52",
+    "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\seed44\\zhujia\\M10\\validation_predictions.npz": "21f533d6f6e8c502586f04ccdca5fce43e336ff73b3a1bd03a948546753e9fd8"
+  },
+  "test_payloads_read": 0,
+  "warning": "midday metadata wording inaccurate; mostly08:00 initialization; selected reused-validation rather than full forecast evaluation"
+}

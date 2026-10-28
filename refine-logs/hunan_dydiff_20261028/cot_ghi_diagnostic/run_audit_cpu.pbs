@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#PBS -N hn_cot_5pct_audit
+#PBS -q normal
+#PBS -l nodes=node7:ppn=16
+#PBS -l walltime=01:00:00
+#PBS -j oe
+set -eo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export CUDA_VISIBLE_DEVICES="" PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+export OMP_NUM_THREADS=12 MKL_NUM_THREADS=12 OPENBLAS_NUM_THREADS=1
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028/cot_ghi_diagnostic
+cd "$BASE"
+exec > "$BASE/audit_${PBS_JOBID}.log" 2>&1
+python -u audit_feature_capture.py --output "$BASE/audit_features1"
+python -u audit_feature_capture.py --output "$BASE/audit_canary1" --canary
+python -u audit_counterfactuals.py
