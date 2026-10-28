@@ -1,5 +1,9 @@
 # 湖南DyDiff推进记录
 
+## 当前：正式湖南八卡训练已启动（216594）
+
+216594日志已出现HUNAN_FORMAL_8GPU_START，正式runs/seed42_150ep_hunan_v1/run_metadata.json已生成并回收FORMAL_RUN_METADATA_216594.json。PBS状态R、exec_gpus为node21 GPU0—7；world8/global80/per-GPU10，35320train/3140val，442步/轮，150epoch/66300计划更新，test_payloads_read=0。修复后的8卡合成断点恢复一致检查PASS；真实full-size pilot保存step2、准确加载step2并完成step3再次保存，之后新建正式随机初始化训练，未复用湖北权重。真实pilot单步约2.29秒，不以此代替整轮含加载/验证总耗时。完整记录见本目录代码、PBS三个attempt、归一化及跨区域结果。
+
 ## 最新：216590八卡适配启动
 
 ### 接续216591及跨区域诊断

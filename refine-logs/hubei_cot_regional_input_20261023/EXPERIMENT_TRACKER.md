@@ -256,4 +256,10 @@ FD107/201现场hostname为3090/4090，107既有swc环境直接完成原8份train
 
 ## 用户新增湖南DyDiff独立底图（2026-10-28）
 
+**当前正式状态：216594.tc6000已在node21 GPU0—7八张A100上启动150epoch湖南训练，global80、per-GPU10；正式启动标记及run_metadata均已核实并回收，测试保存step2→恢复后step3成功。此前各attempt和下方“未开始”仅为历史，当前证据见hunan_dydiff_20261028/EXPERIMENT_TRACKER.md与FORMAL_RUN_METADATA_216594.json。**
+
+最新执行覆盖下方准备状态：用户取消重复全量扫描后，已适配湖南原QA与修正太阳几何，复用同一train归一化，按需节点本地缓存。node21八卡任务216594接续测试与150epoch自动训练流程，global80、442更新/轮；前两次测试任务216590/216591因过严optimizer逐位比较、NCCL Python RNG对象收集失败分别封存，未开始正式训练，修复不改变梯度或样本设置。正式启动以hunan_dydiff_20261028 tracker和runs正式目录为准。
+
+新增用户授权的湖北模型直接应用湖南已完成16个月份分层val窗口，无湖南微调、不用湖北权重初始化湖南训练，排除湖北train日期并保持新test关闭。C02反射率1—4小时RMSE0.07117/0.09879/0.12862/0.14587；C12亮温5.565/7.158/8.481/9.942K，13通道相对持平均有正MSE skill。仅可用性诊断，不是COT/GHI或全验证成绩。图与来源见hunan_dydiff_20261028/cross_hubei_on_hunan/RESULTS.md，保留图上长时效云结构弱化事实。
+
 入口hunan_dydiff_20261028/EXPERIMENT_PLAN.md，湖南原月度manifest保持，网络随机初始化，源码与湖北150轮对应哈希一致。CPU216589 node7已C/exit0，元数据及6帧格式/网格初查完成但全量数值质量未完成，1抽查val帧IR当前支持0。学院实时node21八张A10040GB空闲、node23七张空闲、node22无确认空闲；申请时重查，最多8GPU/PBS3。适配湖南原QA、归一化、缓存与2/4/8卡吞吐未完成，正式训练未启动。新底图独立资产，不覆盖原S/R/GHI和所有负结果，test保持关闭。
