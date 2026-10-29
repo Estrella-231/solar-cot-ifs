@@ -1,0 +1,271 @@
+{
+  "scope": "station pixel [8,8]; forecast COT versus same-R response and sparse independently keyed CPP retrieval reference",
+  "proxy_response": {
+    "total_rows": 510,
+    "dates": [
+      "2024-05-30",
+      "2024-06-12",
+      "2024-07-10",
+      "2024-09-05",
+      "2024-11-17",
+      "2025-01-05",
+      "2025-02-10",
+      "2025-03-14",
+      "2025-06-16",
+      "2025-07-09",
+      "2025-11-05",
+      "2025-12-03",
+      "2026-01-04",
+      "2026-03-02",
+      "2026-04-21",
+      "2026-06-25"
+    ],
+    "stations": {
+      "sili": {
+        "observed": {
+          "n": 256,
+          "rmse": 0.0,
+          "mae": 0.0,
+          "bias": 0.0
+        },
+        "dydiff": {
+          "n": 256,
+          "rmse": 5.94926949210098,
+          "mae": 4.0577587202313055,
+          "bias": -0.9441061864586656
+        },
+        "simvp": {
+          "n": 256,
+          "rmse": 6.180038800158211,
+          "mae": 4.465181139953152,
+          "bias": 2.1161327782410004
+        },
+        "persistence": {
+          "n": 256,
+          "rmse": 5.956698126222648,
+          "mae": 4.151989050809773,
+          "bias": 2.4977991885454545
+        },
+        "n_dates": 16
+      },
+      "zhujia": {
+        "observed": {
+          "n": 254,
+          "rmse": 0.0,
+          "mae": 0.0,
+          "bias": 0.0
+        },
+        "dydiff": {
+          "n": 254,
+          "rmse": 6.635164739490399,
+          "mae": 4.183839139307688,
+          "bias": -1.8910530005588377
+        },
+        "simvp": {
+          "n": 254,
+          "rmse": 4.562764823646631,
+          "mae": 2.829583915212799,
+          "bias": 0.1296397091681973
+        },
+        "persistence": {
+          "n": 254,
+          "rmse": 6.461951022213956,
+          "mae": 4.3425562790571295,
+          "bias": 1.8863808067618082
+        },
+        "n_dates": 16
+      }
+    },
+    "dydiff_vs_simvp": {
+      "delta_rmse_after_minus_before": 0.920815303893268,
+      "date_block_95CI": [
+        -0.39137584728253844,
+        2.043533748898404
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-09-05",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive frozen-validation interval",
+      "before_macro_rmse": 5.371401811902421,
+      "after_macro_rmse": 6.292217115795689,
+      "relative_rmse_reduction_pct": -17.142923507469597
+    },
+    "dydiff_vs_persistence": {
+      "delta_rmse_after_minus_before": 0.08289254157738757,
+      "date_block_95CI": [
+        -1.8372901365898862,
+        1.9266917803139263
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-09-05",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02",
+        "2026-04-21",
+        "2026-06-25"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive frozen-validation interval",
+      "before_macro_rmse": 6.209324574218302,
+      "after_macro_rmse": 6.292217115795689,
+      "relative_rmse_reduction_pct": -1.3349687326954236
+    }
+  },
+  "CPP_reference": {
+    "total_rows": 160,
+    "dates": [
+      "2024-05-30",
+      "2024-06-12",
+      "2024-07-10",
+      "2024-09-05",
+      "2024-11-17",
+      "2025-01-05",
+      "2025-02-10",
+      "2025-03-14",
+      "2025-06-16",
+      "2025-07-09",
+      "2025-11-05",
+      "2025-12-03",
+      "2026-01-04",
+      "2026-03-02"
+    ],
+    "stations": {
+      "sili": {
+        "observed": {
+          "n": 80,
+          "rmse": 9.978872888540227,
+          "mae": 5.586424386818727,
+          "bias": 0.17554387135634747
+        },
+        "dydiff": {
+          "n": 80,
+          "rmse": 10.189213027065644,
+          "mae": 5.977502985983052,
+          "bias": -1.5426760743274888
+        },
+        "simvp": {
+          "n": 80,
+          "rmse": 10.654466171644545,
+          "mae": 6.322524318604705,
+          "bias": 1.2000664911246015
+        },
+        "persistence": {
+          "n": 80,
+          "rmse": 13.541212290965287,
+          "mae": 8.97827775472437,
+          "bias": 2.4043513425953016
+        },
+        "n_dates": 14
+      },
+      "zhujia": {
+        "observed": {
+          "n": 80,
+          "rmse": 8.565476707454238,
+          "mae": 4.415453366373502,
+          "bias": -2.591847379260281
+        },
+        "dydiff": {
+          "n": 80,
+          "rmse": 11.838441212369222,
+          "mae": 6.796258770240817,
+          "bias": -4.095674365699085
+        },
+        "simvp": {
+          "n": 80,
+          "rmse": 9.291258925995594,
+          "mae": 4.93691292156434,
+          "bias": -2.72368443870392
+        },
+        "persistence": {
+          "n": 80,
+          "rmse": 9.592789069065399,
+          "mae": 5.576814624826412,
+          "bias": -1.378512035982237
+        },
+        "n_dates": 14
+      }
+    },
+    "dydiff_vs_simvp": {
+      "delta_rmse_after_minus_before": 1.0409645708973638,
+      "date_block_95CI": [
+        -0.33232853748118607,
+        2.972338746448519
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-09-05",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive frozen-validation interval",
+      "before_macro_rmse": 9.97286254882007,
+      "after_macro_rmse": 11.013827119717433,
+      "relative_rmse_reduction_pct": -10.437971703726376
+    },
+    "dydiff_vs_persistence": {
+      "delta_rmse_after_minus_before": -0.5531735602979095,
+      "date_block_95CI": [
+        -2.672580654825381,
+        1.2732142936204918
+      ],
+      "target_dates": [
+        "2024-05-30",
+        "2024-06-12",
+        "2024-07-10",
+        "2024-09-05",
+        "2024-11-17",
+        "2025-01-05",
+        "2025-02-10",
+        "2025-03-14",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-11-05",
+        "2025-12-03",
+        "2026-01-04",
+        "2026-03-02"
+      ],
+      "bootstrap_replicates": 5000,
+      "scheme": "joint target-BJT-date multinomial; equal groups, all fixed seeds retained; descriptive frozen-validation interval",
+      "before_macro_rmse": 11.567000680015344,
+      "after_macro_rmse": 11.013827119717433,
+      "relative_rmse_reduction_pct": 4.782342247577153
+    }
+  }
+}

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#PBS -N hn_fullval_smoke
+#PBS -q normal
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=01:00:00
+#PBS -j oe
+set -eo pipefail
+export LC_ALL=C LANG=C PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028
+cd "$BASE/full_validation_20261029"
+export CUDA_VISIBLE_DEVICES="" OMP_NUM_THREADS=12 MKL_NUM_THREADS=12 OPENBLAS_NUM_THREADS=1
+python -u evaluate_full_cpu.py --prediction-root "$BASE/cross_hubei_on_hunan_20261028/attempt1" --output "$BASE/full_validation_20261029/smoke16_attempt1" > "smoke_${PBS_JOBID}.log" 2>&1
+python score_saved.py "$BASE/full_validation_20261029/smoke16_attempt1" > "smoke_score_${PBS_JOBID}.log"

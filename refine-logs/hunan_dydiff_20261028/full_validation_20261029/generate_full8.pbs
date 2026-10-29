@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#PBS -N hn_fullval_dy8
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=40:gpus=8
+#PBS -l walltime=48:00:00
+#PBS -j oe
+set -eo pipefail
+export LC_ALL=C LANG=C PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028
+cd "$BASE/full_validation_20261029"
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 EXPECTED_GPUS=8
+export CUDA_VISIBLE_DEVICES=$(python "$BASE/code_hunan_v1/allocated_gpus.py")
+export HUNAN_DY_CACHE=/tmp/slfu_hunan_dydiff_20261028_v1
+mkdir -p "$BASE/full_validation_20261029/gpu_smoke1"
+pids=()
+for rank in 0 1 2 3 4 5 6 7; do
+ python -u evaluate_full_gpu.py --smoke --prediction-root "$BASE/cross_hubei_on_hunan_20261028/attempt1" --rank "$rank" --world 8 --output "$BASE/full_validation_20261029/gpu_smoke1/rank$rank" > "gpu_smoke_rank${rank}_${PBS_JOBID}.log" 2>&1 &
+ pids+=("$!")
+done
+failed=0
+for pid in "${pids[@]}"; do wait "$pid" || failed=1; done
+test "$failed" = 0
+python verify_gpu_smoke.py "$BASE/full_validation_20261029"
+python -u -m torch.distributed.run --standalone --nproc_per_node=8 generate_full.py --output "$BASE/full_validation_20261029/forecast_attempt1" > "generate_${PBS_JOBID}.log" 2>&1
+mkdir -p "$BASE/full_validation_20261029/evaluation_shards1"
+pids=()
+for rank in 0 1 2 3 4 5 6 7; do
+ python -u evaluate_full_gpu.py --prediction-root "$BASE/full_validation_20261029/forecast_attempt1" --rank "$rank" --world 8 --output "$BASE/full_validation_20261029/evaluation_shards1/rank$rank" > "evaluate_rank${rank}_${PBS_JOBID}.log" 2>&1 &
+ pids+=("$!")
+done
+failed=0
+for pid in "${pids[@]}"; do wait "$pid" || failed=1; done
+test "$failed" = 0
+python merge_shards.py "$BASE/full_validation_20261029" > "merge_${PBS_JOBID}.log"
+python score_extended.py "$BASE/full_validation_20261029/evaluation_attempt1" > "score_${PBS_JOBID}.log"

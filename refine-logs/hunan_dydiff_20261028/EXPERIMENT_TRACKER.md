@@ -47,3 +47,15 @@ COT主站点像元对正确连接CPP（160记录/14日）的等站RMSE：DyDiff1
 提交前slfu全队列为空，node21八张A10040GB均0MiB/0%。PBS216590.tc6000已分配node21 GPU0—7，状态R，40CPU，8卡不等/空rank有效像元梯度测试已PASS。后续顺序为8卡断点精确恢复、少量真实批次容量及8卡pilot自动续训，然后随机初始化湖南正式150epoch。以launch日志的HUNAN_FORMAL_8GPU_START和正式run_metadata/progress为正式训练启动证据；仅PBS为R不能代替正式训练开始。原CPU216589保留只读。例行监控交Luna，本轮不创建/恢复自动化。
 
 2026-10-28：用户授权湖南独立底图。source_hubei六核心SHA与同门epoch150来源相同。学院GPU/队列实时核对完成；node21空闲8 A10040GB，node23空闲7，node22无可确认空闲。CPU216589正常队列初请求node21未运行，核对后仅对自身Q任务qalter到node7四CPU，C/exit0约30秒。全元数据和6帧头/网格PASS，但1验证帧IR全部不在有效范围，完整数值QC未完成。source adapter、train norm、本地缓存与2/4/8卡真实吞吐仍待做；未开正式训练、未读test。见EXPERIMENT_PLAN.md、READINESS_CPU.json和RESOURCE_SNAPSHOT.json。
+
+## 2026-10-29 09:10 CST 实时训练状态收据（PBS 216594）
+
+- 实时服务器时间 2026-10-29 09:10:49 CST。216594.tc6000 状态 R，自 2026-10-28 18:20:35 运行，已运行 14:49:03；PBS `exec_gpus` 为 node21 GPU0–7，共8张 A100 40GB。正式元数据与启动标记存在，训练合同为 world8、per-GPU batch10/global batch80、150轮、442 steps/epoch、66300计划更新；测试载荷读取数为0。
+- 最新 progress.json：epoch45/batch362/global_step19810；日志已推进到 batch352/step19800，last.pt 约1.053GB，mtime 09:10:25（按每100步保存，应对应step19800附近）；best.pt mtime 07:47:33。最近完整轮为epoch44/global_step19448，轮耗时1051.35秒；epoch41–44普通轮平均1051.27秒（约17.5分钟）。epoch40执行完整验证耗时1614.76秒（约26.9分钟），相对普通轮多约563.5秒；完整3140样本验证RMSE/MAE为0.479235/0.260525，当前最佳RMSE为0.479235。epoch44固定64样本paired monitor RMSE raw为0.467226、MAE为0.258541；此口径不能与全量验证混同。
+- 估算：epoch45尚余约80步，之后还剩105轮。按近期普通轮约1051秒、每5轮完整验证约额外563秒估算，剩余约34小时，吞吐稳定时预计2026-10-30 19:20 CST左右完成；数据/验证耗时变化会使该ETA浮动数小时。
+- 作业内GPU CSV最新采样 09:10:38：8卡利用率99–100%，显存约31.6–39.5/40.5GiB；登录节点没有nvidia-smi，故使用PBS分配信息及作业内GPU采样确认资源使用。当前loss、grad_norm为有限值，日志未发现NaN/Inf、Traceback、OOM或运行错误；进度连续推进。没有读取test载荷。
+
+
+## 2026-10-29 完整冻结验证配对评价已排程
+
+用户批准扩至全部3140个val窗口，不限早间；同一修正R和M00/M10三帧头，无新训练或test。421窗口与湖北DyDiff训练日期重叠，同时固定报告2719非重叠子组。CPU216699完成原16窗口扩展脚本复现：DyDiff5.017036%、SimVP3.301113%。GPU216700已提交node21八卡/40CPU，afterok依赖当前216594训练与216699，H为依赖等待，不影响正在进行的训练、总并行不超过8GPU。自动小范围GPU复现通过后生成全val站点patch、八分片R/GHI推理、FP64全表与非重叠子组配对评分；未出全val结果，不能提前称5%保持。详细计划及脚本见full_validation_20261029/。
