@@ -1,38 +1,86 @@
 {
-  "observed_at_server": "2026-10-29 16:46:24 CST",
-  "job": "216703.tc6000",
-  "state": "R",
-  "queue": "gpu",
-  "host": "node23",
-  "requested_resources": "node23:48CPU:7GPU",
-  "exec_gpus": [
-    0,
-    1,
-    2,
-    4,
-    5,
-    6,
-    7
-  ],
-  "excluded_gpu": 3,
-  "smoke": "running; seven rank provenance files appeared at 16:46:34 CST; rank completion files and GPU_SMOKE_PASS.json not yet visible at observation",
-  "full_validation": "not yet started at observation",
-  "visible_errors": [],
-  "concurrent_training": {
-    "job": "216594.tc6000",
-    "state": "R",
-    "host": "node21",
+  "latest_observed_server_time": "2026-10-29 18:29:50 CST",
+  "job": "216704.tc6000",
+  "pbs_state": "COMPLETED",
+  "exit_status": 0,
+  "pbs_finished_at": "2026-10-29 17:35:23 CST",
+  "forecast": {
+    "test_payloads_read": 0,
+    "windows": 3140,
+    "status": "PASS",
+    "overlap_windows": 421,
+    "no_hubei_training_day_overlap_windows": 2719
+  },
+  "evaluation": {
+    "aggregation": "mean of station/seed RMSE; not pooled RMSE",
+    "no_hubei_training_day_overlap": {
+      "dates": 43,
+      "simvp_cot": {
+        "after": 122.468108,
+        "before": 125.142223,
+        "reduction_pct": 2.136861,
+        "delta": -2.674115,
+        "date_block_95ci": [
+          -4.430038,
+          -0.890491
+        ]
+      },
+      "dydiff_cot": {
+        "after": 125.857423,
+        "before": 127.123088,
+        "reduction_pct": 0.995621,
+        "delta": -1.265665,
+        "date_block_95ci": [
+          -3.069023,
+          0.599087
+        ]
+      },
+      "rows": 54280
+    },
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "status": "PASS",
+    "full_rows": 63480,
+    "no_overlap_rows": 54280,
+    "full": {
+      "simvp_cot": {
+        "after": 125.340128,
+        "before": 127.421176,
+        "reduction_pct": 1.633204,
+        "delta": -2.081048,
+        "date_block_95ci": [
+          -3.714465,
+          -0.56135
+        ]
+      },
+      "dydiff_cot": {
+        "after": 127.221173,
+        "before": 128.326154,
+        "reduction_pct": 0.861072,
+        "delta": -1.104981,
+        "date_block_95ci": [
+          -2.670782,
+          0.471513
+        ]
+      }
+    }
+  },
+  "claim_boundary": "Frozen-Hunan validation replay; no forecast-adapted head training; descriptive date-block intervals; independent test closed",
+  "initial_startup_snapshot": {
+    "job": "216704.tc6000",
     "exec_gpus": [
       0,
       1,
       2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ]
+      4
+    ],
+    "gpu_smoke_pass_max_abs_Wm2": 0.00048828125,
+    "tolerance_Wm2": 0.1,
+    "excluded_gpu": 3,
+    "host": "node23"
   },
-  "read_test_payloads": false,
-  "actions_taken": "read-only status check; no job changes"
+  "actions": "Read-only PBS/log/receipt check; no training modification"
 }
