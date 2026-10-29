@@ -7,7 +7,7 @@ lookup={(r['station'],r['window'],r['lead_minutes']):i for i,r in enumerate(rr)}
 with np.load(old/'ghi_predictions.npz') as z:original={k:z[k].copy() for k in z.files}
 maximum=0.;count=0
 for rank in range(int(sys.argv[2]) if len(sys.argv)>2 else 8):
- shard=root/f'gpu_smoke1/rank{rank}'
+ shard=root/f'gpu_smoke2/rank{rank}'
  assert json.loads((shard/'completion.json').read_text())['status']=='PASS'
  with (shard/'ghi_rows.csv').open() as f:rows=list(csv.DictReader(f))
  ix=np.array([lookup[(r['station'],r['window'],r['lead_minutes'])] for r in rows]);count+=len(rows)

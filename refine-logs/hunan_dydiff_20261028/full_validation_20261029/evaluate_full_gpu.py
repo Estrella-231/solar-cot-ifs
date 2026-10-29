@@ -34,6 +34,7 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True);ap.add_argument('--prediction-root',type=Path,required=True);ap.add_argument('--smoke',action='store_true');ap.add_argument('--rank',type=int,default=0);ap.add_argument('--world',type=int,default=1);a=ap.parse_args();global PRED;PRED=a.prediction_root;device=torch.device('cuda',a.rank);torch.cuda.set_device(device)
  assert not a.output.exists(),'new attempt required';a.output.mkdir(parents=True)
  torch.set_num_threads(4);torch.set_num_interop_threads(1)
+ torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
  sys.path.insert(0,str(SROOT/'code'));sys.path.insert(0,str(RROOT));sys.path.insert(0,str(HEADROOT))
  from triad_models import SimVPBackbone
  from hunan_data import load_frame,resolve_aux

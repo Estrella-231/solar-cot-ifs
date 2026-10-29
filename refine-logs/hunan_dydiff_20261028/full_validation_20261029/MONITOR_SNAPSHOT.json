@@ -1,0 +1,38 @@
+{
+  "observed_at_server": "2026-10-29 16:46:24 CST",
+  "job": "216703.tc6000",
+  "state": "R",
+  "queue": "gpu",
+  "host": "node23",
+  "requested_resources": "node23:48CPU:7GPU",
+  "exec_gpus": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+  ],
+  "excluded_gpu": 3,
+  "smoke": "running; seven rank provenance files appeared at 16:46:34 CST; rank completion files and GPU_SMOKE_PASS.json not yet visible at observation",
+  "full_validation": "not yet started at observation",
+  "visible_errors": [],
+  "concurrent_training": {
+    "job": "216594.tc6000",
+    "state": "R",
+    "host": "node21",
+    "exec_gpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "read_test_payloads": false,
+  "actions_taken": "read-only status check; no job changes"
+}

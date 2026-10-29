@@ -2,7 +2,7 @@ import csv,json,sys
 from pathlib import Path
 import numpy as np
 root=Path(sys.argv[1]);out=root/'evaluation_attempt1';assert not out.exists();out.mkdir()
-shards=[root/f'evaluation_shards1/rank{i}' for i in range(int(sys.argv[2]) if len(sys.argv)>2 else 8)]
+shards=[root/f'evaluation_shards2/rank{i}' for i in range(int(sys.argv[2]) if len(sys.argv)>2 else 8)]
 receipts=[json.loads((s/'completion.json').read_text()) for s in shards]
 assert all(r['status']=='PASS' and r['test_payloads_read']==0 for r in receipts)
 assert sum(r['windows'] for r in receipts)==3140
