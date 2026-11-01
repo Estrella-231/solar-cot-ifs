@@ -1,0 +1,76 @@
+{
+  "checks": [
+    {
+      "actual": "PNG",
+      "detail": "File format is compared with the explicit allow-list.",
+      "expected": [
+        "PNG"
+      ],
+      "name": "format",
+      "status": "pass"
+    },
+    {
+      "actual": "RGB",
+      "detail": "Vector containers generally do not expose one image mode.",
+      "expected": [
+        "RGB"
+      ],
+      "name": "mode",
+      "status": "pass"
+    },
+    {
+      "actual": 280.52888888888884,
+      "detail": "DPI basis: effective at target width. Metadata DPI is not a quality measure; effective DPI depends on final physical size.",
+      "expected": {
+        "max": null,
+        "min": 280.0
+      },
+      "name": "dpi",
+      "status": "pass"
+    },
+    {
+      "actual": false,
+      "detail": "Alpha is detected for raster modes/transparency metadata. Vector transparency requires rendered-content inspection.",
+      "expected": "forbid",
+      "name": "alpha",
+      "status": "pass"
+    }
+  ],
+  "input": {
+    "name": "forecast_cpp_strata.png",
+    "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\forecast_thick_cloud_events_20261102\\figures\\forecast_cpp_strata.png",
+    "size_bytes": 182852,
+    "suffix": ".png"
+  },
+  "metadata": {
+    "bands": [
+      "R",
+      "G",
+      "B"
+    ],
+    "compression": null,
+    "dpi_x": 280.0096,
+    "dpi_y": 280.0096,
+    "exif_present": false,
+    "format": "PNG",
+    "frames": 1,
+    "has_alpha": false,
+    "height_mm_from_metadata": 132.0754716981132,
+    "height_px": 1456,
+    "icc_profile_bytes": 0,
+    "icc_profile_present": false,
+    "kind": "raster",
+    "mode": "RGB",
+    "pixel_count": 2894528,
+    "width_mm_from_metadata": 180.33381712626996,
+    "width_px": 1988
+  },
+  "notice": "This deterministic metadata screen checks only the supplied constraints. It does not verify visual quality, scientific integrity, accessibility, embedded-raster resolution in vector files, or journal compliance.",
+  "schema_version": "1.0",
+  "screening_summary": {
+    "fail": 0,
+    "pass": 4,
+    "unknown": 0,
+    "warning": 0
+  }
+}

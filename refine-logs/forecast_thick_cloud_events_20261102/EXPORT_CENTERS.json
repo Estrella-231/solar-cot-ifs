@@ -1,0 +1,23 @@
+{
+  "test_payloads_read": 0,
+  "new_inference": false,
+  "sources": {
+    "Hunan_CPP": {
+      "root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/r_solar_geometry_corrected_20261015/data/paired_common_v1",
+      "rows_sha256": "d6b50b78a85e879c341b79c804c2914128dc726b10b47944c2f5009df354355f",
+      "val_rows_exported": 1253
+    },
+    "Hubei_CPP": {
+      "root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full",
+      "rows_sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+      "target_units": "packed COT/100; multiply 100 exactly as train_corrected_r.py before log1p",
+      "val_rows_exported": 699
+    }
+  },
+  "reference_rows": 1952,
+  "forecast_rows": 90537,
+  "files": {
+    "reference_centers.csv": "047c63189550dcdb229fbc4441a925c7312012d960d17e669b9b1fa3b36aa218",
+    "forecast_cot_centers.csv": "7935b6203db5e8c0458f8e1aa874b89376de7d97b0a9d421cf281e4f345d2ff7"
+  }
+}
