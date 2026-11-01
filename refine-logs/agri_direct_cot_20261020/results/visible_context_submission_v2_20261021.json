@@ -1,0 +1,20 @@
+{
+  "time_utc": "2026-10-21T05:20:12.261924+00:00",
+  "queue_before": "\ntc6000: \n                                                                                          Req'd    Req'd       Elap\nJob ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time\n----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------\n215356.tc6000           slfu        gpu              hb_cot_aux13r4    59166     1      8    --   36:00:00 R  00:53:18\n215359.tc6000           slfu        gpu              hb_cot13r4eval      --      1      8    --   08:00:00 H       -- \n215365.tc6000           slfu        normal           cot_case_context 114081     1      4    --   00:30:00 C       -- \n",
+  "unfinished_job_rows_before": 2,
+  "source_sha256": {
+    "extract_visible_neighbor_context.py": "245d65c059f5eb197601de79a34e3aa72c25a84df56992449d220bde8d98d016",
+    "run_visible_neighbor_context_cpu_20261021.pbs": "0c313609286cea27914787c983ee130d3717e6b13de2edab578680c23cf23dbb",
+    "VISIBLE_NEIGHBOR_HISTORY_CONTEXT_PLAN_20261021.md": "beb2b3271a4ed9f59d747bde6dea883448a674d23015774845cf1e1b6091f22b"
+  },
+  "completed_rows_excluded": [
+    "215365.tc6000"
+  ],
+  "prior_attempt": "215365 failed before output creation due to archive-only index path; now exact source index and SHA bound",
+  "kind": "CPU-only offline V context; no training, GPU, GHI or test/buffer",
+  "job_id": "215369.tc6000",
+  "state": "SUBMITTED_CPU_CONTEXT",
+  "qsub_stderr": "",
+  "queue_after": "\ntc6000: \n                                                                                          Req'd    Req'd       Elap\nJob ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time\n----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------\n215356.tc6000           slfu        gpu              hb_cot_aux13r4    59166     1      8    --   36:00:00 R  00:53:18\n215359.tc6000           slfu        gpu              hb_cot13r4eval      --      1      8    --   08:00:00 H       -- \n215365.tc6000           slfu        normal           cot_case_context 114081     1      4    --   00:30:00 C       -- \n215369.tc6000           slfu        normal           cot_case_context    --      1      4    --   00:30:00 Q       -- \n",
+  "queue_after_exit": 0
+}

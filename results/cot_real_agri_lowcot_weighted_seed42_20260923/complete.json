@@ -1,0 +1,75 @@
+{
+  "state": "COMPLETE_PAIRED_VALIDATION_PILOT",
+  "test_used": false,
+  "selection_metric": "clear_cot_lt0p1_rmse",
+  "frozen_R_initial": {
+    "cot_rmse": 4.246164397624913,
+    "cot_mae": 2.03225686915269,
+    "cot_bias": 0.08917112377108082,
+    "log_huber": 0.019414929198316434,
+    "high_cot_ge30_rmse": 11.949837608746112,
+    "high_cot_ge30_bias": -4.553352184242088,
+    "station_5x5_rmse": 3.943565921165888,
+    "clear_cot_lt0p1_rmse": 0.7711762542248346,
+    "clear_cot_lt0p1_bias": 0.15302039461280184,
+    "clear_reference_pixels_predicted_ge0p1_fraction": 0.11788365955032622,
+    "valid_pixels": {
+      "all": 1664013,
+      "high": 75843,
+      "center": 162454,
+      "clear": 648648
+    }
+  },
+  "control": {
+    "best_epoch": 2,
+    "cot_rmse": 4.341135680809057,
+    "cot_mae": 2.0858885936156297,
+    "cot_bias": 0.31722503932088797,
+    "log_huber": 0.019769413297841106,
+    "high_cot_ge30_rmse": 11.573087382127653,
+    "high_cot_ge30_bias": -2.3452472963654154,
+    "station_5x5_rmse": 4.040169316688402,
+    "clear_cot_lt0p1_rmse": 0.7355733151362261,
+    "clear_cot_lt0p1_bias": 0.14031559291162155,
+    "clear_reference_pixels_predicted_ge0p1_fraction": 0.11200065366732033,
+    "valid_pixels": {
+      "all": 1664013,
+      "high": 75843,
+      "center": 162454,
+      "clear": 648648
+    }
+  },
+  "low_cot_weighted": {
+    "best_epoch": 7,
+    "cot_rmse": 4.478275746629163,
+    "cot_mae": 2.1847460706624586,
+    "cot_bias": 0.21606975742010803,
+    "log_huber": 0.02144689585549127,
+    "high_cot_ge30_rmse": 12.270160962350348,
+    "high_cot_ge30_bias": -4.479726556367755,
+    "station_5x5_rmse": 4.111918418043218,
+    "clear_cot_lt0p1_rmse": 0.5950081643302862,
+    "clear_cot_lt0p1_bias": 0.10014316265587832,
+    "clear_reference_pixels_predicted_ge0p1_fraction": 0.07152107152107152,
+    "valid_pixels": {
+      "all": 1664013,
+      "high": 75843,
+      "center": 162454,
+      "clear": 648648
+    }
+  },
+  "candidate_passes_all_retention_limits": false,
+  "candidate_retention_checks_vs_frozen_R": {
+    "clear_cot_lt0p1_rmse": true,
+    "cot_rmse": false,
+    "high_cot_ge30_rmse": false,
+    "station_5x5_rmse": false
+  },
+  "candidate_minus_control_cot_rmse": 0.1371400658201063,
+  "candidate_minus_control_clear_rmse": -0.1405651508059399,
+  "candidate_minus_control_clear_bias": -0.04017243025574323,
+  "candidate_minus_control_clear_ge0p1_fraction": -0.040479582146248805,
+  "candidate_minus_control_high_rmse": 0.6970735802226944,
+  "candidate_minus_control_station_5x5_rmse": 0.07174910135481571,
+  "note": "Both arms train and validate on real observed AGRI; validation-only selection; no independent test or GHI claim."
+}

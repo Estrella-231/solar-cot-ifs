@@ -1,0 +1,525 @@
+{
+  "state": "PASS_FP64_COMMON_SUPPORT_COT_SCORING_KEYED_CPP_V2",
+  "scope": "validation-only; CPP retrieval reference, not independent physical truth; R(observed future AGRI) is a proxy response; no test payloads read",
+  "windows": 3140,
+  "validation_bjt_dates": 52,
+  "cpp_supported_bjt_dates": 46,
+  "cpp_supported_bjt_date_list": [
+    "2024-04-19",
+    "2024-04-20",
+    "2024-05-29",
+    "2024-05-30",
+    "2024-06-11",
+    "2024-06-12",
+    "2024-07-09",
+    "2024-07-10",
+    "2024-08-16",
+    "2024-08-17",
+    "2024-09-04",
+    "2024-09-05",
+    "2024-10-25",
+    "2024-10-26",
+    "2024-11-16",
+    "2024-11-17",
+    "2024-12-24",
+    "2024-12-25",
+    "2025-01-04",
+    "2025-01-05",
+    "2025-02-09",
+    "2025-02-10",
+    "2025-03-13",
+    "2025-03-14",
+    "2025-04-17",
+    "2025-04-18",
+    "2025-05-03",
+    "2025-05-04",
+    "2025-06-15",
+    "2025-06-16",
+    "2025-07-08",
+    "2025-07-09",
+    "2025-08-21",
+    "2025-08-22",
+    "2025-10-06",
+    "2025-10-07",
+    "2025-11-05",
+    "2025-11-06",
+    "2025-12-02",
+    "2025-12-03",
+    "2026-01-03",
+    "2026-01-04",
+    "2026-02-20",
+    "2026-02-21",
+    "2026-03-01",
+    "2026-03-02"
+  ],
+  "cpp_reference_pixels": 5224460,
+  "test_payloads_read": 0,
+  "cpp_reference_source": {
+    "rows_sha256": "b270713590f6af793b53df73d27e01f3f62ad8d7e60bb9a8eaace5c43fb2ebcb",
+    "validation_predictions_sha256": "08c9cc92df549f12412873e9b8e50f308f35f79451693fa10b229a3346c15785",
+    "supervised_rows": 16812,
+    "validation_samples": 1398,
+    "reference_keys": 1398,
+    "key_rule": "(station,target_time_utc), full SUPERVISED index"
+  },
+  "cpp_storage_check": {
+    "original_simvp": false,
+    "mse_finetune": true,
+    "temporal_delta": true,
+    "spatial_gradient": true
+  },
+  "shared_proxy_reference_method": "original_simvp_saved_R_observed_future_AGRI_output",
+  "proxy_recompute_checks_vs_shared_reference": {
+    "original_simvp": {
+      "max_abs_COT_difference_from_shared_reference": 0.0,
+      "rmse_COT_difference_from_shared_reference": 0.0,
+      "mae_COT_difference_from_shared_reference": 0.0
+    },
+    "mse_finetune": {
+      "max_abs_COT_difference_from_shared_reference": 0.04659878586511468,
+      "rmse_COT_difference_from_shared_reference": 0.0008506876606876186,
+      "mae_COT_difference_from_shared_reference": 0.00029351772451651875
+    },
+    "temporal_delta": {
+      "max_abs_COT_difference_from_shared_reference": 0.046095990147136945,
+      "rmse_COT_difference_from_shared_reference": 0.0007653867383812566,
+      "mae_COT_difference_from_shared_reference": 0.0002378552856920616
+    },
+    "spatial_gradient": {
+      "max_abs_COT_difference_from_shared_reference": 0.0,
+      "rmse_COT_difference_from_shared_reference": 0.0,
+      "mae_COT_difference_from_shared_reference": 0.0
+    }
+  },
+  "aggregate_cpp_metrics": {
+    "original_simvp": {
+      "local_3x3": {
+        "n_pixels": 183564,
+        "rmse_pooled": 10.735718641314772,
+        "mae": 6.0628416942605226,
+        "bias": -0.5554738341999904,
+        "tp": 12544,
+        "fp": 6280,
+        "fn": 10856,
+        "pod": 0.5360683760683761,
+        "far": 0.3336166595835104,
+        "csi": 0.4226415094339623,
+        "rmse_station_lead_macro": 10.664159889060176
+      },
+      "patch_16x16": {
+        "n_pixels": 5224460,
+        "rmse_pooled": 11.030922299671676,
+        "mae": 6.247853750274746,
+        "bias": -0.6594166894672652,
+        "tp": 371676,
+        "fp": 199998,
+        "fn": 326087,
+        "pod": 0.5326679689235456,
+        "far": 0.34984624103947354,
+        "csi": 0.4140032814969686,
+        "rmse_station_lead_macro": 10.952694275908655
+      }
+    },
+    "mse_finetune": {
+      "local_3x3": {
+        "n_pixels": 183564,
+        "rmse_pooled": 10.831033334924884,
+        "mae": 6.094118625294501,
+        "bias": -0.26536377430232594,
+        "tp": 13160,
+        "fp": 7163,
+        "fn": 10240,
+        "pod": 0.5623931623931624,
+        "far": 0.3524578064262166,
+        "csi": 0.4305860026829827,
+        "rmse_station_lead_macro": 10.750110384027654
+      },
+      "patch_16x16": {
+        "n_pixels": 5224460,
+        "rmse_pooled": 11.12619647576088,
+        "mae": 6.283352057572836,
+        "bias": -0.3692436119891932,
+        "tp": 390882,
+        "fp": 224357,
+        "fn": 306881,
+        "pod": 0.560193074152685,
+        "far": 0.36466641419025775,
+        "csi": 0.4238949377521364,
+        "rmse_station_lead_macro": 11.038903197319113
+      }
+    },
+    "temporal_delta": {
+      "local_3x3": {
+        "n_pixels": 183564,
+        "rmse_pooled": 10.836595180969464,
+        "mae": 6.097174719849141,
+        "bias": -0.2613989573856443,
+        "tp": 13160,
+        "fp": 7183,
+        "fn": 10240,
+        "pod": 0.5623931623931624,
+        "far": 0.35309443051663963,
+        "csi": 0.4303044174868391,
+        "rmse_station_lead_macro": 10.755763221850916
+      },
+      "patch_16x16": {
+        "n_pixels": 5224460,
+        "rmse_pooled": 11.13155977935049,
+        "mae": 6.286164438451689,
+        "bias": -0.36548421915299445,
+        "tp": 390832,
+        "fp": 224732,
+        "fn": 306931,
+        "pod": 0.560121416584141,
+        "far": 0.3650830782826806,
+        "csi": 0.4236684209670513,
+        "rmse_station_lead_macro": 11.044285516932778
+      }
+    },
+    "spatial_gradient": {
+      "local_3x3": {
+        "n_pixels": 183564,
+        "rmse_pooled": 10.84060621439001,
+        "mae": 6.100013699700114,
+        "bias": -0.27286875743120725,
+        "tp": 13093,
+        "fp": 7164,
+        "fn": 10307,
+        "pod": 0.5595299145299145,
+        "far": 0.35365552648467197,
+        "csi": 0.4283797932207826,
+        "rmse_station_lead_macro": 10.759222137699235
+      },
+      "patch_16x16": {
+        "n_pixels": 5224460,
+        "rmse_pooled": 11.134301723476828,
+        "mae": 6.287586986015708,
+        "bias": -0.3766192845252797,
+        "tp": 389534,
+        "fp": 224135,
+        "fn": 308229,
+        "pod": 0.5582611861047375,
+        "far": 0.36523761180701647,
+        "csi": 0.42253481404667326,
+        "rmse_station_lead_macro": 11.046454609601193
+      }
+    },
+    "persistence_r": {
+      "local_3x3": {
+        "n_pixels": 183564,
+        "rmse_pooled": 22.607897348615047,
+        "mae": 11.770626153395416,
+        "bias": 6.53400610090102,
+        "tp": 14479,
+        "fp": 23945,
+        "fn": 8921,
+        "pod": 0.6187606837606837,
+        "far": 0.6231782219446179,
+        "csi": 0.30581898827753723,
+        "rmse_station_lead_macro": 20.487370770355056
+      },
+      "patch_16x16": {
+        "n_pixels": 5224460,
+        "rmse_pooled": 20.478193873375215,
+        "mae": 11.15015897313987,
+        "bias": 5.786287622589496,
+        "tp": 433272,
+        "fp": 692652,
+        "fn": 264491,
+        "pod": 0.6209443607643282,
+        "far": 0.6151853943960693,
+        "csi": 0.3116134391530586,
+        "rmse_station_lead_macro": 18.930224234578418
+      }
+    }
+  },
+  "full_cohort_proxy_response": {
+    "original_simvp": {
+      "n_values": 25722880,
+      "rmse_vs_R_observed_future_AGRI": 13.185964720909027,
+      "mae_vs_R_observed_future_AGRI": 6.66489574424978,
+      "bias_vs_R_observed_future_AGRI": -1.4644468276099734
+    },
+    "mse_finetune": {
+      "n_values": 25722880,
+      "rmse_vs_R_observed_future_AGRI": 13.18784164459398,
+      "mae_vs_R_observed_future_AGRI": 6.698385214516868,
+      "bias_vs_R_observed_future_AGRI": -0.9665583740569974
+    },
+    "temporal_delta": {
+      "n_values": 25722880,
+      "rmse_vs_R_observed_future_AGRI": 13.1987481267143,
+      "mae_vs_R_observed_future_AGRI": 6.707288933521311,
+      "bias_vs_R_observed_future_AGRI": -1.004096486066749
+    },
+    "spatial_gradient": {
+      "n_values": 25722880,
+      "rmse_vs_R_observed_future_AGRI": 13.19763570750999,
+      "mae_vs_R_observed_future_AGRI": 6.70914463787002,
+      "bias_vs_R_observed_future_AGRI": -0.9760376635137477
+    },
+    "persistence_r": {
+      "n_values": 25722880,
+      "rmse_vs_R_observed_future_AGRI": 46.841038912835614,
+      "mae_vs_R_observed_future_AGRI": 23.0437171129785,
+      "bias_vs_R_observed_future_AGRI": 4.717667867388542
+    }
+  },
+  "banks": {
+    "original_simvp": {
+      "bank_sha256": "0acc9e4095b8d401e609b50905f7252b6c897c93698cd1e3a774e32ec84ecaaf",
+      "simvp_checkpoint_sha256": "f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4",
+      "r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+      "windows": 3140,
+      "test_payloads_read": 0
+    },
+    "mse_finetune": {
+      "bank_sha256": "e1cafb8232b1a1aa83bf57a83dbf98a6342fa4a6b7c68eda7451fab920b257d4",
+      "simvp_checkpoint_sha256": "881f249aebf501220f451ca018d193d38a88746289c7a3ac1d16dce86f54665f",
+      "r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+      "windows": 3140,
+      "test_payloads_read": 0
+    },
+    "temporal_delta": {
+      "bank_sha256": "82fc8d054bb14bd4d3faa1d90f67de39f7d9154f4d239587aa6cd5f61b9f97c6",
+      "simvp_checkpoint_sha256": "fea2d406459a3a91c6ce6d11146be63affaaadc16203733d075304aa40338c34",
+      "r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+      "windows": 3140,
+      "test_payloads_read": 0
+    },
+    "spatial_gradient": {
+      "bank_sha256": "a8f444929cb2db559a5e4d4d113e96db810de5fdee4e13ea12b6dab2aa4cc89f",
+      "simvp_checkpoint_sha256": "24ae31c5fe882588a4afc30495523f003f420f3f1228e1d9f9be9e97ad40c691",
+      "r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+      "windows": 3140,
+      "test_payloads_read": 0
+    },
+    "persistence_r": {
+      "source_bank_sha256": "0acc9e4095b8d401e609b50905f7252b6c897c93698cd1e3a774e32ec84ecaaf",
+      "definition": "R applied to the final observed AGRI frame and held constant across all 16 forecast leads",
+      "test_payloads_read": 0
+    }
+  },
+  "paired_bootstrap": {
+    "ci_by_candidate_vs_original_and_mse": {
+      "mse_finetune": {
+        "original_simvp": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 0.08595049496747897,
+            "ci95": [
+              -0.07835763545078298,
+              0.24039607655475723
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 0.08620892141045822,
+            "ci95": [
+              -0.0771332507511115,
+              0.24343954807315854
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": 0.007944493249020412,
+            "ci95": [
+              -0.006598945475796631,
+              0.026512197026714986
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        }
+      },
+      "temporal_delta": {
+        "original_simvp": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 0.09160333279074173,
+            "ci95": [
+              -0.07442075909673931,
+              0.24824523743335222
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 0.09159124102412264,
+            "ci95": [
+              -0.07417495567116643,
+              0.25157257437896513
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": 0.007662908052876838,
+            "ci95": [
+              -0.007048922759701632,
+              0.026252052270914764
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        },
+        "mse_finetune": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 0.005652837823262757,
+            "ci95": [
+              0.001879245702790966,
+              0.00991197522683564
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 0.005382319613664421,
+            "ci95": [
+              0.001741189540806909,
+              0.009519154792158565
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": -0.00028158519614357447,
+            "ci95": [
+              -0.0007332995477312045,
+              0.00018942703481368258
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        }
+      },
+      "spatial_gradient": {
+        "original_simvp": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 0.09506224863905999,
+            "ci95": [
+              -0.06738598022331103,
+              0.2517811002759661
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 0.09376033369253811,
+            "ci95": [
+              -0.0701779849741635,
+              0.25162206714266894
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": 0.005738283786820342,
+            "ci95": [
+              -0.010039721522659422,
+              0.02512869579302655
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        },
+        "mse_finetune": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 0.009111753671581013,
+            "ci95": [
+              0.003353020106155924,
+              0.015069146206563874
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 0.007551412282079895,
+            "ci95": [
+              0.0023511496041318304,
+              0.012896108765320366
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": -0.0022062094622000705,
+            "ci95": [
+              -0.004492960055593074,
+              -0.00025389356759928104
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        }
+      },
+      "persistence_r": {
+        "original_simvp": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 9.823210881294882,
+            "ci95": [
+              7.722140459160501,
+              12.153756564615728
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 7.977529958669763,
+            "ci95": [
+              6.112081501309147,
+              10.02524653006541
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": -0.11682252115642505,
+            "ci95": [
+              -0.19207530952284246,
+              -0.05426653298563892
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        },
+        "mse_finetune": {
+          "local_3x3_macro_rmse_delta": {
+            "point": 9.737260386327403,
+            "ci95": [
+              7.62451374969689,
+              12.062939368978947
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "patch_16x16_macro_rmse_delta": {
+            "point": 7.891321037259305,
+            "ci95": [
+              6.054727464405304,
+              9.9895017733415
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          },
+          "local_3x3_pooled_CSI_delta": {
+            "point": -0.12476701440544546,
+            "ci95": [
+              -0.20855807167084234,
+              -0.055109669348782836
+            ],
+            "bootstrap_reps": 2000,
+            "unit": "BJT target-date block"
+          }
+        }
+      }
+    },
+    "reps": 2000,
+    "seed": 20261016,
+    "unit": "BJT target-date block",
+    "note": "RMSE CI uses equal station x lead macro-averages within each date-block resample; CSI is pooled over common 3x3 CPP support."
+  },
+  "source_hashes": {
+    "scorer_sha256": "135812f71a65c0b4512d7c032a1f43a2b8261240c46bfaefe63f8e008eadf6a4"
+  }
+}

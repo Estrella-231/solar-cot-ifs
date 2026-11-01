@@ -1,0 +1,61 @@
+{
+  "state": "COMPLETE_COT_MONOCAL_H_CV_AND_SCORE",
+  "started_local": "2026-10-21 08:46 CST",
+  "completed_local": "2026-10-21 09:05 CST",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "runs_completed": 90,
+  "expected_runs": 90,
+  "h_oof_rows": {
+    "sili": 72345,
+    "zhujia": 79417
+  },
+  "folds": 5,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs_per_run": 30,
+  "batch_size": 512,
+  "score_state": "COMPLETE_COT_MONOCAL_H_CV_SCORE",
+  "predeclared_gain_gate_pass": false,
+  "primary_full_delta_rmse": {
+    "delta_rmse_wm2": -0.0222754982040622,
+    "ci95_low": -0.15144026139363803,
+    "ci95_high": 0.09469726991029749,
+    "blocks": 112,
+    "bootstrap_reps": 5000,
+    "leave_one_block_min": -0.03808007111876558,
+    "leave_one_block_max": 0.022054787748137034,
+    "leave_one_block_all_negative": false
+  },
+  "primary_short_delta_rmse": {
+    "delta_rmse_wm2": -0.11396654849913072,
+    "ci95_low": -0.29571037853353827,
+    "ci95_high": 0.04874943379043388,
+    "blocks": 112,
+    "bootstrap_reps": 5000,
+    "leave_one_block_min": -0.14131294181474155,
+    "leave_one_block_max": -0.04827798884122103,
+    "leave_one_block_all_negative": true
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false,
+  "evidence_tier": "outer-training H-only internal date-block CV; exploratory screening only, not independent validation/test",
+  "sha256": {
+    "COT_GHI_MONOTONE_CALIBRATION_HCV_PLAN_20261021.md": "2226a215b30300a1b71ae991271eacebfe58fc1ab25eea418a8607a68b43aa49",
+    "run_direct_cot_monocal_hcv.py": "e00562ae1bed6aa640007c0bce27902b52307b1bc012d3d9f32bfa2b9dfeccbc",
+    "score_direct_cot_monocal_hcv.py": "51d68a7a10baa278e40ec7b590311198696556b0b99c31e8f31e0fca814bbd4f",
+    "plot_direct_cot_monocal_hcv.py": "1356ff8d7c5d846edafca9d9d71f6b23ba36a31983b402a77925f7be1dec724d",
+    "test_direct_cot_monocal_hcv.py": "b2d808a569da3d4534d2fa63c1679a35b2c2e68501a96bfd4703607fb19147fa",
+    "COT_GHI_MONOTONE_CALIBRATION_HCV_RESULTS_20261021.md": "c7112da4704898419e0b85f9815b88077d9580d7d1224d4eb74e7d331a6c4111",
+    "results/run_manifest.json": "ce5f636b9bf2c8aa0ce76cb198da87914c8f1902b6a76015272a524720512927",
+    "results/progress.json": "de263a62f304e3e7855062a313cba0cc26ef422e0e09bf26250f44f265fccaf0",
+    "results/score/monocal_hcv_metrics.json": "88fecb8ba3599f0315a3281a389cec4c1b3609919ea3bad9eb1f2028cb8e3a52",
+    "results/score/monocal_hcv_summary.png": "9dc390be6728f819263d8c01d9d2b3ae76d62d29b479eee5599526ab7a0d5d9f",
+    "results/score/monocal_hcv_summary.pdf": "6b0e363c93b1e123376ee2b804235ceeeadc3c4d18d3e169d01f7ba11660d245",
+    "results/score/ALT_TEXT.txt": "8eb0ec672c249b670eb320b846336acd49a98eb40b9fa3dce2f28a19a27b5558"
+  }
+}

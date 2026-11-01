@@ -62,6 +62,14 @@ original与QC1两个训练分支各运行A/AC×两档LR，seed42，全部8次完
 
 审计与协议：docs/REAL_AGRI_HISTORY_R_HEAD_RETRAIN_20260923.md；raw paired audit：results/cot_real_agri_history_rpair_20260923/independent_retrain_pair_audit_commonnorm.json；PBS 210398.tc6000，exit status 0。
 
+## 2026-10-14 — COT价值主张的有界验证冻结
+
+Result-to-claim同源Codex复核支持窄化后的内部验证主张：在当前两站湖南月度validation cohort上，真实目标时刻AGRI经冻结R生成的3×3 COT表示使小型GHI头较A基线降低RMSE 3.740 W m⁻²（站点等权，三seed，预注册BJT并集日期块95% CI −6.180至−1.597），且较容量控制AP降低3.582 W m⁻²。该判断为same-family/provisional；本实验缺少独立完整性审计，FP64复算仅证明指标可重现。
+
+边界：R-AL同源隐特征对照也有收益，AC−AL区间跨0，无法唯一归因于显式COT物理语义；forecast-COT仅在8个CPP参考日期上验证，优势CI跨0且厚云CSI低于持续性；T37为同期训练头上的离线预测输入替换，不是forecast-GHI成绩。M0/M1晴空oracle使固定头GHI误差上升，因此不放行M2/M3；不放行B4预测头训练。T23–T29改记NOT_APPLICABLE。test载荷未读且授权门关闭。
+
+复核指出T18的AC−A CI使用站点内分别重采样，与主结果的52个并集日期块共同配对不同；正文应使用预注册主区间，T18数值仅列为敏感性口径。完整记录见`refine-logs/cot_value_first_20261013/results/analysis_freeze_validation_only_20261014.json`及`.aris/traces/result-to-claim/2026-10-13_run02/`。
+
 ## 2026-09-28 — 竺家 forecast-COT 残差容量对照不支持增益主张
 
 同一冻结无COT锚点下，AGRI-only与AGRI+COT残差头使用完全相同的192,433可训练参数、初始化、485训练/127验证序列、seed42、batch512及每臂600次更新。配对审计覆盖1,624条竺家验证行、70个初始化日期，row/truth/lead完全相同；test未使用。AGRI-only验证选中step276，RMSE 126.323 W/m²；COT臂选中step0回退，RMSE 127.295 W/m²。COT−AGRI点差+0.972 W/m²，日期bootstrap 95%区间[−1.488, 3.336]，22.72%抽样有利于COT。独立result-to-claim复核为no（same-family provisional），置信度高仅限于“当前实验不支持该主张”。

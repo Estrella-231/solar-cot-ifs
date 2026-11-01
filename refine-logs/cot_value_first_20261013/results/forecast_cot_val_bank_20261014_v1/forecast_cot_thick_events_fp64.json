@@ -1,0 +1,444 @@
+{
+  "state": "FP64_THICK_COT_DIAGNOSTIC_PASS",
+  "split": "validation_only",
+  "test_payloads_read": 0,
+  "reference": "CPP COT retrieval product; not independent truth",
+  "threshold_cot": 30.0,
+  "support": "all methods share CPP-valid pixel mask; predictions and reference use same station/lead/pixel",
+  "event_definition": "within a station pixel/neighbourhood/patch, first lead with any supported pixel COT>=30. Descriptive event-signal onset only; not cloud-object tracking.",
+  "overlapping_windows_note": "271 validation windows overlap and span only eight target BJT dates; event-window counts and arrival summaries are descriptive, not independent-sample inference.",
+  "regions": {
+    "station_pixel_1x1": {
+      "sili": {
+        "SimVP_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 7,
+            "miss": 528,
+            "false_alarm": 57,
+            "correct_negative": 489
+          },
+          "pixel_POD": 0.013084112149532711,
+          "pixel_FAR": 0.890625,
+          "pixel_CSI": 0.011824324324324325,
+          "common_cpp_valid_pixels": 1081,
+          "local_event_windows": {
+            "reference_event": 116,
+            "predicted_event": 35,
+            "detected": 6,
+            "missed": 110,
+            "false_alarm": 29,
+            "first_event_lead_error_minutes_mean_detected_only": 10.0,
+            "first_event_lead_error_minutes_median_detected_only": 22.5,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -32.6267300992754
+          }
+        },
+        "Persistence_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 134,
+            "miss": 401,
+            "false_alarm": 129,
+            "correct_negative": 417
+          },
+          "pixel_POD": 0.2504672897196262,
+          "pixel_FAR": 0.49049429657794674,
+          "pixel_CSI": 0.20180722891566266,
+          "common_cpp_valid_pixels": 1081,
+          "local_event_windows": {
+            "reference_event": 116,
+            "predicted_event": 85,
+            "detected": 36,
+            "missed": 80,
+            "false_alarm": 49,
+            "first_event_lead_error_minutes_mean_detected_only": -9.583333333333334,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -13.5755437058784
+          }
+        },
+        "Offline_true_future_AGRI_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 16,
+            "miss": 519,
+            "false_alarm": 37,
+            "correct_negative": 509
+          },
+          "pixel_POD": 0.029906542056074768,
+          "pixel_FAR": 0.6981132075471698,
+          "pixel_CSI": 0.027972027972027972,
+          "common_cpp_valid_pixels": 1081,
+          "local_event_windows": {
+            "reference_event": 116,
+            "predicted_event": 41,
+            "detected": 21,
+            "missed": 95,
+            "false_alarm": 20,
+            "first_event_lead_error_minutes_mean_detected_only": -28.571428571428573,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -29.090806840270144
+          }
+        }
+      },
+      "zhujia": {
+        "SimVP_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 65,
+            "miss": 209,
+            "false_alarm": 19,
+            "correct_negative": 776
+          },
+          "pixel_POD": 0.23722627737226276,
+          "pixel_FAR": 0.2261904761904762,
+          "pixel_CSI": 0.22184300341296928,
+          "common_cpp_valid_pixels": 1069,
+          "local_event_windows": {
+            "reference_event": 139,
+            "predicted_event": 43,
+            "detected": 41,
+            "missed": 98,
+            "false_alarm": 2,
+            "first_event_lead_error_minutes_mean_detected_only": 10.24390243902439,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -26.965599184274613
+          }
+        },
+        "Persistence_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 63,
+            "miss": 211,
+            "false_alarm": 152,
+            "correct_negative": 643
+          },
+          "pixel_POD": 0.22992700729927007,
+          "pixel_FAR": 0.7069767441860465,
+          "pixel_CSI": 0.14788732394366197,
+          "common_cpp_valid_pixels": 1069,
+          "local_event_windows": {
+            "reference_event": 139,
+            "predicted_event": 68,
+            "detected": 47,
+            "missed": 92,
+            "false_alarm": 21,
+            "first_event_lead_error_minutes_mean_detected_only": -7.659574468085107,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -13.5110731912562
+          }
+        },
+        "Offline_true_future_AGRI_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 32,
+            "miss": 242,
+            "false_alarm": 128,
+            "correct_negative": 667
+          },
+          "pixel_POD": 0.11678832116788321,
+          "pixel_FAR": 0.8,
+          "pixel_CSI": 0.07960199004975124,
+          "common_cpp_valid_pixels": 1069,
+          "local_event_windows": {
+            "reference_event": 139,
+            "predicted_event": 61,
+            "detected": 39,
+            "missed": 100,
+            "false_alarm": 22,
+            "first_event_lead_error_minutes_mean_detected_only": 42.69230769230769,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -31.225467536495966
+          }
+        }
+      }
+    },
+    "station_neighbourhood_3x3": {
+      "sili": {
+        "SimVP_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 73,
+            "miss": 4742,
+            "false_alarm": 528,
+            "correct_negative": 4386
+          },
+          "pixel_POD": 0.015160955347871236,
+          "pixel_FAR": 0.8785357737104825,
+          "pixel_CSI": 0.013662736290473517,
+          "common_cpp_valid_pixels": 9729,
+          "local_event_windows": {
+            "reference_event": 116,
+            "predicted_event": 41,
+            "detected": 10,
+            "missed": 106,
+            "false_alarm": 31,
+            "first_event_lead_error_minutes_mean_detected_only": -24.0,
+            "first_event_lead_error_minutes_median_detected_only": -37.5,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -34.642262700843084
+          }
+        },
+        "Persistence_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 1281,
+            "miss": 3534,
+            "false_alarm": 1247,
+            "correct_negative": 3667
+          },
+          "pixel_POD": 0.2660436137071651,
+          "pixel_FAR": 0.4932753164556962,
+          "pixel_CSI": 0.2113163972286374,
+          "common_cpp_valid_pixels": 9729,
+          "local_event_windows": {
+            "reference_event": 116,
+            "predicted_event": 93,
+            "detected": 40,
+            "missed": 76,
+            "false_alarm": 53,
+            "first_event_lead_error_minutes_mean_detected_only": -16.875,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -15.498644918072182
+          }
+        },
+        "Offline_true_future_AGRI_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 144,
+            "miss": 4671,
+            "false_alarm": 410,
+            "correct_negative": 4504
+          },
+          "pixel_POD": 0.029906542056074768,
+          "pixel_FAR": 0.740072202166065,
+          "pixel_CSI": 0.02755980861244019,
+          "common_cpp_valid_pixels": 9729,
+          "local_event_windows": {
+            "reference_event": 116,
+            "predicted_event": 46,
+            "detected": 22,
+            "missed": 94,
+            "false_alarm": 24,
+            "first_event_lead_error_minutes_mean_detected_only": -32.04545454545455,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -30.80899474519505
+          }
+        }
+      },
+      "zhujia": {
+        "SimVP_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 590,
+            "miss": 1972,
+            "false_alarm": 197,
+            "correct_negative": 6862
+          },
+          "pixel_POD": 0.2302888368462139,
+          "pixel_FAR": 0.2503176620076239,
+          "pixel_CSI": 0.2138455962305183,
+          "common_cpp_valid_pixels": 9621,
+          "local_event_windows": {
+            "reference_event": 151,
+            "predicted_event": 51,
+            "detected": 48,
+            "missed": 103,
+            "false_alarm": 3,
+            "first_event_lead_error_minutes_mean_detected_only": -5.0,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -28.101048562902523
+          }
+        },
+        "Persistence_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 596,
+            "miss": 1966,
+            "false_alarm": 1330,
+            "correct_negative": 5729
+          },
+          "pixel_POD": 0.23263075722092116,
+          "pixel_FAR": 0.6905503634475597,
+          "pixel_CSI": 0.15313463514902365,
+          "common_cpp_valid_pixels": 9621,
+          "local_event_windows": {
+            "reference_event": 151,
+            "predicted_event": 73,
+            "detected": 60,
+            "missed": 91,
+            "false_alarm": 13,
+            "first_event_lead_error_minutes_mean_detected_only": -23.0,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -15.010311952813758
+          }
+        },
+        "Offline_true_future_AGRI_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 288,
+            "miss": 2274,
+            "false_alarm": 1152,
+            "correct_negative": 5907
+          },
+          "pixel_POD": 0.11241217798594848,
+          "pixel_FAR": 0.8,
+          "pixel_CSI": 0.07754442649434572,
+          "common_cpp_valid_pixels": 9621,
+          "local_event_windows": {
+            "reference_event": 151,
+            "predicted_event": 61,
+            "detected": 47,
+            "missed": 104,
+            "false_alarm": 14,
+            "first_event_lead_error_minutes_mean_detected_only": 9.893617021276595,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -31.99741933158919
+          }
+        }
+      }
+    },
+    "full_patch_16x16": {
+      "sili": {
+        "SimVP_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 2420,
+            "miss": 128704,
+            "false_alarm": 16041,
+            "correct_negative": 129571
+          },
+          "pixel_POD": 0.018455812818400905,
+          "pixel_FAR": 0.8689128432912626,
+          "pixel_CSI": 0.016444127340060476,
+          "common_cpp_valid_pixels": 276736,
+          "local_event_windows": {
+            "reference_event": 141,
+            "predicted_event": 69,
+            "detected": 24,
+            "missed": 117,
+            "false_alarm": 45,
+            "first_event_lead_error_minutes_mean_detected_only": -24.375,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -40.44008105631194
+          }
+        },
+        "Persistence_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 38137,
+            "miss": 92987,
+            "false_alarm": 39341,
+            "correct_negative": 106271
+          },
+          "pixel_POD": 0.29084683200634515,
+          "pixel_FAR": 0.5077699475980278,
+          "pixel_CSI": 0.22372334496817528,
+          "common_cpp_valid_pixels": 276736,
+          "local_event_windows": {
+            "reference_event": 141,
+            "predicted_event": 130,
+            "detected": 60,
+            "missed": 81,
+            "false_alarm": 70,
+            "first_event_lead_error_minutes_mean_detected_only": -13.75,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -28.894562180834527
+          }
+        },
+        "Offline_true_future_AGRI_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 10804,
+            "miss": 120320,
+            "false_alarm": 15056,
+            "correct_negative": 130556
+          },
+          "pixel_POD": 0.08239528995454684,
+          "pixel_FAR": 0.5822119102861563,
+          "pixel_CSI": 0.07390887946367491,
+          "common_cpp_valid_pixels": 276736,
+          "local_event_windows": {
+            "reference_event": 141,
+            "predicted_event": 116,
+            "detected": 52,
+            "missed": 89,
+            "false_alarm": 64,
+            "first_event_lead_error_minutes_mean_detected_only": -13.26923076923077,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -37.47476375353583
+          }
+        }
+      },
+      "zhujia": {
+        "SimVP_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 18217,
+            "miss": 56280,
+            "false_alarm": 10147,
+            "correct_negative": 189020
+          },
+          "pixel_POD": 0.24453333691289583,
+          "pixel_FAR": 0.35774220843322524,
+          "pixel_CSI": 0.2152190350172487,
+          "common_cpp_valid_pixels": 273664,
+          "local_event_windows": {
+            "reference_event": 179,
+            "predicted_event": 67,
+            "detected": 58,
+            "missed": 121,
+            "false_alarm": 9,
+            "first_event_lead_error_minutes_mean_detected_only": 3.103448275862069,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -35.70922437108922
+          }
+        },
+        "Persistence_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 17496,
+            "miss": 57001,
+            "false_alarm": 36843,
+            "correct_negative": 162324
+          },
+          "pixel_POD": 0.23485509483603367,
+          "pixel_FAR": 0.6780213106608514,
+          "pixel_CSI": 0.1571402910005389,
+          "common_cpp_valid_pixels": 273664,
+          "local_event_windows": {
+            "reference_event": 179,
+            "predicted_event": 100,
+            "detected": 83,
+            "missed": 96,
+            "false_alarm": 17,
+            "first_event_lead_error_minutes_mean_detected_only": 0.0,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -29.151254110055728
+          }
+        },
+        "Offline_true_future_AGRI_to_R": {
+          "thick_pixel_threshold_cot": 30.0,
+          "pixel_counts": {
+            "hit": 7952,
+            "miss": 66545,
+            "false_alarm": 31024,
+            "correct_negative": 168143
+          },
+          "pixel_POD": 0.10674255339141174,
+          "pixel_FAR": 0.7959770114942529,
+          "pixel_CSI": 0.0753594071322296,
+          "common_cpp_valid_pixels": 273664,
+          "local_event_windows": {
+            "reference_event": 179,
+            "predicted_event": 74,
+            "detected": 60,
+            "missed": 119,
+            "false_alarm": 14,
+            "first_event_lead_error_minutes_mean_detected_only": 16.0,
+            "first_event_lead_error_minutes_median_detected_only": 0.0,
+            "reference_peak_pixel_amplitude_error_mean_over_reference_event_windows": -38.16215954127145
+          }
+        }
+      }
+    }
+  }
+}

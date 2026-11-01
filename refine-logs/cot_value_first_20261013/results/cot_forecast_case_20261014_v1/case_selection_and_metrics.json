@@ -1,0 +1,48 @@
+{
+  "state": "COMPLETE_PREDECLARED_VALIDATION_DIAGNOSTIC_CASE",
+  "split": "validation_only",
+  "test_payloads_read": 0,
+  "selection_rule": "earliest BJT target date among windows with CPP support at each of 16 leads for both stations; lexical sequence_id tie-break",
+  "eligible_complete_windows": 8,
+  "selected_sequence_id": "hunan_202508210145",
+  "selected_target_date_bjt": "2025-08-21",
+  "bank_sha256": "fd7a431148ebf301140614bdafa8f05e09e99bc5c83a34bb0c456d6cf88b27ac",
+  "scale": "3x3 station neighborhood; per lead mean uses only CPP-common valid pixels",
+  "metrics": {
+    "Sili": {
+      "S\u2192R forecast": {
+        "rmse_cot": 26.81298485226486,
+        "mae_cot": 24.338582436803264,
+        "n_pixels": 144
+      },
+      "Persistence-R": {
+        "rmse_cot": 18.956288183478033,
+        "mae_cot": 17.881210022502476,
+        "n_pixels": 144
+      },
+      "Future observed AGRI\u2192R (offline)": {
+        "rmse_cot": 20.152960136360488,
+        "mae_cot": 17.69226516779648,
+        "n_pixels": 144
+      }
+    },
+    "Zhujia": {
+      "S\u2192R forecast": {
+        "rmse_cot": 24.925877393349722,
+        "mae_cot": 22.64389315602032,
+        "n_pixels": 144
+      },
+      "Persistence-R": {
+        "rmse_cot": 23.601853871337518,
+        "mae_cot": 21.0916777949887,
+        "n_pixels": 144
+      },
+      "Future observed AGRI\u2192R (offline)": {
+        "rmse_cot": 24.007884997164762,
+        "mae_cot": 21.38503995870842,
+        "n_pixels": 144
+      }
+    }
+  },
+  "caveat": "One diagnostic case, not representative evidence. CPP is a retrieval reference rather than independent truth. Future observed AGRI\u2192R is an offline retrieval reference, not a deployable forecast."
+}

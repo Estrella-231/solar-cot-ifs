@@ -1,0 +1,47 @@
+#!/bin/bash
+#PBS -N fghi_ac50_audit
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+RUN=$EXP/results/future_ghi_oof_cot_shrink_v2
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+AUDIT=$EXP/results/future_ghi_oof_cot_shrink_validation_audit_v2.json
+LOG=$EXP/logs/future_ghi_ac50_audit_recovery_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+sha256sum -c FUTURE_GHI_OOF_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_ac50_audit_pycache
+python -m py_compile repair_future_ghi_shrink_manifest_state.py audit_future_ghi_cot_shrink.py
+test -f "$RUN/manifest_state_repair_receipt.json"
+test ! -e "$AUDIT"
+python - <<'PY' "$RUN/run_manifest.json" "$RUN/manifest_state_repair_receipt.json"
+import json,sys
+m=json.load(open(sys.argv[1])); r=json.load(open(sys.argv[2]))
+assert m['state']=='COMPLETE_FUTURE_GHI_COT_SHRINKAGE_SCREENING_PILOT'
+assert r['state']=='PASS_AC50_AGGREGATE_MANIFEST_STATE_REPAIR'
+assert r['only_manifest_state_field_changed'] is True and r['scientific_outputs_modified'] is False
+assert m['seeds']==[42,43,44] and len(m['runs'])==24
+assert m['test_payload_opened'] is False and m['train_forecast_oof'] is True
+print('AC50_REPAIR_RECEIPT_PREFLIGHT_PASS',r['verified_run_count'])
+PY
+python -u audit_future_ghi_cot_shrink.py --run-root "$RUN" --output "$AUDIT" \
+  --seeds 42 43 44 --bootstrap 2000
+python - <<'PY' "$AUDIT"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='COMPLETE_PAIRED_FUTURE_GHI_COT_SHRINKAGE_VALIDATION_AUDIT'
+assert x['test_payload_opened'] is False and x['forecast_bank_oof_fold_count']==5
+assert len(x['raw_metrics'])==24
+print('AC50_PAIRED_DATE_BLOCK_AUDIT_COMPLETE',x['pairwise_delta_rmse_wm2'],x['date_block_bootstrap_95pct_ci_wm2'])
+PY
+echo "FUTURE_GHI_AC50_AUDIT_RECOVERY_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

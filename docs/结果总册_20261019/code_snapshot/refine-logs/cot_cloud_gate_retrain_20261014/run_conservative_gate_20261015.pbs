@@ -1,0 +1,51 @@
+#!/bin/bash
+#PBS -N cot_gate_c1
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/c1_conservative_gate_20261015/job_attempt3.log
+set -euo pipefail
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1
+C1=$ROOT/c1_conservative_gate_20261015
+PACK=$ROOT/data/pack_trainval_v1
+R=$ROOT/results/seed42_v1
+OLD_B1=$ROOT/results/cloud_gate_seed42_20261014_retry1/validation_predictions.npz
+OUT=$C1/output_attempt3
+
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+
+test -f "$PACK/pack_status.json"
+test -f "$PACK/rows.csv"
+test -f "$PACK/x_raw.npy"
+test -f "$PACK/cot.npy"
+test -f "$PACK/mask.npy"
+test -f "$R/best.pt"
+test -f "$R/normalization.json"
+test -f "$R/validation_predictions.npz"
+test -f "$OLD_B1"
+test -f "$C1/data/clp_trainval.npz"
+test -f "$C1/data/oof_train_folds_20261015_v2.csv"
+test ! -e "$OUT"
+
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$C1/scripts/run_conservative_gate.py" \
+  --pack "$PACK" \
+  --clp "$C1/data/clp_trainval.npz" \
+  --folds "$C1/data/oof_train_folds_20261015_v2.csv" \
+  --normalization "$R/normalization.json" \
+  --r-checkpoint "$R/best.pt" \
+  --r-source "$ROOT/scripts/train_station16_R.py" \
+  --r-validation-prediction "$R/validation_predictions.npz" \
+  --old-b1 "$OLD_B1" \
+  --output "$OUT"
+
+echo C1_CONSERVATIVE_GATE_TRAINING_COMPLETE

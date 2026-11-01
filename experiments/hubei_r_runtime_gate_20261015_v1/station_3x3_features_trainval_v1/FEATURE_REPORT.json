@@ -1,0 +1,83 @@
+{
+  "state": "HUBEI_STATION_3X3_RAW_FEATURES_TRAINVAL_COMPLETE_TEST_CLOSED",
+  "rows_by_split": {
+    "train": 20206,
+    "val": 1855
+  },
+  "stations": {
+    "Niushou": {
+      "center_local_16x16": [
+        8,
+        6
+      ],
+      "crop": "3x3 centered"
+    },
+    "Wangzhai": {
+      "center_local_16x16": [
+        9,
+        8
+      ],
+      "crop": "3x3 centered"
+    },
+    "Mizhuang": {
+      "center_local_16x16": [
+        7,
+        10
+      ],
+      "crop": "3x3 centered"
+    }
+  },
+  "input_channel_order": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "cosSOZ",
+    "cosRAA",
+    "day_mask",
+    "R_COT"
+  ],
+  "feature_shape": [
+    22061,
+    3,
+    17,
+    3,
+    3
+  ],
+  "feature_dtype": "float32",
+  "nonfinite_feature_counts_by_channel": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "R_COT_source": "frozen seed42 R; CPP fixed_v2 validation-selected; train rows are in-domain, not OOF",
+  "test_payloads_read": 0,
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "rows_sha256": "7e76d876eae46bdd58ffdb3131dc8036b2b72bfeb0bed4fb1bd2a2632ee8fb77",
+  "features_sha256": "90c6fd0e3639be23b1b6fa47f9ee15a28fd8e1eb452a46a5d8cced5798c16c9e",
+  "feature_file": "raw values, no GHI labels, no normalization fitted",
+  "normalization_and_GHI_head_training": "not performed; unit/time and pvlib gates remain open"
+}

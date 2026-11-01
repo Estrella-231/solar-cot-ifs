@@ -1,0 +1,57 @@
+#!/bin/bash
+#PBS -N cot_gate_bank
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/c1_conservative_gate_20261015/logs/build_gate_cot_bank_attempt1.log
+set -euo pipefail
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+C1=$ROOT/c1_conservative_gate_20261015
+RAW_BANK=$ROOT/results/new_monthly_R_seed42_cot_bank_v1
+GATE_BANK=$ROOT/results/conservative_gate_cot_bank_20261015_attempt1
+RAW_PACK=$ROOT/data/ghi_head_pack_new_r_v1
+GATE_PACK=$ROOT/data/ghi_head_pack_gate_c1_20261015_attempt1
+
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -f "$RAW_BANK/bank_manifest.json"
+test -f "$RAW_PACK/pack_manifest.json"
+test -f "$C1/output_attempt3/full_train_last.pt"
+test ! -e "$GATE_BANK"
+test ! -e "$GATE_PACK"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+python -u "$C1/scripts/build_conservative_gate_bank.py" \
+  --candidate "$BASE/input/target_candidates_train_val.csv" \
+  --data-root "$DATA" \
+  --monthly-norm /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hunan_monthly_block_20261002/manifests_v1/hunan_train_norm.json \
+  --r-norm "$ROOT/results/seed42_v1/normalization.json" \
+  --raw-bank "$RAW_BANK" \
+  --fold-manifest "$C1/data/oof_train_folds_20261015_v2.csv" \
+  --c1-output "$C1/output_attempt3" \
+  --input-builder "$ROOT/build_monthly_new_R_cot_bank.py" \
+  --classifier-source "$C1/scripts/train_cloud_gate.py" \
+  --output "$GATE_BANK" \
+  --batch-frames 1024
+
+python -u "$ROOT/prepare_ghi_head_pack.py" \
+  --labels "$BASE/data/ghi_kt_trainval_v1/ghi_kt_train_val.csv" \
+  --candidate "$BASE/input/target_candidates_train_val.csv" \
+  --data-root "$DATA" \
+  --cot-bank "$GATE_BANK" \
+  --output "$GATE_PACK"
+
+python -u "$C1/scripts/audit_paired_gate_packs.py" \
+  --raw "$RAW_PACK" --gate "$GATE_PACK" \
+  --output "$C1/output_attempt3/paired_pack_audit.json"
+echo GATE_COT_BANK_AND_PAIRED_PACK_AUDIT_COMPLETE

@@ -1,0 +1,194 @@
+{
+  "verified_date": "2026-10-30",
+  "purpose": "必要方法来源核验与引用落点建议；不修改正文；不是新增实验或系统综述。",
+  "source_policy": "出版社、原作者/作者机构、arXiv作者稿；Huber的受阻原站仅用出版社提交的Crossref元数据补核，明确未读全文。",
+  "entries": [
+    {
+      "key": "ronneberger2015unet",
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "authors": [
+        "Olaf Ronneberger",
+        "Philipp Fischer",
+        "Thomas Brox"
+      ],
+      "year": 2015,
+      "publication_type": "conference paper",
+      "venue": "Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015",
+      "series": "Lecture Notes in Computer Science",
+      "volume": "9351",
+      "issue": null,
+      "pages": "234–241",
+      "publisher": "Springer",
+      "doi": "10.1007/978-3-319-24574-4_28",
+      "primary_urls": [
+        "https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28",
+        "https://arxiv.org/abs/1505.04597",
+        "https://arxiv.org/pdf/1505.04597"
+      ],
+      "access_scope": "Publisher bibliographic record and abstract; author arXiv preprint full text (8 pages) accessible.",
+      "evidence_location": "Author preprint §2 Network Architecture, PDF pp.3–4; contracting/expanding paths and concatenation described on PDF p.4.",
+      "citation_anchor": "Methods / COT retrieval: first occurrence of U-Net in the retriever architecture paragraph.",
+      "supported_sentence_en": "The COT retriever uses a U-Net encoder–decoder with skip connections.",
+      "supported_sentence_zh": "COT反演器采用带跳跃连接的U-Net编码器—解码器。",
+      "scope_limit": "Supports the architectural family, not our two-stage depth, widths 32/64/128, SiLU, batch normalization, softplus, 16×16 grid, or performance. Describe those as implementation choices; do not imply the original network used them."
+    },
+    {
+      "key": "huber1964robust",
+      "title": "Robust Estimation of a Location Parameter",
+      "authors": [
+        "Peter J. Huber"
+      ],
+      "year": 1964,
+      "publication_type": "journal article",
+      "venue": "The Annals of Mathematical Statistics",
+      "volume": "35",
+      "issue": "1",
+      "pages": "73–101",
+      "publisher": "Institute of Mathematical Statistics",
+      "doi": "10.1214/aoms/1177703732",
+      "primary_urls": [
+        "https://projecteuclid.org/euclid.aoms/1177703732",
+        "https://api.crossref.org/works/10.1214/aoms/1177703732"
+      ],
+      "access_scope": "Publisher DOI resolves to Project Euclid, but the service returned an access challenge. Publisher-deposited Crossref metadata was fetched successfully using requests on 2026-10-30; this is metadata verification, not a claim of full-text access.",
+      "evidence_location": "Original article bibliographic record verified; no original full-text page/equation was verified in this pass.",
+      "citation_anchor": "Methods / COT retrieval: masked Huber objective, at the name or immediately after its formula.",
+      "supported_sentence_en": "The retriever is optimized using a masked Huber loss in log-COT space.",
+      "supported_sentence_zh": "反演器在log-COT空间中采用带有效像元掩膜的Huber损失训练。",
+      "scope_limit": "Huber is the standard source for the robust loss family; the log transformation, mask, delta value, normalization, and application to COT are ours and require explicit definition. Do not claim Huber1964 proves this model is robust to CPP retrieval error. Full-text formula checking remains unverified in this pass."
+    },
+    {
+      "key": "ineichen2002linke",
+      "title": "A new airmass independent formulation for the Linke turbidity coefficient",
+      "authors": [
+        "Pierre Ineichen",
+        "Richard Perez"
+      ],
+      "year": 2002,
+      "publication_type": "journal article",
+      "venue": "Solar Energy",
+      "volume": "73",
+      "issue": "3",
+      "pages": "151–157",
+      "publisher": "Elsevier",
+      "doi": "10.1016/S0038-092X(02)00045-2",
+      "primary_urls": [
+        "https://www.sciencedirect.com/science/article/abs/pii/S0038092X02000452",
+        "https://www.unige.ch/sysener/equipe/les-anciens-membres/ineichen",
+        "https://research.asrc.albany.edu/people/faculty/perez/directory/RA.html"
+      ],
+      "access_scope": "Publisher search-indexed metadata/abstract and author institutional publication records. Publisher direct retrieval later returned 403; no full-text equation audit claimed.",
+      "evidence_location": "Publisher abstract and bibliographic record: airmass-independent Linke turbidity and clear-sky global/direct-normal irradiance formulations.",
+      "citation_anchor": "Data and preprocessing: the sentence introducing the Ineichen–Perez clear-sky model, before the interval clear-sky-index formula.",
+      "supported_sentence_en": "Clear-sky irradiance is computed using the Ineichen–Perez model.",
+      "supported_sentence_zh": "晴空辐照度采用Ineichen–Perez模型计算。",
+      "scope_limit": "Supports the clear-sky model; 15-minute interval averaging, station altitude, turbidity source, time zone, geometry alignment, and the definition mean(GHI)/mean(clear-sky GHI) are study implementation details, not established by this citation."
+    },
+    {
+      "key": "holmgren2018pvlib",
+      "title": "pvlib python: a python package for modeling solar energy systems",
+      "authors": [
+        "William F. Holmgren",
+        "Clifford W. Hansen",
+        "Mark A. Mikofski"
+      ],
+      "year": 2018,
+      "publication_type": "software paper",
+      "venue": "Journal of Open Source Software",
+      "volume": "3",
+      "issue": "29",
+      "pages": "884",
+      "article_number": "884",
+      "publisher": "The Open Journal",
+      "doi": "10.21105/joss.00884",
+      "primary_urls": [
+        "https://joss.theoj.org/papers/10.21105/joss.00884",
+        "https://joss.theoj.org/papers/10.21105/joss.00884.pdf"
+      ],
+      "access_scope": "Publisher article record and full 3-page open-access paper accessible.",
+      "evidence_location": "PDF p.1 Summary: reference implementations for solar position, clear-sky irradiance, and solar-energy modeling.",
+      "citation_anchor": "Data and preprocessing: adjacent to the actual pvlib implementation statement; cite alongside, rather than instead of, the Ineichen–Perez algorithm.",
+      "supported_sentence_en": "The clear-sky calculation is implemented in pvlib python.",
+      "supported_sentence_zh": "晴空辐照度计算通过pvlib python实现。",
+      "scope_limit": "Only state use of pvlib after code/config confirms it. The paper does not specify this project's installed version, turbidity inputs, solar-position algorithm, or interval averaging. Version/settings belong in reproducibility details."
+    },
+    {
+      "key": "roberts2017cross",
+      "title": "Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure",
+      "authors": [
+        "David R. Roberts",
+        "Volker Bahn",
+        "Simone Ciuti",
+        "Mark S. Boyce",
+        "Jane Elith",
+        "Gurutzeta Guillera-Arroita",
+        "Severin Hauenstein",
+        "José J. Lahoz-Monfort",
+        "Boris Schröder",
+        "Wilfried Thuiller",
+        "David I. Warton",
+        "Brendan A. Wintle",
+        "Florian Hartig",
+        "Carsten F. Dormann"
+      ],
+      "year": 2017,
+      "publication_type": "review and methodological case studies",
+      "venue": "Ecography",
+      "volume": "40",
+      "issue": "8",
+      "pages": "913–929",
+      "publisher": "Wiley",
+      "doi": "10.1111/ecog.02881",
+      "primary_urls": [
+        "https://nsojournals.onlinelibrary.wiley.com/doi/full/10.1111/ecog.02881",
+        "https://florianhartig.github.io/publications/roberts2017cross/"
+      ],
+      "access_scope": "Publisher full-text HTML and coauthor bibliographic page accessible. Online first 2016-12-08; final volume/issue year is 2017.",
+      "evidence_location": "Sections The problem of structured data and Cross-validation with structured data; publisher HTML discussion of strategic temporal/spatial blocks and buffered hold-out samples.",
+      "citation_anchor": "Data partitions / evaluation design: explain why split dates rather than randomly splitting overlapping forecast windows.",
+      "supported_sentence_en": "Date-separated partitions are used to reduce dependence between training and evaluation samples.",
+      "supported_sentence_zh": "采用按日期分离的数据划分，以降低训练与评价样本之间的依赖。",
+      "scope_limit": "Supports dependence-aware validation design, not the exact monthly 2-day holdout, 1-day buffer, complete independence of our data, or any bootstrap method. The block choice must match the prediction goal; it can change interpolation/extrapolation difficulty."
+    },
+    {
+      "key": "field2007cluster",
+      "title": "Bootstrapping clustered data",
+      "authors": [
+        "C. A. Field",
+        "A. H. Welsh"
+      ],
+      "year": 2007,
+      "publication_type": "original statistical methods article",
+      "venue": "Journal of the Royal Statistical Society: Series B (Statistical Methodology)",
+      "volume": "69",
+      "issue": "3",
+      "pages": "369–390",
+      "publisher": "Royal Statistical Society / Wiley (original publication; now Oxford Academic archive)",
+      "doi": "10.1111/j.1467-9868.2007.00593.x",
+      "primary_urls": [
+        "https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2007.00593.x",
+        "https://academic.oup.com/jrsssb/article-abstract/69/3/369/7109361",
+        "https://researchportalplus.anu.edu.au/en/publications/bootstrapping-clustered-data/",
+        "https://www.mathstat.dal.ca/~field/wiki/doku.php?id=publications"
+      ],
+      "access_scope": "Publisher metadata and abstract plus author institutional record verified. Wiley full-text link redirects to abstract; Oxford PDF/full-text retrieval unavailable in this pass. Do not report a full-paper read or cite an unverified equation/page.",
+      "evidence_location": "Publisher abstract: theory of bootstrap methods for clustered data and model-dependent validity of variance estimates.",
+      "citation_anchor": "Evaluation / uncertainty: date-cluster paired resampling paragraph, only for the general clustered-data bootstrap rationale.",
+      "supported_sentence_en": "Uncertainty is summarized using a paired bootstrap that resamples complete date clusters, retaining all matched records within each selected date.",
+      "supported_sentence_zh": "使用按完整日期簇重采样的配对bootstrap汇总不确定性；每个被抽中的日期保留全部匹配记录。",
+      "scope_limit": "This is a suitable original methodological reference for clustered bootstrap, not proof that days are independent or that this particular RMSE-difference percentile interval has exact coverage. The paired implementation and date grouping are ours. Do not call it moving-block bootstrap unless overlapping contiguous blocks are actually sampled; no moving-block-bootstrap citation is proposed."
+    }
+  ],
+  "bootstrap_notes": {
+    "recommended_term_en": "paired date-cluster bootstrap",
+    "recommended_term_zh": "按日期簇重采样的配对bootstrap",
+    "paired_definition": "Every bootstrap replicate must use the same sampled dates and matched records for both compared methods before computing the difference.",
+    "retained_structure": "All records within the selected date are retained; repetitions of sampled dates receive multiplicity. State whether target date or initialization date defines clusters, as implemented.",
+    "limits": [
+      "No automatic correction for dependence extending across dates.",
+      "Do not confuse resampling uncertainty with out-of-sample independence or independent-test evidence.",
+      "Do not relabel fixed date-cluster resampling as moving-block bootstrap.",
+      "Number of date clusters, bootstrap repetitions, CI type and seed need explicit methods reporting if available."
+    ]
+  }
+}

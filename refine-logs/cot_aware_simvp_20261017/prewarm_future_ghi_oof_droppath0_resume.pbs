@@ -1,0 +1,34 @@
+#!/bin/bash
+#PBS -N fghi_dp0cache
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+ROOT=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SOURCE=$EXP/droppath0_source_20261020
+CACHE=/tmp/slfu_future_ghi_oof_droppath0_v1_shared
+RECEIPT=$EXP/results/future_ghi_oof_droppath0_v3_prewarmed/cache_prewarm_after_pause.json
+LOG=$EXP/logs/future_ghi_oof_droppath0_resume_cache_${PBS_JOBID}.log
+mkdir -p "$EXP/logs" "$CACHE"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+
+cd "$EXP"
+sha256sum -c DROPPATH0_RESUME_SHA256SUMS
+FREE_KIB=$(df -Pk /tmp | awk 'NR==2{print $4}')
+MIN_KIB=$((260*1024*1024))
+if (( FREE_KIB < MIN_KIB )); then echo "REFUSE: node23 /tmp below 260 GiB"; exit 31; fi
+python -m py_compile prewarm_future_ghi_oof_rawcache.py
+python prewarm_future_ghi_oof_rawcache.py \
+  --experiment "$EXP" --source "$SOURCE" --root "$ROOT" --cache "$CACHE" \
+  --folds 0 1 2 --workers 8 --receipt "$RECEIPT"
+

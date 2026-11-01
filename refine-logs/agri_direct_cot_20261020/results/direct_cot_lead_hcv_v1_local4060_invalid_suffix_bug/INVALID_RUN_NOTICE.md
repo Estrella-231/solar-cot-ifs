@@ -1,0 +1,3 @@
+# Invalid partial run — do not score
+
+The run was stopped after detecting an arm-classification bug in the runner: the expression `arm.endswith("_lead")` classified `none_no_lead` and `pxc_no_lead` as lead-conditioned. Consequently, the intended factorial contrast was not executed. The first six completed model runs in this directory are retained only for audit and must not be used as results. No validation/test/buffer payload was opened. The corrected runner uses an explicit arm membership test and has a passing factorial-contract regression test; a fresh output directory is required for the valid run.

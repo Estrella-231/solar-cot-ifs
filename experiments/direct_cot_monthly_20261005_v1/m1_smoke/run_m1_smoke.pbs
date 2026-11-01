@@ -1,0 +1,30 @@
+#!/bin/bash
+#PBS -N dcot_smoke
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/direct_cot_monthly_20261005_v1/m1_smoke/logs/smoke_seed42_retry1.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/direct_cot_monthly_20261005_v1/m1_smoke
+OUT=$EXP/runs/smoke_seed42_v1
+test ! -e "$OUT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u "$ROOT/scripts/run_m1_direct_cot_smoke_20261006.py" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --hunan-data-code "$EXP/code/hunan_data.py" \
+  --norm "$ROOT/experiments/hunan_monthly_block_20261002/manifests_v1/hunan_train_norm.json" \
+  --windows "$EXP/input/m1_smoke_train_windows.csv" \
+  --cpp-labels "$EXP/input/m1_cpp_train_labels.npz" \
+  --output "$OUT" --steps 200 --batch 2 --seed 42
+echo M1_DIRECT_COT_SMOKE_COMPLETE
+

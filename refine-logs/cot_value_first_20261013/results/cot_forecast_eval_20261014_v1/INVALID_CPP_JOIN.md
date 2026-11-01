@@ -1,0 +1,9 @@
+# CPP 配对错误：旧指标撤回（2026-10-16）
+
+已由源rows.csv、原始validation_predictions.npz和预报bank逐项复现：构建器先筛选val后重新enumerate，却用该val-local索引查全SUPERVISED表索引sample_indices，导致CPP参考错配站点和日期。
+
+本目录旧CPP误差/相关性/厚云/SSIM等依赖CPP配对的结论不可继续使用。重复复算同一错误bank或核对hash不能验证配对正确性。原始输出数组保留供审计，不视为已修复。
+
+权威核查：solar-cot-ifs/audits/cpp_reference_join_20261016/AUDIT.json。
+已有271窗的CPP参考已在独立目录修复；模型预测张量逐项验证未变，但这不是全验证窗口重新枚举。
+完整正确原始R验证成绩：RMSE=9.074，MAE=4.646，r=0.821，356169像元。

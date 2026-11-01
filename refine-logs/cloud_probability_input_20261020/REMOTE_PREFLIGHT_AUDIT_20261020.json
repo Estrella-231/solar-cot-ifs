@@ -1,0 +1,2019 @@
+{
+  "state": "PASS_EXACT_KEY_ALIGNMENT_GEOMETRY_PROVENANCE_MISMATCH_RECORDED",
+  "checked_at_utc": "2026-10-20T01:24:14Z",
+  "operation": "read-only train/validation arrays and metadata; no classifier weights loaded; no test payload accessed",
+  "train_val_only": true,
+  "test_payloads_read": 0,
+  "source_paths": {
+    "ghi_pack": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_interval_history_20261015_v1/data_attempt2",
+    "r_bank": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/r_geometry_downstream_ghi_20261016/data/paired_r_cot_bank_v1",
+    "probability_bank": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/conservative_gate_cot_bank_20261015_attempt1",
+    "classifier_pack": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/data/pack_trainval_v1",
+    "data_root": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed"
+  },
+  "source_states": {
+    "ghi": "COMPLETE",
+    "r": "COMPLETE_PAIRED_R_COT_HISTORY_BANK",
+    "probability": "COMPLETE",
+    "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+    "split_consistent": true
+  },
+  "alignment": {
+    "ghi_rows": 51929,
+    "expected_unique_station_frame_keys": 54895,
+    "probability_rows": 55733,
+    "r_bank_rows": 54895,
+    "probability_keys_missing": 0,
+    "split_mismatches": 0,
+    "station_grid_mismatches": 0,
+    "classifier_assignment_errors": 0,
+    "rows_with_suspect_zero_flag": 825,
+    "history_offsets_min": [
+      -30,
+      -15,
+      0
+    ],
+    "p_crop": "same station-centered 16x16 as classifier; read center [7:10,7:10] to match GHI/R 3x3"
+  },
+  "probability": {
+    "shape": [
+      55733,
+      2,
+      16,
+      16
+    ],
+    "dtype": "float16",
+    "finite_count": 28535296,
+    "value_range": [
+      0.0,
+      1.0
+    ],
+    "sha256": "ed892bd4738a3079899e54fbcdc753bfd4fe2192beea82969d972fa65098c40f",
+    "stored_sha256": "ed892bd4738a3079899e54fbcdc753bfd4fe2192beea82969d972fa65098c40f",
+    "classifier_source_sha256": "155a3588a03521f55012c54640ca9cfdec655ff43688e5a0712de295a5c56a7c",
+    "checkpoint_hashes": {
+      "fold0": "d258835a8ac919ade8133cb6fe6b297facf4f1df3963eb1ad3cc7b61232016c5",
+      "fold1": "4ea77fa4c95d4d9a9a00dc0dbb1b924c83f4b1e52b8c2bdbc54f9c0daf151d78",
+      "fold2": "74aeb7fab74253e0abea9d139f76bb596ccecb544dd5ea657274b2223515165a",
+      "full_train": "bc5f359efd96e5bbfbc2359d6c09e1bf5efdf1b51fb2fe09d5b1e7bfec2bae75"
+    },
+    "oof_assignment_sha256": "5697cd612bbb401b4b847238b7ec03587ae446c97d0fe1a2e50fd4e4a1e24309",
+    "station_order": [
+      "sili",
+      "zhujia"
+    ]
+  },
+  "geometry": {
+    "classifier_training_input": "cached old producer aux cosSOZ/cosRAA/day_mask; code and manifest show same R-normalized 16x16 source",
+    "ghi_input": "corrected nominal-UTC geometry; equation-of-time trigonometric expression converted radians to degrees",
+    "classifier_training_rows": 16812,
+    "classifier_geometry_source_exact_aux_max_abs": 0.0,
+    "sampled_unique_utc_times": 96,
+    "sampled_station_frames": 192,
+    "old_vs_corrected_cosSOZ": {
+      "mean_abs": 0.013075210065307355,
+      "p95_abs": 0.042305967584252355,
+      "max_abs": 0.04889027774333954
+    },
+    "old_vs_corrected_cosRAA": {
+      "mean_abs": 0.04025828179216077,
+      "p95_abs": 0.055105903744697565,
+      "max_abs": 1.6365890502929688
+    },
+    "old_vs_corrected_day_mask_mismatch_pixels": 765,
+    "caveat": "The probability bank is spatially/time keyed and split-aligned, but its frozen classifier used the old EOT geometry. Keep it as the registered legacy p_cloud feature; do not describe it as corrected-geometry classification. Feeding corrected geometry to these frozen weights would be an unvalidated distribution shift."
+  },
+  "hashes": {
+    "ghi_rows": "b76fb1b827375c29d90703ed6dc1220ff92a6d239800d4f8764b989d5b7214b3",
+    "ghi_manifest": "223a6b748622135e27fd5320a4be0921b4b31551be6f05868b14eb59d2c8ed9a",
+    "r_manifest": "fd1a621827567fa1fcf8b26a412e01b7a64f3adc93a87b12f0c0920af3ca857b",
+    "probability_manifest": "87ad909a2e33902dccf7273a1976536029659e7161dfbaaf5918ced179d0daf8",
+    "probability_keys": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+    "assignment": "5697cd612bbb401b4b847238b7ec03587ae446c97d0fe1a2e50fd4e4a1e24309",
+    "classifier_rows": "b270713590f6af793b53df73d27e01f3f62ad8d7e60bb9a8eaace5c43fb2ebcb",
+    "classifier_x_raw": "06d4606623c1495d63ab015d778b5691d6f0c072e58fad79c6e559c84d450a31",
+    "grid_static": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62"
+  },
+  "geometry_sample": [
+    {
+      "station": "sili",
+      "target_time_utc": "2024-04-01 22:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404020630_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.013680094853043556,
+      "cosSOZ_max_abs_delta": 0.013715643435716629,
+      "cosRAA_mean_abs_delta": 0.00621009198948741,
+      "cosRAA_max_abs_delta": 0.006310790777206421,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-04-01 22:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404020630_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.013234731741249561,
+      "cosSOZ_max_abs_delta": 0.013274583965539932,
+      "cosRAA_mean_abs_delta": 0.007077367976307869,
+      "cosRAA_max_abs_delta": 0.007170200347900391,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-04-08 00:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404080830_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006077033467590809,
+      "cosSOZ_max_abs_delta": 0.00611037015914917,
+      "cosRAA_mean_abs_delta": 0.0038422630168497562,
+      "cosRAA_max_abs_delta": 0.0039021670818328857,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-04-08 00:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404080830_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005874432157725096,
+      "cosSOZ_max_abs_delta": 0.005909234285354614,
+      "cosRAA_mean_abs_delta": 0.004423784092068672,
+      "cosRAA_max_abs_delta": 0.004484117031097412,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-04-14 02:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404141015_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.000522031681612134,
+      "cosSOZ_max_abs_delta": 0.0005273818969726562,
+      "cosRAA_mean_abs_delta": 0.0009213706944137812,
+      "cosRAA_max_abs_delta": 0.0009412169456481934,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-04-14 02:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404141015_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0005039786919951439,
+      "cosSOZ_max_abs_delta": 0.0005093812942504883,
+      "cosRAA_mean_abs_delta": 0.0010156228672713041,
+      "cosRAA_max_abs_delta": 0.0010320991277694702,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-04-22 22:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404230630_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006276720203459263,
+      "cosSOZ_max_abs_delta": 0.006293296813964844,
+      "cosRAA_mean_abs_delta": 0.0026655341498553753,
+      "cosRAA_max_abs_delta": 0.0027168691158294678,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-04-22 22:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404230630_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006072242744266987,
+      "cosSOZ_max_abs_delta": 0.006090708076953888,
+      "cosRAA_mean_abs_delta": 0.0030642282217741013,
+      "cosRAA_max_abs_delta": 0.0031112730503082275,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-05-02 09:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405021745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.011128144338726997,
+      "cosSOZ_max_abs_delta": 0.01116761565208435,
+      "cosRAA_mean_abs_delta": 0.0051169912330806255,
+      "cosRAA_max_abs_delta": 0.005186900496482849,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-05-02 09:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405021745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.010768597945570946,
+      "cosSOZ_max_abs_delta": 0.01081123948097229,
+      "cosRAA_mean_abs_delta": 0.005908505991101265,
+      "cosRAA_max_abs_delta": 0.005978219211101532,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-05-08 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405081515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008572741411626339,
+      "cosSOZ_max_abs_delta": 0.008645176887512207,
+      "cosRAA_mean_abs_delta": 0.0073064276948571205,
+      "cosRAA_max_abs_delta": 0.007536351680755615,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-05-08 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405081515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008306577801704407,
+      "cosSOZ_max_abs_delta": 0.008380353450775146,
+      "cosRAA_mean_abs_delta": 0.008952198550105095,
+      "cosRAA_max_abs_delta": 0.009171783924102783,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-05-14 09:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405141745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.013042304664850235,
+      "cosSOZ_max_abs_delta": 0.01308855414390564,
+      "cosRAA_mean_abs_delta": 0.005840178579092026,
+      "cosRAA_max_abs_delta": 0.005922719836235046,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-05-14 09:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405141745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012620870023965836,
+      "cosSOZ_max_abs_delta": 0.012670546770095825,
+      "cosRAA_mean_abs_delta": 0.006786370184272528,
+      "cosRAA_max_abs_delta": 0.0068650022149086,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-05-24 10:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405241830_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.011163135059177876,
+      "cosSOZ_max_abs_delta": 0.011192098259925842,
+      "cosRAA_mean_abs_delta": 0.005214602220803499,
+      "cosRAA_max_abs_delta": 0.005288716405630112,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-05-24 10:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202405/202405241830_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.010799489915370941,
+      "cosSOZ_max_abs_delta": 0.010832056403160095,
+      "cosRAA_mean_abs_delta": 0.005909924395382404,
+      "cosRAA_max_abs_delta": 0.005981817841529846,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-06-01 05:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406011300_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0009959056042134762,
+      "cosSOZ_max_abs_delta": 0.00103759765625,
+      "cosRAA_mean_abs_delta": 0.02218199148774147,
+      "cosRAA_max_abs_delta": 0.023438632488250732,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-06-01 05:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406011300_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0009735389612615108,
+      "cosSOZ_max_abs_delta": 0.0010143518447875977,
+      "cosRAA_mean_abs_delta": 0.017705213278532028,
+      "cosRAA_max_abs_delta": 0.018632113933563232,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-06-06 23:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406070730_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0038146921433508396,
+      "cosSOZ_max_abs_delta": 0.0038296878337860107,
+      "cosRAA_mean_abs_delta": 0.001376190921291709,
+      "cosRAA_max_abs_delta": 0.0014128684997558594,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-06-06 23:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406070730_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.003689033444970846,
+      "cosSOZ_max_abs_delta": 0.0037052035331726074,
+      "cosRAA_mean_abs_delta": 0.0016876879381015897,
+      "cosRAA_max_abs_delta": 0.001722186803817749,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-06-14 08:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406141630_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0011546204332262278,
+      "cosSOZ_max_abs_delta": 0.0011610984802246094,
+      "cosRAA_mean_abs_delta": 0.0005060581024736166,
+      "cosRAA_max_abs_delta": 0.0005181580781936646,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-06-14 08:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406141630_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0011179258581250906,
+      "cosSOZ_max_abs_delta": 0.0011246204376220703,
+      "cosRAA_mean_abs_delta": 0.0006433569360524416,
+      "cosRAA_max_abs_delta": 0.0006561055779457092,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-06-24 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406241130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0023552151396870613,
+      "cosSOZ_max_abs_delta": 0.002405822277069092,
+      "cosRAA_mean_abs_delta": 0.009218109771609306,
+      "cosRAA_max_abs_delta": 0.010311111807823181,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-06-24 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406241130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.002267010509967804,
+      "cosSOZ_max_abs_delta": 0.0023169517517089844,
+      "cosRAA_mean_abs_delta": 0.0173124261200428,
+      "cosRAA_max_abs_delta": 0.01826930046081543,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-06-30 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406301515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008677281439304352,
+      "cosSOZ_max_abs_delta": 0.00875246524810791,
+      "cosRAA_mean_abs_delta": 0.005423010792583227,
+      "cosRAA_max_abs_delta": 0.005660116672515869,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-06-30 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202406/202406301515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00840830896049738,
+      "cosSOZ_max_abs_delta": 0.008484423160552979,
+      "cosRAA_mean_abs_delta": 0.007764603942632675,
+      "cosRAA_max_abs_delta": 0.00801733136177063,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-07-06 02:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407061015_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.009698794223368168,
+      "cosSOZ_max_abs_delta": 0.009797394275665283,
+      "cosRAA_mean_abs_delta": 0.007886048406362534,
+      "cosRAA_max_abs_delta": 0.008289813995361328,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-07-06 02:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407061015_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.009363841265439987,
+      "cosSOZ_max_abs_delta": 0.009463250637054443,
+      "cosRAA_mean_abs_delta": 0.012260591611266136,
+      "cosRAA_max_abs_delta": 0.012714162468910217,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-07-14 03:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407141145_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.004470997955650091,
+      "cosSOZ_max_abs_delta": 0.004591226577758789,
+      "cosRAA_mean_abs_delta": 0.046106159687042236,
+      "cosRAA_max_abs_delta": 0.049953676760196686,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-07-14 03:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407141145_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.004297340288758278,
+      "cosSOZ_max_abs_delta": 0.004415392875671387,
+      "cosRAA_mean_abs_delta": 0.059970565140247345,
+      "cosRAA_max_abs_delta": 0.06186187267303467,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-07-23 23:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407240715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.02334902063012123,
+      "cosSOZ_max_abs_delta": 0.02343037724494934,
+      "cosRAA_mean_abs_delta": 0.008946651592850685,
+      "cosRAA_max_abs_delta": 0.009156197309494019,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-07-23 23:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407240715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.02258278802037239,
+      "cosSOZ_max_abs_delta": 0.022671133279800415,
+      "cosRAA_mean_abs_delta": 0.010675860568881035,
+      "cosRAA_max_abs_delta": 0.01087099313735962,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-07-29 22:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407300645_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.023619268089532852,
+      "cosSOZ_max_abs_delta": 0.023685216903686523,
+      "cosRAA_mean_abs_delta": 0.009264366701245308,
+      "cosRAA_max_abs_delta": 0.009469568729400635,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-07-29 22:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202407/202407300645_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.02284843474626541,
+      "cosSOZ_max_abs_delta": 0.022921964526176453,
+      "cosRAA_mean_abs_delta": 0.01080991979688406,
+      "cosRAA_max_abs_delta": 0.011000514030456543,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-08-08 22:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408090600_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.020330168306827545,
+      "cosSOZ_max_abs_delta": 0.020397882908582687,
+      "cosRAA_mean_abs_delta": 0.3469983637332916,
+      "cosRAA_max_abs_delta": 0.4156123995780945,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-08-08 22:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408090600_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.019671978428959846,
+      "cosSOZ_max_abs_delta": 0.019745199009776115,
+      "cosRAA_mean_abs_delta": 0.05011582002043724,
+      "cosRAA_max_abs_delta": 0.4435768127441406,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-08-14 09:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408141730_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.016616325825452805,
+      "cosSOZ_max_abs_delta": 0.016682982444763184,
+      "cosRAA_mean_abs_delta": 0.007830800488591194,
+      "cosRAA_max_abs_delta": 0.007953494787216187,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-08-14 09:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408141730_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.016081441193819046,
+      "cosSOZ_max_abs_delta": 0.016152560710906982,
+      "cosRAA_mean_abs_delta": 0.009077015332877636,
+      "cosRAA_max_abs_delta": 0.009199082851409912,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-08-23 05:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408231300_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.001196014229208231,
+      "cosSOZ_max_abs_delta": 0.001250147819519043,
+      "cosRAA_mean_abs_delta": 0.005711351055651903,
+      "cosRAA_max_abs_delta": 0.006089746952056885,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-08-23 05:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408231300_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0011701937764883041,
+      "cosSOZ_max_abs_delta": 0.0012230873107910156,
+      "cosRAA_mean_abs_delta": 0.003509917063638568,
+      "cosRAA_max_abs_delta": 0.0037615299224853516,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-08-29 06:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408291400_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0012599301990121603,
+      "cosSOZ_max_abs_delta": 0.001279294490814209,
+      "cosRAA_mean_abs_delta": 0.003404865739867091,
+      "cosRAA_max_abs_delta": 0.003479301929473877,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-08-29 06:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202408/202408291400_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.001223070314154029,
+      "cosSOZ_max_abs_delta": 0.0012423396110534668,
+      "cosRAA_mean_abs_delta": 0.003238739911466837,
+      "cosRAA_max_abs_delta": 0.003306090831756592,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-09-10 10:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202409/202409101815_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0120572904124856,
+      "cosSOZ_max_abs_delta": 0.012091659009456635,
+      "cosRAA_mean_abs_delta": 0.0056875962764024734,
+      "cosRAA_max_abs_delta": 0.005766183137893677,
+      "day_mask_mismatch_pixels": 197
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-09-10 10:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202409/202409101815_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.011665555648505688,
+      "cosSOZ_max_abs_delta": 0.011703915894031525,
+      "cosRAA_mean_abs_delta": 0.006456033792346716,
+      "cosRAA_max_abs_delta": 0.006529316306114197,
+      "day_mask_mismatch_pixels": 154
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-09-17 01:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202409/202409170930_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.014835800044238567,
+      "cosSOZ_max_abs_delta": 0.01495271921157837,
+      "cosRAA_mean_abs_delta": 0.017105981707572937,
+      "cosRAA_max_abs_delta": 0.01737091690301895,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-09-17 01:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202409/202409170930_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.014332154765725136,
+      "cosSOZ_max_abs_delta": 0.01445150375366211,
+      "cosRAA_mean_abs_delta": 0.018470916897058487,
+      "cosRAA_max_abs_delta": 0.018707066774368286,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-10-01 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410011130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.009545093402266502,
+      "cosSOZ_max_abs_delta": 0.009772658348083496,
+      "cosRAA_mean_abs_delta": 0.05185829848051071,
+      "cosRAA_max_abs_delta": 0.05299878120422363,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-10-01 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410011130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.009181847795844078,
+      "cosSOZ_max_abs_delta": 0.009405791759490967,
+      "cosRAA_mean_abs_delta": 0.04488420858979225,
+      "cosRAA_max_abs_delta": 0.04574829339981079,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-10-07 10:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410071800_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04685918241739273,
+      "cosSOZ_max_abs_delta": 0.04700414091348648,
+      "cosRAA_mean_abs_delta": 0.02134978026151657,
+      "cosRAA_max_abs_delta": 0.021719664335250854,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-10-07 10:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410071800_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04533964395523071,
+      "cosSOZ_max_abs_delta": 0.04549866542220116,
+      "cosRAA_mean_abs_delta": 0.024228259921073914,
+      "cosRAA_max_abs_delta": 0.02456951141357422,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-10-21 05:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410211300_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.009447438642382622,
+      "cosSOZ_max_abs_delta": 0.00977402925491333,
+      "cosRAA_mean_abs_delta": 0.002625370165333152,
+      "cosRAA_max_abs_delta": 0.003068864345550537,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-10-21 05:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410211300_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.009217612445354462,
+      "cosSOZ_max_abs_delta": 0.009537756443023682,
+      "cosRAA_mean_abs_delta": 0.0013652092311531305,
+      "cosRAA_max_abs_delta": 0.001696467399597168,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-10-30 03:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410301115_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.017750022932887077,
+      "cosSOZ_max_abs_delta": 0.018103182315826416,
+      "cosRAA_mean_abs_delta": 0.0600641630589962,
+      "cosRAA_max_abs_delta": 0.0612446665763855,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-10-30 03:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202410/202410301115_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.017092585563659668,
+      "cosSOZ_max_abs_delta": 0.01744145154953003,
+      "cosRAA_mean_abs_delta": 0.05375901609659195,
+      "cosRAA_max_abs_delta": 0.05469256639480591,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-11-06 04:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202411/202411061245_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006010343320667744,
+      "cosSOZ_max_abs_delta": 0.006342947483062744,
+      "cosRAA_mean_abs_delta": 0.01435127854347229,
+      "cosRAA_max_abs_delta": 0.014988422393798828,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-11-06 04:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202411/202411061245_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00589623861014843,
+      "cosSOZ_max_abs_delta": 0.006220757961273193,
+      "cosRAA_mean_abs_delta": 0.011527691967785358,
+      "cosRAA_max_abs_delta": 0.01199871301651001,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-11-13 07:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202411/202411131545_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.044467996805906296,
+      "cosSOZ_max_abs_delta": 0.044772446155548096,
+      "cosRAA_mean_abs_delta": 0.02744682878255844,
+      "cosRAA_max_abs_delta": 0.028034985065460205,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-11-13 07:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202411/202411131545_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04306894540786743,
+      "cosSOZ_max_abs_delta": 0.04338166117668152,
+      "cosRAA_mean_abs_delta": 0.028950359672307968,
+      "cosRAA_max_abs_delta": 0.029433846473693848,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-11-27 23:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202411/202411280730_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.041540101170539856,
+      "cosSOZ_max_abs_delta": 0.04170946776866913,
+      "cosRAA_mean_abs_delta": 0.02387770637869835,
+      "cosRAA_max_abs_delta": 0.02418386936187744,
+      "day_mask_mismatch_pixels": 256
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-11-27 23:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202411/202411280730_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.040170542895793915,
+      "cosSOZ_max_abs_delta": 0.04035142809152603,
+      "cosRAA_mean_abs_delta": 0.02597445249557495,
+      "cosRAA_max_abs_delta": 0.026268839836120605,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-12-05 08:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202412/202412051600_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.026491429656744003,
+      "cosSOZ_max_abs_delta": 0.02666136622428894,
+      "cosRAA_mean_abs_delta": 0.014489741995930672,
+      "cosRAA_max_abs_delta": 0.014821112155914307,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-12-05 08:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202412/202412051600_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.025655008852481842,
+      "cosSOZ_max_abs_delta": 0.025830090045928955,
+      "cosRAA_mean_abs_delta": 0.015422897413372993,
+      "cosRAA_max_abs_delta": 0.015699028968811035,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-12-14 04:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202412/202412141215_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0010531169828027487,
+      "cosSOZ_max_abs_delta": 0.0011533498764038086,
+      "cosRAA_mean_abs_delta": 0.009470537304878235,
+      "cosRAA_max_abs_delta": 0.009726762771606445,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-12-14 04:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202412/202412141215_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0009936902206391096,
+      "cosSOZ_max_abs_delta": 0.0010911822319030762,
+      "cosRAA_mean_abs_delta": 0.008199705742299557,
+      "cosRAA_max_abs_delta": 0.008396387100219727,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2024-12-27 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202412/202412280745_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0051226201467216015,
+      "cosSOZ_max_abs_delta": 0.0051444172859191895,
+      "cosRAA_mean_abs_delta": 0.0030391481705009937,
+      "cosRAA_max_abs_delta": 0.0030779242515563965,
+      "day_mask_mismatch_pixels": 145
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2024-12-27 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202412/202412280745_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.004953449591994286,
+      "cosSOZ_max_abs_delta": 0.004976697266101837,
+      "cosRAA_mean_abs_delta": 0.003281750250607729,
+      "cosRAA_max_abs_delta": 0.0033187121152877808,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-01-07 04:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202501/202501071230_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00037050340324640274,
+      "cosSOZ_max_abs_delta": 0.0004881620407104492,
+      "cosRAA_mean_abs_delta": 0.010006342083215714,
+      "cosRAA_max_abs_delta": 0.010299503803253174,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-01-07 04:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202501/202501071230_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0003283850383013487,
+      "cosSOZ_max_abs_delta": 0.0004423856735229492,
+      "cosRAA_mean_abs_delta": 0.008569788187742233,
+      "cosRAA_max_abs_delta": 0.008793413639068604,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-01-19 01:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202501/202501190930_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.027957316488027573,
+      "cosSOZ_max_abs_delta": 0.02816745638847351,
+      "cosRAA_mean_abs_delta": 0.029813846573233604,
+      "cosRAA_max_abs_delta": 0.030092298984527588,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-01-19 01:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202501/202501190930_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.027010852470993996,
+      "cosSOZ_max_abs_delta": 0.0272255539894104,
+      "cosRAA_mean_abs_delta": 0.030073152855038643,
+      "cosRAA_max_abs_delta": 0.030321210622787476,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-01-26 08:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202501/202501261600_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.035508014261722565,
+      "cosSOZ_max_abs_delta": 0.03575053811073303,
+      "cosRAA_mean_abs_delta": 0.021672826260328293,
+      "cosRAA_max_abs_delta": 0.022140443325042725,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-01-26 08:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202501/202501261600_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.03439067304134369,
+      "cosSOZ_max_abs_delta": 0.03463953733444214,
+      "cosRAA_mean_abs_delta": 0.022871583700180054,
+      "cosRAA_max_abs_delta": 0.023256421089172363,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-02-03 01:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202502/202502030945_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0348818376660347,
+      "cosSOZ_max_abs_delta": 0.03516530990600586,
+      "cosRAA_mean_abs_delta": 0.04207571968436241,
+      "cosRAA_max_abs_delta": 0.042461097240448,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-02-03 01:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202502/202502030945_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.03369542211294174,
+      "cosSOZ_max_abs_delta": 0.033984243869781494,
+      "cosRAA_mean_abs_delta": 0.04221609979867935,
+      "cosRAA_max_abs_delta": 0.04256775975227356,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-02-12 05:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202502/202502121345_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.015376999974250793,
+      "cosSOZ_max_abs_delta": 0.015683770179748535,
+      "cosRAA_mean_abs_delta": 0.011148624122142792,
+      "cosRAA_max_abs_delta": 0.011597394943237305,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-02-12 05:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202502/202502121345_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.014945020899176598,
+      "cosSOZ_max_abs_delta": 0.015248119831085205,
+      "cosRAA_mean_abs_delta": 0.010974908247590065,
+      "cosRAA_max_abs_delta": 0.011335670948028564,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-02-20 00:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202502/202502200800_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04867095127701759,
+      "cosSOZ_max_abs_delta": 0.04889027774333954,
+      "cosRAA_mean_abs_delta": 0.029859140515327454,
+      "cosRAA_max_abs_delta": 0.030226880684494972,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-02-20 00:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202502/202502200800_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04706093668937683,
+      "cosSOZ_max_abs_delta": 0.047293275594711304,
+      "cosRAA_mean_abs_delta": 0.03268631547689438,
+      "cosRAA_max_abs_delta": 0.033040083944797516,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-03-03 23:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503040730_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04376782476902008,
+      "cosSOZ_max_abs_delta": 0.043933331966400146,
+      "cosRAA_mean_abs_delta": 0.02345501445233822,
+      "cosRAA_max_abs_delta": 0.023734621703624725,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-03-03 23:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503040730_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.042328156530857086,
+      "cosSOZ_max_abs_delta": 0.04250629246234894,
+      "cosRAA_mean_abs_delta": 0.02621416002511978,
+      "cosRAA_max_abs_delta": 0.026487786322832108,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-03-10 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503101515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.025162633508443832,
+      "cosSOZ_max_abs_delta": 0.025384962558746338,
+      "cosRAA_mean_abs_delta": 0.02490094304084778,
+      "cosRAA_max_abs_delta": 0.02537381649017334,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-03-10 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503101515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.024383850395679474,
+      "cosSOZ_max_abs_delta": 0.024609386920928955,
+      "cosRAA_mean_abs_delta": 0.02560890093445778,
+      "cosRAA_max_abs_delta": 0.025973975658416748,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-03-23 06:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503231430_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012209050357341766,
+      "cosSOZ_max_abs_delta": 0.012355327606201172,
+      "cosRAA_mean_abs_delta": 0.01915077120065689,
+      "cosRAA_max_abs_delta": 0.019501566886901855,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-03-23 06:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503231430_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.011841125786304474,
+      "cosSOZ_max_abs_delta": 0.01198798418045044,
+      "cosRAA_mean_abs_delta": 0.01875266805291176,
+      "cosRAA_max_abs_delta": 0.01906144618988037,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-03-30 02:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503301045_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007802912965416908,
+      "cosSOZ_max_abs_delta": 0.00790315866470337,
+      "cosRAA_mean_abs_delta": 0.022050630301237106,
+      "cosRAA_max_abs_delta": 0.022334545850753784,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-03-30 02:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202503/202503301045_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00752805732190609,
+      "cosSOZ_max_abs_delta": 0.007628262042999268,
+      "cosRAA_mean_abs_delta": 0.0218251533806324,
+      "cosRAA_max_abs_delta": 0.02211230993270874,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-04-05 05:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504051345_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0032108763698488474,
+      "cosSOZ_max_abs_delta": 0.003270089626312256,
+      "cosRAA_mean_abs_delta": 0.009354019537568092,
+      "cosRAA_max_abs_delta": 0.009613454341888428,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-04-05 05:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504051345_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0031194507610052824,
+      "cosSOZ_max_abs_delta": 0.0031781792640686035,
+      "cosRAA_mean_abs_delta": 0.008268637582659721,
+      "cosRAA_max_abs_delta": 0.008465707302093506,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-04-17 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504171030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0007770110387355089,
+      "cosSOZ_max_abs_delta": 0.000786125659942627,
+      "cosRAA_mean_abs_delta": 0.0017237935680896044,
+      "cosRAA_max_abs_delta": 0.001762785017490387,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-04-17 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504171030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0007498832419514656,
+      "cosSOZ_max_abs_delta": 0.000758826732635498,
+      "cosRAA_mean_abs_delta": 0.001880037714727223,
+      "cosRAA_max_abs_delta": 0.0019107908010482788,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-04-24 02:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504241045_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0030459642875939608,
+      "cosSOZ_max_abs_delta": 0.0030862092971801758,
+      "cosRAA_mean_abs_delta": 0.008629941381514072,
+      "cosRAA_max_abs_delta": 0.008858814835548401,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-04-24 02:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504241045_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.002938375808298588,
+      "cosSOZ_max_abs_delta": 0.0029785633087158203,
+      "cosRAA_mean_abs_delta": 0.009498266503214836,
+      "cosRAA_max_abs_delta": 0.009669139981269836,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-04-30 01:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504300915_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007681312970817089,
+      "cosSOZ_max_abs_delta": 0.007736325263977051,
+      "cosRAA_mean_abs_delta": 0.005726405419409275,
+      "cosRAA_max_abs_delta": 0.005858570337295532,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-04-30 01:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202504/202504300915_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007421964779496193,
+      "cosSOZ_max_abs_delta": 0.007478475570678711,
+      "cosRAA_mean_abs_delta": 0.0070000579580664635,
+      "cosRAA_max_abs_delta": 0.007135346531867981,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-05-07 23:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505080700_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012702710926532745,
+      "cosSOZ_max_abs_delta": 0.012744039297103882,
+      "cosRAA_mean_abs_delta": 0.00509420782327652,
+      "cosRAA_max_abs_delta": 0.005203068256378174,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-05-07 23:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505080700_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01228658389300108,
+      "cosSOZ_max_abs_delta": 0.01233169436454773,
+      "cosRAA_mean_abs_delta": 0.0059922621585428715,
+      "cosRAA_max_abs_delta": 0.006092935800552368,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-05-13 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505140745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01257393229752779,
+      "cosSOZ_max_abs_delta": 0.012628495693206787,
+      "cosRAA_mean_abs_delta": 0.005178144201636314,
+      "cosRAA_max_abs_delta": 0.005296498537063599,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-05-13 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505140745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012158485129475594,
+      "cosSOZ_max_abs_delta": 0.012216538190841675,
+      "cosRAA_mean_abs_delta": 0.006293876562267542,
+      "cosRAA_max_abs_delta": 0.006402701139450073,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-05-19 09:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505191715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012023551389575005,
+      "cosSOZ_max_abs_delta": 0.012075036764144897,
+      "cosRAA_mean_abs_delta": 0.005356446839869022,
+      "cosRAA_max_abs_delta": 0.005443684756755829,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-05-19 09:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505191715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.011637331917881966,
+      "cosSOZ_max_abs_delta": 0.011692136526107788,
+      "cosRAA_mean_abs_delta": 0.006363588850945234,
+      "cosRAA_max_abs_delta": 0.0064531490206718445,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-05-29 06:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505291430_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00461746659129858,
+      "cosSOZ_max_abs_delta": 0.004670917987823486,
+      "cosRAA_mean_abs_delta": 0.005319340154528618,
+      "cosRAA_max_abs_delta": 0.005604475736618042,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-05-29 06:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202505/202505291430_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.004477778449654579,
+      "cosSOZ_max_abs_delta": 0.0045313239097595215,
+      "cosRAA_mean_abs_delta": 0.007539082318544388,
+      "cosRAA_max_abs_delta": 0.007813811302185059,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-06-08 08:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506081615_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.002642480656504631,
+      "cosSOZ_max_abs_delta": 0.002658545970916748,
+      "cosRAA_mean_abs_delta": 0.0012199520133435726,
+      "cosRAA_max_abs_delta": 0.0012518540024757385,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-06-08 08:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506081615_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0025587899144738913,
+      "cosSOZ_max_abs_delta": 0.002575218677520752,
+      "cosRAA_mean_abs_delta": 0.0015718245413154364,
+      "cosRAA_max_abs_delta": 0.0016056746244430542,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-06-15 02:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506151045_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.000773309264332056,
+      "cosSOZ_max_abs_delta": 0.0007835030555725098,
+      "cosRAA_mean_abs_delta": 0.0009284917032346129,
+      "cosRAA_max_abs_delta": 0.0009982585906982422,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-06-15 02:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506151045_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0007460180204361677,
+      "cosSOZ_max_abs_delta": 0.0007560849189758301,
+      "cosRAA_mean_abs_delta": 0.001631877152249217,
+      "cosRAA_max_abs_delta": 0.0017093345522880554,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-06-21 23:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506220700_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00692721176892519,
+      "cosSOZ_max_abs_delta": 0.006949126720428467,
+      "cosRAA_mean_abs_delta": 0.0024610767140984535,
+      "cosRAA_max_abs_delta": 0.0025249719619750977,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-06-21 23:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506220700_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0067004007287323475,
+      "cosSOZ_max_abs_delta": 0.006724685430526733,
+      "cosRAA_mean_abs_delta": 0.0029434787575155497,
+      "cosRAA_max_abs_delta": 0.003003716468811035,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-06-27 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506271515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007179666310548782,
+      "cosSOZ_max_abs_delta": 0.007241666316986084,
+      "cosRAA_mean_abs_delta": 0.004407734610140324,
+      "cosRAA_max_abs_delta": 0.00460149347782135,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-06-27 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202506/202506271515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006957095582038164,
+      "cosSOZ_max_abs_delta": 0.007019937038421631,
+      "cosRAA_mean_abs_delta": 0.006349110975861549,
+      "cosRAA_max_abs_delta": 0.006557375192642212,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-07-03 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507031030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00769910030066967,
+      "cosSOZ_max_abs_delta": 0.007786691188812256,
+      "cosRAA_mean_abs_delta": 0.007413677871227264,
+      "cosRAA_max_abs_delta": 0.007864177227020264,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-07-03 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507031030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007430801168084145,
+      "cosSOZ_max_abs_delta": 0.007518768310546875,
+      "cosRAA_mean_abs_delta": 0.012131351046264172,
+      "cosRAA_max_abs_delta": 0.012634962797164917,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-07-09 11:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507091915_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01859123632311821,
+      "cosSOZ_max_abs_delta": 0.018656320869922638,
+      "cosRAA_mean_abs_delta": 0.009724598377943039,
+      "cosRAA_max_abs_delta": 0.009855866432189941,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-07-09 11:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507091915_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.017981022596359253,
+      "cosSOZ_max_abs_delta": 0.01805172860622406,
+      "cosRAA_mean_abs_delta": 0.010732954367995262,
+      "cosRAA_max_abs_delta": 0.010860234498977661,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-07-16 09:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507161730_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.021137312054634094,
+      "cosSOZ_max_abs_delta": 0.02122238278388977,
+      "cosRAA_mean_abs_delta": 0.009167425334453583,
+      "cosRAA_max_abs_delta": 0.00931653380393982,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-07-16 09:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507161730_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.020457003265619278,
+      "cosSOZ_max_abs_delta": 0.020547956228256226,
+      "cosRAA_mean_abs_delta": 0.01087262760847807,
+      "cosRAA_max_abs_delta": 0.011014867573976517,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-07-22 06:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507221400_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.00861300341784954,
+      "cosSOZ_max_abs_delta": 0.008749544620513916,
+      "cosRAA_mean_abs_delta": 0.02276770956814289,
+      "cosRAA_max_abs_delta": 0.02401101589202881,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-07-22 06:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202507/202507221400_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008361980319023132,
+      "cosSOZ_max_abs_delta": 0.00849759578704834,
+      "cosRAA_mean_abs_delta": 0.02872704714536667,
+      "cosRAA_max_abs_delta": 0.029636919498443604,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-08-01 02:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508011000_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.014529109001159668,
+      "cosSOZ_max_abs_delta": 0.014661908149719238,
+      "cosRAA_mean_abs_delta": 0.014394853264093399,
+      "cosRAA_max_abs_delta": 0.01486864686012268,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-08-01 02:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508011000_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.014031175523996353,
+      "cosSOZ_max_abs_delta": 0.014165520668029785,
+      "cosRAA_mean_abs_delta": 0.018687183037400246,
+      "cosRAA_max_abs_delta": 0.01917005330324173,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-08-06 22:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508070600_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.02134781889617443,
+      "cosSOZ_max_abs_delta": 0.02141791768372059,
+      "cosRAA_mean_abs_delta": 0.3931282162666321,
+      "cosRAA_max_abs_delta": 0.40737539529800415,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-08-06 22:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508070600_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0206567645072937,
+      "cosSOZ_max_abs_delta": 0.02073376439511776,
+      "cosRAA_mean_abs_delta": 0.010238805785775185,
+      "cosRAA_max_abs_delta": 0.01041269302368164,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-08-16 10:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508161845_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01592627540230751,
+      "cosSOZ_max_abs_delta": 0.015971068292856216,
+      "cosRAA_mean_abs_delta": 0.007769089192152023,
+      "cosRAA_max_abs_delta": 0.007864031940698624,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-08-16 10:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508161845_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.015406398102641106,
+      "cosSOZ_max_abs_delta": 0.015456445515155792,
+      "cosRAA_mean_abs_delta": 0.00875108502805233,
+      "cosRAA_max_abs_delta": 0.008843328803777695,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-08-24 22:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508250615_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008294064551591873,
+      "cosSOZ_max_abs_delta": 0.008318254724144936,
+      "cosRAA_mean_abs_delta": 0.0036198687739670277,
+      "cosRAA_max_abs_delta": 0.003687739372253418,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-08-24 22:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508250615_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008024735376238823,
+      "cosSOZ_max_abs_delta": 0.008051365613937378,
+      "cosRAA_mean_abs_delta": 0.004127081483602524,
+      "cosRAA_max_abs_delta": 0.004189968109130859,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-08-30 23:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508310715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0015838788822293282,
+      "cosSOZ_max_abs_delta": 0.0015895664691925049,
+      "cosRAA_mean_abs_delta": 0.0007298557320609689,
+      "cosRAA_max_abs_delta": 0.0007414519786834717,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-08-30 23:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202508/202508310715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0015319099184125662,
+      "cosSOZ_max_abs_delta": 0.0015379935503005981,
+      "cosRAA_mean_abs_delta": 0.0008433317998424172,
+      "cosRAA_max_abs_delta": 0.0008537769317626953,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-09-06 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202509/202509061200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0007915918249636889,
+      "cosSOZ_max_abs_delta": 0.000825345516204834,
+      "cosRAA_mean_abs_delta": 0.010984476655721664,
+      "cosRAA_max_abs_delta": 0.011279463768005371,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-09-06 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202509/202509061200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0007576467469334602,
+      "cosSOZ_max_abs_delta": 0.0007905960083007812,
+      "cosRAA_mean_abs_delta": 0.00863839965313673,
+      "cosRAA_max_abs_delta": 0.008827388286590576,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-10-06 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202510/202510070745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04356984421610832,
+      "cosSOZ_max_abs_delta": 0.04376399517059326,
+      "cosRAA_mean_abs_delta": 0.025859054177999496,
+      "cosRAA_max_abs_delta": 0.02618127316236496,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-10-06 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202510/202510070745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.042129114270210266,
+      "cosSOZ_max_abs_delta": 0.04233500361442566,
+      "cosRAA_mean_abs_delta": 0.02867572382092476,
+      "cosRAA_max_abs_delta": 0.028989363461732864,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-10-17 07:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202510/202510171545_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.043062224984169006,
+      "cosSOZ_max_abs_delta": 0.04335793852806091,
+      "cosRAA_mean_abs_delta": 0.030293870717287064,
+      "cosRAA_max_abs_delta": 0.03089505434036255,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-10-17 07:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202510/202510171545_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.04170762747526169,
+      "cosSOZ_max_abs_delta": 0.042011260986328125,
+      "cosRAA_mean_abs_delta": 0.03209146112203598,
+      "cosRAA_max_abs_delta": 0.03259110450744629,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-10-31 03:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202510/202510311100_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.021569309756159782,
+      "cosSOZ_max_abs_delta": 0.02192556858062744,
+      "cosRAA_mean_abs_delta": 0.061460789293050766,
+      "cosRAA_max_abs_delta": 0.06258261203765869,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-10-31 03:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202510/202510311100_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.02078910544514656,
+      "cosSOZ_max_abs_delta": 0.021142661571502686,
+      "cosRAA_mean_abs_delta": 0.056011125445365906,
+      "cosRAA_max_abs_delta": 0.056921303272247314,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-11-09 04:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202511/202511091245_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005894782487303019,
+      "cosSOZ_max_abs_delta": 0.006222426891326904,
+      "cosRAA_mean_abs_delta": 0.014236769638955593,
+      "cosRAA_max_abs_delta": 0.014871954917907715,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-11-09 04:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202511/202511091245_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005783201195299625,
+      "cosSOZ_max_abs_delta": 0.006102800369262695,
+      "cosRAA_mean_abs_delta": 0.011462053284049034,
+      "cosRAA_max_abs_delta": 0.01193302869796753,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-11-20 06:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202511/202511201430_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.027424953877925873,
+      "cosSOZ_max_abs_delta": 0.027727723121643066,
+      "cosRAA_mean_abs_delta": 0.02040436863899231,
+      "cosRAA_max_abs_delta": 0.020911872386932373,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-11-20 06:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202511/202511201430_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.026591714471578598,
+      "cosSOZ_max_abs_delta": 0.026895880699157715,
+      "cosRAA_mean_abs_delta": 0.020568111911416054,
+      "cosRAA_max_abs_delta": 0.020976126194000244,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-11-28 04:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202511/202511281245_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0038712008390575647,
+      "cosSOZ_max_abs_delta": 0.004107654094696045,
+      "cosRAA_mean_abs_delta": 0.011192062869668007,
+      "cosRAA_max_abs_delta": 0.011679291725158691,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-11-28 04:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202511/202511281245_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.003803403815254569,
+      "cosSOZ_max_abs_delta": 0.004033863544464111,
+      "cosRAA_mean_abs_delta": 0.009169545024633408,
+      "cosRAA_max_abs_delta": 0.009537339210510254,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-12-07 09:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202512/202512071730_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.029240597039461136,
+      "cosSOZ_max_abs_delta": 0.02935292012989521,
+      "cosRAA_mean_abs_delta": 0.012031963095068932,
+      "cosRAA_max_abs_delta": 0.01231294870376587,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-12-07 09:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202512/202512071730_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.02829809859395027,
+      "cosSOZ_max_abs_delta": 0.028418824076652527,
+      "cosRAA_mean_abs_delta": 1.632643222808838,
+      "cosRAA_max_abs_delta": 1.6365890502929688,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-12-19 03:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202512/202512191100_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.003988968674093485,
+      "cosSOZ_max_abs_delta": 0.004050135612487793,
+      "cosRAA_mean_abs_delta": 0.008771962486207485,
+      "cosRAA_max_abs_delta": 0.008927106857299805,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-12-19 03:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202512/202512191100_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.003845891682431102,
+      "cosSOZ_max_abs_delta": 0.003906667232513428,
+      "cosRAA_mean_abs_delta": 0.008100399747490883,
+      "cosRAA_max_abs_delta": 0.00822746753692627,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2025-12-26 08:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202512/202512261615_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0017519850516691804,
+      "cosSOZ_max_abs_delta": 0.0017625987529754639,
+      "cosRAA_mean_abs_delta": 0.0009111587423831224,
+      "cosRAA_max_abs_delta": 0.0009320974349975586,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2025-12-26 08:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202512/202512261615_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0016965169925242662,
+      "cosSOZ_max_abs_delta": 0.0017072856426239014,
+      "cosRAA_mean_abs_delta": 0.0009762512054294348,
+      "cosRAA_max_abs_delta": 0.0009942054748535156,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-01-04 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601041030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008673624135553837,
+      "cosSOZ_max_abs_delta": 0.008772194385528564,
+      "cosRAA_mean_abs_delta": 0.01452147588133812,
+      "cosRAA_max_abs_delta": 0.014732301235198975,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-01-04 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601041030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008371440693736076,
+      "cosSOZ_max_abs_delta": 0.008470118045806885,
+      "cosRAA_mean_abs_delta": 0.013825217261910439,
+      "cosRAA_max_abs_delta": 0.014004528522491455,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-01-12 08:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601121600_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.023037035018205643,
+      "cosSOZ_max_abs_delta": 0.02319219708442688,
+      "cosRAA_mean_abs_delta": 0.0132003678008914,
+      "cosRAA_max_abs_delta": 0.01349872350692749,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-01-12 08:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601121600_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.022311607375741005,
+      "cosSOZ_max_abs_delta": 0.022471100091934204,
+      "cosRAA_mean_abs_delta": 0.013966850936412811,
+      "cosRAA_max_abs_delta": 0.014212727546691895,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-01-20 01:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601200915_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.030295558273792267,
+      "cosSOZ_max_abs_delta": 0.03050437569618225,
+      "cosRAA_mean_abs_delta": 0.029131080955266953,
+      "cosRAA_max_abs_delta": 0.02942335605621338,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-01-20 01:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601200915_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.029274776577949524,
+      "cosSOZ_max_abs_delta": 0.02948939800262451,
+      "cosRAA_mean_abs_delta": 0.02975272387266159,
+      "cosRAA_max_abs_delta": 0.030016452074050903,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-01-31 03:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601311115_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01732821948826313,
+      "cosSOZ_max_abs_delta": 0.017614006996154785,
+      "cosRAA_mean_abs_delta": 0.045873865485191345,
+      "cosRAA_max_abs_delta": 0.04670840501785278,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-01-31 03:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202601/202601311115_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.016701579093933105,
+      "cosSOZ_max_abs_delta": 0.01698523759841919,
+      "cosRAA_mean_abs_delta": 0.041904617100954056,
+      "cosRAA_max_abs_delta": 0.042581140995025635,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-02-11 04:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202602/202602111215_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005299818702042103,
+      "cosSOZ_max_abs_delta": 0.005591034889221191,
+      "cosRAA_mean_abs_delta": 0.038132645189762115,
+      "cosRAA_max_abs_delta": 0.03902500867843628,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-02-11 04:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202602/202602111215_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005055720917880535,
+      "cosSOZ_max_abs_delta": 0.005339562892913818,
+      "cosRAA_mean_abs_delta": 0.03259605914354324,
+      "cosRAA_max_abs_delta": 0.033263325691223145,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-02-18 05:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202602/202602181315_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008514376357197762,
+      "cosSOZ_max_abs_delta": 0.008808314800262451,
+      "cosRAA_mean_abs_delta": 0.0027367116417735815,
+      "cosRAA_max_abs_delta": 0.0031504034996032715,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-02-18 05:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202602/202602181315_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.008307141251862049,
+      "cosSOZ_max_abs_delta": 0.008595287799835205,
+      "cosRAA_mean_abs_delta": 0.0015335448551923037,
+      "cosRAA_max_abs_delta": 0.0018428564071655273,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-02-27 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202602/202602271130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.014037679880857468,
+      "cosSOZ_max_abs_delta": 0.014317572116851807,
+      "cosRAA_mean_abs_delta": 0.055295180529356,
+      "cosRAA_max_abs_delta": 0.056407034397125244,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-02-27 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202602/202602271130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.013517564162611961,
+      "cosSOZ_max_abs_delta": 0.013794124126434326,
+      "cosRAA_mean_abs_delta": 0.0491488054394722,
+      "cosRAA_max_abs_delta": 0.05002337694168091,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-03-08 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202603/202603081200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006529901176691055,
+      "cosSOZ_max_abs_delta": 0.00676196813583374,
+      "cosRAA_mean_abs_delta": 0.04628174006938934,
+      "cosRAA_max_abs_delta": 0.047326087951660156,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-03-08 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202603/202603081200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006261757109314203,
+      "cosSOZ_max_abs_delta": 0.006488919258117676,
+      "cosRAA_mean_abs_delta": 0.03896699845790863,
+      "cosRAA_max_abs_delta": 0.039725542068481445,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-03-14 10:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202603/202603141830_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.03533077985048294,
+      "cosSOZ_max_abs_delta": 0.03542419150471687,
+      "cosRAA_mean_abs_delta": 1.2958564758300781,
+      "cosRAA_max_abs_delta": 1.3028419017791748,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-03-14 10:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202603/202603141830_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.03418111428618431,
+      "cosSOZ_max_abs_delta": 0.034285783767700195,
+      "cosRAA_mean_abs_delta": 1.277280569076538,
+      "cosRAA_max_abs_delta": 1.2832401990890503,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-03-26 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202603/202603261130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006052400916814804,
+      "cosSOZ_max_abs_delta": 0.006179392337799072,
+      "cosRAA_mean_abs_delta": 0.03478454053401947,
+      "cosRAA_max_abs_delta": 0.035566627979278564,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-03-26 03:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202603/202603261130_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005826544016599655,
+      "cosSOZ_max_abs_delta": 0.005951821804046631,
+      "cosRAA_mean_abs_delta": 0.030559811741113663,
+      "cosRAA_max_abs_delta": 0.031172513961791992,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-04-01 08:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604011645_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.013274285942316055,
+      "cosSOZ_max_abs_delta": 0.013343214988708496,
+      "cosRAA_mean_abs_delta": 0.007558202371001244,
+      "cosRAA_max_abs_delta": 0.007703155279159546,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-04-01 08:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604011645_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012850988656282425,
+      "cosSOZ_max_abs_delta": 0.012923002243041992,
+      "cosRAA_mean_abs_delta": 0.008520691655576229,
+      "cosRAA_max_abs_delta": 0.00865522027015686,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-04-07 23:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604080700_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007512160111218691,
+      "cosSOZ_max_abs_delta": 0.00753609836101532,
+      "cosRAA_mean_abs_delta": 0.003428833093494177,
+      "cosRAA_max_abs_delta": 0.003482997417449951,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-04-07 23:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604080700_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007266244385391474,
+      "cosSOZ_max_abs_delta": 0.007292568683624268,
+      "cosRAA_mean_abs_delta": 0.003938321489840746,
+      "cosRAA_max_abs_delta": 0.0039875805377960205,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-04-14 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604141030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0006950902752578259,
+      "cosSOZ_max_abs_delta": 0.0007031559944152832,
+      "cosRAA_mean_abs_delta": 0.0015603371430188417,
+      "cosRAA_max_abs_delta": 0.0015928596258163452,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-04-14 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604141030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0006708202417939901,
+      "cosSOZ_max_abs_delta": 0.0006787776947021484,
+      "cosRAA_mean_abs_delta": 0.0016757661942392588,
+      "cosRAA_max_abs_delta": 0.0017010271549224854,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-04-21 03:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604211100_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0017648336943238974,
+      "cosSOZ_max_abs_delta": 0.0017916560173034668,
+      "cosRAA_mean_abs_delta": 0.006972485221922398,
+      "cosRAA_max_abs_delta": 0.007128238677978516,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-04-21 03:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202604/202604211100_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.001701592467725277,
+      "cosSOZ_max_abs_delta": 0.0017282366752624512,
+      "cosRAA_mean_abs_delta": 0.0072152744978666306,
+      "cosRAA_max_abs_delta": 0.0073203444480896,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-05-02 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605021030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.005476079881191254,
+      "cosSOZ_max_abs_delta": 0.005540132522583008,
+      "cosRAA_mean_abs_delta": 0.010761134326457977,
+      "cosRAA_max_abs_delta": 0.01110641099512577,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-05-02 02:30:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605021030_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0052847908809781075,
+      "cosSOZ_max_abs_delta": 0.0053490400314331055,
+      "cosRAA_mean_abs_delta": 0.012852032668888569,
+      "cosRAA_max_abs_delta": 0.01315125823020935,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-05-13 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605140745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01257309690117836,
+      "cosSOZ_max_abs_delta": 0.012627512216567993,
+      "cosRAA_mean_abs_delta": 0.005185569636523724,
+      "cosRAA_max_abs_delta": 0.0053036510944366455,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-05-13 23:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605140745_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012157679535448551,
+      "cosSOZ_max_abs_delta": 0.01221582293510437,
+      "cosRAA_mean_abs_delta": 0.006300905719399452,
+      "cosRAA_max_abs_delta": 0.006409436464309692,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-05-19 22:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605200615_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.012584082782268524,
+      "cosSOZ_max_abs_delta": 0.012620419263839722,
+      "cosRAA_mean_abs_delta": 0.004940589889883995,
+      "cosRAA_max_abs_delta": 0.0050528645515441895,
+      "day_mask_mismatch_pixels": 13
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-05-19 22:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605200615_0_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.01217520609498024,
+      "cosSOZ_max_abs_delta": 0.012214995920658112,
+      "cosRAA_mean_abs_delta": 0.005693010985851288,
+      "cosRAA_max_abs_delta": 0.00579679012298584,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-05-26 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605261200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0013528501149266958,
+      "cosSOZ_max_abs_delta": 0.0014119148254394531,
+      "cosRAA_mean_abs_delta": 0.04779862239956856,
+      "cosRAA_max_abs_delta": 0.050305724143981934,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-05-26 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202605/202605261200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.0012944876216351986,
+      "cosSOZ_max_abs_delta": 0.001352071762084961,
+      "cosRAA_mean_abs_delta": 0.04190134257078171,
+      "cosRAA_max_abs_delta": 0.04381829500198364,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-05-31 22:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606010645_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007902362383902073,
+      "cosSOZ_max_abs_delta": 0.007925271987915039,
+      "cosRAA_mean_abs_delta": 0.002911579329520464,
+      "cosRAA_max_abs_delta": 0.002982795238494873,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-05-31 22:45:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606010645_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.007644254714250565,
+      "cosSOZ_max_abs_delta": 0.007669582962989807,
+      "cosRAA_mean_abs_delta": 0.0034341795835644007,
+      "cosRAA_max_abs_delta": 0.003500699996948242,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-06-06 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606061515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.003100230824202299,
+      "cosSOZ_max_abs_delta": 0.0031267404556274414,
+      "cosRAA_mean_abs_delta": 0.001974456710740924,
+      "cosRAA_max_abs_delta": 0.0020557940006256104,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-06-06 07:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606061515_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.003004030790179968,
+      "cosSOZ_max_abs_delta": 0.0030307769775390625,
+      "cosRAA_mean_abs_delta": 0.0027668015100061893,
+      "cosRAA_max_abs_delta": 0.0028533339500427246,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-06-12 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606121200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 8.377432823181152e-05,
+      "cosSOZ_max_abs_delta": 8.726119995117188e-05,
+      "cosRAA_mean_abs_delta": 0.002155803609639406,
+      "cosRAA_max_abs_delta": 0.0024389326572418213,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-06-12 04:00:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606121200_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 8.020363748073578e-05,
+      "cosSOZ_max_abs_delta": 8.362531661987305e-05,
+      "cosRAA_mean_abs_delta": 0.002730374690145254,
+      "cosRAA_max_abs_delta": 0.002856343984603882,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "sili",
+      "target_time_utc": "2026-06-21 23:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606220715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006689306348562241,
+      "cosSOZ_max_abs_delta": 0.006712913513183594,
+      "cosRAA_mean_abs_delta": 0.0023641965817660093,
+      "cosRAA_max_abs_delta": 0.0024271011352539062,
+      "day_mask_mismatch_pixels": 0
+    },
+    {
+      "station": "zhujia",
+      "target_time_utc": "2026-06-21 23:15:00",
+      "old_aux": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202606/202606220715_1_aux.npz",
+      "cosSOZ_mean_abs_delta": 0.006469707004725933,
+      "cosSOZ_max_abs_delta": 0.00649532675743103,
+      "cosRAA_mean_abs_delta": 0.0028644907288253307,
+      "cosRAA_max_abs_delta": 0.002924025058746338,
+      "day_mask_mismatch_pixels": 0
+    }
+  ]
+}

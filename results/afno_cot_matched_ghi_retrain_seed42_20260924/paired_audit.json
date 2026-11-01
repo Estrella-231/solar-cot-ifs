@@ -1,0 +1,112 @@
+{
+  "AFNO_train_forecasts_in_sample": true,
+  "groups": {
+    "AC_F": {
+      "Sili": {
+        "afno": {
+          "bias_wm2": -30.807425366924512,
+          "init_days": 72,
+          "n": 49806,
+          "rmse_wm2": 167.17989766314952
+        },
+        "delta_afno_minus_simvp_wm2": 0.7785834573807335,
+        "pair_rows_match": true,
+        "simvp": {
+          "bias_wm2": -23.000430439280432,
+          "init_days": 72,
+          "n": 49806,
+          "rmse_wm2": 166.40131420576878
+        }
+      },
+      "Zhujia": {
+        "afno": {
+          "bias_wm2": -0.14087813907086105,
+          "init_days": 72,
+          "n": 50043,
+          "rmse_wm2": 132.51382953788382
+        },
+        "delta_afno_minus_simvp_wm2": -8.176950076830423,
+        "pair_rows_match": true,
+        "simvp": {
+          "bias_wm2": 19.258476463172695,
+          "init_days": 72,
+          "n": 50043,
+          "rmse_wm2": 140.69077961471424
+        }
+      }
+    },
+    "AC_ST": {
+      "Sili": {
+        "afno": {
+          "bias_wm2": -22.705137791972735,
+          "init_days": 72,
+          "n": 49806,
+          "rmse_wm2": 164.71090224550815
+        },
+        "delta_afno_minus_simvp_wm2": -0.6526050221904143,
+        "pair_rows_match": true,
+        "simvp": {
+          "bias_wm2": -25.51196525399427,
+          "init_days": 72,
+          "n": 49806,
+          "rmse_wm2": 165.36350726769857
+        }
+      },
+      "Zhujia": {
+        "afno": {
+          "bias_wm2": -1.1831257183613892,
+          "init_days": 72,
+          "n": 50043,
+          "rmse_wm2": 131.25313390995217
+        },
+        "delta_afno_minus_simvp_wm2": -6.169700998566441,
+        "pair_rows_match": true,
+        "simvp": {
+          "bias_wm2": 23.913486943377976,
+          "init_days": 72,
+          "n": 50043,
+          "rmse_wm2": 137.4228349085186
+        }
+      }
+    }
+  },
+  "paired_bootstrap": {
+    "AC_F": {
+      "ci95_wm2": [
+        -7.9254247077965845,
+        0.5664103889571657
+      ],
+      "days": 72,
+      "equal_station_delta_afno_minus_simvp_wm2": -3.6964899035320666,
+      "probability_afno_rmse_lower": 0.9534,
+      "repetitions": 5000,
+      "seed": 20260924,
+      "unit": "paired BJT initialization day, jointly resampling all leads and both stations"
+    },
+    "AC_ST": {
+      "ci95_wm2": [
+        -6.266744142646979,
+        -0.4553457577623162
+      ],
+      "days": 72,
+      "equal_station_delta_afno_minus_simvp_wm2": -3.390823296462426,
+      "probability_afno_rmse_lower": 0.9884,
+      "repetitions": 5000,
+      "seed": 20260924,
+      "unit": "paired BJT initialization day, jointly resampling all leads and both stations"
+    }
+  },
+  "seed": 42,
+  "state": "PASS_PAIRED_ROW_AUDIT_EXPLORATORY_VALIDATION",
+  "test_used": false,
+  "training_contract": {
+    "batch": 1536,
+    "epochs_max": 10,
+    "groups": [
+      "AC_F",
+      "AC_ST"
+    ],
+    "same_train_only_cot_normalization": true
+  },
+  "validation_selection_warning": "Best epoch selected on this validation split; this is exploratory, not independent test evidence."
+}

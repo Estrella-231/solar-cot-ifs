@@ -1,0 +1,89 @@
+{
+  "state": "VALIDATION_ONLY_ORACLE_ALIGNMENT_DIAGNOSTIC_NOT_DEPLOYABLE",
+  "region_model": "Hubei attempt12 SimVP-to-frozen-R COT bank",
+  "target": "frozen R applied to observed future AGRI (offline proxy); CPP only supplies common target mask",
+  "interpretation": "per-case spatial shift and scale are fitted against future proxy and are unattainable at forecast issue time; they diagnose error type, not forecast skill",
+  "fixed_support": "CPP-valid pixels in central 12x12; support eroded by shift radius 2 pixels so all shifts use identical target pixels without wraparound",
+  "max_integer_shift_pixels_each_axis": 2,
+  "matched_pair_count": 1164,
+  "target_date_count": 16,
+  "target_dates_bjt": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302"
+  ],
+  "unique_initializations": 114,
+  "omitted_pair_counts": {
+    "target_missing": 4684,
+    "init_missing": 664,
+    "no_valid_pixels": 0
+  },
+  "overall_common_pixel_RMSE": {
+    "forecast": 5.623966805411377,
+    "persistence": 5.975395908913288,
+    "oracle_shift": 5.153767330414387,
+    "oracle_scale": 2.367012865028699,
+    "oracle_shift_scale": 2.1822146844777874,
+    "n_pixels": 167504
+  },
+  "overall_paired_target_date_bootstrap": {
+    "persistence": {
+      "rmse_difference_vs_forecast": 0.3514291035019115,
+      "date_bootstrap_95ci": [
+        -0.6800054951443552,
+        1.4259771496725864
+      ]
+    },
+    "oracle_shift": {
+      "rmse_difference_vs_forecast": -0.4701994749969902,
+      "date_bootstrap_95ci": [
+        -0.6572424295511495,
+        -0.23975341307838324
+      ]
+    },
+    "oracle_scale": {
+      "rmse_difference_vs_forecast": -3.256953940382678,
+      "date_bootstrap_95ci": [
+        -4.845017180749925,
+        -1.511335224064774
+      ]
+    },
+    "oracle_shift_scale": {
+      "rmse_difference_vs_forecast": -3.4417521209335895,
+      "date_bootstrap_95ci": [
+        -5.049082599024092,
+        -1.6925590461495144
+      ]
+    }
+  },
+  "n_bootstrap": 4000,
+  "bootstrap_seed": 20261021,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "input_sha256": {
+    "validation.npy": "3e4a04d575f09fe678fea87da9585db8b47005299e2703a0b93c2b7bf52e6393",
+    "keys.csv": "1f32d09268ac1a5446bb54c717b0cc6e663ca198c3d516d9da821cc94b28f134",
+    "val_keys.csv": "87b7e95549074f53d99ad66735726f1b67cfcfbeca99164d15104c32ec7412f1",
+    "val_reference_cpp_cot.npy": "f401ab35f1ea5f0ad411efa07eb836a7676cabb440c43d83158030c33e84e67f",
+    "val_valid_mask.npy": "ee2b8ea789de0f876110801648d8aba640e69545af7bddf2d2d0561483b2d7a3",
+    "val_prediction_cot.npy": "c4ed659d776bab20c5fd8f3fb3798196c6d5e1ae2c9fd5c5e7f975c697fcf1bc"
+  },
+  "prediction_array_provenance_note": "val_prediction_cot.npy has no digest field in the original source manifest; its local SHA is recorded here, and all 16 full-patch forecast/persistence/offline-future RMSEs and common-support counts were independently reproduced against the archived official_recalc CSV before oracle analysis.",
+  "reproduced_archived_full_patch_rows": 48,
+  "pair_level_output_csv": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_solar_geometry_repair_20261021\\cot_texture_dynamics_audit_attempt12\\oracle_alignment_pairs_attempt12.csv",
+  "pair_level_output_sha256": "3aa790b325e690b98cec0fe4c6c09830eb3ba59f4c82199a9c8d8af4b53cff57",
+  "output_csv": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_solar_geometry_repair_20261021\\cot_texture_dynamics_audit_attempt12\\oracle_alignment_by_lead_attempt12.csv"
+}

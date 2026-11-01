@@ -1,0 +1,70 @@
+{
+  "state": "HUBEI_FORECAST_GHI_SEED_VALIDATION_AUDIT_PASS_TEST_CLOSED",
+  "seed": 44,
+  "run_metadata_sha256": "560d8d980d6e579e8be89b6b98e163fe3584b4b45e53433161898039ba2fa4a7",
+  "pack_report_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+  "test_payloads_read": 0,
+  "scope": "validation predictions only; no test or buffer payloads opened",
+  "stations": {
+    "Niushou": {
+      "FA": {
+        "n": 2316,
+        "rmse_wm2_recomputed_fp64": 79.04766159871687,
+        "mae_wm2_recomputed_fp64": 52.103944915809244,
+        "prediction_bundle_sha256": "645972e42ee09d67e3e70bcd19ceff9e3412bc2f596bad7de3f1e7574a227895",
+        "checkpoint_sha256": "fa005e3dc1b9ff5e9ae4d098f0d861227e4d16d06743a0bb7f99be1eb5708ed6",
+        "saved_metric_json_sha256": "bb50bba88b6d8d8c8c682afa0962f8886c8dc6494d7421c240c8696746e8b143"
+      },
+      "FAC": {
+        "n": 2316,
+        "rmse_wm2_recomputed_fp64": 78.41287507098986,
+        "mae_wm2_recomputed_fp64": 51.69567471205873,
+        "prediction_bundle_sha256": "174f58e7923ae1ac3d4ad9be53f54edcc4e6e6a36fd28dd0daa26c288f5da9b4",
+        "checkpoint_sha256": "a8e630768581e2a037f99fe7b24dfb7e8249be8d232df7a1160c4b8783ea3fce",
+        "saved_metric_json_sha256": "32614e1baa91745cc677081d806a97bf9621cfaf438a9704561b1b1c76a92b8b"
+      },
+      "paired_keys_and_truth_identical": true,
+      "FAC_minus_FA_rmse_wm2": -0.6347865277270159
+    },
+    "Wangzhai": {
+      "FA": {
+        "n": 2112,
+        "rmse_wm2_recomputed_fp64": 72.19916036155489,
+        "mae_wm2_recomputed_fp64": 44.82180583649085,
+        "prediction_bundle_sha256": "6846ff11b67d9f512f206d3e77f355ab63a684b15c33d358e3ddbf697671250e",
+        "checkpoint_sha256": "c6b241ef563ccc4fa22bf27b97f72681a34aeb4896aff025f902166a4536d314",
+        "saved_metric_json_sha256": "1c795d237c3112128d5ea50e97203f6958cf5d9a4de83ad328a85a22b7c2a099"
+      },
+      "FAC": {
+        "n": 2112,
+        "rmse_wm2_recomputed_fp64": 73.02791762307267,
+        "mae_wm2_recomputed_fp64": 46.04095371913078,
+        "prediction_bundle_sha256": "f643c5347b2e94d0079acd78062fadca39c90f116c8ab7402c01c8b491e6b6e9",
+        "checkpoint_sha256": "6faae770e3857c5417299c1ab2b1cf63c0ed4f87ed57c3bb0b46a969c48e5784",
+        "saved_metric_json_sha256": "8b171c0667167cedbc7aca660d87d7ac936e994d49b6dabc014793edfb656aab"
+      },
+      "paired_keys_and_truth_identical": true,
+      "FAC_minus_FA_rmse_wm2": 0.8287572615177794
+    },
+    "Mizhuang": {
+      "FA": {
+        "n": 2295,
+        "rmse_wm2_recomputed_fp64": 83.28123806468248,
+        "mae_wm2_recomputed_fp64": 51.21649584929035,
+        "prediction_bundle_sha256": "436684da1c21bf787ffb462967abf987864984845676c9797bc1c8bad8631426",
+        "checkpoint_sha256": "7534039a3ac732437ed6f0c70eabbd93629918bbc5da5f98fd85d127c25030c8",
+        "saved_metric_json_sha256": "b8de027565e3ff074250dbb5671b9d05112b19cf1ba767cff500724eb4d3175e"
+      },
+      "FAC": {
+        "n": 2295,
+        "rmse_wm2_recomputed_fp64": 82.94557989619912,
+        "mae_wm2_recomputed_fp64": 51.730458587371544,
+        "prediction_bundle_sha256": "c19298937f61e198fafeac48b7d692da478ee73cb9c7bb331eeff653abefb590",
+        "checkpoint_sha256": "97bc85960c22fd63b647e06ac10918dabf5503b428b75f50c9d05abbb40b79cb",
+        "saved_metric_json_sha256": "b908e42fb331440417938f8cbbe0fd212da357109a3dca589631b91efde2c8a0"
+      },
+      "paired_keys_and_truth_identical": true,
+      "FAC_minus_FA_rmse_wm2": -0.33565816848336283
+    }
+  }
+}

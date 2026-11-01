@@ -1,0 +1,60 @@
+#!/bin/bash
+#PBS -N hn_afno_cot_ghi_pair
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/afno_cot_matched_ghi_retrain_20260924.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+TRIAD=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanBackboneTriad_20260921
+BASE_FORECAST=$ROOT/data/forecast_cot_trajectory_trainval_20260918_v1
+BASE_INDEX=$ROOT/data/frozen_forecast_trainval_20260907_v1
+HISTORY=$ROOT/data/history_cot_trajectory_trainval_20260918_v1
+AFNO_VAL=$ROOT/data/afno_cot_trajectory_val_20260923_v1
+AFNO_TRAIN=$ROOT/data/afno_cot_trajectory_train_20260924_v1
+AFNO_BANK=$ROOT/data/forecast_cot_trajectory_afno_trainval_20260924_v1
+HEAD_REF=$ROOT/runs/causal_cot_trajectory_solarresnet_v5_b1_seed42_iofix_20260921/complete.json
+OUT=$ROOT/runs/afno_cot_matched_ghi_retrain_seed42_20260924
+cd "$ROOT"
+hostname
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -m py_compile scripts/build_afno_forecast_cot_val_20260923.py scripts/assemble_afno_cot_trainval_bank_20260924.py scripts/train_causal_cot_trajectory_solarresnet_v5.py
+test -f "$BASE_FORECAST/audit.json"
+test -f "$HISTORY/audit.json"
+test -f "$AFNO_VAL/complete.json"
+test -f "$HEAD_REF"
+test ! -e "$OUT"
+if ! test -f "$AFNO_TRAIN/complete.json"; then
+  test ! -e "$AFNO_TRAIN"
+  python -u scripts/build_afno_forecast_cot_val_20260923.py \
+    --triad-root "$TRIAD" --hunan-source /public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSimVPFull_20260906 \
+    --solar-root "$ROOT" --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+    --output "$AFNO_TRAIN" --split train --batch 8 --workers 2 \
+    > "$ROOT/build_afno_forecast_cot_train_20260924.log" 2>&1
+fi
+if ! test -f "$AFNO_BANK/audit.json"; then
+  test ! -e "$AFNO_BANK"
+  python -u scripts/assemble_afno_cot_trainval_bank_20260924.py \
+    --train "$AFNO_TRAIN" --val "$AFNO_VAL" --baseline "$BASE_INDEX" --output "$AFNO_BANK" \
+    > "$ROOT/assemble_afno_cot_trainval_20260924.log" 2>&1
+fi
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py \
+  --root "$ROOT" --forecast-dir "$BASE_FORECAST" --history-dir "$HISTORY" \
+  --out "$OUT/simvp_cot" --epochs 10 --batch 1536 --seed 42 \
+  --cot-normalization-json "$HEAD_REF" --groups AC_F AC_ST --allow-unverified-cpp \
+  > "$ROOT/train_afno_cot_matched_ghi_simvp_seed42_20260924.log" 2>&1
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py \
+  --root "$ROOT" --forecast-dir "$AFNO_BANK" --history-dir "$HISTORY" \
+  --out "$OUT/afno_cot" --epochs 10 --batch 1536 --seed 42 \
+  --cot-normalization-json "$HEAD_REF" --groups AC_F AC_ST --allow-unverified-cpp \
+  > "$ROOT/train_afno_cot_matched_ghi_afno_seed42_20260924.log" 2>&1
+echo AFNO_COT_MATCHED_GHI_RETRAIN_COMPLETE

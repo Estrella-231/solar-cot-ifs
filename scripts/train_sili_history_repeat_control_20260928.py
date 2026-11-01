@@ -108,7 +108,7 @@ def aggregate_snapshot(model, data, days, arm, update, eval_batch=16):
             pred = model(history_input(h, f, adv, motion, arm), adv)[:, 0]
             target = torch.expm1(y)
             fields = {
-                "simvp": torch.expm1(f[:, 0]).expand(-1, 16, -1, -1),
+                "simvp": torch.expm1(f[:, :, 0]),
                 "persistence": torch.expm1(h[:, -1, 0]).unsqueeze(1).expand(-1, 16, -1, -1),
                 "transport": torch.expm1(adv[:, 0]).expand(-1, 16, -1, -1),
                 "learned": torch.expm1(pred),

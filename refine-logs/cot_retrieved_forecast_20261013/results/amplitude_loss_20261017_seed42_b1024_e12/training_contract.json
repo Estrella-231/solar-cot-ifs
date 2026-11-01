@@ -1,0 +1,44 @@
+{
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "seed": 42,
+  "train_sequences": 28806,
+  "eligible_train_sequences_before_subsample": 28806,
+  "train_sequence_station_samples_with_future_support": 57342,
+  "val_station_samples": 6280,
+  "batch_size": 1024,
+  "epochs": 12,
+  "bank_manifest": {
+    "state": "COMPLETE",
+    "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+    "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+    "monthly_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+    "R_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+    "R_validation_audit": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/seed42_v1/validation_audit_fp64.json",
+    "R_validation_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+    "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+    "R_source_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+    "R_input": "13 physical AGRI channels + cosSOZ/cosRAA/day_mask; station-centered 16x16 crop",
+    "R_output": "nonnegative log1p(COT), FP32 inference, no autocast",
+    "layout": "[unique_trainval_target_frame, station(sili,zhujia), 1, 16, 16]",
+    "frames_total": 55733,
+    "train_frames": 51236,
+    "val_frames": 4497,
+    "frames_with_source_errors": 0,
+    "frames_complete": 55733,
+    "mean_input_valid_fraction": [
+      0.9928752779960632,
+      0.9929152131080627
+    ],
+    "test_payload_opened": false,
+    "errors": []
+  },
+  "sequence_cpp_pack_manifest_sha256": "e7bf863f3603a55b634d508de198505503c8d3a9d24b1e7faee881942fe352b0",
+  "frame_sidecar_manifest_sha256": "05a16dc6111a1eb48a83a729be72f151ef0699ac52e3f62f8365213aff18b3e5",
+  "objective": {
+    "base": "equal-lead masked MSE(log1p(COT)/log(101))",
+    "physical_amplitude_auxiliary_weight": 0.1,
+    "physical_amplitude_auxiliary": "MSE((COT_pred-COT_target)/100), equal-weight over active leads"
+  },
+  "init_state_sha256": "b292e661905ece3d493f09cadbd52ea35d7ddcc20266c1ee635d0ebb9def4a87",
+  "test_payload_opened": false
+}

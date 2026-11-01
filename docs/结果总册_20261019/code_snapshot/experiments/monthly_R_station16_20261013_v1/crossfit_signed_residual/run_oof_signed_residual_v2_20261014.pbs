@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N signed_oof_v2
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/signed_oof_resid_v2_20261014.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+PACK=$EXP/data/ghi_head_pack_new_r_v1
+BASE=$EXP/results
+OOF=$EXP/results/signed_residual_oof_a_20261014_v1
+RES=$EXP/results/signed_residual_oof_v2_20261014_v1
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -s "$PACK/pack_manifest.json"
+test "$(grep -c '"state": "COMPLETE"' "$OOF/oof_status.json")" -eq 1
+test ! -e "$RES/experiment_status.json"
+mkdir -p "$EXP/logs"
+echo "PBS_JOBID=$PBS_JOBID GPU=$GPU HOST=$(hostname)"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+cd "$EXP"
+python -u crossfit_signed_residual/train_signed_residual_oof_v2.py \
+  --pack "$PACK" --oof-root "$OOF" --baseline-root "$BASE" \
+  --output-root "$RES" --seeds 42 43 44 --stations sili zhujia \
+  --epochs 30 --batch-size 2000
+echo OOF_SIGNED_RESIDUAL_V2_COMPLETE

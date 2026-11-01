@@ -1,0 +1,61 @@
+#!/bin/bash
+#PBS -N cot_aux_svp
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/experiments/cot_aware_simvp_20261017
+CODE=$EXP/code
+BASE=$PROJECT/experiments/hunan_monthly_block_20261002
+RROOT=$PROJECT/experiments/monthly_R_station16_20261013_v1
+RBANK=$RROOT/results/new_monthly_R_seed42_cot_bank_v1
+PACK=$PROJECT/refine-logs/cot_retrieved_forecast_20261013/data/sequence_cpp_pack_20261017
+SIDECARS=$PROJECT/refine-logs/cot_retrieved_forecast_20261013/data/frame_sidecars_20261017_v1
+CONTROL=$PROJECT/experiments/hunan_simvp_supervision_20261003_v2/results_v2
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SCRATCH=/tmp/slfu_cot_aux_simvp_20261017
+CACHE=$SCRATCH/frames
+OUT=$EXP/results/seed42_cot_aux_v1
+
+if [ -e "$EXP/results/seed42_cot_aux_v1.lock" ] || [ -e "$OUT" ]; then
+  echo "REFUSE_DUPLICATE_RUN"
+  exit 31
+fi
+mkdir -p "$EXP/results" "$SCRATCH" "$CACHE"
+touch "$EXP/results/seed42_cot_aux_v1.lock"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+(cd "$CODE" && sha256sum -c SHA256SUMS)
+python -m py_compile "$CODE/cot_auxiliary.py" "$CODE/train_cot_aux_simvp.py" \
+  "$CODE/audit_cot_aux_validation.py" "$CODE/test_trainval_contract.py" \
+  "$CODE/test_audit_cot_aux_validation.py"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+GPU_COUNT=$(printf '%s\n' "$GPU_TEXT" | wc -l)
+if [ -z "$GPU_TEXT" ] || [ "$GPU_COUNT" -ne 1 ]; then
+  echo "REFUSE: expected exactly one allocated node22 GPU, got $GPU_COUNT: $GPU_TEXT"
+  exit 32
+fi
+GPU_ID=$GPU_TEXT
+export CUDA_VISIBLE_DEVICES="$GPU_ID"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_ID NODE=$(hostname)"
+nvidia-smi -i "$GPU_ID" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+df -h "$SCRATCH"
+
+python -u "$CODE/train_cot_aux_simvp.py" \
+  --project "$PROJECT" --source "$BASE/code" --agri-root "$DATA" --cache "$CACHE" \
+  --manifests "$BASE/manifests_v1" \
+  --checkpoint "$BASE/runs/simvp_seed42_v1/training/best.pt" \
+  --r-root "$RROOT" --r-bank "$RBANK" --cpp-pack "$PACK" --sidecars "$SIDECARS" \
+  --control "$CONTROL" --output "$OUT" --workers 4
+python -u "$CODE/audit_cot_aux_validation.py" \
+  --pack "$PACK" --sidecars "$SIDECARS" --r-bank "$RBANK" \
+  --run "$OUT" --mse-control "$CONTROL/mse" \
+  --out "$OUT/independent_cot_audit.json"
+echo "COT_AUX_SIMVP_JOB_COMPLETE test_payloads_read=0"

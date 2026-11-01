@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N cot_r07_score
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/cot_value_first_20261013
+R=$ROOT/experiments/monthly_R_station16_20261013_v1
+BASE=$EXP/results/simvp_supervision_cot_allval_20261017_v2
+OUT=$BASE/scored_final
+test ! -e "$OUT"
+test -s "$BASE/mse/forecast_cot_val_bank.npz"
+test -s "$BASE/temporal/forecast_cot_val_bank.npz"
+test -s "$BASE/spatial/forecast_cot_val_bank.npz"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=8 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+python -m py_compile "$EXP/score_supervision_cot_allval_20261017_v2.py"
+python -u "$EXP/score_supervision_cot_allval_20261017_v2.py" \
+  --base "$BASE" --output "$OUT" \
+  --r-pack-rows "$R/data/pack_trainval_v1/rows.csv" \
+  --r-validation-predictions "$R/results/seed42_v1/validation_predictions.npz" \
+  --bootstrap-reps 2000
+echo SUPERVISION_COT_ALLVAL_V2_SCORE_COMPLETE test_payloads_read=0
+

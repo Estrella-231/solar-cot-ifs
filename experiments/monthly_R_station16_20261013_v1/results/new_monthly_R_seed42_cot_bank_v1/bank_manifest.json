@@ -1,0 +1,25 @@
+{
+  "state": "COMPLETE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "monthly_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+  "R_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+  "R_validation_audit": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/seed42_v1/validation_audit_fp64.json",
+  "R_validation_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "R_source_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+  "R_input": "13 physical AGRI channels + cosSOZ/cosRAA/day_mask; station-centered 16x16 crop",
+  "R_output": "nonnegative log1p(COT), FP32 inference, no autocast",
+  "layout": "[unique_trainval_target_frame, station(sili,zhujia), 1, 16, 16]",
+  "frames_total": 55733,
+  "train_frames": 51236,
+  "val_frames": 4497,
+  "frames_with_source_errors": 0,
+  "frames_complete": 55733,
+  "mean_input_valid_fraction": [
+    0.9928752779960632,
+    0.9929152131080627
+  ],
+  "test_payload_opened": false,
+  "errors": []
+}

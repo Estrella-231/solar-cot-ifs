@@ -1,0 +1,91 @@
+#!/bin/bash
+#PBS -N hb_al_prof
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+WORK="$ROOT/source_rebuild_20261017_v2"
+PACK="$WORK/pack"
+SCRIPTS="$ROOT/scripts"
+R_ASSET="$ROOT/assets/frozen_R_20261016"
+AL="$ROOT/al_normreload_20261017"
+FEATURES="$AL/features_r_dec1_trainval_rebuildv2"
+PROFILE="$AL/profile_al_rebuildv2.json"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$AL/logs"
+exec > "$AL/logs/feature_profile_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPTS:${PYTHONPATH:-}"
+
+test -s "$PACK/pack_report.json"
+test -s "$WORK/station_features/FEATURE_REPORT.json"
+test ! -e "$FEATURES"
+test ! -e "$PROFILE"
+"$PY" - "$ROOT" "$WORK" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+root,work=map(Path,sys.argv[1:])
+pack=work/'pack'; p=json.loads((pack/'pack_report.json').read_text())
+f=json.loads((work/'station_features/FEATURE_REPORT.json').read_text())
+def sha(x): return hashlib.sha256(x.read_bytes()).hexdigest()
+assert sha(pack/'pack_report.json')=='e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515'
+assert p['state']=='HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED'
+assert p['samples']==29351 and p['test_and_buffer_values_read']==0
+assert p['split_sha256']=='6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6'
+assert f['state']=='HUBEI_STATION_3X3_RAW_FEATURES_TRAINVAL_COMPLETE_TEST_CLOSED'
+assert f['feature_shape']==[24705,3,17,3,3] and f['test_payloads_read']==0
+assert f['split_sha256']==p['split_sha256']
+print('AL_REBUILD_V2_PREFLIGHT_PASS pack=%s rows=%d unique_frames=%d test_buffer=0'%(sha(pack/'pack_report.json'),p['samples'],p['feature_rows']),flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/extract_hubei_r_dec1_features_20261017.py" \
+  --pack "$PACK" \
+  --feature-rows "$WORK/station_features/rows.csv" \
+  --feature-report "$WORK/station_features/FEATURE_REPORT.json" \
+  --r-source "$R_ASSET/train_cot_repaired.py" \
+  --r-checkpoint "$R_ASSET/best.pt" \
+  --r-norm "$R_ASSET/norm.json" \
+  --agri-root "$ROOT/data16_label" \
+  --output "$FEATURES" \
+  --batch-frames 256 | tee "$AL/logs/extract_${PBS_JOBID//./_}.log"
+
+"$PY" - "$FEATURES/AL_FEATURE_REPORT.json" "$PACK/pack_report.json" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+f,p=map(Path,sys.argv[1:]); d=json.loads(f.read_text())
+assert d['state']=='HUBEI_FROZEN_R_DEC1_AL_FEATURE_BANK_TRAINVAL_COMPLETE_TEST_CLOSED'
+assert d['pack_report_sha256']==hashlib.sha256(p.read_bytes()).hexdigest()
+assert d['test_payloads_read']==0 and d['ghi_labels_read'] is False and d['cpp_payloads_read']==0
+assert d['ghi_pack_rows']==29351 and d['feature_shape']==[24705,3,16,3,3]
+print('AL_FEATURE_BANK_CURRENT_PACK_BOUND_PASS',flush=True)
+PY
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/train_hubei_ghi_head_al_20261017.py" \
+  --pack "$PACK" --r-feature-bank "$FEATURES" --output "$AL/profile_only_no_output" \
+  --seed 42 --batch-size 512 --profile-only --profile-output "$PROFILE" \
+  | tee "$AL/logs/profile_${PBS_JOBID//./_}.log"
+
+"$PY" - "$PROFILE" <<'PY'
+import json,sys
+from pathlib import Path
+p=json.loads(Path(sys.argv[1]).read_text())
+assert p['state']=='HUBEI_GHI_HEAD_AL_SINGLE_GPU_PROFILE_COMPLETE'
+assert p['input_mode']=='same_time' and p['test_payloads_read']==0
+assert p['measurements']
+print('AL_CURRENT_PACK_SINGLE_GPU_PROFILE_PASS',flush=True)
+PY

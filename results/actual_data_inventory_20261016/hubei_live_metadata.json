@@ -1,0 +1,813 @@
+{
+  "region": "hubei",
+  "root": "/home/Data_Pool/zjnu/hubei_cot_independent_20261016",
+  "checked_utc": "2026-10-16T10:15:22.817860+00:00",
+  "documents": {
+    "pack/pack_report.json": {
+      "sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+      "value": {
+        "state": "HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED",
+        "samples": 29351,
+        "samples_by_split_station": {
+          "train": {
+            "Niushou": 9104,
+            "Wangzhai": 8959,
+            "Mizhuang": 8832
+          },
+          "val": {
+            "Niushou": 856,
+            "Wangzhai": 784,
+            "Mizhuang": 816
+          }
+        },
+        "same_keys_all_arms": true,
+        "label": "15-min right-closed GHI window; raw field retains the original engineering W/m2 operating convention; station sensor/export calibration metadata remains unverified",
+        "target_time_basis": "BJT interval end",
+        "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+        "feature_rows": 24705,
+        "test_and_buffer_values_read": 0,
+        "source_precedence": "combined frozen train/validation AGRI and R-feature bank",
+        "normalization": "not applied here; trainer fits per-station statistics on train rows only",
+        "array_shapes": {
+          "agri_raw.npy": [
+            29351,
+            13,
+            3,
+            3
+          ],
+          "geometry.npy": [
+            29351,
+            2,
+            3,
+            3
+          ],
+          "cot.npy": [
+            29351,
+            1,
+            3,
+            3
+          ],
+          "ghi_wm2.npy": [
+            29351
+          ],
+          "clear_sky_wm2.npy": [
+            29351
+          ]
+        },
+        "array_sha256": {
+          "agri_raw.npy": "a632953841dd7b3b445b792c6de25d70db58beb6bb44e88e2ded79c89bf7ab9f",
+          "geometry.npy": "b6a4b4d010fe005706dbdd6f55e827201f1bad89a6235433ff92b0741163ec9b",
+          "cot.npy": "b401de7e9af7a5cd837a25902e0c475ad0aca3b040d45bb509c51175a09326b5",
+          "ghi_wm2.npy": "8b7970a981359e1d4af648cd3bf61088a2f24fcdc9bb5ed13e38d46f3cfa8605",
+          "clear_sky_wm2.npy": "671b5722036d2bc2d38d1104f1da16b93505022bba15ccac26c3ebe7f72c7d89"
+        },
+        "rows_sha256": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db"
+      }
+    },
+    "runs/seed42/run_metadata.json": {
+      "sha256": "8eae6cd623159276578d28bd96e217deba322a9fbe8409cdd1ffb775d0f88bc4",
+      "value": {
+        "state": "HUBEI_GHI_HEADS_SEED_COMPLETE",
+        "seed": 42,
+        "epochs": 30,
+        "batch_size": 512,
+        "pack_sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+        "trainer_sha256": "f420151f279f5d8a42e58a594594c2235b07e13cad6256536916e5f66378afa0",
+        "parameter_counts": {
+          "A": 22177,
+          "AC": 24489,
+          "AP": 24613
+        },
+        "stations": [
+          "Niushou",
+          "Wangzhai",
+          "Mizhuang"
+        ],
+        "arms": [
+          "A",
+          "AC",
+          "AP"
+        ],
+        "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+        "normalization": "station-specific train-only AGRI and log1p(COT); geometry physical",
+        "loss": "MSE((pred_kt*interval_clear_sky_GHI - observed_GHI)/1000)",
+        "target": "15-minute label in the original engineering W/m2 operating convention; sensor calibration/export metadata not independently verified",
+        "test_payloads_read": 0,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "elapsed_s": 59.804824352264404
+      }
+    },
+    "COMBINED_MANIFEST_REPORT.json": {
+      "sha256": "0dfe06c5b1bd8e273b663defb4a238b63fa8a97ffbe51f742d8c49098c07f135",
+      "value": {
+        "state": "HUBEI_EXTENDED_FROZEN_TRAINVAL_AGRI_PATH_MANIFEST_TEST_CLOSED",
+        "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+        "rows_by_split": {
+          "train": 22660,
+          "val": 2045
+        },
+        "rows_total": 24705,
+        "old_manifest_rows": 22061,
+        "supplement_rows": 2644,
+        "supplement_source_counts": {
+          "realtime": 2309,
+          "historical_fallback": 335
+        },
+        "test_path_rows": 0,
+        "test_payloads_read": 0,
+        "test_agri_payloads_read": 0,
+        "test_ghi_values_read": 0,
+        "manifest_sha256": "26d1e586f1ae994b0deeeb764d12f47190603eaa37d2c3591fd3b0ff50803534"
+      }
+    },
+    "R_BANK_REPORT.json": {
+      "sha256": "3e17338593158d5a32d5aa460e11047e8db759fcbdaf2c98bc3d89fe5603c377",
+      "value": {
+        "state": "HUBEI_FROZEN_R_FULL_AGRI_TRAINVAL_BANK_COMPLETE_TEST_CLOSED",
+        "trainval_rows_by_split": {
+          "train": 22660,
+          "val": 2045
+        },
+        "prediction_shape": [
+          24705,
+          1,
+          16,
+          16
+        ],
+        "finite_nonnegative": true,
+        "prediction_min_max": [
+          0.0,
+          74.91889953613281
+        ],
+        "test_payloads_read": 0,
+        "test_path_rows_in_manifest": 0,
+        "cpp_supervision_not_required_for_inference": true,
+        "normalization_source": "R fixed-v2 pack, fitted on CPP-supervised frozen train subset only",
+        "normalized_nonfinite_input_values_by_channel": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "day_mask_off_pixels": 3132754,
+        "pixels_total": 6324480,
+        "cot_sentinel": "0 where AGRI day_mask <= 0.5; model output not claimed outside daytime retrieval support",
+        "frozen_R_checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+        "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+        "manifest_sha256": "26d1e586f1ae994b0deeeb764d12f47190603eaa37d2c3591fd3b0ff50803534",
+        "norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+        "prediction_sha256": "36914776ba69085ce1a3a8dee058b357f09aa30c6f105fa7c0a17c0e52f22de0",
+        "rows_sha256": "cf4dd1c45e4b4d308d88e821f0255d04484bbb9c3b8c9fd4cdce0867a17955f3",
+        "batch": 256,
+        "train_predictions_are_oof": false,
+        "note": "R predictions cover every frozen train/validation AGRI NPZ path. CPP is retrieval supervision, not independent truth; train predictions are in-domain, not OOF."
+      }
+    },
+    "FEATURE_REPORT.json": {
+      "sha256": "fbdfadd976f4324770da551450da9cd052b4a4c353c25a878333957b200442f8",
+      "value": {
+        "state": "HUBEI_STATION_3X3_RAW_FEATURES_TRAINVAL_COMPLETE_TEST_CLOSED",
+        "rows_by_split": {
+          "train": 22660,
+          "val": 2045
+        },
+        "stations": {
+          "Niushou": {
+            "center_local_16x16": [
+              8,
+              6
+            ],
+            "crop": "3x3 centered"
+          },
+          "Wangzhai": {
+            "center_local_16x16": [
+              9,
+              8
+            ],
+            "crop": "3x3 centered"
+          },
+          "Mizhuang": {
+            "center_local_16x16": [
+              7,
+              10
+            ],
+            "crop": "3x3 centered"
+          }
+        },
+        "input_channel_order": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "cosSOZ",
+          "cosRAA",
+          "day_mask",
+          "R_COT"
+        ],
+        "feature_shape": [
+          24705,
+          3,
+          17,
+          3,
+          3
+        ],
+        "feature_dtype": "float32",
+        "nonfinite_feature_counts_by_channel": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "R_COT_source": "frozen seed42 R; CPP fixed_v2 validation-selected; train rows are in-domain, not OOF",
+        "test_payloads_read": 0,
+        "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+        "rows_sha256": "cf4dd1c45e4b4d308d88e821f0255d04484bbb9c3b8c9fd4cdce0867a17955f3",
+        "features_sha256": "5b6c448b35724fc9790252b40b12067d1dda83186c2d5df8e9b408b3ab952050",
+        "feature_file": "raw values, no GHI labels, no normalization fitted",
+        "normalization_and_GHI_head_training": "not performed; unit/time and pvlib gates remain open"
+      }
+    },
+    "assets/frozen_R_20261016/run_metadata.json": {
+      "sha256": "2c813dbac2cd031b4942cae923b329b5b130e0acaa651a3a6d4e22f34fe69fff",
+      "value": {
+        "model": "hubei_R_station16_fixedv2_v1",
+        "seed": 42,
+        "input_channels": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "cosSOZ",
+          "cosRAA",
+          "day_mask"
+        ],
+        "target": "log1p(COT), COT in [0,100]",
+        "loss": "valid-pixel masked Huber delta=0.1",
+        "optimizer": "AdamW lr=1e-3 wd=1e-4",
+        "gradient_clip": 5.0,
+        "epochs_max": 50,
+        "patience": 8,
+        "pack_samples": 3479,
+        "all_train_rows_for_bank": 3178,
+        "all_val_rows_for_bank": 301,
+        "train_supervision_rows": 2811,
+        "val_supervision_rows": 259,
+        "train_no_valid_cpp_rows": 367,
+        "val_no_valid_cpp_rows": 42,
+        "batch": 192,
+        "updates_per_epoch_floor": 14,
+        "test_used": false,
+        "normalization": {
+          "input_channels": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "cosSOZ",
+            "cosRAA",
+            "day_mask"
+          ],
+          "mean": [
+            0.20777103673452502,
+            0.2078646001302928,
+            0.2486897927271169,
+            0.027010178507689837,
+            0.17200711327861784,
+            0.11876197375762874,
+            236.99465228561863,
+            244.89417105873775,
+            253.79704920920355,
+            274.79209546036805,
+            275.9929671831443,
+            273.72597077305096,
+            259.7933729993727,
+            0.528093452272925,
+            0.4520404274383681,
+            1.0
+          ],
+          "std": [
+            0.1732519615666687,
+            0.18889881879375328,
+            0.17991653978954322,
+            0.05102793682467441,
+            0.11995387746943571,
+            0.09241661274471533,
+            8.435083981631198,
+            9.868025400348023,
+            11.696319849804592,
+            19.763587527452547,
+            20.490932969152308,
+            20.09887315945623,
+            14.447074628082163,
+            0.2685671087192424,
+            0.40743239630231,
+            1e-06
+          ],
+          "count_finite_train_pixels_by_channel": [
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568
+          ],
+          "fit_split": "train only",
+          "train_samples": 3178,
+          "test_used": false
+        },
+        "source_pack_hashes": {
+          "mask.npy": "99ce657288f30753bc9f9c1b2b10c9f076412558046e43e2174ac6ab4169ce63",
+          "norm.json": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+          "rows.csv": "9a7993c6a2509a598cc87d77cfa35fce695877208456819793064d426fa47745",
+          "target.npy": "93b59effa1680c98d1fc29df59002d424ed32c414b608cd21b721bc8245b1683",
+          "x_norm.npy": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f"
+        },
+        "pack_status_sha256": "92c68b591b64377855e4c66e3dcd4b55adf48c78fbe33436e218d4747acaf0fd",
+        "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+        "torch": "2.3.1+cu118",
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pbs_job_id": "214180.tc6000",
+        "reference": "cpp_16_fixed_v2 retrieval, not independent truth",
+        "empty_cpp_rows_policy": "excluded from R loss/selection only; retained for train/val AGRI COT-bank inference"
+      }
+    },
+    "assets/frozen_R_20261016/status.json": {
+      "sha256": "53adb0a4269d4dd05e7c0109a7484fef7dbbfa4a2373bfd1b10e7e9cab8843f0",
+      "value": {
+        "state": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 12,
+        "best_validation_huber": 0.08709867914210875,
+        "epochs_completed": 21,
+        "test_payloads_read": 0
+      }
+    },
+    "manifests/strict24frame_same_day_20261016_v2/report.json": {
+      "sha256": "862213ac06be1d4b7ef52d5eed22fe3c9de09748066981d60158c7928b68c5a7",
+      "value": {
+        "state": "STRICT_24_FRAME_SPLIT_INDEX_METADATA_AUDIT_PASS_TEST_BUFFER_CLOSED",
+        "source_index": "/tmp/zjnu_hubei_simvp_stage_20261016/index_trainval.csv",
+        "source_index_sha256": "5ccdc3d99d0e6c3838701952dc3c407943f10efd178aa42b407ec297f8215a43",
+        "day_assignment": "/home/Data_Pool/zjnu/hubei_cot_independent_20261016/input/day_assignment.csv",
+        "day_assignment_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+        "output_index": "/home/Data_Pool/zjnu/hubei_cot_independent_20261016/manifests/strict24frame_same_day_20261016_v2/index.csv",
+        "output_index_sha256": "4eddd1649e90cd1a76c48264e972561338953d791cca021b3eeadc1101d22c62",
+        "rows_checked": 5662,
+        "rows_by_split_before": {
+          "train": 5153,
+          "val": 509
+        },
+        "rows_by_split_after": {
+          "train": 4086,
+          "val": 407
+        },
+        "rejected_by_split": {
+          "train": 1067,
+          "val": 102
+        },
+        "rejected_reasons_nonexclusive": {
+          "train:cross_bjt_day": 1067,
+          "train:split_mismatch": 110,
+          "train:unassigned_calendar_day": 17,
+          "train:buffer_frame": 93,
+          "val:cross_bjt_day": 102,
+          "val:split_mismatch": 53,
+          "val:buffer_frame": 53
+        },
+        "rule": "all 24 BJT scene timestamps (8 history + 16 targets) must belong to one BJT calendar day, and that day must map to the row split in the frozen day assignment",
+        "sequence_path_metadata_only": true,
+        "agri_or_aux_payloads_read": 0,
+        "ghi_values_read": 0,
+        "test_or_buffer_payloads_read": 0,
+        "test_or_buffer_payloads_in_output_index": 0
+      }
+    },
+    "norm/simvp_train_only_norm_strict24_same_day_20261016.json": {
+      "sha256": "d7ff1f68280a133080c6d424c540ec2afafaa6c8967ab9e387228985eacbd26c",
+      "value": {
+        "status": "TRAIN_ONLY_NORMALIZATION_FIT",
+        "index_csv": "/tmp/zjnu_hubei_simvp_stage_strict24_same_day_20261016/index_trainval.csv",
+        "index_csv_sha256": "e91693d421029d664cf32dc833c4bba854a03260c8b3f3c7b13e3d4dd956c763",
+        "sampled_frame_manifest": "/home/Data_Pool/zjnu/hubei_cot_independent_20261016/norm/simvp_norm_sample_frames_strict24_same_day_20261016.csv",
+        "sampled_frame_manifest_sha256": "5250fad8ff12e086f87e5c33b7ae725394214a51d53bd41ff64c29ca5e926390",
+        "available_unique_train_input_frames": 5752,
+        "used_agri_history_frames": 2048,
+        "available_unique_train_geometry_frames": 9560,
+        "used_geometry_frames": 2048,
+        "selection": "AGRI statistics use unique training history frames; known solar-geometry statistics use unique timestamps from all train sequences including future target times; both are sorted by path and evenly sampled with linspace when above max-frames; no validation/test frames",
+        "agri_channel_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "aux_names": [
+          "cosSOZ",
+          "cosRAA",
+          "day_mask"
+        ],
+        "visible_zero_policy": "exclude exact zeros from C01-C06 mean/std; retain all finite pixels for other AGRI channels",
+        "agri_mean": [
+          0.2676142890905993,
+          0.28410643321678036,
+          0.3294443719935599,
+          0.03535951558719143,
+          0.21980444073128882,
+          0.1604129548444003,
+          237.57922490148997,
+          245.1506044800102,
+          253.33098454353262,
+          271.58425252104655,
+          272.7874153836907,
+          271.04234693090984,
+          257.91569399765194
+        ],
+        "agri_std": [
+          0.1881510075740953,
+          0.21726865938906084,
+          0.19670760544674745,
+          0.05609743200566847,
+          0.12267980223821014,
+          0.09900847174927307,
+          7.856842838566678,
+          9.0774221615115,
+          10.609749306883502,
+          17.996655098414138,
+          18.74780368608242,
+          18.512351451610584,
+          13.007939000336172
+        ],
+        "aux_mean": [
+          0.5734423198827588,
+          0.5235061573826201,
+          0.9953424334526062
+        ],
+        "aux_std": [
+          0.249855711502199,
+          0.3851600944741812,
+          0.06808725006379973
+        ],
+        "output_npz": "/home/Data_Pool/zjnu/hubei_cot_independent_20261016/norm/simvp_train_only_norm_strict24_same_day_20261016.npz",
+        "output_npz_sha256": "d958148e43d240903080e4dd7a0afe95818883e25d6933e72cd54b66dac4e993",
+        "test_or_buffer_payloads_read": 0
+      }
+    }
+  },
+  "tables": {
+    "pack/rows.csv": {
+      "sha256": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db",
+      "columns": [
+        "index",
+        "split",
+        "station",
+        "time_bjt",
+        "ghi_wm2",
+        "clear_sky_wm2"
+      ],
+      "counts": {
+        "train/Niushou": 9104,
+        "val/Niushou": 856,
+        "train/Wangzhai": 8959,
+        "val/Wangzhai": 784,
+        "train/Mizhuang": 8832,
+        "val/Mizhuang": 816
+      },
+      "time_bounds_as_stored": {
+        "train/Niushou": [
+          "202508010600",
+          "202607140845"
+        ],
+        "val/Niushou": [
+          "202508220615",
+          "202606291930"
+        ],
+        "train/Wangzhai": [
+          "202508010600",
+          "202607140830"
+        ],
+        "val/Wangzhai": [
+          "202508220615",
+          "202606291930"
+        ],
+        "train/Mizhuang": [
+          "202508010600",
+          "202607140845"
+        ],
+        "val/Mizhuang": [
+          "202508220615",
+          "202606291930"
+        ]
+      },
+      "months_as_stored": {
+        "train/2025-08": 2920,
+        "train/2025-09": 2620,
+        "train/2025-10": 2460,
+        "train/2025-11": 2144,
+        "train/2025-12": 2195,
+        "train/2026-01": 2222,
+        "train/2026-02": 1874,
+        "train/2026-03": 2524,
+        "train/2026-04": 2667,
+        "train/2026-05": 2080,
+        "train/2026-06": 1480,
+        "train/2026-07": 1709,
+        "val/2025-08": 244,
+        "val/2025-09": 238,
+        "val/2025-10": 215,
+        "val/2025-11": 205,
+        "val/2025-12": 193,
+        "val/2026-01": 189,
+        "val/2026-02": 179,
+        "val/2026-03": 221,
+        "val/2026-04": 254,
+        "val/2026-05": 257,
+        "val/2026-06": 261
+      },
+      "state_counts": {
+        "train/Niushou/all": 9104,
+        "val/Niushou/all": 856,
+        "train/Wangzhai/all": 8959,
+        "val/Wangzhai/all": 784,
+        "train/Mizhuang/all": 8832,
+        "val/Mizhuang/all": 816
+      },
+      "state_time_bounds_as_stored": {
+        "train/Niushou/all": [
+          "202508010600",
+          "202607140845"
+        ],
+        "val/Niushou/all": [
+          "202508220615",
+          "202606291930"
+        ],
+        "train/Wangzhai/all": [
+          "202508010600",
+          "202607140830"
+        ],
+        "val/Wangzhai/all": [
+          "202508220615",
+          "202606291930"
+        ],
+        "train/Mizhuang/all": [
+          "202508010600",
+          "202607140845"
+        ],
+        "val/Mizhuang/all": [
+          "202508220615",
+          "202606291930"
+        ]
+      },
+      "source_examples": {}
+    },
+    "labels/ghi15_train_val_daylight_clear.csv": {
+      "sha256": "326e16c16741ea4dd7696b81bcd11d800737f08274fd265fbf4373d2c411538c",
+      "columns": [
+        "station",
+        "target_time_BJT",
+        "split",
+        "ghi15_raw",
+        "mask",
+        "reason",
+        "source_records",
+        "unique_timestamps",
+        "solar_cosine",
+        "day_mask_sza_lt_90",
+        "valid_daylight_label",
+        "clear_sky_ghi_15min_wm2",
+        "valid_daylight_clear_sky_label",
+        "sensitivity_clear_ge_100"
+      ],
+      "counts": {
+        "train/Niushou": 23093,
+        "val/Niushou": 2045,
+        "train/Wangzhai": 23093,
+        "val/Wangzhai": 2045,
+        "train/Mizhuang": 23093,
+        "val/Mizhuang": 2045
+      },
+      "time_bounds_as_stored": {
+        "train/Niushou": [
+          "2025-08-01 00:00:00",
+          "2026-07-14 23:45:00"
+        ],
+        "val/Niushou": [
+          "2025-08-22 02:15:00",
+          "2026-06-29 23:45:00"
+        ],
+        "train/Wangzhai": [
+          "2025-08-01 00:00:00",
+          "2026-07-14 23:45:00"
+        ],
+        "val/Wangzhai": [
+          "2025-08-22 02:15:00",
+          "2026-06-29 23:45:00"
+        ],
+        "train/Mizhuang": [
+          "2025-08-01 00:00:00",
+          "2026-07-14 23:45:00"
+        ],
+        "val/Mizhuang": [
+          "2025-08-22 02:15:00",
+          "2026-06-29 23:45:00"
+        ]
+      },
+      "months_as_stored": {
+        "train/2025-08": 6339,
+        "train/2025-09": 6018,
+        "train/2025-10": 6456,
+        "train/2025-11": 6102,
+        "train/2025-12": 6537,
+        "train/2026-01": 6534,
+        "train/2026-02": 5313,
+        "train/2026-03": 6558,
+        "train/2026-04": 6228,
+        "train/2026-05": 6018,
+        "train/2026-06": 3204,
+        "train/2026-07": 3972,
+        "val/2025-08": 519,
+        "val/2025-09": 567,
+        "val/2025-10": 567,
+        "val/2025-11": 567,
+        "val/2025-12": 570,
+        "val/2026-01": 570,
+        "val/2026-02": 555,
+        "val/2026-03": 561,
+        "val/2026-04": 519,
+        "val/2026-05": 570,
+        "val/2026-06": 570
+      },
+      "state_counts": {
+        "train/Niushou/all": 23093,
+        "val/Niushou/all": 2045,
+        "train/Wangzhai/all": 23093,
+        "val/Wangzhai/all": 2045,
+        "train/Mizhuang/all": 23093,
+        "val/Mizhuang/all": 2045
+      },
+      "state_time_bounds_as_stored": {
+        "train/Niushou/all": [
+          "2025-08-01 00:00:00",
+          "2026-07-14 23:45:00"
+        ],
+        "val/Niushou/all": [
+          "2025-08-22 02:15:00",
+          "2026-06-29 23:45:00"
+        ],
+        "train/Wangzhai/all": [
+          "2025-08-01 00:00:00",
+          "2026-07-14 23:45:00"
+        ],
+        "val/Wangzhai/all": [
+          "2025-08-22 02:15:00",
+          "2026-06-29 23:45:00"
+        ],
+        "train/Mizhuang/all": [
+          "2025-08-01 00:00:00",
+          "2026-07-14 23:45:00"
+        ],
+        "val/Mizhuang/all": [
+          "2025-08-22 02:15:00",
+          "2026-06-29 23:45:00"
+        ]
+      },
+      "source_examples": {
+        "source_records": "0"
+      }
+    },
+    "manifests/agri_paths_trainval.csv": {
+      "sha256": "26d1e586f1ae994b0deeeb764d12f47190603eaa37d2c3591fd3b0ff50803534",
+      "columns": [
+        "time_bjt",
+        "split",
+        "path_agri"
+      ],
+      "counts": {
+        "train/all": 22660,
+        "val/all": 2045
+      },
+      "time_bounds_as_stored": {
+        "train/all": [
+          "202508010000",
+          "202607142345"
+        ],
+        "val/all": [
+          "202508220215",
+          "202606292345"
+        ]
+      },
+      "months_as_stored": {
+        "train/2025-08": 2113,
+        "train/2025-09": 2006,
+        "train/2025-10": 2152,
+        "train/2025-11": 2034,
+        "train/2025-12": 2179,
+        "train/2026-01": 2178,
+        "train/2026-02": 1771,
+        "train/2026-03": 2186,
+        "train/2026-04": 2047,
+        "train/2026-05": 1540,
+        "train/2026-06": 1130,
+        "train/2026-07": 1324,
+        "val/2025-08": 173,
+        "val/2025-09": 189,
+        "val/2025-10": 189,
+        "val/2025-11": 189,
+        "val/2025-12": 190,
+        "val/2026-01": 190,
+        "val/2026-02": 185,
+        "val/2026-03": 187,
+        "val/2026-04": 173,
+        "val/2026-05": 190,
+        "val/2026-06": 190
+      },
+      "state_counts": {
+        "train/all/all": 22660,
+        "val/all/all": 2045
+      },
+      "state_time_bounds_as_stored": {
+        "train/all/all": [
+          "202508010000",
+          "202607142345"
+        ],
+        "val/all/all": [
+          "202508220215",
+          "202606292345"
+        ]
+      },
+      "source_examples": {
+        "path_agri": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202508/202508010000_0_0.0_0.0_0.0.npz"
+      }
+    }
+  },
+  "test_arrays_opened": 0
+}

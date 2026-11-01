@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -N rgeom_ghi3
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/r_geometry_downstream_ghi_20261016/logs/train_three_arm_ghi.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/r_geometry_downstream_ghi_20261016
+PACK=$ROOT/experiments/cot_interval_history_20261015_v1/data_attempt2
+BANK=$EXP/data/paired_r_cot_bank_v1
+OUT=$EXP/results/paired_three_arm_v1
+test ! -e "$OUT"
+python - <<'PY'
+import json
+p='/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/r_geometry_downstream_ghi_20261016/data/paired_r_cot_bank_v1/bank_manifest.json'
+m=json.load(open(p));assert m['state']=='COMPLETE_PAIRED_R_COT_HISTORY_BANK' and m['test_payloads_read']==0 and m['rows']==51929
+PY
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+cd "$ROOT"
+python -u "$EXP/train_three_arm_ghi.py" --pack "$PACK" --r-bank "$BANK" --output "$OUT" --batch 1792
+python -u "$EXP/score_three_arm_ghi.py" --pack "$PACK" --run "$OUT" --output "$OUT/analysis" --bootstrap 2000
+python -u "$EXP/plot_three_arm_ghi.py" --score "$OUT/analysis/independent_score.json" --predictions "$OUT/analysis/paired_validation_scoring.npz" --output "$OUT/analysis/three_arm_ghi_validation.png"
+echo PAIRED_THREE_ARM_GHI_COMPLETE

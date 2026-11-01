@@ -1,0 +1,49 @@
+{
+  "state": "PASS_UTC_REPRODUCTION_AND_BJT_SEASON_CORRECTION",
+  "scope": "validation-only; physical COT outputs from same frozen R; discrepancy, not true COT forecast error",
+  "test_payloads_read": 0,
+  "bank_sha256": "0acc9e4095b8d401e609b50905f7252b6c897c93698cd1e3a774e32ec84ecaaf",
+  "saved_csv_sha256": "28d24d6d4b919caf48cbef83f9ba9f1e1a7c78f963ef4db52fef2e0cb0da487a",
+  "array_shape": [
+    3140,
+    2,
+    16,
+    16,
+    16
+  ],
+  "groups_compared": 384,
+  "legacy_saved_csv_season_basis": "UTC month (reproduced exactly)",
+  "corrected_season_basis": "target_time converted UTC+8 to BJT",
+  "max_abs_difference_vs_saved": {
+    "windows": 0.0,
+    "n_values": 0.0,
+    "RMSE": 6.394884621840902e-14,
+    "MAE": 2.6645352591003757e-14,
+    "bias_forecast_minus_target_R": 7.993605777301127e-15
+  },
+  "mismatch_group_count": 0,
+  "first_mismatch_groups": [],
+  "three_by_three_bjt_season_equal_station_lead_summary": {
+    "DJF": {
+      "rmse_station_lead_equal": 17.294334759620295,
+      "mae_station_lead_equal": 9.165852193576537,
+      "bias_station_lead_equal": -2.2950134988569983
+    },
+    "MAM": {
+      "rmse_station_lead_equal": 15.227434182373248,
+      "mae_station_lead_equal": 7.909236604718245,
+      "bias_station_lead_equal": -1.0653510543483002
+    },
+    "JJA": {
+      "rmse_station_lead_equal": 13.524347486249933,
+      "mae_station_lead_equal": 7.120304970060387,
+      "bias_station_lead_equal": -1.5505731432454384
+    },
+    "SON": {
+      "rmse_station_lead_equal": 19.864242488910993,
+      "mae_station_lead_equal": 7.661390780445311,
+      "bias_station_lead_equal": -3.620808005430211
+    }
+  },
+  "caveat": "R output response to predicted-vs-observed AGRI; observed-target AGRI is an offline proxy reference, not independent COT truth."
+}

@@ -1,0 +1,1212 @@
+{
+  "host": "zjnu",
+  "collected_utc": "2026-10-20T12:57:38.756886+00:00",
+  "scope": "named train/validation receipts and existing file hashes only",
+  "test_buffer_payloads_opened": 0,
+  "receipts": {
+    "old_r_metadata": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_r_runtime_gate_20261015_v1/runs/hubei_R_station16_fixedv2_v1_seed42/run_metadata.json",
+      "exists": true,
+      "sha256": "2c813dbac2cd031b4942cae923b329b5b130e0acaa651a3a6d4e22f34fe69fff",
+      "mtime_utc": "2026-10-15T08:55:51+00:00",
+      "json": {
+        "model": "hubei_R_station16_fixedv2_v1",
+        "seed": 42,
+        "input_channels": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "cosSOZ",
+          "cosRAA",
+          "day_mask"
+        ],
+        "target": "log1p(COT), COT in [0,100]",
+        "loss": "valid-pixel masked Huber delta=0.1",
+        "optimizer": "AdamW lr=1e-3 wd=1e-4",
+        "gradient_clip": 5.0,
+        "epochs_max": 50,
+        "patience": 8,
+        "pack_samples": 3479,
+        "all_train_rows_for_bank": 3178,
+        "all_val_rows_for_bank": 301,
+        "train_supervision_rows": 2811,
+        "val_supervision_rows": 259,
+        "train_no_valid_cpp_rows": 367,
+        "val_no_valid_cpp_rows": 42,
+        "batch": 192,
+        "updates_per_epoch_floor": 14,
+        "test_used": false,
+        "normalization": {
+          "input_channels": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "cosSOZ",
+            "cosRAA",
+            "day_mask"
+          ],
+          "mean": [
+            0.20777103673452502,
+            0.2078646001302928,
+            0.2486897927271169,
+            0.027010178507689837,
+            0.17200711327861784,
+            0.11876197375762874,
+            236.99465228561863,
+            244.89417105873775,
+            253.79704920920355,
+            274.79209546036805,
+            275.9929671831443,
+            273.72597077305096,
+            259.7933729993727,
+            0.528093452272925,
+            0.4520404274383681,
+            1.0
+          ],
+          "std": [
+            0.1732519615666687,
+            0.18889881879375328,
+            0.17991653978954322,
+            0.05102793682467441,
+            0.11995387746943571,
+            0.09241661274471533,
+            8.435083981631198,
+            9.868025400348023,
+            11.696319849804592,
+            19.763587527452547,
+            20.490932969152308,
+            20.09887315945623,
+            14.447074628082163,
+            0.2685671087192424,
+            0.40743239630231,
+            1e-06
+          ],
+          "count_finite_train_pixels_by_channel": [
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568
+          ],
+          "fit_split": "train only",
+          "train_samples": 3178,
+          "test_used": false
+        },
+        "source_pack_hashes": {
+          "mask.npy": "99ce657288f30753bc9f9c1b2b10c9f076412558046e43e2174ac6ab4169ce63",
+          "norm.json": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+          "rows.csv": "9a7993c6a2509a598cc87d77cfa35fce695877208456819793064d426fa47745",
+          "target.npy": "93b59effa1680c98d1fc29df59002d424ed32c414b608cd21b721bc8245b1683",
+          "x_norm.npy": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f"
+        },
+        "pack_status_sha256": "92c68b591b64377855e4c66e3dcd4b55adf48c78fbe33436e218d4747acaf0fd",
+        "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+        "torch": "2.3.1+cu118",
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pbs_job_id": "214180.tc6000",
+        "reference": "cpp_16_fixed_v2 retrieval, not independent truth",
+        "empty_cpp_rows_policy": "excluded from R loss/selection only; retained for train/val AGRI COT-bank inference"
+      }
+    },
+    "old_r_status": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_r_runtime_gate_20261015_v1/runs/hubei_R_station16_fixedv2_v1_seed42/status.json",
+      "exists": true,
+      "sha256": "53adb0a4269d4dd05e7c0109a7484fef7dbbfa4a2373bfd1b10e7e9cab8843f0",
+      "mtime_utc": "2026-10-15T08:56:01+00:00",
+      "json": {
+        "state": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 12,
+        "best_validation_huber": 0.08709867914210875,
+        "epochs_completed": 21,
+        "test_payloads_read": 0
+      }
+    },
+    "old_bank_22061": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_r_runtime_gate_20261015_v1/cot_bank_full_trainval_v1/BANK_REPORT.json",
+      "exists": false
+    },
+    "old_rebuilt_bank_24705": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017/source_rebuild_20261017_v2/r_bank/BANK_REPORT.json",
+      "exists": true,
+      "sha256": "786a001c86d035662e7f8c1249a831ba8ad8bfe4ab2a1cce5eb0c591ab5692af",
+      "mtime_utc": "2026-10-17T06:53:11+00:00",
+      "json": {
+        "state": "HUBEI_FROZEN_R_FULL_AGRI_TRAINVAL_BANK_COMPLETE_TEST_CLOSED",
+        "trainval_rows_by_split": {
+          "train": 22660,
+          "val": 2045
+        },
+        "prediction_shape": [
+          24705,
+          1,
+          16,
+          16
+        ],
+        "finite_nonnegative": true,
+        "prediction_min_max": [
+          0.0,
+          74.91889953613281
+        ],
+        "test_payloads_read": 0,
+        "test_path_rows_in_manifest": 0,
+        "cpp_supervision_not_required_for_inference": true,
+        "normalization_source": "R fixed-v2 pack, fitted on CPP-supervised frozen train subset only",
+        "normalized_nonfinite_input_values_by_channel": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "day_mask_off_pixels": 3132754,
+        "pixels_total": 6324480,
+        "cot_sentinel": "0 where AGRI day_mask <= 0.5; model output not claimed outside daytime retrieval support",
+        "frozen_R_checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+        "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+        "manifest_sha256": "df2a858cb3177ef2223418b6b94a50a800872b3af8364a151758df2d35e493cf",
+        "norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+        "prediction_sha256": "e516a57fd79a013e07b0e0847afc671ac6785502cae6097c1fc1c8a712191553",
+        "rows_sha256": "82b9024be9d752590d3f9a1da36bc46c7f04f4ab325b40fbf3c2e3c68f786b24",
+        "batch": 256,
+        "train_predictions_are_oof": false,
+        "note": "R predictions cover every frozen train/validation AGRI NPZ path. CPP is retrieval supervision, not independent truth; train predictions are in-domain, not OOF."
+      }
+    },
+    "old_initial_ghi_pack": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017/pack/pack_report.json",
+      "exists": true,
+      "sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+      "mtime_utc": "2026-10-15T18:17:27+00:00",
+      "json": {
+        "state": "HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED",
+        "samples": 29351,
+        "samples_by_split_station": {
+          "train": {
+            "Niushou": 9104,
+            "Wangzhai": 8959,
+            "Mizhuang": 8832
+          },
+          "val": {
+            "Niushou": 856,
+            "Wangzhai": 784,
+            "Mizhuang": 816
+          }
+        },
+        "same_keys_all_arms": true,
+        "label": "15-min right-closed GHI window; raw field retains the original engineering W/m2 operating convention; station sensor/export calibration metadata remains unverified",
+        "target_time_basis": "BJT interval end",
+        "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+        "feature_rows": 24705,
+        "test_and_buffer_values_read": 0,
+        "source_precedence": "combined frozen train/validation AGRI and R-feature bank",
+        "normalization": "not applied here; trainer fits per-station statistics on train rows only",
+        "array_shapes": {
+          "agri_raw.npy": [
+            29351,
+            13,
+            3,
+            3
+          ],
+          "geometry.npy": [
+            29351,
+            2,
+            3,
+            3
+          ],
+          "cot.npy": [
+            29351,
+            1,
+            3,
+            3
+          ],
+          "ghi_wm2.npy": [
+            29351
+          ],
+          "clear_sky_wm2.npy": [
+            29351
+          ]
+        },
+        "array_sha256": {
+          "agri_raw.npy": "a632953841dd7b3b445b792c6de25d70db58beb6bb44e88e2ded79c89bf7ab9f",
+          "geometry.npy": "b6a4b4d010fe005706dbdd6f55e827201f1bad89a6235433ff92b0741163ec9b",
+          "cot.npy": "b401de7e9af7a5cd837a25902e0c475ad0aca3b040d45bb509c51175a09326b5",
+          "ghi_wm2.npy": "8b7970a981359e1d4af648cd3bf61088a2f24fcdc9bb5ed13e38d46f3cfa8605",
+          "clear_sky_wm2.npy": "671b5722036d2bc2d38d1104f1da16b93505022bba15ccac26c3ebe7f72c7d89"
+        },
+        "rows_sha256": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db"
+      }
+    },
+    "new_r_pack": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2/pack_status.json",
+      "exists": true,
+      "sha256": "2db17d161f4d38ba3d55232a6dafd9efcf4b23fab65734a0bc8483be63c6d0d5",
+      "mtime_utc": "2026-10-20T06:24:31+00:00",
+      "json": {
+        "state": "HUBEI_R_TRAIN_VAL_CORRECT_UTC_PACK_BUILT_TEST_CLOSED",
+        "rows": 3479,
+        "counts_by_split": {
+          "train": {
+            "rows": 3178,
+            "supervised_rows": 2741,
+            "valid_pixels": 699085
+          },
+          "val": {
+            "rows": 301,
+            "supervised_rows": 262,
+            "valid_pixels": 66630
+          }
+        },
+        "source_input_pack_status_sha256": "92c68b591b64377855e4c66e3dcd4b55adf48c78fbe33436e218d4747acaf0fd",
+        "source_x_norm_sha256": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f",
+        "source_norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+        "cpp_sidecar_sha256": "b27c1f9599591745c8bad85293c86b54ec3780a6b443760290542e1dca8982f0",
+        "cpp_rows_sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+        "time_rule": "CPP UTC = BJT - 8 hours",
+        "spatial_grid": {
+          "lat_shape": [
+            16,
+            16
+          ],
+          "lon_shape": [
+            16,
+            16
+          ],
+          "max_abs_lat": 32.400001525878906,
+          "max_abs_lon": 112.4000015258789
+        },
+        "target": "physical COT in [0,100], stored divided by 100; loss log1p after trainer rescales",
+        "mask": "correct-UTC CPP COT valid mask AND decoded AGRI day_mask>0.5 AND cosSOZ>cos(80deg)",
+        "normalization_fit": "historical train-only AGRI/geometry normalization; old CPP target and mask not read",
+        "test_payloads_read": 0,
+        "buffer_payloads_read": 0,
+        "reference_status": "CPP retrieval supervision, not independent truth"
+      }
+    },
+    "new_r_pack_report": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2/pack_report.json",
+      "exists": true,
+      "sha256": "08d8b4d9b33f1155e10f9235c3e864aae8db8c755da86b87df25293a40343fec",
+      "mtime_utc": "2026-10-20T06:24:31+00:00",
+      "json": {
+        "state": "HUBEI_R_TRAIN_VAL_CORRECT_UTC_PACK_BUILT_TEST_CLOSED",
+        "counts_by_split": {
+          "train": {
+            "rows": 3178,
+            "supervised_rows": 2741,
+            "valid_pixels": 699085
+          },
+          "val": {
+            "rows": 301,
+            "supervised_rows": 262,
+            "valid_pixels": 66630
+          }
+        },
+        "valid_clp_cot_pixels": 765715,
+        "train_geometry_valid_pixels": 704717,
+        "val_geometry_valid_pixels": 66630,
+        "train_valid_cot_range": [
+          0.0,
+          83.1275863647461
+        ],
+        "test_buffer_payloads_read": 0
+      }
+    },
+    "new_r_pack_audit": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2/independent_audit.json",
+      "exists": true,
+      "sha256": "db3aff4a2ab5ec2ef33a71dc2aebfc9722c62d64ec1da157124eb32a0f4d26c7",
+      "mtime_utc": "2026-10-20T06:25:26+00:00",
+      "json": {
+        "state": "PASS_CORRECT_UTC_R_PACK_INDEPENDENT_AUDIT_TEST_CLOSED",
+        "rows": 3479,
+        "counts_by_split": {
+          "train": {
+            "rows": 3178,
+            "supervised_rows": 2741,
+            "valid_pixels": 699085
+          },
+          "val": {
+            "rows": 301,
+            "supervised_rows": 262,
+            "valid_pixels": 66630
+          }
+        },
+        "array_shapes": {
+          "x_norm": [
+            3479,
+            16,
+            16,
+            16
+          ],
+          "target": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "mask": [
+            3479,
+            1,
+            16,
+            16
+          ]
+        },
+        "hashes_match": true,
+        "pack_status_sha256": "2db17d161f4d38ba3d55232a6dafd9efcf4b23fab65734a0bc8483be63c6d0d5",
+        "test_payloads_read": 0,
+        "buffer_payloads_read": 0,
+        "CPP_reference_caveat": "retrieval supervision, not independent truth"
+      }
+    },
+    "new_cpp_extraction": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cpp_attempt2/extraction_report.json",
+      "exists": true,
+      "sha256": "b4ec07313717e2f8dddd46a6eeb8ee640d4527cc9edcab4e98f042a1765636c3",
+      "mtime_utc": "2026-10-20T06:20:04+00:00",
+      "json": {
+        "state": "COMPLETE_CORRECT_UTC_CPP_TRAIN_VAL_SIDEcar_TEST_CLOSED",
+        "created_utc": "2026-10-20T06:21:12.744852+00:00",
+        "manifest": "/home/Data_Pool/zjnu/solar_cot_hubei_20261020/input/r_paths_trainval.csv",
+        "manifest_sha256": "3bae20a9607b941e544199b9f2900414b266ad11456e82d9bf51e7bd78c972f8",
+        "grid_static": "/home/Data_Pool/zjnu/solar_cot_hubei_20261020/input/grid_static_hubei_witness.npz",
+        "grid_detail": {
+          "grid_sha256": "9709cc3db993a0532beb5cfae005da3ae44a59c064167ec6f2341b56856d2305",
+          "patch_origin_in_grid_static": [
+            2,
+            134
+          ],
+          "patch_size": 16,
+          "station_witnesses": {
+            "Niushou": {
+              "grid_local": [
+                8,
+                6
+              ],
+              "raw_grid_index": [
+                557,
+                1535
+              ],
+              "lat": 32.08000183105469,
+              "lon": 112.04000091552734
+            },
+            "Wangzhai": {
+              "grid_local": [
+                9,
+                8
+              ],
+              "raw_grid_index": [
+                558,
+                1537
+              ],
+              "lat": 32.040000915527344,
+              "lon": 112.12000274658203
+            },
+            "Mizhuang": {
+              "grid_local": [
+                7,
+                10
+              ],
+              "raw_grid_index": [
+                556,
+                1538
+              ],
+              "lat": 32.119998931884766,
+              "lon": 112.19999694824219
+            }
+          },
+          "agri_static_angle_exact_checks": [
+            "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202508/202508010600_1_2.8_11.4_13.6.npz",
+            "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202509/202509101430_1_80.2_136.4_100.6.npz",
+            "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202602/202602271800_1_2.2_7.2_7.2.npz",
+            "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202508/202508220615_1_13.4_14.8_17.2.npz",
+            "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202509/202509271100_1_133.0_143.0_0.0.npz",
+            "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202603/202603021800_1_22.4_27.6_19.2.npz"
+          ]
+        },
+        "cpp_root": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP",
+        "rows": 3479,
+        "source_rows_extracted": 3479,
+        "counts_by_split": {
+          "train": 3178,
+          "val": 301
+        },
+        "all_CPP_keys": true,
+        "test_buffer_rows_read": 0,
+        "test_buffer_payloads_read": 0,
+        "time_rule": "CPP UTC timestamp = AGRI/manifest BJT timestamp - 8 hours",
+        "spatial_rule": "nearest existing CPP LAT/LON axis values; no interpolation; unique 16x16 mapping; <=1e-4 degree",
+        "max_coordinate_error_deg": {
+          "lat": 0.0,
+          "lon": 0.0
+        },
+        "valid_cot_pixels_by_split": {
+          "train": 807936,
+          "val": 77056
+        },
+        "valid_clp_pixels_by_split": {
+          "train": 807936,
+          "val": 77056
+        },
+        "cloudy_clp_pixels_by_split": {
+          "train": 502082,
+          "val": 52153
+        },
+        "sidecar_sha256": "b27c1f9599591745c8bad85293c86b54ec3780a6b443760290542e1dca8982f0",
+        "arrays": {
+          "cot": "32ee0bd5e5d3bbe7ac2a1092860258e5fe85893ac865e9b7cde68d74b5747d29",
+          "cot_valid_mask": "27a732fcfca0ecbe4d29adacbb946fec49c1af6ce18642e6937499a170a1ecd9",
+          "clp": "92b4e267f503a03d6753fdde1712db1f4ffedcab1c6553e60a688dfb7ad464c0",
+          "clp_valid_mask": "27a732fcfca0ecbe4d29adacbb946fec49c1af6ce18642e6937499a170a1ecd9"
+        },
+        "failures": [],
+        "latest_cpp_utc": "2026-03-02T10:00:00",
+        "interpretation": "CPP CLP/COT are reference supervision, not independent truth; this sidecar is train/validation only"
+      }
+    },
+    "new_r_metadata": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_correctutc_attempt3/run_metadata.json",
+      "exists": true,
+      "sha256": "5b0f4b625e4568cf47187a864985b0d833999cf5619511cd1bbd5624b4337bd8",
+      "mtime_utc": "2026-10-20T10:57:52+00:00",
+      "json": {
+        "model": "hubei_R_station16_correctutc_v1",
+        "seed": 42,
+        "input_channels": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "cosSOZ",
+          "cosRAA",
+          "day_mask"
+        ],
+        "target": "log1p(COT), COT in [0,100]",
+        "loss": "valid-pixel masked Huber delta=0.1",
+        "optimizer": "AdamW lr=1e-3 wd=1e-4",
+        "gradient_clip": 5.0,
+        "epochs_max": 50,
+        "patience": 8,
+        "pack_samples": 3479,
+        "all_train_rows_for_bank": 3178,
+        "all_val_rows_for_bank": 301,
+        "train_supervision_rows": 2741,
+        "val_supervision_rows": 262,
+        "train_no_valid_cpp_rows": 437,
+        "val_no_valid_cpp_rows": 39,
+        "batch": 192,
+        "updates_per_epoch_floor": 14,
+        "test_used": false,
+        "allow_variable_support": true,
+        "normalization": {
+          "input_channels": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "cosSOZ",
+            "cosRAA",
+            "day_mask"
+          ],
+          "mean": [
+            0.20777103673452502,
+            0.2078646001302928,
+            0.2486897927271169,
+            0.027010178507689837,
+            0.17200711327861784,
+            0.11876197375762874,
+            236.99465228561863,
+            244.89417105873775,
+            253.79704920920355,
+            274.79209546036805,
+            275.9929671831443,
+            273.72597077305096,
+            259.7933729993727,
+            0.528093452272925,
+            0.4520404274383681,
+            1.0
+          ],
+          "std": [
+            0.1732519615666687,
+            0.18889881879375328,
+            0.17991653978954322,
+            0.05102793682467441,
+            0.11995387746943571,
+            0.09241661274471533,
+            8.435083981631198,
+            9.868025400348023,
+            11.696319849804592,
+            19.763587527452547,
+            20.490932969152308,
+            20.09887315945623,
+            14.447074628082163,
+            0.2685671087192424,
+            0.40743239630231,
+            1e-06
+          ],
+          "count_finite_train_pixels_by_channel": [
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568,
+            813568
+          ],
+          "fit_split": "train only",
+          "train_samples": 3178,
+          "test_used": false
+        },
+        "source_pack_hashes": {
+          "rows.csv": "6ef1f3e5b3e1c9d015931d522366cac383ec1d2b575409d93c1db57d010b27df",
+          "x_norm.npy": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f",
+          "target.npy": "c290b74f61664ba32567c6c675f9ee964c91dd22057ec16ffd9ea0fa2ef07134",
+          "mask.npy": "c4f8cd00215281d9e841defa42bfdb0f382c22297738d6afc655d985ff510291",
+          "norm.json": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a"
+        },
+        "pack_status_sha256": "2db17d161f4d38ba3d55232a6dafd9efcf4b23fab65734a0bc8483be63c6d0d5",
+        "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+        "torch": "2.3.1+cu118",
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pbs_job_id": "215217.tc6000",
+        "reference": "cpp_16_fixed_v2 retrieval, not independent truth",
+        "empty_cpp_rows_policy": "excluded from R loss/selection only; retained for train/val AGRI COT-bank inference"
+      }
+    },
+    "new_r_status": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_correctutc_attempt3/status.json",
+      "exists": true,
+      "sha256": "021fe48e60624370af0ed62a1666c57bc06395a09bbe4443e7d9e935316159f2",
+      "mtime_utc": "2026-10-20T10:58:10+00:00",
+      "json": {
+        "state": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 13,
+        "best_validation_huber": 0.05134424919120796,
+        "epochs_completed": 22,
+        "test_payloads_read": 0
+      }
+    },
+    "new_r_validation": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_correctutc_attempt3/validation_fp64.json",
+      "exists": true,
+      "sha256": "bf399187fde34585a8e05ff698cd82032f52e6d701c63fd347e21d3f92438189",
+      "mtime_utc": "2026-10-20T10:58:10+00:00",
+      "json": {
+        "status": "VALIDATION_ONLY_NOT_TEST",
+        "metrics": {
+          "valid_pixel_huber_log1p": 0.05134424919120796,
+          "valid_cpp_pixels": 66630,
+          "reference": "cpp_16_fixed_v2 retrieval, not independent truth",
+          "rmse_cot": 13.666760057817964,
+          "mae_cot": 7.813277896631492,
+          "bias_cot": 4.271869853932735,
+          "r2_cot": 0.4766345211590266
+        },
+        "model_selection_metric": "valid-pixel Huber on log1p(COT)",
+        "best_epoch": 13,
+        "best_validation_huber": 0.05134424919120796,
+        "test_payloads_read": 0,
+        "reference": "cpp_16_fixed_v2 retrieval, not independent truth"
+      }
+    },
+    "new_cot_bank": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3/BANK_REPORT.json",
+      "exists": true,
+      "sha256": "d061ccb28da2a1022dd90c26cde00ac3756f06e2a2d4ef9b5ddd6404001348c0",
+      "mtime_utc": "2026-10-20T10:59:26+00:00",
+      "json": {
+        "state": "HUBEI_FROZEN_R_FULL_AGRI_TRAINVAL_BANK_COMPLETE_TEST_CLOSED",
+        "trainval_rows_by_split": {
+          "train": 20206,
+          "val": 1855
+        },
+        "prediction_shape": [
+          22061,
+          1,
+          16,
+          16
+        ],
+        "finite_nonnegative": true,
+        "prediction_min_max": [
+          0.0,
+          449380.25
+        ],
+        "test_payloads_read": 0,
+        "test_path_rows_in_manifest": 0,
+        "cpp_supervision_not_required_for_inference": true,
+        "normalization_source": "R fixed-v2 pack, fitted on CPP-supervised frozen train subset only",
+        "normalized_nonfinite_input_values_by_channel": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "day_mask_off_pixels": 2857609,
+        "pixels_total": 5647616,
+        "cot_sentinel": "0 where AGRI day_mask <= 0.5; model output not claimed outside daytime retrieval support",
+        "frozen_R_checkpoint_sha256": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9",
+        "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+        "manifest_sha256": "8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183",
+        "norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+        "prediction_sha256": "da9a3b61914b6ec293088459cecbb611bf40ce2b07e376554959aa4484760ace",
+        "rows_sha256": "efca7d8dfda0e6055af804257df703cf60e1e5930f71b8d077bc2fbecfde86bb",
+        "batch": 256,
+        "train_predictions_are_oof": false,
+        "note": "R predictions cover every frozen train/validation AGRI NPZ path. CPP is retrieval supervision, not independent truth; train predictions are in-domain, not OOF."
+      }
+    },
+    "new_pcloud_bank": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/pcloud_bank_correctutc_attempt3/BANK_REPORT.json",
+      "exists": true,
+      "sha256": "5d9fbad709319a7c8fce08fb1c96aa11d6941b49fc3852a17201b70f06d32c7e",
+      "mtime_utc": "2026-10-20T10:57:36+00:00",
+      "json": {
+        "state": "COMPLETE_HUBEI_FULL_AGRI_P_CLOUD_TRAINVAL_TEST_CLOSED",
+        "rows": 22061,
+        "train_rows": 20206,
+        "val_rows": 1855,
+        "train_date_oof_rows": 3178,
+        "full_train_fallback_rows": 18883,
+        "manifest_sha256": "8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183",
+        "classifier_report_sha256": "bf03096324139891bd3024201ac6925c14fd82e443ad888613bae30ceb2e1257",
+        "full_train_checkpoint_sha256": "7ed43136f6c86ad8f74036807b173e18531a0f13977956c19e330e8425768196",
+        "oof_bank_sha256": "dc99cb081bae4e19a1270f056bd9e10e70481112cd8f1b621408bdec541843ed",
+        "prediction_sha256": "f4eb96a74e4b93fc13df064c6f7542c4f871429a4c787480f66be590023d32f9",
+        "rows_sha256": "9c64ea66276608e17b20182182099864a24957c82b1c6036f01a059df67c2f05",
+        "test_payloads_read": 0,
+        "buffer_payloads_read": 0,
+        "prediction_policy": "train keys with date OOF use OOF; all other train and all validation keys use full-train Hubei classifier",
+        "reference_caveat": "CPP CLP is a retrieval reference, not independent cloud truth"
+      }
+    },
+    "new_ghi_pack": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/pack_report.json",
+      "exists": true,
+      "sha256": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61",
+      "mtime_utc": "2026-10-20T11:17:13+00:00",
+      "json": {
+        "state": "HUBEI_GHI_FOURARM_COMMON_TRAINVAL_PACK_TEST_CLOSED",
+        "rows": 25899,
+        "source_ghi_rows": 29351,
+        "retained_rows_after_coverage_and_quality": 25899,
+        "auxiliary_common_support_rows_before_quality_filter": 25901,
+        "excluded_rows_due_aux_source_unavailable": 3450,
+        "total_rows_excluded_from_fourarm_pack": 3452,
+        "input_quality_exclusion_rule": "exclude station rows where all 13 AGRI bands are exactly zero across the station-centred 3x3 input; applied identically before all four arms; raw source pack unchanged",
+        "excluded_rows_all_zero_agri_station_3x3": 2,
+        "excluded_all_zero_agri_by_station_split": {
+          "Niushou": {
+            "train": 0,
+            "val": 0
+          },
+          "Wangzhai": {
+            "train": 1,
+            "val": 0
+          },
+          "Mizhuang": {
+            "train": 1,
+            "val": 0
+          }
+        },
+        "excluded_all_zero_agri_keys": [
+          {
+            "source_row_index": 13367,
+            "station": "Wangzhai",
+            "split": "train",
+            "time_bjt": "202511221400",
+            "reason": "all_13_agri_bands_zero_in_station_3x3"
+          },
+          {
+            "source_row_index": 23137,
+            "station": "Mizhuang",
+            "split": "train",
+            "time_bjt": "202511221400",
+            "reason": "all_13_agri_bands_zero_in_station_3x3"
+          }
+        ],
+        "excluded_rows_by_station_split": {
+          "Niushou": {
+            "train": 1091,
+            "val": 90
+          },
+          "Wangzhai": {
+            "train": 1066,
+            "val": 90
+          },
+          "Mizhuang": {
+            "train": 1032,
+            "val": 81
+          }
+        },
+        "unique_missing_time_keys_by_split": {
+          "train": 1370,
+          "val": 111
+        },
+        "exclusion_policy": "coverage-only common support across existing GHI rows, corrected COT bank and p_cloud bank; identical retained rows for all arms; no weather/performance filtering",
+        "rows_by_split": {
+          "train": 23704,
+          "val": 2195
+        },
+        "rows_by_station": {
+          "Niushou": 8779,
+          "Wangzhai": 8586,
+          "Mizhuang": 8534
+        },
+        "arms": [
+          "A",
+          "AC",
+          "AM",
+          "ACM"
+        ],
+        "input_geometry": "station-centered 3x3 AGRI+cosSOZ+cosRAA; same-time GHI reconstruction",
+        "stations_local_centers_16x16": {
+          "Niushou": [
+            8,
+            6
+          ],
+          "Wangzhai": [
+            9,
+            8
+          ],
+          "Mizhuang": [
+            7,
+            10
+          ]
+        },
+        "base_arrays_exactly_equal_to_source_on_retained_row_indices": {
+          "agri_raw.npy": {
+            "source_sha256": "a632953841dd7b3b445b792c6de25d70db58beb6bb44e88e2ded79c89bf7ab9f",
+            "retained_array_sha256": "99dfe75028aeb26cfe79a445ecaf6797a62b35aa9f91f819b8ddcd257cf0b230",
+            "rowwise_equal_to_source_common_support": true,
+            "source_shape": [
+              29351,
+              13,
+              3,
+              3
+            ],
+            "retained_shape": [
+              25899,
+              13,
+              3,
+              3
+            ]
+          },
+          "geometry.npy": {
+            "source_sha256": "b6a4b4d010fe005706dbdd6f55e827201f1bad89a6235433ff92b0741163ec9b",
+            "retained_array_sha256": "fd781295dc3f0e56d07bc41351808e6ff69a99506fc35021f5198f117c953503",
+            "rowwise_equal_to_source_common_support": true,
+            "source_shape": [
+              29351,
+              2,
+              3,
+              3
+            ],
+            "retained_shape": [
+              25899,
+              2,
+              3,
+              3
+            ]
+          },
+          "ghi_wm2.npy": {
+            "source_sha256": "8b7970a981359e1d4af648cd3bf61088a2f24fcdc9bb5ed13e38d46f3cfa8605",
+            "retained_array_sha256": "07144fbee814865d551cc52f23df2f45d168dfd9eda1977c1968b5aec7da8701",
+            "rowwise_equal_to_source_common_support": true,
+            "source_shape": [
+              29351
+            ],
+            "retained_shape": [
+              25899
+            ]
+          },
+          "clear_sky_wm2.npy": {
+            "source_sha256": "671b5722036d2bc2d38d1104f1da16b93505022bba15ccac26c3ebe7f72c7d89",
+            "retained_array_sha256": "ce451a7450d3e88a63c92fd9d8439fea0b38180062cefdcd44b77453bccdca2b",
+            "rowwise_equal_to_source_common_support": true,
+            "source_shape": [
+              29351
+            ],
+            "retained_shape": [
+              25899
+            ]
+          }
+        },
+        "source_row_indices_sha256": "5d4d4344fdecbbc861eac36bde1d3cc3a01121bbb2f86ab7b6f28884ce6f69f2",
+        "source_ghi_pack_report_sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+        "source_rows_sha256": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db",
+        "cot_bank_report_sha256": "d061ccb28da2a1022dd90c26cde00ac3756f06e2a2d4ef9b5ddd6404001348c0",
+        "cot_bank_prediction_sha256": "da9a3b61914b6ec293088459cecbb611bf40ce2b07e376554959aa4484760ace",
+        "pcloud_bank_report_sha256": "5d9fbad709319a7c8fce08fb1c96aa11d6941b49fc3852a17201b70f06d32c7e",
+        "pcloud_bank_prediction_sha256": "f4eb96a74e4b93fc13df064c6f7542c4f871429a4c787480f66be590023d32f9",
+        "pcloud_source_rows_used": {
+          "date_oof": 7668,
+          "full_train": 18231
+        },
+        "old_time_misaligned_cot_array_read": false,
+        "test_payloads_read": 0,
+        "buffer_payloads_read": 0,
+        "hashes": {
+          "agri_raw.npy": "99dfe75028aeb26cfe79a445ecaf6797a62b35aa9f91f819b8ddcd257cf0b230",
+          "geometry.npy": "fd781295dc3f0e56d07bc41351808e6ff69a99506fc35021f5198f117c953503",
+          "ghi_wm2.npy": "07144fbee814865d551cc52f23df2f45d168dfd9eda1977c1968b5aec7da8701",
+          "clear_sky_wm2.npy": "ce451a7450d3e88a63c92fd9d8439fea0b38180062cefdcd44b77453bccdca2b",
+          "rows.csv": "afbff407baabd59dfffbfac1271a0a9dc726af59c6c71eeae05c622ed0419803",
+          "cot_pred_3x3.npy": "dd49d1e5c81bd76f399697129d8303db4a2dc5c954d2818569666aede7334cbf",
+          "p_cloud_3x3.npy": "94fb6543a4a28f2d3e6836b7c2a77630632a9fd31d35c787e71f3ce10d067f54"
+        },
+        "interpretation": "CPP-derived COT and CLP-trained cloud probability are predicted features; CPP CLP/COT are retrieval references, not independent truth"
+      }
+    },
+    "new_ghi_pack_audit": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/audits/fourarm_pack_audit_attempt5.json",
+      "exists": true,
+      "sha256": "e2c074efc6a3d0fe57541fcf2a6f706abeb20e44e4349c71f14585b23287b206",
+      "mtime_utc": "2026-10-20T11:17:15+00:00",
+      "json": {
+        "state": "PASS_HUBEI_FOURARM_PACK_INDEPENDENT_COMMON_SUPPORT_AUDIT_TEST_CLOSED",
+        "source_ghi_rows": 29351,
+        "retained_rows": 25899,
+        "common_auxiliary_coverage_rows": 25901,
+        "excluded_coverage_rows": 3450,
+        "excluded_invalid_all_zero_agri_rows": 2,
+        "excluded_all_zero_agri_keys": [
+          {
+            "source_row_index": 13367,
+            "station": "Wangzhai",
+            "split": "train",
+            "time_bjt": "202511221400",
+            "reason": "all_13_agri_bands_zero_in_station_3x3"
+          },
+          {
+            "source_row_index": 23137,
+            "station": "Mizhuang",
+            "split": "train",
+            "time_bjt": "202511221400",
+            "reason": "all_13_agri_bands_zero_in_station_3x3"
+          }
+        ],
+        "rows_by_split": {
+          "train": 23704,
+          "val": 2195
+        },
+        "rows_by_station": {
+          "Niushou": 8779,
+          "Wangzhai": 8586,
+          "Mizhuang": 8534
+        },
+        "source_arrays_exact_equal_after_key_ordered_join": true,
+        "cot_and_pcloud_key_split_crop_alignment": "PASS",
+        "pcloud_prediction_sources": {
+          "date_oof": 7668,
+          "full_train": 18231
+        },
+        "pack_report_sha256": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61",
+        "test_payloads_read": 0,
+        "buffer_payloads_read": 0
+      }
+    },
+    "new_ghi_seed42": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_seed42_attempt2/run_metadata.json",
+      "exists": true,
+      "sha256": "0f52fc200b8c6126c5217ce4642f3acd4bd6202f7d2725bf74ef0df4bf0a19bf",
+      "mtime_utc": "2026-10-20T11:24:23+00:00",
+      "json": {
+        "state": "HUBEI_GHI_FOURARM_SEED_COMPLETE",
+        "seed": 42,
+        "arms": [
+          "A",
+          "AC",
+          "AM",
+          "ACM"
+        ],
+        "stations": [
+          "Niushou",
+          "Wangzhai",
+          "Mizhuang"
+        ],
+        "epochs": 30,
+        "batch_size": 512,
+        "pack_report_sha256": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61",
+        "trainer_sha256": "f2f46df092db653b8a04f99ef80308a7f98fee6a207a0f74f731c5e51f4cb895",
+        "test_payloads_read": 0,
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pairing": "same per-station initialization, row permutations, updates, optimizer and epoch-selection rule across all four arms",
+        "normalization": "per-station train-only AGRI; physical geometry; per-station train-only log1p predicted-COT and p_cloud standardization",
+        "input_switch": "same two-channel auxiliary encoder in every arm; inactive COT/p_cloud channels are exactly zero",
+        "loss": "MSE((predicted kt * interval clear-sky GHI - observed GHI)/1000); labels in W m-2",
+        "parameter_counts": {
+          "A": 24489,
+          "AC": 24489,
+          "AM": 24489,
+          "ACM": 24489
+        },
+        "elapsed_seconds": 38.713722944259644
+      }
+    },
+    "new_ghi_seed43": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_seed43_attempt2/run_metadata.json",
+      "exists": true,
+      "sha256": "1632461b04d3dbdd9423f270742354263d6bf318a4700728bfce2ad849054d9b",
+      "mtime_utc": "2026-10-20T11:24:53+00:00",
+      "json": {
+        "state": "HUBEI_GHI_FOURARM_SEED_COMPLETE",
+        "seed": 43,
+        "arms": [
+          "A",
+          "AC",
+          "AM",
+          "ACM"
+        ],
+        "stations": [
+          "Niushou",
+          "Wangzhai",
+          "Mizhuang"
+        ],
+        "epochs": 30,
+        "batch_size": 512,
+        "pack_report_sha256": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61",
+        "trainer_sha256": "f2f46df092db653b8a04f99ef80308a7f98fee6a207a0f74f731c5e51f4cb895",
+        "test_payloads_read": 0,
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pairing": "same per-station initialization, row permutations, updates, optimizer and epoch-selection rule across all four arms",
+        "normalization": "per-station train-only AGRI; physical geometry; per-station train-only log1p predicted-COT and p_cloud standardization",
+        "input_switch": "same two-channel auxiliary encoder in every arm; inactive COT/p_cloud channels are exactly zero",
+        "loss": "MSE((predicted kt * interval clear-sky GHI - observed GHI)/1000); labels in W m-2",
+        "parameter_counts": {
+          "A": 24489,
+          "AC": 24489,
+          "AM": 24489,
+          "ACM": 24489
+        },
+        "elapsed_seconds": 27.009920358657837
+      }
+    },
+    "new_ghi_seed44": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_seed44_attempt2/run_metadata.json",
+      "exists": true,
+      "sha256": "78686623a3e79a75be531c1dfed28c5b0a1ac27a55973d8adfac4838b48866ef",
+      "mtime_utc": "2026-10-20T11:25:23+00:00",
+      "json": {
+        "state": "HUBEI_GHI_FOURARM_SEED_COMPLETE",
+        "seed": 44,
+        "arms": [
+          "A",
+          "AC",
+          "AM",
+          "ACM"
+        ],
+        "stations": [
+          "Niushou",
+          "Wangzhai",
+          "Mizhuang"
+        ],
+        "epochs": 30,
+        "batch_size": 512,
+        "pack_report_sha256": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61",
+        "trainer_sha256": "f2f46df092db653b8a04f99ef80308a7f98fee6a207a0f74f731c5e51f4cb895",
+        "test_payloads_read": 0,
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pairing": "same per-station initialization, row permutations, updates, optimizer and epoch-selection rule across all four arms",
+        "normalization": "per-station train-only AGRI; physical geometry; per-station train-only log1p predicted-COT and p_cloud standardization",
+        "input_switch": "same two-channel auxiliary encoder in every arm; inactive COT/p_cloud channels are exactly zero",
+        "loss": "MSE((predicted kt * interval clear-sky GHI - observed GHI)/1000); labels in W m-2",
+        "parameter_counts": {
+          "A": 24489,
+          "AC": 24489,
+          "AM": 24489,
+          "ACM": 24489
+        },
+        "elapsed_seconds": 28.189141988754272
+      }
+    }
+  },
+  "file_hashes": {
+    "old_r_checkpoint": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_r_runtime_gate_20261015_v1/runs/hubei_R_station16_fixedv2_v1_seed42/best.pt",
+      "exists": true,
+      "sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83"
+    },
+    "new_r_checkpoint": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_correctutc_attempt3/best.pt",
+      "exists": true,
+      "sha256": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9"
+    },
+    "new_r_target": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2/target.npy",
+      "exists": true,
+      "sha256": "c290b74f61664ba32567c6c675f9ee964c91dd22057ec16ffd9ea0fa2ef07134"
+    },
+    "new_r_mask": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2/mask.npy",
+      "exists": true,
+      "sha256": "c4f8cd00215281d9e841defa42bfdb0f382c22297738d6afc655d985ff510291"
+    },
+    "new_r_x_norm": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2/x_norm.npy",
+      "exists": true,
+      "sha256": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f"
+    },
+    "new_cot_bank_array": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3/cot_pred_trainval_full.npy",
+      "exists": true,
+      "sha256": "da9a3b61914b6ec293088459cecbb611bf40ce2b07e376554959aa4484760ace"
+    },
+    "new_cot_bank_rows": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3/rows.csv",
+      "exists": true,
+      "sha256": "efca7d8dfda0e6055af804257df703cf60e1e5930f71b8d077bc2fbecfde86bb"
+    },
+    "new_ghi_pack/agri_raw.npy": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/agri_raw.npy",
+      "exists": true,
+      "sha256": "99dfe75028aeb26cfe79a445ecaf6797a62b35aa9f91f819b8ddcd257cf0b230"
+    },
+    "new_ghi_pack/geometry.npy": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/geometry.npy",
+      "exists": true,
+      "sha256": "fd781295dc3f0e56d07bc41351808e6ff69a99506fc35021f5198f117c953503"
+    },
+    "new_ghi_pack/ghi_wm2.npy": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/ghi_wm2.npy",
+      "exists": true,
+      "sha256": "07144fbee814865d551cc52f23df2f45d168dfd9eda1977c1968b5aec7da8701"
+    },
+    "new_ghi_pack/clear_sky_wm2.npy": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/clear_sky_wm2.npy",
+      "exists": true,
+      "sha256": "ce451a7450d3e88a63c92fd9d8439fea0b38180062cefdcd44b77453bccdca2b"
+    },
+    "new_ghi_pack/rows.csv": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/rows.csv",
+      "exists": true,
+      "sha256": "afbff407baabd59dfffbfac1271a0a9dc726af59c6c71eeae05c622ed0419803"
+    },
+    "new_ghi_pack/cot_pred_3x3.npy": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/cot_pred_3x3.npy",
+      "exists": true,
+      "sha256": "dd49d1e5c81bd76f399697129d8303db4a2dc5c954d2818569666aede7334cbf"
+    },
+    "new_ghi_pack/p_cloud_3x3.npy": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/ghi_fourarm_pack_attempt5/p_cloud_3x3.npy",
+      "exists": true,
+      "sha256": "94fb6543a4a28f2d3e6836b7c2a77630632a9fd31d35c787e71f3ce10d067f54"
+    }
+  },
+  "time_ledgers": {
+    "corrected_cpp": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cpp_attempt2/rows_correct_utc.csv",
+      "exists": true,
+      "sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+      "rows": 3479,
+      "splits": {
+        "train": 3178,
+        "val": 301
+      },
+      "source_offset_from_correct_utc_hours": {
+        "0.0": 3479
+      },
+      "unparsed_rows": 0,
+      "unparsed_examples": [],
+      "samples": [
+        {
+          "time_bjt": "202508010600",
+          "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731220000.nc",
+          "expected_cpp_utc": "2025-07-31T22:00:00",
+          "source_offset_hours": 0.0
+        },
+        {
+          "time_bjt": "202508010615",
+          "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731221500.nc",
+          "expected_cpp_utc": "2025-07-31T22:15:00",
+          "source_offset_hours": 0.0
+        },
+        {
+          "time_bjt": "202508010630",
+          "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731223000.nc",
+          "expected_cpp_utc": "2025-07-31T22:30:00",
+          "source_offset_hours": 0.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "state": "COMPLETE_BOUNDED_TIMING_AND_SHADOW_AUDIT",
+  "label_audit": {
+    "val_rows": 8994,
+    "complete_15min_labels_checked": 8137,
+    "max_mean_recomputation_error": 3.3334117688355036e-09,
+    "native_timestamp_conflicts": 0,
+    "workbook_cell_comparisons": [
+      {
+        "station": "sili",
+        "compared_5min_cells": 95,
+        "max_abs_difference": 0.0
+      },
+      {
+        "station": "zhujia",
+        "compared_5min_cells": 114,
+        "max_abs_difference": 0.0
+      }
+    ]
+  },
+  "strata_CPP_3x3_clear": {
+    "sili": {
+      "all_CPP_3x3_clear": {
+        "n": 117,
+        "dates": 17,
+        "total_restoration_benefit_sse": 8237.773213244524,
+        "mean_abs_end5_minus_mean15": 17.991453036283836,
+        "median_range_5min": 27.0,
+        "last5_exceeds_mean_by100": 2,
+        "daylight_zero_label_count": 6
+      },
+      "zero_label": {
+        "n": 6,
+        "dates": 1,
+        "total_restoration_benefit_sse": 8685.39968286897,
+        "mean_abs_end5_minus_mean15": 0.0,
+        "median_range_5min": 0.0,
+        "last5_exceeds_mean_by100": 0,
+        "daylight_zero_label_count": 6
+      },
+      "nonzero_low_variation": {
+        "n": 50,
+        "dates": 11,
+        "total_restoration_benefit_sse": -467.6094837270648,
+        "mean_abs_end5_minus_mean15": 6.333334455490112,
+        "median_range_5min": 15.0,
+        "last5_exceeds_mean_by100": 0,
+        "daylight_zero_label_count": 0
+      },
+      "nonzero_medium_variation": {
+        "n": 53,
+        "dates": 13,
+        "total_restoration_benefit_sse": -936.7482339026756,
+        "mean_abs_end5_minus_mean15": 18.999997984688235,
+        "median_range_5min": 36.0,
+        "last5_exceeds_mean_by100": 0,
+        "daylight_zero_label_count": 0
+      },
+      "nonzero_high_variation": {
+        "n": 8,
+        "dates": 5,
+        "total_restoration_benefit_sse": 956.7312480052933,
+        "mean_abs_end5_minus_mean15": 97.66667366027832,
+        "median_range_5min": 261.5,
+        "last5_exceeds_mean_by100": 2,
+        "daylight_zero_label_count": 0
+      }
+    },
+    "zhujia": {
+      "all_CPP_3x3_clear": {
+        "n": 234,
+        "dates": 25,
+        "total_restoration_benefit_sse": 88401.03526025086,
+        "mean_abs_end5_minus_mean15": 19.742237131575237,
+        "median_range_5min": 26.31499999999999,
+        "last5_exceeds_mean_by100": 5,
+        "daylight_zero_label_count": 0
+      },
+      "nonzero_low_variation": {
+        "n": 112,
+        "dates": 23,
+        "total_restoration_benefit_sse": 88257.9302358351,
+        "mean_abs_end5_minus_mean15": 5.556726544414248,
+        "median_range_5min": 10.379999999999992,
+        "last5_exceeds_mean_by100": 0,
+        "daylight_zero_label_count": 0
+      },
+      "nonzero_medium_variation": {
+        "n": 106,
+        "dates": 24,
+        "total_restoration_benefit_sse": 733.5023653570097,
+        "mean_abs_end5_minus_mean15": 18.868585986731187,
+        "median_range_5min": 36.334999999999994,
+        "last5_exceeds_mean_by100": 0,
+        "daylight_zero_label_count": 0
+      },
+      "nonzero_high_variation": {
+        "n": 16,
+        "dates": 11,
+        "total_restoration_benefit_sse": -590.3973409412429,
+        "mean_abs_end5_minus_mean15": 124.82875007629394,
+        "median_range_5min": 200.345,
+        "last5_exceeds_mean_by100": 5,
+        "daylight_zero_label_count": 0
+      }
+    }
+  },
+  "restoration_benefit_concentration": {
+    "sili": {
+      "all_CPP_clear_restoration_benefit_sse": 36987.61022199168,
+      "zero_GHI_subset_benefit_sse": 11223.852743030293,
+      "top_dates": [
+        {
+          "date": "2025-07-08",
+          "benefit_sse": 26108.175574767592
+        },
+        {
+          "date": "2024-09-05",
+          "benefit_sse": 11223.852743030293
+        },
+        {
+          "date": "2024-11-16",
+          "benefit_sse": 440.23997255938593
+        },
+        {
+          "date": "2026-02-20",
+          "benefit_sse": 300.06272142753005
+        },
+        {
+          "date": "2025-04-18",
+          "benefit_sse": 119.83737933513476
+        }
+      ]
+    },
+    "zhujia": {
+      "all_CPP_clear_restoration_benefit_sse": 221067.5810738816,
+      "zero_GHI_subset_benefit_sse": 0.0,
+      "top_dates": [
+        {
+          "date": "2024-09-04",
+          "benefit_sse": 114910.00663603353
+        },
+        {
+          "date": "2025-07-08",
+          "benefit_sse": 105395.05542034935
+        },
+        {
+          "date": "2025-06-16",
+          "benefit_sse": 6016.918805254405
+        },
+        {
+          "date": "2025-02-09",
+          "benefit_sse": 2100.307407331653
+        },
+        {
+          "date": "2025-04-18",
+          "benefit_sse": 1056.7213380354806
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "station": "sili",
+      "utc": "2025-07-08 06:30:00",
+      "reason": "cloud-edge associated gate degradation",
+      "index": 1201,
+      "target_bjt": "2025-07-08 14:30:00",
+      "label_window": [
+        "2025-07-08 14:15:00",
+        "2025-07-08 14:30:00"
+      ],
+      "native_GHI_end_minus10_minus5_0": [
+        316.0,
+        265.0,
+        1002.0
+      ],
+      "label_mean15": 527.6666870117188,
+      "last_5min_GHI": 1002.0,
+      "scan_containing_5min_GHI": 962.0,
+      "actual_scan_bjt": "2025-07-08 14:33:04.354500",
+      "scan_offset_s": 184.3545,
+      "interval15_center_to_scan_s": 634.3545,
+      "rawhead_GHI": 754.2797241210938,
+      "gatehead_GHI": 779.7327880859375,
+      "restore_CPPclear_GHI": 759.12646484375,
+      "CPP_station_CLP": 0.0,
+      "CPP_station_COT": 0.0,
+      "CPP_3x3_clear": false,
+      "previous_frame_station_CLP": 1,
+      "solar_zenith_at_actual_scan_deg": 26.933078874751786,
+      "solar_azimuth_at_actual_scan_deg": 268.809359366004,
+      "input_solar_azimuth_deg": 269.0235290527344,
+      "input_solar_zenith_deg": 27.383968353271484,
+      "shadow_geometry": {
+        "solar_only": {
+          "nearest_cloud_pixel": [
+            8,
+            6
+          ],
+          "COT": 10.487372398376465,
+          "required_height_km": 13.322975029204542,
+          "cross_track_km": 1.4922149108946092,
+          "product_CTH_value": 1.6066213846206665
+        },
+        "solar_and_view_parallax": {
+          "nearest_cloud_pixel": [
+            7,
+            7
+          ],
+          "COT": 10.393082618713379,
+          "required_height_km": 9.64692442727445,
+          "cross_track_km": 0.5027108952077668,
+          "product_CTH_value": 2.3882033824920654
+        },
+        "opposite_control": {
+          "nearest_cloud_pixel": [
+            8,
+            10
+          ],
+          "COT": 5.214193344116211,
+          "required_height_km": 5.207019032425028,
+          "cross_track_km": 8.647321576127256,
+          "product_CTH_value": 0.8010119199752808
+        }
+      },
+      "CTH_units_in_file": null,
+      "CTH_used_as_measured_km": false
+    },
+    {
+      "station": "zhujia",
+      "utc": "2025-07-08 05:30:00",
+      "reason": "all 3x3 CPP clear, largest clear-value restoration benefit",
+      "index": 3490,
+      "target_bjt": "2025-07-08 13:30:00",
+      "label_window": [
+        "2025-07-08 13:15:00",
+        "2025-07-08 13:30:00"
+      ],
+      "native_GHI_end_minus10_minus5_0": [
+        426.05,
+        430.77,
+        445.05
+      ],
+      "label_mean15": 433.9566650390625,
+      "last_5min_GHI": 445.05,
+      "scan_containing_5min_GHI": 449.86,
+      "actual_scan_bjt": "2025-07-08 13:32:39.469000",
+      "scan_offset_s": 159.469,
+      "interval15_center_to_scan_s": 609.469,
+      "rawhead_GHI": 655.22607421875,
+      "gatehead_GHI": 746.6439819335938,
+      "restore_CPPclear_GHI": 663.8963623046875,
+      "CPP_station_CLP": 0.0,
+      "CPP_station_COT": 0.0,
+      "CPP_3x3_clear": true,
+      "previous_frame_station_CLP": 0,
+      "solar_zenith_at_actual_scan_deg": 14.706049403578987,
+      "solar_azimuth_at_actual_scan_deg": 244.35473085419954,
+      "input_solar_azimuth_deg": 245.47235107421875,
+      "input_solar_zenith_deg": 15.161384582519531,
+      "shadow_geometry": {
+        "solar_only": {
+          "nearest_cloud_pixel": [
+            5,
+            6
+          ],
+          "COT": 16.529905319213867,
+          "required_height_km": 9.125879477524865,
+          "cross_track_km": 15.144714915258884,
+          "product_CTH_value": 3.110253095626831
+        },
+        "solar_and_view_parallax": {
+          "nearest_cloud_pixel": [
+            6,
+            9
+          ],
+          "COT": 14.423086166381836,
+          "required_height_km": 13.627846082479365,
+          "cross_track_km": 3.664502002674071,
+          "product_CTH_value": 1.8368152379989624
+        },
+        "opposite_control": {
+          "nearest_cloud_pixel": [
+            8,
+            11
+          ],
+          "COT": 8.846546173095703,
+          "required_height_km": 3.0311475196825555,
+          "cross_track_km": 10.532743699239656,
+          "product_CTH_value": 1.6278733015060425
+        }
+      },
+      "CTH_units_in_file": null,
+      "CTH_used_as_measured_km": false
+    },
+    {
+      "station": "sili",
+      "utc": "2024-09-05 08:00:00",
+      "reason": "all 3x3 CPP clear, daytime zero GHI",
+      "index": 592,
+      "target_bjt": "2024-09-05 16:00:00",
+      "label_window": [
+        "2024-09-05 15:45:00",
+        "2024-09-05 16:00:00"
+      ],
+      "native_GHI_end_minus10_minus5_0": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_mean15": 0.0,
+      "last_5min_GHI": 0.0,
+      "scan_containing_5min_GHI": 0.0,
+      "actual_scan_bjt": "2024-09-05 16:03:04.350500",
+      "scan_offset_s": 184.3505,
+      "interval15_center_to_scan_s": 634.3505,
+      "rawhead_GHI": 511.7967529296875,
+      "gatehead_GHI": 517.8203735351562,
+      "restore_CPPclear_GHI": 510.701904296875,
+      "CPP_station_CLP": 0.0,
+      "CPP_station_COT": 0.0,
+      "CPP_3x3_clear": true,
+      "previous_frame_station_CLP": null,
+      "solar_zenith_at_actual_scan_deg": 54.421207965733906,
+      "solar_azimuth_at_actual_scan_deg": 258.9637436301568,
+      "input_solar_azimuth_deg": 258.3296813964844,
+      "input_solar_zenith_deg": 53.448062896728516,
+      "shadow_geometry": {
+        "solar_only": {
+          "nearest_cloud_pixel": [
+            4,
+            6
+          ],
+          "COT": 11.214558601379395,
+          "required_height_km": 2.149198634075273,
+          "cross_track_km": 20.109657716664508,
+          "product_CTH_value": 2.37060546875
+        },
+        "solar_and_view_parallax": {
+          "nearest_cloud_pixel": [
+            4,
+            5
+          ],
+          "COT": 9.063822746276855,
+          "required_height_km": 12.383304978885104,
+          "cross_track_km": 15.747305225989773,
+          "product_CTH_value": 2.4267683029174805
+        },
+        "opposite_control": {
+          "nearest_cloud_pixel": [
+            11,
+            11
+          ],
+          "COT": 43.85070037841797,
+          "required_height_km": 12.787487755638331,
+          "cross_track_km": 8.21042297053745,
+          "product_CTH_value": 9.339670181274414
+        }
+      },
+      "CTH_units_in_file": null,
+      "CTH_used_as_measured_km": false
+    },
+    {
+      "station": "sili",
+      "utc": "2024-11-16 07:00:00",
+      "reason": "all 3x3 CPP clear, nonzero GHI",
+      "index": 715,
+      "target_bjt": "2024-11-16 15:00:00",
+      "label_window": [
+        "2024-11-16 14:45:00",
+        "2024-11-16 15:00:00"
+      ],
+      "native_GHI_end_minus10_minus5_0": [
+        0.0,
+        495.0,
+        488.0
+      ],
+      "label_mean15": 327.6666564941406,
+      "last_5min_GHI": 488.0,
+      "scan_containing_5min_GHI": 480.0,
+      "actual_scan_bjt": "2024-11-16 15:03:04.352000",
+      "scan_offset_s": 184.352,
+      "interval15_center_to_scan_s": 634.352,
+      "rawhead_GHI": 402.4792785644531,
+      "gatehead_GHI": 404.35400390625,
+      "restore_CPPclear_GHI": 401.19293212890625,
+      "CPP_station_CLP": 0.0,
+      "CPP_station_COT": 0.0,
+      "CPP_3x3_clear": true,
+      "previous_frame_station_CLP": null,
+      "solar_zenith_at_actual_scan_deg": 60.55604899735553,
+      "solar_azimuth_at_actual_scan_deg": 226.54261427924897,
+      "input_solar_azimuth_deg": 222.85655212402344,
+      "input_solar_zenith_deg": 57.723140716552734,
+      "shadow_geometry": {
+        "solar_only": {
+          "nearest_cloud_pixel": [
+            7,
+            5
+          ],
+          "COT": 3.512777805328369,
+          "required_height_km": 2.1727545714849272,
+          "cross_track_km": 11.643177216500787,
+          "product_CTH_value": 1.8753101825714111
+        },
+        "solar_and_view_parallax": {
+          "nearest_cloud_pixel": [
+            7,
+            5
+          ],
+          "COT": 3.512777805328369,
+          "required_height_km": 5.096575895814271,
+          "cross_track_km": 10.384082215194805,
+          "product_CTH_value": 1.8753101825714111
+        },
+        "opposite_control": {
+          "nearest_cloud_pixel": [
+            5,
+            7
+          ],
+          "COT": 3.906637668609619,
+          "required_height_km": 3.781360210766161,
+          "cross_track_km": 14.169044821310766,
+          "product_CTH_value": 1.9159332513809204
+        }
+      },
+      "CTH_units_in_file": null,
+      "CTH_used_as_measured_km": false
+    },
+    {
+      "station": "zhujia",
+      "utc": "2025-06-16 06:45:00",
+      "reason": "all 3x3 CPP clear, additional-date case",
+      "index": 3440,
+      "target_bjt": "2025-06-16 14:45:00",
+      "label_window": [
+        "2025-06-16 14:30:00",
+        "2025-06-16 14:45:00"
+      ],
+      "native_GHI_end_minus10_minus5_0": [
+        463.73,
+        479.27,
+        490.59
+      ],
+      "label_mean15": 477.86334228515625,
+      "last_5min_GHI": 490.59,
+      "scan_containing_5min_GHI": 517.99,
+      "actual_scan_bjt": "2025-06-16 14:47:39.463000",
+      "scan_offset_s": 159.463,
+      "interval15_center_to_scan_s": 609.463,
+      "rawhead_GHI": 619.6749877929688,
+      "gatehead_GHI": 632.8767700195312,
+      "restore_CPPclear_GHI": 615.8778076171875,
+      "CPP_station_CLP": 0.0,
+      "CPP_station_COT": 0.0,
+      "CPP_3x3_clear": true,
+      "previous_frame_station_CLP": 0,
+      "solar_zenith_at_actual_scan_deg": 31.110956969539643,
+      "solar_azimuth_at_actual_scan_deg": 266.68367741166117,
+      "input_solar_azimuth_deg": 266.4064025878906,
+      "input_solar_zenith_deg": 30.67702865600586,
+      "shadow_geometry": {
+        "solar_only": {
+          "nearest_cloud_pixel": [
+            4,
+            7
+          ],
+          "COT": 5.158081531524658,
+          "required_height_km": 6.371586768242076,
+          "cross_track_km": 17.32033819373061,
+          "product_CTH_value": 8.62511157989502
+        },
+        "solar_and_view_parallax": {
+          "nearest_cloud_pixel": [
+            4,
+            10
+          ],
+          "COT": 5.265031337738037,
+          "required_height_km": 13.757172379677725,
+          "cross_track_km": 14.943814341570475,
+          "product_CTH_value": 8.444211959838867
+        },
+        "opposite_control": {
+          "nearest_cloud_pixel": [
+            11,
+            6
+          ],
+          "COT": 6.016997337341309,
+          "required_height_km": 9.19025578909264,
+          "cross_track_km": 14.963195225330203,
+          "product_CTH_value": 8.867883682250977
+        }
+      },
+      "CTH_units_in_file": null,
+      "CTH_used_as_measured_km": false
+    },
+    {
+      "station": "zhujia",
+      "utc": "2024-09-04 06:00:00",
+      "reason": "largest overall CPP-clear-value restoration benefit; variable interval",
+      "index": 2668,
+      "target_bjt": "2024-09-04 14:00:00",
+      "label_window": [
+        "2024-09-04 13:45:00",
+        "2024-09-04 14:00:00"
+      ],
+      "native_GHI_end_minus10_minus5_0": [
+        216.0,
+        241.0,
+        843.0
+      ],
+      "label_mean15": 433.3333435058594,
+      "last_5min_GHI": 843.0,
+      "scan_containing_5min_GHI": 642.0,
+      "actual_scan_bjt": "2024-09-04 14:02:39.465000",
+      "scan_offset_s": 159.465,
+      "interval15_center_to_scan_s": 609.465,
+      "rawhead_GHI": 617.7938842773438,
+      "gatehead_GHI": 813.7897338867188,
+      "restore_CPPclear_GHI": 605.213623046875,
+      "CPP_station_CLP": 0.0,
+      "CPP_station_COT": 0.0,
+      "CPP_3x3_clear": false,
+      "previous_frame_station_CLP": null,
+      "solar_zenith_at_actual_scan_deg": 31.52330327048847,
+      "solar_azimuth_at_actual_scan_deg": 228.87920878568417,
+      "input_solar_azimuth_deg": 227.53338623046875,
+      "input_solar_zenith_deg": 30.91202735900879,
+      "shadow_geometry": {
+        "solar_only": {
+          "nearest_cloud_pixel": [
+            9,
+            7
+          ],
+          "COT": 28.688026428222656,
+          "required_height_km": 11.515481704329288,
+          "cross_track_km": 0.7299864915339671,
+          "product_CTH_value": 8.982932090759277
+        },
+        "solar_and_view_parallax": {
+          "nearest_cloud_pixel": [
+            9,
+            6
+          ],
+          "COT": 28.070363998413086,
+          "required_height_km": 6.073500629830404,
+          "cross_track_km": 9.851724408183362,
+          "product_CTH_value": 9.774300575256348
+        },
+        "opposite_control": {
+          "nearest_cloud_pixel": [
+            9,
+            7
+          ],
+          "COT": 28.688026428222656,
+          "required_height_km": 0.7495229305500699,
+          "cross_track_km": 7.0944734523014885,
+          "product_CTH_value": 8.982932090759277
+        }
+      },
+      "CTH_units_in_file": null,
+      "CTH_used_as_measured_km": false
+    }
+  ],
+  "test_payloads_read": 0,
+  "shadow_limits": "CTH unit missing in source NetCDF. Only explicit 0.5..15km geometric sensitivity; not a verified physical shadow attribution.",
+  "native_time_semantics": "All raw 5min values are interval-ending means, not instantaneous radiation.",
+  "source_model": "5 cases chosen post hoc; descriptive and no model training or label modification."
+}

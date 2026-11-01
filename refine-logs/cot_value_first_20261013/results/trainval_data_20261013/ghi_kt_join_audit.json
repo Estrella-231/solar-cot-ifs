@@ -1,0 +1,30 @@
+{
+  "state": "TRAIN_VAL_GHI_KT_LABEL_JOIN_COMPLETE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "candidate_keys": 111466,
+  "counts": {
+    "train/candidate": 102472,
+    "train/complete_ghi": 93255,
+    "train/day_incomplete_ghi": 4499,
+    "train/main_mask": 50458,
+    "train/positive_midpoint_clear_sky": 56124,
+    "train/station_day_noaa": 54964,
+    "val/candidate": 8994,
+    "val/complete_ghi": 8137,
+    "val/day_incomplete_ghi": 405,
+    "val/main_mask": 4479,
+    "val/positive_midpoint_clear_sky": 4987,
+    "val/station_day_noaa": 4885
+  },
+  "label_window": "(target-15min,target]; GHI mean from target-10/-5/target samples",
+  "clear_sky": "Ineichen pvlib; mean at 5-minute interval midpoints target-12.5/-7.5/-2.5 min",
+  "day_mask_source": "NOAA solar cosine at target station/time > 0, consistent with M0 label production",
+  "kt": "observed 15-min mean GHI / midpoint-sampled 15-min mean clear-sky GHI; unclipped",
+  "test_payload_opened": false,
+  "input_hashes": {
+    "labels": "cd2dc4464de5b78662396c6eb5318cd8f3d1858c4e16bd09f2c62e0d92d1bd02",
+    "clear_sky": "8a30a7045fcbddb997b9535e7f7e0c5225e64bc36923396c48e9412c86cf5e64"
+  },
+  "output": "ghi_kt_train_val.csv",
+  "output_sha256": "a86c2425ac4e6e8259fcaa4b5b2e083ee427d16e12d4eb1b44aa87751b75988d"
+}

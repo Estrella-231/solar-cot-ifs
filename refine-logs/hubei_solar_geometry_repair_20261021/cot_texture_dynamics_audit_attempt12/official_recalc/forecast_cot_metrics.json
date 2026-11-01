@@ -1,0 +1,5396 @@
+{
+  "state": "VALIDATION_ONLY_FORECAST_COT_DIAGNOSTIC_CPP_RETRIEVAL_REFERENCE",
+  "scope": "frozen corrected-SimVP -> frozen corrected-R; canonical +15..+240 min; common target CPP-valid support; reused validation, not independent test",
+  "reference_warning": "CPP is a satellite retrieval reference, not independent COT truth; offline observed-future AGRI->R is non-deployable and is a retrieval reference only.",
+  "pairing": "target_time_bjt exact key; persistence uses exact history_end/init_time_bjt R prediction; date-block bootstrap resamples target BJT dates",
+  "n_simvp_validation_sequences": 407,
+  "n_r_validation_keys": 264,
+  "n_paired_init_target_lead_keys": 1164,
+  "skipped_no_target_reference_key": 4684,
+  "skipped_no_history_reference_key": 664,
+  "cpp_reference_keys_sha256": "87b7e95549074f53d99ad66735726f1b67cfcfbeca99164d15104c32ec7412f1",
+  "cpp_reference_array_sha256": "f401ab35f1ea5f0ad411efa07eb836a7676cabb440c43d83158030c33e84e67f",
+  "cpp_mask_sha256": "ee2b8ea789de0f876110801648d8aba640e69545af7bddf2d2d0561483b2d7a3",
+  "simvp_key_sha256": "1f32d09268ac1a5446bb54c717b0cc6e663ca198c3d516d9da821cc94b28f134",
+  "forecast_cot_bank_sha256": "3e4a04d575f09fe678fea87da9585db8b47005299e2703a0b93c2b7bf52e6393",
+  "metrics": {
+    "15|all_patch|ALL_PATCH": {
+      "lead_minutes": 15,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 17152,
+      "forecast": {
+        "n_pixels": 17152,
+        "rmse_cot": 9.67216533499463,
+        "mae_cot": 5.939851483979048,
+        "bias_cot": -0.7381678530446287
+      },
+      "history_persistence": {
+        "n_pixels": 17152,
+        "rmse_cot": 7.034819523689782,
+        "mae_cot": 4.26486868004658,
+        "bias_cot": -0.8051349384556095
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 17152,
+        "rmse_cot": 6.819512858137564,
+        "mae_cot": 4.167977981479276,
+        "bias_cot": -0.7463727025277157
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.637345811304847,
+        "ci95": [
+          0.15815995393584137,
+          4.395568334086278
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.852652476857063,
+        "ci95": [
+          0.14920179628436303,
+          5.01992944864592
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "15|station_3x3|Mizhuang": {
+      "lead_minutes": 15,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 603,
+      "forecast": {
+        "n_pixels": 603,
+        "rmse_cot": 9.756728599605026,
+        "mae_cot": 5.735939529847978,
+        "bias_cot": -0.23261338825898237
+      },
+      "history_persistence": {
+        "n_pixels": 603,
+        "rmse_cot": 6.6623050623740525,
+        "mae_cot": 3.777872133717423,
+        "bias_cot": -0.47147638756460564
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 603,
+        "rmse_cot": 6.33881134280748,
+        "mae_cot": 3.7273096608208065,
+        "bias_cot": -0.35548390134409147
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.0944235372309725,
+        "ci95": [
+          0.008363071246671017,
+          5.0855209831225086
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.417917256797544,
+        "ci95": [
+          -0.08031163333667535,
+          6.02243756655019
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "15|station_3x3|Niushou": {
+      "lead_minutes": 15,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 603,
+      "forecast": {
+        "n_pixels": 603,
+        "rmse_cot": 11.22159164451626,
+        "mae_cot": 6.827555169839456,
+        "bias_cot": -0.5103853564928741
+      },
+      "history_persistence": {
+        "n_pixels": 603,
+        "rmse_cot": 7.8150408314980755,
+        "mae_cot": 4.771239048741128,
+        "bias_cot": -0.644233689651165
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 603,
+        "rmse_cot": 7.612351493167087,
+        "mae_cot": 4.684313199061215,
+        "bias_cot": -0.5393546272631408
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.4065508130181863,
+        "ci95": [
+          0.08469291075731933,
+          5.251618488290738
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.6092401513491748,
+        "ci95": [
+          0.025786561174402367,
+          6.033862432660918
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "15|station_3x3|Wangzhai": {
+      "lead_minutes": 15,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 603,
+      "forecast": {
+        "n_pixels": 603,
+        "rmse_cot": 10.70622535885604,
+        "mae_cot": 6.477419145952039,
+        "bias_cot": 0.02492618721108235
+      },
+      "history_persistence": {
+        "n_pixels": 603,
+        "rmse_cot": 7.476502968606658,
+        "mae_cot": 4.637104239679292,
+        "bias_cot": -0.2518656326374456
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 603,
+        "rmse_cot": 7.435927246124111,
+        "mae_cot": 4.5732443293226055,
+        "bias_cot": -0.1646528809515151
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.2297223902493792,
+        "ci95": [
+          0.09718067716825052,
+          5.168228433089464
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.2702981127319273,
+        "ci95": [
+          0.02472949297968885,
+          5.609858127634382
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "15|station_pixel|Mizhuang": {
+      "lead_minutes": 15,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 67,
+      "forecast": {
+        "n_pixels": 67,
+        "rmse_cot": 9.646248661611255,
+        "mae_cot": 5.562049703533525,
+        "bias_cot": -0.5045609361867407
+      },
+      "history_persistence": {
+        "n_pixels": 67,
+        "rmse_cot": 6.5923003316328765,
+        "mae_cot": 3.645152954773894,
+        "bias_cot": -0.7031684380247077
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 67,
+        "rmse_cot": 6.193995080785883,
+        "mae_cot": 3.639307796816105,
+        "bias_cot": -0.5761237635708122
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.053948329978379,
+        "ci95": [
+          0.023712233807992034,
+          5.165177751032742
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.4522535808253716,
+        "ci95": [
+          -0.04316345771076213,
+          6.256683214558791
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "15|station_pixel|Niushou": {
+      "lead_minutes": 15,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 67,
+      "forecast": {
+        "n_pixels": 67,
+        "rmse_cot": 11.533302364284175,
+        "mae_cot": 7.032903533984921,
+        "bias_cot": -0.5425182397463428
+      },
+      "history_persistence": {
+        "n_pixels": 67,
+        "rmse_cot": 8.104729287521602,
+        "mae_cot": 4.9588197110526595,
+        "bias_cot": -0.6574255221370441
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 67,
+        "rmse_cot": 7.936663193696123,
+        "mae_cot": 4.879588749092906,
+        "bias_cot": -0.5934970906532523
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.4285730767625733,
+        "ci95": [
+          0.10399941488998876,
+          5.219166793237374
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5966391705880536,
+        "ci95": [
+          0.06113519778129217,
+          5.827025269741869
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "15|station_pixel|Wangzhai": {
+      "lead_minutes": 15,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 67,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 67,
+      "forecast": {
+        "n_pixels": 67,
+        "rmse_cot": 10.765171539863083,
+        "mae_cot": 6.47928053913499,
+        "bias_cot": -0.04845239733582112
+      },
+      "history_persistence": {
+        "n_pixels": 67,
+        "rmse_cot": 7.529807880259626,
+        "mae_cot": 4.635677983817547,
+        "bias_cot": -0.3644149247556925
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 67,
+        "rmse_cot": 7.520188930557218,
+        "mae_cot": 4.5960204298538505,
+        "bias_cot": -0.26879392644918676
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.2353636596034567,
+        "ci95": [
+          0.07100738310548982,
+          5.181347030167098
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.2449826093058647,
+        "ci95": [
+          -0.023606869908531225,
+          5.589686311533937
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|all_patch|ALL_PATCH": {
+      "lead_minutes": 30,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16640,
+      "forecast": {
+        "n_pixels": 16640,
+        "rmse_cot": 10.06436021139849,
+        "mae_cot": 6.195659841724074,
+        "bias_cot": -0.6672843211019845
+      },
+      "history_persistence": {
+        "n_pixels": 16640,
+        "rmse_cot": 7.20089560256467,
+        "mae_cot": 4.429374244133886,
+        "bias_cot": -0.5435813942720975
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16640,
+        "rmse_cot": 6.65654914849839,
+        "mae_cot": 4.14059789639057,
+        "bias_cot": -0.47427980417879345
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.8634646088338203,
+        "ci95": [
+          0.09414669512960083,
+          4.892978189389613
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.407811062900101,
+        "ci95": [
+          0.25659717278523564,
+          6.361462976425505
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|station_3x3|Mizhuang": {
+      "lead_minutes": 30,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 585,
+      "forecast": {
+        "n_pixels": 585,
+        "rmse_cot": 10.628414313867733,
+        "mae_cot": 6.263357610142448,
+        "bias_cot": -0.25038764252781104
+      },
+      "history_persistence": {
+        "n_pixels": 585,
+        "rmse_cot": 7.125403736576637,
+        "mae_cot": 4.083618000409223,
+        "bias_cot": -0.2619241279303136
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 585,
+        "rmse_cot": 6.3254959018499175,
+        "mae_cot": 3.765886858373116,
+        "bias_cot": -0.09671326699292558
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5030105772910956,
+        "ci95": [
+          -0.13372717140650103,
+          5.9016947391617585
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.302918412017815,
+        "ci95": [
+          0.04010316582744744,
+          8.122015441968246
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|station_3x3|Niushou": {
+      "lead_minutes": 30,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 585,
+      "forecast": {
+        "n_pixels": 585,
+        "rmse_cot": 12.187296056834349,
+        "mae_cot": 7.369025742832539,
+        "bias_cot": -0.7298144404099792
+      },
+      "history_persistence": {
+        "n_pixels": 585,
+        "rmse_cot": 8.323182480583888,
+        "mae_cot": 5.080563514335798,
+        "bias_cot": -0.4594301189717829
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 585,
+        "rmse_cot": 7.706890585489584,
+        "mae_cot": 4.821368873310395,
+        "bias_cot": -0.29898460008777106
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.8641135762504604,
+        "ci95": [
+          0.278885367002462,
+          6.203280203410539
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.480405471344764,
+        "ci95": [
+          0.16078236029096793,
+          8.347616912734473
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|station_3x3|Wangzhai": {
+      "lead_minutes": 30,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 585,
+      "forecast": {
+        "n_pixels": 585,
+        "rmse_cot": 11.617366564219395,
+        "mae_cot": 6.917516297628928,
+        "bias_cot": -0.038422227391384095
+      },
+      "history_persistence": {
+        "n_pixels": 585,
+        "rmse_cot": 7.689042627519593,
+        "mae_cot": 4.762522575058616,
+        "bias_cot": 0.13678677371488168
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 585,
+        "rmse_cot": 7.430426887065882,
+        "mae_cot": 4.650136517953032,
+        "bias_cot": 0.23340402108290767
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.928323936699803,
+        "ci95": [
+          -0.07677963641084395,
+          6.603652744976538
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.1869396771535135,
+        "ci95": [
+          -0.18753734783882203,
+          8.103599327933406
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|station_pixel|Mizhuang": {
+      "lead_minutes": 30,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 65,
+      "forecast": {
+        "n_pixels": 65,
+        "rmse_cot": 10.515826564369448,
+        "mae_cot": 6.115015655899277,
+        "bias_cot": -0.4845343189457288
+      },
+      "history_persistence": {
+        "n_pixels": 65,
+        "rmse_cot": 7.101337666807661,
+        "mae_cot": 3.9774882543258943,
+        "bias_cot": -0.49644693517341065
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 65,
+        "rmse_cot": 6.170106601419839,
+        "mae_cot": 3.628719021150699,
+        "bias_cot": -0.2943511877495509
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.414488897561787,
+        "ci95": [
+          -0.12741938093380978,
+          5.822832162427964
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.345719962949609,
+        "ci95": [
+          0.08846367304592084,
+          8.298714788561107
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|station_pixel|Niushou": {
+      "lead_minutes": 30,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 65,
+      "forecast": {
+        "n_pixels": 65,
+        "rmse_cot": 12.493141375558407,
+        "mae_cot": 7.5253285725529375,
+        "bias_cot": -0.7420170169037122
+      },
+      "history_persistence": {
+        "n_pixels": 65,
+        "rmse_cot": 8.66659823862383,
+        "mae_cot": 5.274269459568537,
+        "bias_cot": -0.45744028756251703
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 65,
+        "rmse_cot": 8.066758037304785,
+        "mae_cot": 5.0243564822066284,
+        "bias_cot": -0.3581746118286481
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.82654313693458,
+        "ci95": [
+          0.29649979312703767,
+          6.033548542064732
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.4263833382536255,
+        "ci95": [
+          0.19429227454996356,
+          8.053716437061988
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "30|station_pixel|Wangzhai": {
+      "lead_minutes": 30,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 65,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 65,
+      "forecast": {
+        "n_pixels": 65,
+        "rmse_cot": 11.653714551471445,
+        "mae_cot": 6.870924586029007,
+        "bias_cot": -0.07086513796104835
+      },
+      "history_persistence": {
+        "n_pixels": 65,
+        "rmse_cot": 7.659921558086394,
+        "mae_cot": 4.7216900405115805,
+        "bias_cot": 0.07176541345050702
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 65,
+        "rmse_cot": 7.471656175526704,
+        "mae_cot": 4.643980193940493,
+        "bias_cot": 0.17520124895068315
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.9937929933850516,
+        "ci95": [
+          -0.18396475705900783,
+          6.6936439834039305
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.182058375944742,
+        "ci95": [
+          -0.29240909656452974,
+          8.151586171624949
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|all_patch|ALL_PATCH": {
+      "lead_minutes": 45,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16128,
+      "forecast": {
+        "n_pixels": 16128,
+        "rmse_cot": 9.650772093045495,
+        "mae_cot": 6.089390240207043,
+        "bias_cot": 0.22763944288557728
+      },
+      "history_persistence": {
+        "n_pixels": 16128,
+        "rmse_cot": 7.37135674787811,
+        "mae_cot": 4.563082540636854,
+        "bias_cot": -0.32285776195151683
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16128,
+        "rmse_cot": 6.427662434700926,
+        "mae_cot": 3.9735238398610644,
+        "bias_cot": -0.28002169189702336
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.2794153451673846,
+        "ci95": [
+          0.009745558001207133,
+          3.723988907037567
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.223109658344569,
+        "ci95": [
+          0.3062947841941033,
+          4.993163050169823
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|station_3x3|Mizhuang": {
+      "lead_minutes": 45,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 567,
+      "forecast": {
+        "n_pixels": 567,
+        "rmse_cot": 10.44664412182157,
+        "mae_cot": 6.4259922316715095,
+        "bias_cot": 0.7893823079002702
+      },
+      "history_persistence": {
+        "n_pixels": 567,
+        "rmse_cot": 7.5186105747167,
+        "mae_cot": 4.413136192272225,
+        "bias_cot": -0.02784513714813629
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 567,
+        "rmse_cot": 6.126914903931734,
+        "mae_cot": 3.5663609667672946,
+        "bias_cot": 0.13619131695748532
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.928033547104871,
+        "ci95": [
+          -0.3483253570553084,
+          5.209104103244412
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.3197292178898365,
+        "ci95": [
+          0.26810276326721727,
+          6.597500325656712
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|station_3x3|Niushou": {
+      "lead_minutes": 45,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 567,
+      "forecast": {
+        "n_pixels": 567,
+        "rmse_cot": 12.04016382740279,
+        "mae_cot": 7.501571544355711,
+        "bias_cot": 0.1979161150411849
+      },
+      "history_persistence": {
+        "n_pixels": 567,
+        "rmse_cot": 8.524427978291033,
+        "mae_cot": 5.123974190229908,
+        "bias_cot": -0.17413162749188393
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 567,
+        "rmse_cot": 7.544577243855792,
+        "mae_cot": 4.665902702321793,
+        "bias_cot": -0.09813671618555483
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5157358491117563,
+        "ci95": [
+          0.2979281498432029,
+          5.774879099239465
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.495586583546998,
+        "ci95": [
+          0.31763896047838847,
+          6.9715828672322395
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|station_3x3|Wangzhai": {
+      "lead_minutes": 45,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 567,
+      "forecast": {
+        "n_pixels": 567,
+        "rmse_cot": 11.560948999290114,
+        "mae_cot": 7.072246777113836,
+        "bias_cot": 0.938455869478208
+      },
+      "history_persistence": {
+        "n_pixels": 567,
+        "rmse_cot": 7.975319000445862,
+        "mae_cot": 4.952491092615526,
+        "bias_cot": 0.4600731939951211
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 567,
+        "rmse_cot": 7.308183932576665,
+        "mae_cot": 4.524590033919565,
+        "bias_cot": 0.39065816823058025
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5856299988442517,
+        "ci95": [
+          -0.2957093394000694,
+          5.548456950110372
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.252765066713447,
+        "ci95": [
+          -0.11811912156065074,
+          6.5388468033417535
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|station_pixel|Mizhuang": {
+      "lead_minutes": 45,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 63,
+      "forecast": {
+        "n_pixels": 63,
+        "rmse_cot": 10.276206600833452,
+        "mae_cot": 6.298735628200192,
+        "bias_cot": 0.5823970424927889
+      },
+      "history_persistence": {
+        "n_pixels": 63,
+        "rmse_cot": 7.503188580870903,
+        "mae_cot": 4.334419584611342,
+        "bias_cot": -0.24838582074476612
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 63,
+        "rmse_cot": 5.9625988897694056,
+        "mae_cot": 3.4125855252560644,
+        "bias_cot": -0.0066137125508652795
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.7730180199625485,
+        "ci95": [
+          -0.3293676735518982,
+          5.014409897950783
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.313607711064048,
+        "ci95": [
+          0.35643983447135485,
+          6.578023553743678
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|station_pixel|Niushou": {
+      "lead_minutes": 45,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 63,
+      "forecast": {
+        "n_pixels": 63,
+        "rmse_cot": 12.394012961137207,
+        "mae_cot": 7.673335187166693,
+        "bias_cot": 0.1597524435806369
+      },
+      "history_persistence": {
+        "n_pixels": 63,
+        "rmse_cot": 8.891093808226138,
+        "mae_cot": 5.335129852805819,
+        "bias_cot": -0.17077693414120448
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 63,
+        "rmse_cot": 7.927522464676126,
+        "mae_cot": 4.881163020485213,
+        "bias_cot": -0.16003250274511557
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.502919152911069,
+        "ci95": [
+          0.26105054491887936,
+          5.847333230775879
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.466490496461081,
+        "ci95": [
+          0.35488862310272284,
+          6.825202925365533
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "45|station_pixel|Wangzhai": {
+      "lead_minutes": 45,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 63,
+      "forecast": {
+        "n_pixels": 63,
+        "rmse_cot": 11.623247861091423,
+        "mae_cot": 7.058851454643503,
+        "bias_cot": 0.9134956175490977
+      },
+      "history_persistence": {
+        "n_pixels": 63,
+        "rmse_cot": 7.989710894720358,
+        "mae_cot": 4.958086838531825,
+        "bias_cot": 0.3884034954188835
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 63,
+        "rmse_cot": 7.373034033177143,
+        "mae_cot": 4.530954869907527,
+        "bias_cot": 0.34888416646964965
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.6335369663710653,
+        "ci95": [
+          -0.43159858814528373,
+          5.6793844815815415
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.25021382791428,
+        "ci95": [
+          -0.22177565713297143,
+          6.540475792763742
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|all_patch|ALL_PATCH": {
+      "lead_minutes": 60,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 26880,
+      "forecast": {
+        "n_pixels": 26880,
+        "rmse_cot": 11.055059912507126,
+        "mae_cot": 6.691913414114017,
+        "bias_cot": 1.2394180441086238
+      },
+      "history_persistence": {
+        "n_pixels": 26880,
+        "rmse_cot": 11.505285722328118,
+        "mae_cot": 6.515290845428847,
+        "bias_cot": 1.0628530642162202
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 26880,
+        "rmse_cot": 10.429961048811736,
+        "mae_cot": 5.611308495800906,
+        "bias_cot": 1.030850772130292
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": -0.4502258098209939,
+        "ci95": [
+          -2.7775659290789605,
+          1.824118476729657
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.625098863695392,
+        "ci95": [
+          -1.649299838350578,
+          3.0638233936078483
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|station_3x3|Mizhuang": {
+      "lead_minutes": 60,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 945,
+      "forecast": {
+        "n_pixels": 945,
+        "rmse_cot": 11.817435563161938,
+        "mae_cot": 7.1336485315429625,
+        "bias_cot": 1.5498943012168325
+      },
+      "history_persistence": {
+        "n_pixels": 945,
+        "rmse_cot": 11.899936439880495,
+        "mae_cot": 6.551657014041548,
+        "bias_cot": 1.2710949987892515
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 945,
+        "rmse_cot": 10.518453655556911,
+        "mae_cot": 5.525748277744327,
+        "bias_cot": 1.25896255369717
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": -0.08250087671855333,
+        "ci95": [
+          -2.980860602064341,
+          2.9179430632375265
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.2989819076050324,
+        "ci95": [
+          -1.612104365034377,
+          4.420894844576185
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|station_3x3|Niushou": {
+      "lead_minutes": 60,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 945,
+      "forecast": {
+        "n_pixels": 945,
+        "rmse_cot": 12.533677806898366,
+        "mae_cot": 7.616484943417605,
+        "bias_cot": 1.632294880822498
+      },
+      "history_persistence": {
+        "n_pixels": 945,
+        "rmse_cot": 11.917205227005216,
+        "mae_cot": 6.754694808791909,
+        "bias_cot": 1.5442097087947544
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 945,
+        "rmse_cot": 10.879539305604554,
+        "mae_cot": 5.988778352878357,
+        "bias_cot": 1.5013047965854485
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.6164725798931467,
+        "ci95": [
+          -2.03860876914124,
+          3.2232546258797363
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.6541385012938044,
+        "ci95": [
+          -1.1900179171283416,
+          4.512322416656931
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|station_3x3|Wangzhai": {
+      "lead_minutes": 60,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 945,
+      "forecast": {
+        "n_pixels": 945,
+        "rmse_cot": 12.563013973195128,
+        "mae_cot": 7.499086838306258,
+        "bias_cot": 1.8557140750702097
+      },
+      "history_persistence": {
+        "n_pixels": 945,
+        "rmse_cot": 11.966945026393851,
+        "mae_cot": 6.8825212225928984,
+        "bias_cot": 1.8108013548370865
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 945,
+        "rmse_cot": 10.995824128430598,
+        "mae_cot": 6.040411999458989,
+        "bias_cot": 1.5738791914607482
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.5960689468012781,
+        "ci95": [
+          -2.24674056592818,
+          3.354302358953676
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.5671898447645312,
+        "ci95": [
+          -1.3214649108879803,
+          4.491287579392746
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|station_pixel|Mizhuang": {
+      "lead_minutes": 60,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 105,
+      "forecast": {
+        "n_pixels": 105,
+        "rmse_cot": 11.615394148698474,
+        "mae_cot": 6.977259594184302,
+        "bias_cot": 1.300179688366396
+      },
+      "history_persistence": {
+        "n_pixels": 105,
+        "rmse_cot": 11.845771273196554,
+        "mae_cot": 6.519221307585637,
+        "bias_cot": 1.0032084479218437
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 105,
+        "rmse_cot": 10.404816576408756,
+        "mae_cot": 5.4928665895015,
+        "bias_cot": 1.0514049423415037
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": -0.23037712449808012,
+        "ci95": [
+          -3.149308593743557,
+          2.7201617943755383
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.2105775722897185,
+        "ci95": [
+          -1.7143336863109067,
+          4.3333754386205525
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|station_pixel|Niushou": {
+      "lead_minutes": 60,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 105,
+      "forecast": {
+        "n_pixels": 105,
+        "rmse_cot": 12.74258742627861,
+        "mae_cot": 7.746872323503097,
+        "bias_cot": 1.6647889100724742
+      },
+      "history_persistence": {
+        "n_pixels": 105,
+        "rmse_cot": 11.977882957583478,
+        "mae_cot": 6.843299607222988,
+        "bias_cot": 1.5622614767934595
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 105,
+        "rmse_cot": 10.96679361590042,
+        "mae_cot": 6.097547959518574,
+        "bias_cot": 1.4952963219334683
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.7647044686951361,
+        "ci95": [
+          -1.8229347646242482,
+          3.3431817078686255
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.7757938103781932,
+        "ci95": [
+          -1.0347958470578147,
+          4.4978736736902585
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "60|station_pixel|Wangzhai": {
+      "lead_minutes": 60,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 105,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 105,
+      "forecast": {
+        "n_pixels": 105,
+        "rmse_cot": 12.65025441085058,
+        "mae_cot": 7.516826616564677,
+        "bias_cot": 1.8516387311653013
+      },
+      "history_persistence": {
+        "n_pixels": 105,
+        "rmse_cot": 12.013861275050687,
+        "mae_cot": 6.903431071482953,
+        "bias_cot": 1.7562229684066204
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 105,
+        "rmse_cot": 11.04986663495468,
+        "mae_cot": 6.074900782782407,
+        "bias_cot": 1.5276566915568852
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.6363931357998958,
+        "ci95": [
+          -2.2195783997950107,
+          3.4416652199262803
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.6003877758959018,
+        "ci95": [
+          -1.2921229800313123,
+          4.520281577733913
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|all_patch|ALL_PATCH": {
+      "lead_minutes": 75,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 15872,
+      "forecast": {
+        "n_pixels": 15872,
+        "rmse_cot": 8.50849767721238,
+        "mae_cot": 5.435767283830618,
+        "bias_cot": -0.5516597223414142
+      },
+      "history_persistence": {
+        "n_pixels": 15872,
+        "rmse_cot": 7.454486744405226,
+        "mae_cot": 4.755113085715083,
+        "bias_cot": -0.19041811647266807
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 15872,
+        "rmse_cot": 6.410534656797712,
+        "mae_cot": 3.9236373561949045,
+        "bias_cot": -0.18145315710077534
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.054010932807155,
+        "ci95": [
+          0.15759396432927097,
+          1.6803627989937215
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.097963020414668,
+        "ci95": [
+          0.5788749563564379,
+          3.896297224068963
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|station_3x3|Mizhuang": {
+      "lead_minutes": 75,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 558,
+      "forecast": {
+        "n_pixels": 558,
+        "rmse_cot": 9.262874091231204,
+        "mae_cot": 5.759602431990674,
+        "bias_cot": 0.23175224205011696
+      },
+      "history_persistence": {
+        "n_pixels": 558,
+        "rmse_cot": 7.735624110629974,
+        "mae_cot": 4.7445026602092,
+        "bias_cot": 0.43079481759746174
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 558,
+        "rmse_cot": 5.654530175907652,
+        "mae_cot": 3.312456481774608,
+        "bias_cot": 0.47681085399008194
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.5272499806012299,
+        "ci95": [
+          -0.07830147444699875,
+          2.8216973421462415
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.6083439153235517,
+        "ci95": [
+          1.3489716471491593,
+          6.528961194964795
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|station_3x3|Niushou": {
+      "lead_minutes": 75,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 558,
+      "forecast": {
+        "n_pixels": 558,
+        "rmse_cot": 10.417102489416772,
+        "mae_cot": 6.495603223321258,
+        "bias_cot": -0.22010415623224872
+      },
+      "history_persistence": {
+        "n_pixels": 558,
+        "rmse_cot": 8.02720893226341,
+        "mae_cot": 4.864524933392696,
+        "bias_cot": 0.4457612877618188
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 558,
+        "rmse_cot": 7.160585993177695,
+        "mae_cot": 4.411047242438308,
+        "bias_cot": 0.4411789356767597
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.3898935571533624,
+        "ci95": [
+          0.8289291916348089,
+          3.5758164945077215
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.256516496239077,
+        "ci95": [
+          1.0609176616224607,
+          6.257506320592521
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|station_3x3|Wangzhai": {
+      "lead_minutes": 75,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 558,
+      "forecast": {
+        "n_pixels": 558,
+        "rmse_cot": 10.5599203916648,
+        "mae_cot": 6.427321597304542,
+        "bias_cot": 0.2830114525202061
+      },
+      "history_persistence": {
+        "n_pixels": 558,
+        "rmse_cot": 8.041954403504825,
+        "mae_cot": 5.025252598518085,
+        "bias_cot": 1.0519821673104253
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 558,
+        "rmse_cot": 7.219808301341732,
+        "mae_cot": 4.400768366398617,
+        "bias_cot": 0.5659083032473174
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.5179659881599736,
+        "ci95": [
+          -0.17687950610044934,
+          4.154627466684353
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.3401120903230668,
+        "ci95": [
+          0.7333981257729907,
+          6.072443762816505
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|station_pixel|Mizhuang": {
+      "lead_minutes": 75,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 62,
+      "forecast": {
+        "n_pixels": 62,
+        "rmse_cot": 9.032718044388114,
+        "mae_cot": 5.563613093307903,
+        "bias_cot": 0.11436192234677653
+      },
+      "history_persistence": {
+        "n_pixels": 62,
+        "rmse_cot": 7.709718425450442,
+        "mae_cot": 4.644537247957722,
+        "bias_cot": 0.23394307355967262
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 62,
+        "rmse_cot": 5.433768737030066,
+        "mae_cot": 3.1520380258500094,
+        "bias_cot": 0.40120890787652425
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.322999618937672,
+        "ci95": [
+          -0.04566519509423017,
+          2.897629336432952
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5989493073580476,
+        "ci95": [
+          1.459397685774647,
+          6.6121352044430495
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|station_pixel|Niushou": {
+      "lead_minutes": 75,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 62,
+      "forecast": {
+        "n_pixels": 62,
+        "rmse_cot": 10.765223589976,
+        "mae_cot": 6.712124323021741,
+        "bias_cot": -0.244219389383591
+      },
+      "history_persistence": {
+        "n_pixels": 62,
+        "rmse_cot": 8.313959450883527,
+        "mae_cot": 4.9942492839369566,
+        "bias_cot": 0.4016082103274042
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 62,
+        "rmse_cot": 7.51152907153762,
+        "mae_cot": 4.630614215628274,
+        "bias_cot": 0.4146130751337736
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.4512641390924728,
+        "ci95": [
+          0.8375491494296661,
+          3.6059225526860175
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.2536945184383796,
+        "ci95": [
+          1.1103785156764843,
+          6.153930508172586
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "75|station_pixel|Wangzhai": {
+      "lead_minutes": 75,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 62,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 62,
+      "forecast": {
+        "n_pixels": 62,
+        "rmse_cot": 10.685671990233313,
+        "mae_cot": 6.416900701265061,
+        "bias_cot": 0.2637428279154964
+      },
+      "history_persistence": {
+        "n_pixels": 62,
+        "rmse_cot": 8.090899446989605,
+        "mae_cot": 5.025641765625727,
+        "bias_cot": 0.9893732142424391
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 62,
+        "rmse_cot": 7.3146345211401815,
+        "mae_cot": 4.405766681347403,
+        "bias_cot": 0.4900757543922913
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.5947725432437068,
+        "ci95": [
+          -0.32512790128105773,
+          4.234268016060756
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.37103746909313,
+        "ci95": [
+          0.6593560528566951,
+          6.104015459729913
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|all_patch|ALL_PATCH": {
+      "lead_minutes": 90,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16128,
+      "forecast": {
+        "n_pixels": 16128,
+        "rmse_cot": 8.0296019773981,
+        "mae_cot": 5.072452196786351,
+        "bias_cot": -1.4912246662243556
+      },
+      "history_persistence": {
+        "n_pixels": 16128,
+        "rmse_cot": 7.660623939976805,
+        "mae_cot": 4.972104095438154,
+        "bias_cot": -0.32961739397080875
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16128,
+        "rmse_cot": 6.670946705856603,
+        "mae_cot": 4.04418545459928,
+        "bias_cot": -0.3272234021509547
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.36897803742129476,
+        "ci95": [
+          -0.7996743883412325,
+          1.7072219125985217
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.3586552715414966,
+        "ci95": [
+          -0.002295361083679559,
+          3.179052718313237
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|station_3x3|Mizhuang": {
+      "lead_minutes": 90,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 567,
+      "forecast": {
+        "n_pixels": 567,
+        "rmse_cot": 8.227275900130788,
+        "mae_cot": 4.905566779504049,
+        "bias_cot": -0.4756008672693866
+      },
+      "history_persistence": {
+        "n_pixels": 567,
+        "rmse_cot": 7.726796729188483,
+        "mae_cot": 4.812480648340595,
+        "bias_cot": 0.5352036050706445
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 567,
+        "rmse_cot": 5.501785592213357,
+        "mae_cot": 3.2276516727958615,
+        "bias_cot": 0.4517923913160224
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.500479170942306,
+        "ci95": [
+          -0.29838355997139887,
+          1.0748789989720517
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.7254903079174326,
+        "ci95": [
+          0.7817222977337569,
+          5.572014550287567
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|station_3x3|Niushou": {
+      "lead_minutes": 90,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 567,
+      "forecast": {
+        "n_pixels": 567,
+        "rmse_cot": 9.132663915364226,
+        "mae_cot": 5.676105094973385,
+        "bias_cot": -0.9000673252231781
+      },
+      "history_persistence": {
+        "n_pixels": 567,
+        "rmse_cot": 7.684511326006188,
+        "mae_cot": 4.729683484829555,
+        "bias_cot": 0.6058240634417145
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 567,
+        "rmse_cot": 7.032514439087927,
+        "mae_cot": 4.3672775710937835,
+        "bias_cot": 0.5217908708447659
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.4481525893580383,
+        "ci95": [
+          0.39179692365346774,
+          2.7580528519396097
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.1001494762762993,
+        "ci95": [
+          -0.06900400312173449,
+          5.32974339958089
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|station_3x3|Wangzhai": {
+      "lead_minutes": 90,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 567,
+      "forecast": {
+        "n_pixels": 567,
+        "rmse_cot": 9.558181220280963,
+        "mae_cot": 5.874675269082609,
+        "bias_cot": -0.5031636620410168
+      },
+      "history_persistence": {
+        "n_pixels": 567,
+        "rmse_cot": 8.062457960974838,
+        "mae_cot": 5.181265418902302,
+        "bias_cot": 1.1222763907630817
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 567,
+        "rmse_cot": 7.277459185826357,
+        "mae_cot": 4.428300592489869,
+        "bias_cot": 0.5483807800879712
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.4957232593061232,
+        "ci95": [
+          -0.32777133192609775,
+          3.8824129942050583
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.2807220344546018,
+        "ci95": [
+          0.49620329722563516,
+          4.929672070069529
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|station_pixel|Mizhuang": {
+      "lead_minutes": 90,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 63,
+      "forecast": {
+        "n_pixels": 63,
+        "rmse_cot": 8.011034346611375,
+        "mae_cot": 4.7106559823843694,
+        "bias_cot": -0.5710782201458064
+      },
+      "history_persistence": {
+        "n_pixels": 63,
+        "rmse_cot": 7.641181308639845,
+        "mae_cot": 4.650702944941937,
+        "bias_cot": 0.34590205804459634
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 63,
+        "rmse_cot": 5.222754583430525,
+        "mae_cot": 3.054998863754528,
+        "bias_cot": 0.38785399180201313
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.3698530379715299,
+        "ci95": [
+          -0.2835907466285139,
+          0.6405112120621901
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.7882797631808494,
+        "ci95": [
+          0.7371946020361673,
+          5.811282531663943
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|station_pixel|Niushou": {
+      "lead_minutes": 90,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 63,
+      "forecast": {
+        "n_pixels": 63,
+        "rmse_cot": 9.394513459078585,
+        "mae_cot": 5.865375380460469,
+        "bias_cot": -0.8953870921913121
+      },
+      "history_persistence": {
+        "n_pixels": 63,
+        "rmse_cot": 7.845042472863018,
+        "mae_cot": 4.829987648046679,
+        "bias_cot": 0.5580509494812715
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 63,
+        "rmse_cot": 7.347098076935084,
+        "mae_cot": 4.588400152674507,
+        "bias_cot": 0.514669529354525
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.5494709862155664,
+        "ci95": [
+          0.5291475348530303,
+          2.837625001121971
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.047415382143501,
+        "ci95": [
+          -0.050942997225225994,
+          5.134071100088526
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "90|station_pixel|Wangzhai": {
+      "lead_minutes": 90,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 63,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 63,
+      "forecast": {
+        "n_pixels": 63,
+        "rmse_cot": 9.63901971582378,
+        "mae_cot": 5.920167723685385,
+        "bias_cot": -0.4990269758605531
+      },
+      "history_persistence": {
+        "n_pixels": 63,
+        "rmse_cot": 8.061788579546242,
+        "mae_cot": 5.241203316236063,
+        "bias_cot": 1.075398247955101
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 63,
+        "rmse_cot": 7.357834171572585,
+        "mae_cot": 4.415200915394558,
+        "bias_cot": 0.4992429731443288
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.577231136277538,
+        "ci95": [
+          -0.4786218226399377,
+          3.951076526525382
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.281185544251195,
+        "ci95": [
+          0.4778942812420941,
+          4.840554374594037
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|all_patch|ALL_PATCH": {
+      "lead_minutes": 105,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16384,
+      "forecast": {
+        "n_pixels": 16384,
+        "rmse_cot": 7.940894199331355,
+        "mae_cot": 5.099395266188765,
+        "bias_cot": -1.8264337123662813
+      },
+      "history_persistence": {
+        "n_pixels": 16384,
+        "rmse_cot": 7.625166128976966,
+        "mae_cot": 5.084703006421023,
+        "bias_cot": -0.3113275376704223
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16384,
+        "rmse_cot": 6.796613943014163,
+        "mae_cot": 4.21110014552994,
+        "bias_cot": -0.1606417842931478
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.315728070354389,
+        "ci95": [
+          -1.2673172495439324,
+          1.9233597945144503
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.1442802563171908,
+        "ci95": [
+          -0.9900861751843202,
+          3.5174603434736422
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|station_3x3|Mizhuang": {
+      "lead_minutes": 105,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 7.612304881981195,
+        "mae_cot": 4.625799757932934,
+        "bias_cot": -0.6773175762953341
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.523968532893271,
+        "mae_cot": 4.807047326481552,
+        "bias_cot": 0.6942281007375439
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 5.543963440515668,
+        "mae_cot": 3.337088607077021,
+        "bias_cot": 0.7291362834576931
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.08833634908792387,
+        "ci95": [
+          -0.557184797153834,
+          0.7936180841752751
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.0683414414655266,
+        "ci95": [
+          -0.36327363522309497,
+          5.741011297328899
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|station_3x3|Niushou": {
+      "lead_minutes": 105,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 8.589498921352234,
+        "mae_cot": 5.540279584757324,
+        "bias_cot": -1.1630285540159093
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.09799467029232,
+        "mae_cot": 4.618532361108616,
+        "bias_cot": 0.8224425379869191
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 7.037256671717414,
+        "mae_cot": 4.476294603556097,
+        "bias_cot": 0.867796619298234
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.491504251059915,
+        "ci95": [
+          -0.10599230025983264,
+          3.5843634839655216
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.55224224963482,
+        "ci95": [
+          -1.5455777279535265,
+          5.805087236855642
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|station_3x3|Wangzhai": {
+      "lead_minutes": 105,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 8.85525117404449,
+        "mae_cot": 5.680664904651672,
+        "bias_cot": -0.671730307199242
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.772480865036455,
+        "mae_cot": 5.216868960043131,
+        "bias_cot": 1.3756760018586647
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 7.13680226169589,
+        "mae_cot": 4.506463218101999,
+        "bias_cot": 0.9630805957777839
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.082770309008036,
+        "ci95": [
+          -0.8533470119656688,
+          4.0096719380403805
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.7184489123485989,
+        "ci95": [
+          -0.775448281506085,
+          5.438511848453751
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|station_pixel|Mizhuang": {
+      "lead_minutes": 105,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 7.476309283457259,
+        "mae_cot": 4.51298607402714,
+        "bias_cot": -0.7893202126142569
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.42943787797671,
+        "mae_cot": 4.603524592937902,
+        "bias_cot": 0.5116385768051259
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 5.227884955509007,
+        "mae_cot": 3.1618090665724594,
+        "bias_cot": 0.6622173825453501
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.04687140548054902,
+        "ci95": [
+          -0.5145209999197062,
+          0.5405652122992386
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.2484243279482525,
+        "ci95": [
+          -0.37588682280201624,
+          6.1431509369224555
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|station_pixel|Niushou": {
+      "lead_minutes": 105,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 8.77947106302632,
+        "mae_cot": 5.727278475111234,
+        "bias_cot": -1.14074976676784
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.185740507666872,
+        "mae_cot": 4.656662299414165,
+        "bias_cot": 0.7885158667922951
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 7.322511847529351,
+        "mae_cot": 4.681129444623366,
+        "bias_cot": 0.8848545453511178
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.5937305553594472,
+        "ci95": [
+          0.0920639113545203,
+          3.565339151541629
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.4569592154969682,
+        "ci95": [
+          -1.597774180984171,
+          5.5746894518131445
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "105|station_pixel|Wangzhai": {
+      "lead_minutes": 105,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 8.869220008056102,
+        "mae_cot": 5.693803639675025,
+        "bias_cot": -0.624046067299787
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.708699988984939,
+        "mae_cot": 5.270891623396892,
+        "bias_cot": 1.386032895417884
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 7.150479940687178,
+        "mae_cot": 4.480354663799517,
+        "bias_cot": 0.9794043101137504
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.1605200190711633,
+        "ci95": [
+          -0.750791832334305,
+          4.117604041349729
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.7187400673689242,
+        "ci95": [
+          -0.7568538813699579,
+          5.450969560586796
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|all_patch|ALL_PATCH": {
+      "lead_minutes": 120,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 27904,
+      "forecast": {
+        "n_pixels": 27904,
+        "rmse_cot": 12.099536352394393,
+        "mae_cot": 7.069573145501836,
+        "bias_cot": 0.06042347720268405
+      },
+      "history_persistence": {
+        "n_pixels": 27904,
+        "rmse_cot": 11.561737740019053,
+        "mae_cot": 6.842540913764382,
+        "bias_cot": 0.9629338228083942
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 27904,
+        "rmse_cot": 10.425195879712266,
+        "mae_cot": 5.774462020659802,
+        "bias_cot": 1.2731183262893273
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.5377986123753402,
+        "ci95": [
+          -0.607727915800965,
+          2.2006156016557683
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.674340472682129,
+        "ci95": [
+          0.06449135127921765,
+          3.850326341264028
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|station_3x3|Mizhuang": {
+      "lead_minutes": 120,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 981,
+      "forecast": {
+        "n_pixels": 981,
+        "rmse_cot": 11.823730287702109,
+        "mae_cot": 6.384922944314049,
+        "bias_cot": 1.0095328992483312
+      },
+      "history_persistence": {
+        "n_pixels": 981,
+        "rmse_cot": 11.52250305631197,
+        "mae_cot": 6.405620677806779,
+        "bias_cot": 1.7358441977447447
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 981,
+        "rmse_cot": 9.974530260043474,
+        "mae_cot": 5.231792156757344,
+        "bias_cot": 1.8800201907660907
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.3012272313901381,
+        "ci95": [
+          -0.7872797323081252,
+          2.1147922858818142
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.8492000276586342,
+        "ci95": [
+          -0.2059704018214564,
+          4.5670300064267675
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|station_3x3|Niushou": {
+      "lead_minutes": 120,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 981,
+      "forecast": {
+        "n_pixels": 981,
+        "rmse_cot": 12.614316057319328,
+        "mae_cot": 7.345743229585176,
+        "bias_cot": 0.7645292820002614
+      },
+      "history_persistence": {
+        "n_pixels": 981,
+        "rmse_cot": 11.300648152513267,
+        "mae_cot": 6.529599729176349,
+        "bias_cot": 1.9868791497622926
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 981,
+        "rmse_cot": 10.881173476318157,
+        "mae_cot": 6.076042483077517,
+        "bias_cot": 2.1600087439217943
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.31366790480606,
+        "ci95": [
+          -0.30585851340409537,
+          3.7803130703491945
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.7331425810011698,
+        "ci95": [
+          -0.6795961356979198,
+          4.915345663738463
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|station_3x3|Wangzhai": {
+      "lead_minutes": 120,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 981,
+      "forecast": {
+        "n_pixels": 981,
+        "rmse_cot": 12.59886876639933,
+        "mae_cot": 7.176515563445262,
+        "bias_cot": 1.0507852505592516
+      },
+      "history_persistence": {
+        "n_pixels": 981,
+        "rmse_cot": 11.656590600115504,
+        "mae_cot": 6.864668592833415,
+        "bias_cot": 2.22389760418253
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 981,
+        "rmse_cot": 10.910668144745927,
+        "mae_cot": 5.999428139489702,
+        "bias_cot": 2.2771527567540395
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.9422781662838275,
+        "ci95": [
+          -0.8446017104441945,
+          3.268585275697674
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.6882006216534027,
+        "ci95": [
+          -0.6103608245113171,
+          4.675802579896891
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|station_pixel|Mizhuang": {
+      "lead_minutes": 120,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 109,
+      "forecast": {
+        "n_pixels": 109,
+        "rmse_cot": 11.586271077177194,
+        "mae_cot": 6.238317521323168,
+        "bias_cot": 0.81274166682718
+      },
+      "history_persistence": {
+        "n_pixels": 109,
+        "rmse_cot": 11.399941771272866,
+        "mae_cot": 6.262136034496607,
+        "bias_cot": 1.5385940853472149
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 109,
+        "rmse_cot": 9.731559016727166,
+        "mae_cot": 5.106845097650492,
+        "bias_cot": 1.7057027697323932
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.18632930590432828,
+        "ci95": [
+          -0.8743027852715958,
+          1.9126775102826497
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.8547120604500282,
+        "ci95": [
+          -0.1753625451671703,
+          4.594954650471619
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|station_pixel|Niushou": {
+      "lead_minutes": 120,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 109,
+      "forecast": {
+        "n_pixels": 109,
+        "rmse_cot": 12.648091566626864,
+        "mae_cot": 7.418342226278892,
+        "bias_cot": 0.8018153247961758
+      },
+      "history_persistence": {
+        "n_pixels": 109,
+        "rmse_cot": 11.269119772289402,
+        "mae_cot": 6.549242288369788,
+        "bias_cot": 1.9875736917548497
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 109,
+        "rmse_cot": 10.964326812920632,
+        "mae_cot": 6.2102632840258,
+        "bias_cot": 2.162741564470557
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.3789717943374633,
+        "ci95": [
+          -0.2426399092867816,
+          3.8243622104130113
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.68376475370623,
+        "ci95": [
+          -0.8192584358733953,
+          4.847728914795608
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "120|station_pixel|Wangzhai": {
+      "lead_minutes": 120,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 109,
+      "n_target_dates": 16,
+      "cpp_common_support_pixels": 109,
+      "forecast": {
+        "n_pixels": 109,
+        "rmse_cot": 12.609738218514535,
+        "mae_cot": 7.163514360255741,
+        "bias_cot": 1.1054692103125907
+      },
+      "history_persistence": {
+        "n_pixels": 109,
+        "rmse_cot": 11.64840586391701,
+        "mae_cot": 6.85842096528739,
+        "bias_cot": 2.249253117402486
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 109,
+        "rmse_cot": 10.950977091530598,
+        "mae_cot": 5.988974372283854,
+        "bias_cot": 2.3139210720332937
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 0.9613323545975252,
+        "ci95": [
+          -0.8020259580070505,
+          3.2781580077430124
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 16,
+        "delta_rmse_left_minus_right": 1.6587611269839346,
+        "ci95": [
+          -0.6394179303910429,
+          4.626725092189422
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|all_patch|ALL_PATCH": {
+      "lead_minutes": 135,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16384,
+      "forecast": {
+        "n_pixels": 16384,
+        "rmse_cot": 9.008792854619385,
+        "mae_cot": 6.05647868880817,
+        "bias_cot": -0.14934468744831975
+      },
+      "history_persistence": {
+        "n_pixels": 16384,
+        "rmse_cot": 8.255762036684956,
+        "mae_cot": 5.56222190013392,
+        "bias_cot": -0.42514050036623985
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16384,
+        "rmse_cot": 7.583553125816386,
+        "mae_cot": 4.788490852284042,
+        "bias_cot": 0.312858166233525
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.7530308179344267,
+        "ci95": [
+          -0.28518722214127656,
+          1.9896917147720563
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.425239728802997,
+        "ci95": [
+          0.6555763684846694,
+          2.3796383901940974
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|station_3x3|Mizhuang": {
+      "lead_minutes": 135,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 8.51615205374728,
+        "mae_cot": 5.325059486533671,
+        "bias_cot": 1.207277882462626
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.527878012862523,
+        "mae_cot": 4.834758695287746,
+        "bias_cot": 0.6885463188049875
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 6.931326513634141,
+        "mae_cot": 4.0323110639648,
+        "bias_cot": 1.2576976930722594
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.9882740408847592,
+        "ci95": [
+          -1.191572976812903,
+          3.0921420824539894
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.5848255401131413,
+        "ci95": [
+          0.6814303077165779,
+          2.7328222129422066
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|station_3x3|Niushou": {
+      "lead_minutes": 135,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 9.689328323498883,
+        "mae_cot": 6.364546548180645,
+        "bias_cot": 0.7568179132067598
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.525931607427952,
+        "mae_cot": 5.090127680536373,
+        "bias_cot": 0.9527328202271342
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 8.30472118520979,
+        "mae_cot": 5.230489794527077,
+        "bias_cot": 1.288625902538317
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.1633967160709284,
+        "ci95": [
+          -0.5710659878262399,
+          3.3622798917100276
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.384607138289093,
+        "ci95": [
+          0.44965132077287606,
+          2.8163462913930566
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|station_3x3|Wangzhai": {
+      "lead_minutes": 135,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 9.583731550649246,
+        "mae_cot": 6.3138037264499065,
+        "bias_cot": 1.6119899883973023
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.9771655116473,
+        "mae_cot": 5.5466703015715915,
+        "bias_cot": 1.6702518539322126
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 7.993183017999099,
+        "mae_cot": 4.961950009063003,
+        "bias_cot": 1.747701257090537
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.6065660390019456,
+        "ci95": [
+          -1.230626120814633,
+          2.664362827628958
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.5905485326501454,
+        "ci95": [
+          0.38674844328975855,
+          2.711200330468648
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|station_pixel|Mizhuang": {
+      "lead_minutes": 135,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 8.206190526275824,
+        "mae_cot": 5.072319554907153,
+        "bias_cot": 1.0594823954888852
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.40885469286225,
+        "mae_cot": 4.60399544952088,
+        "bias_cot": 0.5455531738989521
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 6.620575706781244,
+        "mae_cot": 3.8383155577466823,
+        "bias_cot": 1.173791503533721
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.7973358334135741,
+        "ci95": [
+          -1.2410820214665153,
+          2.986309563022191
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.5856148194945803,
+        "ci95": [
+          0.7094662477346254,
+          2.7366666508143123
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|station_pixel|Niushou": {
+      "lead_minutes": 135,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 9.896738724047411,
+        "mae_cot": 6.535568512495956,
+        "bias_cot": 0.7228315287065925
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.698796383871445,
+        "mae_cot": 5.269505842064973,
+        "bias_cot": 0.9670205778093077
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 8.593170381119322,
+        "mae_cot": 5.417756700582686,
+        "bias_cot": 1.2977697988244472
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.1979423401759686,
+        "ci95": [
+          -0.6118226335831487,
+          3.4076866873268106
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.3035683429280915,
+        "ci95": [
+          0.3537182380156514,
+          2.801421291908399
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "135|station_pixel|Wangzhai": {
+      "lead_minutes": 135,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 9.554148139395284,
+        "mae_cot": 6.28609753283672,
+        "bias_cot": 1.732396446459461
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.870778469772669,
+        "mae_cot": 5.541220953484299,
+        "bias_cot": 1.7348646441532765
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 7.955142337179496,
+        "mae_cot": 4.890109316329472,
+        "bias_cot": 1.8169005798408762
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.683369669622615,
+        "ci95": [
+          -1.4251809620651557,
+          2.7840962119710646
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.599005802215788,
+        "ci95": [
+          0.30304247373533766,
+          2.7250376285983133
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|all_patch|ALL_PATCH": {
+      "lead_minutes": 150,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16384,
+      "forecast": {
+        "n_pixels": 16384,
+        "rmse_cot": 8.722016098650453,
+        "mae_cot": 5.771483638276379,
+        "bias_cot": -0.2634337363501231
+      },
+      "history_persistence": {
+        "n_pixels": 16384,
+        "rmse_cot": 8.288366375900429,
+        "mae_cot": 5.535904614904268,
+        "bias_cot": -0.3538793731626697
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16384,
+        "rmse_cot": 7.7794109365051884,
+        "mae_cot": 4.881935198452538,
+        "bias_cot": 0.7180177231921334
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.4336497227500242,
+        "ci95": [
+          -0.48052762443131414,
+          1.4952696021746217
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.9426051621452647,
+        "ci95": [
+          -0.15177630240789597,
+          2.6671295593487816
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|station_3x3|Mizhuang": {
+      "lead_minutes": 150,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 8.535248994515436,
+        "mae_cot": 5.142494419041516,
+        "bias_cot": 1.0929119131744502
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.6157642835693915,
+        "mae_cot": 4.9358067337485005,
+        "bias_cot": 0.7417626741953427
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 7.638029299242581,
+        "mae_cot": 4.37931550917953,
+        "bias_cot": 1.5976264262927644
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.919484710946044,
+        "ci95": [
+          -1.6005275133590626,
+          2.402079985457716
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.8972196952728533,
+        "ci95": [
+          -0.18224853596783674,
+          3.0183549305530883
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|station_3x3|Niushou": {
+      "lead_minutes": 150,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 9.887832427863527,
+        "mae_cot": 6.318440887168334,
+        "bias_cot": 0.4230499047391479
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.846354808867355,
+        "mae_cot": 5.336230620827539,
+        "bias_cot": 1.0306355553863493
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 8.828994081947998,
+        "mae_cot": 5.438770941765849,
+        "bias_cot": 1.6568672472882706
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.041477618996172,
+        "ci95": [
+          -0.3091136228618807,
+          3.3091236086724525
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.0588383459155306,
+        "ci95": [
+          -0.3821174557223266,
+          3.449876283569351
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|station_3x3|Wangzhai": {
+      "lead_minutes": 150,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 9.443941510863734,
+        "mae_cot": 6.141422114199183,
+        "bias_cot": 1.4565486663616158
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 8.0133942092056,
+        "mae_cot": 5.582118168913035,
+        "bias_cot": 1.8769849103151097
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 8.45641264750672,
+        "mae_cot": 5.175253003627101,
+        "bias_cot": 2.1805390160184794
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.430547301658132,
+        "ci95": [
+          -1.0211845817808427,
+          2.359251910294983
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.9875288633570136,
+        "ci95": [
+          -0.013694322426074379,
+          3.2132488407938435
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|station_pixel|Mizhuang": {
+      "lead_minutes": 150,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 8.26949621924403,
+        "mae_cot": 4.880837930424605,
+        "bias_cot": 0.9686451688758098
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.542979958312328,
+        "mae_cot": 4.808729987795232,
+        "bias_cot": 0.6082599804212805
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 7.358952062858641,
+        "mae_cot": 4.213272500433959,
+        "bias_cot": 1.4782278464990668
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.7265162609317013,
+        "ci95": [
+          -1.7074958778282365,
+          2.2780507493304416
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 0.910544156385388,
+        "ci95": [
+          -0.14035882567285718,
+          2.881509236949718
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|station_pixel|Niushou": {
+      "lead_minutes": 150,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 10.184044952438748,
+        "mae_cot": 6.562252746458398,
+        "bias_cot": 0.3555888833652716
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 8.100666544520575,
+        "mae_cot": 5.534963612793945,
+        "bias_cot": 1.0194580583483912
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 9.121191289869655,
+        "mae_cot": 5.623060590078239,
+        "bias_cot": 1.6373269306059228
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.0833784079181736,
+        "ci95": [
+          -0.29339795478533315,
+          3.280226885473162
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.0628536625690934,
+        "ci95": [
+          -0.4647712607460619,
+          3.470334724797068
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "150|station_pixel|Wangzhai": {
+      "lead_minutes": 150,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 9.451972764900887,
+        "mae_cot": 6.126095256913686,
+        "bias_cot": 1.5797533451404888
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.95161158031597,
+        "mae_cot": 5.576681387989083,
+        "bias_cot": 1.9554586377053056
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 8.434883645923353,
+        "mae_cot": 5.130836014999659,
+        "bias_cot": 2.236306158491061
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.500361184584917,
+        "ci95": [
+          -1.224482807620804,
+          2.501309130101232
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.017089118977534,
+        "ci95": [
+          0.061401995569550394,
+          3.2273791104240637
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|all_patch|ALL_PATCH": {
+      "lead_minutes": 165,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16384,
+      "forecast": {
+        "n_pixels": 16384,
+        "rmse_cot": 9.561533586656678,
+        "mae_cot": 6.354316384370861,
+        "bias_cot": 0.8259092282712004
+      },
+      "history_persistence": {
+        "n_pixels": 16384,
+        "rmse_cot": 8.2824188934656,
+        "mae_cot": 5.530092823630014,
+        "bias_cot": -0.27683043266364393
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16384,
+        "rmse_cot": 8.194481921355152,
+        "mae_cot": 5.087376733229746,
+        "bias_cot": 0.9994268559605075
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.2791146931910795,
+        "ci95": [
+          -0.6844798556059537,
+          3.471567410757589
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.3670516653015259,
+        "ci95": [
+          0.6738659695532778,
+          2.2012307027459386
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|station_3x3|Mizhuang": {
+      "lead_minutes": 165,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 10.053403725739225,
+        "mae_cot": 5.984656431524652,
+        "bias_cot": 2.2537445614612404
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 7.660144900495649,
+        "mae_cot": 5.081878789795963,
+        "bias_cot": 0.8647518702475483
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 8.356793109672834,
+        "mae_cot": 4.720364783311703,
+        "bias_cot": 1.9054322142846003
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.393258825243578,
+        "ci95": [
+          -2.2256356949524614,
+          5.047496382716864
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.6966106160663905,
+        "ci95": [
+          0.08683465958082393,
+          2.610745810566142
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|station_3x3|Niushou": {
+      "lead_minutes": 165,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 11.318229051063026,
+        "mae_cot": 7.199949359658705,
+        "bias_cot": 1.570178846862594
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 8.181860193463733,
+        "mae_cot": 5.593934931523917,
+        "bias_cot": 1.149246073069258
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 9.332404945501889,
+        "mae_cot": 5.698389692707376,
+        "bias_cot": 1.8541015219234396
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.136368857599294,
+        "ci95": [
+          -0.6001319335749811,
+          4.822226539811336
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.9858241055611376,
+        "ci95": [
+          0.9584074024145504,
+          3.194446824982947
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|station_3x3|Wangzhai": {
+      "lead_minutes": 165,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 11.101812372214,
+        "mae_cot": 7.056608806367472,
+        "bias_cot": 2.527778402543239
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 8.396225002876305,
+        "mae_cot": 5.8210016615080855,
+        "bias_cot": 1.9091272956639942
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 9.338713040049624,
+        "mae_cot": 5.610052854115363,
+        "bias_cot": 2.34514624991991
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.705587369337696,
+        "ci95": [
+          -1.410006064457797,
+          4.487468771993001
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.7630993321643764,
+        "ci95": [
+          0.5485980343965051,
+          2.723407050046541
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|station_pixel|Mizhuang": {
+      "lead_minutes": 165,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 9.70224316955609,
+        "mae_cot": 5.695166534656892,
+        "bias_cot": 2.117248754220782
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.527631324686292,
+        "mae_cot": 4.989230479783146,
+        "bias_cot": 0.7399821541912388
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 8.041667658836293,
+        "mae_cot": 4.519447479338851,
+        "bias_cot": 1.7935646788100712
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.1746118448697977,
+        "ci95": [
+          -2.370304094128542,
+          4.916205858678881
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.6605755107197968,
+        "ci95": [
+          0.08688359439164217,
+          2.4236638996259483
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|station_pixel|Niushou": {
+      "lead_minutes": 165,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 11.659031752118418,
+        "mae_cot": 7.51289656550216,
+        "bias_cot": 1.4448696959152585
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 8.501132464913903,
+        "mae_cot": 5.7684660705854185,
+        "bias_cot": 1.0968259126530029
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 9.627251226452007,
+        "mae_cot": 5.893569401217974,
+        "bias_cot": 1.7879499023983954
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.157899287204515,
+        "ci95": [
+          -0.6009297504134632,
+          4.9034491810792655
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.031780525666411,
+        "ci95": [
+          1.048192858998937,
+          3.2861709156356422
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "165|station_pixel|Wangzhai": {
+      "lead_minutes": 165,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 11.181436798630076,
+        "mae_cot": 7.016031708626542,
+        "bias_cot": 2.6143554795417003
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 8.428501041769616,
+        "mae_cot": 5.86409652911243,
+        "bias_cot": 1.9482591277046595
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 9.381864335852317,
+        "mae_cot": 5.59051061036007,
+        "bias_cot": 2.3613008499814896
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.7529357568604595,
+        "ci95": [
+          -1.6069427579958364,
+          4.569807476126163
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.7995724627777587,
+        "ci95": [
+          0.456153816529669,
+          2.612645372389
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|all_patch|ALL_PATCH": {
+      "lead_minutes": 180,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 27392,
+      "forecast": {
+        "n_pixels": 27392,
+        "rmse_cot": 11.903226351334466,
+        "mae_cot": 7.384522102823373,
+        "bias_cot": 2.9631409601095022
+      },
+      "history_persistence": {
+        "n_pixels": 27392,
+        "rmse_cot": 11.642027996359054,
+        "mae_cot": 6.831576309867517,
+        "bias_cot": 1.1878014644331143
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 27392,
+        "rmse_cot": 10.873164077008276,
+        "mae_cot": 6.074631642872888,
+        "bias_cot": 2.7773776694690393
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 0.2611983549754058,
+        "ci95": [
+          -1.9811098724516034,
+          3.0535841067860625
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.0300622743261876,
+        "ci95": [
+          -0.37471622658085685,
+          3.1667574392968425
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|station_3x3|Mizhuang": {
+      "lead_minutes": 180,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 963,
+      "forecast": {
+        "n_pixels": 963,
+        "rmse_cot": 12.442552683568602,
+        "mae_cot": 7.307498205542131,
+        "bias_cot": 3.8492955676921152
+      },
+      "history_persistence": {
+        "n_pixels": 963,
+        "rmse_cot": 11.754463307485308,
+        "mae_cot": 6.682719853058697,
+        "bias_cot": 1.8419502907454859
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 963,
+        "rmse_cot": 11.2065638805201,
+        "mae_cot": 6.015935093215701,
+        "bias_cot": 3.1630949706316907
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 0.6880893760832922,
+        "ci95": [
+          -2.113822438247845,
+          4.14215782997984
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.2359888030485013,
+        "ci95": [
+          -0.3208031760745667,
+          3.276313036769175
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|station_3x3|Niushou": {
+      "lead_minutes": 180,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 963,
+      "forecast": {
+        "n_pixels": 963,
+        "rmse_cot": 13.229491265516256,
+        "mae_cot": 8.123562480947767,
+        "bias_cot": 3.3854804262644604
+      },
+      "history_persistence": {
+        "n_pixels": 963,
+        "rmse_cot": 11.788968757058322,
+        "mae_cot": 6.907284902309107,
+        "bias_cot": 2.0806843864558378
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 963,
+        "rmse_cot": 11.741574432117622,
+        "mae_cot": 6.588398268556576,
+        "bias_cot": 3.364825821105441
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.4405225084579296,
+        "ci95": [
+          -1.1012175016472472,
+          4.224015930707059
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.4879168333986286,
+        "ci95": [
+          -0.40568836705227623,
+          3.8021573523138037
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|station_3x3|Wangzhai": {
+      "lead_minutes": 180,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 963,
+      "forecast": {
+        "n_pixels": 963,
+        "rmse_cot": 13.066978099316502,
+        "mae_cot": 7.999926628531387,
+        "bias_cot": 3.9738199311972964
+      },
+      "history_persistence": {
+        "n_pixels": 963,
+        "rmse_cot": 11.9443853116604,
+        "mae_cot": 7.100873406587685,
+        "bias_cot": 2.5032141801484338
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 963,
+        "rmse_cot": 11.915399675721291,
+        "mae_cot": 6.651939117368059,
+        "bias_cot": 3.584298868939234
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.122592787656103,
+        "ci95": [
+          -1.390924616701756,
+          3.898971526033884
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.1515784235952111,
+        "ci95": [
+          -0.4743649680318161,
+          3.1205750359061217
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|station_pixel|Mizhuang": {
+      "lead_minutes": 180,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 107,
+      "forecast": {
+        "n_pixels": 107,
+        "rmse_cot": 12.110333917276318,
+        "mae_cot": 7.046889397533279,
+        "bias_cot": 3.5938520162914678
+      },
+      "history_persistence": {
+        "n_pixels": 107,
+        "rmse_cot": 11.632045277330748,
+        "mae_cot": 6.637813219034644,
+        "bias_cot": 1.6548501696855387
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 107,
+        "rmse_cot": 10.914452858108838,
+        "mae_cot": 5.857046702276114,
+        "bias_cot": 2.932140400415617
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 0.47828863994556947,
+        "ci95": [
+          -2.2909384370054307,
+          3.8627394759467437
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.1958810591674798,
+        "ci95": [
+          -0.3633025119463678,
+          3.2155571531085947
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|station_pixel|Niushou": {
+      "lead_minutes": 180,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 107,
+      "forecast": {
+        "n_pixels": 107,
+        "rmse_cot": 13.418733658273819,
+        "mae_cot": 8.291766863603527,
+        "bias_cot": 3.2967987122606033
+      },
+      "history_persistence": {
+        "n_pixels": 107,
+        "rmse_cot": 11.86525025578917,
+        "mae_cot": 7.019969297068141,
+        "bias_cot": 2.031551733961172
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 107,
+        "rmse_cot": 11.842904762261044,
+        "mae_cot": 6.702503372810642,
+        "bias_cot": 3.272689639712536
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.55348340248465,
+        "ci95": [
+          -1.014586602368037,
+          4.281419864371926
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.5758288960127764,
+        "ci95": [
+          -0.3238141254051213,
+          3.844395308843878
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "180|station_pixel|Wangzhai": {
+      "lead_minutes": 180,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 107,
+      "n_target_dates": 15,
+      "cpp_common_support_pixels": 107,
+      "forecast": {
+        "n_pixels": 107,
+        "rmse_cot": 13.105790578651211,
+        "mae_cot": 8.013383122213254,
+        "bias_cot": 3.995551181208586
+      },
+      "history_persistence": {
+        "n_pixels": 107,
+        "rmse_cot": 11.999038357327322,
+        "mae_cot": 7.142432346940041,
+        "bias_cot": 2.5083912507604773
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 107,
+        "rmse_cot": 11.936765725466097,
+        "mae_cot": 6.649466177927348,
+        "bias_cot": 3.5890544276493035
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.106752221323891,
+        "ci95": [
+          -1.4485218637848536,
+          3.909254585608604
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 15,
+        "delta_rmse_left_minus_right": 1.1690248531851157,
+        "ci95": [
+          -0.5092274434182518,
+          3.0985580585166526
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|all_patch|ALL_PATCH": {
+      "lead_minutes": 195,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 16289,
+      "forecast": {
+        "n_pixels": 16289,
+        "rmse_cot": 10.205684694431623,
+        "mae_cot": 6.382346155236444,
+        "bias_cot": 2.381641251465562
+      },
+      "history_persistence": {
+        "n_pixels": 16289,
+        "rmse_cot": 7.904324095572827,
+        "mae_cot": 5.214684279820053,
+        "bias_cot": 0.26716181615256496
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 16289,
+        "rmse_cot": 8.54273573355057,
+        "mae_cot": 5.305243005735832,
+        "bias_cot": 1.6821514640536999
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.301360598858798,
+        "ci95": [
+          -1.4209543890282994,
+          5.62724661739584
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 1.6629489608810548,
+        "ci95": [
+          0.6232751550551381,
+          2.4316247684351
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|station_3x3|Mizhuang": {
+      "lead_minutes": 195,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 575,
+      "forecast": {
+        "n_pixels": 575,
+        "rmse_cot": 11.001890706728648,
+        "mae_cot": 6.281250045798395,
+        "bias_cot": 3.744959352175179
+      },
+      "history_persistence": {
+        "n_pixels": 575,
+        "rmse_cot": 7.762564828581226,
+        "mae_cot": 5.010281524902776,
+        "bias_cot": 1.2344390729507027
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 575,
+        "rmse_cot": 8.79584284278215,
+        "mae_cot": 5.08171707469808,
+        "bias_cot": 2.5434057480323573
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.239325878147424,
+        "ci95": [
+          -2.833695284238912,
+          6.885001328084638
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.206047863946498,
+        "ci95": [
+          -0.09763700572740314,
+          3.441639400261833
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|station_3x3|Niushou": {
+      "lead_minutes": 195,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 12.014803376198344,
+        "mae_cot": 7.363350210179407,
+        "bias_cot": 3.2836316069507223
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 8.061821587690346,
+        "mae_cot": 5.446305301953948,
+        "bias_cot": 1.7623421710013645
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 9.22559860403222,
+        "mae_cot": 5.721990282112125,
+        "bias_cot": 2.5121666598634977
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.952981788507996,
+        "ci95": [
+          -1.1861977608547742,
+          7.163499075622594
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.7892047721661246,
+        "ci95": [
+          0.7559707919154386,
+          4.149376139328712
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|station_3x3|Wangzhai": {
+      "lead_minutes": 195,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 576,
+      "forecast": {
+        "n_pixels": 576,
+        "rmse_cot": 12.230625869696901,
+        "mae_cot": 7.487737891029813,
+        "bias_cot": 3.950018435999583
+      },
+      "history_persistence": {
+        "n_pixels": 576,
+        "rmse_cot": 8.618857349435325,
+        "mae_cot": 5.803350091045205,
+        "bias_cot": 2.2953175103110777
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 576,
+        "rmse_cot": 9.82444845104223,
+        "mae_cot": 5.9616272142997735,
+        "bias_cot": 2.883217805023176
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.6117685202615775,
+        "ci95": [
+          -2.0331342178913747,
+          6.727337255221521
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.4061774186546696,
+        "ci95": [
+          0.35218930785518454,
+          3.5820500396481822
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|station_pixel|Mizhuang": {
+      "lead_minutes": 195,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 10.650195533783121,
+        "mae_cot": 6.00506783707533,
+        "bias_cot": 3.6638432418112643
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 7.582307644461688,
+        "mae_cot": 4.91675425786525,
+        "bias_cot": 1.1046857552137226
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 8.459933321475292,
+        "mae_cot": 4.925238285359228,
+        "bias_cot": 2.4488934826513287
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.067887889321433,
+        "ci95": [
+          -2.945402088786452,
+          6.7406497503982425
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.190262212307829,
+        "ci95": [
+          -0.10379471907424903,
+          3.477856485989223
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|station_pixel|Niushou": {
+      "lead_minutes": 195,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 12.294211707536215,
+        "mae_cot": 7.59980190116039,
+        "bias_cot": 3.1426422663062112
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 8.316772093638253,
+        "mae_cot": 5.656666585506173,
+        "bias_cot": 1.714916751923738
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 9.447126925567398,
+        "mae_cot": 5.878150883349008,
+        "bias_cot": 2.3931668422737857
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.977439613897962,
+        "ci95": [
+          -1.2483044126761667,
+          7.219550785380495
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.8470847819688156,
+        "ci95": [
+          0.8543314327517837,
+          4.24380875697485
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "195|station_pixel|Wangzhai": {
+      "lead_minutes": 195,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 64,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 64,
+      "forecast": {
+        "n_pixels": 64,
+        "rmse_cot": 12.33122817259644,
+        "mae_cot": 7.548048844080768,
+        "bias_cot": 3.9726094793732045
+      },
+      "history_persistence": {
+        "n_pixels": 64,
+        "rmse_cot": 8.71926277704484,
+        "mae_cot": 5.858303935325239,
+        "bias_cot": 2.298096558137331
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 64,
+        "rmse_cot": 9.81788641638331,
+        "mae_cot": 5.950443706416991,
+        "bias_cot": 2.8655215121689253
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.6119653955516,
+        "ci95": [
+          -2.162779659167218,
+          6.718874304933637
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.51334175621313,
+        "ci95": [
+          0.40741738312479125,
+          3.799097595647291
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|all_patch|ALL_PATCH": {
+      "lead_minutes": 210,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 15265,
+      "forecast": {
+        "n_pixels": 15265,
+        "rmse_cot": 11.000750671473648,
+        "mae_cot": 6.738793525422987,
+        "bias_cot": 2.8726575467587883
+      },
+      "history_persistence": {
+        "n_pixels": 15265,
+        "rmse_cot": 7.745318410037276,
+        "mae_cot": 5.20470570307591,
+        "bias_cot": 0.5872273004149833
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 15265,
+        "rmse_cot": 8.59842016078239,
+        "mae_cot": 5.350951658479523,
+        "bias_cot": 2.055463765575552
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.255432261436372,
+        "ci95": [
+          -0.9714362235206675,
+          6.978151205108691
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.402330510691259,
+        "ci95": [
+          0.7547605897364811,
+          3.647735421491941
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|station_3x3|Mizhuang": {
+      "lead_minutes": 210,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 539,
+      "forecast": {
+        "n_pixels": 539,
+        "rmse_cot": 11.662149271518178,
+        "mae_cot": 6.6100357331193855,
+        "bias_cot": 4.2070213960974385
+      },
+      "history_persistence": {
+        "n_pixels": 539,
+        "rmse_cot": 7.600899406114605,
+        "mae_cot": 4.911326792170613,
+        "bias_cot": 1.535811548665553
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 539,
+        "rmse_cot": 8.843620722543948,
+        "mae_cot": 5.113921408887075,
+        "bias_cot": 3.057462400587445
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.061249865403573,
+        "ci95": [
+          -2.792424829381627,
+          8.187460781709854
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.81852854897423,
+        "ci95": [
+          -0.10499044044462597,
+          4.464743881410353
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|station_3x3|Niushou": {
+      "lead_minutes": 210,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 540,
+      "forecast": {
+        "n_pixels": 540,
+        "rmse_cot": 12.775656274007662,
+        "mae_cot": 7.684476534192692,
+        "bias_cot": 4.011037802860072
+      },
+      "history_persistence": {
+        "n_pixels": 540,
+        "rmse_cot": 7.749154606582992,
+        "mae_cot": 5.402353949653398,
+        "bias_cot": 2.178848204501318
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 540,
+        "rmse_cot": 9.15765929222857,
+        "mae_cot": 5.752579245038538,
+        "bias_cot": 2.9579744894764626
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 5.026501667424671,
+        "ci95": [
+          -1.6533494197488294,
+          8.97236181738535
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.617996981779095,
+        "ci95": [
+          0.7745055266330032,
+          5.561760369226839
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|station_3x3|Wangzhai": {
+      "lead_minutes": 210,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 540,
+      "forecast": {
+        "n_pixels": 540,
+        "rmse_cot": 12.993151182553488,
+        "mae_cot": 7.8863395713718125,
+        "bias_cot": 4.54706139528296
+      },
+      "history_persistence": {
+        "n_pixels": 540,
+        "rmse_cot": 8.373521690971378,
+        "mae_cot": 5.709593750294988,
+        "bias_cot": 2.6700065949448835
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 540,
+        "rmse_cot": 9.853974843914264,
+        "mae_cot": 5.997457557454429,
+        "bias_cot": 3.3330788040154236
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.619629491582108,
+        "ci95": [
+          -2.1392445424878015,
+          8.222410584942377
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.139176338639224,
+        "ci95": [
+          0.45120660939781543,
+          4.795314435524073
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|station_pixel|Mizhuang": {
+      "lead_minutes": 210,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 60,
+      "forecast": {
+        "n_pixels": 60,
+        "rmse_cot": 11.291511269609954,
+        "mae_cot": 6.322977085908254,
+        "bias_cot": 4.106820345111191
+      },
+      "history_persistence": {
+        "n_pixels": 60,
+        "rmse_cot": 7.3813349824690135,
+        "mae_cot": 4.789376390197625,
+        "bias_cot": 1.3954578726552427
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 60,
+        "rmse_cot": 8.483607218696404,
+        "mae_cot": 4.936985245967905,
+        "bias_cot": 2.981746155830721
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.9101762871409402,
+        "ci95": [
+          -2.939248387432085,
+          7.984538072868741
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.8079040509135496,
+        "ci95": [
+          -0.21556486918547424,
+          4.462719818656083
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|station_pixel|Niushou": {
+      "lead_minutes": 210,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 60,
+      "forecast": {
+        "n_pixels": 60,
+        "rmse_cot": 12.950659954873565,
+        "mae_cot": 7.835884549049661,
+        "bias_cot": 3.9164149908193697
+      },
+      "history_persistence": {
+        "n_pixels": 60,
+        "rmse_cot": 7.946470814573311,
+        "mae_cot": 5.582223337950806,
+        "bias_cot": 2.1829436933621764
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 60,
+        "rmse_cot": 9.34692565502411,
+        "mae_cot": 5.898849882356202,
+        "bias_cot": 2.836721186634774
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 5.004189140300254,
+        "ci95": [
+          -1.8189471005637625,
+          8.954597877586165
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.603734299849453,
+        "ci95": [
+          0.8118991473205057,
+          5.592537452604532
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "210|station_pixel|Wangzhai": {
+      "lead_minutes": 210,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 60,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 60,
+      "forecast": {
+        "n_pixels": 60,
+        "rmse_cot": 13.036846651686876,
+        "mae_cot": 7.945656815543771,
+        "bias_cot": 4.583005570620299
+      },
+      "history_persistence": {
+        "n_pixels": 60,
+        "rmse_cot": 8.436002532478932,
+        "mae_cot": 5.779090577332924,
+        "bias_cot": 2.6797872822421294
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 60,
+        "rmse_cot": 9.81297598740062,
+        "mae_cot": 5.973106862527008,
+        "bias_cot": 3.3390050070205084
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.600844119207945,
+        "ci95": [
+          -2.1796948143772354,
+          8.171638672409317
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.223870664286258,
+        "ci95": [
+          0.5954750318360708,
+          4.969201117446653
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|all_patch|ALL_PATCH": {
+      "lead_minutes": 225,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 14497,
+      "forecast": {
+        "n_pixels": 14497,
+        "rmse_cot": 11.41914020296305,
+        "mae_cot": 6.817723166542135,
+        "bias_cot": 3.448257041701516
+      },
+      "history_persistence": {
+        "n_pixels": 14497,
+        "rmse_cot": 7.481196134432367,
+        "mae_cot": 5.0456996638373575,
+        "bias_cot": 0.7500371931164053
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 14497,
+        "rmse_cot": 8.466536933611644,
+        "mae_cot": 5.292814092042043,
+        "bias_cot": 2.3087535892218334
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.937944068530684,
+        "ci95": [
+          -1.820889968961236,
+          8.294435018320645
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 2.952603269351407,
+        "ci95": [
+          0.6021987339380619,
+          4.740739689021435
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|station_3x3|Mizhuang": {
+      "lead_minutes": 225,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 512,
+      "forecast": {
+        "n_pixels": 512,
+        "rmse_cot": 12.248382758727905,
+        "mae_cot": 6.766337774197382,
+        "bias_cot": 4.92107831929934
+      },
+      "history_persistence": {
+        "n_pixels": 512,
+        "rmse_cot": 7.349426645644309,
+        "mae_cot": 4.80612518849739,
+        "bias_cot": 1.6944488293993345
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 512,
+        "rmse_cot": 8.702706769864355,
+        "mae_cot": 5.108042567078883,
+        "bias_cot": 3.3990068453040294
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.898956113083597,
+        "ci95": [
+          -2.7696217851639364,
+          9.825575176257145
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5456759888635503,
+        "ci95": [
+          -0.21329668520103406,
+          5.814678668716452
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|station_3x3|Niushou": {
+      "lead_minutes": 225,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 513,
+      "forecast": {
+        "n_pixels": 513,
+        "rmse_cot": 12.807193576636436,
+        "mae_cot": 7.546948831664584,
+        "bias_cot": 4.47543246766142
+      },
+      "history_persistence": {
+        "n_pixels": 513,
+        "rmse_cot": 7.353196178594533,
+        "mae_cot": 5.134419156410904,
+        "bias_cot": 2.3661285737224405
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 513,
+        "rmse_cot": 8.818157711587732,
+        "mae_cot": 5.592221111376891,
+        "bias_cot": 3.297425397250576
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 5.453997398041904,
+        "ci95": [
+          -1.6080066619886235,
+          10.025149892062924
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.989035865048704,
+        "ci95": [
+          0.8808863274164083,
+          6.273349747216393
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|station_3x3|Wangzhai": {
+      "lead_minutes": 225,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 513,
+      "forecast": {
+        "n_pixels": 513,
+        "rmse_cot": 13.29434594013449,
+        "mae_cot": 7.77089429925401,
+        "bias_cot": 5.228368692595664
+      },
+      "history_persistence": {
+        "n_pixels": 513,
+        "rmse_cot": 7.7894516171655805,
+        "mae_cot": 5.347503665202891,
+        "bias_cot": 2.99780934095586
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 513,
+        "rmse_cot": 9.468406172151246,
+        "mae_cot": 5.846166110225385,
+        "bias_cot": 3.7353011376313416
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 5.504894322968906,
+        "ci95": [
+          -2.0448424249248074,
+          9.715213672461804
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.8259397679832396,
+        "ci95": [
+          0.46730327034238595,
+          6.094088202317446
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|station_pixel|Mizhuang": {
+      "lead_minutes": 225,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 57,
+      "forecast": {
+        "n_pixels": 57,
+        "rmse_cot": 11.87899304261924,
+        "mae_cot": 6.576192682576284,
+        "bias_cot": 4.8288878739010865
+      },
+      "history_persistence": {
+        "n_pixels": 57,
+        "rmse_cot": 7.193213294506001,
+        "mae_cot": 4.734901328620158,
+        "bias_cot": 1.558839731571967
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 57,
+        "rmse_cot": 8.334981935995403,
+        "mae_cot": 4.933047402388694,
+        "bias_cot": 3.313511670942892
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 4.685779748113238,
+        "ci95": [
+          -2.8598037699834733,
+          9.523501767067748
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.5440111066238362,
+        "ci95": [
+          -0.45062559910947053,
+          5.74682767449473
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|station_pixel|Niushou": {
+      "lead_minutes": 225,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 57,
+      "forecast": {
+        "n_pixels": 57,
+        "rmse_cot": 12.876534368465325,
+        "mae_cot": 7.636867396304743,
+        "bias_cot": 4.340221525382316
+      },
+      "history_persistence": {
+        "n_pixels": 57,
+        "rmse_cot": 7.543025198178512,
+        "mae_cot": 5.336292376905157,
+        "bias_cot": 2.3844113798256505
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 57,
+        "rmse_cot": 8.98110600791729,
+        "mae_cot": 5.734039123398824,
+        "bias_cot": 3.1737582743200554
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 5.333509170286813,
+        "ci95": [
+          -1.7748717709717383,
+          9.883888859888641
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.895428360548035,
+        "ci95": [
+          0.9489564817921301,
+          6.1854589863391904
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "225|station_pixel|Wangzhai": {
+      "lead_minutes": 225,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 57,
+      "n_target_dates": 4,
+      "cpp_common_support_pixels": 57,
+      "forecast": {
+        "n_pixels": 57,
+        "rmse_cot": 13.284284703271297,
+        "mae_cot": 7.82462157866215,
+        "bias_cot": 5.2442054875162345
+      },
+      "history_persistence": {
+        "n_pixels": 57,
+        "rmse_cot": 7.770770827696745,
+        "mae_cot": 5.344581788373098,
+        "bias_cot": 3.0180545579968836
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 57,
+        "rmse_cot": 9.349186407453017,
+        "mae_cot": 5.795074825207784,
+        "bias_cot": 3.775201739694335
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 5.513513875574554,
+        "ci95": [
+          -2.0303713671527275,
+          9.629630459715141
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 4,
+        "delta_rmse_left_minus_right": 3.935098295818282,
+        "ci95": [
+          0.5431224488332357,
+          6.248449891711715
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|all_patch|ALL_PATCH": {
+      "lead_minutes": 240,
+      "scope": "all_patch",
+      "station": "ALL_PATCH",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 21921,
+      "forecast": {
+        "n_pixels": 21921,
+        "rmse_cot": 14.25914504507099,
+        "mae_cot": 8.225061727213282,
+        "bias_cot": 4.434755747037162
+      },
+      "history_persistence": {
+        "n_pixels": 21921,
+        "rmse_cot": 11.434405293412366,
+        "mae_cot": 6.550495850547387,
+        "bias_cot": 1.8032779728354453
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 21921,
+        "rmse_cot": 10.738401220417051,
+        "mae_cot": 6.1028891885427115,
+        "bias_cot": 3.706430933793844
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 2.8247397516586243,
+        "ci95": [
+          0.33902605149024295,
+          5.797252946357628
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.5207438246539393,
+        "ci95": [
+          2.1053046993660662,
+          5.398510805063945
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|station_3x3|Mizhuang": {
+      "lead_minutes": 240,
+      "scope": "station_3x3",
+      "station": "Mizhuang",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 773,
+      "forecast": {
+        "n_pixels": 773,
+        "rmse_cot": 14.55575072122575,
+        "mae_cot": 7.819165501962831,
+        "bias_cot": 5.344946299435
+      },
+      "history_persistence": {
+        "n_pixels": 773,
+        "rmse_cot": 11.66595487274814,
+        "mae_cot": 6.387870834898179,
+        "bias_cot": 2.4253150551925673
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 773,
+        "rmse_cot": 11.02849880180289,
+        "mae_cot": 6.069461239763279,
+        "bias_cot": 4.236678594310092
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 2.889795848477611,
+        "ci95": [
+          0.06642169689872371,
+          6.2126287743032815
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.527251919422861,
+        "ci95": [
+          1.6350392297817886,
+          5.413833638511477
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|station_3x3|Niushou": {
+      "lead_minutes": 240,
+      "scope": "station_3x3",
+      "station": "Niushou",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 774,
+      "forecast": {
+        "n_pixels": 774,
+        "rmse_cot": 15.333423030755453,
+        "mae_cot": 8.578454897060356,
+        "bias_cot": 5.112218592234091
+      },
+      "history_persistence": {
+        "n_pixels": 774,
+        "rmse_cot": 11.56514550030998,
+        "mae_cot": 6.725183502918961,
+        "bias_cot": 2.91444306404905
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 774,
+        "rmse_cot": 11.244443298728937,
+        "mae_cot": 6.342729354830753,
+        "bias_cot": 4.502341811530754
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.7682775304454736,
+        "ci95": [
+          0.4805999514320078,
+          7.099670822845486
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 4.088979732026518,
+        "ci95": [
+          2.2707867598066183,
+          6.145132719891175
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|station_3x3|Wangzhai": {
+      "lead_minutes": 240,
+      "scope": "station_3x3",
+      "station": "Wangzhai",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 774,
+      "forecast": {
+        "n_pixels": 774,
+        "rmse_cot": 15.261279321828377,
+        "mae_cot": 8.63257880886723,
+        "bias_cot": 5.568964111144614
+      },
+      "history_persistence": {
+        "n_pixels": 774,
+        "rmse_cot": 11.818977234772856,
+        "mae_cot": 6.888228348042402,
+        "bias_cot": 3.2857645740251247
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 774,
+        "rmse_cot": 11.674559500604895,
+        "mae_cot": 6.583723813964377,
+        "bias_cot": 4.736716593784167
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.4423020870555234,
+        "ci95": [
+          0.40979377813145706,
+          6.4395283323705925
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.5867198212234843,
+        "ci95": [
+          1.858205861407215,
+          5.259947859672635
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|station_pixel|Mizhuang": {
+      "lead_minutes": 240,
+      "scope": "station_pixel",
+      "station": "Mizhuang",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 86,
+      "forecast": {
+        "n_pixels": 86,
+        "rmse_cot": 14.247091957356592,
+        "mae_cot": 7.6534856166257415,
+        "bias_cot": 5.136568073204956
+      },
+      "history_persistence": {
+        "n_pixels": 86,
+        "rmse_cot": 11.560443818158129,
+        "mae_cot": 6.359660044052573,
+        "bias_cot": 2.227049478481329
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 86,
+        "rmse_cot": 10.67217849184802,
+        "mae_cot": 5.866024682482402,
+        "bias_cot": 4.022501294013806
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 2.6866481391984625,
+        "ci95": [
+          -0.0037917725003241984,
+          5.969819287800938
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.574913465508569,
+        "ci95": [
+          1.6205469025947,
+          5.453635526988007
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|station_pixel|Niushou": {
+      "lead_minutes": 240,
+      "scope": "station_pixel",
+      "station": "Niushou",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 86,
+      "forecast": {
+        "n_pixels": 86,
+        "rmse_cot": 15.281590066571962,
+        "mae_cot": 8.556089654694809,
+        "bias_cot": 4.997122561515764
+      },
+      "history_persistence": {
+        "n_pixels": 86,
+        "rmse_cot": 11.588211555846271,
+        "mae_cot": 6.840969322011048,
+        "bias_cot": 2.9154519030044592
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 86,
+        "rmse_cot": 11.302329961054271,
+        "mae_cot": 6.439471644186956,
+        "bias_cot": 4.39232779739338
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.693378510725694,
+        "ci95": [
+          0.41047211415232304,
+          6.978930376199073
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.9792601055176924,
+        "ci95": [
+          2.213617955023239,
+          6.0045524338087555
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    },
+    "240|station_pixel|Wangzhai": {
+      "lead_minutes": 240,
+      "scope": "station_pixel",
+      "station": "Wangzhai",
+      "n_target_pairs": 86,
+      "n_target_dates": 14,
+      "cpp_common_support_pixels": 86,
+      "forecast": {
+        "n_pixels": 86,
+        "rmse_cot": 15.215943103012162,
+        "mae_cot": 8.63692742488672,
+        "bias_cot": 5.562066611400697
+      },
+      "history_persistence": {
+        "n_pixels": 86,
+        "rmse_cot": 11.825393062322274,
+        "mae_cot": 6.916055835112063,
+        "bias_cot": 3.292686027647971
+      },
+      "offline_future_observed_agri_to_R": {
+        "n_pixels": 86,
+        "rmse_cot": 11.607045576111904,
+        "mae_cot": 6.546016720340176,
+        "bias_cot": 4.7770511449293
+      },
+      "delta_forecast_minus_persistence_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.39055004068989,
+        "ci95": [
+          0.38202593284783687,
+          6.325816453612217
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      },
+      "delta_forecast_minus_offline_future_rmse": {
+        "n_target_dates": 14,
+        "delta_rmse_left_minus_right": 3.608897526900261,
+        "ci95": [
+          1.8664371518534142,
+          5.291557650917846
+        ],
+        "bootstrap_draws": 2000,
+        "block": "BJT target date",
+        "state": "PAIRED_DATE_BLOCK_BOOTSTRAP"
+      }
+    }
+  },
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

@@ -1,0 +1,21 @@
+import sys,subprocess,json
+from pathlib import Path
+base=Path('/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021')
+sys.path.insert(0,str(base/'code_pipeline_attempt3'))
+import queue_controller as q
+assert (base/'code_pipeline_attempt3/build_corrected_data.py').is_file()
+assert (base/'code_pipeline_attempt3/audit_prepared_attempt3.py').is_file()
+assert (base/'prepare_data_attempt3.pbs').is_file()
+assert not (base/'prepared_attempt3').exists()
+pre=q.queue()
+print('QUEUE_BEFORE',json.dumps(pre,sort_keys=True),flush=True)
+if len(pre)>=3: raise RuntimeError('Three or more unfinished account PBS tasks; refusing submission')
+if any(v.get('name')=='hb_solar_data' for v in pre.values()): raise RuntimeError('A hubei data prep is already active; refusing duplicate')
+p=subprocess.run([q.QSUB,str(base/'prepare_data_attempt3.pbs')],capture_output=True,text=True)
+print('QSUB_RETURN',p.returncode,'STDOUT',p.stdout.strip(),'STDERR',p.stderr.strip(),flush=True)
+if p.returncode!=0: raise SystemExit(p.returncode)
+jid=p.stdout.strip()
+if not jid or not jid[0].isdigit(): raise RuntimeError('QSUB output not a recognizable job id; inspect manually, do not resubmit')
+after=q.queue()
+print('QUEUE_AFTER',json.dumps(after,sort_keys=True),flush=True)
+print('SUBMITTED_JOB',jid,flush=True)

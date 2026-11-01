@@ -1,0 +1,72 @@
+#!/bin/bash
+#PBS -N fghi_rel_s4344
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=2
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+CAL=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+RUN=$EXP/results/future_ghi_oof_cot_reliability_v1
+CHILD43=$EXP/results/future_ghi_oof_cot_reliability_seed43_v1
+CHILD44=$EXP/results/future_ghi_oof_cot_reliability_seed44_v1
+AUDIT=$EXP/results/future_ghi_oof_cot_reliability_validation_audit_v1.json
+mkdir -p "$EXP/logs" "$EXP/results"
+JOB_LOG="$EXP/logs/future_ghi_oof_cot_reliability_seed43_44_${PBS_JOBID}.log"
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$PROJECT"
+sha256sum -c "$EXP/FUTURE_GHI_COT_RELIABILITY_SHA256SUMS"
+test "$(sha256sum "$CAL" | awk '{print $1}')" = d1a0d104fc84c2223be5397a11d4e3730025475384880c8206c9f5420499645b
+test "$(sha256sum "$PACK/pack_manifest.json" | awk '{print $1}')" = cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_cot_reliability_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+python "$EXP/test_future_ghi_cot_reliability.py"
+python "$EXP/test_audit_future_ghi_cot_reliability.py"
+python -m py_compile "$EXP/train_future_ghi_heads_cot_reliability.py" "$EXP/audit_future_ghi_cot_reliability.py"
+test -d "$RUN" && test ! -e "$CHILD43" && test ! -e "$CHILD44" && test ! -e "$AUDIT"
+python - "$RUN/run_manifest.json" "$EXP/results/future_ghi_oof_cot_reliability_seed42_structural_audit.json" <<'PY'
+import json, sys
+m=json.load(open(sys.argv[1]))
+assert m.get('state') == 'COMPLETE_FUTURE_GHI_COT_RELIABILITY_SCREENING_PILOT'
+assert m.get('seeds') == [42]
+assert len(m.get('runs', [])) == 10
+a=json.load(open(sys.argv[2]))
+assert a.get('state') == 'COMPLETE_PAIRED_FUTURE_GHI_COT_RELIABILITY_VALIDATION_AUDIT'
+assert a.get('seeds') == [42]
+print('SEED42_BASE_GATE_PASS')
+PY
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 2 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly two distinct node22 GPUs, got $GPU_TEXT"; exit 32
+fi
+GPU0=$(printf '%s\n' "$GPU_TEXT" | sed -n '1p')
+GPU1=$(printf '%s\n' "$GPU_TEXT" | sed -n '2p')
+nvidia-smi -i "$GPU0,$GPU1" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+CUDA_VISIBLE_DEVICES="$GPU0" python -u "$EXP/train_future_ghi_heads_cot_reliability.py" \
+  --pack "$PACK" --calibration "$CAL" --output "$CHILD43" --seeds 43 \
+  --epochs 30 --batch-size 1792 --station both > "$EXP/logs/future_ghi_reliability_seed43_${PBS_JOBID}.log" 2>&1 &
+PID43=$!
+CUDA_VISIBLE_DEVICES="$GPU1" python -u "$EXP/train_future_ghi_heads_cot_reliability.py" \
+  --pack "$PACK" --calibration "$CAL" --output "$CHILD44" --seeds 44 \
+  --epochs 30 --batch-size 1792 --station both > "$EXP/logs/future_ghi_reliability_seed44_${PBS_JOBID}.log" 2>&1 &
+PID44=$!
+set +e
+wait "$PID43"; RC43=$?
+wait "$PID44"; RC44=$?
+set -e
+if [ "$RC43" -ne 0 ] || [ "$RC44" -ne 0 ]; then
+  echo "SEED_FAILURE seed43_rc=$RC43 seed44_rc=$RC44"; exit 41
+fi
+python "$EXP/merge_future_ghi_head_seed_runs.py" --base "$RUN" --child "$CHILD43" "$CHILD44" \
+  --complete-state COMPLETE_FUTURE_GHI_COT_RELIABILITY_SCREENING_PILOT \
+  --required-arms A,AH,AC,AC50,ACREL
+python -u "$EXP/audit_future_ghi_cot_reliability.py" \
+  --run-root "$RUN" --output "$AUDIT" --seeds 42 43 44 --bootstrap 2000
+echo "FUTURE_GHI_COT_RELIABILITY_MULTIGPU_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

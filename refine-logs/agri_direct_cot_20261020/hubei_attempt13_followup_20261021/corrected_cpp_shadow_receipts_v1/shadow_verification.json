@@ -1,0 +1,52 @@
+{
+  "state": "PASS_CORRECTED_GEOMETRY_SHADOW_SIDECAR_NOT_ACTIVATED",
+  "stats": {
+    "train": {
+      "matched_frames": 17616,
+      "old_valid": 4386024,
+      "corrected_valid": 4382924,
+      "same_valid": 4370946,
+      "old_only": 15078,
+      "corrected_only": 11978,
+      "source_geometry_violations": 0
+    },
+    "val": {
+      "matched_frames": 1865,
+      "old_valid": 467154,
+      "corrected_valid": 467588,
+      "same_valid": 466664,
+      "old_only": 490,
+      "corrected_only": 924,
+      "source_geometry_violations": 0
+    }
+  },
+  "source_pack": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full",
+  "source_pack_sha256": "345a080832b893c9c63b85180538a1dcfb13a6aae32617daaa99ad87892715d4",
+  "index_sha256": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+  "shadow_manifest_sha256": "614a11ade62ed7627273ef90228aaa1613212b4c484b0077e68fcb2d9a8e390b",
+  "source_audit_sha256": "b670fa5808874ab444f020cf72448c7e054dd0103a24cc53b59b773af895a7dd",
+  "builder_sha256": "1998efda2beaa86d72fe529de38db63eca3712e8e7f3a7b584d06986d284141f",
+  "verification_script_sha256": "e8d8361a932305617c2bb8ed5ef344e7c063e094bc04aa69a19525f091c942bd",
+  "plan_sha256": "bad1a80215e416e028372c605a91cf9ec21fdaac8cafdc9b155467f7790e16ff",
+  "active_files_before_after_sha256_equal": true,
+  "active_file_hashes": {
+    "prepared_inputs": "657e0edfcd5a3c9524c5cebb42179c5478f6bced8df591eabbc27effad50f121",
+    "index": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+    "side_manifest": "5ae56ed5f755d2555d8aff1f598dd61056a38fa3402d0155fb35cf50a8bbad21",
+    "side_train_keys.csv": "9ad73c31ba0fabd14da96688f5ff9ddd14ee82fc0575754542663002a0cb632b",
+    "side_train_target_physical.npy": "f6e8bad22a0f01a007d9804d7894a2c56c041eda8fc4b30428ce32bd3b478cd6",
+    "side_train_mask.npy": "6e574c1305ebe1479d8e2ad0fb0adf477dbfda9a8e4a26625f3b75cd0e0f008b",
+    "side_val_keys.csv": "b1af4992c06a1a49a62c6a98db22153e2744c645d3e417d67ccc6100b9542775",
+    "side_val_target_physical.npy": "505ef4db719feba1fe19c59227bd86b16d5235ef381939b6ee16a509c066de6b",
+    "side_val_mask.npy": "9a590ef05f27ac2af4fb33d794bb6205fef847d3020cc817a2ac43c2e02722fc"
+  },
+  "future_target_keys_equal_old": true,
+  "all_targets_match_corrected_pack": true,
+  "geometry_violations": 0,
+  "activation_allowed": false,
+  "training_started": false,
+  "ghi_scored": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "note": "Old mask also affects lambda calibration and checkpoint selection; do not hot-replace active inputs."
+}

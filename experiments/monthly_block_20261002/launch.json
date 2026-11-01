@@ -1,0 +1,20 @@
+{
+  "prepare_job": "211814.tc6000",
+  "training_job": "211815.tc6000",
+  "state": "PREPARATION_RUNNING_GPU_TRAINING_DEPENDENCY_HELD",
+  "test_payloads_read": 0,
+  "prepare_resource_override": {
+    "queue": "gpu",
+    "nodes": "node23:ppn=8:gpus=1",
+    "reason": "route pinned GPU-node local-disk preparation via its GPU queue; original CPU-only normal request remained queued",
+    "job_cancelled": false,
+    "dependency_unchanged": true,
+    "normalization_uses_cpu": true
+  },
+  "last_verified_BJT": "2026-10-02T19:45:58.482819",
+  "normalization_verified_processed_frames": 3000,
+  "normalization_total_train_frames": 51236,
+  "node": "node23",
+  "training_started": false,
+  "deployment_runtime_hash_check_passed": true
+}

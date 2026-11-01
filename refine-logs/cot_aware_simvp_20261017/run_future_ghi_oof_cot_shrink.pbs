@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -N fghi_oof_shrink
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v1
+BASE_RUN=$EXP/results/future_ghi_oof_cot_source_heads_v1
+BASE_AUDIT=$EXP/results/future_ghi_oof_source_validation_audit_v1.json
+RUN=$EXP/results/future_ghi_oof_cot_shrink_v1
+AUDIT=$EXP/results/future_ghi_oof_cot_shrink_validation_audit_v1.json
+mkdir -p "$EXP/logs" "$EXP/results"
+JOB_LOG="$EXP/logs/future_ghi_oof_cot_shrink_${PBS_JOBID}.log"
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$PROJECT"
+sha256sum -c "$EXP/FUTURE_GHI_OOF_SHRINK_SHA256SUMS"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_oof_shrink_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+python "$EXP/test_future_ghi_cot_shrink.py"
+python "$EXP/test_audit_future_ghi_cot_shrink.py"
+python -m py_compile "$EXP/train_future_ghi_heads_cot_shrink.py" "$EXP/audit_future_ghi_cot_shrink.py" "$EXP/gate_future_ghi_oof_cot_shrink.py"
+python "$EXP/test_gate_future_ghi_oof_cot_shrink.py"
+python "$EXP/gate_future_ghi_oof_cot_shrink.py" \
+  --pack-manifest "$PACK/pack_manifest.json" \
+  --run-manifest "$BASE_RUN/run_manifest.json" \
+  --audit "$BASE_AUDIT" --run-output "$RUN" --audit-output "$AUDIT"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"; exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/train_future_ghi_heads_cot_shrink.py" --pack "$PACK" --output "$RUN" --seeds 42 43 44 --epochs 30 --batch-size 1792 --station both
+python -u "$EXP/audit_future_ghi_cot_shrink.py" --run-root "$RUN" --output "$AUDIT" --seeds 42 43 44 --bootstrap 2000
+echo "OOF_FUTURE_GHI_COT_SHRINK_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

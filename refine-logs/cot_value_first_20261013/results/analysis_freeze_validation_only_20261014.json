@@ -1,0 +1,41 @@
+{
+  "state": "PROVISIONAL_NARROW_CLAIM_REVIEWED_TEST_CLOSED",
+  "created_at_bjt": "2026-10-14",
+  "scope": "frozen Hunan monthly train/validation evidence only",
+  "test_payloads_read": 0,
+  "test_release_authorized": false,
+  "primary_claim_supported": "On the current two-station monthly validation cohort, synchronous COT retrieved from real target-time AGRI provides a useful increment to the small GHI head: three-seed AC-A RMSE difference is -3.740 W m-2, with BJT date-block 95% CI [-6.180, -1.597].",
+  "claim_limits": [
+    "This is validation evidence, not independent test generalization.",
+    "The R-AL representation control also improves over A; AC versus AL is unresolved (difference -0.433 W m-2, date-block 95% CI [-1.476, 0.677]). The gain cannot be attributed uniquely to explicit COT physical semantics.",
+    "CPP/COT and CLP are retrieval-chain references, not independent physical truth.",
+    "Forecast-COT comparison has sparse CPP support: 271 windows and 8 BJT target dates. S-to-R versus persistence 3x3 RMSE difference is -2.714 COT with descriptive 95% CI [-6.476, 0.493]; thick-cloud CSI is 0.082 versus 0.189.",
+    "Fixed-head forecast-input substitutions are offline error-propagation diagnostics, not forecast-GHI model scores.",
+    "M0/M1 reference-clear oracle improved COT RMSE but worsened fixed-head GHI RMSE; it is unavailable at inference and does not justify M2/M3 training."
+  ],
+  "not_authorized_or_not_supported": [
+    "No new cloud-classifier or conditional-COT training.",
+    "No forecast-GHI head training under the current T17/B3 stop decision.",
+    "No test access or test release.",
+    "No claim of independent COT accuracy, stable forecast-COT superiority, improved thick-cloud detection, or forecast-GHI benefit."
+  ],
+  "test_release_gate": "Remains closed; separate explicit authorization and a complete pretest freeze are required.",
+  "result_to_claim_review": {
+    "claim_supported": "yes for the narrowly scoped internal-validation claim",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "confidence": "high for the bounded validation comparison; medium for interpretation as COT value",
+    "integrity_audit": "unavailable for this experiment; FP64 rescore/reload evidence is not a full integrity audit",
+    "review_trace": ".aris/traces/result-to-claim/2026-10-13_run02/"
+  },
+  "reviewer_noted_sensitivity": "The primary AC-A CI [-6.180, -1.597] uses 52 union-date clusters with shared pairing; T18's [-6.074, -1.647] uses separate station date resampling and must be labeled sensitivity, not substituted for the preregistered primary interval.",
+  "evidence": {
+    "claim_evidence_map": "COT_CLAIM_EVIDENCE_MAP_20261014.md",
+    "同期反演": "../../../../experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md",
+    "R_AL_control": "T18_RAL_RESULTS_20261014.md",
+    "forecast_COT": "cot_forecast_eval_20261014_v3/COT_FORECAST_VALIDATION_RESULTS_20261014.md",
+    "forecast_GHI_input_attribution": "fixed_head_2x2_allval_agri_cot_attribution_20261014_v1/ALLVAL_FIXED_HEAD_ATTRIBUTION_20261014.md",
+    "clear_mask_oracle": "../../cot_mask_necessity_20261014/M0_M1_RESULTS_20261014.md",
+    "BJT_season_correction": "forecast_agri3x3_allval_20261014_v1/independent_R_output_discrepancy_recompute.json"
+  }
+}

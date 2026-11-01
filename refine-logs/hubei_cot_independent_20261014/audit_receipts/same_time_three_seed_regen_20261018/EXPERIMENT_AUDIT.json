@@ -1,0 +1,65 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-18",
+  "project": "Hubei three-station same-time GHI validation",
+  "auditor": "fresh Codex subagent, read-only",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "test_unseal_verdict": "FAIL_NO_GO",
+  "evaluation_type": "real_gt_validation_only",
+  "audited_input_hashes": {
+    "analysis_script_sha256": "719eeb731ac3a628c594423a9708031ec8b604019b05b105f4b24448fb5537fd",
+    "validation_receipt_sha256": "df0374c16ace142b5acb11b5d0f9b92b9138483ac1d6638bd06e3b1a6383ea6f",
+    "coldstart_receipt_sha256": "eb72f580dabc3c523f7651cb1f70b936a296dc516046ebc35ce3ac42d1f65cde",
+    "coldstart_execution_provenance_sha256": "f004411d081464d3896f795c1e12fd1f6a1a4c7e6287f07f96d072d450fce3d6"
+  },
+  "checks": {
+    "ground_truth_provenance": {
+      "status": "PASS_WITH_METROLOGY_WARN",
+      "details": "Truth comes from station workbook irradiance observations and is not synthesized from predictions; independent instrument/unit calibration metadata is unavailable."
+    },
+    "scoring_normalization": {
+      "status": "PASS_WITH_SCOPE_WARN",
+      "details": "Raw RMSE/MAE recomputed from saved predictions; no prediction-derived denominator."
+    },
+    "result_file_hash_linkage": {
+      "status": "PASS_CURRENT_BINDINGS_WARN_POSTRUN_SOURCE_HASH",
+      "details": "Fresh read-only reviewer verified 27 prediction bundles, 27 metadata files, 27 checkpoints, 3 run_metadata files, 9 paired-key hashes, current receipt/analyzer/coldstart/provenance bindings with zero mismatches. Auditor source SHA was captured post-run, not embedded in original execution receipt."
+    },
+    "paired_keys_and_truth": {
+      "status": "PASS",
+      "details": "Exact station/time/truth/clear-sky pairing across arms and seeds; supports 856/784/816 rows per station."
+    },
+    "claim_scope": {
+      "status": "WARN",
+      "details": "Only a three-station, 22-date validation claim is supported; no independent test, forecast gain, transfer, or isolated COT-physics claim."
+    },
+    "test_buffer_closure": {
+      "status": "PASS_CLOSED",
+      "details": "Validation and cold-start receipts report zero test/buffer payload reads; test-freeze remains NO-GO."
+    }
+  },
+  "metrics": {
+    "rmse_wm2": {"A": 74.33330054, "AC": 70.99308242, "AP": 73.83922214},
+    "ac_minus_a_wm2": -3.34021812,
+    "ac_minus_ap_wm2": -2.84613972
+  },
+  "action_items": [
+    "Preserve the residual limitation that the cold-start auditor hash was captured after execution, not inside the original run receipt.",
+    "Refresh the complete paper-claim audit after all artifact bindings are updated.",
+    "Complete an independent fail-closed test-freeze review before any test/buffer payload read."
+  ],
+  "post_edit_review_20261018": {
+    "status": "PASS_CURRENT_VALIDATION_BINDINGS_WARN_POSTRUN_SOURCE_HASH_FAIL_NO_GO_TEST_UNSEAL",
+    "reviewer": "fresh read-only same-family provisional reviewer",
+    "findings": "Current receipt, analysis source, cold-start receipt, provenance capsule, bundle/metadata/checkpoint/run_metadata hashes and paired truth keys match; stale receipt references are explicitly historical; the full paper-claim audit remains pending.",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "trace_path": "review_trace_20261018.md",
+  "coldstart_execution_provenance": "../coldstart_normreload_20261017_v3/COLDSTART_EXECUTION_PROVENANCE_20261018.json"
+}

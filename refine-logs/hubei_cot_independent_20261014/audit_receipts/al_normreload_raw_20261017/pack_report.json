@@ -1,0 +1,69 @@
+{
+  "state": "HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED",
+  "samples": 29351,
+  "samples_by_split_station": {
+    "train": {
+      "Niushou": 9104,
+      "Wangzhai": 8959,
+      "Mizhuang": 8832
+    },
+    "val": {
+      "Niushou": 856,
+      "Wangzhai": 784,
+      "Mizhuang": 816
+    }
+  },
+  "same_keys_all_arms": true,
+  "label": "15-min right-closed GHI window; raw field retains the original engineering W/m2 operating convention; station sensor/export calibration metadata remains unverified",
+  "target_time_basis": "BJT interval end",
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "split_manifest_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "label_source_sha256": "326e16c16741ea4dd7696b81bcd11d800737f08274fd265fbf4373d2c411538c",
+  "feature_rows": 24705,
+  "test_and_buffer_values_read": 0,
+  "feature_report_sha256": "fd66cbaa839c03197f07d0f1206617ced35104581778dd37d47d1520bd1f8f81",
+  "feature_array_sha256": "112c88ecdb1351e5af9c83458b01c6c1bd4e98982e0436589e14b442919c0be2",
+  "feature_rows_sha256": "82b9024be9d752590d3f9a1da36bc46c7f04f4ab325b40fbf3c2e3c68f786b24",
+  "r_bank_report_sha256": "786a001c86d035662e7f8c1249a831ba8ad8bfe4ab2a1cce5eb0c591ab5692af",
+  "r_prediction_sha256": "e516a57fd79a013e07b0e0847afc671ac6785502cae6097c1fc1c8a712191553",
+  "r_rows_sha256": "82b9024be9d752590d3f9a1da36bc46c7f04f4ab325b40fbf3c2e3c68f786b24",
+  "r_checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+  "r_model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "r_norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+  "source_precedence": "combined frozen train/validation AGRI and R-feature bank",
+  "normalization": "not applied here; trainer fits per-station statistics on train rows only",
+  "array_shapes": {
+    "agri_raw.npy": [
+      29351,
+      13,
+      3,
+      3
+    ],
+    "geometry.npy": [
+      29351,
+      2,
+      3,
+      3
+    ],
+    "cot.npy": [
+      29351,
+      1,
+      3,
+      3
+    ],
+    "ghi_wm2.npy": [
+      29351
+    ],
+    "clear_sky_wm2.npy": [
+      29351
+    ]
+  },
+  "array_sha256": {
+    "agri_raw.npy": "a632953841dd7b3b445b792c6de25d70db58beb6bb44e88e2ded79c89bf7ab9f",
+    "geometry.npy": "b6a4b4d010fe005706dbdd6f55e827201f1bad89a6235433ff92b0741163ec9b",
+    "cot.npy": "3f25e82d87f7b875ce9aba0c1f84b41fd97f5462cbfa1db8408b5f498f061d4e",
+    "ghi_wm2.npy": "8b7970a981359e1d4af648cd3bf61088a2f24fcdc9bb5ed13e38d46f3cfa8605",
+    "clear_sky_wm2.npy": "671b5722036d2bc2d38d1104f1da16b93505022bba15ccac26c3ebe7f72c7d89"
+  },
+  "rows_sha256": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db"
+}

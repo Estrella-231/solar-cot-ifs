@@ -1,0 +1,128 @@
+#!/bin/bash
+#PBS -N direct_COT_rowbank
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=04:00:00
+#PBS -j oe
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+OOF=$ROOT/refine-logs/cot_aware_simvp_20261017
+INFERENCE=$EXP/results/direct_cot_hv_inference_v1
+SUPPORT=$EXP/data/sequence_support_v1
+SEQUENCE_INDEX=$OOF/results/future_simvp_r_bank_v1/index.csv
+LABELS=$OOF/results/future_ghi_oof_head_pack_v2
+COVERAGE=$EXP/results/hv_coverage_audit_v1/coverage.json
+EXCLUSIONS=$ROOT/experiments/cloud_probability_input_20261020/GHI_STATION_DAY_EXCLUSIONS_20261019.json
+ROWBANK=$EXP/results/direct_cot_forecast_row_bank_v1
+FAILED_ROWBANK=$EXP/results/direct_cot_forecast_row_bank_v1_failed_215308
+GHIPACK=$EXP/results/direct_cot_single_frame_ghi_pack_v1
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+LOG=$EXP/logs/direct_cot_hv_rowbank_pack_v1_${PBS_JOBID}.log
+
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=8 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+
+QSTAT_TEXT=$($PBS_QSTAT -u slfu)
+printf '%s\n' "$QSTAT_TEXT"
+UNFINISHED=$(printf '%s\n' "$QSTAT_TEXT" | awk '$1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+echo "STAGE=account_queue_gate unfinished=$UNFINISHED limit=3"
+
+test -s "$INFERENCE/inference_manifest.json"
+test -s "$SUPPORT/support_audit.json"
+test -s "$SEQUENCE_INDEX" && test -s "$LABELS/pack_manifest.json"
+test -s "$LABELS/train/keys.csv" && test -s "$LABELS/val/keys.csv"
+test -s "$COVERAGE" && test -s "$EXCLUSIONS"
+test "$(sha256sum "$SEQUENCE_INDEX" | cut -d' ' -f1)" = "2368637c724e433e088909a96b96615c2d89d3fcf95a35e403e56bb97912cdf0"
+test "$(sha256sum "$COVERAGE" | cut -d' ' -f1)" = "c0b355a308fe16d8976a330e744c8fdd36d44b99c7590b255d1379cb70d7d8ba"
+test "$(sha256sum "$EXCLUSIONS" | cut -d' ' -f1)" = "5effcb6c87ca0a530c8d1c0b960e2450fca4a0804425dc715145cc6df4a0f957"
+test ! -e "$GHIPACK"
+
+python - "$INFERENCE" "$SUPPORT" "$LABELS" "$COVERAGE" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+inf,support,labels,coverage=map(Path,sys.argv[1:])
+def read(p): return json.loads(p.read_text())
+def sha(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+ return h.hexdigest()
+i=read(inf/'inference_manifest.json')
+assert i['state']=='COMPLETE_CAUSAL_DIRECT_COT_HV_INFERENCE'
+assert i['sequence_counts']=={'H':7181,'V':3140}
+for k in ('future_observed_agri_read','cpp_read','ghi_labels_read','test_payload_opened','buffer_payload_opened'):
+ assert i[k] is False,(k,i.get(k))
+assert i['normalization_fit_partition']=='U'
+for rel,digest in i['artifact_sha256'].items(): assert sha(inf/rel)==digest,(rel,digest)
+sa=read(support/'support_audit.json')
+assert sa['state']=='PASS_24_FRAME_SUPPORT_DISJOINT_U_H_V'
+assert sa['test_or_buffer_numeric_payloads_opened']==0 and sa['test_rows_selected']==0
+c=read(coverage)
+assert c['state']=='PASS_METADATA_ONLY_HV_GHI_COVERAGE_AUDIT'
+assert c['sequence_index_sha256']=='2368637c724e433e088909a96b96615c2d89d3fcf95a35e403e56bb97912cdf0'
+assert c['splits']['H']['common_scoreable_rows_after_station_day_exclusions']==151762
+assert c['splits']['V']['common_scoreable_rows_after_station_day_exclusions']==66086
+lp=read(labels/'pack_manifest.json')
+assert lp['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK'
+assert lp['split_id']=='hunan_monthly_block_2d_buffer1d_seed42_v1'
+assert lp['test_payload_opened'] is False and lp['buffer_payload_opened'] is False
+assert lp['future_observed_agri_used_as_input'] is False
+assert lp['rows']=={'train':714914,'val':66590}
+for split,region in (('train','H'),('val','V')):
+ for name in ('keys.csv','ghi.npy','clear.npy'):
+  assert sha(labels/split/name)==lp['array_sha256'][split][name],(split,name)
+ assert c['splits'][region]['label_keys_sha256']==lp['array_sha256'][split]['keys.csv']
+print('PREFLIGHT_HV_LABEL_SUPPORT_ISOLATION_PASS')
+PY
+
+python -m py_compile "$EXP/build_direct_cot_forecast_row_bank.py" "$EXP/build_direct_cot_single_frame_ghi_pack.py" "$EXP/test_direct_cot_hv_pipeline_contract.py"
+python "$EXP/test_direct_cot_hv_pipeline_contract.py"
+test "$(sha256sum "$EXP/build_direct_cot_forecast_row_bank.py" | cut -d' ' -f1)" = "45be136aee3be798da6db4147ca4bcccdd26bf2047f41d6c833ec9696460d23f"
+test "$(sha256sum "$EXP/test_direct_cot_hv_pipeline_contract.py" | cut -d' ' -f1)" = "de433f4f9e0636f4552bcabce1ff082ef26072d251f787d354c2e7dece2c4552"
+
+# Preserve the failed attempt. It is safe to move only the verified-empty directory.
+if test -e "$ROWBANK"; then
+  test -d "$ROWBANK"
+  test ! -e "$FAILED_ROWBANK"
+  if test -n "$(find "$ROWBANK" -mindepth 1 -print -quit)"; then
+    echo "ERROR: failed rowbank contains files; refusing to move or overwrite"
+    exit 1
+  fi
+  mv -- "$ROWBANK" "$FAILED_ROWBANK"
+  echo "STAGE=preserved_empty_failed_rowbank path=$FAILED_ROWBANK"
+fi
+test ! -e "$ROWBANK" && test ! -e "$GHIPACK"
+
+python -u "$EXP/build_direct_cot_forecast_row_bank.py" \
+  --inference "$INFERENCE" --support "$SUPPORT" --sequence-index "$SEQUENCE_INDEX" \
+  --labels "$LABELS" --coverage-audit "$COVERAGE" --exclusions "$EXCLUSIONS" \
+  --output "$ROWBANK"
+python -u "$EXP/build_direct_cot_single_frame_ghi_pack.py" --bank "$ROWBANK" --output "$GHIPACK"
+
+python - "$ROWBANK" "$GHIPACK" <<'PY'
+import json,sys
+from pathlib import Path
+b,p=map(Path,sys.argv[1:])
+bm=json.loads((b/'bank_manifest.json').read_text())
+pm=json.loads((p/'pack_manifest.json').read_text())
+assert bm['state']=='COMPLETE_DIRECT_COT_FORECAST_ROW_BANK'
+assert pm['state']=='COMPLETE_DIRECT_COT_SINGLE_FRAME_GHI_PACK'
+expected={'sili/train':72345,'zhujia/train':79417,'sili/val':31655,'zhujia/val':34431}
+assert bm['counts']==expected,bm['counts']
+assert pm['counts']==expected,pm['counts']
+for m in (bm,pm):
+ for k in ('test_payload_opened','buffer_payload_opened'):
+  assert m[k] is False,(k,m[k])
+ for k in ('future_observed_agri_used_as_input','cpp_used_as_input'):
+  if k in m: assert m[k] is False,(k,m[k])
+print('DIRECT_COT_HV_ROWBANK_AND_GHI_PACK_COMPLETE',json.dumps({'counts':expected,'test_buffer_opened':False}))
+PY

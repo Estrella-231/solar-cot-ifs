@@ -1,0 +1,198 @@
+{
+  "state": "PAIRED_ZHUJIA_CAPACITY_CONTROL_AUDIT_COMPLETE",
+  "test_used": false,
+  "rows": 1624,
+  "initialization_days": 70,
+  "row_truth_lead_keys_identical": true,
+  "metrics": {
+    "agri_residual": {
+      "n": 1624,
+      "rmse": 126.32321890220607,
+      "mae": 92.08024977778112,
+      "bias": -18.787479682546625
+    },
+    "cot_residual": {
+      "n": 1624,
+      "rmse": 127.29536960923751,
+      "mae": 93.0142858277577,
+      "bias": -11.703474782917061
+    }
+  },
+  "cot_minus_agri_rmse": 0.9721507070314459,
+  "paired_initialization_day_bootstrap": {
+    "repetitions": 5000,
+    "seed": 20260928,
+    "rmse_delta_cot_minus_agri_95pct": [
+      -1.4883898398241626,
+      3.3364507310068268
+    ],
+    "fraction_cot_better": 0.2272
+  },
+  "lead_rmse": {
+    "15": {
+      "agri_residual": 111.44719105158559,
+      "cot_residual": 109.84312864886577
+    },
+    "30": {
+      "agri_residual": 112.586862087939,
+      "cot_residual": 114.12966208634407
+    },
+    "45": {
+      "agri_residual": 110.14669863397376,
+      "cot_residual": 109.93037830978399
+    },
+    "60": {
+      "agri_residual": 116.22856775660563,
+      "cot_residual": 115.06207116985341
+    },
+    "75": {
+      "agri_residual": 118.42932140889152,
+      "cot_residual": 119.54302494778634
+    },
+    "90": {
+      "agri_residual": 118.03351801083952,
+      "cot_residual": 120.68323314443006
+    },
+    "105": {
+      "agri_residual": 126.10799002661321,
+      "cot_residual": 129.21655549468258
+    },
+    "120": {
+      "agri_residual": 129.69722027586946,
+      "cot_residual": 132.54914972570705
+    },
+    "135": {
+      "agri_residual": 130.84001345441774,
+      "cot_residual": 131.69721563769764
+    },
+    "150": {
+      "agri_residual": 128.70349579446733,
+      "cot_residual": 130.18510226221645
+    },
+    "165": {
+      "agri_residual": 139.26690521597493,
+      "cot_residual": 140.11604503425312
+    },
+    "180": {
+      "agri_residual": 127.62870074811137,
+      "cot_residual": 126.47615166597494
+    },
+    "195": {
+      "agri_residual": 128.28677152283706,
+      "cot_residual": 127.28429216879852
+    },
+    "210": {
+      "agri_residual": 135.80684413297428,
+      "cot_residual": 138.61945301506265
+    },
+    "225": {
+      "agri_residual": 145.55033715946044,
+      "cot_residual": 145.17675595871287
+    },
+    "240": {
+      "agri_residual": 142.25198817638122,
+      "cot_residual": 145.21652361712628
+    }
+  },
+  "both_best_predictions_within_1e-4_of_zero_anchor": false,
+  "max_abs_difference_from_zero_anchor_W_m2": 53.50111044691545,
+  "largest_cot_minus_agri_squared_error_rows": [
+    {
+      "row_id": 629739,
+      "lead_min": 15,
+      "truth": 44.63999999999999,
+      "agri_prediction": 314.438438820316,
+      "cot_prediction": 366.1850723182308,
+      "delta_squared_error": 30600.035942256494
+    },
+    {
+      "row_id": 543944,
+      "lead_min": 15,
+      "truth": 377.17,
+      "agri_prediction": 703.3968085352321,
+      "cot_prediction": 745.492633870418,
+      "delta_squared_error": 29237.632014158968
+    },
+    {
+      "row_id": 629458,
+      "lead_min": 120,
+      "truth": 42.45333333333334,
+      "agri_prediction": 341.36303989907054,
+      "cot_prediction": 384.07779736179367,
+      "delta_squared_error": 27360.26174351768
+    },
+    {
+      "row_id": 542741,
+      "lead_min": 15,
+      "truth": 425.0533333333333,
+      "agri_prediction": 652.3383038462237,
+      "cot_prediction": 704.3971584621343,
+      "delta_squared_error": 26374.514816544695
+    },
+    {
+      "row_id": 629457,
+      "lead_min": 105,
+      "truth": 54.85666666666666,
+      "agri_prediction": 396.109405115791,
+      "cot_prediction": 429.76583042942775,
+      "delta_squared_error": 24103.44957426637
+    },
+    {
+      "row_id": 542743,
+      "lead_min": 45,
+      "truth": 397.98333333333335,
+      "agri_prediction": 688.5111627653604,
+      "cot_prediction": 727.190942103563,
+      "delta_squared_error": 23971.229997727583
+    },
+    {
+      "row_id": 629178,
+      "lead_min": 240,
+      "truth": 54.85666666666666,
+      "agri_prediction": 410.02025476185736,
+      "cot_prediction": 441.14057238784517,
+      "delta_squared_error": 23074.08151055804
+    },
+    {
+      "row_id": 629740,
+      "lead_min": 30,
+      "truth": 62.95000000000002,
+      "agri_prediction": 302.3184009443798,
+      "cot_prediction": 343.4136079511463,
+      "delta_squared_error": 21362.604014304932
+    },
+    {
+      "row_id": 542742,
+      "lead_min": 30,
+      "truth": 414.5966666666666,
+      "agri_prediction": 667.626729274475,
+      "cot_prediction": 706.6015292005916,
+      "delta_squared_error": 21242.62716014499
+    },
+    {
+      "row_id": 629459,
+      "lead_min": 135,
+      "truth": 48.25333333333333,
+      "agri_prediction": 314.7783307845115,
+      "cot_prediction": 350.09521828842736,
+      "delta_squared_error": 20072.94924689368
+    },
+    {
+      "row_id": 542752,
+      "lead_min": 180,
+      "truth": 377.8133333333333,
+      "agri_prediction": 695.3305041113665,
+      "cot_prediction": 725.1778097999747,
+      "delta_squared_error": 19844.92577205719
+    },
+    {
+      "row_id": 543946,
+      "lead_min": 45,
+      "truth": 367.0733333333333,
+      "agri_prediction": 717.616749924862,
+      "cot_prediction": 743.9400034860374,
+      "delta_squared_error": 19147.800156325044
+    }
+  ],
+  "source_run": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/zhujia_cot_residual_seed42_20260927_v2"
+}

@@ -1,0 +1,68 @@
+#!/bin/bash
+#PBS -N cot_r07_v2
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=06:00:00
+#PBS -j oe
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/cot_value_first_20261013
+SUP=$ROOT/experiments/hunan_simvp_supervision_20261003_v2
+S=$ROOT/experiments/hunan_monthly_block_20261002
+R=$ROOT/experiments/monthly_R_station16_20261013_v1
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+BASE=$EXP/results/simvp_supervision_cot_allval_20261017_v2
+REF=$EXP/results/forecast_agri3x3_allval_20261014_v1/forecast_cot_val_bank.npz
+ORIG=$EXP/results/forecast_agri3x3_allval_20261014_v1
+GEOM=$BASE/geometry_contract_receipt.json
+mkdir -p "$EXP/logs"
+test ! -e "$BASE"
+test "$(sha256sum "$REF" | awk '{print $1}')" = 0acc9e4095b8d401e609b50905f7252b6c897c93698cd1e3a774e32ec84ecaaf
+mkdir -p "$BASE"
+ln -s "$ORIG" "$BASE/baseline"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+python -m py_compile "$EXP/profile_forecast_agri3x3_supervision_variant_20261016_v2.py" \
+  "$EXP/score_supervision_cot_allval_20261016_v2.py" \
+  "$EXP/validate_supervision_cot_contract_20261016.py"
+python "$EXP/validate_supervision_cot_contract_20261016.py" \
+  --manifest "$S/manifests_v1/hunan_8to16.csv" \
+  --normalization "$S/manifests_v1/hunan_train_norm.json" \
+  --simvp-source "$S/code" \
+  --supervision-source "$SUP/code/train_simvp_supervision_20261003.py" \
+  --checkpoint-dir "$SUP/results_v2" \
+  --output "$GEOM"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+for ARM in mse temporal spatial; do
+  case "$ARM" in
+    mse) SHA=881f249aebf501220f451ca018d193d38a88746289c7a3ac1d16dce86f54665f ;;
+    temporal) SHA=fea2d406459a3a91c6ce6d11146be63affaaadc16203733d075304aa40338c34 ;;
+    spatial) SHA=24ae31c5fe882588a4afc30495523f003f420f3f1228e1d9f9be9e97ad40c691 ;;
+  esac
+  CKPT=$SUP/results_v2/$ARM/step_4000.pt
+  test "$(sha256sum "$CKPT" | awk '{print $1}')" = "$SHA"
+  python -u "$EXP/profile_forecast_agri3x3_supervision_variant_20261016_v2.py" \
+    --expected-simvp-sha "$SHA" \
+    --solar-root "$ROOT" --data-root "$DATA" \
+    --manifest "$S/manifests_v1/hunan_8to16.csv" --norm "$S/manifests_v1/hunan_train_norm.json" \
+    --simvp-checkpoint "$CKPT" --simvp-source "$S/code" \
+    --r-checkpoint "$R/results/seed42_v1/best.pt" --r-source "$R/scripts/train_station16_R.py" \
+    --r-norm "$R/results/seed42_v1/normalization.json" --r-pack-rows "$R/data/pack_trainval_v1/rows.csv" \
+    --r-validation-predictions "$R/results/seed42_v1/validation_predictions.npz" \
+    --candidate "$R/input/target_candidates_train_val.csv" --reference-bank "$REF" \
+    --geometry-contract-receipt "$GEOM" \
+    --output "$BASE/$ARM" --full-bank --num-windows 0 --batch-size 8 --workers 6
+done
+python -u "$EXP/score_supervision_cot_allval_20261016_v2.py" \
+  --base "$BASE" --output "$BASE/scored" \
+  --r-pack-rows "$R/data/pack_trainval_v1/rows.csv" \
+  --r-validation-predictions "$R/results/seed42_v1/validation_predictions.npz" \
+  --bootstrap-reps 2000
+echo SUPERVISION_COT_ALLVAL_V2_COMPLETE test_payloads_read=0
+
+

@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -N monthly_R_smoke
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=1
+#PBS -l walltime=00:10:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/smoke_node22.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+export PYTHONPATH="$EXP/runtime_packages${PYTHONPATH:+:$PYTHONPATH}" OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+python -u "$EXP/scripts/pack_station16_cpp_agri.py" \
+  --candidates "$EXP/input/target_candidates_train_val.csv" \
+  --cpp-inventory "$EXP/input/cpp_file_support_by_frame.csv" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --grid-static /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/grid_static.npz \
+  --output "$EXP/data/smoke_node22_trainval_2frames" \
+  --smoke-utc "2024-04-02 01:00:00" --smoke-utc "2024-04-19 01:00:00"

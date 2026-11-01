@@ -1,0 +1,22 @@
+{
+  "state": "HUBEI_GHI_HEAD_AL_SEED_COMPLETE",
+  "arm": "AL",
+  "definition": "A plus frozen Hubei R dec1 16-channel local 3x3 feature; R parameters detached/frozen",
+  "seed": 44,
+  "epochs": 30,
+  "batch_size": 512,
+  "pack_report_sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+  "feature_report_sha256": "cd2e4ca74614e324d2aec91ad5a85addbe7efac89e91f9857377b4ca36aadb78",
+  "trainer_sha256": "554425d0f61010acf94dac04b22e77b6fa79f488be6221041ba3eae8df923109",
+  "model_sha256": "ebbab1ff181d998239b4c810d86d7375b523a0e8f339162ade7d644f6200ed05",
+  "parameter_count": 24549,
+  "AP_parameter_count": 24613,
+  "AC_parameter_count": 24489,
+  "AL_parameter_delta_vs_AP": -64,
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "normalization": "station-specific train-only AGRI and R dec1 feature; physical geometry",
+  "loss": "MSE((pred_kt*interval_clear_sky_GHI - observed_GHI)/1000)",
+  "test_payloads_read": 0,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "elapsed_s": 12.61347508430481
+}

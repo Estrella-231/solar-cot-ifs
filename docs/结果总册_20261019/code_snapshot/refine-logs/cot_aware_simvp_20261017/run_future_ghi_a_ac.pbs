@@ -1,0 +1,67 @@
+#!/bin/bash
+#PBS -N fghi_cot_sources
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+RROOT=$PROJECT/experiments/monthly_R_station16_20261013_v1
+BANK=$EXP/results/future_simvp_r_bank_v1
+CROSS_REPORT=$EXP/results/future_ghi_crosswalk.json
+CROSS_KEYS=$EXP/results/future_ghi_crosswalk_keys.npz
+LABEL_PACK=$RROOT/data/ghi_head_pack_new_r_v1
+PACK=$EXP/results/future_ghi_head_pack_v1
+RUN=$EXP/results/future_ghi_cot_source_heads_v1
+AUDIT=$EXP/results/future_ghi_cot_source_validation_audit_v1.json
+STRATA_AUDIT=$EXP/results/future_ghi_cot_strata_validation_audit_v1.json
+
+mkdir -p "$EXP/logs" "$EXP/results"
+JOB_LOG="$EXP/logs/future_ghi_a_ac_${PBS_JOBID}.log"
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$EXP"
+(cd "$EXP" && sha256sum -c FUTURE_GHI_SHA256SUMS)
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+python "$EXP/test_future_ghi_cot_arms.py"
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_FORECAST_AGRI_R_TRAIN_VAL_BANK"; assert x.get("test_payload_opened") is False and x.get("future_observed_agri_read") is False; print("FORECAST_BANK_GATE_PASS")' "$BANK/bank_manifest.json"
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"
+  exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+if [ -f "$PACK/pack_manifest.json" ]; then
+  python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK"; print("FUTURE_GHI_PACK_ALREADY_COMPLETE")' "$PACK/pack_manifest.json"
+elif [ -e "$PACK" ]; then
+  echo "REFUSE: incomplete pack directory exists; preserve it and choose a new output version"
+  exit 33
+else
+  python -u "$EXP/build_future_ghi_head_pack.py" \
+    --forecast-bank "$BANK" --crosswalk "$CROSS_REPORT" --keys "$CROSS_KEYS" \
+    --ghi-pack "$LABEL_PACK" --output "$PACK"
+fi
+
+if [ -f "$RUN/run_manifest.json" ]; then
+  python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_FUTURE_GHI_COT_SOURCE_SCREENING_PILOT"; print("FUTURE_GHI_COT_SOURCE_HEADS_ALREADY_COMPLETE")' "$RUN/run_manifest.json"
+elif [ -e "$RUN" ]; then
+  echo "REFUSE: incomplete head-run directory exists; preserve it and choose a new output version"
+  exit 34
+else
+  python -u "$EXP/train_future_ghi_heads.py" --pack "$PACK" --output "$RUN" --seeds 42 43 44 --epochs 30 --batch-size 1792 --station both
+fi
+
+python -u "$EXP/audit_future_ghi_a_ac.py" --run-root "$RUN" --output "$AUDIT" --seeds 42 43 44 --bootstrap 2000
+python -u "$EXP/audit_future_ghi_cot_strata.py" --pack "$PACK" --run-root "$RUN" --output "$STRATA_AUDIT" --seeds 42 43 44
+echo "FUTURE_GHI_COT_SOURCE_PILOT_COMPLETE test_payload_opened=0"

@@ -1,0 +1,213 @@
+{
+  "canvas": {
+    "width": 885,
+    "height": 975
+  },
+  "style": {
+    "font_family": "Times New Roman, serif",
+    "font_size": 16,
+    "bg_color": "#FFFFFF"
+  },
+  "nodes": [
+    {
+      "id": "obs",
+      "x": 100,
+      "y": 135,
+      "width": 170,
+      "height": 95,
+      "label": "Observed AGRI\n13 spectral channels\n+ known geometry",
+      "fill": "#F2F4F5",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "Rnow",
+      "x": 330,
+      "y": 135,
+      "width": 160,
+      "height": 95,
+      "label": "Frozen R\n16 \u00d7 16 context",
+      "fill": "#F2F4F5",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "Hnow",
+      "x": 605,
+      "y": 135,
+      "width": 185,
+      "height": 95,
+      "label": "Same-time GHI head\naligned 3 \u00d7 3 inputs",
+      "fill": "#EDF6F4",
+      "stroke": "#007F78",
+      "font_size": 16
+    },
+    {
+      "id": "Gnow",
+      "x": 805,
+      "y": 135,
+      "width": 125,
+      "height": 95,
+      "label": "k \u00d7 mean(GHIcs)\n15-min GHI",
+      "fill": "white",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "cpp",
+      "x": 285,
+      "y": 235,
+      "width": 215,
+      "height": 60,
+      "label": "CPP reference\nretrieval supervision only",
+      "fill": "white",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "ground",
+      "x": 580,
+      "y": 235,
+      "width": 185,
+      "height": 60,
+      "label": "Ground GHI\nhead supervision only",
+      "fill": "white",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "history",
+      "x": 115,
+      "y": 425,
+      "width": 195,
+      "height": 110,
+      "label": "8 observed AGRI frames\n13 bands + 3 geometry\n256 \u00d7 256 region",
+      "fill": "#F2F4F5",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "simvp",
+      "x": 360,
+      "y": 425,
+      "width": 170,
+      "height": 110,
+      "label": "Fixed SimVP\n8 \u2192 16 frames\n256 \u00d7 256",
+      "fill": "#F2F4F5",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "forecast_agri",
+      "x": 595,
+      "y": 425,
+      "width": 190,
+      "height": 110,
+      "label": "16 forecast AGRI frames\n13 bands\n+15 to +240 min",
+      "fill": "#F2F4F5",
+      "stroke": "#252C31",
+      "font_size": 16
+    },
+    {
+      "id": "Rfuture",
+      "x": 780,
+      "y": 425,
+      "width": 130,
+      "height": 110,
+      "label": "Frozen R\n16 \u00d7 16\nper frame",
+      "fill": "#FFF2E8",
+      "stroke": "#CE651D",
+      "font_size": 16
+    },
+    {
+      "id": "futurehead",
+      "x": 695,
+      "y": 575,
+      "width": 315,
+      "height": 120,
+      "label": "",
+      "fill": "#FFF2E8",
+      "stroke": "#CE651D",
+      "font_size": 16
+    },
+    {
+      "id": "Rhistory",
+      "x": 115,
+      "y": 575,
+      "width": 195,
+      "height": 110,
+      "label": "Frozen R on history\n8 retrieved COT maps\n16 \u00d7 16 \u2192 3 \u00d7 3",
+      "fill": "#EDF6F4",
+      "stroke": "#007F78",
+      "font_size": 16
+    },
+    {
+      "id": "historyhead",
+      "x": 350,
+      "y": 575,
+      "width": 195,
+      "height": 110,
+      "label": "Historical-COT base\nforecast + history AGRI\n+ historical COT\nfrozen for corrections",
+      "fill": "#EDF6F4",
+      "stroke": "#007F78",
+      "font_size": 16
+    },
+    {
+      "id": "forecast_GHI",
+      "x": 695,
+      "y": 700,
+      "width": 315,
+      "height": 75,
+      "label": "correction = sigmoid(gate) \u00d7 signed residual\nk = max(0, base k + available \u00d7 correction)\nGHI = k \u00d7 mean(GHIcs)",
+      "fill": "#F2F4F5",
+      "stroke": "#252C31",
+      "font_size": 16
+    }
+  ],
+  "edges": [
+    {
+      "from": "obs",
+      "to": "Rnow"
+    },
+    {
+      "from": "Rnow",
+      "to": "Hnow"
+    },
+    {
+      "from": "Hnow",
+      "to": "Gnow"
+    },
+    {
+      "from": "history",
+      "to": "simvp"
+    },
+    {
+      "from": "simvp",
+      "to": "forecast_agri"
+    },
+    {
+      "from": "forecast_agri",
+      "to": "Rfuture"
+    },
+    {
+      "from": "Rfuture",
+      "to": "futurehead"
+    },
+    {
+      "from": "history",
+      "to": "Rhistory"
+    },
+    {
+      "from": "Rhistory",
+      "to": "historyhead"
+    },
+    {
+      "from": "historyhead",
+      "to": "futurehead"
+    },
+    {
+      "from": "futurehead",
+      "to": "forecast_GHI"
+    }
+  ]
+}

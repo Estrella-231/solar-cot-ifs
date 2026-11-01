@@ -1,0 +1,21 @@
+{
+  "test_used": false,
+  "cohort": "128 existing regional GHI validation pilot sequences; no GHI magnitude selection",
+  "counts": {
+    "valid_station_targets": 1424,
+    "thick_reference_targets": 63,
+    "simvp_thick_misses": 9,
+    "oracle_thick_misses": 0,
+    "far_thick_targets": 39,
+    "far_simvp_thick_misses": 7
+  },
+  "sequences_with_station_reference": 124,
+  "nonzero_motion_sequences": 27,
+  "nonzero_motion_cloudy_sequences": 1,
+  "thresholds": {
+    "reference_thick_cot": 30,
+    "severe_miss_prediction_below": 10,
+    "far_lead_start_min": 120
+  },
+  "scope": "CPP retrieval reference, not independent physical truth; frames are dependent; peak-time differences unreliable when cloud peak is absent; no GHI attribution"
+}

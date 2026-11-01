@@ -1,0 +1,613 @@
+{
+  "state": "COMPLETE_DIRECT_COT_LEAD_H_CV_SCORE",
+  "evidence_tier": "outer-training H-only internal date-block cross-validation; not outer validation/test",
+  "run_manifest_sha256": "9151cedb252f34670c900757e0ff28be674a390086ee229f617914889de733fa",
+  "results": {
+    "cot_effect_with_lead": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.044808312401736806,
+        "ci95_low": -1.738974574722389,
+        "ci95_high": 1.866224853427722
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": -0.5226677376932921,
+        "ci95_low": -2.3204724278407896,
+        "ci95_high": 1.1663736762560974
+      }
+    },
+    "cot_effect_without_lead": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.17554592065226396,
+        "ci95_low": -1.9895446211034673,
+        "ci95_high": 2.2232867357390473
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": 0.07558271825306899,
+        "ci95_low": -1.6033424228587114,
+        "ci95_high": 1.708357193741883
+      }
+    },
+    "lead_cot_interaction": {
+      "all_leads": {
+        "delta_rmse_wm2": -0.13073760825052716,
+        "ci95_low": -1.828191975430877,
+        "ci95_high": 1.6694807875560234
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": -0.5982504559463612,
+        "ci95_low": -2.291432618847423,
+        "ci95_high": 1.314661250376007
+      }
+    },
+    "lead_effect_no_cot": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.6102019767674941,
+        "ci95_low": -1.0461190485115421,
+        "ci95_high": 2.3268445024103785
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": -0.5500608760793995,
+        "ci95_low": -2.473903939791275,
+        "ci95_high": 1.3691978193139918
+      }
+    },
+    "station_delta_all_leads": {
+      "sili": {
+        "seed_deltas": [
+          0.5402554179268293,
+          1.0197611539796014,
+          -0.4685351221016276
+        ],
+        "mean": 0.36382714993493437
+      },
+      "zhujia": {
+        "seed_deltas": [
+          -0.5437104309874599,
+          -0.7575166453397628,
+          0.4785955009329541
+        ],
+        "mean": -0.27421052513142286
+      }
+    },
+    "seed_delta_all_leads": {
+      "42": -0.0017275065303152815,
+      "43": 0.1311222543199193,
+      "44": 0.005030189415663244
+    },
+    "leadwise_pxc_lead_minus_none_lead": [
+      {
+        "lead_minutes": 15,
+        "delta_rmse_wm2": -0.09721299517016746
+      },
+      {
+        "lead_minutes": 30,
+        "delta_rmse_wm2": -0.671305808416354
+      },
+      {
+        "lead_minutes": 45,
+        "delta_rmse_wm2": -0.5474463256057428
+      },
+      {
+        "lead_minutes": 60,
+        "delta_rmse_wm2": -0.7694324182993739
+      },
+      {
+        "lead_minutes": 75,
+        "delta_rmse_wm2": -0.21720705325521314
+      },
+      {
+        "lead_minutes": 90,
+        "delta_rmse_wm2": -0.5262466497052335
+      },
+      {
+        "lead_minutes": 105,
+        "delta_rmse_wm2": -0.5129450897953328
+      },
+      {
+        "lead_minutes": 120,
+        "delta_rmse_wm2": 0.07185169087949343
+      },
+      {
+        "lead_minutes": 135,
+        "delta_rmse_wm2": 0.05746334679241727
+      },
+      {
+        "lead_minutes": 150,
+        "delta_rmse_wm2": -0.3449605622654417
+      },
+      {
+        "lead_minutes": 165,
+        "delta_rmse_wm2": 0.2634887293029493
+      },
+      {
+        "lead_minutes": 180,
+        "delta_rmse_wm2": 0.7751087977426323
+      },
+      {
+        "lead_minutes": 195,
+        "delta_rmse_wm2": 1.0663084108828873
+      },
+      {
+        "lead_minutes": 210,
+        "delta_rmse_wm2": 0.8613296475095069
+      },
+      {
+        "lead_minutes": 225,
+        "delta_rmse_wm2": 0.7933497023678436
+      },
+      {
+        "lead_minutes": 240,
+        "delta_rmse_wm2": 0.21249259984058236
+      }
+    ],
+    "leave_one_2day_block_out_min": -0.30765059772782405,
+    "leave_one_2day_block_out_max": 0.5448317808464509,
+    "leave_one_2day_block_out_all_negative": false,
+    "leave_one_2day_block_out": [
+      {
+        "dropped_block": "2024-04-B05",
+        "delta_rmse_wm2": 0.044059407958101815
+      },
+      {
+        "dropped_block": "2024-04-B07",
+        "delta_rmse_wm2": 0.0014915822265019567
+      },
+      {
+        "dropped_block": "2024-04-B11",
+        "delta_rmse_wm2": 0.04358932443648674
+      },
+      {
+        "dropped_block": "2024-04-B13",
+        "delta_rmse_wm2": -0.30765059772782405
+      },
+      {
+        "dropped_block": "2024-05-B00",
+        "delta_rmse_wm2": 0.0626029571159658
+      },
+      {
+        "dropped_block": "2024-05-B07",
+        "delta_rmse_wm2": -0.02319835491967126
+      },
+      {
+        "dropped_block": "2024-05-B12",
+        "delta_rmse_wm2": 0.5448317808464509
+      },
+      {
+        "dropped_block": "2024-06-B01",
+        "delta_rmse_wm2": 0.008408484336252778
+      },
+      {
+        "dropped_block": "2024-06-B06",
+        "delta_rmse_wm2": 0.11452711259412733
+      },
+      {
+        "dropped_block": "2024-06-B10",
+        "delta_rmse_wm2": 0.12848708106810136
+      },
+      {
+        "dropped_block": "2024-06-B13",
+        "delta_rmse_wm2": -0.12102903804106784
+      },
+      {
+        "dropped_block": "2024-07-B00",
+        "delta_rmse_wm2": 0.01036389715988643
+      },
+      {
+        "dropped_block": "2024-07-B06",
+        "delta_rmse_wm2": 0.039228565972943365
+      },
+      {
+        "dropped_block": "2024-07-B07",
+        "delta_rmse_wm2": 0.050552882302620596
+      },
+      {
+        "dropped_block": "2024-07-B13",
+        "delta_rmse_wm2": 0.0096127065752493
+      },
+      {
+        "dropped_block": "2024-08-B00",
+        "delta_rmse_wm2": 0.12285288199714255
+      },
+      {
+        "dropped_block": "2024-08-B04",
+        "delta_rmse_wm2": -0.025883937186236494
+      },
+      {
+        "dropped_block": "2024-08-B12",
+        "delta_rmse_wm2": 0.029436253891323833
+      },
+      {
+        "dropped_block": "2024-08-B14",
+        "delta_rmse_wm2": -0.010568231099118938
+      },
+      {
+        "dropped_block": "2024-09-B05",
+        "delta_rmse_wm2": 0.11930731969872947
+      },
+      {
+        "dropped_block": "2024-09-B13",
+        "delta_rmse_wm2": 0.16884955055251774
+      },
+      {
+        "dropped_block": "2024-09-B14",
+        "delta_rmse_wm2": 0.07526653717998973
+      },
+      {
+        "dropped_block": "2024-10-B07",
+        "delta_rmse_wm2": 0.047398740725720735
+      },
+      {
+        "dropped_block": "2024-10-B11",
+        "delta_rmse_wm2": -0.05580467401174379
+      },
+      {
+        "dropped_block": "2024-10-B14",
+        "delta_rmse_wm2": 0.07036524242973503
+      },
+      {
+        "dropped_block": "2024-10-B15",
+        "delta_rmse_wm2": 0.005789254992426625
+      },
+      {
+        "dropped_block": "2024-11-B00",
+        "delta_rmse_wm2": 0.11742283941686556
+      },
+      {
+        "dropped_block": "2024-11-B01",
+        "delta_rmse_wm2": 0.13517269868815637
+      },
+      {
+        "dropped_block": "2024-11-B04",
+        "delta_rmse_wm2": -0.21575713565060065
+      },
+      {
+        "dropped_block": "2024-11-B05",
+        "delta_rmse_wm2": 0.09599914921498964
+      },
+      {
+        "dropped_block": "2024-12-B01",
+        "delta_rmse_wm2": 0.1719498824862645
+      },
+      {
+        "dropped_block": "2024-12-B04",
+        "delta_rmse_wm2": 0.20318829529211277
+      },
+      {
+        "dropped_block": "2024-12-B09",
+        "delta_rmse_wm2": 0.05301621155922002
+      },
+      {
+        "dropped_block": "2024-12-B10",
+        "delta_rmse_wm2": 0.041060685059970105
+      },
+      {
+        "dropped_block": "2025-01-B03",
+        "delta_rmse_wm2": 0.012178227071629522
+      },
+      {
+        "dropped_block": "2025-01-B06",
+        "delta_rmse_wm2": -0.006242208718802544
+      },
+      {
+        "dropped_block": "2025-01-B07",
+        "delta_rmse_wm2": 0.10900114621907164
+      },
+      {
+        "dropped_block": "2025-01-B10",
+        "delta_rmse_wm2": 0.028860952915351845
+      },
+      {
+        "dropped_block": "2025-02-B01",
+        "delta_rmse_wm2": -0.08407202234088136
+      },
+      {
+        "dropped_block": "2025-02-B06",
+        "delta_rmse_wm2": 0.042321835017621844
+      },
+      {
+        "dropped_block": "2025-02-B07",
+        "delta_rmse_wm2": 0.04901079125744919
+      },
+      {
+        "dropped_block": "2025-02-B08",
+        "delta_rmse_wm2": 0.032327745977217624
+      },
+      {
+        "dropped_block": "2025-03-B01",
+        "delta_rmse_wm2": 0.052944062911663536
+      },
+      {
+        "dropped_block": "2025-03-B04",
+        "delta_rmse_wm2": 0.05282800927837646
+      },
+      {
+        "dropped_block": "2025-03-B12",
+        "delta_rmse_wm2": 0.17335155523742665
+      },
+      {
+        "dropped_block": "2025-03-B14",
+        "delta_rmse_wm2": 0.04204196889887631
+      },
+      {
+        "dropped_block": "2025-04-B00",
+        "delta_rmse_wm2": 0.03888925417892134
+      },
+      {
+        "dropped_block": "2025-04-B07",
+        "delta_rmse_wm2": 0.23410344969800198
+      },
+      {
+        "dropped_block": "2025-04-B11",
+        "delta_rmse_wm2": 0.060721157768999966
+      },
+      {
+        "dropped_block": "2025-04-B13",
+        "delta_rmse_wm2": -0.027420685379695442
+      },
+      {
+        "dropped_block": "2025-04-B14",
+        "delta_rmse_wm2": 0.006650815255914229
+      },
+      {
+        "dropped_block": "2025-05-B04",
+        "delta_rmse_wm2": 0.05054326035800235
+      },
+      {
+        "dropped_block": "2025-05-B07",
+        "delta_rmse_wm2": 0.07255674015127529
+      },
+      {
+        "dropped_block": "2025-05-B12",
+        "delta_rmse_wm2": 0.004939251089065048
+      },
+      {
+        "dropped_block": "2025-05-B14",
+        "delta_rmse_wm2": -0.07973268317801778
+      },
+      {
+        "dropped_block": "2025-06-B05",
+        "delta_rmse_wm2": -0.0016185290816584559
+      },
+      {
+        "dropped_block": "2025-06-B09",
+        "delta_rmse_wm2": 0.0628252837290546
+      },
+      {
+        "dropped_block": "2025-06-B10",
+        "delta_rmse_wm2": -0.009465559081988317
+      },
+      {
+        "dropped_block": "2025-06-B11",
+        "delta_rmse_wm2": 0.06418030369876722
+      },
+      {
+        "dropped_block": "2025-06-B14",
+        "delta_rmse_wm2": -0.11786961704463295
+      },
+      {
+        "dropped_block": "2025-07-B01",
+        "delta_rmse_wm2": 0.20150235365579286
+      },
+      {
+        "dropped_block": "2025-07-B06",
+        "delta_rmse_wm2": 0.001749570646869832
+      },
+      {
+        "dropped_block": "2025-07-B07",
+        "delta_rmse_wm2": 0.07773740074824313
+      },
+      {
+        "dropped_block": "2025-07-B08",
+        "delta_rmse_wm2": 0.0794139584036581
+      },
+      {
+        "dropped_block": "2025-07-B11",
+        "delta_rmse_wm2": 0.0505065180871469
+      },
+      {
+        "dropped_block": "2025-08-B03",
+        "delta_rmse_wm2": 0.018947040108888775
+      },
+      {
+        "dropped_block": "2025-08-B07",
+        "delta_rmse_wm2": 0.03878885022385248
+      },
+      {
+        "dropped_block": "2025-08-B12",
+        "delta_rmse_wm2": 0.10861107909504615
+      },
+      {
+        "dropped_block": "2025-08-B13",
+        "delta_rmse_wm2": 0.035440209332676886
+      },
+      {
+        "dropped_block": "2025-08-B15",
+        "delta_rmse_wm2": 0.04676386699495083
+      },
+      {
+        "dropped_block": "2025-09-B03",
+        "delta_rmse_wm2": 0.06982881988759004
+      },
+      {
+        "dropped_block": "2025-09-B04",
+        "delta_rmse_wm2": 0.05748995989119976
+      },
+      {
+        "dropped_block": "2025-10-B00",
+        "delta_rmse_wm2": 0.045127423764687556
+      },
+      {
+        "dropped_block": "2025-10-B01",
+        "delta_rmse_wm2": 0.017415338011725606
+      },
+      {
+        "dropped_block": "2025-10-B09",
+        "delta_rmse_wm2": 0.03451862809912617
+      },
+      {
+        "dropped_block": "2025-10-B15",
+        "delta_rmse_wm2": 0.04476925552995207
+      },
+      {
+        "dropped_block": "2025-11-B00",
+        "delta_rmse_wm2": 0.0319470581732304
+      },
+      {
+        "dropped_block": "2025-11-B04",
+        "delta_rmse_wm2": 0.038417120331554123
+      },
+      {
+        "dropped_block": "2025-11-B07",
+        "delta_rmse_wm2": 0.051747955024012526
+      },
+      {
+        "dropped_block": "2025-11-B08",
+        "delta_rmse_wm2": 0.07559998926436624
+      },
+      {
+        "dropped_block": "2025-11-B13",
+        "delta_rmse_wm2": -0.143479469119427
+      },
+      {
+        "dropped_block": "2025-12-B08",
+        "delta_rmse_wm2": 0.022167339561031934
+      },
+      {
+        "dropped_block": "2025-12-B11",
+        "delta_rmse_wm2": 0.08128935271485223
+      },
+      {
+        "dropped_block": "2025-12-B12",
+        "delta_rmse_wm2": 0.08340721223463277
+      },
+      {
+        "dropped_block": "2025-12-B14",
+        "delta_rmse_wm2": 0.0500105622666401
+      },
+      {
+        "dropped_block": "2026-01-B04",
+        "delta_rmse_wm2": 0.05340759406720016
+      },
+      {
+        "dropped_block": "2026-01-B05",
+        "delta_rmse_wm2": -0.24466032611001745
+      },
+      {
+        "dropped_block": "2026-01-B06",
+        "delta_rmse_wm2": 0.08899012836381814
+      },
+      {
+        "dropped_block": "2026-01-B09",
+        "delta_rmse_wm2": 0.049560826087092856
+      },
+      {
+        "dropped_block": "2026-01-B13",
+        "delta_rmse_wm2": 0.09959142917095676
+      },
+      {
+        "dropped_block": "2026-02-B03",
+        "delta_rmse_wm2": 0.00886831280018896
+      },
+      {
+        "dropped_block": "2026-02-B06",
+        "delta_rmse_wm2": -0.005695556423608157
+      },
+      {
+        "dropped_block": "2026-02-B12",
+        "delta_rmse_wm2": 0.07256242895824509
+      },
+      {
+        "dropped_block": "2026-03-B03",
+        "delta_rmse_wm2": 0.12231175288015568
+      },
+      {
+        "dropped_block": "2026-03-B06",
+        "delta_rmse_wm2": 0.04667713811994171
+      },
+      {
+        "dropped_block": "2026-03-B13",
+        "delta_rmse_wm2": 0.07389760793377793
+      },
+      {
+        "dropped_block": "2026-03-B14",
+        "delta_rmse_wm2": 0.03433204382917173
+      },
+      {
+        "dropped_block": "2026-04-B01",
+        "delta_rmse_wm2": 0.0037927460533827193
+      },
+      {
+        "dropped_block": "2026-04-B04",
+        "delta_rmse_wm2": 0.047871096881848985
+      },
+      {
+        "dropped_block": "2026-04-B05",
+        "delta_rmse_wm2": 0.0733735580729018
+      },
+      {
+        "dropped_block": "2026-04-B08",
+        "delta_rmse_wm2": 0.0579367656074273
+      },
+      {
+        "dropped_block": "2026-04-B13",
+        "delta_rmse_wm2": 0.03243303133133205
+      },
+      {
+        "dropped_block": "2026-05-B03",
+        "delta_rmse_wm2": 0.05444877431067141
+      },
+      {
+        "dropped_block": "2026-05-B04",
+        "delta_rmse_wm2": 0.03588429559606254
+      },
+      {
+        "dropped_block": "2026-05-B09",
+        "delta_rmse_wm2": 0.039120569035555754
+      },
+      {
+        "dropped_block": "2026-05-B10",
+        "delta_rmse_wm2": 0.049116181267185276
+      },
+      {
+        "dropped_block": "2026-05-B14",
+        "delta_rmse_wm2": 0.1728941351890209
+      },
+      {
+        "dropped_block": "2026-06-B01",
+        "delta_rmse_wm2": -0.018835078418381574
+      },
+      {
+        "dropped_block": "2026-06-B03",
+        "delta_rmse_wm2": 0.013222403864195561
+      },
+      {
+        "dropped_block": "2026-06-B05",
+        "delta_rmse_wm2": 0.04610268118994062
+      },
+      {
+        "dropped_block": "2026-06-B06",
+        "delta_rmse_wm2": 0.12564368227217906
+      },
+      {
+        "dropped_block": "2026-06-B13",
+        "delta_rmse_wm2": 0.06405993488795521
+      }
+    ],
+    "predeclared_gate": {
+      "pass": false,
+      "conditions": {
+        "full_region_delta_negative": false,
+        "full_ci_upper_below_zero": false,
+        "short_region_delta_negative": true,
+        "short_ci_upper_below_zero": false,
+        "both_station_point_estimates_nonpositive": false,
+        "at_least_two_of_three_seed_directions_negative": false,
+        "leave_one_2day_block_out_never_flips": false
+      }
+    }
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false
+}

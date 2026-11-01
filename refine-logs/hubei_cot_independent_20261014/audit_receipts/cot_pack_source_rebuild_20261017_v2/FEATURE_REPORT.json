@@ -1,0 +1,91 @@
+{
+  "state": "HUBEI_STATION_3X3_RAW_FEATURES_TRAINVAL_COMPLETE_TEST_CLOSED",
+  "rows_by_split": {
+    "train": 22660,
+    "val": 2045
+  },
+  "stations": {
+    "Niushou": {
+      "center_local_16x16": [
+        8,
+        6
+      ],
+      "crop": "3x3 centered"
+    },
+    "Wangzhai": {
+      "center_local_16x16": [
+        9,
+        8
+      ],
+      "crop": "3x3 centered"
+    },
+    "Mizhuang": {
+      "center_local_16x16": [
+        7,
+        10
+      ],
+      "crop": "3x3 centered"
+    }
+  },
+  "input_channel_order": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "cosSOZ",
+    "cosRAA",
+    "day_mask",
+    "R_COT"
+  ],
+  "feature_shape": [
+    24705,
+    3,
+    17,
+    3,
+    3
+  ],
+  "feature_dtype": "float32",
+  "nonfinite_feature_counts_by_channel": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "R_COT_source": "frozen seed42 R; CPP fixed_v2 validation-selected; train rows are in-domain, not OOF",
+  "test_payloads_read": 0,
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "r_bank_report_sha256": "786a001c86d035662e7f8c1249a831ba8ad8bfe4ab2a1cce5eb0c591ab5692af",
+  "r_bank_prediction_sha256": "e516a57fd79a013e07b0e0847afc671ac6785502cae6097c1fc1c8a712191553",
+  "r_bank_rows_sha256": "82b9024be9d752590d3f9a1da36bc46c7f04f4ab325b40fbf3c2e3c68f786b24",
+  "r_checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+  "r_model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "r_norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+  "r_manifest_sha256": "df2a858cb3177ef2223418b6b94a50a800872b3af8364a151758df2d35e493cf",
+  "manifest_sha256": "df2a858cb3177ef2223418b6b94a50a800872b3af8364a151758df2d35e493cf",
+  "rows_sha256": "82b9024be9d752590d3f9a1da36bc46c7f04f4ab325b40fbf3c2e3c68f786b24",
+  "features_sha256": "112c88ecdb1351e5af9c83458b01c6c1bd4e98982e0436589e14b442919c0be2",
+  "feature_file": "raw values, no GHI labels, no normalization fitted",
+  "normalization_and_GHI_head_training": "not performed; unit/time and pvlib gates remain open"
+}

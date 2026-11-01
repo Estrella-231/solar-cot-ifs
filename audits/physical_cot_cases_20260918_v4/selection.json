@@ -1,0 +1,45 @@
+{
+  "state": "VALIDATION_ONLY_PHYSICAL_CASES",
+  "test_used": false,
+  "source": "saved spatial B1 seed42 A_sp/AC_map predictions and frozen forecast cache",
+  "selection": {
+    "improves": {
+      "selection": "median magnitude within top-decile absolute COT-induced prediction adjustment and named squared-error sign",
+      "pack_row": 629456,
+      "sequence": 3891,
+      "station": "Zhujia",
+      "lead_minutes": 90,
+      "frame_lead_minutes": [
+        45,
+        60,
+        75,
+        90
+      ],
+      "target_predicted_COT_station_center_log1p": 3.3309535136173993,
+      "observed_GHI_Wm2": 344.31333333333333,
+      "A_sp_GHI_Wm2": 222.9603032619724,
+      "AC_map_GHI_Wm2": 255.7106930875211,
+      "COT_prediction_adjustment_Wm2": 32.7503898255487,
+      "squared_error_change_Wm4": -6876.130048971805
+    },
+    "worsens": {
+      "selection": "median magnitude within top-decile absolute COT-induced prediction adjustment and named squared-error sign",
+      "pack_row": 569782,
+      "sequence": 1342,
+      "station": "Sili",
+      "lead_minutes": 150,
+      "frame_lead_minutes": [
+        105,
+        120,
+        135,
+        150
+      ],
+      "target_predicted_COT_station_center_log1p": 3.563964530858886,
+      "observed_GHI_Wm2": 364.6666666666667,
+      "A_sp_GHI_Wm2": 291.50310026641455,
+      "AC_map_GHI_Wm2": 245.79764744208669,
+      "COT_prediction_adjustment_Wm2": -45.70545282432784,
+      "squared_error_change_Wm4": 8776.936283009467
+    }
+  }
+}

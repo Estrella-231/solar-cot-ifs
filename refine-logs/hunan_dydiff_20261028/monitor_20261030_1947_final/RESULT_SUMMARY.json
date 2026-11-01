@@ -1,0 +1,32 @@
+{
+  "full_forecast_evaluations": 31,
+  "validation_sequences": 3140,
+  "best": {
+    "epoch": 145,
+    "forecast_normalized_rmse": 0.4330495718969827,
+    "forecast_normalized_mae": 0.22734800724059157,
+    "matched_model_rmse": 0.4320449576972312,
+    "matched_persistence_rmse": 0.7918376840585947,
+    "mse_skill_vs_persistence": 0.7022953971573591,
+    "rmse_0_1h": 0.2891026821695831,
+    "rmse_1_2h": 0.39941393562669475,
+    "rmse_2_4h": 0.5033608100550293
+  },
+  "final": {
+    "epoch": 150,
+    "forecast_normalized_rmse": 0.43321090821287395,
+    "forecast_normalized_mae": 0.227604739419128,
+    "matched_model_rmse": 0.43221085906761125,
+    "matched_persistence_rmse": 0.7918376840585947,
+    "mse_skill_vs_persistence": 0.7020667214916401,
+    "rmse_0_1h": 0.28897599583266187,
+    "rmse_1_2h": 0.3994059127594,
+    "rmse_2_4h": 0.5036776312175693
+  },
+  "final_matched_rmse_reduction_percent": 45.416735302076326,
+  "final_vs_best_relative_rmse_increase_percent": 0.03725585391634034,
+  "aggregate_reconstruction_check": "PASS from saved lead/channel RMSE and counts; not raw-prediction rescoring",
+  "metrics_scope": "13 standardized AGRI channels, 16 leads, valid pixels, full validation; not COT/GHI metrics",
+  "checkpoint_directory": "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028/runs/seed42_150ep_hunan_v1",
+  "test_payloads_read": 0
+}

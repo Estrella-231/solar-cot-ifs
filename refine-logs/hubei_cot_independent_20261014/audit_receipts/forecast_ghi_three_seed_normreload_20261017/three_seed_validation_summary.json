@@ -1,0 +1,3052 @@
+{
+  "state": "HUBEI_FORECAST_GHI_THREE_SEED_VALIDATION_SUMMARY_TEST_CLOSED",
+  "scope": "validation only; model selection evidence, not independent test or paper-confirmatory result",
+  "pack_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+  "seed_run_metadata_sha256": {
+    "42": "a6980127db59895cafec16cb34897df3b42d1ba742e30e4bb1b240c26ef9e33c",
+    "43": "e73e7a9e54715e8a55eb0bc191e7652c27c356849e49a1cba8b1b1b3635d91dd",
+    "44": "560d8d980d6e579e8be89b6b98e163fe3584b4b45e53433161898039ba2fa4a7"
+  },
+  "seed_provenance": {
+    "42": {
+      "trainer_sha256": "fd15bf6f939cb81d09bd05e6fc889f88e53e8a9e40366d417fa195848caf5999",
+      "normalization_contract_sha256": "b29586b76400c119f50ade3fd252b4700cdf3d013d047ae64f3cace2890240bd",
+      "pack_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+      "run_metadata_sha256": "a6980127db59895cafec16cb34897df3b42d1ba742e30e4bb1b240c26ef9e33c"
+    },
+    "43": {
+      "trainer_sha256": "fd15bf6f939cb81d09bd05e6fc889f88e53e8a9e40366d417fa195848caf5999",
+      "normalization_contract_sha256": "b29586b76400c119f50ade3fd252b4700cdf3d013d047ae64f3cace2890240bd",
+      "pack_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+      "run_metadata_sha256": "e73e7a9e54715e8a55eb0bc191e7652c27c356849e49a1cba8b1b1b3635d91dd"
+    },
+    "44": {
+      "trainer_sha256": "fd15bf6f939cb81d09bd05e6fc889f88e53e8a9e40366d417fa195848caf5999",
+      "normalization_contract_sha256": "b29586b76400c119f50ade3fd252b4700cdf3d013d047ae64f3cace2890240bd",
+      "pack_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+      "run_metadata_sha256": "560d8d980d6e579e8be89b6b98e163fe3584b4b45e53433161898039ba2fa4a7"
+    }
+  },
+  "analysis_script_sha256": "1296d6be077b5be66ecad068b3609d445fb0b31c18ac8f5a5fda429ba5d52f0e",
+  "analysis_input_templates": {
+    "audit_dir": "forecast_ghi_normreload_seed{seed}_20261017",
+    "run_dir": "run"
+  },
+  "test_payloads_read": 0,
+  "support": {
+    "Niushou": {
+      "n_per_seed_per_arm": 2316
+    },
+    "Wangzhai": {
+      "n_per_seed_per_arm": 2112
+    },
+    "Mizhuang": {
+      "n_per_seed_per_arm": 2295
+    }
+  },
+  "target_dates": [
+    "20250822",
+    "20250823",
+    "20250926",
+    "20250927",
+    "20251004",
+    "20251005",
+    "20251105",
+    "20251106",
+    "20251202",
+    "20251203",
+    "20260103",
+    "20260104",
+    "20260220",
+    "20260221",
+    "20260301",
+    "20260302",
+    "20260420",
+    "20260421",
+    "20260503",
+    "20260504",
+    "20260628",
+    "20260629"
+  ],
+  "n_target_dates": 22,
+  "primary_estimand": "equal mean of station RMSEs within each seed, then equal mean across three seeds; paired validation support",
+  "seed_table": {
+    "42": {
+      "station_equal_fa_rmse_wm2": 75.66267661447849,
+      "station_equal_fac_rmse_wm2": 77.0191724433052,
+      "fac_minus_fa_rmse_wm2": 1.3564958288267093
+    },
+    "43": {
+      "station_equal_fa_rmse_wm2": 77.61199403268421,
+      "station_equal_fac_rmse_wm2": 79.3178448311783,
+      "fac_minus_fa_rmse_wm2": 1.7058507984940974
+    },
+    "44": {
+      "station_equal_fa_rmse_wm2": 78.17602000831808,
+      "station_equal_fac_rmse_wm2": 78.12879086342055,
+      "fac_minus_fa_rmse_wm2": -0.047229144897528386
+    }
+  },
+  "station_table": {
+    "Niushou": {
+      "FA": {
+        "rmse_mean_wm2": 76.48908128147926,
+        "rmse_sd_across_seeds_wm2": 2.388436529065712
+      },
+      "FAC": {
+        "rmse_mean_wm2": 77.27225331978468,
+        "rmse_sd_across_seeds_wm2": 1.8991766775220085
+      },
+      "FAC_minus_FA": {
+        "mean_wm2": 0.7831720383054185,
+        "sd_across_seeds_wm2": 1.4288452288397342,
+        "seeds_improved": 1
+      }
+    },
+    "Wangzhai": {
+      "FA": {
+        "rmse_mean_wm2": 72.10790212190447,
+        "rmse_sd_across_seeds_wm2": 1.2413875712139726
+      },
+      "FAC": {
+        "rmse_mean_wm2": 73.84852768194325,
+        "rmse_sd_across_seeds_wm2": 1.7551100309172585
+      },
+      "FAC_minus_FA": {
+        "mean_wm2": 1.740625560038789,
+        "sd_across_seeds_wm2": 0.8703608593022797,
+        "seeds_improved": 0
+      }
+    },
+    "Mizhuang": {
+      "FA": {
+        "rmse_mean_wm2": 82.85370725209707,
+        "rmse_sd_across_seeds_wm2": 0.8756732665008353
+      },
+      "FAC": {
+        "rmse_mean_wm2": 83.34502713617611,
+        "rmse_sd_across_seeds_wm2": 0.4105779891399004
+      },
+      "FAC_minus_FA": {
+        "mean_wm2": 0.49131988407904714,
+        "sd_across_seeds_wm2": 0.9168216474478734,
+        "seeds_improved": 1
+      }
+    }
+  },
+  "main_result": {
+    "fa_station_equal_mean_rmse_wm2": 77.15023021849358,
+    "fac_station_equal_mean_rmse_wm2": 78.15526937930133,
+    "fac_minus_fa_rmse_wm2": 1.0050391608077593,
+    "relative_rmse_reduction_percent_positive_favors_fac": -1.3027040333663746,
+    "seeds_with_negative_delta": 1,
+    "date_block_bootstrap_1day": {
+      "n_boot": 10000,
+      "seed": 20261017,
+      "block_calendar_days": 1,
+      "percentile_95_ci_fac_minus_fa_wm2": [
+        -0.7219406874686121,
+        3.779833309740479
+      ],
+      "bootstrap_mean_fac_minus_fa_wm2": 1.0826725520119294,
+      "probability_fac_rmse_lower_in_bootstrap": 0.1808
+    },
+    "moving_2day_block_sensitivity": {
+      "n_boot": 10000,
+      "seed": 20261018,
+      "block_calendar_days": 2,
+      "percentile_95_ci_fac_minus_fa_wm2": [
+        -0.680586961525477,
+        3.813069704718027
+      ],
+      "bootstrap_mean_fac_minus_fa_wm2": 1.0441974502667921,
+      "probability_fac_rmse_lower_in_bootstrap": 0.2313
+    }
+  },
+  "raw_station_seed_table": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "FA_rmse_wm2": 74.31823118457325,
+      "FA_mae_wm2": 49.03821378031147,
+      "FAC_rmse_wm2": 75.0798732200268,
+      "FAC_mae_wm2": 49.402956401839184,
+      "FAC_minus_FA_rmse_wm2": 0.7616420354535478,
+      "FAC_minus_FA_mae_wm2": 0.36474262152771075
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "FA_rmse_wm2": 76.10135106114767,
+      "FA_mae_wm2": 49.09409510430483,
+      "FAC_rmse_wm2": 78.32401166833739,
+      "FAC_mae_wm2": 50.455572272663765,
+      "FAC_minus_FA_rmse_wm2": 2.2226606071897237,
+      "FAC_minus_FA_mae_wm2": 1.3614771683589382
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "FA_rmse_wm2": 79.04766159871687,
+      "FA_mae_wm2": 52.103944915809244,
+      "FAC_rmse_wm2": 78.41287507098986,
+      "FAC_mae_wm2": 51.69567471205873,
+      "FAC_minus_FA_rmse_wm2": -0.6347865277270159,
+      "FAC_minus_FA_mae_wm2": -0.4082702037505115
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "FA_rmse_wm2": 70.823403738502,
+      "FA_mae_wm2": 43.69464759561798,
+      "FAC_rmse_wm2": 72.65403971255076,
+      "FAC_mae_wm2": 45.55034215170291,
+      "FAC_minus_FA_rmse_wm2": 1.8306359740487608,
+      "FAC_minus_FA_mae_wm2": 1.8556945560849272
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "FA_rmse_wm2": 73.30114226565651,
+      "FA_mae_wm2": 45.86140763333639,
+      "FAC_rmse_wm2": 75.86362571020634,
+      "FAC_mae_wm2": 48.00272262549763,
+      "FAC_minus_FA_rmse_wm2": 2.5624834445498266,
+      "FAC_minus_FA_mae_wm2": 2.1413149921612415
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "FA_rmse_wm2": 72.19916036155489,
+      "FA_mae_wm2": 44.82180583649085,
+      "FAC_rmse_wm2": 73.02791762307267,
+      "FAC_mae_wm2": 46.04095371913078,
+      "FAC_minus_FA_rmse_wm2": 0.8287572615177794,
+      "FAC_minus_FA_mae_wm2": 1.2191478826399305
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "FA_rmse_wm2": 81.84639492036025,
+      "FA_mae_wm2": 51.016641673604774,
+      "FAC_rmse_wm2": 83.32360439733806,
+      "FAC_mae_wm2": 52.19291896096599,
+      "FAC_minus_FA_rmse_wm2": 1.477209476977805,
+      "FAC_minus_FA_mae_wm2": 1.1762772873612164
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "FA_rmse_wm2": 83.43348877124845,
+      "FA_mae_wm2": 52.00404312202711,
+      "FAC_rmse_wm2": 83.76589711499115,
+      "FAC_mae_wm2": 53.109919726148185,
+      "FAC_minus_FA_rmse_wm2": 0.33240834374269923,
+      "FAC_minus_FA_mae_wm2": 1.1058766041210717
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "FA_rmse_wm2": 83.28123806468248,
+      "FA_mae_wm2": 51.21649584929035,
+      "FAC_rmse_wm2": 82.94557989619912,
+      "FAC_mae_wm2": 51.730458587371544,
+      "FAC_minus_FA_rmse_wm2": -0.33565816848336283,
+      "FAC_minus_FA_mae_wm2": 0.5139627380811973
+    }
+  ],
+  "per_lead_table": [
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 40,
+      "rmse_wm2": 23.249506609684143,
+      "mae_wm2": 19.545128185115754
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 26.493894095167306,
+      "mae_wm2": 21.782927095966073
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 60,
+      "rmse_wm2": 30.143973465085956,
+      "mae_wm2": 23.025086501116554
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 71,
+      "rmse_wm2": 37.70189088022294,
+      "mae_wm2": 28.221197091567685
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 85,
+      "rmse_wm2": 44.74668272772641,
+      "mae_wm2": 32.56074593209607
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 102,
+      "rmse_wm2": 48.15812980313771,
+      "mae_wm2": 34.03417984984231
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 117,
+      "rmse_wm2": 49.29520075505324,
+      "mae_wm2": 35.54696517112927
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 131,
+      "rmse_wm2": 55.297561489834564,
+      "mae_wm2": 39.279539730527816
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 67.30922359432235,
+      "mae_wm2": 46.33931566097748
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 71.72825508462344,
+      "mae_wm2": 49.298894385829655
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 182,
+      "rmse_wm2": 73.46637654990761,
+      "mae_wm2": 50.33845721347933
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 200,
+      "rmse_wm2": 82.23292774151955,
+      "mae_wm2": 55.410213320925834
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 217,
+      "rmse_wm2": 83.24729511867879,
+      "mae_wm2": 56.42118120512792
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 234,
+      "rmse_wm2": 83.30550228750731,
+      "mae_wm2": 57.25062904587318
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 249,
+      "rmse_wm2": 89.39828044938369,
+      "mae_wm2": 59.84894648195061
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 265,
+      "rmse_wm2": 97.35219959103902,
+      "mae_wm2": 64.02434619897801
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 40,
+      "rmse_wm2": 24.489439511083688,
+      "mae_wm2": 20.572216194774956
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 27.978207561895534,
+      "mae_wm2": 22.95141388977669
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 60,
+      "rmse_wm2": 31.330202596374686,
+      "mae_wm2": 24.2302263292484
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 71,
+      "rmse_wm2": 38.664392835393656,
+      "mae_wm2": 29.209963464689718
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 85,
+      "rmse_wm2": 45.83537964177716,
+      "mae_wm2": 33.475333851488195
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 102,
+      "rmse_wm2": 49.35152618802027,
+      "mae_wm2": 34.90319464224226
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 117,
+      "rmse_wm2": 50.24263309084094,
+      "mae_wm2": 36.09845107220686
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 131,
+      "rmse_wm2": 55.32217885876606,
+      "mae_wm2": 39.16760768811041
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 67.26846861890962,
+      "mae_wm2": 46.00590279590137
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 71.40382210073454,
+      "mae_wm2": 48.98968759153308
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 182,
+      "rmse_wm2": 73.89415107025597,
+      "mae_wm2": 50.4622529620141
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 200,
+      "rmse_wm2": 82.36470734670053,
+      "mae_wm2": 55.31847202812322
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 217,
+      "rmse_wm2": 83.6492985261125,
+      "mae_wm2": 56.46272240379988
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 234,
+      "rmse_wm2": 84.70396697025589,
+      "mae_wm2": 57.65860414895046
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 249,
+      "rmse_wm2": 91.29788992734538,
+      "mae_wm2": 60.70129060303142
+    },
+    {
+      "station": "Niushou",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 265,
+      "rmse_wm2": 98.38683915112688,
+      "mae_wm2": 64.6561577649541
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 40,
+      "rmse_wm2": 23.77573524107421,
+      "mae_wm2": 19.953644174849615
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 26.421192775693047,
+      "mae_wm2": 21.83912013790437
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 60,
+      "rmse_wm2": 29.675851762776,
+      "mae_wm2": 22.88438537757223
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 71,
+      "rmse_wm2": 36.85281123504456,
+      "mae_wm2": 27.51947529349004
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 85,
+      "rmse_wm2": 43.594006406093946,
+      "mae_wm2": 31.49747817533858
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 102,
+      "rmse_wm2": 47.499009277226335,
+      "mae_wm2": 33.25083042217382
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 117,
+      "rmse_wm2": 49.126174034329075,
+      "mae_wm2": 34.919900199876
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 131,
+      "rmse_wm2": 55.069977227868485,
+      "mae_wm2": 38.527524405578504
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 66.83577285129162,
+      "mae_wm2": 45.721074891968854
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 71.93529865798288,
+      "mae_wm2": 48.900611911530056
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 182,
+      "rmse_wm2": 73.21961744961848,
+      "mae_wm2": 49.53128138876387
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 200,
+      "rmse_wm2": 83.22096186136396,
+      "mae_wm2": 54.98920081422664
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 217,
+      "rmse_wm2": 84.83550533895556,
+      "mae_wm2": 56.16258604254591
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 234,
+      "rmse_wm2": 86.21783939028111,
+      "mae_wm2": 57.98905039031027
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 249,
+      "rmse_wm2": 93.35491600875804,
+      "mae_wm2": 60.94681588579792
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 265,
+      "rmse_wm2": 102.4834909614625,
+      "mae_wm2": 65.94672156901996
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 40,
+      "rmse_wm2": 24.84144625069034,
+      "mae_wm2": 21.064085554890333
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 28.520232808162085,
+      "mae_wm2": 23.42096993965762
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 60,
+      "rmse_wm2": 31.344425480378863,
+      "mae_wm2": 24.29619547491893
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 71,
+      "rmse_wm2": 38.53438666971132,
+      "mae_wm2": 28.809611984646658
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 85,
+      "rmse_wm2": 45.91515074916441,
+      "mae_wm2": 32.84672464255024
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 102,
+      "rmse_wm2": 50.05970770868257,
+      "mae_wm2": 34.719398094688124
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 117,
+      "rmse_wm2": 51.83069380809478,
+      "mae_wm2": 36.36364587781648
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 131,
+      "rmse_wm2": 56.95227821684248,
+      "mae_wm2": 39.14191069196597
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 68.42336106668961,
+      "mae_wm2": 45.79871733101538
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 73.4241339876796,
+      "mae_wm2": 49.11276437648493
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 182,
+      "rmse_wm2": 75.40478184279543,
+      "mae_wm2": 50.47507430065505
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 200,
+      "rmse_wm2": 84.7604960911097,
+      "mae_wm2": 55.53749959431589
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 217,
+      "rmse_wm2": 86.85492279081247,
+      "mae_wm2": 57.3230945788032
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 234,
+      "rmse_wm2": 89.05185169607999,
+      "mae_wm2": 59.698121091398676
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 249,
+      "rmse_wm2": 96.90374141735228,
+      "mae_wm2": 63.61740532167346
+    },
+    {
+      "station": "Niushou",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 265,
+      "rmse_wm2": 104.87226179681338,
+      "mae_wm2": 68.57386758137706
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 40,
+      "rmse_wm2": 24.549472163592544,
+      "mae_wm2": 20.347119216714056
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 27.070785344786355,
+      "mae_wm2": 22.357287774052548
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 60,
+      "rmse_wm2": 30.564194803498392,
+      "mae_wm2": 23.37925576247896
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 71,
+      "rmse_wm2": 38.59017550527116,
+      "mae_wm2": 28.91166710370863
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 85,
+      "rmse_wm2": 45.85152738486787,
+      "mae_wm2": 33.65081411383169
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 102,
+      "rmse_wm2": 49.49869467740769,
+      "mae_wm2": 34.860130393402834
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 117,
+      "rmse_wm2": 50.79286831151017,
+      "mae_wm2": 36.60530517649892
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 131,
+      "rmse_wm2": 57.748899811100586,
+      "mae_wm2": 40.90123015009436
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 70.17526691463851,
+      "mae_wm2": 48.037769759954834
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 74.84349584146919,
+      "mae_wm2": 51.12391478970019
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 182,
+      "rmse_wm2": 76.25440581962818,
+      "mae_wm2": 52.16317929980437
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 200,
+      "rmse_wm2": 85.69502786171867,
+      "mae_wm2": 57.75655190862715
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 217,
+      "rmse_wm2": 88.19271096442756,
+      "mae_wm2": 59.660352330405935
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 234,
+      "rmse_wm2": 89.71994861535391,
+      "mae_wm2": 61.42714720118281
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 249,
+      "rmse_wm2": 97.1569811000732,
+      "mae_wm2": 65.73529284209552
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 265,
+      "rmse_wm2": 105.95285035161474,
+      "mae_wm2": 71.40158821841315
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 40,
+      "rmse_wm2": 25.551964665066404,
+      "mae_wm2": 21.246661569504067
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 28.375305218631695,
+      "mae_wm2": 23.407114816525457
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 60,
+      "rmse_wm2": 31.552037750293074,
+      "mae_wm2": 24.45411159057791
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 71,
+      "rmse_wm2": 39.636795800812855,
+      "mae_wm2": 29.95024029257327
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 85,
+      "rmse_wm2": 47.325332044512066,
+      "mae_wm2": 34.744119998790765
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 102,
+      "rmse_wm2": 50.98112580775334,
+      "mae_wm2": 36.085066968648164
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 117,
+      "rmse_wm2": 51.88058902344301,
+      "mae_wm2": 37.35336000773196
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 131,
+      "rmse_wm2": 57.73616230892207,
+      "mae_wm2": 40.950414095827526
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 70.44542350494616,
+      "mae_wm2": 48.16400857215647
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 74.51463661087578,
+      "mae_wm2": 50.93815074404365
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 182,
+      "rmse_wm2": 76.45490692123981,
+      "mae_wm2": 52.17191535371591
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 200,
+      "rmse_wm2": 85.15704820305227,
+      "mae_wm2": 57.25743044375442
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 217,
+      "rmse_wm2": 87.24570354616355,
+      "mae_wm2": 58.97765757500576
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 234,
+      "rmse_wm2": 88.86948137074327,
+      "mae_wm2": 60.589197255551625
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 249,
+      "rmse_wm2": 95.98107550945045,
+      "mae_wm2": 64.13383330401018
+    },
+    {
+      "station": "Niushou",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 265,
+      "rmse_wm2": 103.37871420366123,
+      "mae_wm2": 69.02547196370531
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 41,
+      "rmse_wm2": 23.521927407967986,
+      "mae_wm2": 17.166463816856467
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 27.514077203201392,
+      "mae_wm2": 19.409210443838823
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 57,
+      "rmse_wm2": 29.804334417903757,
+      "mae_wm2": 19.787826527923084
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 66,
+      "rmse_wm2": 37.01003573686356,
+      "mae_wm2": 24.20009334619637
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 80,
+      "rmse_wm2": 41.24861738070743,
+      "mae_wm2": 26.949172325618566
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 93,
+      "rmse_wm2": 44.55079042682868,
+      "mae_wm2": 28.737644763102615
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 106,
+      "rmse_wm2": 52.9711579863355,
+      "mae_wm2": 34.48950265827676
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 118,
+      "rmse_wm2": 57.690096092495146,
+      "mae_wm2": 37.645030500682985
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 133,
+      "rmse_wm2": 64.1988787748688,
+      "mae_wm2": 41.73700702383666
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 149,
+      "rmse_wm2": 69.15128533708852,
+      "mae_wm2": 43.24243350763299
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 165,
+      "rmse_wm2": 73.80042267916755,
+      "mae_wm2": 46.17643194757402
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 183,
+      "rmse_wm2": 81.08205049683393,
+      "mae_wm2": 49.914528584983096
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 198,
+      "rmse_wm2": 80.55380692468027,
+      "mae_wm2": 50.37874840677838
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 210,
+      "rmse_wm2": 79.79652168101009,
+      "mae_wm2": 51.760891415631136
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 224,
+      "rmse_wm2": 79.31207316033687,
+      "mae_wm2": 52.01580091856886
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 240,
+      "rmse_wm2": 91.02587721831316,
+      "mae_wm2": 57.21932572540051
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 41,
+      "rmse_wm2": 24.569578690592184,
+      "mae_wm2": 18.26852615363896
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 27.401866455811984,
+      "mae_wm2": 20.113282655042653
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 57,
+      "rmse_wm2": 29.743550345251723,
+      "mae_wm2": 20.644445964609062
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 66,
+      "rmse_wm2": 37.87892962287329,
+      "mae_wm2": 24.866942626000807
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 80,
+      "rmse_wm2": 42.12273329750617,
+      "mae_wm2": 27.88504115988035
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 93,
+      "rmse_wm2": 46.26989740769463,
+      "mae_wm2": 30.087789316871955
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 106,
+      "rmse_wm2": 53.93409159782334,
+      "mae_wm2": 35.16191907035503
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 118,
+      "rmse_wm2": 58.447014671562556,
+      "mae_wm2": 38.58020567491461
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 133,
+      "rmse_wm2": 65.48018095649964,
+      "mae_wm2": 42.75108284335163
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 149,
+      "rmse_wm2": 70.2037819212292,
+      "mae_wm2": 44.588750993714186
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 165,
+      "rmse_wm2": 74.78801240754989,
+      "mae_wm2": 47.30358038970241
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 183,
+      "rmse_wm2": 81.86033226785122,
+      "mae_wm2": 51.18881425422316
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 198,
+      "rmse_wm2": 82.36101229978071,
+      "mae_wm2": 52.755553133221284
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 210,
+      "rmse_wm2": 82.54909189311758,
+      "mae_wm2": 54.63823422693337
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 224,
+      "rmse_wm2": 83.13575211604555,
+      "mae_wm2": 55.570400278167135
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 240,
+      "rmse_wm2": 93.83413795286228,
+      "mae_wm2": 60.29814632895092
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 41,
+      "rmse_wm2": 24.361472935581347,
+      "mae_wm2": 18.354796145747347
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 26.734460805000953,
+      "mae_wm2": 19.909948772807816
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 57,
+      "rmse_wm2": 29.66487389395807,
+      "mae_wm2": 20.86632618327674
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 66,
+      "rmse_wm2": 37.17036176360021,
+      "mae_wm2": 25.316417164649025
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 80,
+      "rmse_wm2": 40.76860560875506,
+      "mae_wm2": 27.568305746512486
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 93,
+      "rmse_wm2": 45.26556389826372,
+      "mae_wm2": 29.750436473437535
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 106,
+      "rmse_wm2": 53.769953787070364,
+      "mae_wm2": 35.005771587391926
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 118,
+      "rmse_wm2": 57.65369693544369,
+      "mae_wm2": 38.19186634200988
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 133,
+      "rmse_wm2": 66.08097429188,
+      "mae_wm2": 43.106484487498726
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 149,
+      "rmse_wm2": 71.63448229964222,
+      "mae_wm2": 45.344058830966084
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 165,
+      "rmse_wm2": 76.04123214198232,
+      "mae_wm2": 48.02228749620192
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 183,
+      "rmse_wm2": 83.739112207307,
+      "mae_wm2": 52.39429944798432
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 198,
+      "rmse_wm2": 83.79360240664573,
+      "mae_wm2": 53.5797242566454
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 210,
+      "rmse_wm2": 82.99897037402731,
+      "mae_wm2": 54.54896720324953
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 224,
+      "rmse_wm2": 83.73320433129405,
+      "mae_wm2": 55.63251353741258
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 240,
+      "rmse_wm2": 94.31545341771411,
+      "mae_wm2": 60.64322754039119
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 41,
+      "rmse_wm2": 24.852787490177146,
+      "mae_wm2": 18.730067377353496
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 27.02831481898151,
+      "mae_wm2": 20.25952197793795
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 57,
+      "rmse_wm2": 29.577401775600723,
+      "mae_wm2": 20.8267275359841
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 66,
+      "rmse_wm2": 37.812857637957364,
+      "mae_wm2": 25.370979811417673
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 80,
+      "rmse_wm2": 41.233262820536716,
+      "mae_wm2": 27.85049939987948
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 93,
+      "rmse_wm2": 47.14447576209083,
+      "mae_wm2": 31.052450566051867
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 106,
+      "rmse_wm2": 55.34682585249402,
+      "mae_wm2": 35.9008588679662
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 118,
+      "rmse_wm2": 59.541757662962624,
+      "mae_wm2": 39.34127253123906
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 133,
+      "rmse_wm2": 67.14288293564056,
+      "mae_wm2": 43.60206071339912
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 149,
+      "rmse_wm2": 73.14569178832755,
+      "mae_wm2": 46.368359340967345
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 165,
+      "rmse_wm2": 77.63949058682198,
+      "mae_wm2": 49.196510975280155
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 183,
+      "rmse_wm2": 85.1887958414588,
+      "mae_wm2": 53.966561189956984
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 198,
+      "rmse_wm2": 86.44818651948187,
+      "mae_wm2": 56.1705943603078
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 210,
+      "rmse_wm2": 86.76011018386231,
+      "mae_wm2": 58.11276161442733
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 224,
+      "rmse_wm2": 88.8687811840414,
+      "mae_wm2": 60.32372035628733
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 240,
+      "rmse_wm2": 98.21531936727172,
+      "mae_wm2": 65.23574186534776
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 41,
+      "rmse_wm2": 27.29563477024813,
+      "mae_wm2": 19.353163965637002
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 30.712513335070494,
+      "mae_wm2": 20.98519961083574
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 57,
+      "rmse_wm2": 32.87043782727464,
+      "mae_wm2": 21.93255703232921
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 66,
+      "rmse_wm2": 37.91490862650185,
+      "mae_wm2": 25.361474047330294
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 80,
+      "rmse_wm2": 41.33414157089622,
+      "mae_wm2": 27.380201189382934
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 93,
+      "rmse_wm2": 44.893657216755656,
+      "mae_wm2": 29.501755411266
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 106,
+      "rmse_wm2": 53.42852912184643,
+      "mae_wm2": 34.7924494879004
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 118,
+      "rmse_wm2": 57.4046018939635,
+      "mae_wm2": 37.29154252743948
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 133,
+      "rmse_wm2": 64.16357001492148,
+      "mae_wm2": 41.78259596927442
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 149,
+      "rmse_wm2": 69.63434319455753,
+      "mae_wm2": 43.834012611137844
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 165,
+      "rmse_wm2": 74.21730212671548,
+      "mae_wm2": 46.82850540708186
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 183,
+      "rmse_wm2": 81.7642269425483,
+      "mae_wm2": 50.712481208532395
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 198,
+      "rmse_wm2": 82.09336416744789,
+      "mae_wm2": 51.841577188422285
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 210,
+      "rmse_wm2": 81.07022082789132,
+      "mae_wm2": 52.942735924394356
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 224,
+      "rmse_wm2": 82.31496883961462,
+      "mae_wm2": 53.973082572745625
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 240,
+      "rmse_wm2": 94.1142580036887,
+      "mae_wm2": 59.697447719991516
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 41,
+      "rmse_wm2": 27.670394064282146,
+      "mae_wm2": 19.849633734559685
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 49,
+      "rmse_wm2": 30.378219177133225,
+      "mae_wm2": 21.60773383259621
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 57,
+      "rmse_wm2": 32.839784426816955,
+      "mae_wm2": 22.470233499562664
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 66,
+      "rmse_wm2": 39.129336298543876,
+      "mae_wm2": 26.128491100093182
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 80,
+      "rmse_wm2": 42.47664157133664,
+      "mae_wm2": 28.307240121834912
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 93,
+      "rmse_wm2": 46.45615336894236,
+      "mae_wm2": 30.65851481353003
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 106,
+      "rmse_wm2": 54.309925345667615,
+      "mae_wm2": 35.71120749064282
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 118,
+      "rmse_wm2": 58.166147657234966,
+      "mae_wm2": 38.50509056029052
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 133,
+      "rmse_wm2": 65.86472185401013,
+      "mae_wm2": 43.087032175531846
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 149,
+      "rmse_wm2": 70.9582824724476,
+      "mae_wm2": 44.94613335502878
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 165,
+      "rmse_wm2": 75.56222117995463,
+      "mae_wm2": 47.813600321734945
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 183,
+      "rmse_wm2": 82.32694248843042,
+      "mae_wm2": 51.733287317037096
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 198,
+      "rmse_wm2": 82.72393481579563,
+      "mae_wm2": 53.25511801977538
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 210,
+      "rmse_wm2": 82.50538371081961,
+      "mae_wm2": 54.824206102067336
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 224,
+      "rmse_wm2": 83.71384220303291,
+      "mae_wm2": 56.03250442605765
+    },
+    {
+      "station": "Wangzhai",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 240,
+      "rmse_wm2": 93.61965665198812,
+      "mae_wm2": 60.512185008940286
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 42,
+      "rmse_wm2": 31.485624685440957,
+      "mae_wm2": 20.653000582186948
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 52,
+      "rmse_wm2": 32.67155640026648,
+      "mae_wm2": 23.138467715050165
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 62,
+      "rmse_wm2": 40.57858943724801,
+      "mae_wm2": 27.366046239231384
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 74,
+      "rmse_wm2": 49.718213433190115,
+      "mae_wm2": 33.34658047498984
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 89,
+      "rmse_wm2": 49.72475101677184,
+      "mae_wm2": 34.0862850547674
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 105,
+      "rmse_wm2": 52.82243272768432,
+      "mae_wm2": 36.563985728099944
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 119,
+      "rmse_wm2": 57.02812567415634,
+      "mae_wm2": 37.84976561810477
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 133,
+      "rmse_wm2": 68.07756773157598,
+      "mae_wm2": 45.366200417686336
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 70.90829171864426,
+      "mae_wm2": 48.29923718680653
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 72.98008900181789,
+      "mae_wm2": 48.26528352776161
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 180,
+      "rmse_wm2": 78.37191983325862,
+      "mae_wm2": 50.25239243074838
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 196,
+      "rmse_wm2": 79.2053556888404,
+      "mae_wm2": 52.17733373684923
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 210,
+      "rmse_wm2": 88.13105535628546,
+      "mae_wm2": 56.35745785653236
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 224,
+      "rmse_wm2": 95.65376823357124,
+      "mae_wm2": 60.48833566698678
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 239,
+      "rmse_wm2": 103.4274672796814,
+      "mae_wm2": 64.29037867508299
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 256,
+      "rmse_wm2": 113.09763181984665,
+      "mae_wm2": 71.30911631265917
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 42,
+      "rmse_wm2": 32.175366115335805,
+      "mae_wm2": 21.54654664861127
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 52,
+      "rmse_wm2": 33.668837989812914,
+      "mae_wm2": 24.30973715037824
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 62,
+      "rmse_wm2": 41.80319626819391,
+      "mae_wm2": 28.478854934714974
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 74,
+      "rmse_wm2": 51.040147273555526,
+      "mae_wm2": 34.7737145910694
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 89,
+      "rmse_wm2": 51.20260684331483,
+      "mae_wm2": 35.53741733112446
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 105,
+      "rmse_wm2": 54.326624263782485,
+      "mae_wm2": 37.8016172523832
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 119,
+      "rmse_wm2": 58.00502665154922,
+      "mae_wm2": 38.81047340127162
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 133,
+      "rmse_wm2": 68.15598265982729,
+      "mae_wm2": 45.687888618852746
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 72.58073482712024,
+      "mae_wm2": 49.15937413234968
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 74.59288448129206,
+      "mae_wm2": 49.33076859573015
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 180,
+      "rmse_wm2": 79.84795917159863,
+      "mae_wm2": 51.54286262870042
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 196,
+      "rmse_wm2": 80.27163098239618,
+      "mae_wm2": 53.22141779577169
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 210,
+      "rmse_wm2": 89.40894278927897,
+      "mae_wm2": 57.46914928014434
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 224,
+      "rmse_wm2": 97.41581451848573,
+      "mae_wm2": 62.019080404183896
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 239,
+      "rmse_wm2": 105.62036938861556,
+      "mae_wm2": 65.88155296599983
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 42,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 256,
+      "rmse_wm2": 114.97764182056194,
+      "mae_wm2": 72.53013174131775
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 42,
+      "rmse_wm2": 31.42637125868476,
+      "mae_wm2": 21.81353124883026
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 52,
+      "rmse_wm2": 33.23337001200692,
+      "mae_wm2": 24.377905557899233
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 62,
+      "rmse_wm2": 40.72851145877664,
+      "mae_wm2": 28.52121048525817
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 74,
+      "rmse_wm2": 50.500195960467146,
+      "mae_wm2": 34.6839194959533
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 89,
+      "rmse_wm2": 50.23367158952858,
+      "mae_wm2": 35.06651231638166
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 105,
+      "rmse_wm2": 53.333095274593276,
+      "mae_wm2": 37.41100472243769
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 119,
+      "rmse_wm2": 58.00242100298051,
+      "mae_wm2": 38.98035292034702
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 133,
+      "rmse_wm2": 68.59518367924971,
+      "mae_wm2": 46.159461016955795
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 72.1185305454719,
+      "mae_wm2": 49.31974116325177
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 74.86675689016339,
+      "mae_wm2": 49.67153242578259
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 180,
+      "rmse_wm2": 79.95090367795947,
+      "mae_wm2": 51.113900332080405
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 196,
+      "rmse_wm2": 80.93840893249045,
+      "mae_wm2": 53.388980164211624
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 210,
+      "rmse_wm2": 90.2755587929992,
+      "mae_wm2": 57.501817668734915
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 224,
+      "rmse_wm2": 97.66847274966867,
+      "mae_wm2": 61.253898894214736
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 239,
+      "rmse_wm2": 105.60958505169693,
+      "mae_wm2": 65.13942408134623
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 256,
+      "rmse_wm2": 115.02908279452662,
+      "mae_wm2": 71.99013047278277
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 42,
+      "rmse_wm2": 34.65710942273574,
+      "mae_wm2": 23.223434146715416
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 52,
+      "rmse_wm2": 36.50809942107755,
+      "mae_wm2": 26.22851801180066
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 62,
+      "rmse_wm2": 44.354233267465986,
+      "mae_wm2": 30.295193024250047
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 74,
+      "rmse_wm2": 53.31210721563849,
+      "mae_wm2": 36.435854843792484
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 89,
+      "rmse_wm2": 52.920731630743454,
+      "mae_wm2": 36.73140608159344
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 105,
+      "rmse_wm2": 55.73566149603434,
+      "mae_wm2": 38.857739865034816
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 119,
+      "rmse_wm2": 59.103375968136156,
+      "mae_wm2": 39.98852186059939
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 133,
+      "rmse_wm2": 69.45201600997899,
+      "mae_wm2": 46.98090509067577
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 74.63932061335774,
+      "mae_wm2": 50.596700753160825
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 77.08564650482225,
+      "mae_wm2": 51.11772802714483
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 180,
+      "rmse_wm2": 81.39578176961885,
+      "mae_wm2": 52.829146522086944
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 196,
+      "rmse_wm2": 81.51521815708573,
+      "mae_wm2": 54.251006488032566
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 210,
+      "rmse_wm2": 90.1535212097447,
+      "mae_wm2": 58.131970432249915
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 224,
+      "rmse_wm2": 97.38093705476675,
+      "mae_wm2": 62.61047488925812
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 239,
+      "rmse_wm2": 104.62661506300698,
+      "mae_wm2": 65.87935025922206
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 43,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 256,
+      "rmse_wm2": 112.94294472201831,
+      "mae_wm2": 72.35651555353252
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 15,
+      "n": 42,
+      "rmse_wm2": 33.62817574014193,
+      "mae_wm2": 22.61887821572877
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 30,
+      "n": 52,
+      "rmse_wm2": 36.10797485012594,
+      "mae_wm2": 25.41827808528279
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 45,
+      "n": 62,
+      "rmse_wm2": 40.811939596801274,
+      "mae_wm2": 28.12768077129318
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 60,
+      "n": 74,
+      "rmse_wm2": 48.822182329046065,
+      "mae_wm2": 32.93209159228246
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 75,
+      "n": 89,
+      "rmse_wm2": 49.26031114190852,
+      "mae_wm2": 33.11480186065513
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 90,
+      "n": 105,
+      "rmse_wm2": 51.93819808034476,
+      "mae_wm2": 35.27769378920396
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 105,
+      "n": 119,
+      "rmse_wm2": 56.88263622037272,
+      "mae_wm2": 36.9087933149314
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 120,
+      "n": 133,
+      "rmse_wm2": 66.81142776046305,
+      "mae_wm2": 43.97973056976453
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 70.18493053006304,
+      "mae_wm2": 47.514516390130126
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 74.32049005043591,
+      "mae_wm2": 48.411054792533434
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 165,
+      "n": 180,
+      "rmse_wm2": 78.96520262384234,
+      "mae_wm2": 49.91402557645407
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 180,
+      "n": 196,
+      "rmse_wm2": 80.3515997094842,
+      "mae_wm2": 52.34331296244636
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 195,
+      "n": 210,
+      "rmse_wm2": 89.72961072737522,
+      "mae_wm2": 56.81382401177571
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 210,
+      "n": 224,
+      "rmse_wm2": 98.02142166067739,
+      "mae_wm2": 61.51930017675373
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 225,
+      "n": 239,
+      "rmse_wm2": 106.30901075270039,
+      "mae_wm2": 65.42106226297041
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FA",
+      "lead_minutes": 240,
+      "n": 256,
+      "rmse_wm2": 116.37090513901569,
+      "mae_wm2": 72.4114852759376
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 15,
+      "n": 42,
+      "rmse_wm2": 35.84779525711553,
+      "mae_wm2": 24.024344344002504
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 30,
+      "n": 52,
+      "rmse_wm2": 38.71929544578252,
+      "mae_wm2": 27.0307132899403
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 45,
+      "n": 62,
+      "rmse_wm2": 43.62622076133528,
+      "mae_wm2": 29.859219376268165
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 60,
+      "n": 74,
+      "rmse_wm2": 50.70754269164725,
+      "mae_wm2": 34.71036560002815
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 75,
+      "n": 89,
+      "rmse_wm2": 51.24164845659414,
+      "mae_wm2": 35.00763624048467
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 90,
+      "n": 105,
+      "rmse_wm2": 54.08866560356886,
+      "mae_wm2": 37.050621418850056
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 105,
+      "n": 119,
+      "rmse_wm2": 58.04227252268316,
+      "mae_wm2": 38.45426369020168
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 120,
+      "n": 133,
+      "rmse_wm2": 66.2994187324796,
+      "mae_wm2": 44.328450095370634
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 135,
+      "n": 148,
+      "rmse_wm2": 71.42845468167123,
+      "mae_wm2": 48.248672380540015
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 150,
+      "n": 166,
+      "rmse_wm2": 75.41398616379911,
+      "mae_wm2": 49.30131639109319
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 165,
+      "n": 180,
+      "rmse_wm2": 79.74303238007857,
+      "mae_wm2": 51.13846264059345
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 180,
+      "n": 196,
+      "rmse_wm2": 80.29789613455642,
+      "mae_wm2": 52.776084994374564
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 195,
+      "n": 210,
+      "rmse_wm2": 89.0590922521469,
+      "mae_wm2": 56.95676345132469
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 210,
+      "n": 224,
+      "rmse_wm2": 97.09424733950001,
+      "mae_wm2": 61.5720383420703
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 225,
+      "n": 239,
+      "rmse_wm2": 104.9918958620846,
+      "mae_wm2": 65.21209039658339
+    },
+    {
+      "station": "Mizhuang",
+      "seed": 44,
+      "arm": "FAC",
+      "lead_minutes": 240,
+      "n": 256,
+      "rmse_wm2": 113.59667032699394,
+      "mae_wm2": 71.08048299582151
+    }
+  ],
+  "per_lead_equal_station_seed_summary": [
+    {
+      "lead_minutes": 15,
+      "FA_rmse_station_seed_equal_mean_wm2": 27.032657868046226,
+      "FAC_rmse_station_seed_equal_mean_wm2": 28.295097940786555,
+      "FAC_minus_FA_rmse_wm2": 1.262440072740329,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.9924418713061982,
+        1.5959212427543044,
+        1.1989571041604918
+      ]
+    },
+    {
+      "lead_minutes": 30,
+      "FA_rmse_station_seed_equal_mean_wm2": 29.66220275792432,
+      "FAC_rmse_station_seed_equal_mean_wm2": 30.953153210809894,
+      "FAC_minus_FA_rmse_wm2": 1.2909504528855749,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.7897947696284149,
+        1.889207818506744,
+        1.193848770521555
+      ]
+    },
+    {
+      "lead_minutes": 45,
+      "FA_rmse_station_seed_equal_mean_wm2": 33.8714118514803,
+      "FAC_rmse_station_seed_equal_mean_wm2": 35.13011696352347,
+      "FAC_minus_FA_rmse_wm2": 1.2587051120431667,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.7833506298608626,
+        1.7356078026449566,
+        1.2571569036236667
+      ]
+    },
+    {
+      "lead_minutes": 60,
+      "FA_rmse_station_seed_equal_mean_wm2": 41.58675283002307,
+      "FAC_rmse_station_seed_equal_mean_wm2": 42.968499560681515,
+      "FAC_minus_FA_rmse_wm2": 1.381746730658442,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        1.0511098938486185,
+        1.711994188065077,
+        1.3821361100616443
+      ]
+    },
+    {
+      "lead_minutes": 75,
+      "FA_rmse_station_seed_equal_mean_wm2": 45.19581275858398,
+      "FAC_rmse_station_seed_equal_mean_wm2": 46.697054117276174,
+      "FAC_minus_FA_rmse_wm2": 1.5012413586921909,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        1.1468895524641596,
+        1.8242871986889995,
+        1.5325473249234065
+      ]
+    },
+    {
+      "lead_minutes": 90,
+      "FA_rmse_station_seed_equal_mean_wm2": 48.6621745980269,
+      "FAC_rmse_station_seed_equal_mean_wm2": 50.490426400729966,
+      "FAC_minus_FA_rmse_wm2": 1.8282518027030648,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        1.4722316339488941,
+        2.2807255055748,
+        1.7317982685854858
+      ]
+    },
+    {
+      "lead_minutes": 105,
+      "FA_rmse_station_seed_equal_mean_wm2": 53.4774518770727,
+      "FAC_rmse_station_seed_equal_mean_wm2": 54.743937095636916,
+      "FAC_minus_FA_rmse_wm2": 1.2664852185642133,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.9624223082228127,
+        1.7941156014483397,
+        1.0429177460214873
+      ]
+    },
+    {
+      "lead_minutes": 120,
+      "FA_rmse_station_seed_equal_mean_wm2": 60.483223624666074,
+      "FAC_rmse_station_seed_equal_mean_wm2": 61.11921741984185,
+      "FAC_minus_FA_rmse_wm2": 0.6359937951757786,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.28665029208340087,
+        1.54239801574073,
+        0.07893307770316937
+      ]
+    },
+    {
+      "lead_minutes": 135,
+      "FA_rmse_station_seed_equal_mean_wm2": 67.99727102623356,
+      "FAC_rmse_station_seed_equal_mean_wm2": 69.25261656209389,
+      "FAC_minus_FA_rmse_wm2": 1.2553455358603287,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.9709967715647139,
+        1.7234289756814576,
+        1.0716108603348147
+      ]
+    },
+    {
+      "lead_minutes": 150,
+      "FA_rmse_station_seed_equal_mean_wm2": 72.34383292864233,
+      "FAC_rmse_station_seed_equal_mean_wm2": 73.41587400346754,
+      "FAC_minus_FA_rmse_wm2": 1.0720410748252078,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.7802863599086578,
+        1.7396448110136333,
+        0.6961920535533039
+      ]
+    },
+    {
+      "lead_minutes": 165,
+      "FA_rmse_station_seed_equal_mean_wm2": 76.03193143356445,
+      "FAC_rmse_station_seed_equal_mean_wm2": 77.19225970332374,
+      "FAC_minus_FA_rmse_wm2": 1.1603282697592903,
+      "seeds_fac_lower_rmse": 0,
+      "per_seed_fac_minus_fa_wm2": [
+        0.9638011956902233,
+        1.74276697655867,
+        0.774416637029006
+      ]
+    },
+    {
+      "lead_minutes": 180,
+      "FA_rmse_station_seed_equal_mean_wm2": 82.02551904912293,
+      "FAC_rmse_station_seed_equal_mean_wm2": 82.63811861251571,
+      "FAC_minus_FA_rmse_wm2": 0.6125995633927772,
+      "seeds_fac_lower_rmse": 1,
+      "per_seed_fac_minus_fa_wm2": [
+        0.6587788899180111,
+        1.1886756961642675,
+        -0.009655895904018053
+      ]
+    },
+    {
+      "lead_minutes": 195,
+      "FA_rmse_station_seed_equal_mean_wm2": 85.6502788663884,
+      "FAC_rmse_station_seed_equal_mean_wm2": 86.43384608325749,
+      "FAC_minus_FA_rmse_wm2": 0.7835672168690877,
+      "seeds_fac_lower_rmse": 1,
+      "per_seed_fac_minus_fa_wm2": [
+        1.1623654051758905,
+        1.5173213271461634,
+        -0.32898508171484764
+      ]
+    },
+    {
+      "lead_minutes": 210,
+      "FA_rmse_station_seed_equal_mean_wm2": 88.27251842444315,
+      "FAC_rmse_station_seed_equal_mean_wm2": 89.59232052640347,
+      "FAC_minus_FA_rmse_wm2": 1.3198021019603203,
+      "seeds_fac_lower_rmse": 1,
+      "per_seed_fac_minus_fa_wm2": [
+        1.9710270599235287,
+        2.1025388069106583,
+        -0.1141595609532402
+      ]
+    },
+    {
+      "lead_minutes": 225,
+      "FA_rmse_station_seed_equal_mean_wm2": 93.4018318859488,
+      "FAC_rmse_station_seed_equal_mean_wm2": 95.01555140788611,
+      "FAC_minus_FA_rmse_wm2": 1.6137195219373126,
+      "seeds_fac_lower_rmse": 1,
+      "per_seed_fac_minus_fa_wm2": [
+        2.638730180868194,
+        2.567144090883886,
+        -0.3647157059400854
+      ]
+    },
+    {
+      "lead_minutes": 240,
+      "FA_rmse_station_seed_equal_mean_wm2": 103.30463881080236,
+      "FAC_rmse_station_seed_equal_mean_wm2": 103.7582428881442,
+      "FAC_minus_FA_rmse_wm2": 0.4536040773418364,
+      "seeds_fac_lower_rmse": 1,
+      "per_seed_fac_minus_fa_wm2": [
+        1.9076367651174309,
+        1.4008329041334093,
+        -1.9476574372252742
+      ]
+    }
+  ],
+  "key_findings": [
+    "Across the three seeds the station-equal FAC-minus-FA RMSE difference is 1.005 W/m2; negative values favor FAC.",
+    "FAC reduces RMSE in 1/3 seed-level paired aggregates; all three seeds use the same validation truth/support.",
+    "These are validation results used for model selection; keep the independent test closed until the complete chain, analysis code, and figures are frozen."
+  ],
+  "next_step": "Freeze this validation summary and analysis code, complete forecast-chain provenance/case diagnostics, then perform one-time held-out test evaluation under the registered split; do not retune from test."
+}

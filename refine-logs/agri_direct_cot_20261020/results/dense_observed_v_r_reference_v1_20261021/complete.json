@@ -1,0 +1,51 @@
+{
+  "state": "COMPLETE_DENSE_OBSERVED_V_R_REFERENCE",
+  "frames": 4025,
+  "station_patches": 8050,
+  "eligible_station_patches": 4177,
+  "unsupported_station_patches": 3873,
+  "valid_pixels": 1062175,
+  "valid_cot_min": 2.249264952070007e-07,
+  "valid_cot_max": 86.64873504638672,
+  "elapsed_seconds": 0.3852884769439697,
+  "device": "cuda",
+  "batch": 128,
+  "tensor_dtype": "torch.float32",
+  "autocast": false,
+  "cudnn_allow_tf32": true,
+  "cuda_matmul_allow_tf32": false,
+  "unsupported_output": "NaN with mask=false; never clear-sky zero",
+  "sparse_comparison": {
+    "matching_station_patches": 1351,
+    "n": 343225,
+    "rmse": 0.0009027343678009595,
+    "max_abs_difference": 0.023883819580078125
+  },
+  "source": {
+    "cpu_receipt_sha256": "990594221b56ddeab794866355be7eef2bf0ec6d0c07b4fb30dddcfb2294300f",
+    "input_arrays_sha256": {
+      "x_raw.npy": "048e4d07117c3ce1e6d38a04fec7425d623509d7a10427590e7c8a5d25447889",
+      "mask.npy": "4c6234cf0ce05cb3e49900892a2718ff43902b386a0ed0dd13c897d1719b61dd",
+      "rows.csv": "f89633884ddcfd5bfaf33281cef4c34aa7ff7a53fe74f572a43a7c2ffc357c80"
+    },
+    "r_checkpoint_sha256": "f3aa05346bb835efe941b0a462cd1001dc3af6bc9f68c2de4d351970136ab52c",
+    "r_norm_sha256": "e2577b729e39100fc6079494b775c1c3fb328540a1ad98d4bb13e1a2b1e070ec",
+    "v_support_sha256": "86d43458c61ed05abf85868dc571c4da2e2fd52c65821dfaf40a3d8895270183",
+    "inference_manifest_sha256": "cfc3e2b965bfcaec7e1c8c6f818107af1581a31903f3dfbb549b24985f4fc793",
+    "script_sha256": "cc5fa81c9f62bb4365ee98af691ea11ce085bdab6f8f6dbdf0d12d3a627d77c6",
+    "protocol_sha256": "760b659982768c6da187a6168b330ed3d423ffa599de8c41f2cd1a9fb446cdc3"
+  },
+  "artifact_sha256": {
+    "cot.npy": "4c639d086e25bd28a02a71a1ffb57d4d9e3aca9f7eed41dfd9a3ae9049f78b97",
+    "mask.npy": "4c6234cf0ce05cb3e49900892a2718ff43902b386a0ed0dd13c897d1719b61dd",
+    "rows.csv": "f89633884ddcfd5bfaf33281cef4c34aa7ff7a53fe74f572a43a7c2ffc357c80",
+    "sparse_reference_drift.csv": "6ba26d2502ae3e5183863c99382601bab7422d10eb8566d558ef26fc708ec8fb"
+  },
+  "future_observed_agri_read_for_reference": true,
+  "future_observations_used_by_deployable_inference": false,
+  "training_started": false,
+  "ghi_labels_read": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "scope": "seen development V; fidelity to learned R teacher only; not CPP truth or GHI improvement"
+}

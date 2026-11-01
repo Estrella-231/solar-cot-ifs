@@ -1,0 +1,83 @@
+{
+  "figure": "cot_conditional_information",
+  "physical_size_mm": [
+    177,
+    115
+  ],
+  "scope": "Development-date three-fold OOF probe diagnosis; not independent validation/test",
+  "rows": 32838,
+  "target_dates": 50,
+  "date_range": [
+    "20250806",
+    "20260712"
+  ],
+  "aggregation": "RMSE per station x frozen-baseline source, then equal-weight mean of nine values",
+  "uncertainty": "Paired target-date percentile bootstrap,5000 replicates,seed20261023",
+  "transformations": "Same saved scores; all displayed point estimates and intervals verified from date-level SSE/counts. No refitting or filters.",
+  "source_substitution": "Posthoc cold reuse of already fitted probes, same rows; observed inference column offline",
+  "reference": "Observed-image COT is frozen-R proxy, not CPP independent truth",
+  "verification": {
+    "main:all": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 0.0
+    },
+    "main:1h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 1.3877787807814457e-14
+    },
+    "main:2h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 0.0
+    },
+    "main:3h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 0.0
+    },
+    "main:4h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 0.0
+    },
+    "cross:all": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 0.0
+    },
+    "cross:1h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 1.4210854715202004e-14
+    },
+    "cross:2h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 2.7533531010703882e-14
+    },
+    "cross:3h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 2.7533531010703882e-14
+    },
+    "cross:4h": {
+      "point_max_abs": 0.0,
+      "ci_max_abs": 2.7533531010703882e-14
+    }
+  },
+  "source_sha256": {
+    "refine-logs\\hubei_cot_conditional_information_20261023\\RESULTS.json": "e863ce0805bf6259fc233b759a0a9b27cd75a0d867511a503f55364b14e4d0d3",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\DATE_SUMS.npz": "38b3d1904fbe70ee4a50ced3f524142310cf631cdcc5b9459f8b90108954a1c8",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\RESULTS.json": "d1fe30f3febde9524c52fbe70ff32da8c950ccc498c8e3d14033378e79c57be8",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\DATE_SUMS.npz": "e9bcc7d13edbb124ebbb9088fa00f5183fe2fb2618c83daa8a75fc0a368ea3ee",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\RESULT_REPORT.md": "6ec67fadebc015e6531dba7fc11eb0fa4dcb6fe9b11017c26fed0e8afbf0cf9c",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\score.py": "b0e98225590191336b39d1449a72b4a582a2961040f2c716a0ec80a8cb8249ae",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source.py": "2ac316f02c4f1d9d4feb589d7722a7c29f9d5a62951aa04d65d8fd7aa2055182"
+  },
+  "test_read": false,
+  "training_performed": false,
+  "software": {
+    "python": "3.9.23",
+    "numpy": "1.26.4",
+    "matplotlib": "3.9.4"
+  },
+  "code_sha256": "7968fab581e0585612d07f94e23e7d14a25e4618e28279c80d1356aa90dcd3a8",
+  "outputs": {
+    "cot_conditional_information.pdf": "699ee668a1ee6f831761c7eabda1bf3427e55272a5b97ee4f268b020860eb579",
+    "cot_conditional_information.png": "fc66159cb11fc6a60ea22bfe13be8323198ffc2e1d4fda4c864d2af2d20251bb",
+    "cot_conditional_information.svg": "07cb851f931cb057ec1d6cfabee2a5e126e9e37886ae52e53a0450f83bee11d5"
+  }
+}

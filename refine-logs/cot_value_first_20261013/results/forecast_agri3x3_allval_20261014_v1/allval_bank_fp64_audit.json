@@ -1,0 +1,109 @@
+{
+  "state": "PASS_INDEPENDENT_FP64_ALLVAL_BANK_AUDIT",
+  "split": "validation_only",
+  "test_payloads_read": 0,
+  "windows": 3140,
+  "station_order": [
+    "sili",
+    "zhujia"
+  ],
+  "forecast_shape": [
+    3140,
+    2,
+    16,
+    16,
+    16
+  ],
+  "forecast_agri_3x3_shape": [
+    3140,
+    2,
+    16,
+    13,
+    3,
+    3
+  ],
+  "unique_sequence_ids": 3140,
+  "BJT_target_dates": 52,
+  "BJT_target_months": {
+    "2024-04": 2,
+    "2024-05": 2,
+    "2024-06": 2,
+    "2024-07": 2,
+    "2024-08": 2,
+    "2024-09": 2,
+    "2024-10": 2,
+    "2024-11": 2,
+    "2024-12": 2,
+    "2025-01": 2,
+    "2025-02": 2,
+    "2025-03": 2,
+    "2025-04": 2,
+    "2025-05": 2,
+    "2025-06": 2,
+    "2025-07": 2,
+    "2025-08": 2,
+    "2025-10": 2,
+    "2025-11": 2,
+    "2025-12": 2,
+    "2026-01": 2,
+    "2026-02": 2,
+    "2026-03": 2,
+    "2026-04": 2,
+    "2026-05": 2,
+    "2026-06": 2
+  },
+  "CPP_sparse_valid_pixels": 550400,
+  "bank_sha256": "0acc9e4095b8d401e609b50905f7252b6c897c93698cd1e3a774e32ec84ecaaf",
+  "forecast_array_sha256": "9cfc35c312754a60068a220736b4875cab3f8df2fe6c0efec94c14e8187dfbcf",
+  "profile_array_sha256": "9cfc35c312754a60068a220736b4875cab3f8df2fe6c0efec94c14e8187dfbcf",
+  "overlap_with_prior_CPP_bank": {
+    "windows": 271,
+    "forecast_COT_max_abs_log1p_difference": 0.00045371055603027344,
+    "forecast_AGRI_max_abs_difference": 0.0,
+    "CPP_mask_exact_match": true
+  },
+  "forecast_vs_same_frozen_R_on_observed_future_AGRI_output_discrepancy_all_windows": {
+    "sili": {
+      "1x1": {
+        "n_values": 50240,
+        "RMSE": 17.989470745652493,
+        "MAE": 8.701912268594766,
+        "bias_forecast_minus_target_R": -2.7440588518599283
+      },
+      "3x3": {
+        "n_values": 452160,
+        "RMSE": 17.863871382616583,
+        "MAE": 8.737778654645757,
+        "bias_forecast_minus_target_R": -2.7965792421554405
+      },
+      "16x16": {
+        "n_values": 12861440,
+        "RMSE": 13.967207911366572,
+        "MAE": 7.411013057596208,
+        "bias_forecast_minus_target_R": -2.282438200000123
+      }
+    },
+    "zhujia": {
+      "1x1": {
+        "n_values": 50240,
+        "RMSE": 16.29521259775605,
+        "MAE": 7.169884346329884,
+        "bias_forecast_minus_target_R": -1.041569935851697
+      },
+      "3x3": {
+        "n_values": 452160,
+        "RMSE": 16.16693905521544,
+        "MAE": 7.183073104833097,
+        "bias_forecast_minus_target_R": -1.0744479262313036
+      },
+      "16x16": {
+        "n_values": 12861440,
+        "RMSE": 12.355421255577406,
+        "MAE": 5.918778430903353,
+        "bias_forecast_minus_target_R": -0.6464554552198242
+      }
+    }
+  },
+  "interpretation": "The all-window forecast-vs-target-R comparison measures how SimVP forecast AGRI changes the output of the same frozen retrieval model. Same-time target AGRI->R is an offline retrieval-output reference, not independent COT truth. These overlapping-window discrepancies are descriptive, not deployable COT accuracy. Sparse CPP scores are reported separately on CPP-valid pixels only.",
+  "test_closed": true
+}

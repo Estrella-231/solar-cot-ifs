@@ -1,0 +1,36 @@
+#!/bin/bash
+#PBS -N signed_GHI_resid
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/signed_residual_20261014_v3.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+PACK=$EXP/data/ghi_head_pack_new_r_v1
+BASE=$EXP/results
+OUT=$EXP/results/signed_residual_direction_20261014_v3
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -s "$PACK/pack_manifest.json"
+test ! -e "$OUT/experiment_status.json"
+for seed in 42 43 44; do
+  for station in sili zhujia; do
+    test -s "$BASE/ghi_heads_new_r_seed${seed}_v1/$station/A_best.pt"
+    test -s "$BASE/ghi_heads_new_r_seed${seed}_v1/$station/A_val_prediction_ghi_wm2.npy"
+  done
+done
+echo "PBS_JOBID=$PBS_JOBID GPU=$GPU HOST=$(hostname)"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+cd "$EXP"
+python -u witness_signed_residual.py
+python -u train_signed_residual_heads_v2.py \
+  --pack "$PACK" --baseline-root "$BASE" --output-root "$OUT" \
+  --seeds 42 43 44 --stations sili zhujia --epochs 30 --batch-size 2000
+echo SIGNED_RESIDUAL_EXPERIMENT_COMPLETE

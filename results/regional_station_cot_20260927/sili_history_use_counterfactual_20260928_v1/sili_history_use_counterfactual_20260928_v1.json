@@ -1,0 +1,196 @@
+{
+  "state": "COMPLETE_SILI_HISTORY_USE_COUNTERFACTUAL",
+  "test_used": false,
+  "validation_sequences": 512,
+  "checkpoint_update": 96,
+  "checkpoint_sha256": "5a4ff12ebb500f8f8751e74481595156a7ee3a2d27056b85391025c50b7a196c",
+  "bank_manifest_sha256": "7a7df500b1ac8e9606c66b0a64c35846907e0e2ac5294d2295076d9c36c41c0e",
+  "comparison": "same learned full-history checkpoint; replace eight history slots with last map; preserve original last-minus-previous trend, forecast, transport, motion, lead, targets and masks",
+  "input_conv_l2_by_channel": [
+    0.9937577247619629,
+    0.994419276714325,
+    0.07350236922502518,
+    0.07260631024837494,
+    0.07222557067871094,
+    0.07215437293052673,
+    0.07256387919187546,
+    0.07287627458572388,
+    0.07294092327356339,
+    0.9940645098686218,
+    1.0133920907974243,
+    1.0373982191085815,
+    0.989535927772522,
+    0.9859859943389893,
+    1.0390242338180542
+  ],
+  "input_conv_channels": [
+    "transport",
+    "forecast",
+    "history_oldest",
+    "history_2",
+    "history_3",
+    "history_4",
+    "history_5",
+    "history_6",
+    "history_penultimate",
+    "history_latest",
+    "trend",
+    "forecast_minus_transport",
+    "lead",
+    "motion_y",
+    "motion_x"
+  ],
+  "historical_input_difference": {
+    "older_six_vs_last_patch_mean_abs_cot": 4.514648848523696,
+    "older_six_vs_last_station_mean_abs_cot": 4.3103654673323035
+  },
+  "errors": {
+    "patch": {
+      "all": {
+        "full": {
+          "n": 21153251,
+          "rmse": 9.602629975908114,
+          "mae": 5.324009806607268,
+          "bias": -0.4345906863722153
+        },
+        "replace_history": {
+          "n": 21153251,
+          "rmse": 9.668799711540204,
+          "mae": 5.35967070292174,
+          "bias": -0.3624107428311197
+        },
+        "transport": {
+          "n": 21153251,
+          "rmse": 9.52024794490538,
+          "mae": 5.287325254106331,
+          "bias": -0.748293305889187
+        },
+        "simvp_corrected": {
+          "n": 21153251,
+          "rmse": 9.665525238244635,
+          "mae": 5.537328145949055,
+          "bias": -0.649208155819125
+        }
+      },
+      "thick": {
+        "full": {
+          "n": 1218803,
+          "rmse": 27.142527323065263,
+          "mae": 22.19608875389221,
+          "bias": -17.675581135294035
+        },
+        "replace_history": {
+          "n": 1218803,
+          "rmse": 27.08260723090988,
+          "mae": 22.159935215350732,
+          "bias": -17.085555135828034
+        },
+        "transport": {
+          "n": 1218803,
+          "rmse": 26.504161928756027,
+          "mae": 21.05885265993183,
+          "bias": -18.70655012991413
+        },
+        "simvp_corrected": {
+          "n": 1218803,
+          "rmse": 27.69998686970916,
+          "mae": 22.834390041592542,
+          "bias": -21.24943065570776
+        }
+      }
+    },
+    "station": {
+      "all": {
+        "full": {
+          "n": 5664,
+          "rmse": 8.324752474213282,
+          "mae": 4.434695551456032,
+          "bias": 0.37311730925309455
+        },
+        "replace_history": {
+          "n": 5664,
+          "rmse": 8.389318350894579,
+          "mae": 4.4732483898179005,
+          "bias": 0.44515047904293414
+        },
+        "transport": {
+          "n": 5664,
+          "rmse": 8.737893360538187,
+          "mae": 4.686043848551936,
+          "bias": 0.30361633390019843
+        },
+        "simvp_corrected": {
+          "n": 5664,
+          "rmse": 8.60435014169983,
+          "mae": 4.772194276348094,
+          "bias": 0.5846605395561474
+        }
+      },
+      "thick": {
+        "full": {
+          "n": 204,
+          "rmse": 27.60944943358902,
+          "mae": 22.810387947980097,
+          "bias": -20.24543623830758
+        },
+        "replace_history": {
+          "n": 204,
+          "rmse": 27.456201854125606,
+          "mae": 22.64491932999854,
+          "bias": -19.560740489585726
+        },
+        "transport": {
+          "n": 204,
+          "rmse": 25.162762868786423,
+          "mae": 20.348971282734592,
+          "bias": -18.424868144241035
+        },
+        "simvp_corrected": {
+          "n": 204,
+          "rmse": 28.362625822446272,
+          "mae": 24.310192940281887,
+          "bias": -23.38406312231924
+        }
+      }
+    }
+  },
+  "prediction_change": {
+    "patch": {
+      "all": {
+        "n": 21153251,
+        "mean_abs_cot_change": 0.32604686725000925,
+        "mean_signed_cot_change": -0.07217996800045745,
+        "fraction_abs_change_gt_1": 0.0856446604826842,
+        "fraction_abs_change_gt_5": 0.002263860056310021,
+        "max_abs_cot_change": 34.8603515625
+      },
+      "thick": {
+        "n": 1218803,
+        "mean_abs_cot_change": 0.9820372450514595,
+        "mean_signed_cot_change": -0.5900256745456827,
+        "fraction_abs_change_gt_1": 0.30568762958410833,
+        "fraction_abs_change_gt_5": 0.021700799883164056,
+        "max_abs_cot_change": 34.60896301269531
+      }
+    },
+    "station": {
+      "all": {
+        "n": 5664,
+        "mean_abs_cot_change": 0.3111310752876903,
+        "mean_signed_cot_change": -0.07203315085031639,
+        "fraction_abs_change_gt_1": 0.08456920903954802,
+        "fraction_abs_change_gt_5": 0.0024717514124293787,
+        "max_abs_cot_change": 7.15538215637207
+      },
+      "thick": {
+        "n": 204,
+        "mean_abs_cot_change": 0.9920683738355544,
+        "mean_signed_cot_change": -0.684695736012038,
+        "fraction_abs_change_gt_1": 0.3431372549019608,
+        "fraction_abs_change_gt_5": 0.00980392156862745,
+        "max_abs_cot_change": 5.619361877441406
+      }
+    }
+  },
+  "simvp_correction": "simvp_corrected uses all 16 forecast maps; original training summary's simvp diagnostic repeated the first forecast map; transport and learned comparisons are unaffected"
+}

@@ -1,0 +1,41 @@
+{
+  "conclusion": "10.54% is reproduced on correctly UTC-matched CPP but original erroneous solar geometry; NOT a corrected-geometry primary result",
+  "live_metadata_hash_matches_archived_source": {
+    "new_r_pack": true,
+    "new_r_metadata": true,
+    "new_cot_bank": true,
+    "new_ghi_pack": true,
+    "new_ghi_seed42": true,
+    "new_ghi_seed43": true,
+    "new_ghi_seed44": true
+  },
+  "R_checkpoint_sha256": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9",
+  "geometry_array_sha256": "fd781295dc3f0e56d07bc41351808e6ff69a99506fc35021f5198f117c953503",
+  "station_center_comparisons": {
+    "train": {
+      "n": 23704,
+      "abs_SOZ_error_vs_correct_NOAA_deg": {
+        "median": 0.7838460230131901,
+        "max": 3.275613088356934
+      },
+      "abs_SOZ_error_vs_missing_factor_formula_deg": {
+        "median": 5.18241038705014e-06,
+        "max": 3.353780847703547e-05
+      }
+    },
+    "val": {
+      "n": 2195,
+      "abs_SOZ_error_vs_correct_NOAA_deg": {
+        "median": 0.7430768640109733,
+        "max": 3.258841277109255
+      },
+      "abs_SOZ_error_vs_missing_factor_formula_deg": {
+        "median": 5.06932682498018e-06,
+        "max": 2.886532553247889e-05
+      }
+    }
+  },
+  "comparison_scope": "All retained GHI train/val rows, centre pixel, registered station coordinates; no test/buffer",
+  "formula_difference": "equation of time: 4*Q vs correct 4*(180/pi)*Q minutes",
+  "statistics_scope": "Not a re-training or a corrected GHI score; old result and output retained"
+}

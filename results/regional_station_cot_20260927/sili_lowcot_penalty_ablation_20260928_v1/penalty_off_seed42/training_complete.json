@@ -1,0 +1,53 @@
+{
+  "state": "COMPLETE_SILI_LOW_COT_PENALTY_ABLATION_ARM",
+  "test_used": false,
+  "split": "fixed 512/512 validation bank",
+  "loss_arm": "penalty_off_seed42",
+  "extra_lowcot_false_cot_penalty": false,
+  "seed": 42,
+  "epochs_run": 8,
+  "selected_candidate": "step0_zero_residual_transport",
+  "selected_thick_rmse": 26.504161217794557,
+  "step0_thick_rmse": 26.504161217794557,
+  "step0_val": {
+    "simvp": {
+      "mae": 5.537328081931141,
+      "rmse": 9.665525294527523,
+      "thick_lead_records": 1218803,
+      "thick_misses_pred_lt10": 387738,
+      "thick_rmse": 27.69998684768073,
+      "clear_false10_rate": 0.0437641451882812,
+      "thick_iou_cot30": 0.18063678999014712
+    },
+    "persistence": {
+      "mae": 5.287876994467941,
+      "rmse": 9.609429211246939,
+      "thick_lead_records": 1218803,
+      "thick_misses_pred_lt10": 346485,
+      "thick_rmse": 27.07801772809939,
+      "clear_false10_rate": 0.056690789595303465,
+      "thick_iou_cot30": 0.22594499357658387
+    },
+    "transport": {
+      "mae": 5.287325252272672,
+      "rmse": 9.520247887885613,
+      "thick_lead_records": 1218803,
+      "thick_misses_pred_lt10": 334790,
+      "thick_rmse": 26.504161217794557,
+      "clear_false10_rate": 0.05814177450974351,
+      "thick_iou_cot30": 0.24111498063999287
+    },
+    "learned": {
+      "mae": 5.287325252272672,
+      "rmse": 9.520247887885613,
+      "thick_lead_records": 1218803,
+      "thick_misses_pred_lt10": 334790,
+      "thick_rmse": 26.504161217794557,
+      "clear_false10_rate": 0.05814177450974351,
+      "thick_iou_cot30": 0.24111498063999287
+    }
+  },
+  "selection": "minimum CPP-valid intersect transport-supported thick-COT RMSE; includes step-0 candidate",
+  "cpp_is_retrieval_reference_not_independent_truth": true,
+  "notes": "Exploratory validation only; overlapping windows; no test or GHI head used."
+}

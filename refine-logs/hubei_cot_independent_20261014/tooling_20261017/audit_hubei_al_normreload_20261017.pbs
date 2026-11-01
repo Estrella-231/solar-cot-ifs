@@ -1,0 +1,58 @@
+#!/bin/bash
+#PBS -N hb_al_audit
+#PBS -q normal
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+WORK="$ROOT/source_rebuild_20261017_v2"
+PACK="$WORK/pack"
+AL="$ROOT/al_normreload_20261017"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$AL/logs"
+exec > "$AL/logs/audit_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$ROOT/scripts:${PYTHONPATH:-}"
+
+test -s "$PACK/pack_report.json"
+test -s "$AL/AL_FEATURE_REPORT.json"
+test -s "$AL/feature_bank_key_audit_20261017.json"
+test -e "$AL/pack" && test "$(readlink -f "$AL/pack")" = "$(readlink -f "$PACK")"
+test -s "$WORK/input/day_assignment.csv"
+if test -e "$ROOT/frozen_split_20261015_v1"; then
+  test "$(readlink -f "$ROOT/frozen_split_20261015_v1")" = "$(readlink -f "$WORK/input")"
+else
+  ln -s "$WORK/input" "$ROOT/frozen_split_20261015_v1"
+fi
+test "$(readlink -f "$ROOT/frozen_split_20261015_v1")" = "$(readlink -f "$WORK/input")"
+"$PY" - "$ROOT" "$AL" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+root,al=map(Path,sys.argv[1:])
+split=root/'frozen_split_20261015_v1/day_assignment.csv'
+assert hashlib.sha256(split.read_bytes()).hexdigest()=='6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6'
+pack=json.loads((al/'pack/pack_report.json').read_text())
+features=json.loads((al/'AL_FEATURE_REPORT.json').read_text())
+keyaudit=json.loads((al/'feature_bank_key_audit_20261017.json').read_text())
+assert pack['test_and_buffer_values_read']==0 and pack['samples']==29351
+assert features['test_payloads_read']==0 and features['ghi_labels_read'] is False and features['cpp_payloads_read']==0
+assert keyaudit['state']=='HUBEI_AL_FEATURE_BANK_KEY_AUDIT_PASS_TEST_CLOSED' and keyaudit['key_sets_equal']
+for seed in (42,43,44):
+    m=json.loads((al/f'runs_maskfix_v2/seed{seed}/run_metadata.json').read_text())
+    assert m['state']=='HUBEI_GHI_HEAD_AL_SEED_COMPLETE' and m['test_payloads_read']==0 and m['seed']==seed
+    assert m['arm']=='AL' and m['parameter_count']<m['AP_parameter_count']*1.05
+print('AL_RUN_PREAUDIT_PASS seeds=42,43,44 stations=3 test_buffer=0',flush=True)
+PY
+
+"$PY" "$AL/audit_al_results.py" | tee "$AL/logs/independent_audit_${PBS_JOBID//./_}.log"
+test -s "$AL/AL_RESULT_AUDIT_20261017.json"
+"$PY" "$AL/audit_three_station_common_time_sensitivity.py" \
+  | tee "$AL/logs/common_time_${PBS_JOBID//./_}.log"
+test -s "$AL/THREE_STATION_COMMON_TIME_SENSITIVITY_20261017.json"
+echo HUBEI_AL_NORMRELOAD_INDEPENDENT_VALIDATION_AUDIT_COMPLETE_TEST_CLOSED

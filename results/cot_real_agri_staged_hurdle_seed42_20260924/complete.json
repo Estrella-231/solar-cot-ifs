@@ -1,0 +1,61 @@
+{
+  "state": "COMPLETE_STAGED_VALIDATION_PILOT",
+  "test_used": false,
+  "classifier_best_epoch": 11,
+  "classifier_best_validation_brier": 0.06871827321199697,
+  "frozen_R": {
+    "all_rmse": 4.246164358024466,
+    "all_bias": 0.08917117393825293,
+    "clear_cot_lt0p1_rmse": 0.7711762602005469,
+    "clear_cot_lt0p1_bias": 0.15302039327436878,
+    "high_cot_ge30_rmse": 11.949837475041134,
+    "high_cot_ge30_bias": -4.553351823773994,
+    "station_5x5_rmse": 3.943565943978961,
+    "station_5x5_bias": 0.13960976327908778,
+    "near_zero_false_cloud_fraction": 0.11788365955032622,
+    "near_zero_predicted_ge0p1_fraction": 0.11788365955032622,
+    "cloud_class_accuracy": 0.9132584901680456,
+    "cloud_class_precision": 0.9253239397005341,
+    "cloud_class_recall": 0.9331531025788756,
+    "cloud_class_brier": 0.08674150983195444,
+    "valid_pixels": {
+      "all": 1664013,
+      "clear_cot_lt0p1": 648648,
+      "high_cot_ge30": 75843,
+      "station_5x5": 162454
+    },
+    "balanced_relative_rmse": 0.9999999982546726
+  },
+  "staged_candidate": {
+    "best_epoch": 2,
+    "all_rmse": 4.338171044941468,
+    "all_bias": 0.37501079614187066,
+    "clear_cot_lt0p1_rmse": 0.8249007902076928,
+    "clear_cot_lt0p1_bias": 0.13181492688219554,
+    "high_cot_ge30_rmse": 11.674566660814065,
+    "high_cot_ge30_bias": -3.5620385052375276,
+    "station_5x5_rmse": 4.045842806662273,
+    "station_5x5_bias": 0.41004836940212097,
+    "near_zero_false_cloud_fraction": 0.05918155918155918,
+    "near_zero_predicted_ge0p1_fraction": 0.05918155918155918,
+    "cloud_class_accuracy": 0.9105962513514017,
+    "cloud_class_precision": 0.9593076750210946,
+    "cloud_class_recall": 0.8912893393016305,
+    "cloud_class_brier": 0.06871827321199697,
+    "valid_pixels": {
+      "all": 1664013,
+      "clear_cot_lt0p1": 648648,
+      "high_cot_ge30": 75843,
+      "station_5x5": 162454
+    },
+    "balanced_relative_rmse": 1.0235583675668012
+  },
+  "candidate_passes_all_retention_limits": false,
+  "candidate_retention_checks_vs_frozen_R": {
+    "clear_cot_lt0p1_rmse": false,
+    "cot_rmse": false,
+    "high_cot_ge30_rmse": true,
+    "station_5x5_rmse": false
+  },
+  "note": "Validation-only staged classifier then class regressors; real-AGRI COT retrieval against CPP reference; no GHI claim and no test used."
+}

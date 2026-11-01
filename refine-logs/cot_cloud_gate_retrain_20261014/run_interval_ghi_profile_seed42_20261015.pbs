@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N cot_interval_42
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/interval_alignment_20261015/profile_seed42_v1.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+RUN=$EXP/interval_alignment_20261015
+PACK=$RUN/tensor_pack_v1
+OUT=$RUN/seed42_v1
+test -s "$PACK/pack_manifest.json"
+test "$(python -c 'import json,sys;print(json.load(open(sys.argv[1]))["state"])' "$PACK/pack_manifest.json")" = COMPLETE
+test "$(python -c 'import json,sys;print(json.load(open(sys.argv[1]))["test_payload_opened"])' "$PACK/pack_manifest.json")" = False
+test ! -e "$OUT"
+mkdir -p "$OUT/profile"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/train_interval_ghi_pilot.py" --pack "$PACK" --station sili --seed 42 --epochs 30 \
+  --output "$OUT/profile/scratch" --profile-only --profile-output "$OUT/profile/profile.json"
+BS=$(python -c 'import json,sys; d=json.load(open(sys.argv[1])); r=[x for x in d["results"] if x["updates_per_epoch"]>=12]; best=max(x["examples_per_second"] for x in r); print(max(x["batch"] for x in r if x["examples_per_second"]>=.97*best))' "$OUT/profile/profile.json")
+echo "PROFILE_SELECTED_BATCH=$BS"
+python -u "$EXP/train_interval_ghi_pilot.py" --pack "$PACK" --station sili --seed 42 --epochs 30 --batch-size "$BS" --output "$OUT/sili"
+python -u "$EXP/train_interval_ghi_pilot.py" --pack "$PACK" --station zhujia --seed 42 --epochs 30 --batch-size "$BS" --output "$OUT/zhujia"
+echo INTERVAL_SEED42_EIGHT_HEADS_COMPLETE_NO_TEST

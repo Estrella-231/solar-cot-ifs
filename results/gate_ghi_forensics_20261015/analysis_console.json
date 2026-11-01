@@ -1,0 +1,378 @@
+{
+  "state": "COMPLETE_PAIRED_DIAGNOSTIC",
+  "mode": "observed target-time AGRI, seed42 validation only",
+  "stations": {
+    "sili": {
+      "groups": {
+        "all": {
+          "n": 2128,
+          "dates": 44,
+          "raw_rmse": 132.63908151356142,
+          "gate_rmse": 132.71563181025184,
+          "delta_rmse": 0.07655029669041369,
+          "delta_sse": 43226.02576651827,
+          "worse_fraction": 0.5159774436090225
+        },
+        "CPP_joined": {
+          "n": 615,
+          "dates": 38,
+          "raw_rmse": 146.7607956109187,
+          "gate_rmse": 146.93207311967254,
+          "delta_rmse": 0.17127750875383185,
+          "delta_sse": 30936.33448038893,
+          "worse_fraction": 0.4861788617886179
+        },
+        "confirmed_falsecloud_cleared_3x3": {
+          "n": 13,
+          "dates": 8,
+          "raw_rmse": 101.90268090673064,
+          "gate_rmse": 105.97108746390745,
+          "delta_rmse": 4.068406557176814,
+          "delta_sse": 10994.295029954053,
+          "worse_fraction": 0.38461538461538464
+        },
+        "complete_CPP_no_falseclear_3x3": {
+          "n": 597,
+          "dates": 38,
+          "raw_rmse": 148.07213222327752,
+          "gate_rmse": 148.18494396410037,
+          "delta_rmse": 0.11281174082284906,
+          "delta_sse": 19952.50206798059,
+          "worse_fraction": 0.48743718592964824
+        },
+        "no_local_COT_change": {
+          "n": 1666,
+          "dates": 44,
+          "raw_rmse": 105.2849642830152,
+          "gate_rmse": 105.29936342701792,
+          "delta_rmse": 0.014399144002723574,
+          "delta_sse": 5051.701942988863,
+          "worse_fraction": 0.5042016806722689
+        },
+        "without_CPP_reference": {
+          "n": 1513,
+          "dates": 44,
+          "raw_rmse": 126.44891224055141,
+          "gate_rmse": 126.48102678799246,
+          "delta_rmse": 0.03211454744105424,
+          "delta_sse": 12289.69128612935,
+          "worse_fraction": 0.5280898876404494
+        }
+      },
+      "counterfactuals": {
+        "all_validation": {
+          "n": 2128,
+          "gate_cpu_rmse": 132.71603097593464,
+          "restore_CPP_cloud_rmse": 132.7129914678331,
+          "delta_restore_rmse": -0.0030395081015512915,
+          "restore_all_original_R_rmse": 132.62603368602666,
+          "delta_restore_all_rmse": -0.08999728990798417,
+          "restore_CPPclear_rmse": 132.6505314057363,
+          "delta_restore_CPPclear_rmse": -0.06549957019834096,
+          "restore_CPPknown_rmse": 132.64769256996343,
+          "restoration_delta_sse": -1716.8143572228146,
+          "restoration_mean_abs_prediction_change": 0.005704951465578007,
+          "restoration_ci95_date": [
+            -0.016149639423096572,
+            0.0036689714456080887
+          ]
+        },
+        "CPP_joined": {
+          "n": 615,
+          "gate_cpu_rmse": 146.93205754789696,
+          "restore_CPP_cloud_rmse": 146.9225577207189,
+          "delta_restore_rmse": -0.009499827178046871,
+          "restore_all_original_R_rmse": 146.71837342120648,
+          "delta_restore_all_rmse": -0.21368412669048098,
+          "restore_CPPclear_rmse": 146.72725404509208,
+          "delta_restore_CPPclear_rmse": -0.2048035028048787,
+          "restore_CPPknown_rmse": 146.71837342120648,
+          "restoration_delta_sse": -1716.8143572228146,
+          "restoration_mean_abs_prediction_change": 0.019740059705284554,
+          "restoration_ci95_date": [
+            -0.04502832555851164,
+            0.012164383587242245
+          ]
+        },
+        "confirmed_falseclear_3x3": {
+          "n": 13,
+          "gate_cpu_rmse": 105.97226073086499,
+          "restore_CPP_cloud_rmse": 105.34731796086285,
+          "delta_restore_rmse": -0.6249427700021357,
+          "restore_all_original_R_rmse": 102.09095414213446,
+          "delta_restore_all_rmse": -3.8813065887305243,
+          "restore_CPPclear_rmse": 102.69296874374055,
+          "delta_restore_CPPclear_rmse": -3.279291987124438,
+          "restore_CPPknown_rmse": 102.09095414213446,
+          "restoration_delta_sse": -1716.8143572228146,
+          "restoration_mean_abs_prediction_change": 0.9338566706730769,
+          "restoration_ci95_date": [
+            -1.8928428426929564,
+            0.8714994780738872
+          ]
+        }
+      },
+      "confirmed_falseclear_pixels_3x3": 38,
+      "confirmed_falseclear_pixels_16x16": 2080,
+      "confirmed_falseclear_ge01_pixels3": 14,
+      "paired_delta_rmse_ci95_date": [
+        -0.008014153373883913,
+        0.224299491681944
+      ],
+      "share_net_delta_sse_falseclear3": 0.25434434082232793,
+      "share_net_delta_sse_no_local_change": 0.11686713856775094
+    },
+    "zhujia": {
+      "groups": {
+        "all": {
+          "n": 2351,
+          "dates": 50,
+          "raw_rmse": 106.32509728470937,
+          "gate_rmse": 106.90176985010719,
+          "delta_rmse": 0.5766725653978142,
+          "delta_sse": 289083.8606180637,
+          "worse_fraction": 0.49638451722671206
+        },
+        "CPP_joined": {
+          "n": 676,
+          "dates": 44,
+          "raw_rmse": 121.62879835953123,
+          "gate_rmse": 123.20027741793295,
+          "delta_rmse": 1.5714790584017209,
+          "delta_sse": 260086.78545916022,
+          "worse_fraction": 0.47485207100591714
+        },
+        "confirmed_falsecloud_cleared_3x3": {
+          "n": 17,
+          "dates": 9,
+          "raw_rmse": 179.85514470695276,
+          "gate_rmse": 183.19484698530985,
+          "delta_rmse": 3.3397022783570947,
+          "delta_sse": 20612.141035006847,
+          "worse_fraction": 0.29411764705882354
+        },
+        "complete_CPP_no_falseclear_3x3": {
+          "n": 657,
+          "dates": 44,
+          "raw_rmse": 119.93303254247206,
+          "gate_rmse": 121.44315106345381,
+          "delta_rmse": 1.5101185209817487,
+          "delta_sse": 239480.86601939113,
+          "worse_fraction": 0.4809741248097412
+        },
+        "no_local_COT_change": {
+          "n": 1642,
+          "dates": 46,
+          "raw_rmse": 92.80665182780943,
+          "gate_rmse": 93.38127953270046,
+          "delta_rmse": 0.5746277048910287,
+          "delta_sse": 175675.517116157,
+          "worse_fraction": 0.5773447015834349
+        },
+        "without_CPP_reference": {
+          "n": 1675,
+          "dates": 50,
+          "raw_rmse": 99.48424370207198,
+          "gate_rmse": 99.5712128661456,
+          "delta_rmse": 0.0869691640736221,
+          "delta_sse": 28997.07515890347,
+          "worse_fraction": 0.5050746268656716
+        }
+      },
+      "counterfactuals": {
+        "all_validation": {
+          "n": 2351,
+          "gate_cpu_rmse": 106.90095818299034,
+          "restore_CPP_cloud_rmse": 106.89554367405964,
+          "delta_restore_rmse": -0.005414508930698503,
+          "restore_all_original_R_rmse": 106.5529482680608,
+          "delta_restore_all_rmse": -0.34800991492953415,
+          "restore_CPPclear_rmse": 106.46024404755222,
+          "delta_restore_CPPclear_rmse": -0.4407141354381139,
+          "restore_CPPknown_rmse": 106.45489744114315,
+          "restoration_delta_sse": -2721.5248144051293,
+          "restoration_mean_abs_prediction_change": 0.004657093082169987,
+          "restoration_ci95_date": [
+            -0.012272431434412211,
+            -0.00040375660800435765
+          ]
+        },
+        "CPP_joined": {
+          "n": 676,
+          "gate_cpu_rmse": 123.19879240819849,
+          "restore_CPP_cloud_rmse": 123.18245218600221,
+          "delta_restore_rmse": -0.016340222196276954,
+          "restore_all_original_R_rmse": 121.84811084083248,
+          "delta_restore_all_rmse": -1.35068156736601,
+          "restore_CPPclear_rmse": 121.86434836289294,
+          "delta_restore_CPPclear_rmse": -1.3344440453055455,
+          "restore_CPPknown_rmse": 121.8481036149861,
+          "restoration_delta_sse": -2721.5248144051293,
+          "restoration_mean_abs_prediction_change": 0.01619648792334562,
+          "restoration_ci95_date": [
+            -0.037500352702781826,
+            -0.0015956610715431251
+          ]
+        },
+        "confirmed_falseclear_3x3": {
+          "n": 17,
+          "gate_cpu_rmse": 183.1902029762921,
+          "restore_CPP_cloud_rmse": 182.752731228647,
+          "delta_restore_rmse": -0.4374717476451053,
+          "restore_all_original_R_rmse": 179.99815910864925,
+          "delta_restore_all_rmse": -3.192043867642866,
+          "restore_CPPclear_rmse": 180.434940174337,
+          "delta_restore_CPPclear_rmse": -2.7552628019551264,
+          "restore_CPPknown_rmse": 179.99815910864925,
+          "restoration_delta_sse": -2721.5248144051293,
+          "restoration_mean_abs_prediction_change": 0.6440485785989201,
+          "restoration_ci95_date": [
+            -1.2264032621708296,
+            -0.08949185244837005
+          ]
+        }
+      },
+      "confirmed_falseclear_pixels_3x3": 56,
+      "confirmed_falseclear_pixels_16x16": 2899,
+      "confirmed_falseclear_ge01_pixels3": 2,
+      "paired_delta_rmse_ci95_date": [
+        -0.15927048867459953,
+        1.399030281866797
+      ],
+      "share_net_delta_sse_falseclear3": 0.0713015973667223,
+      "share_net_delta_sse_no_local_change": 0.6076974229573427
+    }
+  },
+  "cases": [
+    {
+      "index": 1201,
+      "category": "worst_confirmed_falseclear",
+      "station": "sili",
+      "target_time_bjt": "2025-07-08 14:30:00",
+      "target_time_utc": "2025-07-08 06:30:00",
+      "falseclear_pixels3": 1,
+      "raw_ghi": 754.2797241210938,
+      "gate_ghi": 779.7327880859375,
+      "obs_ghi": 527.6666870117188,
+      "delta_squared_error": 12183.850722823292,
+      "gate_cpu": 779.739501953125,
+      "restore_falsecloud_cpu": 774.3893432617188,
+      "restore_all_original_R_cpu": 753.5222778320312,
+      "focal_pixel_rc": [
+        7,
+        9
+      ],
+      "figure": "figures/sili_20250708_143000_worst_confirmed_falseclear.png"
+    },
+    {
+      "index": 1198,
+      "category": "improvement_despite_falseclear",
+      "station": "sili",
+      "target_time_bjt": "2025-07-08 13:45:00",
+      "target_time_utc": "2025-07-08 05:45:00",
+      "falseclear_pixels3": 1,
+      "raw_ghi": 892.6404418945312,
+      "gate_ghi": 898.9752197265625,
+      "obs_ghi": 987.3333129882812,
+      "delta_squared_error": -1159.587191130966,
+      "gate_cpu": 898.97998046875,
+      "restore_falsecloud_cpu": 898.5112915039062,
+      "restore_all_original_R_cpu": 892.2136840820312,
+      "focal_pixel_rc": [
+        9,
+        8
+      ],
+      "figure": "figures/sili_20250708_134500_improvement_despite_falseclear.png"
+    },
+    {
+      "index": 31,
+      "category": "degradation_without_local_clearing",
+      "station": "sili",
+      "target_time_bjt": "2024-04-19 14:00:00",
+      "target_time_utc": "2024-04-19 06:00:00",
+      "falseclear_pixels3": 0,
+      "raw_ghi": 227.25804138183594,
+      "gate_ghi": 225.53738403320312,
+      "obs_ghi": 629.6666870117188,
+      "delta_squared_error": 1387.7754482242744,
+      "gate_cpu": 225.51698303222656,
+      "restore_falsecloud_cpu": 225.51698303222656,
+      "restore_all_original_R_cpu": 225.51698303222656,
+      "focal_pixel_rc": [
+        8,
+        8
+      ],
+      "figure": "figures/sili_20240419_140000_degradation_without_local_clearing.png"
+    },
+    {
+      "index": 3489,
+      "category": "worst_confirmed_falseclear",
+      "station": "zhujia",
+      "target_time_bjt": "2025-07-08 13:15:00",
+      "target_time_utc": "2025-07-08 05:15:00",
+      "falseclear_pixels3": 1,
+      "raw_ghi": 757.894287109375,
+      "gate_ghi": 786.0073852539062,
+      "obs_ghi": 397.7733459472656,
+      "delta_squared_error": 21038.577012866735,
+      "gate_cpu": 786.0122680664062,
+      "restore_falsecloud_cpu": 785.2151489257812,
+      "restore_all_original_R_cpu": 763.054443359375,
+      "focal_pixel_rc": [
+        7,
+        9
+      ],
+      "figure": "figures/zhujia_20250708_131500_worst_confirmed_falseclear.png"
+    },
+    {
+      "index": 3531,
+      "category": "improvement_despite_falseclear",
+      "station": "zhujia",
+      "target_time_bjt": "2025-07-09 10:00:00",
+      "target_time_utc": "2025-07-09 02:00:00",
+      "falseclear_pixels3": 4,
+      "raw_ghi": 521.7222290039062,
+      "gate_ghi": 520.1593017578125,
+      "obs_ghi": 312.32666015625,
+      "delta_squared_error": -652.097337950021,
+      "gate_cpu": 520.1332397460938,
+      "restore_falsecloud_cpu": 519.8456420898438,
+      "restore_all_original_R_cpu": 519.7062377929688,
+      "focal_pixel_rc": [
+        8,
+        7
+      ],
+      "figure": "figures/zhujia_20250709_100000_improvement_despite_falseclear.png"
+    },
+    {
+      "index": 2200,
+      "category": "degradation_without_local_clearing",
+      "station": "zhujia",
+      "target_time_bjt": "2024-04-20 12:00:00",
+      "target_time_utc": "2024-04-20 04:00:00",
+      "falseclear_pixels3": 0,
+      "raw_ghi": 413.5569763183594,
+      "gate_ghi": 382.2586975097656,
+      "obs_ghi": 521.3333129882812,
+      "delta_squared_error": 7726.009924508631,
+      "gate_cpu": 382.2659606933594,
+      "restore_falsecloud_cpu": 382.2659606933594,
+      "restore_all_original_R_cpu": 382.2659606933594,
+      "focal_pixel_rc": [
+        8,
+        8
+      ],
+      "figure": "figures/zhujia_20240420_120000_degradation_without_local_clearing.png"
+    }
+  ],
+  "limits": [
+    "CPP availability is partial; unmatched samples are UNKNOWN, not clear/no-false-clear.",
+    "CPP CLP/COT are reference product categories; not independent atmospheric truth.",
+    "Restoration uses original R values, not true physical COT; it cannot repair R underestimation.",
+    "Changing inputs with frozen heads is a diagnostic, not a deployable skill estimate.",
+    "Raw/gate heads also differ in fitted weights and train-only COT normalization.",
+    "CPU intervention comparisons use same CPU run; saved GPU outputs define main paired result."
+  ],
+  "test_payloads_read": 0,
+  "bootstrap": "2000 paired BJT target-date clusters; seed 20261015"
+}

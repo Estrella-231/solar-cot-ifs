@@ -1,0 +1,48 @@
+#!/bin/bash
+#PBS -N direct_COT_GHI_score
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=04:00:00
+#PBS -j oe
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+PACK=$EXP/results/direct_cot_single_frame_ghi_pack_v1
+SILI=$EXP/results/direct_cot_single_frame_ghi_heads_v1/sili_worker
+ZHUJIA=$EXP/results/direct_cot_single_frame_ghi_heads_v1/zhujia_worker
+CPP=$ROOT/experiments/monthly_R_station16_20261013_v1/data/pack_trainval_v1
+DAYS=$ROOT/experiments/hunan_monthly_block_20261002/manifests_v1/day_assignment.csv
+EXCLUSIONS=$ROOT/experiments/cloud_probability_input_20261020/GHI_STATION_DAY_EXCLUSIONS_20261019.json
+OUT=$EXP/results/direct_cot_ghi_validation_score_v1
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+LOG=$EXP/logs/direct_cot_ghi_score_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=8 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+QSTAT_TEXT=$($PBS_QSTAT -u slfu)
+printf '%s\n' "$QSTAT_TEXT"
+UNFINISHED=$(printf '%s\n' "$QSTAT_TEXT" | awk '$1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+test -s "$PACK/pack_manifest.json" && test -s "$SILI/run_manifest.json" && test -s "$ZHUJIA/run_manifest.json"
+test -s "$DAYS" && test -s "$EXCLUSIONS" && test -s "$CPP/pack_audit.json"
+test ! -e "$OUT"
+python -m py_compile "$EXP/score_direct_cot_ghi_v1.py" "$EXP/test_score_direct_cot_ghi_v1.py"
+python "$EXP/test_score_direct_cot_ghi_v1.py"
+test "$(sha256sum "$EXP/score_direct_cot_ghi_v1.py" | cut -d' ' -f1)" = "c69d34afcad724297831b72dfab778e1343bfa2d18035b2965a59d120402e50a"
+python -u "$EXP/score_direct_cot_ghi_v1.py" \
+  --pack "$PACK" --sili-worker "$SILI" --zhujia-worker "$ZHUJIA" \
+  --day-assignment "$DAYS" --cpp-pack "$CPP" --exclusions "$EXCLUSIONS" --output "$OUT"
+python - "$OUT/direct_cot_ghi_metrics.json" <<'PY'
+import json,sys
+m=json.load(open(sys.argv[1]))
+assert m['state']=='COMPLETE_DIRECT_COT_GHI_VALIDATION_SCORE'
+for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_input'):
+ assert m[k] is False,(k,m[k])
+assert set(m['predeclared_gates'])=={'p_xc-none','p_xc-simvp_r'}
+print('DIRECT_COT_GHI_VALIDATION_SCORE_COMPLETE',json.dumps(m['predeclared_gates']))
+PY

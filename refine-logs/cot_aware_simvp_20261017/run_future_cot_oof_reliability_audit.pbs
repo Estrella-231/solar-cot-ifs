@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -N fghi_cot_reliability
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+FORECAST_PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ACTUAL_R_PACK=$PROJECT/experiments/monthly_R_station16_20261013_v1/data/ghi_head_pack_new_r_v1
+OUT=$EXP/results/future_cot_oof_reliability_v1
+LOG=$EXP/logs/future_cot_oof_reliability_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+sha256sum -c FUTURE_GHI_OOF_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_future_cot_reliability_pycache
+python -m py_compile audit_future_cot_oof_reliability.py
+python test_audit_future_cot_oof_reliability.py
+test ! -e "$OUT"
+python -u audit_future_cot_oof_reliability.py --forecast-pack "$FORECAST_PACK" \
+  --actual-r-pack "$ACTUAL_R_PACK" --output "$OUT" --min-pairs 1000
+python - <<'PY' "$OUT/calibration.json"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='COMPLETE_TRAIN_ONLY_OOF_FUTURE_COT_RELIABILITY_CALIBRATION'
+assert x['train_rows']==714914 and x['unmatched_train_rows']==0
+assert x['train_forecast_oof'] is True and x['forecast_bank_oof_fold_count']==5
+assert x['test_payload_opened'] is False and x['buffer_payload_opened'] is False
+assert x['cpp_used'] is False and x['future_observed_agri_used_as_inference_input'] is False
+assert len(x['metrics'])==32
+print('TRAIN_ONLY_OOF_COT_RELIABILITY_COMPLETE',x['train_rows'],len(x['metrics']))
+PY
+echo "FUTURE_COT_OOF_RELIABILITY_AUDIT_COMPLETE test_payload_opened=0 buffer_payload_opened=0 cpp_used=0"

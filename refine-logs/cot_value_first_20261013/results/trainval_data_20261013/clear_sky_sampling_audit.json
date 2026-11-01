@@ -1,0 +1,195 @@
+{
+  "state": "CLEAR_SKY_TIMESTAMP_COMPARISON_COMPLETE",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "input_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "code_sha256": "c993c2422e12fc27ddeaa9a2f57f6a5db217d3878029dabafd0a63da2acae7fd",
+  "test_payload_opened": false,
+  "observed_GHI_read": false,
+  "cpp_or_agri_payload_opened": false,
+  "clear_sky_model": "Ineichen, pvlib",
+  "pvlib_version": "0.9.1",
+  "interval_endpoint_offsets_minutes": [
+    10,
+    5,
+    0
+  ],
+  "interval_midpoint_offsets_minutes": [
+    12.5,
+    7.5,
+    2.5
+  ],
+  "primary_day_support": "station apparent zenith <90 degrees and the selected interval-mean clear-sky GHI >0",
+  "reports": {
+    "sili": {
+      "train": {
+        "candidate_targets": 51236,
+        "station_day_targets_sza_lt90": 27661,
+        "endpoint_clear_sky_wm2": {
+          "n": 27661,
+          "mean": 505.5069570853899,
+          "median": 553.1238778318103,
+          "p90": 901.6316922550768,
+          "max": 956.0445380967975
+        },
+        "midpoint_clear_sky_wm2": {
+          "n": 27661,
+          "mean": 505.45864890566315,
+          "median": 552.3262194319436,
+          "p90": 901.5316024765704,
+          "max": 955.8421309626025
+        },
+        "signed_difference_midpoint_minus_endpoint_wm2": {
+          "n": 27661,
+          "mean": -0.04830817972679895,
+          "median": -0.14655380277344307,
+          "p90": 8.80321840960005,
+          "max": 9.941193726538472
+        },
+        "absolute_difference_wm2": {
+          "n": 27661,
+          "mean": 5.83468781670052,
+          "median": 6.464837352470454,
+          "p90": 9.198501355535996,
+          "max": 9.943133177364558
+        },
+        "relative_difference_percent_endpoint_denominator": {
+          "n": 27661,
+          "mean": 0.16513294258631464,
+          "median": -0.04306185615089919,
+          "p90": 4.795032706498392,
+          "max": 91.62121537384064
+        },
+        "positive_support_disagreements": 98,
+        "gte100_support_disagreements": 191
+      },
+      "val": {
+        "candidate_targets": 4497,
+        "station_day_targets_sza_lt90": 2458,
+        "endpoint_clear_sky_wm2": {
+          "n": 2458,
+          "mean": 505.02756582061085,
+          "median": 551.9903354360086,
+          "p90": 904.0168779528476,
+          "max": 955.6688585893975
+        },
+        "midpoint_clear_sky_wm2": {
+          "n": 2458,
+          "mean": 504.95207621232714,
+          "median": 549.8919953862155,
+          "p90": 906.4822561846057,
+          "max": 955.4906315658794
+        },
+        "signed_difference_midpoint_minus_endpoint_wm2": {
+          "n": 2458,
+          "mean": -0.07548960828373624,
+          "median": -0.17962117008001174,
+          "p90": 8.709264230231907,
+          "max": 9.877467176891571
+        },
+        "absolute_difference_wm2": {
+          "n": 2458,
+          "mean": 5.820326757129747,
+          "median": 6.430464501352208,
+          "p90": 9.185661806535393,
+          "max": 9.87989157772165
+        },
+        "relative_difference_percent_endpoint_denominator": {
+          "n": 2458,
+          "mean": 0.18141144714072022,
+          "median": -0.04424928641111108,
+          "p90": 4.857348633861185,
+          "max": 90.46704182892594
+        },
+        "positive_support_disagreements": 4,
+        "gte100_support_disagreements": 13
+      }
+    },
+    "zhujia": {
+      "train": {
+        "candidate_targets": 51236,
+        "station_day_targets_sza_lt90": 27733,
+        "endpoint_clear_sky_wm2": {
+          "n": 27733,
+          "mean": 495.5862650353133,
+          "median": 533.0251018363207,
+          "p90": 893.8764902925432,
+          "max": 955.3762183065982
+        },
+        "midpoint_clear_sky_wm2": {
+          "n": 27733,
+          "mean": 495.5396129516809,
+          "median": 533.0818103417215,
+          "p90": 895.1104048421552,
+          "max": 955.1954070382303
+        },
+        "signed_difference_midpoint_minus_endpoint_wm2": {
+          "n": 27733,
+          "mean": -0.046652083632435434,
+          "median": -0.14168606754071789,
+          "p90": 8.501216850898947,
+          "max": 9.693638167685947
+        },
+        "absolute_difference_wm2": {
+          "n": 27733,
+          "mean": 5.675672566865481,
+          "median": 6.295523438800956,
+          "p90": 8.973853568248341,
+          "max": 9.710937543888633
+        },
+        "relative_difference_percent_endpoint_denominator": {
+          "n": 27733,
+          "mean": 0.18934192037824019,
+          "median": -0.04013398128539196,
+          "p90": 4.848274645379613,
+          "max": 94.33963597266322
+        },
+        "positive_support_disagreements": 77,
+        "gte100_support_disagreements": 175
+      },
+      "val": {
+        "candidate_targets": 4497,
+        "station_day_targets_sza_lt90": 2457,
+        "endpoint_clear_sky_wm2": {
+          "n": 2457,
+          "mean": 496.4184424030287,
+          "median": 532.5683950657378,
+          "p90": 899.3181209962759,
+          "max": 955.1547762130658
+        },
+        "midpoint_clear_sky_wm2": {
+          "n": 2457,
+          "mean": 496.33908091211174,
+          "median": 534.3627305857791,
+          "p90": 896.8839364183888,
+          "max": 954.9786907915183
+        },
+        "signed_difference_midpoint_minus_endpoint_wm2": {
+          "n": 2457,
+          "mean": -0.07936149091698118,
+          "median": -0.2302917705441132,
+          "p90": 8.452616021916503,
+          "max": 9.611806412421515
+        },
+        "absolute_difference_wm2": {
+          "n": 2457,
+          "mean": 5.671574380675277,
+          "median": 6.23847768026792,
+          "p90": 8.957041949740438,
+          "max": 9.631424290857296
+        },
+        "relative_difference_percent_endpoint_denominator": {
+          "n": 2457,
+          "mean": -0.036774783106279095,
+          "median": -0.04582348500993424,
+          "p90": 4.599887651430593,
+          "max": 83.21623838070022
+        },
+        "positive_support_disagreements": 5,
+        "gte100_support_disagreements": 12
+      }
+    }
+  },
+  "details_file": "clear_sky_sampling_by_target.csv",
+  "details_sha256": "8a30a7045fcbddb997b9535e7f7e0c5225e64bc36923396c48e9412c86cf5e64",
+  "interpretation_limit": "This compares denominator time sampling only; it does not establish observed-GHI label validity or replace the agreed target interval."
+}

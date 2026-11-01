@@ -1,0 +1,18 @@
+{
+  "reason": "merge_shards inherited rank0 station counts and elapsed duration",
+  "original_completion_sha256": "a92ee4e9ea98088c0a36ce8a496a2783b4bfbb6bcd5e0e356df8674adb73dfb9",
+  "corrected_completion_sha256": "53d14a742a2caa8d0e2b732fff22a195a18a06fad8b1e0b3e31c9edac0fa63ce",
+  "stations": {
+    "sili": 30516,
+    "zhujia": 32964
+  },
+  "elapsed_seconds": 652.3465075446293,
+  "elapsed_seconds_scope": "maximum evaluator shard duration; excludes forecast generation, queue time and merge/score",
+  "preserved_score_artifacts_sha256": {
+    "ghi_rows.csv": "2c21bd0f37b62d29eb696932fe505509bb0739055ddcd59852c7708ddb64d0a1",
+    "ghi_predictions.npz": "7ec0e813a4d2be92fe6c83ac0f3684029b74ff4d22f7f9a48dae8d7d805cad0b",
+    "ghi_scores_fp64.json": "7db5d3169973cef5e72d3c1127bcc8079c5d82d7769da51e253e043b53aa07b3"
+  },
+  "scope": "local task files only; remote original preserved in source snapshot",
+  "source_receipts": "shard_completion.json"
+}

@@ -1,0 +1,59 @@
+#!/bin/bash
+#PBS -N fgcot_domain_audit
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+SIMVP=$PROJECT/experiments/hunan_monthly_block_20261002
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ORACLE=$EXP/results/future_cot_oracle_head_pack_v2
+RBANK=$PROJECT/experiments/monthly_R_station16_20261013_v1/results/new_monthly_R_seed42_cot_bank_v1
+CAL=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+OUT=$EXP/results/future_agri_to_cot_domain_gap_v1/domain_gap_audit.json
+SMOKE=$EXP/results/future_agri_to_cot_domain_gap_v1/domain_gap_smoke.json
+LOG=$EXP/logs/future_agri_to_cot_domain_${PBS_JOBID}.log
+mkdir -p "$EXP/logs" "$(dirname "$OUT")"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+python -m py_compile audit_future_agri_to_cot_domain_gap.py train_future_ghi_heads_cot_reliability.py
+python - "$PACK/pack_manifest.json" "$ORACLE/pack_manifest.json" "$RBANK/bank_manifest.json" "$CAL" <<'PY'
+import json,sys
+f,o,r,c=(json.load(open(x)) for x in sys.argv[1:])
+assert f['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK' and f['train_forecast_oof'] is True and f['forecast_bank_oof_fold_count']==5
+assert all(f.get(k) is False for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_input'))
+assert o['state']=='COMPLETE_ORACLE_FUTURE_COT_GHI_PACK' and o['deployable'] is False and o['test_payloads_read']==0 and o['buffer_payload_opened'] is False
+assert r['state']=='COMPLETE' and r['test_payload_opened'] is False
+assert c['state']=='COMPLETE_CROSSFIT_TRAIN_ONLY_OOF_FUTURE_COT_RELIABILITY_CALIBRATION'
+print('AGRI_TO_COT_DOMAIN_SOURCE_PREFLIGHT_PASS')
+PY
+test ! -e "$OUT" && test ! -e "$OUT.csv" && test ! -e "$SMOKE" && test ! -e "$SMOKE.csv"
+python -u audit_future_agri_to_cot_domain_gap.py \
+  --simvp-root "$SIMVP" --data-root "$DATA" --forecast-pack "$PACK" \
+  --oracle-pack "$ORACLE" --actual-r-bank "$RBANK" --calibration "$CAL" \
+  --output "$SMOKE" --workers 2 --limit-frames 4
+python - "$SMOKE" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]));assert d['state']=='COMPLETE_VALIDATION_FORECAST_AGRI_TO_FROZEN_R_DOMAIN_DIAGNOSTIC_SMOKE'
+assert d['smoke_limit_frames']==4 and d['test_payload_opened'] is False and d['buffer_payload_opened'] is False
+print('AGRI_TO_COT_DOMAIN_SMOKE_PASS',d['rows'],d['unique_observed_validation_frames_opened'])
+PY
+python -u audit_future_agri_to_cot_domain_gap.py \
+  --simvp-root "$SIMVP" --data-root "$DATA" --forecast-pack "$PACK" \
+  --oracle-pack "$ORACLE" --actual-r-bank "$RBANK" --calibration "$CAL" \
+  --output "$OUT" --workers 8
+python - "$OUT" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]));assert d['state']=='COMPLETE_VALIDATION_FORECAST_AGRI_TO_FROZEN_R_DOMAIN_DIAGNOSTIC'
+assert d['test_payload_opened'] is False and d['buffer_payload_opened'] is False and d['observed_future_agri_used_as_inference_input'] is False
+assert d['validation_used_for_fitting_or_threshold_selection'] is False
+print('AGRI_TO_COT_DOMAIN_AUDIT_COMPLETE',d['rows'],d['unique_observed_validation_frames_opened'])
+PY
+echo "FUTURE_AGRI_TO_COT_DOMAIN_AUDIT_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

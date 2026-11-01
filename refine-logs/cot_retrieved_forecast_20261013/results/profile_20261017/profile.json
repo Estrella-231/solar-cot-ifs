@@ -1,0 +1,124 @@
+{
+  "state": "PASS_REAL_DATA_GPU_PROFILE",
+  "split": "train",
+  "init_time_utc": "2024-10-22 04:45:00",
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "target_times_utc": [
+    "2024-10-22 05:00:00",
+    "2024-10-22 05:15:00",
+    "2024-10-22 05:30:00",
+    "2024-10-22 05:45:00",
+    "2024-10-22 06:00:00",
+    "2024-10-22 06:15:00",
+    "2024-10-22 06:30:00",
+    "2024-10-22 06:45:00",
+    "2024-10-22 07:00:00",
+    "2024-10-22 07:15:00",
+    "2024-10-22 07:30:00",
+    "2024-10-22 07:45:00",
+    "2024-10-22 08:00:00",
+    "2024-10-22 08:15:00",
+    "2024-10-22 08:30:00",
+    "2024-10-22 08:45:00"
+  ],
+  "test_payload_opened": false,
+  "gpu_name": "NVIDIA A800-SXM4-80GB",
+  "gpu_total_gib": 79.32501220703125,
+  "mask_rule": "13 AGRI bits + day_mask>0.5 + cosSOZ>cos80 + finite R-COT",
+  "batch_trials": [
+    {
+      "batch": 8,
+      "steps": 8,
+      "seconds": 0.14161612605676055,
+      "windows_per_second": 451.9259337340469,
+      "peak_allocated_gib": 2.6088552474975586,
+      "memory_fraction_of_gpu": 0.03288817959067788,
+      "loss_finite": true
+    },
+    {
+      "batch": 16,
+      "steps": 8,
+      "seconds": 0.08591251401230693,
+      "windows_per_second": 1489.8877244083913,
+      "peak_allocated_gib": 2.6893014907836914,
+      "memory_fraction_of_gpu": 0.033902314238097475,
+      "loss_finite": true
+    },
+    {
+      "batch": 32,
+      "steps": 8,
+      "seconds": 0.05972757376730442,
+      "windows_per_second": 4286.12755973251,
+      "peak_allocated_gib": 2.8138303756713867,
+      "memory_fraction_of_gpu": 0.03547217072375027,
+      "loss_finite": true
+    },
+    {
+      "batch": 64,
+      "steps": 8,
+      "seconds": 0.07203775411471725,
+      "windows_per_second": 7107.38426387725,
+      "peak_allocated_gib": 3.248513698577881,
+      "memory_fraction_of_gpu": 0.040951947036573386,
+      "loss_finite": true
+    },
+    {
+      "batch": 128,
+      "steps": 8,
+      "seconds": 0.12092179292812943,
+      "windows_per_second": 8468.28330281722,
+      "peak_allocated_gib": 6.369890213012695,
+      "memory_fraction_of_gpu": 0.08030115641694258,
+      "loss_finite": true
+    },
+    {
+      "batch": 256,
+      "steps": 8,
+      "seconds": 0.22721204068511724,
+      "windows_per_second": 9013.606822176424,
+      "peak_allocated_gib": 12.605501174926758,
+      "memory_fraction_of_gpu": 0.15890953967996269,
+      "loss_finite": true
+    },
+    {
+      "batch": 512,
+      "steps": 8,
+      "seconds": 0.4208372565917671,
+      "windows_per_second": 9732.97857032017,
+      "peak_allocated_gib": 25.083803176879883,
+      "memory_fraction_of_gpu": 0.3162155602499421,
+      "loss_finite": true
+    },
+    {
+      "batch": 1024,
+      "steps": 8,
+      "seconds": 0.8139855242334306,
+      "windows_per_second": 10064.061038081483,
+      "peak_allocated_gib": 50.04040718078613,
+      "memory_fraction_of_gpu": 0.6308276013899009,
+      "loss_finite": true
+    }
+  ],
+  "best_safe_throughput": {
+    "batch": 1024,
+    "steps": 8,
+    "seconds": 0.8139855242334306,
+    "windows_per_second": 10064.061038081483,
+    "peak_allocated_gib": 50.04040718078613,
+    "memory_fraction_of_gpu": 0.6308276013899009,
+    "loss_finite": true
+  },
+  "selected_batch_max_safe_within_5pct": {
+    "batch": 1024,
+    "steps": 8,
+    "seconds": 0.8139855242334306,
+    "windows_per_second": 10064.061038081483,
+    "peak_allocated_gib": 50.04040718078613,
+    "memory_fraction_of_gpu": 0.6308276013899009,
+    "loss_finite": true
+  },
+  "criterion": "largest batch within 5% of measured peak throughput and <=82% allocated device memory"
+}

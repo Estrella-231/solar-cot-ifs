@@ -1,0 +1,53 @@
+#!/bin/bash
+#PBS -N fghi_forecast_bank
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+SIMVP=$PROJECT/experiments/hunan_monthly_block_20261002
+RROOT=$PROJECT/experiments/monthly_R_station16_20261013_v1
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+BANK=$EXP/results/future_simvp_r_bank_v1
+CROSSWALK=$EXP/results/future_ghi_crosswalk_keys.npz
+CANDIDATE=$RROOT/input/target_candidates_train_val.csv
+CACHE=/tmp/slfu_cot_aux_simvp_20261017/frames
+
+mkdir -p "$EXP/logs" "$EXP/results" "$CACHE"
+JOB_LOG="$EXP/logs/future_ghi_bank_${PBS_JOBID}.log"
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$EXP"
+bash "$EXP/test_resume_flag.sh"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+if [ -f "$BANK/bank_manifest.json" ]; then
+  python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_FORECAST_AGRI_R_TRAIN_VAL_BANK",x.get("state"); print("FORECAST_BANK_ALREADY_COMPLETE")' "$BANK/bank_manifest.json"
+  exit 0
+fi
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"
+  exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+df -h "$CACHE"
+
+RESUME_FLAG=""
+if [ -f "$BANK/progress.json" ]; then RESUME_FLAG=--resume; fi
+python -u "$EXP/build_forecast_agri_r_bank.py" \
+  --simvp-root "$SIMVP" --r-root "$RROOT" --data-root "$DATA" \
+  --crosswalk "$CANDIDATE" --keys "$CROSSWALK" --output "$BANK" \
+  --frame-cache "$CACHE" --batch-sequences 64 --r-batch-patches 1024 ${RESUME_FLAG:+$RESUME_FLAG}
+python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_FORECAST_AGRI_R_TRAIN_VAL_BANK"; assert x.get("test_payload_opened") is False and x.get("future_observed_agri_read") is False; print("FORECAST_BANK_GATE_PASS")' "$BANK/bank_manifest.json"
+

@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Claim Audit</title>
+
+<meta name="generator" content="ARIS render-html (academic, v1)">
+<meta name="aris:source-path" content="PAPER_CLAIM_AUDIT.md">
+<meta name="aris:source-sha256" content="60d68746744b3003f589d0aa425ca2579a74fbab75cdaddf72f894afa88f592a">
+<meta name="aris:generated-at" content="2026-10-17 22:35 UTC">
+
+<!-- MathJax 3 -->
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<!-- highlight.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-light.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
+
+
+<style>
+:root {
+  --bg: #fdfcf7;
+  --bg-soft: #f4f1ea;
+  --bg-code: #f8f5ec;
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --ink-muted: #6b6b6b;
+  --primary: #1a4a8c;
+  --primary-soft: #2d6cb8;
+  --accent: #b8390e;
+  --warn: #b45309;
+  --warn-bg: #fef3c7;
+  --info-bg: #dbeafe;
+  --good-bg: #d1fae5;
+  --good: #065f46;
+  --bad-bg: #fee2e2;
+  --bad: #991b1b;
+  --border: #d6d0c0;
+  --border-soft: #e8e3d5;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Source Serif Pro", "Source Serif 4", "Crimson Pro", "Georgia", "Songti SC", "STSong", serif;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+  padding: 40px 32px;
+}
+
+nav.toc {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  font-size: 13px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-right: 1px solid var(--border-soft);
+  padding-right: 16px;
+}
+nav.toc h3 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+nav.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+nav.toc ol li { margin: 5px 0; counter-increment: toc; }
+nav.toc ol li::before { content: counter(toc) ". "; color: var(--ink-muted); margin-right: 4px; }
+nav.toc a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+}
+nav.toc a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+nav.toc ul { list-style: none; padding-left: 14px; margin: 3px 0; font-size: 12px; }
+nav.toc ul li::before { content: "→ "; color: var(--border); }
+
+main { min-width: 0; }
+
+header.hero {
+  border-bottom: 3px double var(--primary);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+header.hero .eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+header.hero h1 {
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+header.hero .subtitle {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  font-style: italic;
+}
+header.hero .byline {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+header.hero .byline strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+header.hero .meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--border-soft);
+  padding-top: 14px;
+}
+header.hero .meta span strong { color: var(--ink-soft); }
+header.hero .meta code {
+  font-family: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  font-size: 11px;
+  background: var(--bg-soft);
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border-soft);
+}
+
+h2 {
+  font-size: 24px;
+  margin: 44px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  font-weight: 700;
+}
+h2 .num { color: var(--primary); font-weight: 600; margin-right: 8px; }
+h3 { font-size: 19px; margin: 28px 0 10px; color: var(--primary); font-weight: 600; }
+h4 { font-size: 16px; margin: 20px 0 8px; color: var(--ink); font-weight: 600; }
+
+p { margin: 10px 0; }
+ul, ol { padding-left: 22px; margin: 10px 0; }
+ul li, ol li { margin: 4px 0; }
+ul li::marker { color: var(--primary); }
+
+strong { color: var(--accent); font-weight: 600; }
+em { color: var(--ink-soft); }
+
+a { color: var(--primary); }
+a:hover { color: var(--accent); }
+
+code:not(.hljs) {
+  font-family: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  font-size: 0.86em;
+  background: var(--bg-code);
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border-soft);
+  color: var(--accent);
+}
+
+pre {
+  background: #fafaf6;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  padding: 0;
+  overflow-x: auto;
+  border-radius: 4px;
+  margin: 14px 0;
+}
+pre code, pre code.hljs {
+  background: transparent !important;
+  display: block;
+  padding: 14px 18px !important;
+  font-size: 13px;
+  line-height: 1.55;
+  font-family: "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  color: var(--ink);
+}
+pre.diagram {
+  background: #f9f6ed;
+  border-left: 4px solid var(--accent);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.callout {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border-left: 4px solid;
+  font-size: 15px;
+}
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.callout-info { background: var(--info-bg); border-left-color: var(--primary); }
+.callout-info .callout-title { color: var(--primary); }
+.callout-warn { background: var(--warn-bg); border-left-color: var(--warn); }
+.callout-warn .callout-title { color: var(--warn); }
+.callout-good { background: var(--good-bg); border-left-color: var(--good); }
+.callout-good .callout-title { color: var(--good); }
+.callout-bad { background: var(--bad-bg); border-left-color: var(--bad); }
+.callout-bad .callout-title { color: var(--bad); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+thead { background: var(--primary); color: white; }
+th, td {
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+th { font-weight: 600; font-size: 13px; letter-spacing: 0.02em; }
+tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--bg-soft); }
+
+details.qa, details {
+  background: white;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  margin: 10px 0;
+  padding: 0;
+}
+details summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primary);
+  list-style: none;
+  user-select: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▸ ";
+  margin-right: 4px;
+  display: inline-block;
+  transition: transform 0.15s;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details[open] summary { border-bottom: 1px solid var(--border-soft); }
+details > :not(summary) { padding: 10px 14px; }
+details p:first-of-type { margin-top: 8px; }
+
+mjx-container[display="true"] { margin: 12px 0 !important; }
+
+footer.aris-footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+footer.aris-footer a { color: var(--ink-muted); border-bottom: 1px dotted var(--border); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 20px; padding: 20px 16px; }
+  nav.toc {
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border-soft);
+    padding-right: 0;
+    padding-bottom: 14px;
+  }
+  header.hero h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+}
+@media print {
+  nav.toc { display: none; }
+  .layout { grid-template-columns: 1fr; padding: 0; }
+  body { background: white; }
+  header.hero { border-bottom-color: var(--ink); }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ol>
+<li><a href="#verdict">Verdict</a>
+</li>
+<li><a href="#status-summary">Status summary</a>
+</li>
+<li><a href="#material-findings">Material findings</a>
+</li>
+<li><a href="#per-claim-reconciliation">Per-claim reconciliation</a>
+</li>
+<li><a href="#evidence-and-scope-limitations">Evidence and scope limitations</a>
+</li>
+<li><a href="#publication-gate">Publication gate</a>
+</li>
+</ol>
+</nav>
+
+<main>
+<header class="hero">
+  
+  <h1>Paper Claim Audit</h1>
+  
+  
+  <div class="meta">
+    <span><strong>Source:</strong> <code>PAPER_CLAIM_AUDIT.md</code></span>
+    <span><strong>SHA256:</strong> <code>60d68746744b</code></span>
+    <span><strong>Rendered:</strong> 2026-10-17 22:35 UTC</span>
+    
+  </div>
+</header>
+
+<h1 id="paper-claim-audit">Paper Claim Audit</h1>
+<ul><li>Audit date: 2026-10-18</li><li>Paper source: <code>paper/main.tex</code></li><li>Verdict: <strong>FAIL</strong></li><li>Acceptance status: <code>provisional</code></li><li>Review independence: <code>same-family</code></li><li>Fresh reviewer: <code>gpt-5.6-sol</code>, reasoning <code>ultra</code></li><li>Test result available: <strong>no</strong></li><li>Audited inputs: 89 files (the paper plus 88 eligible JSON/CSV evidence files)</li><li>Paper SHA-256: <code>d41ae70aead79fd28b62e84d43ccaf3da7f44ae27132c4ec404271a61d860d6e</code></li><li>Complete per-input SHA-256 manifest: <code>PAPER_CLAIM_AUDIT.json</code> → <code>audited_input_hashes</code></li><li>Trace: <code>.aris/traces/paper-claim-audit/2026-10-18_run01/</code></li></ul>
+<h2 id="verdict">Verdict</h2>
+<p>The principal Hunan and Hubei synchronous validation results, the Hubei matched forecast-input result, the mapped retrieval results, and the mapped forecast-COT results reconcile with the permitted raw JSON/CSV evidence. The manuscript nevertheless fails the paper-to-evidence gate because one direct-COT value is internally inconsistent and 25 claim groups lack eligible evidence. Two further groups are unsupported by the permitted sources, and three have ambiguous evidence mappings.</p>
+<p>No independent test result was inferred. The eligible artifacts consistently identify validation-only scope and zero test-payload reads.</p>
+<h2 id="status-summary">Status summary</h2>
+<table><thead><tr><th>Status</th><th style="text-align:right">Count</th></tr></thead><tbody><tr><td><code>exact_match</code></td><td style="text-align:right">10</td></tr><tr><td><code>rounding_ok</code></td><td style="text-align:right">15</td></tr><tr><td><code>ambiguous_mapping</code></td><td style="text-align:right">3</td></tr><tr><td><code>missing_evidence</code></td><td style="text-align:right">25</td></tr><tr><td><code>number_mismatch</code></td><td style="text-align:right">1</td></tr><tr><td><code>unsupported_claim</code></td><td style="text-align:right">2</td></tr><tr><td><code>config_mismatch</code></td><td style="text-align:right">0</td></tr><tr><td><code>aggregation_mismatch</code></td><td style="text-align:right">0</td></tr><tr><td><code>scope_overclaim</code></td><td style="text-align:right">0</td></tr><tr><td><strong>Total</strong></td><td style="text-align:right"><strong>56</strong></td></tr></tbody></table>
+<h2 id="material-findings">Material findings</h2>
+<ol><li><code>main.tex</code> reports the same direct-COT hybrid local 3×3 RMSE as <code>12.163</code> at line 275 and <code>12.162</code> at line 277. No permitted direct-model artifact resolves which value is correct.</li><li>No eligible raw evidence supports the signed-residual control, direct-COT screen, amplitude-weighting screen, seven thick-cloud episodes, adjacent-change diagnostic, or fixed-head replacement diagnostic.</li><li>The Hubei AC-versus-AL common-support result (<code>1458</code> rows, <code>21</code> dates, AC <code>72.867</code>, AL <code>72.785</code>, difference <code>+0.082</code>, CI <code>[-1.490,+1.713]</code>) is not present in the eligible files. The available AL JSON instead covers a different full support of <code>2456</code> rows and yields AL mean RMSE <code>71.089743</code>; it cannot verify or contradict the manuscript's common-support result.</li><li>The eligible Hubei forecast artifacts do not bind the upstream SimVP checkpoint, regional lineage, or five-fold OOF prediction bank. Therefore no Hunan/Hubei upstream-model provenance mismatch can be established, but the manuscript's Hubei-specific provenance statement remains unverified.</li><li><code>fig1_cot_value_and_forecast_limits_data.json</code> contains an older eight-date forecast-COT block. The manuscript's current forecast-COT values map exactly to the newer Fig. 7 summary, so the older block was treated as stale/unmapped evidence, not a contradiction.</li></ol>
+<h2 id="per-claim-reconciliation">Per-claim reconciliation</h2>
+<p>Repeated claims in the abstract, results, discussion, conclusion, captions, and appendix are grouped into one record.</p>
+<table><thead><tr><th>ID</th><th>Lines</th><th>Status</th><th>Claim and reconciliation</th></tr></thead><tbody><tr><td>C01</td><td>31–33</td><td><code>unsupported_claim</code></td><td>Prior-work scope claims require external literature, which was outside the permitted evidence roots.</td></tr><tr><td>C02</td><td>37, 40, 50–56, 230, 234</td><td><code>exact_match</code></td><td>Sili/Zhujia are Hunan; Niushou/Wangzhai/Mizhuang are Hubei; regional scores are kept separate.</td></tr><tr><td>C03</td><td>37, 40, 172</td><td><code>missing_evidence</code></td><td>Hubei artifacts are region-labelled, but eligible files do not establish both complete regional training lineages or rule out transfer end to end.</td></tr><tr><td>C04</td><td>42, 46</td><td><code>missing_evidence</code></td><td>Exact AGRI/GHI/CPP date spans are absent from eligible files.</td></tr><tr><td>C05</td><td>50–56, 85</td><td><code>exact_match</code></td><td>Hunan <code>4479</code>, <code>2128/2351</code>, <code>52</code> dates and Hubei <code>2456</code>, <code>856/784/816</code> reproduce exactly.</td></tr><tr><td>C06</td><td>85</td><td><code>missing_evidence</code></td><td>Hunan training count <code>50,458</code> is absent.</td></tr><tr><td>C07</td><td>56, 63–80</td><td><code>ambiguous_mapping</code></td><td>Only the Hubei 15-minute target is bound; incomplete-window wording is not consistently mapped.</td></tr><tr><td>C08</td><td>56</td><td><code>exact_match</code></td><td>Hubei engineering-unit and calibration-metadata limitation is stated in run metadata.</td></tr><tr><td>C09</td><td>58, 93, 103, 115–139</td><td><code>ambiguous_mapping</code></td><td>16×16/3×3 support and 13 normalization entries are present; exact channels, geometry, and full architecture are not.</td></tr><tr><td>C10</td><td>60, 204–218, 274–289</td><td><code>exact_match</code></td><td>CPP is identified as a sparse retrieval reference rather than independent truth, with common-valid support.</td></tr><tr><td>C11</td><td>83</td><td><code>missing_evidence</code></td><td>Monthly split, buffers, sparse-month rule, and shared mapping lack an eligible manifest.</td></tr><tr><td>C12</td><td>85, 172–181</td><td><code>missing_evidence</code></td><td>Sixteen +15…+240-minute leads are present; eight-frame history and SimVP implementation details are not.</td></tr><tr><td>C13</td><td>97–113</td><td><code>missing_evidence</code></td><td>Retriever architecture and training hyperparameters lack eligible configuration evidence.</td></tr><tr><td>C14</td><td>115–139</td><td><code>missing_evidence</code></td><td>Train-fitted normalization is supported; detailed branch dimensions and softplus output are not.</td></tr><tr><td>C15</td><td>144–157</td><td><code>rounding_ok</code></td><td>A/AC/AP parameters are <code>22177/24489/24613</code>; AP differs from AC by <code>0.50635%</code>.</td></tr><tr><td>C16</td><td>159–169</td><td><code>exact_match</code></td><td>Hubei seeds, 30 epochs, batches <code>512/1536</code>, and physical-GHI MSE match metadata.</td></tr><tr><td>C17</td><td>113, 167–169, 179</td><td><code>missing_evidence</code></td><td>Hunan training settings, paired initialization/permutations, freezing, and 12 epochs are absent.</td></tr><tr><td>C18</td><td>172–181</td><td><code>missing_evidence</code></td><td>AL binds a frozen Hubei retriever, but upstream SimVP identity and five-fold OOF/full-bank provenance are not bound.</td></tr><tr><td>C19</td><td>187–198</td><td><code>exact_match</code></td><td>Station-within-seed RMSE, equal station/seed averaging, and non-ensemble endpoint match.</td></tr><tr><td>C20</td><td>198, 285</td><td><code>rounding_ok</code></td><td>Forecast-input one-day and two-day intervals both use 10,000 resamples and match.</td></tr><tr><td>C21</td><td>198, 228, 249</td><td><code>missing_evidence</code></td><td>Other asserted 2,000/10,000 bootstrap draw counts are not recorded in eligible artifacts.</td></tr><tr><td>C22</td><td>25, 226, 293, 302</td><td><code>rounding_ok</code></td><td>Hunan <code>123.980→120.240</code>, gain <code>3.740</code> (<code>3.02%</code>), CI <code>[-6.180,-1.597]</code> matches.</td></tr><tr><td>C23</td><td>226</td><td><code>missing_evidence</code></td><td>Eligible Hunan evidence has station means, not station×seed values needed for “every seed.”</td></tr><tr><td>C24</td><td>25, 228, 293, 302</td><td><code>rounding_ok</code></td><td>Hubei A/AC/AP <code>74.333/70.993/73.839</code>, deltas, <code>4.49%</code>, and 8/9 paired wins reproduce.</td></tr><tr><td>C25</td><td>25, 228</td><td><code>rounding_ok</code></td><td>Hubei AC−A CI <code>[-5.800,-1.118]</code> equals the stored A−AC interval after sign reversal.</td></tr><tr><td>C26</td><td>228</td><td><code>missing_evidence</code></td><td>AC−AP and two-day same-time intervals are absent.</td></tr><tr><td>C27</td><td>26, 228, 293, 301</td><td><code>ambiguous_mapping</code></td><td>Available full-support AL evidence cannot verify the manuscript's different 1,458-row common-support comparison.</td></tr><tr><td>C28</td><td>228</td><td><code>exact_match</code></td><td>AL definition and AL/AC parameters <code>24549/24489</code> match metadata.</td></tr><tr><td>C29</td><td>218</td><td><code>rounding_ok</code></td><td>Hunan pooled retrieval <code>n=356169</code>, RMSE <code>9.074</code>, MAE <code>4.646</code>, bias <code>+0.279</code>, <code>1398</code> patches, <code>46</code> dates match.</td></tr><tr><td>C30</td><td>218</td><td><code>missing_evidence</code></td><td>Station-equal Hunan retrieval RMSE <code>9.053</code> is absent; only pooled <code>9.074092</code> is present.</td></tr><tr><td>C31</td><td>218</td><td><code>rounding_ok</code></td><td>Hubei retrieval <code>n=66304</code>, RMSE <code>13.357</code>, MAE <code>9.465</code>, bias <code>−1.303</code>, <code>16</code> dates match.</td></tr><tr><td>C32</td><td>218</td><td><code>missing_evidence</code></td><td>Hubei frame count <code>259</code> is absent.</td></tr><tr><td>C33</td><td>218</td><td><code>rounding_ok</code></td><td>CPP≥30 retrieval biases, CIs, pixel counts, and date counts match for both regions.</td></tr><tr><td>C34</td><td>222</td><td><code>exact_match</code></td><td>Retrieval-bias intervals use 2,000 BJT target-date resamples.</td></tr><tr><td>C35</td><td>236</td><td><code>rounding_ok</code></td><td>High-sun A/AC/AP RMSE <code>154.111/148.645/153.854</code> and 1,527 unique examples match.</td></tr><tr><td>C36</td><td>236</td><td><code>missing_evidence</code></td><td>Point difference is derivable, but union-date scope and CI <code>[-8.990,-2.152]</code> are not eligible.</td></tr><tr><td>C37</td><td>236</td><td><code>rounding_ok</code></td><td>Thirty-date daily MAE and A/AC bias values match.</td></tr><tr><td>C38</td><td>236</td><td><code>missing_evidence</code></td><td>Daily MAE point difference is reproducible; CI <code>[-0.0861,-0.0067]</code> is absent.</td></tr><tr><td>C39</td><td>238, 249, 312–322</td><td><code>rounding_ok</code></td><td>All four CPP-stratum totals, dates, A/AC RMSEs, reductions, and intervals match.</td></tr><tr><td>C40</td><td>242, 319–322</td><td><code>missing_evidence</code></td><td>Per-station stratum counts and thick-stratum station RMSE/bias are absent.</td></tr><tr><td>C41</td><td>244</td><td><code>missing_evidence</code></td><td>Retrieved-COT grouped gains <code>0.33/1.00/6.09/24.32%</code> are absent.</td></tr><tr><td>C42</td><td>252, 258</td><td><code>rounding_ok</code></td><td>All four event-case RMSE pairs and identifiers match the case CSV.</td></tr><tr><td>C43</td><td>254</td><td><code>unsupported_claim</code></td><td>Case CSV does not establish trajectories, smoothing behavior, or the asserted archive-wide seasonal reason.</td></tr><tr><td>C44</td><td>261, 265–269, 293, 302</td><td><code>rounding_ok</code></td><td>Hunan capacity control <code>123.822</code>, gain <code>3.582</code>, and CI match after orientation reversal.</td></tr><tr><td>C45</td><td>25, 202, 263, 293, 302</td><td><code>missing_evidence</code></td><td>Signed-residual metrics, CI, parameters, training, and OOF details have no eligible artifact.</td></tr><tr><td>C46</td><td>25, 274, 295, 302</td><td><code>rounding_ok</code></td><td>Original/persistence forecast-COT RMSE/CSI and all three fine-tune scores/deltas match Fig. 7 raw evidence.</td></tr><tr><td>C47</td><td>25, 274</td><td><code>missing_evidence</code></td><td>Equal training budget for the three loss candidates is not bound.</td></tr><tr><td>C48</td><td>25, 275, 295, 302</td><td><code>missing_evidence</code></td><td>Direct-COT design/results lack eligible raw evidence; common support counts alone are insufficient.</td></tr><tr><td>C49</td><td>275, 277</td><td><code>number_mismatch</code></td><td>The same direct hybrid local RMSE is <code>12.163</code> and <code>12.162</code>.</td></tr><tr><td>C50</td><td>277, 295</td><td><code>missing_evidence</code></td><td>Amplitude-weighted results lack eligible raw evidence.</td></tr><tr><td>C51</td><td>279, 295, 302</td><td><code>missing_evidence</code></td><td>Seven-episode scores and “all three Zhujia misses” lack eligible raw evidence.</td></tr><tr><td>C52</td><td>281</td><td><code>missing_evidence</code></td><td>Transition counts, change correlations/slopes, RMSE deltas/CIs, and CPP-change results are absent.</td></tr><tr><td>C53</td><td>283</td><td><code>missing_evidence</code></td><td>Fixed-head replacement counts, RMSEs, deltas, and CIs are absent.</td></tr><tr><td>C54</td><td>25, 183, 285, 297, 302</td><td><code>rounding_ok</code></td><td>Hubei FA/FAC scope, <code>77.150/78.155</code>, <code>+1.005</code>, <code>1.30%</code>, one favorable seed, and both CIs match.</td></tr><tr><td>C55</td><td>25–26, 85, 212, 228, 285, 297, 302</td><td><code>exact_match</code></td><td>Mapped evidence is validation-only; test remains closed with zero test-payload reads.</td></tr><tr><td>C56</td><td>289</td><td><code>exact_match</code></td><td>Fig. 7 local 3×3 support, station-lead macro RMSE, COT≥30 threshold, and pooled aggregate CSI convention match.</td></tr></tbody></table>
+<h2 id="evidence-and-scope-limitations">Evidence and scope limitations</h2>
+<ul><li>Read scope was limited to <code>main.tex</code> and eligible <code>.json</code>/<code>.csv</code> files in the nine user-listed locations.</li><li>Files whose basename contained <code>AUDIT</code>, <code>REVIEW</code>, or <code>PROGRESS</code> were excluded.</li><li>No NPZ, HDF, XLSX, checkpoint, test payload, buffer payload, radiation array, image, project plan, progress note, or prior audit report was opened.</li><li>Figure-caption numerical claims were checked against raw tabular data, but visual fidelity of PNG/PDF/SVG figures was not inspected because those formats were outside the authorized read set.</li><li>The complete 89-file path/hash manifest is in the JSON companion. The trace also records the exact paths read.</li><li>The trace helper and tracing reference files were present. The collaboration backend exposed the reviewer canonical agent path but no skill-thread UUID, so no UUID was fabricated.</li></ul>
+<h2 id="publication-gate">Publication gate</h2>
+<p><code>FAIL</code> is provisional because the reviewer belongs to the same model family as the executor. Before the manuscript can pass, the internal direct-COT value must be made consistent and every material <code>missing_evidence</code>, <code>ambiguous_mapping</code>, or <code>unsupported_claim</code> group must either receive a permitted raw artifact or be removed/qualified in the manuscript. Independent test claims remain closed.</p>
+<h2 id="sidecar-json">Sidecar — <code>PAPER_CLAIM_AUDIT.json</code></h2>
+<details><summary>Sidecar JSON: <code>F:\CODE_Classify\辐照度预报\solar-cot-ifs\paper\PAPER_CLAIM_AUDIT.json</code></summary><pre><code class="language-json">{
+  &quot;audit_skill&quot;: &quot;paper-claim-audit&quot;,
+  &quot;verdict&quot;: &quot;FAIL&quot;,
+  &quot;reason_code&quot;: &quot;claim_mismatch_and_missing_evidence&quot;,
+  &quot;summary&quot;: &quot;The primary Hunan/Hubei synchronous and Hubei forecast-input validation numbers reconcile to the permitted JSON/CSV evidence, but one direct-COT value is internally inconsistent (12.163 versus 12.162) and multiple material result/configuration families have no eligible raw support.&quot;,
+  &quot;audited_input_hashes&quot;: {
+    &quot;analyses/solar_resource_validation_20261017/daily_irradiation_errors.csv&quot;: &quot;sha256:5e689e5c81fc3547f02230459bec94e363bd1cd02ef57b5df5ec1268e73a4d56&quot;,
+    &quot;analyses/solar_resource_validation_20261017/high_sun_summary.csv&quot;: &quot;sha256:54fcc888ad9e0918bd516cdf14362d15ce91a069f86919a6a0781c7e3931d77c&quot;,
+    &quot;analyses/solar_resource_validation_20261017/stratified_validation_metrics.csv&quot;: &quot;sha256:450a79fe1cac2d9f1c7cbe9a99c35cdecd3bb64f34ae27a062398c3d881f5652&quot;,
+    &quot;analyses/t16_event_cases_20261017/case_summary.csv&quot;: &quot;sha256:708cf58b59149288be22039c0334c7153518fd424489ae550160330fecf7ad28&quot;,
+    &quot;figures/fig1_cot_value_and_forecast_limits_data.json&quot;: &quot;sha256:cdd8db9d5e0548921bf05259531e3790d155561fd91d83cd896df33b66fb1af6&quot;,
+    &quot;figures/fig3_retrieval_quality_strata.csv&quot;: &quot;sha256:4783a4c785bd61f94030582b98a21cf3a13c3e9be14eb2067d2821343dac41f0&quot;,
+    &quot;figures/fig3_retrieval_quality_summary.json&quot;: &quot;sha256:75c06f79dcef10c5ef8bf9123052c2db9f833c655ea0c6eee7ed13c94f2fd3c3&quot;,
+    &quot;figures/fig4_regional_paired_gain.csv&quot;: &quot;sha256:bac7753bdcdc76adff18d7ed366463762f9725848a30e295ae8ba1a520501b28&quot;,
+    &quot;figures/fig4_station_increment_data.csv&quot;: &quot;sha256:3c60d15a553a0267f8a00f823c49d905407b45f5060fbca370d6990f6f47b8d0&quot;,
+    &quot;figures/fig5_hunan_cpp_cot_strata.csv&quot;: &quot;sha256:514a3c7a0685724af7d7a596710f33cb1e1df120a74accef248d5e52aef160eb&quot;,
+    &quot;figures/fig7_forecast_cot_metrics_20261017.csv&quot;: &quot;sha256:bd692262025e854d7fe9d4de592a8681ab93f1e7c50a934eda68cf0fa651ec08&quot;,
+    &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;: &quot;sha256:dd87e056a27c9154cb33ea07709e55868b8ed095d6270932aa37682c0d53776f&quot;,
+    &quot;figures/fig7_forecast_cot_supervision_manifest.json&quot;: &quot;sha256:339b6471e2eb90992dc6cc03f584588f2893f5ed5f6da6dd1110d48ecb6532fc&quot;,
+    &quot;main.tex&quot;: &quot;sha256:d41ae70aead79fd28b62e84d43ccaf3da7f44ae27132c4ec404271a61d860d6e&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed42/Mizhuang/AL_validation.json&quot;: &quot;sha256:3f438c673dd66958d62791dbd5f1f3d11bcedb088dc8af50f3e0be15650b0452&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed42/Niushou/AL_validation.json&quot;: &quot;sha256:92b53644f10474653248cfa01dba6be6d833c82d82905dc73596665a052440b5&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed42/normalization_train_only.json&quot;: &quot;sha256:44844e0d8fea3c959316b94c80431f9c7726d075cad96d87b55c963c55b5f2c2&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed42/run_metadata.json&quot;: &quot;sha256:4d5e5a591bde67205e56dd9673b16ac6c50c296e82103c1bd93390536a5009cd&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed42/Wangzhai/AL_validation.json&quot;: &quot;sha256:44eeaefa8a64b065f791a1e3d36d0a1118335270662a6546b1495473b96851f7&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed43/Mizhuang/AL_validation.json&quot;: &quot;sha256:2fcea1456abf23db7b17e455380b58da716a827b71b020b5872a7bdb92aa6e31&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed43/Niushou/AL_validation.json&quot;: &quot;sha256:dc72a08dd96b8a86cc5c55ba42c24dbcb27e2b0d472d8951b0f6069197f5683c&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed43/normalization_train_only.json&quot;: &quot;sha256:44844e0d8fea3c959316b94c80431f9c7726d075cad96d87b55c963c55b5f2c2&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed43/run_metadata.json&quot;: &quot;sha256:102c5469bbe29a5a18c09071e16769683902bf1b758b05bc9ee798a64486c5ad&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed43/Wangzhai/AL_validation.json&quot;: &quot;sha256:b9d18f33c81e4cdee42fc032552ce4054fad382e905f0091b4ece8efa768786b&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed44/Mizhuang/AL_validation.json&quot;: &quot;sha256:905c783d887a96e429104795fb825f301ae7d347ce455fa29cc316672c413be0&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed44/Niushou/AL_validation.json&quot;: &quot;sha256:03c69adf3adce92763c40e11d496e4ace2cd1c7d1c8e0f6bc4e960370583568a&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed44/normalization_train_only.json&quot;: &quot;sha256:44844e0d8fea3c959316b94c80431f9c7726d075cad96d87b55c963c55b5f2c2&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed44/run_metadata.json&quot;: &quot;sha256:273e0b2006b52f088610eedad0a8d061b60d7e51ab054ba83a211839bcf17cc8&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_raw_20261017/runs_maskfix_v2/seed44/Wangzhai/AL_validation.json&quot;: &quot;sha256:09570b3857da5b77ad1b8491295c3fc747d9b8fb62a9017a3fb8e9140dd71b43&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/Mizhuang/FA_validation.json&quot;: &quot;sha256:9f5e7b198faeb773c69be16b030217a7a5ef23ce30c2389c93903b40b61af0f6&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/Mizhuang/FAC_validation.json&quot;: &quot;sha256:aca33b7dbafcdb016accdbdac9d9fbe10e4245b6c868803cecb5a266ab725594&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/Niushou/FA_validation.json&quot;: &quot;sha256:45b480f1d368e0467175dc81de62208ecb5ab23919c18349c164f73f92ac28c7&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/Niushou/FAC_validation.json&quot;: &quot;sha256:0e188301cf4fce4973b48c7c3e59a02d2551868771a12d1d1d98a50a8c370a63&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/normalization_contract.json&quot;: &quot;sha256:4e4b93bd77119bf3c6a3003effed4e62e81f7c5bb726de85f62c99de1291a2aa&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/run_metadata.json&quot;: &quot;sha256:a6980127db59895cafec16cb34897df3b42d1ba742e30e4bb1b240c26ef9e33c&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/Wangzhai/FA_validation.json&quot;: &quot;sha256:0d7eae39642b8232cc544c0b7181e4d260d41ed7eb4e8821e49c1e0320cfe56a&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed42_20261017/run/Wangzhai/FAC_validation.json&quot;: &quot;sha256:ce3168216c66e7a18a5882a5454f844ab7ea13046fa8ab1f3502a6301b6e093a&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/Mizhuang/FA_validation.json&quot;: &quot;sha256:4bb83ee70029fe1d2870f2e5ccec712b93310f6c1e1e1720eacc09050a10e16f&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/Mizhuang/FAC_validation.json&quot;: &quot;sha256:edb4f58c65788483cf20f3a44992a8d473029ac81a91f91e0e2ba8c72ca1cca5&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/Niushou/FA_validation.json&quot;: &quot;sha256:6e39ae6cfc543310f3e1b82018c6bc3d018c772e755d2f48bcfce48f82ca2030&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/Niushou/FAC_validation.json&quot;: &quot;sha256:0af162682e2691b37e5c2dde31c499ae040da8cb9308244c37e37ceaf11ef50c&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/normalization_contract.json&quot;: &quot;sha256:4e4b93bd77119bf3c6a3003effed4e62e81f7c5bb726de85f62c99de1291a2aa&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/run_metadata.json&quot;: &quot;sha256:e73e7a9e54715e8a55eb0bc191e7652c27c356849e49a1cba8b1b1b3635d91dd&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/Wangzhai/FA_validation.json&quot;: &quot;sha256:1733683499b7e58a53274d2fcc81a0d352eee1d46883d1c236d0aac5edc92836&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed43_20261017/run/Wangzhai/FAC_validation.json&quot;: &quot;sha256:3aab1449abe47c380060aaf88061aae2e74344e2f798c6aa3b50e3517d813ada&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/Mizhuang/FA_validation.json&quot;: &quot;sha256:b8de027565e3ff074250dbb5671b9d05112b19cf1ba767cff500724eb4d3175e&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/Mizhuang/FAC_validation.json&quot;: &quot;sha256:b908e42fb331440417938f8cbbe0fd212da357109a3dca589631b91efde2c8a0&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/Niushou/FA_validation.json&quot;: &quot;sha256:bb50bba88b6d8d8c8c682afa0962f8886c8dc6494d7421c240c8696746e8b143&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/Niushou/FAC_validation.json&quot;: &quot;sha256:32614e1baa91745cc677081d806a97bf9621cfaf438a9704561b1b1c76a92b8b&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/normalization_contract.json&quot;: &quot;sha256:4e4b93bd77119bf3c6a3003effed4e62e81f7c5bb726de85f62c99de1291a2aa&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/run_metadata.json&quot;: &quot;sha256:560d8d980d6e579e8be89b6b98e163fe3584b4b45e53433161898039ba2fa4a7&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/Wangzhai/FA_validation.json&quot;: &quot;sha256:1c795d237c3112128d5ea50e97203f6958cf5d9a4de83ad328a85a22b7c2a099&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_normreload_seed44_20261017/run/Wangzhai/FAC_validation.json&quot;: &quot;sha256:8b171c0667167cedbc7aca660d87d7ac936e994d49b6dabc014793edfb656aab&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_three_seed_normreload_20261017/three_seed_per_lead_metrics.csv&quot;: &quot;sha256:ed7ab1e60aaaad3a3213301af9859299f3ceaec3f5a145770db1a1995799af13&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_three_seed_normreload_20261017/three_seed_station_seed_metrics.csv&quot;: &quot;sha256:d09de661a4db0aaddc940bbe5fc3fc69f49e20548bedbc2a13a9325c07712084&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_three_seed_normreload_20261017/three_seed_validation_summary.json&quot;: &quot;sha256:da001ff6bc6b42c8737ca626b1344a07f095666c4c19f5c397077cee9b39da5f&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Mizhuang/A_validation.json&quot;: &quot;sha256:b79655ca94fbf009e36ad6f07736a1577cdacee8ba11cfdb6fe5bdfedaa3ff25&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Mizhuang/AC_validation.json&quot;: &quot;sha256:2e1dde9a2e2830dd2cc6ef37a253f3953f73d69c12171c3dbf93b5a82048c9a7&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Mizhuang/AP_validation.json&quot;: &quot;sha256:326eeb02dc594c1a49f333a4be8476b4faa72905007cc35c4cae50b9fcf312e0&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Niushou/A_validation.json&quot;: &quot;sha256:ad73a58c3e4050b6518080083fcf24569f31e5b23a0938672c5b41723c56d4cc&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Niushou/AC_validation.json&quot;: &quot;sha256:b45b57a5c6262abc3d86438170ca4efd09f9d44bd6221445e73ceac8fcac325d&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Niushou/AP_validation.json&quot;: &quot;sha256:ce00dfe11023b878bb629b84633cd3752186fa994073d0dc1fed5eb06a6d2dba&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/normalization_contract.json&quot;: &quot;sha256:fd9957b15d0bb2549c6827c0e58c399e060498d810014ebc3d62d6cc909c277d&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/run_metadata.json&quot;: &quot;sha256:c73bc726a1fa26b62bd33302e1c169ebdd1b4b4922c1f0e1a4f02601188b70b6&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Wangzhai/A_validation.json&quot;: &quot;sha256:c4910853fc8f280d77045304a4df5d8c341ce7e275929bee57254d2570873b9b&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Wangzhai/AC_validation.json&quot;: &quot;sha256:6dc7904d0cbd3280ba7df43e61fa34a6989c138c1c8f85da5b51dabcdb337ad4&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed42_normreload_v1/Wangzhai/AP_validation.json&quot;: &quot;sha256:77d671096ca0085dcef217546459654c4ee32bb0afe6b64328ffdde4eb871183&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Mizhuang/A_validation.json&quot;: &quot;sha256:5ceb45a33ecbed355a64d41b2f69c35d51a39f76a670375cc0db28039080d9c8&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Mizhuang/AC_validation.json&quot;: &quot;sha256:f6f207c743c4879c1d8111c9812d14a20150157de56f46476bd0d127705c12da&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Mizhuang/AP_validation.json&quot;: &quot;sha256:d0e1a2865bfa453b780a963963af248dffe8fe236c6ff1d86fa9716d1bd367e5&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Niushou/A_validation.json&quot;: &quot;sha256:42c9fc06568318aef05e865b620f937a84cbd772b9b1f0355e52dc1234b27660&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Niushou/AC_validation.json&quot;: &quot;sha256:6a1fcd0c018abffae7c81de5dd269a160b0ff2f49e1cc76267fddb19f6ad8a61&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Niushou/AP_validation.json&quot;: &quot;sha256:917563c1e083ed31f30f58f174ff6c90531dd2dde1acd7aa23ba564d63400064&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/normalization_contract.json&quot;: &quot;sha256:fd9957b15d0bb2549c6827c0e58c399e060498d810014ebc3d62d6cc909c277d&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/run_metadata.json&quot;: &quot;sha256:e824d954f058ddd438fd2921ed27104bebced70e5315fe65bf9b4834ab9ad089&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Wangzhai/A_validation.json&quot;: &quot;sha256:df48f3dd20dffcdba40bf3d8c42d552d0d05691f3245f4352281abb7989dc288&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Wangzhai/AC_validation.json&quot;: &quot;sha256:6af9ee811a05d337d7ad12e9efeca094bf88deee723c502f65e8ea5f6b387943&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed43_normreload_v1/Wangzhai/AP_validation.json&quot;: &quot;sha256:52e77be40c8998ddbab80a6e6916f1c2611cc916c98911c0454e26112a74d113&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Mizhuang/A_validation.json&quot;: &quot;sha256:30404ed0c671bba7ec478c91c3eef191298b54886a4dd92fd00cf5e95253164d&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Mizhuang/AC_validation.json&quot;: &quot;sha256:7e72d8a1268f15733a4b235f39ad477d33a2f76806bfd5ae5d4374236757e000&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Mizhuang/AP_validation.json&quot;: &quot;sha256:b75849523611be129e763524fcb345da9e62081c5d336ad38d051ff20fab3413&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Niushou/A_validation.json&quot;: &quot;sha256:6bfca80a3e79d75f625ea1d8adc9391d8dc0a49105d7335a3c80979d1f50c18d&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Niushou/AC_validation.json&quot;: &quot;sha256:dd8c5113c723f9b040f7d572275e76538cdf5c018862277abd5ca74775f70b25&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Niushou/AP_validation.json&quot;: &quot;sha256:eca9d5aeca608897a9f126c7eae8936267cd72c685bfeb6e6466ecb9115c4dd5&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/normalization_contract.json&quot;: &quot;sha256:fd9957b15d0bb2549c6827c0e58c399e060498d810014ebc3d62d6cc909c277d&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/run_metadata.json&quot;: &quot;sha256:10d5df8be2b3baf2cd8900bc5e82d09b2e832008838637bdd2be0da7d7ac91af&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Wangzhai/A_validation.json&quot;: &quot;sha256:eb0eb3fba98379be07c4a3a7d127011f0998b94e493bdee37d13ff792e355717&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Wangzhai/AC_validation.json&quot;: &quot;sha256:af6ed8e4964c8631893a187fd83e27acb3d20c390aa1e4d478415331c22cdc27&quot;,
+    &quot;F:/CODE_Classify/辐照度预报/solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_normreload_runs_20261017/same_time_seed44_normreload_v1/Wangzhai/AP_validation.json&quot;: &quot;sha256:c0f1b893e8fcb6e5943b78a003631b76f7694fd766d8bf827d9d098c42d8a1c9&quot;
+  },
+  &quot;trace_path&quot;: &quot;.aris/traces/paper-claim-audit/2026-10-18_run01/&quot;,
+  &quot;agent_id&quot;: &quot;/root/hubei_paper_claim_audit/fresh_reviewer&quot;,
+  &quot;thread_id&quot;: null,
+  &quot;executor_model&quot;: &quot;codex (exact executor identifier unavailable)&quot;,
+  &quot;executor_family&quot;: &quot;openai&quot;,
+  &quot;reviewer_model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;reviewer_family&quot;: &quot;openai&quot;,
+  &quot;review_independence&quot;: &quot;same-family&quot;,
+  &quot;acceptance_status&quot;: &quot;provisional&quot;,
+  &quot;reviewer_reasoning&quot;: &quot;ultra&quot;,
+  &quot;generated_at&quot;: &quot;2026-10-17T22:26:45Z&quot;,
+  &quot;details&quot;: {
+    &quot;total_claim_groups&quot;: 56,
+    &quot;status_counts&quot;: {
+      &quot;exact_match&quot;: 10,
+      &quot;rounding_ok&quot;: 15,
+      &quot;ambiguous_mapping&quot;: 3,
+      &quot;missing_evidence&quot;: 25,
+      &quot;number_mismatch&quot;: 1,
+      &quot;unsupported_claim&quot;: 2,
+      &quot;config_mismatch&quot;: 0,
+      &quot;aggregation_mismatch&quot;: 0,
+      &quot;scope_overclaim&quot;: 0
+    },
+    &quot;material_issues&quot;: [
+      &quot;main.tex reports the same direct-COT hybrid local 3x3 RMSE as 12.163 at line 275 and 12.162 at line 277; no eligible raw evidence resolves which is correct.&quot;,
+      &quot;No eligible evidence supports the signed-residual control, direct-COT screen, amplitude-weighting screen, seven thick-cloud episodes, adjacent-change diagnostic, or fixed-head GHI replacement diagnostic.&quot;,
+      &quot;No eligible evidence supports the Hubei AC-versus-AL common-support values, counts, or interval; only full-support AL station/seed metrics are available.&quot;,
+      &quot;The eligible Hubei forecast artifacts do not bind the upstream SimVP/retriever region or checkpoint provenance, so the paper&#x27;s Hubei-specific upstream-model claim is unverified rather than contradicted.&quot;
+    ],
+    &quot;test_boundary&quot;: &quot;No NPZ/HDF/XLSX/checkpoint or test/buffer payload was opened. Eligible artifacts consistently identify validation scope and record zero test-payload reads.&quot;,
+    &quot;trace_identity_limit&quot;: &quot;The collaboration backend exposed the reviewer canonical agent path but not a skill thread UUID; no UUID was fabricated.&quot;,
+    &quot;claim_groups&quot;: [
+      {
+        &quot;id&quot;: &quot;C01&quot;,
+        &quot;lines&quot;: &quot;31-33&quot;,
+        &quot;claim&quot;: &quot;Prior studies&#x27; inputs, constraints, horizons, cloud properties, and independent-test scope.&quot;,
+        &quot;status&quot;: &quot;unsupported_claim&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;External papers were outside the permitted evidence roots.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C02&quot;,
+        &quot;lines&quot;: &quot;37,40,50-56,230,234&quot;,
+        &quot;claim&quot;: &quot;Hunan uses Sili/Zhujia; Hubei uses Niushou/Wangzhai/Mizhuang; scores are region-separated.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig4_station_increment_data.csv&quot;,
+          &quot;Hubei same-time run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;The five stations and their regions match.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C03&quot;,
+        &quot;lines&quot;: &quot;37,40,172&quot;,
+        &quot;claim&quot;: &quot;The regional evaluations are independently trained and are not zero-shot transfer.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei same-time run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;Hubei artifacts are region-labelled, but no eligible Hunan lineage or complete chain binding is present.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C04&quot;,
+        &quot;lines&quot;: &quot;42,46&quot;,
+        &quot;claim&quot;: &quot;Exact Hunan/Hubei AGRI/GHI and CPP date spans.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible file establishes all stated date spans.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C05&quot;,
+        &quot;lines&quot;: &quot;50-56,85&quot;,
+        &quot;claim&quot;: &quot;Hunan validation n=4479, station counts 2128/2351 and 52 dates; Hubei n=2456 with 856/784/816.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig1_cot_value_and_forecast_limits_data.json&quot;,
+          &quot;figures/fig4_station_increment_data.csv&quot;,
+          &quot;Hubei A/AC/AP validation JSONs&quot;
+        ],
+        &quot;note&quot;: &quot;Counts reproduce exactly.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C06&quot;,
+        &quot;lines&quot;: &quot;85&quot;,
+        &quot;claim&quot;: &quot;The completed Hunan GHI cohort has 50,458 training examples.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible file records this count.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C07&quot;,
+        &quot;lines&quot;: &quot;56,63-80&quot;,
+        &quot;claim&quot;: &quot;Exact five-/one-minute aggregation, right-closed windows, incomplete-window handling, clear-sky timing, and solar filters.&quot;,
+        &quot;status&quot;: &quot;ambiguous_mapping&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;Only a 15-minute Hubei target is bound; line 56 masking language is not the same as the exclusion language at lines 71/78.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C08&quot;,
+        &quot;lines&quot;: &quot;56&quot;,
+        &quot;claim&quot;: &quot;Hubei labels retain the engineering W m-2 convention and calibration metadata were not independently verified.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei same-time and forecast run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;The metadata states this boundary explicitly.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C09&quot;,
+        &quot;lines&quot;: &quot;58,93,103,115-139&quot;,
+        &quot;claim&quot;: &quot;Thirteen named AGRI channels, 16x16 retrieval input, central 3x3 support, geometry inputs, and detailed branch dimensions.&quot;,
+        &quot;status&quot;: &quot;ambiguous_mapping&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;,
+          &quot;Hubei normalization JSONs&quot;
+        ],
+        &quot;note&quot;: &quot;16x16/3x3 support and 13 normalization entries are supported, but exact identities and the full architecture are not bound.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C10&quot;,
+        &quot;lines&quot;: &quot;60,204-216,218,274-289&quot;,
+        &quot;claim&quot;: &quot;CPP is a sparse retrieval reference, not independent truth; reference scores use common valid support.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;,
+          &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;
+        ],
+        &quot;note&quot;: &quot;Both evidence sets state the same scope boundary.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C11&quot;,
+        &quot;lines&quot;: &quot;83&quot;,
+        &quot;claim&quot;: &quot;Exact Hunan monthly validation/test blocks, one-day buffers, sparse-month rule, and shared date mapping.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible split manifest was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C12&quot;,
+        &quot;lines&quot;: &quot;85,172-181&quot;,
+        &quot;claim&quot;: &quot;Eight observed frames predict sixteen 15-minute targets with the stated SimVP implementation and widths.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig7_forecast_cot_metrics_20261017.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Sixteen +15 to +240 minute leads are supported, but the eight-frame history and implementation details are not.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C13&quot;,
+        &quot;lines&quot;: &quot;97-113&quot;,
+        &quot;claim&quot;: &quot;Retriever U-Net, masks, Huber delta 0.1, seed 42, batch 1284, optimizer, clipping, 50-epoch cap, and patience 8.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible retriever training configuration was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C14&quot;,
+        &quot;lines&quot;: &quot;115-139&quot;,
+        &quot;claim&quot;: &quot;Exact image/COT branch dimensions, local standardization, final MLP, and softplus output.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei normalization JSONs&quot;
+        ],
+        &quot;note&quot;: &quot;Train-fitted normalization is supported, not the full layer contract.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C15&quot;,
+        &quot;lines&quot;: &quot;144-157&quot;,
+        &quot;claim&quot;: &quot;A/AC/AP parameter counts 22177/24489/24613 and AP is within 0.51% of AC.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei same-time run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;Recorded counts match; relative difference is 0.50635%.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C16&quot;,
+        &quot;lines&quot;: &quot;159-169&quot;,
+        &quot;claim&quot;: &quot;Hubei seeds 42/43/44, 30 epochs, batch 512 or 1536, and physical-GHI MSE.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei same-time and forecast run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;All listed fields reproduce exactly.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C17&quot;,
+        &quot;lines&quot;: &quot;113,167-169,179&quot;,
+        &quot;claim&quot;: &quot;Hunan batch sizes, optimizer schedule, clipping, matched initialization/permutations, frozen retriever, and 12-epoch predictor training.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible Hunan training metadata was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C18&quot;,
+        &quot;lines&quot;: &quot;172-181&quot;,
+        &quot;claim&quot;: &quot;Hubei has a separately trained predictor/retriever, five-fold date-grouped OOF forecast inputs, and a frozen full-training validation bank.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei AL and forecast run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;AL identifies a frozen Hubei retriever, but no eligible artifact binds the SimVP identity or five-fold OOF bank.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C19&quot;,
+        &quot;lines&quot;: &quot;187-198&quot;,
+        &quot;claim&quot;: &quot;Regional endpoint averages station-within-seed RMSE equally across stations and seeds without ensembling.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig1_cot_value_and_forecast_limits_data.json&quot;,
+          &quot;forecast three_seed_validation_summary.json&quot;
+        ],
+        &quot;note&quot;: &quot;The estimand matches.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C20&quot;,
+        &quot;lines&quot;: &quot;198,285&quot;,
+        &quot;claim&quot;: &quot;Forecast-input one-day and consecutive-two-day bootstraps use 10,000 resamples.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;forecast three_seed_validation_summary.json&quot;
+        ],
+        &quot;note&quot;: &quot;Both n_boot values are 10000; intervals match after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C21&quot;,
+        &quot;lines&quot;: &quot;198,228,249&quot;,
+        &quot;claim&quot;: &quot;Other listed Hunan/Hubei/AL bootstraps use 2,000 or 10,000 resamples as stated.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig4_regional_paired_gain.csv&quot;,
+          &quot;figures/fig5_hunan_cpp_cot_strata.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Eligible files contain intervals but not the asserted draw counts for these analyses.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C22&quot;,
+        &quot;lines&quot;: &quot;25,226,293,302&quot;,
+        &quot;claim&quot;: &quot;Hunan RMSE 123.980 to 120.240, gain 3.740 or 3.02%, CI [-6.180,-1.597].&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig1_cot_value_and_forecast_limits_data.json&quot;,
+          &quot;figures/fig4_station_increment_data.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Exact contrast is -3.740251 and CI [-6.179577,-1.597259].&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C23&quot;,
+        &quot;lines&quot;: &quot;226&quot;,
+        &quot;claim&quot;: &quot;Both Hunan stations improved under each of three seeds.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig4_station_increment_data.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Only three-seed station means are eligible; seed-specific Hunan scores are absent.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C24&quot;,
+        &quot;lines&quot;: &quot;25,228,293,302&quot;,
+        &quot;claim&quot;: &quot;Hubei A/AC/AP 74.333/70.993/73.839; deltas -3.340/-2.846; 4.49%; AC wins 8/9 paired cells.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei A/AC/AP validation JSONs&quot;
+        ],
+        &quot;note&quot;: &quot;Recomputed values are 74.333301/70.993082/73.839222 and 8/9 wins.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C25&quot;,
+        &quot;lines&quot;: &quot;25,228&quot;,
+        &quot;claim&quot;: &quot;Hubei AC-minus-A interval is [-5.800,-1.118].&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig4_regional_paired_gain.csv&quot;
+        ],
+        &quot;note&quot;: &quot;The stored A-minus-AC interval [1.118,5.800] is equivalent after orientation reversal.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C26&quot;,
+        &quot;lines&quot;: &quot;228&quot;,
+        &quot;claim&quot;: &quot;Hubei AC-minus-AP and consecutive-two-day intervals.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible file records these intervals.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C27&quot;,
+        &quot;lines&quot;: &quot;26,228,293,301&quot;,
+        &quot;claim&quot;: &quot;On 1458 common rows over 21 dates, AC=72.867 and AL=72.785, difference +0.082, CI [-1.490,+1.713].&quot;,
+        &quot;status&quot;: &quot;ambiguous_mapping&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei AL validation JSONs&quot;
+        ],
+        &quot;note&quot;: &quot;Eligible AL JSON covers a different 2456-row support and gives AL mean 71.089743; it cannot verify or refute the common-support result.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C28&quot;,
+        &quot;lines&quot;: &quot;228&quot;,
+        &quot;claim&quot;: &quot;AL is a frozen Hubei-retriever 16-channel dec1 3x3 feature arm with 24549 parameters; AC has 24489.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;Hubei AL and same-time run_metadata.json&quot;
+        ],
+        &quot;note&quot;: &quot;Definition and parameter counts match exactly.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C29&quot;,
+        &quot;lines&quot;: &quot;218&quot;,
+        &quot;claim&quot;: &quot;Hunan pooled retrieval n=356169, RMSE 9.074, MAE 4.646, bias +0.279, 1398 patches, 46 dates.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;,
+          &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;
+        ],
+        &quot;note&quot;: &quot;All values match after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C30&quot;,
+        &quot;lines&quot;: &quot;218&quot;,
+        &quot;claim&quot;: &quot;Hunan station-equal retrieval RMSE is 9.053.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;
+        ],
+        &quot;note&quot;: &quot;Only pooled RMSE 9.074092 is present.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C31&quot;,
+        &quot;lines&quot;: &quot;218&quot;,
+        &quot;claim&quot;: &quot;Hubei retrieval n=66304, RMSE 13.357, MAE 9.465, bias -1.303, 16 dates.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;
+        ],
+        &quot;note&quot;: &quot;All values match after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C32&quot;,
+        &quot;lines&quot;: &quot;218&quot;,
+        &quot;claim&quot;: &quot;Hubei retrieval support has 259 frames.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;
+        ],
+        &quot;note&quot;: &quot;No frame count is stored.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C33&quot;,
+        &quot;lines&quot;: &quot;218&quot;,
+        &quot;claim&quot;: &quot;CPP&gt;=30 retrieval-bias values, intervals, pixel counts, and date counts for both regions.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_strata.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Hunan -8.71918 and Hubei -14.10943 with the stated intervals/counts match.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C34&quot;,
+        &quot;lines&quot;: &quot;222&quot;,
+        &quot;claim&quot;: &quot;Retrieval-bias intervals use 2,000 BJT target-date resamples.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig3_retrieval_quality_summary.json&quot;
+        ],
+        &quot;note&quot;: &quot;bootstrap_draws=2000 and bootstrap_unit is BJT target date.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C35&quot;,
+        &quot;lines&quot;: &quot;236&quot;,
+        &quot;claim&quot;: &quot;High-sun RMSE A/AC/AP=154.111/148.645/153.854 over 1527 unique station-target examples.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;analyses/solar_resource_validation_20261017/high_sun_summary.csv&quot;,
+          &quot;analyses/solar_resource_validation_20261017/stratified_validation_metrics.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Metrics and unique counts reproduce after accounting for three seeds.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C36&quot;,
+        &quot;lines&quot;: &quot;236&quot;,
+        &quot;claim&quot;: &quot;High-sun support spans 35 dates and AC-minus-A=-5.465 with CI [-8.990,-2.152].&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;analyses/solar_resource_validation_20261017/stratified_validation_metrics.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Per-station date counts are present; no eligible union-date list or interval artifact is present.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C37&quot;,
+        &quot;lines&quot;: &quot;236&quot;,
+        &quot;claim&quot;: &quot;Thirty complete dates have daily MAE A/AC/AP=0.5491/0.5032/0.5479 and biases A/AC=-0.0164/-0.0561.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;analyses/solar_resource_validation_20261017/daily_irradiation_errors.csv&quot;
+        ],
+        &quot;note&quot;: &quot;Thirty dates and all point estimates match.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C38&quot;,
+        &quot;lines&quot;: &quot;236&quot;,
+        &quot;claim&quot;: &quot;Daily MAE difference -0.0459 with CI [-0.0861,-0.0067].&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;analyses/solar_resource_validation_20261017/daily_irradiation_errors.csv&quot;
+        ],
+        &quot;note&quot;: &quot;The point difference is reproducible; no eligible interval artifact is present.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C39&quot;,
+        &quot;lines&quot;: &quot;238,249,312-322&quot;,
+        &quot;claim&quot;: &quot;Four CPP strata totals/dates, A/AC RMSE, percent reductions, and intervals.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig5_hunan_cpp_cot_strata.csv&quot;
+        ],
+        &quot;note&quot;: &quot;All four rows reproduce after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C40&quot;,
+        &quot;lines&quot;: &quot;242,319-322&quot;,
+        &quot;claim&quot;: &quot;Per-station stratum counts and thick-stratum station RMSE/bias changes.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig5_hunan_cpp_cot_strata.csv&quot;
+        ],
+        &quot;note&quot;: &quot;The eligible CSV stores regional totals only.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C41&quot;,
+        &quot;lines&quot;: &quot;244&quot;,
+        &quot;claim&quot;: &quot;Retrieved-COT grouping over all 4479 examples gives gains 0.33%, 1.00%, 6.09%, and 24.32%.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible file contains this grouping.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C42&quot;,
+        &quot;lines&quot;: &quot;252,258&quot;,
+        &quot;claim&quot;: &quot;Four event-case RMSE pairs, including Sili 2025-07-09 13:15 at 213.851/218.408.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;analyses/t16_event_cases_20261017/case_summary.csv&quot;
+        ],
+        &quot;note&quot;: &quot;All four pairs and identifiers match after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C43&quot;,
+        &quot;lines&quot;: &quot;254&quot;,
+        &quot;claim&quot;: &quot;Event COT rose then declined, heads were smoother, and only summer has complete sequences due to archive support.&quot;,
+        &quot;status&quot;: &quot;unsupported_claim&quot;,
+        &quot;evidence&quot;: [
+          &quot;analyses/t16_event_cases_20261017/case_summary.csv&quot;
+        ],
+        &quot;note&quot;: &quot;The CSV establishes summer cases, not trajectories or the archive-wide causal explanation.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C44&quot;,
+        &quot;lines&quot;: &quot;261,265-269,293,302&quot;,
+        &quot;claim&quot;: &quot;Hunan capacity control RMSE 123.822; control-minus-AC 3.582, CI [1.479,5.977].&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig1_cot_value_and_forecast_limits_data.json&quot;
+        ],
+        &quot;note&quot;: &quot;The opposite stored orientation is equivalent.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C45&quot;,
+        &quot;lines&quot;: &quot;25,202,263,293,302&quot;,
+        &quot;claim&quot;: &quot;Signed-residual scores, interval, parameter count, seeds, training settings, and OOF procedure.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible signed-residual artifact was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C46&quot;,
+        &quot;lines&quot;: &quot;25,274,295,302&quot;,
+        &quot;claim&quot;: &quot;Original/persistence forecast-COT RMSE and CSI plus three fine-tune scores and deltas.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;
+        ],
+        &quot;note&quot;: &quot;All reported values match after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C47&quot;,
+        &quot;lines&quot;: &quot;25,274&quot;,
+        &quot;claim&quot;: &quot;The three forecast-COT loss candidates had equal training budget.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;
+        ],
+        &quot;note&quot;: &quot;Methods and results are named, but budget equality is not bound.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C48&quot;,
+        &quot;lines&quot;: &quot;25,275,295,302&quot;,
+        &quot;claim&quot;: &quot;Direct-COT screen design, full/local RMSE, and four thickness-stratum scores/counts.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;
+        ],
+        &quot;note&quot;: &quot;Common support counts exist, but no direct-model results or provenance are eligible.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C49&quot;,
+        &quot;lines&quot;: &quot;275,277&quot;,
+        &quot;claim&quot;: &quot;The same base hybrid local 3x3 RMSE is reported as 12.163 and 12.162.&quot;,
+        &quot;status&quot;: &quot;number_mismatch&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;Internal manuscript mismatch of 0.001; no eligible direct-model evidence resolves it.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C50&quot;,
+        &quot;lines&quot;: &quot;277,295&quot;,
+        &quot;claim&quot;: &quot;Amplitude-weighted model RMSE and thick-stratum improvements.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible amplitude-weighted artifact was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C51&quot;,
+        &quot;lines&quot;: &quot;279,295,302&quot;,
+        &quot;claim&quot;: &quot;Seven thick-cloud episodes with station-specific RMSE/CSI and all three Zhujia misses.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible episode artifact was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C52&quot;,
+        &quot;lines&quot;: &quot;281&quot;,
+        &quot;claim&quot;: &quot;Transition counts, correlations/slopes, change-RMSE differences/CIs, and CPP-change correlations.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible adjacent-change artifact was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C53&quot;,
+        &quot;lines&quot;: &quot;283&quot;,
+        &quot;claim&quot;: &quot;Fixed-head replacement sensitivity counts, RMSE, deltas, and intervals.&quot;,
+        &quot;status&quot;: &quot;missing_evidence&quot;,
+        &quot;evidence&quot;: [],
+        &quot;note&quot;: &quot;No eligible fixed-head sensitivity artifact was supplied.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C54&quot;,
+        &quot;lines&quot;: &quot;25,183,285,297,302&quot;,
+        &quot;claim&quot;: &quot;Forecast-input FA/FAC scope, scores, change, seed direction, and one-/two-day intervals.&quot;,
+        &quot;status&quot;: &quot;rounding_ok&quot;,
+        &quot;evidence&quot;: [
+          &quot;forecast three_seed_validation_summary.json&quot;,
+          &quot;forecast three_seed_station_seed_metrics.csv&quot;
+        ],
+        &quot;note&quot;: &quot;All reported values match after rounding.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C55&quot;,
+        &quot;lines&quot;: &quot;25-26,85,212,228,285,297,302&quot;,
+        &quot;claim&quot;: &quot;All reported results are validation evidence; the independent test is unopened and unreported.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;eligible mapped result and run metadata files&quot;
+        ],
+        &quot;note&quot;: &quot;Mapped artifacts consistently state validation-only/test closed and zero test-payload reads.&quot;
+      },
+      {
+        &quot;id&quot;: &quot;C56&quot;,
+        &quot;lines&quot;: &quot;289&quot;,
+        &quot;claim&quot;: &quot;Fig. 7 support, RMSE aggregation, COT threshold, and pooled aggregate-CSI convention.&quot;,
+        &quot;status&quot;: &quot;exact_match&quot;,
+        &quot;evidence&quot;: [
+          &quot;figures/fig7_forecast_cot_supervision_manifest.json&quot;,
+          &quot;figures/fig7_forecast_cot_summary_20261017.json&quot;
+        ],
+        &quot;note&quot;: &quot;The stated support and aggregation fields reproduce exactly.&quot;
+      }
+    ]
+  }
+}</code></pre></details>
+
+<footer class="aris-footer">
+  Generated by <a href="https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/main/skills/render-html/SKILL.md">ARIS <code>/render-html</code></a> ·
+  source path <code>PAPER_CLAIM_AUDIT.md</code> ·
+  SHA256 <code>60d68746744b</code> ·
+  generated at 2026-10-17 22:35 UTC.
+  This is a generated view — edit the source Markdown, then re-render.
+</footer>
+</main>
+
+</div>
+</body>
+</html>

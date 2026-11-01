@@ -1,0 +1,50 @@
+{
+  "status": "HUBEI_R_PACK_CPU_INTEGRITY_AUDIT_PASSED_TEST_CLOSED",
+  "test_payloads_read": 0,
+  "pack_status_sha256": "92c68b591b64377855e4c66e3dcd4b55adf48c78fbe33436e218d4747acaf0fd",
+  "hashes_match": true,
+  "counts_by_split": {
+    "train": 3178,
+    "val": 301
+  },
+  "input_shape": [
+    3479,
+    16,
+    16,
+    16
+  ],
+  "target_shape": [
+    3479,
+    1,
+    16,
+    16
+  ],
+  "mask_shape": [
+    3479,
+    1,
+    16,
+    16
+  ],
+  "mask_dtype": "bool",
+  "input_finite": true,
+  "target_finite": true,
+  "valid_cpp_pixels_by_split": {
+    "train": 719496,
+    "val": 66304
+  },
+  "samples_with_valid_cpp_pixels_by_split": {
+    "train": 2811,
+    "val": 259
+  },
+  "samples_without_valid_cpp_pixels_by_split": {
+    "train": 367,
+    "val": 42
+  },
+  "min_valid_cpp_pixels_per_sample_by_split": {
+    "train": 0,
+    "val": 0
+  },
+  "train_only_norm_samples": 3178,
+  "masked_target_nonzero_count": 0,
+  "all_samples_have_valid_cpp_pixel": false
+}

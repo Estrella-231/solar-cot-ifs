@@ -1,0 +1,17 @@
+{
+  "contract": "monthly_R_station16_cloud_gate_seed42_v1",
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "expected_updates": 930,
+  "train_samples": 15414,
+  "val_samples": 1398,
+  "device": "cuda:0",
+  "model": "Conv2d 16->16->32->16->1; 3x3 SiLU x3, 1x1 logit; no pooling",
+  "class_target": "CLP=0 clear; CLP=1/2 cloud",
+  "input_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+  "R_pack_status_sha256": "1b15f3e22a778f6b4d9c1546cc2d8381f14faae6c95b1350a937731efad2928b",
+  "clp_sidecar_sha256": "361c79e40f40fd3c39c50b48e4c003b3fb64c90c32183e8304f54adc7b8cea01",
+  "R_validation_prediction_sha256": "08c9cc92df549f12412873e9b8e50f308f35f79451693fa10b229a3346c15785",
+  "test_payloads_read": 0
+}

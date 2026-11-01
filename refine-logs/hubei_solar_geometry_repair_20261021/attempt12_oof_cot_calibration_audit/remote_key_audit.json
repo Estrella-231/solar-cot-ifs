@@ -1,0 +1,791 @@
+{
+  "audit_state": "READ_ONLY_METADATA_AND_HEADER_ALIGNMENT_AUDIT",
+  "remote_base": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "array_payloads_loaded": false,
+  "date_fold_assignment": {
+    "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/preparation_attempt1/metadata/train_date_folds.csv",
+    "sha256": "c86bd6713d5afea1d6864cc4ef6048a93b596051ea4358e7954f39c32b054122",
+    "rows": 250
+  },
+  "cot_bank_manifest": {
+    "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/source_manifest.json",
+    "sha256": "e0966f96c71f0ba8045b5ed159055e0d759ccbd216c438b223718dad3844ffb1",
+    "state": "CORRECTED_SOLAR_FORECAST_COT_BANKS_TEST_CLOSED",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "full_r_pack_reference": {
+    "rows_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/rows.csv",
+    "rows_sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+    "total_rows": 3479,
+    "train_rows": 3178,
+    "validation_rows": 301,
+    "target_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/target.npy",
+    "target_header": {
+      "shape": [
+        3479,
+        1,
+        16,
+        16
+      ],
+      "dtype": "float32",
+      "fortran_order": false,
+      "file_bytes": 3562624
+    },
+    "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/mask.npy",
+    "mask_header": {
+      "shape": [
+        3479,
+        1,
+        16,
+        16
+      ],
+      "dtype": "bool",
+      "fortran_order": false,
+      "file_bytes": 890752
+    },
+    "pack_sha_manifest_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/SHA256.json",
+    "pack_sha_manifest_sha256": "6977ee87feddb964ca58db730124e378bfa5bfabac8136ca8aa056c25f677b2f",
+    "pack_sha_manifest": {
+      "x_norm.npy": "79fb226f7a5af0e5c0bdf00b4ce9cc7bf962b462e4141b8d22240d1787a7a66f",
+      "target.npy": "befbf167cee3cde086ca64464a0e5d5c9b897c6cae4230e5eb211c3c046c2563",
+      "mask.npy": "433eda0b165d2067441139c4793aedf9c4b9d23e944f1f29e978ea7bbd44ae18",
+      "rows.csv": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+      "norm.json": "4db7bb624a7a11edb7c337fa108a0a426a5018a2b885c520e894b988d3394446"
+    },
+    "alignment_contract": "build_corrected_data.py appends each rows.csv record in the same order as target[ii] and mask[ii,None]; rows are keyed by time_bjt and index is the role-pack row index",
+    "r_run_full_val_key_crosscheck": {
+      "R_run_val_key_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/val_keys.csv",
+      "R_run_val_key_sha256": "87b7e95549074f53d99ad66735726f1b67cfcfbeca99164d15104c32ec7412f1",
+      "R_run_val_key_rows": 264,
+      "R_pack_val_supervised_rows": 264,
+      "same_time_set": true,
+      "same_order": true,
+      "duplicate_R_run_val_time_keys": 0
+    }
+  },
+  "roles": {
+    "fold_0": {
+      "role": "fold_0",
+      "bank_role_manifest_name": "fold_0",
+      "s_index": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/fold_0_oof.csv",
+        "rows": 823,
+        "sha256": "4c4d9b3375ac21dc6347904364a7d22bc8e10686c6f4bb8c262437e48adfb497"
+      },
+      "s_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_banks_attempt12/fold_0/val/keys.csv",
+        "rows": 823,
+        "sha256": "f769713e4bfb35784e6ce891887edd73313dcf416e46e843920e141f6bb3dde3",
+        "duplicate_init_keys": 0,
+        "init_sorted": true
+      },
+      "forecast_frame_keys": {
+        "rows": 13168,
+        "expected_rows": 13168,
+        "duplicate_init_target_lead_tuples": 0,
+        "bad_canonical_lead_rows": 0,
+        "unique_target_times": 1543,
+        "date_fold_init_mismatches": 0,
+        "date_fold_target_mismatches": 0,
+        "target_dates_missing_from_fold_assignment": 0
+      },
+      "r_cpp_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/rows.csv",
+        "rows": 631,
+        "sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+        "key_source": "prepared_attempt12/R_packs/full train rows filtered to held-out date fold; target.npy and mask.npy use rows.csv index order",
+        "duplicate_time_keys": 0,
+        "unique_time_keys": 631,
+        "time_sorted": true,
+        "split_values": [
+          "train"
+        ]
+      },
+      "r_run_fold_validation_key_separation": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_0/val_keys.csv",
+        "sha256": "98e52533450bb1b9c64cba811f563f5c9161c6aa12105ba045f0e8685c1de81a",
+        "rows": 264,
+        "distinct_target_times": 264,
+        "OOF_forecast_frames_matching_this_validation_keyset": 0,
+        "interpretation": "R_runs/fold_i/val_keys are shared external validation keys, not the held-out training-fold CPP labels; use R_packs/full train rows filtered to the held-out fold for OOF calibration targets"
+      },
+      "keyed_alignment": {
+        "matched_forecast_frames": 3211,
+        "unmatched_forecast_frames": 9957,
+        "coverage_percent": 24.384872,
+        "matched_with_nonempty_cpp_mask": 3134,
+        "matched_but_zero_valid_cpp_pixels": 77,
+        "unique_matched_cpp_times": 400,
+        "cpp_times_not_used_by_any_forecast_frame": 231,
+        "positional_order_equal": false,
+        "join_rule": "forecast COT frame (init_time_bjt,target_times_bjt[j],lead=15*(j+1)) joins by target_time_bjt to the same held-out-fold R CPP key/mask row; use target-date folds, never row-position pairing",
+        "cpp_supervision_row_source": "R_packs/full rows.csv train split and same held-out date fold; valid_cot_pixels from audited CPP/SZA80 mask"
+      },
+      "cpp_files_metadata_only": {
+        "reference_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/target.npy",
+        "reference_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 3562624
+        },
+        "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/mask.npy",
+        "mask_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "bool",
+          "fortran_order": false,
+          "file_bytes": 890752
+        },
+        "cpp_rows_match_key_rows": true,
+        "mask_rows_match_key_rows": true
+      },
+      "cot_bank": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/fold_0.npy",
+        "header_only": {
+          "shape": [
+            823,
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 13484160
+        },
+        "manifest_sha256": "5dd86edf76650e27329e580dcbd06bb4486181fab689dd16b41ba8a2886ce70a",
+        "manifest_pred_agri_sha256": "6e0c3a0350f60f55c6c442e88a7066bee3fb77c18b45139f6630fbb43be91974",
+        "manifest_future_geometry_sha256": "76d4ece245bcb3b6a2eabc90822a0db8754c0abf2fe34143cdc9a14548f3345b",
+        "manifest_source_roles_sha256": "5dd86edf76650e27329e580dcbd06bb4486181fab689dd16b41ba8a2886ce70a",
+        "S_checkpoint_sha256": "2c9c625690c86c8639be8bf3312e64a2f114625de1aac1b4ef1b6fbd48b7a968",
+        "R_checkpoint_sha256": "a9c974926e5f6562517e023ea7c5ed087d72c7a3cd23a1a89366b80fa9784041",
+        "R_normalization_sha256": "d67c258988069b35234a7cbb803f50aeaf4d6bd186df76ca8b423e986ca4c3e9",
+        "R_inference_code_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d"
+      },
+      "R_run": {
+        "status_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_0/status.json",
+        "status": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 17,
+        "run_metadata_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_0/run_metadata.json",
+        "run_metadata_sha256": "118bc12c3b470aa5ba84034d907c15ae503b04afbd632e8e7d438d2371f03af8",
+        "status_sha256": "c50d8d50050cbe36fb5af4ef3fea98cb346b0669756ec32808c7f2694722ab52",
+        "pack_status_sha256": "0f7b1df4888c9a07c9665367fb7f7433a7b4decfe6b322e43fe27d2ff1ffd7a2",
+        "val_reference_cpp_sha256_metadata": null,
+        "val_valid_mask_sha256_metadata": null
+      }
+    },
+    "fold_1": {
+      "role": "fold_1",
+      "bank_role_manifest_name": "fold_1",
+      "s_index": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/fold_1_oof.csv",
+        "rows": 797,
+        "sha256": "761a72cfeea95975552590e6f0d0a4ec04bf0b2912e4f6ff14bb6ea29b25588b"
+      },
+      "s_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_banks_attempt12/fold_1/val/keys.csv",
+        "rows": 797,
+        "sha256": "c0ffcaea5f79bf1eee86f24d8bda86c85e16fcaa9bf225dacf2f6754265ac7a2",
+        "duplicate_init_keys": 0,
+        "init_sorted": true
+      },
+      "forecast_frame_keys": {
+        "rows": 12752,
+        "expected_rows": 12752,
+        "duplicate_init_target_lead_tuples": 0,
+        "bad_canonical_lead_rows": 0,
+        "unique_target_times": 1517,
+        "date_fold_init_mismatches": 0,
+        "date_fold_target_mismatches": 0,
+        "target_dates_missing_from_fold_assignment": 0
+      },
+      "r_cpp_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/rows.csv",
+        "rows": 631,
+        "sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+        "key_source": "prepared_attempt12/R_packs/full train rows filtered to held-out date fold; target.npy and mask.npy use rows.csv index order",
+        "duplicate_time_keys": 0,
+        "unique_time_keys": 631,
+        "time_sorted": true,
+        "split_values": [
+          "train"
+        ]
+      },
+      "r_run_fold_validation_key_separation": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_1/val_keys.csv",
+        "sha256": "98e52533450bb1b9c64cba811f563f5c9161c6aa12105ba045f0e8685c1de81a",
+        "rows": 264,
+        "distinct_target_times": 264,
+        "OOF_forecast_frames_matching_this_validation_keyset": 0,
+        "interpretation": "R_runs/fold_i/val_keys are shared external validation keys, not the held-out training-fold CPP labels; use R_packs/full train rows filtered to the held-out fold for OOF calibration targets"
+      },
+      "keyed_alignment": {
+        "matched_forecast_frames": 3399,
+        "unmatched_forecast_frames": 9353,
+        "coverage_percent": 26.654642,
+        "matched_with_nonempty_cpp_mask": 3332,
+        "matched_but_zero_valid_cpp_pixels": 67,
+        "unique_matched_cpp_times": 420,
+        "cpp_times_not_used_by_any_forecast_frame": 211,
+        "positional_order_equal": false,
+        "join_rule": "forecast COT frame (init_time_bjt,target_times_bjt[j],lead=15*(j+1)) joins by target_time_bjt to the same held-out-fold R CPP key/mask row; use target-date folds, never row-position pairing",
+        "cpp_supervision_row_source": "R_packs/full rows.csv train split and same held-out date fold; valid_cot_pixels from audited CPP/SZA80 mask"
+      },
+      "cpp_files_metadata_only": {
+        "reference_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/target.npy",
+        "reference_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 3562624
+        },
+        "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/mask.npy",
+        "mask_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "bool",
+          "fortran_order": false,
+          "file_bytes": 890752
+        },
+        "cpp_rows_match_key_rows": true,
+        "mask_rows_match_key_rows": true
+      },
+      "cot_bank": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/fold_1.npy",
+        "header_only": {
+          "shape": [
+            797,
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 13058176
+        },
+        "manifest_sha256": "f2e29b8e1e3cc02d4b0c07b8c53f6febd6a2476c8d2cbb77843dcb0524c6c852",
+        "manifest_pred_agri_sha256": "4836b44f73029e857a177d2c8b0e6a348dac3a8ffd45472d14dc0449171e43b8",
+        "manifest_future_geometry_sha256": "f5e1e02f56dae27fafd64c61f669a4332648c6c9d7d46ef833c486baed6a35cc",
+        "manifest_source_roles_sha256": "f2e29b8e1e3cc02d4b0c07b8c53f6febd6a2476c8d2cbb77843dcb0524c6c852",
+        "S_checkpoint_sha256": "7eaef123d3672c839f35f149d8322154aa74a0b86edad0a9dfcfd36777d76caa",
+        "R_checkpoint_sha256": "77a9b8dd985e4db966eddfd34c19f52fe4a9383f4b8c13e09e5ad3495c776203",
+        "R_normalization_sha256": "a1b2715ef44c96d01c9918dc47e06d257664e36bd74688fc3ca907e27c4cff93",
+        "R_inference_code_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d"
+      },
+      "R_run": {
+        "status_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_1/status.json",
+        "status": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 16,
+        "run_metadata_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_1/run_metadata.json",
+        "run_metadata_sha256": "f2ba98c05d553dd2b8735ec87fbcd231a3fbc73c7622dec516806c3e5eb7ec6a",
+        "status_sha256": "92c707f5163f894cb2bc3278f4365603e4ddf1029fe276bfcb73593e95fe2412",
+        "pack_status_sha256": "b0b1c2aab70c9b6c7cfcae6758b11f97009547ece9c7e98d04019e0b70614171",
+        "val_reference_cpp_sha256_metadata": null,
+        "val_valid_mask_sha256_metadata": null
+      }
+    },
+    "fold_2": {
+      "role": "fold_2",
+      "bank_role_manifest_name": "fold_2",
+      "s_index": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/fold_2_oof.csv",
+        "rows": 850,
+        "sha256": "d0bc0e47a5020ed7cb2bce144bf827126975a38b565dd86ddcc143a957738f42"
+      },
+      "s_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_banks_attempt12/fold_2/val/keys.csv",
+        "rows": 850,
+        "sha256": "8b390cd649bb68046acfdf8125f37f3ec22ca257c04775733c898cb88cee5e04",
+        "duplicate_init_keys": 0,
+        "init_sorted": true
+      },
+      "forecast_frame_keys": {
+        "rows": 13600,
+        "expected_rows": 13600,
+        "duplicate_init_target_lead_tuples": 0,
+        "bad_canonical_lead_rows": 0,
+        "unique_target_times": 1570,
+        "date_fold_init_mismatches": 0,
+        "date_fold_target_mismatches": 0,
+        "target_dates_missing_from_fold_assignment": 0
+      },
+      "r_cpp_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/rows.csv",
+        "rows": 644,
+        "sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+        "key_source": "prepared_attempt12/R_packs/full train rows filtered to held-out date fold; target.npy and mask.npy use rows.csv index order",
+        "duplicate_time_keys": 0,
+        "unique_time_keys": 644,
+        "time_sorted": true,
+        "split_values": [
+          "train"
+        ]
+      },
+      "r_run_fold_validation_key_separation": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_2/val_keys.csv",
+        "sha256": "57ecf3c327019b5f49b1ad586eef123c0223ec9cef24df5c4ab80168fb8cc726",
+        "rows": 264,
+        "distinct_target_times": 264,
+        "OOF_forecast_frames_matching_this_validation_keyset": 0,
+        "interpretation": "R_runs/fold_i/val_keys are shared external validation keys, not the held-out training-fold CPP labels; use R_packs/full train rows filtered to the held-out fold for OOF calibration targets"
+      },
+      "keyed_alignment": {
+        "matched_forecast_frames": 4073,
+        "unmatched_forecast_frames": 9527,
+        "coverage_percent": 29.948529,
+        "matched_with_nonempty_cpp_mask": 3919,
+        "matched_but_zero_valid_cpp_pixels": 154,
+        "unique_matched_cpp_times": 464,
+        "cpp_times_not_used_by_any_forecast_frame": 180,
+        "positional_order_equal": false,
+        "join_rule": "forecast COT frame (init_time_bjt,target_times_bjt[j],lead=15*(j+1)) joins by target_time_bjt to the same held-out-fold R CPP key/mask row; use target-date folds, never row-position pairing",
+        "cpp_supervision_row_source": "R_packs/full rows.csv train split and same held-out date fold; valid_cot_pixels from audited CPP/SZA80 mask"
+      },
+      "cpp_files_metadata_only": {
+        "reference_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/target.npy",
+        "reference_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 3562624
+        },
+        "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/mask.npy",
+        "mask_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "bool",
+          "fortran_order": false,
+          "file_bytes": 890752
+        },
+        "cpp_rows_match_key_rows": true,
+        "mask_rows_match_key_rows": true
+      },
+      "cot_bank": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/fold_2.npy",
+        "header_only": {
+          "shape": [
+            850,
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 13926528
+        },
+        "manifest_sha256": "af988aa936100d5c08d293c607354d64c358c7cd1fdce48aed202c4b4e1b8dd4",
+        "manifest_pred_agri_sha256": "04a5b0b8e8d1b7d6663844d1823ab283df6ca4dec0da4ed1a7d8f2e3d441ba8e",
+        "manifest_future_geometry_sha256": "17cc83413f7dc660a4d9745a677c17104ef891e699414404fb310d75372114b9",
+        "manifest_source_roles_sha256": "af988aa936100d5c08d293c607354d64c358c7cd1fdce48aed202c4b4e1b8dd4",
+        "S_checkpoint_sha256": "2bb6e26ffe236e43a3432f5c9fb69b37d00bef9b73ae490bf82f9423c86cac03",
+        "R_checkpoint_sha256": "1a49dc74fbbbe3127eca96756caf529b43423089c157fe353921aae019e20ce7",
+        "R_normalization_sha256": "ee9aaba1c1f6e1e9d8cb32fbe4e448498e59d66fa68f371332a04f7a0a606365",
+        "R_inference_code_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d"
+      },
+      "R_run": {
+        "status_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_2/status.json",
+        "status": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 20,
+        "run_metadata_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_2/run_metadata.json",
+        "run_metadata_sha256": "807a451e1126c1967b99901fc606f74387ea91f7e249038baf529084cc73981a",
+        "status_sha256": "ca0d1a07b573fd9feb057b22634b4974196039028a626b8f14c45f2ebf2401f8",
+        "pack_status_sha256": "7ed67e0f8ef7a7888d7ec1a851e9b085d17c98d9d4a765cfd953876e8d08eb9c",
+        "val_reference_cpp_sha256_metadata": null,
+        "val_valid_mask_sha256_metadata": null
+      }
+    },
+    "fold_3": {
+      "role": "fold_3",
+      "bank_role_manifest_name": "fold_3",
+      "s_index": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/fold_3_oof.csv",
+        "rows": 809,
+        "sha256": "4f576d9449797b0644a512726dbcc49b391559087b32f8fb3e846f5e72bf6432"
+      },
+      "s_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_banks_attempt12/fold_3/val/keys.csv",
+        "rows": 809,
+        "sha256": "61f6c5fa6c1f2a865c41883d9fb5698f25fbe93e32f79eb52f858fd7eec4fdd9",
+        "duplicate_init_keys": 0,
+        "init_sorted": true
+      },
+      "forecast_frame_keys": {
+        "rows": 12944,
+        "expected_rows": 12944,
+        "duplicate_init_target_lead_tuples": 0,
+        "bad_canonical_lead_rows": 0,
+        "unique_target_times": 1499,
+        "date_fold_init_mismatches": 0,
+        "date_fold_target_mismatches": 0,
+        "target_dates_missing_from_fold_assignment": 0
+      },
+      "r_cpp_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/rows.csv",
+        "rows": 627,
+        "sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+        "key_source": "prepared_attempt12/R_packs/full train rows filtered to held-out date fold; target.npy and mask.npy use rows.csv index order",
+        "duplicate_time_keys": 0,
+        "unique_time_keys": 627,
+        "time_sorted": true,
+        "split_values": [
+          "train"
+        ]
+      },
+      "r_run_fold_validation_key_separation": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_3/val_keys.csv",
+        "sha256": "f8541f67b3efe0a08942f6460fa64057a0cc3b294fa4b210593e8cb2f797d905",
+        "rows": 264,
+        "distinct_target_times": 264,
+        "OOF_forecast_frames_matching_this_validation_keyset": 0,
+        "interpretation": "R_runs/fold_i/val_keys are shared external validation keys, not the held-out training-fold CPP labels; use R_packs/full train rows filtered to the held-out fold for OOF calibration targets"
+      },
+      "keyed_alignment": {
+        "matched_forecast_frames": 3196,
+        "unmatched_forecast_frames": 9748,
+        "coverage_percent": 24.690977,
+        "matched_with_nonempty_cpp_mask": 3091,
+        "matched_but_zero_valid_cpp_pixels": 105,
+        "unique_matched_cpp_times": 397,
+        "cpp_times_not_used_by_any_forecast_frame": 230,
+        "positional_order_equal": false,
+        "join_rule": "forecast COT frame (init_time_bjt,target_times_bjt[j],lead=15*(j+1)) joins by target_time_bjt to the same held-out-fold R CPP key/mask row; use target-date folds, never row-position pairing",
+        "cpp_supervision_row_source": "R_packs/full rows.csv train split and same held-out date fold; valid_cot_pixels from audited CPP/SZA80 mask"
+      },
+      "cpp_files_metadata_only": {
+        "reference_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/target.npy",
+        "reference_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 3562624
+        },
+        "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/mask.npy",
+        "mask_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "bool",
+          "fortran_order": false,
+          "file_bytes": 890752
+        },
+        "cpp_rows_match_key_rows": true,
+        "mask_rows_match_key_rows": true
+      },
+      "cot_bank": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/fold_3.npy",
+        "header_only": {
+          "shape": [
+            809,
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 13254784
+        },
+        "manifest_sha256": "56ccbc96a12a5bcc9af4e42ea76aebde8a5bf1041d46cbbd010c8ba2470281de",
+        "manifest_pred_agri_sha256": "d67aaf9212fe33d3c7dc912be79a5ebde125d3fc9b0515ab04939e3e90fa68d1",
+        "manifest_future_geometry_sha256": "f2b5116bcd7fddac5ad3015677584a50e19c696612f0729a4a0306469810191b",
+        "manifest_source_roles_sha256": "56ccbc96a12a5bcc9af4e42ea76aebde8a5bf1041d46cbbd010c8ba2470281de",
+        "S_checkpoint_sha256": "fc8f6626d79aed8db134d26d75e01371064b3458648e09981d0c246fa3c03807",
+        "R_checkpoint_sha256": "6e155969750d1025bb432a1e989e5f2471d6d1f7b7777656cdff4d69ad95c790",
+        "R_normalization_sha256": "e9da92fe4ccc7a5e9202e927e778b42cec6a29aa38f9daac67d8fb332b597945",
+        "R_inference_code_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d"
+      },
+      "R_run": {
+        "status_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_3/status.json",
+        "status": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 24,
+        "run_metadata_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_3/run_metadata.json",
+        "run_metadata_sha256": "70dc27c30cfe2fb165141d441a26f73666bff96bd47f3ade142be7ed5cee840f",
+        "status_sha256": "a97a775fe321425ddedf69519370b0eb15bbde4adcb6d809d68bb8424b04637f",
+        "pack_status_sha256": "3d64d87ec4708cfd7ea1d230d0fd71a6e4a63af7156c4692d978fe9519c3f165",
+        "val_reference_cpp_sha256_metadata": null,
+        "val_valid_mask_sha256_metadata": null
+      }
+    },
+    "fold_4": {
+      "role": "fold_4",
+      "bank_role_manifest_name": "fold_4",
+      "s_index": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/fold_4_oof.csv",
+        "rows": 807,
+        "sha256": "759bf5b4428d72bcad1683f36fc32f70a5a8b0d0648443d39765d65f84a3dab8"
+      },
+      "s_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_banks_attempt12/fold_4/val/keys.csv",
+        "rows": 807,
+        "sha256": "928e25e6f7c9dd92ad5cdf8359e89be448815d27ee619a83fc643140925f76d9",
+        "duplicate_init_keys": 0,
+        "init_sorted": true
+      },
+      "forecast_frame_keys": {
+        "rows": 12912,
+        "expected_rows": 12912,
+        "duplicate_init_target_lead_tuples": 0,
+        "bad_canonical_lead_rows": 0,
+        "unique_target_times": 1527,
+        "date_fold_init_mismatches": 0,
+        "date_fold_target_mismatches": 0,
+        "target_dates_missing_from_fold_assignment": 0
+      },
+      "r_cpp_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/rows.csv",
+        "rows": 645,
+        "sha256": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+        "key_source": "prepared_attempt12/R_packs/full train rows filtered to held-out date fold; target.npy and mask.npy use rows.csv index order",
+        "duplicate_time_keys": 0,
+        "unique_time_keys": 645,
+        "time_sorted": true,
+        "split_values": [
+          "train"
+        ]
+      },
+      "r_run_fold_validation_key_separation": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_4/val_keys.csv",
+        "sha256": "67d24ac62dc9a93744c38b017adaae40bcb72057cf947a0d9ec00ceca31a59b9",
+        "rows": 264,
+        "distinct_target_times": 264,
+        "OOF_forecast_frames_matching_this_validation_keyset": 0,
+        "interpretation": "R_runs/fold_i/val_keys are shared external validation keys, not the held-out training-fold CPP labels; use R_packs/full train rows filtered to the held-out fold for OOF calibration targets"
+      },
+      "keyed_alignment": {
+        "matched_forecast_frames": 3737,
+        "unmatched_forecast_frames": 9175,
+        "coverage_percent": 28.942069,
+        "matched_with_nonempty_cpp_mask": 3653,
+        "matched_but_zero_valid_cpp_pixels": 84,
+        "unique_matched_cpp_times": 448,
+        "cpp_times_not_used_by_any_forecast_frame": 197,
+        "positional_order_equal": false,
+        "join_rule": "forecast COT frame (init_time_bjt,target_times_bjt[j],lead=15*(j+1)) joins by target_time_bjt to the same held-out-fold R CPP key/mask row; use target-date folds, never row-position pairing",
+        "cpp_supervision_row_source": "R_packs/full rows.csv train split and same held-out date fold; valid_cot_pixels from audited CPP/SZA80 mask"
+      },
+      "cpp_files_metadata_only": {
+        "reference_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/target.npy",
+        "reference_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 3562624
+        },
+        "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full/mask.npy",
+        "mask_header": {
+          "shape": [
+            3479,
+            1,
+            16,
+            16
+          ],
+          "dtype": "bool",
+          "fortran_order": false,
+          "file_bytes": 890752
+        },
+        "cpp_rows_match_key_rows": true,
+        "mask_rows_match_key_rows": true
+      },
+      "cot_bank": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/fold_4.npy",
+        "header_only": {
+          "shape": [
+            807,
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 13222016
+        },
+        "manifest_sha256": "c6b9fee222e38df86ce56d5cd4ef1009ea25b0e9a402da001b078eba3aa002b0",
+        "manifest_pred_agri_sha256": "345dbcda53386138f9e5ba2583c122a99f4830028efbd58297d0d1309a12f986",
+        "manifest_future_geometry_sha256": "772ba5fb6d9aadbaeec99612347a76c1c0dbe615d1926d1c2494f01485bd9341",
+        "manifest_source_roles_sha256": "c6b9fee222e38df86ce56d5cd4ef1009ea25b0e9a402da001b078eba3aa002b0",
+        "S_checkpoint_sha256": "7bf395305e3f679afc1bcba876267cea4de2990ce149a03fbc8069a635d0f308",
+        "R_checkpoint_sha256": "abc82a696c71776a5e071966f1d4a67753423ad627ee8a541de15b9636cf5260",
+        "R_normalization_sha256": "311f1c79747f934f445ed5c3db069642c82ebba0713d6217e74f1ffcc62db493",
+        "R_inference_code_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d"
+      },
+      "R_run": {
+        "status_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_4/status.json",
+        "status": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 31,
+        "run_metadata_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/fold_4/run_metadata.json",
+        "run_metadata_sha256": "26282cd7918a7a1d39740e25dfacba639db39568bd7a217617f9c066cd62e805",
+        "status_sha256": "972b779c301c4e3d7b0211cc602015a47a92bba3d2239b14885c19de5be14493",
+        "pack_status_sha256": "a81d277987061040d689018c03bbb20d40db4def080df081f676136b408541c5",
+        "val_reference_cpp_sha256_metadata": null,
+        "val_valid_mask_sha256_metadata": null
+      }
+    },
+    "full": {
+      "role": "full",
+      "bank_role_manifest_name": "validation",
+      "s_index": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/indexes/full.csv",
+        "rows": 407,
+        "sha256": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8"
+      },
+      "s_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/S_banks_attempt12/full/val/keys.csv",
+        "rows": 407,
+        "sha256": "1f32d09268ac1a5446bb54c717b0cc6e663ca198c3d516d9da821cc94b28f134",
+        "duplicate_init_keys": 0,
+        "init_sorted": true
+      },
+      "forecast_frame_keys": {
+        "rows": 6512,
+        "expected_rows": 6512,
+        "duplicate_init_target_lead_tuples": 0,
+        "bad_canonical_lead_rows": 0,
+        "unique_target_times": 737,
+        "date_fold_init_mismatches": 0,
+        "date_fold_target_mismatches": 0,
+        "target_dates_missing_from_fold_assignment": 0
+      },
+      "r_cpp_key_csv": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/val_keys.csv",
+        "rows": 264,
+        "sha256": "87b7e95549074f53d99ad66735726f1b67cfcfbeca99164d15104c32ec7412f1",
+        "key_source": "R_runs_attempt12/full validation keys/reference/mask",
+        "duplicate_time_keys": 0,
+        "unique_time_keys": 264,
+        "time_sorted": true,
+        "split_values": [
+          "val"
+        ]
+      },
+      "r_run_fold_validation_key_separation": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/val_keys.csv",
+        "sha256": "87b7e95549074f53d99ad66735726f1b67cfcfbeca99164d15104c32ec7412f1",
+        "rows": 264,
+        "distinct_target_times": 264,
+        "OOF_forecast_frames_matching_this_validation_keyset": 1828,
+        "interpretation": "R_runs/fold_i/val_keys are shared external validation keys, not the held-out training-fold CPP labels; use R_packs/full train rows filtered to the held-out fold for OOF calibration targets"
+      },
+      "keyed_alignment": {
+        "matched_forecast_frames": 1828,
+        "unmatched_forecast_frames": 4684,
+        "coverage_percent": 28.071253,
+        "matched_with_nonempty_cpp_mask": 1828,
+        "matched_but_zero_valid_cpp_pixels": 0,
+        "unique_matched_cpp_times": 197,
+        "cpp_times_not_used_by_any_forecast_frame": 67,
+        "positional_order_equal": false,
+        "join_rule": "forecast COT frame (init_time_bjt,target_times_bjt[j],lead=15*(j+1)) joins by target_time_bjt to the same held-out-fold R CPP key/mask row; use target-date folds, never row-position pairing",
+        "cpp_supervision_row_source": "R_packs/full rows.csv split=val with valid_cot_pixels>0, cross-checked to R_runs/full/val_keys.csv"
+      },
+      "cpp_files_metadata_only": {
+        "reference_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/val_reference_cpp_cot.npy",
+        "reference_header": {
+          "shape": [
+            264,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 270464
+        },
+        "mask_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/val_valid_mask.npy",
+        "mask_header": {
+          "shape": [
+            264,
+            1,
+            16,
+            16
+          ],
+          "dtype": "bool",
+          "fortran_order": false,
+          "file_bytes": 67712
+        },
+        "cpp_rows_match_key_rows": true,
+        "mask_rows_match_key_rows": true
+      },
+      "cot_bank": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/COT_banks_attempt12/validation.npy",
+        "header_only": {
+          "shape": [
+            407,
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "fortran_order": false,
+          "file_bytes": 6668416
+        },
+        "manifest_sha256": "3e4a04d575f09fe678fea87da9585db8b47005299e2703a0b93c2b7bf52e6393",
+        "manifest_pred_agri_sha256": "bb126fa0638f55894f8dbf61d2f800597719db94ce40583409abadf222827483",
+        "manifest_future_geometry_sha256": "4dbcf2cf8318283abaa89c9323593d8951a399deeff1281d60f5134c50a6a4f5",
+        "manifest_source_roles_sha256": "3e4a04d575f09fe678fea87da9585db8b47005299e2703a0b93c2b7bf52e6393",
+        "S_checkpoint_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+        "R_checkpoint_sha256": "d8f25a34ac1bf6fdd9005d2ea9d52d02dd3c2c24e4758e6cd74061121d6b5d0b",
+        "R_normalization_sha256": "4db7bb624a7a11edb7c337fa108a0a426a5018a2b885c520e894b988d3394446",
+        "R_inference_code_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d"
+      },
+      "R_run": {
+        "status_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/status.json",
+        "status": "COMPLETE_VALIDATION_ONLY_TEST_CLOSED",
+        "best_epoch": 21,
+        "run_metadata_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/R_runs_attempt12/full/run_metadata.json",
+        "run_metadata_sha256": "e8db7849c4f7f91e25e024af0d1c23e2e02c02b36eefc69485e328530c3811e9",
+        "status_sha256": "e8a751c267a65c0643d6b59866f72eb7c3bd7d31f76205e3352996ce73ff218b",
+        "pack_status_sha256": "345a080832b893c9c63b85180538a1dcfb13a6aae32617daaa99ad87892715d4",
+        "val_reference_cpp_sha256_metadata": null,
+        "val_valid_mask_sha256_metadata": null
+      }
+    }
+  }
+}

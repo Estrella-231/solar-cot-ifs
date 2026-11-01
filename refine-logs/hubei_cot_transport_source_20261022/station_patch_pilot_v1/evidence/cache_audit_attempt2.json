@@ -1,0 +1,66 @@
+{
+  "state": "PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED",
+  "cache_report_sha256": "b5f55d09beb7cac4d4484d4d38c1af90357230d3584cbc4158790166c2aa1c75",
+  "source_bank_rows_sha256": "efca7d8dfda0e6055af804257df703cf60e1e5930f71b8d077bc2fbecfde86bb",
+  "trainval_rows": 22061,
+  "forecast_pairs": {
+    "train": {
+      "pairs": 41933,
+      "unique_target_dates": 152,
+      "pairs_by_lead_minutes": {
+        "15": 2624,
+        "30": 2620,
+        "45": 2622,
+        "60": 2620,
+        "75": 2619,
+        "90": 2626,
+        "105": 2626,
+        "120": 2625,
+        "135": 2622,
+        "150": 2624,
+        "165": 2626,
+        "180": 2625,
+        "195": 2625,
+        "210": 2624,
+        "225": 2616,
+        "240": 2589
+      },
+      "station_center_valid_pixels": {
+        "Niushou": 2990,
+        "Wangzhai": 2991,
+        "Mizhuang": 2991
+      }
+    },
+    "val": {
+      "pairs": 4116,
+      "unique_target_dates": 16,
+      "pairs_by_lead_minutes": {
+        "15": 260,
+        "30": 260,
+        "45": 260,
+        "60": 259,
+        "75": 259,
+        "90": 259,
+        "105": 259,
+        "120": 258,
+        "135": 258,
+        "150": 258,
+        "165": 258,
+        "180": 258,
+        "195": 256,
+        "210": 254,
+        "225": 252,
+        "240": 248
+      },
+      "station_center_valid_pixels": {
+        "Niushou": 2990,
+        "Wangzhai": 2991,
+        "Mizhuang": 2991
+      }
+    }
+  },
+  "R_train_predictions_are_oof": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "scope": "16x16 station-neighborhood pilot only; CPP is a retrieval reference, not independent truth."
+}

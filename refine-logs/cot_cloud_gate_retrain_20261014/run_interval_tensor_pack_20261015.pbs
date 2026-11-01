@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N cot_interval_pack
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/interval_alignment_20261015/tensor_pack_v1.log
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1
+RUN=$ROOT/interval_alignment_20261015
+EXP=$ROOT
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+test -s "$RUN/manifest_full_v1/interval_manifest_acceptance.json"
+test "$(/public/home/slfu/miniconda3/envs/swc/bin/python -c 'import json,sys;print(json.load(open(sys.argv[1]))["training_pack_ready"])' "$RUN/manifest_full_v1/interval_manifest_acceptance.json")" = False
+test ! -e "$RUN/tensor_pack_v1"
+/public/home/slfu/miniconda3/envs/swc/bin/python -u "$RUN/build_interval_tensor_pack.py" \
+  --root "$EXP" \
+  --manifest "$RUN/manifest_full_v1/interval_manifest.csv" \
+  --scan-clear "$RUN/scan_clear_v1/scan_clear_values.csv" \
+  --zero-flags "$RUN/zero_audit_v1/label_quality_flags.csv" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --output "$RUN/tensor_pack_v1"
+echo INTERVAL_TENSOR_PACK_COMPLETE_NO_TRAINING

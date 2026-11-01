@@ -1,0 +1,53 @@
+{
+  "state": "VALIDATION_ONLY_ILLUSTRATIVE_CASE_FIGURE",
+  "init_time_bjt": "202509271330",
+  "sample_index": 77,
+  "selection_note": "diagnostic case selected for pronounced station COT trajectory mismatch; not representative population estimate",
+  "source_split": "validation",
+  "stations": {
+    "Niushou": {
+      "n_common_leads": 14,
+      "forecast_cot_input_ghi_rmse_wm2": 115.13317358157926,
+      "offline_future_agri_to_r_input_ghi_rmse_wm2": 125.58017251460333,
+      "station_cot_forecast_vs_offline_future_rmse": 13.271100655251818,
+      "forecast_cot_at_120min": 17.48473358154297,
+      "offline_future_cot_at_120min": 39.78912353515625,
+      "forecast_cot_at_240min": 47.90120315551758,
+      "offline_future_cot_at_240min": 24.51337432861328
+    },
+    "Wangzhai": {
+      "n_common_leads": 13,
+      "forecast_cot_input_ghi_rmse_wm2": 107.01234580934158,
+      "offline_future_agri_to_r_input_ghi_rmse_wm2": 112.53040877718799,
+      "station_cot_forecast_vs_offline_future_rmse": 9.031826937645123,
+      "forecast_cot_at_120min": 16.39333724975586,
+      "offline_future_cot_at_120min": 32.474937438964844,
+      "forecast_cot_at_240min": 44.301368713378906,
+      "offline_future_cot_at_240min": 25.941896438598636
+    },
+    "Mizhuang": {
+      "n_common_leads": 13,
+      "forecast_cot_input_ghi_rmse_wm2": 72.4650298842183,
+      "offline_future_agri_to_r_input_ghi_rmse_wm2": 78.42521313544965,
+      "station_cot_forecast_vs_offline_future_rmse": 7.276220185603088,
+      "forecast_cot_at_120min": null,
+      "offline_future_cot_at_120min": null,
+      "forecast_cot_at_240min": 44.736122131347656,
+      "offline_future_cot_at_240min": 28.71506118774414
+    }
+  },
+  "physical_image": "AGRI C02 visible reflectance map in preprocessed physical channel units; observed and forecast shown with the same fixed 0-0.8 scale",
+  "offline_cot_reference": "corrected frozen R applied to observed future AGRI at target time; not an independent COT truth and unavailable at forecast issuance",
+  "ghi_scope": "same frozen FAC head/checkpoint, only COT input substituted; exact common validation keys per station; missing leads are not interpolated",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "source_sha256": {
+    "case_arrays": "4db18ec476f8c6618b39f79da644ea12702bcc408d16d1c0d2c0190fed278b3e",
+    "paired_prediction_csv": "450ca4ff248e5740550d7c3f854deea5cfe85c1f42acfd31dd66f32b9a38e9b2"
+  },
+  "outputs": {
+    "png": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\hubei_solar_geometry_repair_20261021\\forecast_cot_trajectory_diagnostic_attempt12\\validation_event_20250927_1330_attempt12.png",
+    "pdf": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\hubei_solar_geometry_repair_20261021\\forecast_cot_trajectory_diagnostic_attempt12\\validation_event_20250927_1330_attempt12.pdf",
+    "trajectory_csv": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\hubei_solar_geometry_repair_20261021\\forecast_cot_trajectory_diagnostic_attempt12\\validation_event_20250927_1330_trajectories.csv"
+  }
+}

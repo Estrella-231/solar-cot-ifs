@@ -1,0 +1,124 @@
+{
+  "state": "COMPLETE_DIRECT_COT_FULLPATCH_HCV_ANALYSIS",
+  "evidence_tier": "repeatedly used outer-training H internal CV; exploratory, not confirmation",
+  "station_rows": {
+    "sili": 72345,
+    "zhujia": 79417
+  },
+  "absolute_rmse": [
+    {
+      "station": "sili",
+      "arm": "none",
+      "scope": "all_leads",
+      "mean_seed_rmse_wm2": 156.73238518801554,
+      "sd_across_seeds_wm2": 2.095162268341077,
+      "seed_rmse_wm2": "[157.87017429252717, 154.31449580182397, 158.01248546969546]",
+      "rows_per_seed": 72345
+    },
+    {
+      "station": "sili",
+      "arm": "pxc3",
+      "scope": "all_leads",
+      "mean_seed_rmse_wm2": 156.92532149647775,
+      "sd_across_seeds_wm2": 0.7090475221166778,
+      "seed_rmse_wm2": "[157.3089428288191, 156.10711287880238, 157.35990878181178]",
+      "rows_per_seed": 72345
+    },
+    {
+      "station": "sili",
+      "arm": "pxc16",
+      "scope": "all_leads",
+      "mean_seed_rmse_wm2": 160.31673857119986,
+      "sd_across_seeds_wm2": 0.8048976222689778,
+      "seed_rmse_wm2": "[161.11361818280545, 160.33254186526688, 159.50405566552726]",
+      "rows_per_seed": 72345
+    },
+    {
+      "station": "zhujia",
+      "arm": "none",
+      "scope": "all_leads",
+      "mean_seed_rmse_wm2": 146.24448323893785,
+      "sd_across_seeds_wm2": 3.9961512530808707,
+      "seed_rmse_wm2": "[150.41959170104658, 142.45528955291047, 145.8585684628565]",
+      "rows_per_seed": 79417
+    },
+    {
+      "station": "zhujia",
+      "arm": "pxc3",
+      "scope": "all_leads",
+      "mean_seed_rmse_wm2": 146.75612049820103,
+      "sd_across_seeds_wm2": 4.715349386923834,
+      "seed_rmse_wm2": "[151.74086220083026, 142.36670392806076, 146.1607953657121]",
+      "rows_per_seed": 79417
+    },
+    {
+      "station": "zhujia",
+      "arm": "pxc16",
+      "scope": "all_leads",
+      "mean_seed_rmse_wm2": 146.6867257075078,
+      "sd_across_seeds_wm2": 2.161796021327834,
+      "seed_rmse_wm2": "[149.18154457512824, 145.5119189675367, 145.3667135798585]",
+      "rows_per_seed": 79417
+    },
+    {
+      "station": "sili",
+      "arm": "none",
+      "scope": "plus15_60",
+      "mean_seed_rmse_wm2": 146.11877328808734,
+      "sd_across_seeds_wm2": 2.315744276212229,
+      "seed_rmse_wm2": "[147.86504995815784, 143.4919075236933, 146.9993623824108]",
+      "rows_per_seed": 18053
+    },
+    {
+      "station": "sili",
+      "arm": "pxc3",
+      "scope": "plus15_60",
+      "mean_seed_rmse_wm2": 144.76750177693793,
+      "sd_across_seeds_wm2": 1.064617658284498,
+      "seed_rmse_wm2": "[145.0666782678103, 143.58530478235562, 145.6505222806479]",
+      "rows_per_seed": 18053
+    },
+    {
+      "station": "sili",
+      "arm": "pxc16",
+      "scope": "plus15_60",
+      "mean_seed_rmse_wm2": 150.6149562518294,
+      "sd_across_seeds_wm2": 0.6286771073373795,
+      "seed_rmse_wm2": "[151.34038123051843, 150.22870962747663, 150.27577789749307]",
+      "rows_per_seed": 18053
+    },
+    {
+      "station": "zhujia",
+      "arm": "none",
+      "scope": "plus15_60",
+      "mean_seed_rmse_wm2": 138.47052386950216,
+      "sd_across_seeds_wm2": 4.248409323222984,
+      "seed_rmse_wm2": "[143.23319972674503, 135.07101562763498, 137.1073562541265]",
+      "rows_per_seed": 19861
+    },
+    {
+      "station": "zhujia",
+      "arm": "pxc3",
+      "scope": "plus15_60",
+      "mean_seed_rmse_wm2": 136.83911769940912,
+      "sd_across_seeds_wm2": 4.796452473339943,
+      "seed_rmse_wm2": "[142.1168235184536, 132.7458500296734, 135.65467955010035]",
+      "rows_per_seed": 19861
+    },
+    {
+      "station": "zhujia",
+      "arm": "pxc16",
+      "scope": "plus15_60",
+      "mean_seed_rmse_wm2": 138.32718505673225,
+      "sd_across_seeds_wm2": 2.4187538791000924,
+      "seed_rmse_wm2": "[140.72083895805005, 138.3766269687957, 135.88408924335099]",
+      "rows_per_seed": 19861
+    }
+  ],
+  "leadwise_file": "leadwise_delta_rmse.csv",
+  "interpretation": "positive candidate-minus-reference delta means higher error; H-internal exploratory screening only; no independent confirmation",
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false
+}

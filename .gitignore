@@ -20,6 +20,24 @@ wandb/
 *.synctex.gz
 audits/source_snapshots/
 .aris/
+
+# New publications contain code/reports/own figures, not fresh raw payloads.
+# Already tracked historical evidence is retained.
+*.hdf
+*.HDF
+*.h5
+*.npy
+*.npz
+*.whl
+**/python_deps/
+**/wheelhouse/
+paper/build*/
+paper/.build*/
+*.fls
+*.fdb_latexmk
+*.synctex*
+**/__pycache__/
+paper/references/**/pdfs/
 audits/**/*.npz
 audits/**/*.tar
 audits/**/*.jsonl

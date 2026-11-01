@@ -1,0 +1,24 @@
+{
+  "split_id": "hubei_ghi15_20260405_monthly_block2_buffer1_seed42_v1",
+  "status": "metadata_only_candidate_frozen_pending_train_val_label_QA",
+  "region": "Hubei",
+  "label_period_BJT": ["2026-04-01", "2026-05-31"],
+  "split_rule": "Per month, use days with at least 48 available data16_label frame files; choose a 2-consecutive-day validation block and a separate 2-consecutive-day test block whose starts differ by at least 6 days; reserve one calendar day before and after each block as buffer; select using Python random.Random(int(sha256('42:YYYY-MM')[:16],16)).choice over ordered candidate pairs.",
+  "seed": 42,
+  "selection_inputs": "Only daily file counts and date/path metadata; no station GHI values, cloud/weather values, CPP/COT values, or model errors.",
+  "source_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label",
+  "daily_metadata_file": "day_assignment_metadata_only.csv",
+  "source_filename_list_sha256": {
+    "202604": "7950d9b5d46ad17aeb98556523d34f9ca4b0db1f3e3eed37a240275cfadcbdaf",
+    "202605": "178e4b4273c00c1b107d9996e910fd58e9ad41f38192581911af1cd8a85a5c4a"
+  },
+  "monthly_blocks": [
+    {"month": "2026-04", "eligible_days_ge48": 30, "val": ["2026-04-20", "2026-04-21"], "test": ["2026-04-29", "2026-04-30"], "buffers": ["2026-04-19", "2026-04-22", "2026-04-28", "2026-05-01"]},
+    {"month": "2026-05", "eligible_days_ge48": 25, "val": ["2026-05-03", "2026-05-04"], "test": ["2026-05-15", "2026-05-16"], "buffers": ["2026-05-02", "2026-05-05", "2026-05-14", "2026-05-17"]}
+  ],
+  "support_note": "Timestamp-only 15-minute interval test (strictly target-15min < sample_time <= target_time, requiring 15 distinct minute bins) gives Wangzhai 36/37, Mizhuang 0/27, and Niushou 40/39 targets on Apr 29/30; May 15/16 gives Wangzhai 45/44, Mizhuang 45/45, and Niushou 44/42. April 20/21 validation gives Wangzhai 42/41, Mizhuang 40/44, and Niushou 43/45; May 3/4 gives Wangzhai 41/46, Mizhuang 41/41, and Niushou 43/45. Do not redraw blocks; report per-station support and use identical keys within each station-method comparison.",
+  "test_payloads_read": 0,
+  "test_metrics_computed": false,
+  "training_submitted": false,
+  "next_gate": "Validate timestamp/unit/duplicate/missing-window and value quality using train/val labels only; test remains metadata-only until final evaluation lock."
+}

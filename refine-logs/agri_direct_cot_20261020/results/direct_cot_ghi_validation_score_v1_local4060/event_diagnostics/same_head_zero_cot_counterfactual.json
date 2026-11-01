@@ -1,0 +1,42 @@
+{
+  "state": "COMPLETE_DIRECT_COT_SAME_HEAD_ZERO_COT_COUNTERFACTUAL",
+  "scope": "validation-only inference counterfactual; P-XC seed42 head frozen; identical AGRI and geometry; replace normalized predicted-COT channel with the exact neutral zero tensor",
+  "not_a_retrained_model": true,
+  "cpp_reference_used": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false,
+  "stations": {
+    "sili": {
+      "n_validation": 31655,
+      "saved_prediction_replay_max_abs_drift_wm2": 0.0003018798670382239,
+      "mean_delta_with_cot_minus_zero_cot_wm2": -14.118800394837091,
+      "rmse_with_pxc_cot": 131.87679600864968,
+      "rmse_same_head_zero_cot": 134.58304132026535,
+      "delta_rmse_with_cot_minus_zero_cot_wm2": -2.7062453116156746,
+      "checkpoint_sha256": "ba2d21a96ac0cc508c3bde083f591affba5244bb6639be7d42cd2ede7a06af3b",
+      "pack_manifest_sha256": "bd6c393b6d6bc2ba73452cf8abcbc835c5a0ae78f1d0a5d1f773f1a3f9910a1f",
+      "keys_sha256": "1a3b7bd64c871b122955765b4ae22b139eacca3a09f43d2318df8fdd8d856b76",
+      "test_payload_opened": false,
+      "buffer_payload_opened": false,
+      "future_observed_agri_used_as_input": false,
+      "cpp_used_as_input": false
+    },
+    "zhujia": {
+      "n_validation": 34431,
+      "saved_prediction_replay_max_abs_drift_wm2": 0.0005380524380598217,
+      "mean_delta_with_cot_minus_zero_cot_wm2": 0.16735893099957116,
+      "rmse_with_pxc_cot": 143.22621054227875,
+      "rmse_same_head_zero_cot": 146.02053359385138,
+      "delta_rmse_with_cot_minus_zero_cot_wm2": -2.7943230515726327,
+      "checkpoint_sha256": "e7fd42fe041b9504c18e7cbc02bb313a7db7aa691c261ee78155fb5cb0d338d4",
+      "pack_manifest_sha256": "bd6c393b6d6bc2ba73452cf8abcbc835c5a0ae78f1d0a5d1f773f1a3f9910a1f",
+      "keys_sha256": "632a10c7d5823a23e41663422b90daa943c8317aea0061333a11727de35a073c",
+      "test_payload_opened": false,
+      "buffer_payload_opened": false,
+      "future_observed_agri_used_as_input": false,
+      "cpp_used_as_input": false
+    }
+  }
+}

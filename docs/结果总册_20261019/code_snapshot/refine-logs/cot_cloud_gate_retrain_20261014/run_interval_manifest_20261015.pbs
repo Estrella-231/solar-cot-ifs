@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N cot_interval_meta
+#PBS -q normal
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/interval_alignment_20261015/manifest_full_v1.log
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1
+RUN=$ROOT/interval_alignment_20261015
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONUNBUFFERED=1
+test ! -e "$RUN/manifest_full_v1"
+/public/home/slfu/miniconda3/envs/swc/bin/python "$RUN/build_interval_manifest.py" \
+ --root "$ROOT" --zero-flags "$RUN/zero_audit_v1/label_quality_flags.csv" \
+ --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+ --output "$RUN/manifest_full_v1"
+echo INTERVAL_METADATA_COMPLETE_NO_TRAINING

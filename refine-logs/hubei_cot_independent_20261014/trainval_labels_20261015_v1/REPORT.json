@@ -1,0 +1,349 @@
+{
+  "status": "TRAIN_VAL_LABELS_BUILT_TEST_VALUES_CLOSED_UNIT_PROVISIONAL",
+  "split_id": "hubei_monthly_block_2d_buffer1d_seed42_202508_202607_frozen_v1",
+  "window": "(target-15min,target], 15 right-closed minute bins; minute means equally weighted",
+  "source_field": "总辐射1瞬时值",
+  "unit_contract": "legacy project treats raw field as W/m2; station-specific instrument/unit metadata not independently verified",
+  "test_radiation_values_read": 0,
+  "test_radiation_cells_decoded": 0,
+  "only_train_val_radiation_cells_captured": true,
+  "train_val_target_slots_per_station": 25138,
+  "captured_raw_train_val_rows_by_station": {
+    "Niushou": 354719,
+    "Wangzhai": 348420,
+    "Mizhuang": 345164
+  },
+  "valid_labels_by_station_split": {
+    "Niushou": {
+      "train": 18472,
+      "val": 1652
+    },
+    "Wangzhai": {
+      "train": 18241,
+      "val": 1540
+    },
+    "Mizhuang": {
+      "train": 17882,
+      "val": 1624
+    }
+  },
+  "mask_zero_labels_by_station": {
+    "Niushou": 9976,
+    "Wangzhai": 9653,
+    "Mizhuang": 8990
+  },
+  "window_reason_counts_by_station": {
+    "Niushou": {
+      "missing_minute_bin": 5014,
+      "complete": 20124
+    },
+    "Wangzhai": {
+      "missing_minute_bin": 5357,
+      "complete": 19781
+    },
+    "Mizhuang": {
+      "missing_minute_bin": 5632,
+      "complete": 19506
+    }
+  },
+  "identical_duplicate_extra_records_in_valid_windows_by_station": {
+    "Niushou": 479,
+    "Wangzhai": 444,
+    "Mizhuang": 478
+  },
+  "invalid_timestamp_rows_by_station": {},
+  "source_files": [
+    {
+      "name": "天气数据_202508.xlsx",
+      "sha256": "28db70a1769371a925489748d32e3f48cfa8b25b7f9dd0b9b3b2b280452a55a1",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 42314,
+          "train_val_radiation_cells_captured": 32448,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 42137,
+          "train_val_radiation_cells_captured": 32387,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 42538,
+          "train_val_radiation_cells_captured": 32734,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202509.xlsx",
+      "sha256": "97940bcdcd96ef39a9474724ddf8f674eb22588810722430d6f0f980a0720ade",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 41186,
+          "train_val_radiation_cells_captured": 31413,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 40947,
+          "train_val_radiation_cells_captured": 31227,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 41096,
+          "train_val_radiation_cells_captured": 31330,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202510.xlsx",
+      "sha256": "6d2cd4368ac77a55cb922eb084d6e187ea6737ed770eeb2e8ef7c963a5f55bb7",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 42443,
+          "train_val_radiation_cells_captured": 33424,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 42042,
+          "train_val_radiation_cells_captured": 33021,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 41254,
+          "train_val_radiation_cells_captured": 32240,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202511.xlsx",
+      "sha256": "6ea64dfb452b843aad6e6e314b924bdc8fd3f5428eeff2684478f72d3c8cf994",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 41342,
+          "train_val_radiation_cells_captured": 31917,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 40711,
+          "train_val_radiation_cells_captured": 31452,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 41239,
+          "train_val_radiation_cells_captured": 31845,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202512.xlsx",
+      "sha256": "c7095833a999abef6906a6e6a5e59dd1af862bf1884e323575f0bae51eada19a",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 42520,
+          "train_val_radiation_cells_captured": 33745,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 42251,
+          "train_val_radiation_cells_captured": 33603,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 42385,
+          "train_val_radiation_cells_captured": 33640,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_2026-06-01-2026-07-06.xlsx",
+      "sha256": "7b06d7931c6079b21e6d2b744879bc59c0a693f1251ab663d688a376bfe94398",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 48318,
+          "train_val_radiation_cells_captured": 25442,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 47102,
+          "train_val_radiation_cells_captured": 24335,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 46475,
+          "train_val_radiation_cells_captured": 23851,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_2026-07-07-2026-07-14.xlsx",
+      "sha256": "37793b3b5d70f974b9a7e9c703c348bd9c8a1d1ee671fa19f0f066be325fad5f",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 9790,
+          "train_val_radiation_cells_captured": 9664,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 9928,
+          "train_val_radiation_cells_captured": 9789,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 9685,
+          "train_val_radiation_cells_captured": 9538,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202601.xlsx",
+      "sha256": "67fc6204b4f1b8791a03587c130a5caaefe029ca779d26924da61a14dacbc92e",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 42329,
+          "train_val_radiation_cells_captured": 33799,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 41483,
+          "train_val_radiation_cells_captured": 32871,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 42405,
+          "train_val_radiation_cells_captured": 33677,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202602.xlsx",
+      "sha256": "4be0ce8632567cdb8500c07c3efadb6d9223920f79c7562219c1932e923986be",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 38203,
+          "train_val_radiation_cells_captured": 27792,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 32971,
+          "train_val_radiation_cells_captured": 24144,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 36168,
+          "train_val_radiation_cells_captured": 26179,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202603.xlsx",
+      "sha256": "ee03b7a5ed1854386a4be23c0a18cf3e3b387dbf6d249e34c5d79f8171653bd2",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 41573,
+          "train_val_radiation_cells_captured": 33003,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 41451,
+          "train_val_radiation_cells_captured": 32927,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 40598,
+          "train_val_radiation_cells_captured": 32498,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202604.xlsx",
+      "sha256": "ce50f77a187218cdb33fb8f3aba97b0bbe6a255c0f40a59b222dcd6b9f38a88a",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 40241,
+          "train_val_radiation_cells_captured": 31343,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 40602,
+          "train_val_radiation_cells_captured": 31748,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 32945,
+          "train_val_radiation_cells_captured": 27742,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    },
+    {
+      "name": "天气数据_202605.xlsx",
+      "sha256": "595c5cf81a58e1f4f2a073d3910f8f9f2d683c3841988d77195cc2495b5ca87f",
+      "sheets": {
+        "Niushou": {
+          "time_rows": 41522,
+          "train_val_radiation_cells_captured": 30729,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Wangzhai": {
+          "time_rows": 41611,
+          "train_val_radiation_cells_captured": 30916,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        },
+        "Mizhuang": {
+          "time_rows": 40701,
+          "train_val_radiation_cells_captured": 29890,
+          "timestamp_column_index": 17,
+          "radiation_column_index": 6
+        }
+      }
+    }
+  ],
+  "label_csv_sha256": "729771d288df1092cd26660bb641e958125ba4684c6d7c0e7bbc6b64ccdb2f2c",
+  "normalization_fit": "not performed",
+  "daylight_mask": "not applied",
+  "test_GHI_values": "closed"
+}

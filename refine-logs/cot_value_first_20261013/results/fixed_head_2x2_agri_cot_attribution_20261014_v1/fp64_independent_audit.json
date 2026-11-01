@@ -1,0 +1,108 @@
+{
+  "state": "INDEPENDENT_FP64_RECOMPUTE_PASS",
+  "scope": "validation-only frozen seed42 AC head; 2x2 offline attribution; same 7,005 forecast instances for all arms",
+  "test_payload_opened": false,
+  "COT_reference": "same-time target AGRI through frozen R, corresponding to GHI-head train input contract",
+  "COT_forecast": "SimVP forecast AGRI through same frozen R",
+  "AGRI_reference": "actual target-time AGRI (oracle)",
+  "AGRI_forecast": "frozen SimVP output at target lead, station-centered 3x3 physical AGRI",
+  "dates_BJT": [
+    "2024-12-24",
+    "2024-12-25",
+    "2025-01-04",
+    "2025-08-21",
+    "2026-01-04",
+    "2026-02-20",
+    "2026-02-21",
+    "2026-03-01"
+  ],
+  "n_BJT_date_blocks": 8,
+  "instances": 7005,
+  "station_equal_mean_RMSE_by_arm": {
+    "TT": 75.28535384370235,
+    "FT": 87.01975823289938,
+    "TF": 80.42778033841365,
+    "FF": 97.16453703375672
+  },
+  "station_equal_delta_RMSE_by_contrast": {
+    "AGRI_effect_at_same_time_COT": 11.734404389197032,
+    "COT_effect_at_true_AGRI": 5.142426494711309,
+    "COT_effect_at_forecast_AGRI": 10.144778800857345,
+    "AGRI_effect_at_forecast_COT": 16.736756695343068,
+    "joint_forecast_input_effect": 21.879183190054377
+  },
+  "date_block_paired_bootstrap_95CI": {
+    "AGRI_effect_at_same_time_COT": [
+      2.2720465357947255,
+      17.54190063489126
+    ],
+    "COT_effect_at_true_AGRI": [
+      -3.9753403007223906,
+      11.90765199545151
+    ],
+    "COT_effect_at_forecast_AGRI": [
+      -3.1804423181184114,
+      18.2846260148349
+    ],
+    "AGRI_effect_at_forecast_COT": [
+      2.7720181310705057,
+      24.796865101538458
+    ],
+    "joint_forecast_input_effect": [
+      1.0871402345796268,
+      34.54839872310368
+    ]
+  },
+  "bootstrap_replicates": 5000,
+  "bootstrap_unit": "BJT target-date blocks (UTC+8), paired; overlapping forecast instances retained within date",
+  "by_station": {
+    "sili": {
+      "n_instances": 3314,
+      "unique_target_keys": 249,
+      "unique_BJT_dates": 7,
+      "arms": {
+        "TT": {
+          "RMSE": 71.16366977133441,
+          "MAE": 48.97825670561094
+        },
+        "FT": {
+          "RMSE": 83.59314042003126,
+          "MAE": 58.88774294487793
+        },
+        "TF": {
+          "RMSE": 75.89401278507663,
+          "MAE": 52.833851045482966
+        },
+        "FF": {
+          "RMSE": 99.37302193193204,
+          "MAE": 66.24140075144804
+        }
+      }
+    },
+    "zhujia": {
+      "n_instances": 3691,
+      "unique_target_keys": 280,
+      "unique_BJT_dates": 8,
+      "arms": {
+        "TT": {
+          "RMSE": 79.40703791607028,
+          "MAE": 56.27932676763107
+        },
+        "FT": {
+          "RMSE": 90.4463760457675,
+          "MAE": 62.66582182080487
+        },
+        "TF": {
+          "RMSE": 84.96154789175068,
+          "MAE": 62.43825062133385
+        },
+        "FF": {
+          "RMSE": 94.9560521355814,
+          "MAE": 68.99710614481488
+        }
+      }
+    }
+  },
+  "limitations": "Fixed head was trained with actual AGRI and same-time R-COT. FF is only a frozen-head operational-input replay; it is not a trained forecast-GHI model or publication score. Eight BJT dates and overlapping windows make intervals wide.",
+  "upstream_bank_selection": "All 271 sequences come from the prebuilt CPP-supported validation bank; no additional CPP mask filter was applied. Inference is limited to this CPP-supported-window cohort, not the full natural validation distribution."
+}

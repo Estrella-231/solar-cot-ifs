@@ -1,0 +1,42 @@
+{
+  "state": "PASS_PROVISIONAL_CPU_SHAPE_GRADIENT_CAPACITY",
+  "test_used": false,
+  "input_shapes": {
+    "agri": [
+      8,
+      13,
+      3,
+      3
+    ],
+    "geometry": [
+      8,
+      2,
+      3,
+      3
+    ],
+    "cot": [
+      8,
+      1,
+      3,
+      3
+    ]
+  },
+  "geometry_channels": "provisional; T03 has not frozen it",
+  "parameters": {
+    "A": 22177,
+    "AC": 24489,
+    "AP": 24613
+  },
+  "AC_AP_parameter_delta_fraction": 0.005063497897014987,
+  "spatial_pooling": "none; fixed row-major 3x3 flatten at readout",
+  "tests": [
+    "finite nonnegative kt outputs",
+    "A ignores COT",
+    "common trunk init matches",
+    "AC output responds to COT",
+    "nonzero COT gradient",
+    "AP AGRI/geometry gradients",
+    "AC/AP parameter delta <=5 percent"
+  ]
+}
+

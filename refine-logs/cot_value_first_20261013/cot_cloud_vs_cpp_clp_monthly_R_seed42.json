@@ -1,0 +1,72 @@
+{
+  "state": "PASS_PAIRED_COT_TO_CLP_CLOUD_CLASSIFICATION",
+  "prediction": "monthly R physical COT >= 0.1",
+  "reference": "CPP CLP; class 0 clear, 1 water cloud, 2 ice cloud",
+  "common_support_pixels": 356169,
+  "samples": 1398,
+  "clp_class_counts": {
+    "0": 118483,
+    "1": 162962,
+    "2": 74724
+  },
+  "overall": {
+    "N": 356169,
+    "reference_cloud": 237686,
+    "reference_clear": 118483,
+    "predicted_cloud": 250558,
+    "tp": 219785,
+    "fp": 30773,
+    "fn": 17901,
+    "tn": 87710,
+    "POD_cloud": 0.9246863508999268,
+    "POD_clear": 0.7402749761569171,
+    "precision_cloud": 0.877182129486985,
+    "FAR_cloud": 0.12281787051301495,
+    "CSI_cloud": 0.8186911222942795,
+    "HR_accuracy": 0.8633401559372096,
+    "KSS": 0.6649613270568437,
+    "frequency_bias_cloud": 1.0541554824432233
+  },
+  "by_station": {
+    "sili": {
+      "samples": 700,
+      "N": 178019,
+      "reference_cloud": 131104,
+      "reference_clear": 46915,
+      "predicted_cloud": 143191,
+      "tp": 128408,
+      "fp": 14783,
+      "fn": 2696,
+      "tn": 32132,
+      "POD_cloud": 0.9794361728093727,
+      "POD_clear": 0.6848982201854418,
+      "precision_cloud": 0.8967602712460979,
+      "FAR_cloud": 0.10323972875390212,
+      "CSI_cloud": 0.880188090782592,
+      "HR_accuracy": 0.901813851330476,
+      "KSS": 0.6643343929948144,
+      "frequency_bias_cloud": 1.0921939834024896
+    },
+    "zhujia": {
+      "samples": 698,
+      "N": 178150,
+      "reference_cloud": 106582,
+      "reference_clear": 71568,
+      "predicted_cloud": 107367,
+      "tp": 91377,
+      "fp": 15990,
+      "fn": 15205,
+      "tn": 55578,
+      "POD_cloud": 0.8573398885365259,
+      "POD_clear": 0.7765761234071094,
+      "precision_cloud": 0.8510715583000363,
+      "FAR_cloud": 0.14892844169996367,
+      "CSI_cloud": 0.7454965244917273,
+      "HR_accuracy": 0.8248947516138085,
+      "KSS": 0.6339160119436351,
+      "frequency_bias_cloud": 1.0073652211442832
+    }
+  },
+  "test_payloads_read": 0,
+  "caveat": "CPP CLP is a co-produced retrieval classification, not an independent cloud truth or the official FY-4B CLM mask."
+}

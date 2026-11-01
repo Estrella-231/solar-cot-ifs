@@ -1,0 +1,3119 @@
+{
+  "state": "FP64_INDEPENDENT_SPATIAL_SCALE_RECOMPUTE_PASS",
+  "split": "validation_only",
+  "test_payloads_read": 0,
+  "mask": "same CPP-valid pixel support for all methods; all predictions finite",
+  "patch_geometry": "station pixel=(8,8), centered 3x3=(7:10,7:10), full=16x16",
+  "methods": [
+    "SimVP\u2192R",
+    "Persistence\u2192R",
+    "Offline true-future AGRI\u2192R"
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "regions": {
+    "station_pixel_1x1": {
+      "station_metrics": [
+        {
+          "station": "sili",
+          "common_cpp_pixels": 1081,
+          "windows_with_support": 263,
+          "SimVP\u2192R": {
+            "n": 1081,
+            "rmse": 29.09677854878672,
+            "mae": 25.48547812967939,
+            "bias": -14.592375192496757
+          },
+          "Persistence\u2192R": {
+            "n": 1081,
+            "rmse": 30.940787788648073,
+            "mae": 25.079743959227088,
+            "bias": -2.8749302631282285
+          },
+          "Offline true-future AGRI\u2192R": {
+            "n": 1081,
+            "rmse": 27.75848609182925,
+            "mae": 24.158607725990176,
+            "bias": -13.19249784932901
+          }
+        },
+        {
+          "station": "zhujia",
+          "common_cpp_pixels": 1069,
+          "windows_with_support": 252,
+          "SimVP\u2192R": {
+            "n": 1069,
+            "rmse": 21.70691081248761,
+            "mae": 17.060854998831726,
+            "bias": -12.666072667342442
+          },
+          "Persistence\u2192R": {
+            "n": 1069,
+            "rmse": 25.70824673394312,
+            "mae": 19.724451767740337,
+            "bias": -6.8940946959494385
+          },
+          "Offline true-future AGRI\u2192R": {
+            "n": 1069,
+            "rmse": 23.78272456631397,
+            "mae": 19.451407172376513,
+            "bias": -11.024951987824611
+          }
+        }
+      ],
+      "station_equal_rmse": {
+        "SimVP\u2192R": 25.401844680637165,
+        "Persistence\u2192R": 28.324517261295597,
+        "Offline true-future AGRI\u2192R": 25.77060532907161
+      },
+      "paired_2day_block_CI": {
+        "forecast_minus_offline_true_future_R": [
+          -3.290051980525984,
+          1.3579824034252095
+        ],
+        "forecast_minus_persistence": [
+          -7.453244406200371,
+          0.5228874499221291
+        ],
+        "replicates": 2000,
+        "blocks": 7,
+        "unique_target_bjt_dates": 8
+      }
+    },
+    "station_neighbourhood_3x3": {
+      "station_metrics": [
+        {
+          "station": "sili",
+          "common_cpp_pixels": 9729,
+          "windows_with_support": 263,
+          "SimVP\u2192R": {
+            "n": 9729,
+            "rmse": 29.12145118309879,
+            "mae": 25.473298490586615,
+            "bias": -14.627307498829865
+          },
+          "Persistence\u2192R": {
+            "n": 9729,
+            "rmse": 31.037402392968207,
+            "mae": 25.05304946508759,
+            "bias": -2.7951267564301094
+          },
+          "Offline true-future AGRI\u2192R": {
+            "n": 9729,
+            "rmse": 27.709039692944458,
+            "mae": 24.031917220388692,
+            "bias": -13.119910365551107
+          }
+        },
+        {
+          "station": "zhujia",
+          "common_cpp_pixels": 9621,
+          "windows_with_support": 252,
+          "SimVP\u2192R": {
+            "n": 9621,
+            "rmse": 21.91301067865956,
+            "mae": 17.270243342864386,
+            "bias": -12.791606441598619
+          },
+          "Persistence\u2192R": {
+            "n": 9621,
+            "rmse": 26.03531466768492,
+            "mae": 19.91498369937148,
+            "bias": -6.947280977623908
+          },
+          "Offline true-future AGRI\u2192R": {
+            "n": 9621,
+            "rmse": 23.977539639773365,
+            "mae": 19.662909942040038,
+            "bias": -11.230578913745399
+          }
+        }
+      ],
+      "station_equal_rmse": {
+        "SimVP\u2192R": 25.517230930879176,
+        "Persistence\u2192R": 28.536358530326563,
+        "Offline true-future AGRI\u2192R": 25.843289666358913
+      },
+      "paired_2day_block_CI": {
+        "forecast_minus_offline_true_future_R": [
+          -3.261155023029617,
+          1.4834294160103874
+        ],
+        "forecast_minus_persistence": [
+          -7.70150609485902,
+          0.46712134189214716
+        ],
+        "replicates": 2000,
+        "blocks": 7,
+        "unique_target_bjt_dates": 8
+      }
+    },
+    "full_station_patch_16x16": {
+      "station_metrics": [
+        {
+          "station": "sili",
+          "common_cpp_pixels": 276736,
+          "windows_with_support": 263,
+          "SimVP\u2192R": {
+            "n": 276736,
+            "rmse": 29.131844915024473,
+            "mae": 25.154748113284473,
+            "bias": -14.496064491579936
+          },
+          "Persistence\u2192R": {
+            "n": 276736,
+            "rmse": 29.365382872880367,
+            "mae": 23.801531585197075,
+            "bias": -3.1487058259538014
+          },
+          "Offline true-future AGRI\u2192R": {
+            "n": 276736,
+            "rmse": 27.123481367749857,
+            "mae": 22.951115064739636,
+            "bias": -12.279912576599033
+          }
+        },
+        {
+          "station": "zhujia",
+          "common_cpp_pixels": 273664,
+          "windows_with_support": 252,
+          "SimVP\u2192R": {
+            "n": 273664,
+            "rmse": 23.043068978614663,
+            "mae": 18.191109194985327,
+            "bias": -12.947794491716952
+          },
+          "Persistence\u2192R": {
+            "n": 273664,
+            "rmse": 26.311800944507187,
+            "mae": 20.442150753731713,
+            "bias": -7.6361561925316
+          },
+          "Offline true-future AGRI\u2192R": {
+            "n": 273664,
+            "rmse": 24.902543146710805,
+            "mae": 20.430079208095087,
+            "bias": -11.728462426471975
+          }
+        }
+      ],
+      "station_equal_rmse": {
+        "SimVP\u2192R": 26.087456946819568,
+        "Persistence\u2192R": 27.83859190869378,
+        "Offline true-future AGRI\u2192R": 26.01301225723033
+      },
+      "paired_2day_block_CI": {
+        "forecast_minus_offline_true_future_R": [
+          -2.895105735786708,
+          1.9934875112942858
+        ],
+        "forecast_minus_persistence": [
+          -5.698444054657805,
+          0.8667935122552499
+        ],
+        "replicates": 2000,
+        "blocks": 7,
+        "unique_target_bjt_dates": 8
+      }
+    }
+  },
+  "lead_metrics": [
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 27.92885801840558,
+      "mae": 24.53428837670348,
+      "bias": -11.136523897413102
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 27.4090174981138,
+      "mae": 23.945912763415354,
+      "bias": -10.80549219423933
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 27.06084283442257,
+      "mae": 23.41510970646956,
+      "bias": -11.448564511270169
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 27.84922090761404,
+      "mae": 24.550459620814916,
+      "bias": -10.665209298894322
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 27.279004346507246,
+      "mae": 23.93130570749631,
+      "bias": -10.746238787590034
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 27.06084283442257,
+      "mae": 23.41510970646956,
+      "bias": -11.448564511270169
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 27.659604500315226,
+      "mae": 24.21064123682164,
+      "bias": -10.833851765142635
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 26.872683446485937,
+      "mae": 23.631914087089957,
+      "bias": -9.624481089341597
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 27.06084283442257,
+      "mae": 23.41510970646956,
+      "bias": -11.448564511270169
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "SimVP\u2192R",
+      "n": 72,
+      "rmse": 27.86674524638293,
+      "mae": 24.378062254111825,
+      "bias": -11.326080366149888
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "Persistence\u2192R",
+      "n": 72,
+      "rmse": 26.87315434544731,
+      "mae": 23.638260128404703,
+      "bias": -9.180041063153617
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 72,
+      "rmse": 27.22048754263922,
+      "mae": 23.601384761372838,
+      "bias": -11.801041582773438
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "SimVP\u2192R",
+      "n": 72,
+      "rmse": 27.83241583653337,
+      "mae": 24.381544811393027,
+      "bias": -11.431439133864984
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "Persistence\u2192R",
+      "n": 72,
+      "rmse": 27.25387477607237,
+      "mae": 24.19380745330147,
+      "bias": -7.984204624441036
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 72,
+      "rmse": 27.22048754263922,
+      "mae": 23.601384761372838,
+      "bias": -11.801041582773438
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 28.1156371546873,
+      "mae": 24.658161814259305,
+      "bias": -12.105083040439148
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 27.395262353176264,
+      "mae": 24.332722047022727,
+      "bias": -7.324780794264249
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 27.238205706341404,
+      "mae": 23.568565210665135,
+      "bias": -12.332486856638129
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "SimVP\u2192R",
+      "n": 70,
+      "rmse": 28.434018449605862,
+      "mae": 24.929008252232112,
+      "bias": -13.502807977953758
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "Persistence\u2192R",
+      "n": 70,
+      "rmse": 27.07175656498247,
+      "mae": 24.088821145484307,
+      "bias": -6.471092324186747
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 70,
+      "rmse": 27.35256134564205,
+      "mae": 23.655799786138104,
+      "bias": -12.758124453555208
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "SimVP\u2192R",
+      "n": 69,
+      "rmse": 28.31201493485,
+      "mae": 24.711663504481262,
+      "bias": -14.383095811277656
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "Persistence\u2192R",
+      "n": 69,
+      "rmse": 26.83914637497073,
+      "mae": 23.838674589473136,
+      "bias": -4.85546121106487
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 69,
+      "rmse": 27.50691182348419,
+      "mae": 23.813100023610936,
+      "bias": -13.128562248541696
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "SimVP\u2192R",
+      "n": 68,
+      "rmse": 28.757293233391458,
+      "mae": 25.127191894979322,
+      "bias": -15.318600523572176
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "Persistence\u2192R",
+      "n": 68,
+      "rmse": 28.193052220165345,
+      "mae": 24.545125811538863,
+      "bias": -3.8878065294001827
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 68,
+      "rmse": 27.677089619218936,
+      "mae": 24.003521559363875,
+      "bias": -13.481400452085119
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "SimVP\u2192R",
+      "n": 67,
+      "rmse": 28.962761532700018,
+      "mae": 25.42110451097139,
+      "bias": -15.848380431403552
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "Persistence\u2192R",
+      "n": 67,
+      "rmse": 28.150518505709222,
+      "mae": 23.972655506173044,
+      "bias": -2.7709316985658283
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 67,
+      "rmse": 27.82475488435507,
+      "mae": 24.14196432369034,
+      "bias": -13.902434135690731
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "SimVP\u2192R",
+      "n": 66,
+      "rmse": 29.041186577798165,
+      "mae": 25.521162802929762,
+      "bias": -16.451680125150403
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "Persistence\u2192R",
+      "n": 66,
+      "rmse": 29.788363148002148,
+      "mae": 24.718072144912433,
+      "bias": -0.7487572369992457
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 66,
+      "rmse": 28.014084074732477,
+      "mae": 24.375255910276838,
+      "bias": -14.245572828791829
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "SimVP\u2192R",
+      "n": 65,
+      "rmse": 30.088789029255953,
+      "mae": 26.364788956113475,
+      "bias": -17.9711673301256
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "Persistence\u2192R",
+      "n": 65,
+      "rmse": 32.62731504463839,
+      "mae": 25.51606624687382,
+      "bias": 1.567007225769614
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 65,
+      "rmse": 28.216972326631932,
+      "mae": 24.649108418637486,
+      "bias": -14.565886916416849
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "SimVP\u2192R",
+      "n": 64,
+      "rmse": 30.363346720883445,
+      "mae": 26.653408680506868,
+      "bias": -18.033212824741817
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "Persistence\u2192R",
+      "n": 64,
+      "rmse": 34.59174298761542,
+      "mae": 25.97010759716185,
+      "bias": 3.876976219387687
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 64,
+      "rmse": 28.43464227567896,
+      "mae": 24.992937850036245,
+      "bias": -14.75216601184341
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "SimVP\u2192R",
+      "n": 63,
+      "rmse": 31.35627763927577,
+      "mae": 27.647200208175796,
+      "bias": -18.52458728344478
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "Persistence\u2192R",
+      "n": 63,
+      "rmse": 38.179658634372494,
+      "mae": 27.407600531759474,
+      "bias": 7.063231169654569
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 63,
+      "rmse": 28.630873411006064,
+      "mae": 25.228516243909247,
+      "bias": -14.825192471776846
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "SimVP\u2192R",
+      "n": 62,
+      "rmse": 31.686956897101997,
+      "mae": 27.75489366503294,
+      "bias": -19.177574710692173
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "Persistence\u2192R",
+      "n": 62,
+      "rmse": 41.893015219398116,
+      "mae": 29.467690200574353,
+      "bias": 10.579836656726423
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 62,
+      "rmse": 28.83546330802284,
+      "mae": 25.481743479043875,
+      "bias": -14.910624162199658
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "SimVP\u2192R",
+      "n": 59,
+      "rmse": 32.04145553806754,
+      "mae": 28.066210363001435,
+      "bias": -19.5588345862783
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "Persistence\u2192R",
+      "n": 59,
+      "rmse": 42.29301257817147,
+      "mae": 29.669501633276106,
+      "bias": 11.83263925578996
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 59,
+      "rmse": 29.275122827753528,
+      "mae": 25.890449281027234,
+      "bias": -15.438587287262196
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 21.364371574917694,
+      "mae": 17.606849462254786,
+      "bias": -12.524700505346475
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 22.084951360747763,
+      "mae": 18.577445467103157,
+      "bias": -11.358106558645694
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 22.694102446346637,
+      "mae": 19.01753698271673,
+      "bias": -11.08806463035231
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 20.958892489148433,
+      "mae": 17.11952968839827,
+      "bias": -12.282181948888
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 21.335737058370423,
+      "mae": 18.058176481540436,
+      "bias": -11.570172822774087
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 22.694102446346637,
+      "mae": 19.01753698271673,
+      "bias": -11.08806463035231
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 20.9875721727979,
+      "mae": 17.335085997515183,
+      "bias": -12.100468338151328
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 20.166146207288396,
+      "mae": 17.134772946553444,
+      "bias": -11.036642949546785
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 22.694102446346637,
+      "mae": 19.01753698271673,
+      "bias": -11.08806463035231
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "SimVP\u2192R",
+      "n": 72,
+      "rmse": 22.364443119159233,
+      "mae": 18.05731156083049,
+      "bias": -13.09175207925295
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "Persistence\u2192R",
+      "n": 72,
+      "rmse": 20.848126385227676,
+      "mae": 17.027835166934544,
+      "bias": -11.848410333046981
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 72,
+      "rmse": 23.887186333515896,
+      "mae": 19.68680089444591,
+      "bias": -11.867460102530995
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "SimVP\u2192R",
+      "n": 71,
+      "rmse": 22.198743175481127,
+      "mae": 17.803201184953412,
+      "bias": -12.972498169636431
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "Persistence\u2192R",
+      "n": 71,
+      "rmse": 20.846742828846093,
+      "mae": 17.08182411063569,
+      "bias": -11.484026845619569
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 71,
+      "rmse": 23.913850012755244,
+      "mae": 19.655470098954577,
+      "bias": -11.725997746590156
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "SimVP\u2192R",
+      "n": 70,
+      "rmse": 22.070307516824286,
+      "mae": 17.58463354421327,
+      "bias": -12.909447590604374
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "Persistence\u2192R",
+      "n": 70,
+      "rmse": 20.920791121087984,
+      "mae": 17.15169436186698,
+      "bias": -11.336872920360767
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 70,
+      "rmse": 23.98221422868885,
+      "mae": 19.671816307038757,
+      "bias": -11.629065778211984
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "SimVP\u2192R",
+      "n": 69,
+      "rmse": 21.751464575994838,
+      "mae": 17.166559580694354,
+      "bias": -12.944413890852207
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "Persistence\u2192R",
+      "n": 69,
+      "rmse": 20.576007139205824,
+      "mae": 16.363559878504432,
+      "bias": -9.938377836021724
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 69,
+      "rmse": 23.833068723662983,
+      "mae": 19.483461968539835,
+      "bias": -11.32414983784601
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "SimVP\u2192R",
+      "n": 68,
+      "rmse": 22.077323821719997,
+      "mae": 17.576879505273343,
+      "bias": -12.424904635043614
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "Persistence\u2192R",
+      "n": 68,
+      "rmse": 21.036621111958226,
+      "mae": 16.580038481787078,
+      "bias": -9.455518131146185
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 68,
+      "rmse": 23.819988140839897,
+      "mae": 19.40665542911104,
+      "bias": -11.127353414142307
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "SimVP\u2192R",
+      "n": 67,
+      "rmse": 21.84636924051133,
+      "mae": 16.847987190300085,
+      "bias": -13.237018944737367
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "Persistence\u2192R",
+      "n": 67,
+      "rmse": 22.13653083540342,
+      "mae": 17.21614642902917,
+      "bias": -8.796213509001532
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 67,
+      "rmse": 23.840992728061707,
+      "mae": 19.362459338307687,
+      "bias": -10.95958565147375
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "SimVP\u2192R",
+      "n": 66,
+      "rmse": 21.901087669124284,
+      "mae": 16.797539463306965,
+      "bias": -13.154491976263527
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "Persistence\u2192R",
+      "n": 66,
+      "rmse": 23.09620084981085,
+      "mae": 18.4067434178174,
+      "bias": -7.43094571978466
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 66,
+      "rmse": 23.899164141943494,
+      "mae": 19.358495775540458,
+      "bias": -10.828305820724186
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "SimVP\u2192R",
+      "n": 65,
+      "rmse": 21.84789087334011,
+      "mae": 16.65542749734399,
+      "bias": -12.96141500316543
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "Persistence\u2192R",
+      "n": 65,
+      "rmse": 23.929141450417667,
+      "mae": 18.941886515036163,
+      "bias": -5.989576223652249
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 65,
+      "rmse": 23.992317989580485,
+      "mae": 19.398339788390683,
+      "bias": -10.736916141961855
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "SimVP\u2192R",
+      "n": 64,
+      "rmse": 21.63590329084307,
+      "mae": 16.554389799495873,
+      "bias": -12.83967006099887
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "Persistence\u2192R",
+      "n": 64,
+      "rmse": 25.486838464866427,
+      "mae": 20.16269934895307,
+      "bias": -4.60729604987057
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 64,
+      "rmse": 24.063661174748784,
+      "mae": 19.4065402210853,
+      "bias": -10.609781830181022
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "SimVP\u2192R",
+      "n": 63,
+      "rmse": 21.22147408828475,
+      "mae": 16.14532784475857,
+      "bias": -12.448666841153608
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "Persistence\u2192R",
+      "n": 63,
+      "rmse": 29.659865358558488,
+      "mae": 23.31102912865838,
+      "bias": -1.7881535512396198
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 63,
+      "rmse": 24.23805431428864,
+      "mae": 19.604174551373113,
+      "bias": -10.667785074898926
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "SimVP\u2192R",
+      "n": 62,
+      "rmse": 21.700946461324417,
+      "mae": 16.473913310105523,
+      "bias": -12.563042460517583
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "Persistence\u2192R",
+      "n": 62,
+      "rmse": 33.8354818934906,
+      "mae": 25.749008101936788,
+      "bias": 0.975730071312375
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 62,
+      "rmse": 24.41735923185917,
+      "mae": 19.81028430626638,
+      "bias": -10.729759515655514
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "SimVP\u2192R",
+      "n": 61,
+      "rmse": 21.850627428327318,
+      "mae": 16.368597807930712,
+      "bias": -12.66366089768056
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "Persistence\u2192R",
+      "n": 61,
+      "rmse": 38.09050194534603,
+      "mae": 28.090438809878634,
+      "bias": 4.7833299091224895
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 61,
+      "rmse": 24.514543360713017,
+      "mae": 19.848215076750886,
+      "bias": -10.618829223998855
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "SimVP\u2192R",
+      "n": 58,
+      "rmse": 21.428482472782658,
+      "mae": 16.385038959391256,
+      "bias": -11.366746435197365
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "Persistence\u2192R",
+      "n": 58,
+      "rmse": 40.86641895630053,
+      "mae": 29.366690372630874,
+      "bias": 6.152267633862112
+    },
+    {
+      "region": "station_pixel_1x1",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 58,
+      "rmse": 24.330170178147753,
+      "mae": 19.601626920180532,
+      "bias": -9.894859040562016
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 27.91461518121241,
+      "mae": 24.468947246542633,
+      "bias": -11.140121520888139
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 27.317717059707235,
+      "mae": 23.809360126341453,
+      "bias": -10.769777513585156
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 27.010466959055815,
+      "mae": 23.289322146073328,
+      "bias": -11.374831603485454
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 27.830156287434843,
+      "mae": 24.47905689760354,
+      "bias": -10.687253326119833
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 27.221269751024387,
+      "mae": 23.80250686966856,
+      "bias": -10.690279979686128
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 27.010466959055815,
+      "mae": 23.289322146073328,
+      "bias": -11.374831603485454
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 27.66560665015526,
+      "mae": 24.16152765210652,
+      "bias": -10.849344529624402
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 26.828535654907654,
+      "mae": 23.518434712737232,
+      "bias": -9.545845271906073
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 27.010466959055815,
+      "mae": 23.289322146073328,
+      "bias": -11.374831603485454
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "SimVP\u2192R",
+      "n": 648,
+      "rmse": 27.885527781556494,
+      "mae": 24.348000223623075,
+      "bias": -11.34940400445684
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "Persistence\u2192R",
+      "n": 648,
+      "rmse": 26.86836358262445,
+      "mae": 23.5553422606113,
+      "bias": -9.140842624964984
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 648,
+      "rmse": 27.1755834873535,
+      "mae": 23.48030403012338,
+      "bias": -11.731292522849227
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "SimVP\u2192R",
+      "n": 648,
+      "rmse": 27.853950372986976,
+      "mae": 24.35863392266094,
+      "bias": -11.457883953123675
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "Persistence\u2192R",
+      "n": 648,
+      "rmse": 27.235170246283165,
+      "mae": 24.09084290434137,
+      "bias": -7.96597642005289
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 648,
+      "rmse": 27.1755834873535,
+      "mae": 23.48030403012338,
+      "bias": -11.731292522849227
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 28.134198870961757,
+      "mae": 24.629228339999514,
+      "bias": -12.129531105959215
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 27.391216170028972,
+      "mae": 24.25445029673791,
+      "bias": -7.2806380391596255
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 27.19118736591859,
+      "mae": 23.44543826861011,
+      "bias": -12.262096263981833
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "SimVP\u2192R",
+      "n": 630,
+      "rmse": 28.464521680150057,
+      "mae": 24.904054691701717,
+      "bias": -13.541926629959775
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "Persistence\u2192R",
+      "n": 630,
+      "rmse": 27.07209586677829,
+      "mae": 24.0166142702914,
+      "bias": -6.405967994565512
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 630,
+      "rmse": 27.305175252740163,
+      "mae": 23.531632928713638,
+      "bias": -12.686009240058187
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "SimVP\u2192R",
+      "n": 621,
+      "rmse": 28.343082753356107,
+      "mae": 24.709130302577204,
+      "bias": -14.418725624655275
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "Persistence\u2192R",
+      "n": 621,
+      "rmse": 26.884684319322538,
+      "mae": 23.78776644400636,
+      "bias": -4.809321552966955
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 621,
+      "rmse": 27.457053523422985,
+      "mae": 23.685690262296163,
+      "bias": -13.056845271240471
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "SimVP\u2192R",
+      "n": 612,
+      "rmse": 28.79967928198815,
+      "mae": 25.148462699380907,
+      "bias": -15.371851394813238
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "Persistence\u2192R",
+      "n": 612,
+      "rmse": 28.21838077812676,
+      "mae": 24.484336943725204,
+      "bias": -3.870359038077565
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 612,
+      "rmse": 27.62660701361451,
+      "mae": 23.875597433012068,
+      "bias": -13.407269505429516
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "SimVP\u2192R",
+      "n": 603,
+      "rmse": 29.00777540614394,
+      "mae": 25.434442295210697,
+      "bias": -15.900920508986104
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "Persistence\u2192R",
+      "n": 603,
+      "rmse": 28.21308891450616,
+      "mae": 23.912945093753187,
+      "bias": -2.69677607501455
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 603,
+      "rmse": 27.773274540462317,
+      "mae": 24.0125995573657,
+      "bias": -13.826728081649641
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "SimVP\u2192R",
+      "n": 594,
+      "rmse": 29.09721521097321,
+      "mae": 25.554703759847246,
+      "bias": -16.521347144840515
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "Persistence\u2192R",
+      "n": 594,
+      "rmse": 29.936620890290953,
+      "mae": 24.70093387791754,
+      "bias": -0.6264688024756826
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 594,
+      "rmse": 27.961798119121273,
+      "mae": 24.243406508750546,
+      "bias": -14.169244276310485
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "SimVP\u2192R",
+      "n": 585,
+      "rmse": 30.131838496478476,
+      "mae": 26.38743661922612,
+      "bias": -18.018875496482533
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "Persistence\u2192R",
+      "n": 585,
+      "rmse": 32.78338247069044,
+      "mae": 25.54023864146373,
+      "bias": 1.65735374415062
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 585,
+      "rmse": 28.164043133478213,
+      "mae": 24.514889774659284,
+      "bias": -14.488724868633454
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "SimVP\u2192R",
+      "n": 576,
+      "rmse": 30.391239140313107,
+      "mae": 26.658208492234778,
+      "bias": -18.073670783043763
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "Persistence\u2192R",
+      "n": 576,
+      "rmse": 34.76767201123486,
+      "mae": 26.01657818920077,
+      "bias": 3.9897580084182516
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 576,
+      "rmse": 28.381241541500415,
+      "mae": 24.85951723645194,
+      "bias": -14.676693503769457
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "SimVP\u2192R",
+      "n": 567,
+      "rmse": 31.367969786308027,
+      "mae": 27.637636560731856,
+      "bias": -18.54347272302435
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "Persistence\u2192R",
+      "n": 567,
+      "rmse": 38.442656728904716,
+      "mae": 27.537668719998663,
+      "bias": 7.217441740057021
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 567,
+      "rmse": 28.576140542918647,
+      "mae": 25.09077801402725,
+      "bias": -14.746322158603778
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "SimVP\u2192R",
+      "n": 558,
+      "rmse": 31.725562625841537,
+      "mae": 27.76786673335046,
+      "bias": -19.225527555462005
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "Persistence\u2192R",
+      "n": 558,
+      "rmse": 42.245991648721024,
+      "mae": 29.643629016615154,
+      "bias": 10.780475754317369
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 558,
+      "rmse": 28.78322817688754,
+      "mae": 25.352140625822436,
+      "bias": -14.840838708214712
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "SimVP\u2192R",
+      "n": 531,
+      "rmse": 32.08150844657589,
+      "mae": 28.087984928598836,
+      "bias": -19.605155066825404
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "Persistence\u2192R",
+      "n": 531,
+      "rmse": 42.62907974206648,
+      "mae": 29.858751700769954,
+      "bias": 11.9969290118879
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 531,
+      "rmse": 29.236301466541942,
+      "mae": 25.781046950385413,
+      "bias": -15.380424040435393
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 21.57175042109228,
+      "mae": 17.785541861057826,
+      "bias": -12.655994083129755
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 22.31680955747989,
+      "mae": 18.814517219515537,
+      "bias": -11.55610928511404
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 22.888228187920355,
+      "mae": 19.216832689424155,
+      "bias": -11.281831043960274
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 21.188805591435173,
+      "mae": 17.352299823731094,
+      "bias": -12.423687986691819
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 21.603351405650038,
+      "mae": 18.33147631863588,
+      "bias": -11.752985267901634
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 22.888228187920355,
+      "mae": 19.216832689424155,
+      "bias": -11.281831043960274
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 21.2098400451075,
+      "mae": 17.537836250354797,
+      "bias": -12.248059993562153
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 20.49954567529225,
+      "mae": 17.358503624603763,
+      "bias": -11.224457560439713
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 22.888228187920355,
+      "mae": 19.216832689424155,
+      "bias": -11.281831043960274
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "SimVP\u2192R",
+      "n": 648,
+      "rmse": 22.578804536723272,
+      "mae": 18.290907595976712,
+      "bias": -13.226266760871606
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "Persistence\u2192R",
+      "n": 648,
+      "rmse": 21.13185488068668,
+      "mae": 17.226158057030453,
+      "bias": -11.998003712241466
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 648,
+      "rmse": 24.06954492216409,
+      "mae": 19.883299647271862,
+      "bias": -12.058506357994977
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "SimVP\u2192R",
+      "n": 639,
+      "rmse": 22.40421705001289,
+      "mae": 18.03219688335146,
+      "bias": -13.099392964996037
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "Persistence\u2192R",
+      "n": 639,
+      "rmse": 21.173576508806235,
+      "mae": 17.308645094037487,
+      "bias": -11.627632989453971
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 639,
+      "rmse": 24.09568552532506,
+      "mae": 19.85172520598947,
+      "bias": -11.916723560525588
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "SimVP\u2192R",
+      "n": 630,
+      "rmse": 22.268733307830463,
+      "mae": 17.802125564429645,
+      "bias": -13.033684657470584
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "Persistence\u2192R",
+      "n": 630,
+      "rmse": 21.18959349811935,
+      "mae": 17.311091493379944,
+      "bias": -11.448439070335798
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 630,
+      "rmse": 24.15773024623886,
+      "mae": 19.86269207831947,
+      "bias": -11.814333266491818
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "SimVP\u2192R",
+      "n": 621,
+      "rmse": 21.955155126749283,
+      "mae": 17.405594389506224,
+      "bias": -13.070728400393325
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "Persistence\u2192R",
+      "n": 621,
+      "rmse": 20.81524353508743,
+      "mae": 16.553582281771057,
+      "bias": -10.051740392104609
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 621,
+      "rmse": 24.013304345951987,
+      "mae": 19.678350620800437,
+      "bias": -11.513348927641951
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "SimVP\u2192R",
+      "n": 612,
+      "rmse": 22.260329497977462,
+      "mae": 17.763633878418013,
+      "bias": -12.543599991495956
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "Persistence\u2192R",
+      "n": 612,
+      "rmse": 21.209861572901538,
+      "mae": 16.67369677255677,
+      "bias": -9.545326222403611
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 612,
+      "rmse": 24.007084734621426,
+      "mae": 19.610002655012146,
+      "bias": -11.324927407542505
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "SimVP\u2192R",
+      "n": 603,
+      "rmse": 22.03480370005659,
+      "mae": 17.02477145938165,
+      "bias": -13.34784920126185
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "Persistence\u2192R",
+      "n": 603,
+      "rmse": 22.362603161208842,
+      "mae": 17.380855335205098,
+      "bias": -8.806180823122325
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 603,
+      "rmse": 24.0378538370664,
+      "mae": 19.578111820057856,
+      "bias": -11.16937873307374
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "SimVP\u2192R",
+      "n": 594,
+      "rmse": 22.088673352305634,
+      "mae": 16.969071762093577,
+      "bias": -13.264883511274487
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "Persistence\u2192R",
+      "n": 594,
+      "rmse": 23.340221200043313,
+      "mae": 18.506706066511295,
+      "bias": -7.467578407166672
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 594,
+      "rmse": 24.09692546489746,
+      "mae": 19.575747063993852,
+      "bias": -11.03960893023725
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "SimVP\u2192R",
+      "n": 585,
+      "rmse": 22.042281840786675,
+      "mae": 16.862753976819157,
+      "bias": -13.082893045748094
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "Persistence\u2192R",
+      "n": 585,
+      "rmse": 24.16596007369155,
+      "mae": 19.037275742328227,
+      "bias": -5.997233214256045
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 585,
+      "rmse": 24.195895057153205,
+      "mae": 19.624678650713083,
+      "bias": -10.957215314898688
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "SimVP\u2192R",
+      "n": 576,
+      "rmse": 21.830873301887777,
+      "mae": 16.72537927586823,
+      "bias": -12.956790962549995
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "Persistence\u2192R",
+      "n": 576,
+      "rmse": 25.795958123801142,
+      "mae": 20.29573206446058,
+      "bias": -4.554274644614712
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 576,
+      "rmse": 24.26909235976981,
+      "mae": 19.636279114732147,
+      "bias": -10.833386664295652
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "SimVP\u2192R",
+      "n": 567,
+      "rmse": 21.445893374346646,
+      "mae": 16.364853608704337,
+      "bias": -12.565158847243376
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "Persistence\u2192R",
+      "n": 567,
+      "rmse": 29.994125821631037,
+      "mae": 23.423069350900416,
+      "bias": -1.7417840277943792
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 567,
+      "rmse": 24.44220353390868,
+      "mae": 19.832705601363127,
+      "bias": -10.890084699332403
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "SimVP\u2192R",
+      "n": 558,
+      "rmse": 21.912645898852674,
+      "mae": 16.67879573419184,
+      "bias": -12.678306820023018
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "Persistence\u2192R",
+      "n": 558,
+      "rmse": 34.324904882177556,
+      "mae": 25.996186124699033,
+      "bias": 1.0834852120759848
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 558,
+      "rmse": 24.62210769767139,
+      "mae": 20.038879436445356,
+      "bias": -10.952022713414138
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "SimVP\u2192R",
+      "n": 549,
+      "rmse": 22.07053095520084,
+      "mae": 16.630771990616186,
+      "bias": -12.793982351437485
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "Persistence\u2192R",
+      "n": 549,
+      "rmse": 38.62125482408932,
+      "mae": 28.370907415641476,
+      "bias": 4.9098064537271595
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 549,
+      "rmse": 24.722639494123204,
+      "mae": 20.08207073126627,
+      "bias": -10.846249143923062
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "SimVP\u2192R",
+      "n": 522,
+      "rmse": 21.6436678052823,
+      "mae": 16.602652721701787,
+      "bias": -11.498321995490791
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "Persistence\u2192R",
+      "n": 522,
+      "rmse": 41.45101499699506,
+      "mae": 29.68903771309457,
+      "bias": 6.3090722886089665
+    },
+    {
+      "region": "station_neighbourhood_3x3",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 522,
+      "rmse": 24.54623049666458,
+      "mae": 19.841110616324162,
+      "bias": -10.12757411929079
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 27.685586694845792,
+      "mae": 23.875661369158486,
+      "bias": -10.928548097315993
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 26.515394943990348,
+      "mae": 22.470969121082817,
+      "bias": -10.185160335667234
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 15,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 26.381277992638946,
+      "mae": 22.184453153626084,
+      "bias": -10.591250028419418
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 27.578229292009922,
+      "mae": 23.810201187505427,
+      "bias": -10.629719434244901
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 26.521210896974754,
+      "mae": 22.53195221625489,
+      "bias": -9.934582933905768
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 30,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 26.381277992638946,
+      "mae": 22.184453153626084,
+      "bias": -10.591250028419418
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 27.54178896945059,
+      "mae": 23.71333840549546,
+      "bias": -10.702676876975938
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 26.30709160913047,
+      "mae": 22.333019539472375,
+      "bias": -8.817279326246148
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 45,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 26.381277992638946,
+      "mae": 22.184453153626084,
+      "bias": -10.591250028419418
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "SimVP\u2192R",
+      "n": 18432,
+      "rmse": 27.895905894374675,
+      "mae": 23.994601645105895,
+      "bias": -11.38650682533272
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "Persistence\u2192R",
+      "n": 18432,
+      "rmse": 26.6465257804014,
+      "mae": 22.71140253318691,
+      "bias": -8.496808205808334
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 60,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18432,
+      "rmse": 26.628847444559586,
+      "mae": 22.432657953833573,
+      "bias": -11.000471538699223
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "SimVP\u2192R",
+      "n": 18432,
+      "rmse": 27.931799029511073,
+      "mae": 24.05186563850843,
+      "bias": -11.459823325460055
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "Persistence\u2192R",
+      "n": 18432,
+      "rmse": 26.82002264959336,
+      "mae": 23.070165892345624,
+      "bias": -7.458524779380751
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 75,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18432,
+      "rmse": 26.628847444559586,
+      "mae": 22.432657953833573,
+      "bias": -11.000471538699223
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 28.18286818873417,
+      "mae": 24.31554897937032,
+      "bias": -12.009387955712116
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 26.948647855465815,
+      "mae": 23.30629107811544,
+      "bias": -6.782445698717703
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 90,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 26.658395401190276,
+      "mae": 22.42872026551682,
+      "bias": -11.475298374798125
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "SimVP\u2192R",
+      "n": 17920,
+      "rmse": 28.51820333840997,
+      "mae": 24.581716288831682,
+      "bias": -13.398747811095177
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "Persistence\u2192R",
+      "n": 17920,
+      "rmse": 26.757241132596157,
+      "mae": 23.167311153651745,
+      "bias": -5.921325939353504
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 105,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17920,
+      "rmse": 26.769184382478898,
+      "mae": 22.535929682210924,
+      "bias": -11.850635044294958
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "SimVP\u2192R",
+      "n": 17664,
+      "rmse": 28.352714399595914,
+      "mae": 24.367550069244814,
+      "bias": -14.22524366369838
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "Persistence\u2192R",
+      "n": 17664,
+      "rmse": 26.64471486772134,
+      "mae": 23.099539205071476,
+      "bias": -4.695220305315488
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 120,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17664,
+      "rmse": 26.915252895741943,
+      "mae": 22.69700898484102,
+      "bias": -12.187394698036224
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "SimVP\u2192R",
+      "n": 17408,
+      "rmse": 29.029112575862055,
+      "mae": 25.08802118989049,
+      "bias": -15.424975918785856
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "Persistence\u2192R",
+      "n": 17408,
+      "rmse": 27.36766383104683,
+      "mae": 23.43012861888548,
+      "bias": -4.124115468493226
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 135,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17408,
+      "rmse": 27.065154198298394,
+      "mae": 22.852938796381835,
+      "bias": -12.544470823008307
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "SimVP\u2192R",
+      "n": 17152,
+      "rmse": 29.232677425901564,
+      "mae": 25.353050865378503,
+      "bias": -15.904705438050602
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "Persistence\u2192R",
+      "n": 17152,
+      "rmse": 27.590655303626033,
+      "mae": 23.21627643203115,
+      "bias": -2.889239064593756
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 150,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17152,
+      "rmse": 27.21351965427803,
+      "mae": 22.99726659723558,
+      "bias": -12.92846256871263
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "SimVP\u2192R",
+      "n": 16896,
+      "rmse": 29.3629198497907,
+      "mae": 25.49504467725434,
+      "bias": -16.513373577930658
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "Persistence\u2192R",
+      "n": 16896,
+      "rmse": 28.635888369483652,
+      "mae": 23.67629555902616,
+      "bias": -1.1799896908491456
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 165,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16896,
+      "rmse": 27.381634950702843,
+      "mae": 23.179251326030965,
+      "bias": -13.290807069704336
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "SimVP\u2192R",
+      "n": 16640,
+      "rmse": 30.266478260590635,
+      "mae": 26.26416550360735,
+      "bias": -17.844634510327012
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "Persistence\u2192R",
+      "n": 16640,
+      "rmse": 30.515870921147375,
+      "mae": 24.419348390586478,
+      "bias": 0.49783340105998725
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 180,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16640,
+      "rmse": 27.5719982003727,
+      "mae": 23.4115969411706,
+      "bias": -13.619539276037553
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "SimVP\u2192R",
+      "n": 16384,
+      "rmse": 30.459971717760443,
+      "mae": 26.429844957677812,
+      "bias": -17.870858272778705
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "Persistence\u2192R",
+      "n": 16384,
+      "rmse": 31.83274980327597,
+      "mae": 24.626886168929612,
+      "bias": 2.441698653824168
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 195,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16384,
+      "rmse": 27.777139530428485,
+      "mae": 23.714836884709705,
+      "bias": -13.802044745998296
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "SimVP\u2192R",
+      "n": 16128,
+      "rmse": 31.196498820465223,
+      "mae": 27.183167462311694,
+      "bias": -18.12644436789804
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "Persistence\u2192R",
+      "n": 16128,
+      "rmse": 34.692457702685076,
+      "mae": 25.684146482452356,
+      "bias": 5.1989954300576695
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 210,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16128,
+      "rmse": 27.938716599753228,
+      "mae": 23.876264224317726,
+      "bias": -13.806126178642645
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "SimVP\u2192R",
+      "n": 15872,
+      "rmse": 31.640490028839316,
+      "mae": 27.394062108074518,
+      "bias": -18.954096254650327
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "Persistence\u2192R",
+      "n": 15872,
+      "rmse": 37.72901354709459,
+      "mae": 27.27010890062746,
+      "bias": 8.253343710378703
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 225,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 15872,
+      "rmse": 28.134721115641856,
+      "mae": 24.120774692483074,
+      "bias": -13.888524214224981
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "SimVP\u2192R",
+      "n": 15104,
+      "rmse": 31.98709180270206,
+      "mae": 27.765147317826283,
+      "bias": -19.279826585458675
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "Persistence\u2192R",
+      "n": 15104,
+      "rmse": 37.75130352409925,
+      "mae": 27.09157877788787,
+      "bias": 9.21363600918289
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "sili",
+      "lead_min": 240,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 15104,
+      "rmse": 28.628564248144222,
+      "mae": 24.655473810142336,
+      "bias": -14.46543769339239
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 22.60823255988335,
+      "mae": 18.483925530824155,
+      "bias": -12.679424996248967
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 23.54076896731272,
+      "mae": 19.570280446949365,
+      "bias": -11.93554649134262
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 15,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 23.870573681398806,
+      "mae": 19.896125531646607,
+      "bias": -11.707720303164995
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 22.380033390025908,
+      "mae": 18.215262532233513,
+      "bias": -12.622926522976426
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 23.002801230559093,
+      "mae": 19.03511759612099,
+      "bias": -12.069462838526098
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 30,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 23.870573681398806,
+      "mae": 19.896125531646607,
+      "bias": -11.707720303164995
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 22.40622961455082,
+      "mae": 18.28994540105532,
+      "bias": -12.477207656333636
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 22.253051655816215,
+      "mae": 18.25832532638134,
+      "bias": -11.809045903255448
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 45,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 23.870573681398806,
+      "mae": 19.896125531646607,
+      "bias": -11.707720303164995
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "SimVP\u2192R",
+      "n": 18432,
+      "rmse": 23.527331326172792,
+      "mae": 18.95203654097622,
+      "bias": -13.296666419357948
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "Persistence\u2192R",
+      "n": 18432,
+      "rmse": 22.58147658248294,
+      "mae": 18.110642263537216,
+      "bias": -12.27000211206766
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 60,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18432,
+      "rmse": 24.807642598341122,
+      "mae": 20.472148464688626,
+      "bias": -12.397471086602593
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "SimVP\u2192R",
+      "n": 18176,
+      "rmse": 23.39231607955907,
+      "mae": 18.74763187473439,
+      "bias": -13.17607054436322
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "Persistence\u2192R",
+      "n": 18176,
+      "rmse": 22.595357361351162,
+      "mae": 18.093649153248617,
+      "bias": -11.766524110333872
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 75,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 18176,
+      "rmse": 24.82399921029157,
+      "mae": 20.432624834223986,
+      "bias": -12.244219605742375
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "SimVP\u2192R",
+      "n": 17920,
+      "rmse": 23.251054756717178,
+      "mae": 18.534657335085416,
+      "bias": -13.147377940598878
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "Persistence\u2192R",
+      "n": 17920,
+      "rmse": 22.534774066262386,
+      "mae": 18.011707826798776,
+      "bias": -11.455824180377405
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 90,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17920,
+      "rmse": 24.8739197335591,
+      "mae": 20.426392855100605,
+      "bias": -12.12101040906926
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "SimVP\u2192R",
+      "n": 17664,
+      "rmse": 22.94558334782275,
+      "mae": 18.117311542891557,
+      "bias": -13.182656255829176
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "Persistence\u2192R",
+      "n": 17664,
+      "rmse": 22.20197399836467,
+      "mae": 17.51149506697085,
+      "bias": -10.433863272856325
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 105,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17664,
+      "rmse": 24.783729723571497,
+      "mae": 20.285716468119794,
+      "bias": -11.859966160551762
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "SimVP\u2192R",
+      "n": 17408,
+      "rmse": 23.180233551828866,
+      "mae": 18.495365960288773,
+      "bias": -12.604973351582661
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "Persistence\u2192R",
+      "n": 17408,
+      "rmse": 22.41317343306941,
+      "mae": 17.52716047988839,
+      "bias": -9.824958610429581
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 120,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17408,
+      "rmse": 24.841140493388437,
+      "mae": 20.28996043100687,
+      "bias": -11.740302030680486
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "SimVP\u2192R",
+      "n": 17152,
+      "rmse": 23.023810101563623,
+      "mae": 17.889831344119,
+      "bias": -13.375684963629455
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "Persistence\u2192R",
+      "n": 17152,
+      "rmse": 23.546837534059332,
+      "mae": 18.38538995812822,
+      "bias": -8.84407833725563
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 135,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 17152,
+      "rmse": 24.938608848429933,
+      "mae": 20.34497903477856,
+      "bias": -11.667713792656263
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "SimVP\u2192R",
+      "n": 16896,
+      "rmse": 23.14382028570334,
+      "mae": 17.912374466160703,
+      "bias": -13.352393372467311
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "Persistence\u2192R",
+      "n": 16896,
+      "rmse": 24.421354118590624,
+      "mae": 19.36002480526273,
+      "bias": -7.797709761550226
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 150,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16896,
+      "rmse": 25.049859880459724,
+      "mae": 20.415759763579487,
+      "bias": -11.607020805667457
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "SimVP\u2192R",
+      "n": 16640,
+      "rmse": 23.149095364204843,
+      "mae": 17.84314995639961,
+      "bias": -13.226916704376931
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "Persistence\u2192R",
+      "n": 16640,
+      "rmse": 25.10592332302499,
+      "mae": 19.779113994652768,
+      "bias": -6.569689810362654
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 165,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16640,
+      "rmse": 25.17837066746311,
+      "mae": 20.51600286477453,
+      "bias": -11.571744845971542
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "SimVP\u2192R",
+      "n": 16384,
+      "rmse": 23.067248396588987,
+      "mae": 17.8340167938364,
+      "bias": -13.152354609632212
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "Persistence\u2192R",
+      "n": 16384,
+      "rmse": 26.712147835929454,
+      "mae": 21.04478829832383,
+      "bias": -5.0374486353340355
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 180,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16384,
+      "rmse": 25.305494975220583,
+      "mae": 20.611492774573563,
+      "bias": -11.52748072422678
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "SimVP\u2192R",
+      "n": 16128,
+      "rmse": 22.85622790017709,
+      "mae": 17.618457501070708,
+      "bias": -12.796910629119058
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "Persistence\u2192R",
+      "n": 16128,
+      "rmse": 29.667075145605043,
+      "mae": 23.380439804005906,
+      "bias": -2.8414789537027043
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 195,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 16128,
+      "rmse": 25.461607763994945,
+      "mae": 20.767134458063566,
+      "bias": -11.538931740250963
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "SimVP\u2192R",
+      "n": 15872,
+      "rmse": 23.233823818409135,
+      "mae": 17.944468305294798,
+      "bias": -12.927503109209852
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "Persistence\u2192R",
+      "n": 15872,
+      "rmse": 32.99260585072633,
+      "mae": 25.685385466486796,
+      "bias": -0.4770306753655666
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 210,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 15872,
+      "rmse": 25.6402771306819,
+      "mae": 20.96263116679139,
+      "bias": -11.585586469659225
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "SimVP\u2192R",
+      "n": 15616,
+      "rmse": 23.370341716415652,
+      "mae": 17.92403047140056,
+      "bias": -13.128423136501773
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "Persistence\u2192R",
+      "n": 15616,
+      "rmse": 36.21632306616377,
+      "mae": 27.648204079015365,
+      "bias": 2.465308912730211
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 225,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 15616,
+      "rmse": 25.761077206103096,
+      "mae": 21.040903113108715,
+      "bias": -11.510136371761266
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "SimVP\u2192R",
+      "n": 14848,
+      "rmse": 23.214807555982656,
+      "mae": 17.98845536500827,
+      "bias": -11.921572142350286
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "Persistence\u2192R",
+      "n": 14848,
+      "rmse": 38.3342955197665,
+      "mae": 28.821830397274315,
+      "bias": 3.5066488805795455
+    },
+    {
+      "region": "full_station_patch_16x16",
+      "station": "zhujia",
+      "lead_min": 240,
+      "method": "Offline true-future AGRI\u2192R",
+      "n": 14848,
+      "rmse": 25.758383075462703,
+      "mae": 20.916422076749956,
+      "bias": -10.892684641884541
+    }
+  ],
+  "note": "CPP is a retrieval reference, not independent COT truth. Offline target AGRI\u2192R is not deployable. The 271 windows overlap and the supported dates are limited."
+}

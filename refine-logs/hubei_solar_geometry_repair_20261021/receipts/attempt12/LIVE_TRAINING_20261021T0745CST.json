@@ -1,0 +1,58 @@
+{
+  "server_observed_time": "2026-10-21 07:45:52 CST",
+  "controller_pid": 140574,
+  "controller_state": "RUNNING_AUTHORIZED_STAGES",
+  "controller_completed": [
+    "profile",
+    "R",
+    "full",
+    "fold_0",
+    "fold_1"
+  ],
+  "controller_failed": {},
+  "test_payloads_read": 0,
+  "geometry_audit": "PASS",
+  "geometry_audit_receipt": "receipts/attempt12/DATA_AUDIT_PASS_attempt12.json",
+  "noaa_geometry_reference_audit": "PASS",
+  "noaa_geometry_reference_receipt": "NOAA_ALL_TRAIN_VAL_REFERENCE_AUDIT.json",
+  "active_queue": [
+    {
+      "gpus": 1,
+      "state": "training complete, OOF bank inference still running; bank report not yet present",
+      "node": "node22",
+      "pbs": "215314.tc6000",
+      "role": "fold_2",
+      "latest_completed_epoch": 13,
+      "val_loss": 0.2488881
+    },
+    {
+      "gpus": 1,
+      "state": "PBS running",
+      "node": "node22",
+      "pbs": "215315.tc6000",
+      "role": "fold_3",
+      "latest_completed_epoch": 15,
+      "val_loss": 0.2597657
+    },
+    {
+      "gpus": 1,
+      "state": "PBS running",
+      "node": "node22",
+      "pbs": "215316.tc6000",
+      "role": "fold_4",
+      "latest_completed_epoch": 10,
+      "val_loss": 0.2387277
+    }
+  ],
+  "ready_S_banks": [
+    "full:407",
+    "fold_0:823",
+    "fold_1:797"
+  ],
+  "waiting_for": [
+    "fold_2-4 corrected-geometry OOF S banks",
+    "formal corrected forecast-COT validation evaluation",
+    "paired GHI FA/FAC training and scoring"
+  ],
+  "error_scan": "No traceback/CUDA OOM/runtime-error markers found; controller failed map empty"
+}

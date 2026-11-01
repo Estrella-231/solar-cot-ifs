@@ -1,0 +1,61 @@
+#!/bin/bash
+#PBS -N hb_forecast_prof
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=00:45:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_forecast_ghi_20261017
+PACK="$ROOT/pack"
+SCRIPTS="$ROOT/scripts"
+PROFILE="$ROOT/profile/forecast_ghi_profile_fa_fac.json"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$ROOT/profile" "$ROOT/logs"
+exec > "$ROOT/logs/profile_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPTS:${PYTHONPATH:-}"
+
+test -s "$PACK/pack_report.json"
+test ! -e "$PROFILE"
+"$PY" - "$PACK/pack_report.json" <<'PY'
+import json, sys
+from pathlib import Path
+p = json.loads(Path(sys.argv[1]).read_text())
+assert p["state"] == "HUBEI_GHI_FORECAST_HEADS_TRAINVAL_PACK_TEST_CLOSED"
+assert p["train_forecast_inputs_are_oof"] is True and p["oof_fold_count"] == 5
+assert p["validation_forecast_source"] == "frozen_full_train_S_R"
+assert p["test_and_buffer_values_read"] == 0
+assert p["samples"] == 70171
+print("FORECAST_PACK_GATE_PASS samples=70171 OOF=5 test_buffer=0", flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/train_hubei_ghi_heads.py" \
+  --pack "$PACK" --output "$ROOT/profile/profile_only_unused" \
+  --input-mode forecast --arms FA FAC --profile-only \
+  --profile-output "$PROFILE" \
+  | tee "$ROOT/logs/profile_stdout_${PBS_JOBID//./_}.log"
+
+"$PY" - "$PROFILE" <<'PY'
+import json, sys
+from pathlib import Path
+p = json.loads(Path(sys.argv[1]).read_text())
+assert p["state"] == "HUBEI_GHI_HEAD_SINGLE_GPU_PROFILE_COMPLETE"
+assert p["input_mode"] == "forecast" and set(p["arms"]) == {"FA", "FAC"}
+assert p["test_payloads_read"] == 0
+assert any(r["batch"] == 512 and r["updates_per_epoch_min_support"] >= 12 for r in p["results"])
+print("FORECAST_PROFILE_PASS arms=FA,FAC test_closed=1", flush=True)
+PY
+echo HUBEI_FORECAST_GHI_PROFILE_COMPLETE

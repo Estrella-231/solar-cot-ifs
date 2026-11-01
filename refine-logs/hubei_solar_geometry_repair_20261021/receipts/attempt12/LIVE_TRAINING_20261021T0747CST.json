@@ -1,0 +1,52 @@
+{
+  "server_observed_time": "2026-10-21 07:47:10 CST",
+  "controller_pid": 140574,
+  "controller_state": "RUNNING_AUTHORIZED_STAGES",
+  "controller_completed": [
+    "profile",
+    "R",
+    "full",
+    "fold_0",
+    "fold_1"
+  ],
+  "controller_failed": {},
+  "test_payloads_read": 0,
+  "queue": [
+    {
+      "S_training": "completed epoch 13; best checkpoint selected by patience",
+      "inference": "OOF val=850; prediction, truth, and future-geometry arrays present; no BANK_REPORT/S_BANK_READY yet",
+      "role": "fold_2",
+      "node": "node22",
+      "state": "R",
+      "gpus": 1,
+      "pbs": "215314.tc6000"
+    },
+    {
+      "latest_epoch": 15,
+      "role": "fold_3",
+      "latest_val_loss": 0.2597657,
+      "node": "node22",
+      "state": "R",
+      "gpus": 1,
+      "pbs": "215315.tc6000"
+    },
+    {
+      "latest_epoch": 11,
+      "role": "fold_4",
+      "latest_val_loss": 0.2564271,
+      "node": "node22",
+      "state": "R",
+      "gpus": 1,
+      "pbs": "215316.tc6000"
+    }
+  ],
+  "existing_ready_banks": [
+    "full=407",
+    "fold_0=823",
+    "fold_1=797"
+  ],
+  "official_forecast_cot_evaluation": "not started; waiting for fold_2/3/4 ready banks",
+  "paired_GHI": "not started",
+  "leadwise_preview_observation": "CPU FP32 preview: point estimate is worse than persistence at 15 of 16 leads; significant date-block intervals above zero at +15,+30,+45,+75,+240; most quarter-hour leads have only 4 target dates, while +60/+120/+180/+240 have 14-16",
+  "unit_correction": "COT RMSE and deltas are dimensionless; corrected erroneous W m^-2 label in preview markdown"
+}

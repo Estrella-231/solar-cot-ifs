@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -N t18_al_witness_profile
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/t18_r_al_witness_profile_v2.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+FB=$EXP/results/r_al_feature_bank_t18_20261014_v1
+PACK=$EXP/data/ghi_head_pack_new_r_v1
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/witness_r_al_head.py" --feature-bank "$FB" --pack "$PACK" \
+  --r-checkpoint "$EXP/results/seed42_v1/best.pt" --r-source "$EXP/scripts/train_station16_R.py" \
+  --station sili --output "$FB/al_gradient_witness_sili.json"
+python -u "$EXP/witness_r_al_head.py" --feature-bank "$FB" --pack "$PACK" \
+  --r-checkpoint "$EXP/results/seed42_v1/best.pt" --r-source "$EXP/scripts/train_station16_R.py" \
+  --station zhujia --output "$FB/al_gradient_witness_zhujia.json"
+python -u "$EXP/train_r_al_head.py" --pack "$PACK" --feature-bank "$FB" \
+  --station sili --seed 42 --profile-only --output "$FB/al_single_card_profile.json"
+echo T18_R_AL_WITNESS_PROFILE_COMPLETE

@@ -1,0 +1,76 @@
+{
+  "scope": "Read-only local review; no SSH, training, test payload or source PPT write",
+  "git_head": "526ef6b62bb2a62d2080849ee79c01644637b7cd",
+  "git_commit_count": 89,
+  "modified_tracked": 15,
+  "untracked_entries": 579,
+  "source_sha256": "08c9cc92df549f12412873e9b8e50f308f35f79451693fa10b229a3346c15785",
+  "direct_R_CLP_binding": {
+    "ids_equal": true,
+    "stations_equal": true,
+    "target_times_equal": true,
+    "mask_equal": true
+  },
+  "direct_R_CPP_threshold_scores": {
+    "all": {
+      "n": 356169,
+      "rmse": 9.074092379589063,
+      "cloud": {
+        "tp": 218215,
+        "fp": 32343,
+        "fn": 9707,
+        "POD": 0.9574108686304964,
+        "FAR": 0.12908388476919516,
+        "CSI": 0.8384339039056347
+      },
+      "thick": {
+        "tp": 34499,
+        "fp": 17526,
+        "fn": 16425,
+        "POD": 0.6774605294163852,
+        "FAR": 0.3368765016818837,
+        "CSI": 0.5040029218407597
+      }
+    },
+    "sili": {
+      "n": 178019,
+      "rmse": 9.673508942031255,
+      "cloud": {
+        "tp": 127965,
+        "fp": 15226,
+        "fn": 2207,
+        "POD": 0.9830455090188366,
+        "FAR": 0.1063334986137397,
+        "CSI": 0.8801015144637477
+      },
+      "thick": {
+        "tp": 16410,
+        "fp": 11525,
+        "fn": 9801,
+        "POD": 0.6260730227766969,
+        "FAR": 0.41256488276355824,
+        "CSI": 0.4348632605469578
+      }
+    },
+    "zhujia": {
+      "n": 178150,
+      "rmse": 8.432662284047074,
+      "cloud": {
+        "tp": 90250,
+        "fp": 17117,
+        "fn": 7500,
+        "POD": 0.9232736572890026,
+        "FAR": 0.1594251492544264,
+        "CSI": 0.785691277738602
+      },
+      "thick": {
+        "tp": 18089,
+        "fp": 6001,
+        "fn": 6624,
+        "POD": 0.7319629344879214,
+        "FAR": 0.24910751349107513,
+        "CSI": 0.5889496646480432
+      }
+    }
+  }
+}

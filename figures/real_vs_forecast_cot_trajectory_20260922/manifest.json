@@ -1,0 +1,61 @@
+{
+  "state": "COMPLETE_VALIDATION_REAL_VS_FORECAST_COT_TRAJECTORY",
+  "test_used": false,
+  "selection": "temporal median among daytime validation station-sequences with +60,+120,+180,+240 min observed-AGRI and CPP-mask availability; selection ignores AGRI/COT/GHI/error",
+  "candidate_count": 4180,
+  "station": "zhujia",
+  "station_index": 1,
+  "sequence": 2082,
+  "base_pack_rows": [
+    587060,
+    587064,
+    587068,
+    587072
+  ],
+  "cpp_pack_rows": [
+    16761,
+    16765,
+    16769,
+    16773
+  ],
+  "leads_minutes": [
+    60,
+    120,
+    180,
+    240
+  ],
+  "init_time_bjt": "2025-08-02T06:00:00+08:00",
+  "target_time_bjt": [
+    "2025-08-02T07:00:00+08:00",
+    "2025-08-02T08:00:00+08:00",
+    "2025-08-02T09:00:00+08:00",
+    "2025-08-02T10:00:00+08:00"
+  ],
+  "r_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "rgb_contract": {
+    "red": "C02",
+    "green": "C03",
+    "blue": "C01",
+    "gamma": 2.2,
+    "shared_percentile_stretch": [
+      1,
+      99
+    ],
+    "low": [
+      0.03769330680370331,
+      0.06890419125556946,
+      0.04935092478990555
+    ],
+    "high": [
+      0.11626607298851012,
+      0.26684972643852234,
+      0.12834472954273224
+    ]
+  },
+  "cot_contract": "frozen R(observed target AGRI) versus frozen R(SimVP forecast AGRI); future observed AGRI is validation-only diagnosis, never GHI input",
+  "difference_contract": "physical COT R(SimVP AGRI) minus R(observed AGRI); shared symmetric range, no clipping",
+  "output_files": {
+    "real_vs_forecast_cot_trajectory.pdf": "e71152cc1e0170d55e06823ed356d604b7577e0a2ece7ab713ebfdad66e47994",
+    "real_vs_forecast_cot_trajectory.png": "363e37b674f16c6e225e97b967d3ab0f248dbe7e2414682a1663e4b96d0d3e4d"
+  }
+}

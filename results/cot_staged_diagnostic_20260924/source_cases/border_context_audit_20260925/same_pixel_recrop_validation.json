@@ -1,0 +1,249 @@
+{
+  "scope": "four selected validation real-AGRI pixels, frozen model CPU replay; no training or test",
+  "interpretation": "Target pixel and all 16 input values held exactly constant; 16x16 surrounding scene changes with recrop. This diagnoses context/position sensitivity, not padding in isolation.",
+  "checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "classifier_best_sha256": "a17c7c8ea73a6e4a7bb450e5298e7e7ddd675c33b1b69ab6c3b9783782e78f9b",
+  "regressor_best_sha256": "a463dc6d1b5c4979480728e66b08a18c9d9c2733d9817710e7a6a1eccfe3551b",
+  "cases": [
+    {
+      "case_id": 1,
+      "station": "zhujia",
+      "timestamp_utc": "202507060815",
+      "validation_row_id": 15506,
+      "global_source_pixel": [
+        65,
+        151
+      ],
+      "original_local_pixel": [
+        0,
+        9
+      ],
+      "reference_cot": 0.0,
+      "saved_probability": 0.987481415271759,
+      "saved_final_cot": 36.93843078613281,
+      "original_replay_probability_abs_delta": 3.159046173095703e-06,
+      "original_replay_cot_abs_delta": 0.011302947998046875,
+      "variants": [
+        {
+          "pixel_local_row": 0,
+          "pixel_local_col": 9,
+          "crop_origin_row": 65,
+          "crop_origin_col": 142,
+          "probability": 0.9874782562255859,
+          "low_expert_cot": 0.09697748720645905,
+          "cloud_expert_cot": 36.927127838134766,
+          "final_cot": 36.927127838134766,
+          "frozen_R_cot": 36.01366424560547,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 4,
+          "pixel_local_col": 9,
+          "crop_origin_row": 61,
+          "crop_origin_col": 142,
+          "probability": 0.9835404753684998,
+          "low_expert_cot": 0.09620184451341629,
+          "cloud_expert_cot": 29.08302116394043,
+          "final_cot": 29.08302116394043,
+          "frozen_R_cot": 28.189411163330078,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 8,
+          "pixel_local_col": 9,
+          "crop_origin_row": 57,
+          "crop_origin_col": 142,
+          "probability": 0.9843615293502808,
+          "low_expert_cot": 0.09632890671491623,
+          "cloud_expert_cot": 30.17192840576172,
+          "final_cot": 30.17192840576172,
+          "frozen_R_cot": 29.276029586791992,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        }
+      ]
+    },
+    {
+      "case_id": 2,
+      "station": "sili",
+      "timestamp_utc": "202507140515",
+      "validation_row_id": 6655,
+      "global_source_pixel": [
+        155,
+        149
+      ],
+      "original_local_pixel": [
+        0,
+        9
+      ],
+      "reference_cot": 0.0,
+      "saved_probability": 0.9873078465461731,
+      "saved_final_cot": 36.57217025756836,
+      "original_replay_probability_abs_delta": 4.351139068603516e-06,
+      "original_replay_cot_abs_delta": 0.011585235595703125,
+      "variants": [
+        {
+          "pixel_local_row": 0,
+          "pixel_local_col": 9,
+          "crop_origin_row": 155,
+          "crop_origin_col": 140,
+          "probability": 0.9873121976852417,
+          "low_expert_cot": 0.09694820642471313,
+          "cloud_expert_cot": 36.58375549316406,
+          "final_cot": 36.58375549316406,
+          "frozen_R_cot": 35.65846252441406,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 4,
+          "pixel_local_col": 9,
+          "crop_origin_row": 151,
+          "crop_origin_col": 140,
+          "probability": 0.9829694032669067,
+          "low_expert_cot": 0.09590603411197662,
+          "cloud_expert_cot": 27.008153915405273,
+          "final_cot": 27.008153915405273,
+          "frozen_R_cot": 26.137367248535156,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 8,
+          "pixel_local_col": 9,
+          "crop_origin_row": 147,
+          "crop_origin_col": 140,
+          "probability": 0.9829179644584656,
+          "low_expert_cot": 0.09593812376260757,
+          "cloud_expert_cot": 27.224918365478516,
+          "final_cot": 27.224918365478516,
+          "frozen_R_cot": 26.344635009765625,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        }
+      ]
+    },
+    {
+      "case_id": 3,
+      "station": "zhujia",
+      "timestamp_utc": "202507060630",
+      "validation_row_id": 15499,
+      "global_source_pixel": [
+        73,
+        153
+      ],
+      "original_local_pixel": [
+        8,
+        11
+      ],
+      "reference_cot": 0.0,
+      "saved_probability": 0.9858998656272888,
+      "saved_final_cot": 35.27525329589844,
+      "original_replay_probability_abs_delta": 1.1920928955078125e-07,
+      "original_replay_cot_abs_delta": 0.003070831298828125,
+      "variants": [
+        {
+          "pixel_local_row": 8,
+          "pixel_local_col": 11,
+          "crop_origin_row": 65,
+          "crop_origin_col": 142,
+          "probability": 0.9858997464179993,
+          "low_expert_cot": 0.09685377776622772,
+          "cloud_expert_cot": 35.27218246459961,
+          "final_cot": 35.27218246459961,
+          "frozen_R_cot": 34.308311462402344,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 4,
+          "pixel_local_col": 11,
+          "crop_origin_row": 69,
+          "crop_origin_col": 142,
+          "probability": 0.986039400100708,
+          "low_expert_cot": 0.09686814993619919,
+          "cloud_expert_cot": 35.42385482788086,
+          "final_cot": 35.42385482788086,
+          "frozen_R_cot": 34.46379089355469,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 0,
+          "pixel_local_col": 11,
+          "crop_origin_row": 73,
+          "crop_origin_col": 142,
+          "probability": 0.9894443154335022,
+          "low_expert_cot": 0.09757042676210403,
+          "cloud_expert_cot": 46.057987213134766,
+          "final_cot": 46.057987213134766,
+          "frozen_R_cot": 45.089481353759766,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        }
+      ]
+    },
+    {
+      "case_id": 4,
+      "station": "sili",
+      "timestamp_utc": "202507070515",
+      "validation_row_id": 6327,
+      "global_source_pixel": [
+        155,
+        146
+      ],
+      "original_local_pixel": [
+        0,
+        6
+      ],
+      "reference_cot": 0.0,
+      "saved_probability": 0.985759437084198,
+      "saved_final_cot": 32.39051055908203,
+      "original_replay_probability_abs_delta": 3.159046173095703e-06,
+      "original_replay_cot_abs_delta": 0.006519317626953125,
+      "variants": [
+        {
+          "pixel_local_row": 0,
+          "pixel_local_col": 6,
+          "crop_origin_row": 155,
+          "crop_origin_col": 140,
+          "probability": 0.9857625961303711,
+          "low_expert_cot": 0.09656461328268051,
+          "cloud_expert_cot": 32.397029876708984,
+          "final_cot": 32.397029876708984,
+          "frozen_R_cot": 31.493118286132812,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 4,
+          "pixel_local_col": 6,
+          "crop_origin_row": 151,
+          "crop_origin_col": 140,
+          "probability": 0.97368323802948,
+          "low_expert_cot": 0.09343826770782471,
+          "cloud_expert_cot": 16.502946853637695,
+          "final_cot": 16.502946853637695,
+          "frozen_R_cot": 15.79564380645752,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        },
+        {
+          "pixel_local_row": 8,
+          "pixel_local_col": 6,
+          "crop_origin_row": 147,
+          "crop_origin_col": 140,
+          "probability": 0.9764149188995361,
+          "low_expert_cot": 0.09412878006696701,
+          "cloud_expert_cot": 18.553123474121094,
+          "final_cot": 18.553123474121094,
+          "frozen_R_cot": 17.811681747436523,
+          "same_pixel_input_max_abs_difference": 0.0,
+          "input_nonfinite_count": 0
+        }
+      ]
+    }
+  ]
+}

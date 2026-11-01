@@ -1,0 +1,64 @@
+#!/bin/bash
+#PBS -N hb_head_prof_v2
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+WORK="$ROOT/source_rebuild_20261017_v2"
+PACK="$WORK/pack"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+SCRIPT="$WORK/scripts"
+exec > "$WORK/profile_job_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPT:${PYTHONPATH:-}"
+test ! -e "$WORK/profile_same_time_heads.json"
+
+"$PY" - "$ROOT" "$WORK" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+import csv
+root, work = map(Path, sys.argv[1:])
+pack = work / "pack"
+meta = json.loads((pack / "pack_report.json").read_text())
+r = json.loads((work / "r_bank/BANK_REPORT.json").read_text())
+f = json.loads((work / "station_features/FEATURE_REPORT.json").read_text())
+manifest_audit = json.loads((work / "manifests/agri_paths_trainval_pbs_independent_audit.json").read_text())
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+assert meta["state"] == "HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED"
+assert meta["test_and_buffer_values_read"] == 0
+assert meta["split_sha256"] == "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6"
+assert meta["r_bank_report_sha256"] == sha(work / "r_bank/BANK_REPORT.json")
+assert meta["r_prediction_sha256"] == r["prediction_sha256"] == sha(work / "r_bank/cot_pred_trainval_full.npy")
+assert meta["feature_report_sha256"] == sha(work / "station_features/FEATURE_REPORT.json")
+assert meta["feature_array_sha256"] == f["features_sha256"] == sha(work / "station_features/station_features.npy")
+assert meta["feature_rows_sha256"] == f["rows_sha256"] == sha(work / "station_features/rows.csv")
+assert manifest_audit["state"] == "HUBEI_TRAINVAL_PBS_REMAP_INDEPENDENT_METADATA_AUDIT_PASS_TEST_CLOSED"
+assert manifest_audit["rows"] == 24705 and manifest_audit["test_or_buffer_rows"] == 0
+for name, expected in meta["array_sha256"].items():
+    assert sha(pack / name) == expected, f"pack array hash mismatch: {name}"
+rows = list(csv.DictReader((pack / "rows.csv").open(newline="")))
+assert len(rows) == meta["samples"] and all(x["split"] in {"train", "val"} for x in rows)
+print("HUBEI_REBUILT_PACK_PROFILE_PREFLIGHT_PASS samples=%d test_closed=1" % len(rows), flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+used=$(nvidia-smi --id="${GPU_ARRAY[0]}" --query-gpu=memory.used --format=csv,noheader,nounits)
+test "$used" -lt 500
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$GPU_IDS"
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPT/train_hubei_ghi_heads.py" \
+  --pack "$PACK" --output "$WORK/profile_only_unused" --input-mode same_time --arms A AC AP --seed 42 --batch-size 512 \
+  --profile-only --profile-output "$WORK/profile_same_time_heads.json" \
+  | tee "$WORK/profile_same_time_heads.log"
+echo HUBEI_REBUILT_HEAD_PROFILE_COMPLETE

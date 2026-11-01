@@ -1,0 +1,107 @@
+{
+  "state": "CODE_ONLY_CPU_SHAPE_AND_PARAMETER_AUDIT",
+  "training_started": false,
+  "experiment_payloads_opened": false,
+  "sources": {
+    "hunan_r": {
+      "path": "experiments/monthly_R_station16_20261013_v1/scripts/train_station16_R.py",
+      "sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce"
+    },
+    "hunan_head": {
+      "path": "experiments/monthly_R_station16_20261013_v1/head_candidate_v0.py",
+      "sha256": "eab8a098541b3eab47b1972e0413a82b82746039b768e3479fa1c4f75732730b"
+    },
+    "hunan_al": {
+      "path": "experiments/monthly_R_station16_20261013/head_r_al_candidate.py",
+      "sha256": "12c358503d2fde44bb747f5512085542d0c9be30fddb51e0745e030a8fe78a12"
+    },
+    "hubei_r": {
+      "path": "refine-logs/hubei_solar_geometry_repair_20261021/code/train_cot_repaired.py",
+      "sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05"
+    },
+    "hubei_head": {
+      "path": "refine-logs/hubei_cloud_probability_20261020/train_hubei_ghi_fourarm_paired.py",
+      "sha256": "f2f46df092db653b8a04f99ef80308a7f98fee6a207a0f74f731c5e51f4cb895"
+    }
+  },
+  "models": {
+    "hunan_r": {
+      "parameters": 470913,
+      "input": [
+        2,
+        16,
+        16,
+        16
+      ],
+      "output": [
+        2,
+        1,
+        16,
+        16
+      ],
+      "nonnegative": true,
+      "widths": [
+        32,
+        64,
+        128
+      ]
+    },
+    "hunan_A": {
+      "parameters": 22177,
+      "output": [
+        2
+      ],
+      "first_readout": 288
+    },
+    "hunan_AC": {
+      "parameters": 24489,
+      "output": [
+        2
+      ],
+      "first_readout": 324
+    },
+    "hunan_AP": {
+      "parameters": 24613,
+      "output": [
+        2
+      ],
+      "first_readout": 324
+    },
+    "hunan_AL": {
+      "parameters": 24613,
+      "output": [
+        2
+      ],
+      "first_readout": 324
+    },
+    "hubei_r": {
+      "parameters": 119233,
+      "input": [
+        2,
+        16,
+        16,
+        16
+      ],
+      "output": [
+        2,
+        1,
+        16,
+        16
+      ],
+      "nonnegative": true,
+      "widths": [
+        16,
+        32,
+        64
+      ]
+    },
+    "hubei_fourarm": {
+      "parameters": 24489,
+      "output": [
+        2
+      ],
+      "first_readout": 324,
+      "all_arms_identical_shape": true
+    }
+  }
+}

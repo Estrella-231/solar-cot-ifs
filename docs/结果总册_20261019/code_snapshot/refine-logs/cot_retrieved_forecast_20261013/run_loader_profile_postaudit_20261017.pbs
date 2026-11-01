@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N cot_load_prof17b
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/cot_retrieved_forecast_20261013/logs/loader_profile_postaudit_20261017.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BRANCH=$ROOT/refine-logs/cot_retrieved_forecast_20261013
+BANK=$ROOT/experiments/monthly_R_station16_20261013_v1/results/new_monthly_R_seed42_cot_bank_v1
+PACK=$BRANCH/data/sequence_cpp_pack_20261017
+AUDIT=$BRANCH/results/data_gate/retrieved_cot_full_bank_audit_20261017.json
+FRAME_PACK=$BRANCH/data/frame_sidecars_20261017_v1
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU" && test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -s "$AUDIT"
+test -s "$FRAME_PACK/pack_manifest.json"
+test ! -e "$BRANCH/results/profile_20261017/loader_profile_postaudit.json"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$BRANCH/profile_retrieved_cot_loader_20261017.py" \
+  --branch "$BRANCH" --bank "$BANK" --pack "$PACK" \
+  --output "$BRANCH/results/profile_20261017/loader_profile_postaudit.json" --workers 8
+echo REAL_TRAIN_LOADER_GPU_PROFILE_COMPLETE

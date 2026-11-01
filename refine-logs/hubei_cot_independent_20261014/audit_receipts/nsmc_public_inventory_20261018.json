@@ -1,0 +1,46 @@
+{
+  "audit_date_bjt": "2026-10-18",
+  "scope": "Hubei train_validation FY-4B AGRI L1 full-disk 4 km missing source slots only",
+  "access_mode": "public unauthenticated metadata query",
+  "portal": "https://data.nsmc.org.cn/DataPortal/cn/data/dataset.html?satelliteCode=FY4B",
+  "api_paths": [
+    "/DataPortal/v1/data/selection/file/subcount",
+    "/DataPortal/v1/data/selection/subfilesearchrecord",
+    "/DataPortal/v1/data/selection/subfile"
+  ],
+  "product": {
+    "satellite": "FY4B",
+    "instrument": "AGRI",
+    "level": "L1",
+    "area": "full disk",
+    "resolution_m": 4000,
+    "catalog_product_filename_template": "FY4B-_AGRI--_N_DISK_1330E_L1-_FDI-_MULT_NOM_YYYYMMDDhhmmss_YYYYMMDDhhmmss_4000M_Vnnnn.HDF",
+    "returned_archive_name_longitude_code": "1050E"
+  },
+  "expected_daily_slots_from_frozen_product_calendar": 95,
+  "date_inventory": [
+    {"date_utc": "2026-06-11", "public_file_count": 93, "frozen_missing_keys": 2},
+    {"date_utc": "2026-06-19", "public_file_count": 93, "frozen_missing_keys": 2},
+    {"date_utc": "2026-06-20", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-06-21", "public_file_count": 93, "frozen_missing_keys": 2},
+    {"date_utc": "2026-06-22", "public_file_count": 93, "frozen_missing_keys": 2},
+    {"date_utc": "2026-06-23", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-07-02", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-07-04", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-07-05", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-07-06", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-07-07", "public_file_count": 94, "frozen_missing_keys": 1},
+    {"date_utc": "2026-07-13", "public_file_count": 94, "frozen_missing_keys": 1}
+  ],
+  "missing_utc_start_keys": [
+    "202606110815", "202606110830", "202606192045", "202606192100",
+    "202606202130", "202606212200", "202606212215", "202606222245",
+    "202606222300", "202606230000", "202607022015", "202607040815",
+    "202607050815", "202607060900", "202607070945", "202607131200"
+  ],
+  "exact_archive_name_match_count": 0,
+  "pixel_or_file_content_requested": false,
+  "authenticated": false,
+  "cart_order_download_performed": false,
+  "interpretation": "The public online file listing did not enumerate these exact file names on the audit date. This is not an exhaustive search of offline or other authorized archives, and does not prove the products were never generated."
+}

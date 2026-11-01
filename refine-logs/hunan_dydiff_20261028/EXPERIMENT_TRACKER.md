@@ -76,3 +76,46 @@ COT主站点像元对正确连接CPP（160记录/14日）的等站RMSE：DyDiff1
 ## 2026-10-29 完整冻结验证评价完成，5%未保持
 
 216704于17:35:23正常exit0，3140窗全部完成；GHI同键63480行/51目标日期。DyDiff128.326→127.221（0.861%，日期CI[-2.671,+0.472]跨0）；SimVP127.421→125.340（1.633%，CI[-3.714,-0.561]）。预定无湖北训练日期重叠2719窗/54280行：DyDiff0.996%、CI跨0；SimVP2.137%、CI不跨0。DyDiff四里三seed均改善、竺家三seed均退化；SimVP两站三seed均改善。本地已回收逐样本输出并独立FP64复算六组RMSE及5000次日期CI，差<1e-10。只属于冻结头val回放，不是独立test，也不是正在训练的湖南DyDiff。详见full_validation_20261029/RESULTS.md与LOCAL_FP64_RECHECK.json。
+
+## 2026-10-30 01:44 CST 实时监控（PBS 216594）
+
+- 服务器 `tc6000` 实时于2026-10-30 01:44:56 CST核验。`qstat -u slfu`仅有216594.tc6000一项，状态R；运行31:24:21，PBS分配node21 GPU0–7共8张A100。正式训练尚未完成，未读取测试载荷。
+- 正式progress为epoch96/batch270/global_step42260；95轮完整，计划150轮/66300步，约63.7%更新已完成。last.pt约1.053GB、mtime 01:42:41（按每100步保存，约step42200）；best.pt约1.053GB、mtime 01:35:02，对应epoch95全验证后更新。
+- 最新完整3140样本验证为epoch95：normalized RMSE=0.442142、MAE=0.233725、matched persistence RMSE=0.791838、MSE skill=0.689434；test_payloads_read=0。最佳完整验证RMSE为0.442142。最新固定64样本paired monitor仅作独立小样本监控：raw RMSE/MAE=0.435940/0.231667，EMA=0.431141/0.228134，不与完整验证混用。
+- 最近普通轮91–94耗时1050.10/1053.43/1051.72/1049.22秒，均值约1051.12秒；完整验证轮95耗时1616.59秒，每5轮额外全验证约565秒。按当前轮余172步、后续54轮（含11次全验证）估计，剩余约17小时36分，粗略预计2026-10-30 19:20 CST完成，吞吐变化可能造成数小时偏差。
+- 作业内GPU CSV 01:44:48采样8卡利用率100%，显存31.6–39.5/40.5GiB。loss/grad_norm均为有限值，错误/NaN/OOM扫描无命中；progress与step日志持续推进。当前没有训练完成标记。
+
+## 2026-10-30 17:58 CST 实时训练监控（PBS 216594）
+
+- 服务器快照时间17:58:27 CST，客户端时钟18:17:33 CST，两者约差19分钟；ETA给出剩余时长并注明服务器时间推算，不用时钟差计算吞吐。216594.tc6000状态R，node21八张A100；progress为epoch146/batch360/global_step64450，计划66300步，已完成145轮，test_payloads_read=0，未发现完成标记。
+- 最近完整3140样本验证为epoch145：normalized RMSE/MAE=0.4330496/0.2273480，matched model RMSE=0.4320450，persistence RMSE=0.7918377，MSE skill=0.7022954；当前最佳完整验证RMSE=0.4330496。
+- 最近普通轮141–144耗时1052.09/1050.69/1052.49/1050.29秒，均值1051.39秒；epoch145完整验证轮1614.63秒，额外约563秒。按当前轮剩余82步、其后4轮及一次完整验证估算，剩余约4980秒（1小时23分），按服务器时钟约19:21 CST完成。
+- 末尾5000行未发现Traceback、OOM、CUDA error、NaN、Inf或error。GPU CSV最新17:57:57.839 CST：8卡均100%，显存31557–39537/40536 MiB。last.pt/best.pt只stat未加载。未读取test载荷，未改动作业。
+- 机器可读/文本收据：`monitor_20261030_latest/receipt.json`、`receipt.txt`。
+
+## 2026-10-30 19:47 CST 湖南DyDiff训练完成快照（216594）
+
+- 实时qstat已无216594；tracejob历史确认2026-10-30 19:22:45结束，exit status 0，PBS墙钟49:02:13。`training_complete.json`为PASS/150轮/66300步，progress为complete，test_payloads_read=0。
+- 最终epoch150全3140序列验证：normalized RMSE/MAE=0.4332109082/0.2276047394，matched persistence RMSE=0.7918376841，MSE skill=0.7020667215。最佳全验证轮次epoch145，RMSE/MAE=0.4330495719/0.2273480072，skill=0.7022953972。
+- last.pt和best.pt均约1.053GB；只读取文件stat。训练日志异常关键词未见Traceback/OOM/CUDA error/NaN/Inf。未加载checkpoint、未读test、未启动任务。
+- 本次收据独立保存在`monitor_20261030_1947_final/receipt.json`及`receipt.txt`。
+
+### 完成后回收的全量验证序列
+
+按项目负责人追加要求，从训练run目录回收了全部150个`validation_epoch_*.json`轻量文件至`validation_records/`；其中31个`forecast_evaluated=true`的记录另复制到`forecast_evaluated/`。附`validation_trend.csv/json`紧凑趋势表，字段保留normalized RMSE/MAE、matched_model_rmse、matched_persistence_rmse、代码记录的MSE skill和0–1h/1–2h/2–4h RMSE。比较模型与persistence时应使用同支持`matched_model_rmse`，不能用全normalized RMSE替代。全部记录的test_payloads_read为0。未加载checkpoint。
+
+## 2026-10-30 湖南独立第150轮COT/GHI完整验证已启动（216841）
+
+用户已授权接入同一湖南R和配对GHI模型。新任务216841.tc6000已实际在node21 GPU0–3四张A100/24CPU运行，提交前后slfu未结束任务分别0/1。固定湖南last.pt内第150轮EMA，不选择第145轮best；使用湖南训练归一化/QA和训练验证采样seed，完整3140val窗口，两站×seed42/43/44，既有3×3三帧GHI模型不重训。16窗衔接测试完成432条GHI，主生成20:00服务器快照已122/3140、四卡100%，暂估40–60分钟完成生成及评价；未读test。结果目录hunan_full_validation_20261030/，详见其中EXPERIMENT_PLAN.md、EXPERIMENT_TRACKER.md和LAUNCH_216841.json。完整结果待生成与自动配对评分完成后报告。
+
+## 2026-10-30 20:34 CST 湖南epoch150 DyDiff完整冻结val预测COT→GHI评价（216841）
+
+- PBS历史`exit_status=0`，walltime 38:02；`forecast_attempt1/completion.json`与`evaluation_attempt1/FULL_EVALUATION_COMPLETE.json`均PASS。epoch150 EMA在3140冻结val窗生成；common-key核验63480条GHI记录，51个目标日期，明确与此前完整验证使用相同标签/clear-sky/keys及12个GHI头，test_payloads_read=0。范围是固定R和已训GHI头回放，不是独立test，也未对预测COT重训GHI头。
+- DyDiff预测输入（M00无COT→M10加预测COT），站点/三种子等权RMSE：四里137.222→133.815 W/m²，下降2.482%，三个seed的RMSE差(after-before)为−3.794/−3.316/−3.110；竺家112.695→111.761，下降0.829%，seed差−0.688/−1.074/−1.042。两站等权124.958→122.788，下降1.737%；日期配对95% CI（加COT−无COT）[−3.685,−0.735]，5000次按目标日期配对重采样。
+- 对照SimVP无COT→加预测COT：Sili132.082→129.227（−2.161%），三seed差−3.071/−2.862/−2.631；Zhujia122.760→121.453（−1.065%），seed差−1.763/−0.802/−1.357；两站等权127.421→125.340（−1.633%），日期CI[−3.714,−0.561]。DyDiff相对SimVP无COT和加COT的RMSE差CI均跨零（分别[−6.806,+1.937]、[−6.794,+1.743]），不能据此宣称DyDiff显著胜过SimVP。
+- 全预测槽+45至+240min：DyDiff无COT→加预测COT 128.555→126.308（−1.748%，日期95% CI差[−3.776,−0.808]）；从lead指标CSV按站点/seed先聚合，再等权得到对应SimVP无COT→加COT 130.880→128.771 W/m²（−1.612%）。
+- 本地回收收据/小型数据（不含大逐样本NPZ）位于`hunan_full_validation_20261030/recovered/`：score JSON/CSV、completion及COMMON_KEYS、forecast completion/provenance、RESULTS.md。oracle未来COT替换仅诊断，不作为预报主结果。
+
+## 2026-10-30 湖南DyDiff预测COT完整评价完成（216841）
+
+完整3140窗/63480共同GHI记录/51日期，固定12个GHI权重。无COT124.958→加预测COT122.788 W/m²，下降1.737%；四里2.482%、竺家0.829%，六组均改善。目标日期配对RMSE差95%区间[-3.685,-0.735]；+45至240全预测槽子组下降1.748%。已回收保存预测并由独立NumPy实现复算，数值差<3.1e-14，未读取test。详情hunan_full_validation_20261030/EXPERIMENT_TRACKER.md及recovered/evaluation_attempt1/RESULTS.md。

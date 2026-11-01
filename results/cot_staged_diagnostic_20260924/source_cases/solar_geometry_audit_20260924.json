@@ -1,0 +1,412 @@
+{
+  "scope": "four false-cloud validation cases and their +/-15 minute adjacent real-AGRI validation frames; no test rows accessed",
+  "input_contract": {
+    "channels": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "cosSOZ",
+      "cosRAA",
+      "day_mask"
+    ],
+    "normalization": "training mean/std applied to cosSOZ and cosRAA; day_mask mean=0/std=1, so remains binary",
+    "expected_cosSOZ_formula": "cos(deg2rad(SOZ_degrees))",
+    "expected_cosRAA_formula": "cos(deg2rad(SOA_degrees - SAA_degrees))",
+    "day_mask_source_contract": "original AGRI day_mask based on SOZ < 85 degrees; documented in AGRI spatial payload review"
+  },
+  "independent_check": "NOAA fractional-year declination/equation-of-time approximation at nominal UTC timestamp and sidecar geolocation; not a high-precision SPA reference and not the original AGRI scan-time angle field",
+  "direct_original_agri_reconstruction": {
+    "13_raw_imagery_channels": 0.0,
+    "cosSOZ": 0.0,
+    "cosRAA": 0.0,
+    "day_mask_mismatch_pixels": 0
+  },
+  "verified_source_formulae": {
+    "cosSOZ": "cos(deg2rad(original AGRI SOZ channel 18))",
+    "cosRAA": "cos(deg2rad(original AGRI SOA channel 17 - SAA channel 15))",
+    "day_mask": "original AGRI day_mask channel 19 > 0.5",
+    "training_normalization": "raw channel normalized by training-set mean/std; day_mask mean=0/std=1"
+  },
+  "overall_nominal_noaa_minus_input": {
+    "mae": 0.006990083940675486,
+    "rmse": 0.008074673154044821,
+    "max_abs": 0.013800467484173407
+  },
+  "case_results": {
+    "1": {
+      "station_id": "zhujia",
+      "false_pixel_rc": [
+        0,
+        9
+      ],
+      "frames": [
+        {
+          "timestamp_utc": "2025-07-06T08:00:00Z",
+          "timestamp_bjt": "2025-07-06T16:00:00+08:00",
+          "delta_minutes_from_case": -15,
+          "cosSOZ_input_range": [
+            0.6761457324028015,
+            0.6834005117416382
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.012508598473495324,
+          "cosSOZ_noaa_nominal_rmse": 0.012508647515614044,
+          "cosSOZ_noaa_nominal_max_abs": 0.0125833535663874,
+          "best_uniform_NOAA_time_offset_min": 4.5,
+          "best_offset_rmse": 0.0001243597195192562,
+          "best_offset_rmse_reduction_fraction": 0.9900581002571203,
+          "cosRAA_input_range": [
+            0.16913455724716187,
+            0.18985314667224884
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 0.1627663611771047,
+          "model_normalized_cosRAA_center": -0.23792391301169064,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-06T08:15:00Z",
+          "timestamp_bjt": "2025-07-06T16:15:00+08:00",
+          "delta_minutes_from_case": 0,
+          "cosSOZ_input_range": [
+            0.6332165002822876,
+            0.6410456895828247
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.013144775103553816,
+          "cosSOZ_noaa_nominal_rmse": 0.013144817253430217,
+          "cosSOZ_noaa_nominal_max_abs": 0.013217431571505345,
+          "best_uniform_NOAA_time_offset_min": 4.5,
+          "best_offset_rmse": 0.00015149663398441872,
+          "best_offset_rmse_reduction_fraction": 0.9884748010517312,
+          "cosRAA_input_range": [
+            0.14219969511032104,
+            0.16209502518177032
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": -0.01214516848471326,
+          "model_normalized_cosRAA_center": -0.2981854581188308,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-06T08:30:00Z",
+          "timestamp_bjt": "2025-07-06T16:30:00+08:00",
+          "delta_minutes_from_case": 15,
+          "cosSOZ_input_range": [
+            0.5883815884590149,
+            0.5967667698860168
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.013730364656775906,
+          "cosSOZ_noaa_nominal_rmse": 0.01373040091999182,
+          "cosSOZ_noaa_nominal_max_abs": 0.013800467484173407,
+          "best_uniform_NOAA_time_offset_min": 4.5,
+          "best_offset_rmse": 0.0001836673336246785,
+          "best_offset_rmse_reduction_fraction": 0.9866233087660787,
+          "cosRAA_input_range": [
+            0.11584009230136871,
+            0.13493859767913818
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": -0.19489508582413315,
+          "model_normalized_cosRAA_center": -0.35709465065545154,
+          "day_mask_center": 1.0
+        }
+      ],
+      "case_mean_nominal_rmse": 0.013137432432045293,
+      "case_mean_abs_error": 0.013127912744608347,
+      "case_best_shared_offset_min": 4.5,
+      "case_best_shared_offset_rmse": 0.00015508090295962294
+    },
+    "2": {
+      "station_id": "sili",
+      "false_pixel_rc": [
+        0,
+        9
+      ],
+      "frames": [
+        {
+          "timestamp_utc": "2025-07-14T05:00:00Z",
+          "timestamp_bjt": "2025-07-14T13:00:00+08:00",
+          "delta_minutes_from_case": -15,
+          "cosSOZ_input_range": [
+            0.9893693923950195,
+            0.9912416934967041
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.002610082232803588,
+          "cosSOZ_noaa_nominal_rmse": 0.0026108991099777113,
+          "cosSOZ_noaa_nominal_max_abs": 0.002729143762494779,
+          "best_uniform_NOAA_time_offset_min": 6.25,
+          "best_offset_rmse": 5.351640964726931e-05,
+          "best_offset_rmse_reduction_fraction": 0.9795026895360479,
+          "cosRAA_input_range": [
+            0.7161476612091064,
+            0.7661815881729126
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.438821766379436,
+          "model_normalized_cosRAA_center": 1.0078927862188751,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-14T05:15:00Z",
+          "timestamp_bjt": "2025-07-14T13:15:00+08:00",
+          "delta_minutes_from_case": 0,
+          "cosSOZ_input_range": [
+            0.9803752899169922,
+            0.9827685952186584
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.003924323050228433,
+          "cosSOZ_noaa_nominal_rmse": 0.003924856599592402,
+          "cosSOZ_noaa_nominal_max_abs": 0.004039484324077636,
+          "best_uniform_NOAA_time_offset_min": 6.0,
+          "best_offset_rmse": 3.480095443635963e-05,
+          "best_offset_rmse_reduction_fraction": 0.9911331908432085,
+          "cosRAA_input_range": [
+            0.5871835350990295,
+            0.6235647201538086
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.4027736122267458,
+          "model_normalized_cosRAA_center": 0.7145494915493784,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-14T05:30:00Z",
+          "timestamp_bjt": "2025-07-14T13:30:00+08:00",
+          "delta_minutes_from_case": 15,
+          "cosSOZ_input_range": [
+            0.9678819179534912,
+            0.9707711935043335
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.005229089903750206,
+          "cosSOZ_noaa_nominal_rmse": 0.005229480616585416,
+          "cosSOZ_noaa_nominal_max_abs": 0.005339892548170022,
+          "best_uniform_NOAA_time_offset_min": 5.75,
+          "best_offset_rmse": 0.00011123809289357008,
+          "best_offset_rmse_reduction_fraction": 0.9787286537518132,
+          "cosRAA_input_range": [
+            0.4968933165073395,
+            0.5339579582214355
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.3523280044252117,
+          "model_normalized_cosRAA_center": 0.5148631985733457,
+          "day_mask_center": 1.0
+        }
+      ],
+      "case_mean_nominal_rmse": 0.004064839521600209,
+      "case_mean_abs_error": 0.0039211650622607425,
+      "case_best_shared_offset_min": 6.0,
+      "case_best_shared_offset_rmse": 8.432059843420852e-05
+    },
+    "3": {
+      "station_id": "zhujia",
+      "false_pixel_rc": [
+        8,
+        11
+      ],
+      "frames": [
+        {
+          "timestamp_utc": "2025-07-06T06:15:00Z",
+          "timestamp_bjt": "2025-07-06T14:15:00+08:00",
+          "delta_minutes_from_case": -15,
+          "cosSOZ_input_range": [
+            0.9083067178726196,
+            0.9127848148345947
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.006896198304019354,
+          "cosSOZ_noaa_nominal_rmse": 0.00689634487402288,
+          "cosSOZ_noaa_nominal_max_abs": 0.00697492427438795,
+          "best_uniform_NOAA_time_offset_min": 4.5,
+          "best_offset_rmse": 8.594584830572463e-05,
+          "best_offset_rmse_reduction_fraction": 0.9875374782039301,
+          "cosRAA_input_range": [
+            0.41049665212631226,
+            0.43751832842826843
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.10951931146508,
+          "model_normalized_cosRAA_center": 0.28808058275156045,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-06T06:30:00Z",
+          "timestamp_bjt": "2025-07-06T14:30:00+08:00",
+          "delta_minutes_from_case": 0,
+          "cosSOZ_input_range": [
+            0.883460283279419,
+            0.8882773518562317
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.00779836692117912,
+          "cosSOZ_noaa_nominal_rmse": 0.007798490239838399,
+          "cosSOZ_noaa_nominal_max_abs": 0.007877677662060267,
+          "best_uniform_NOAA_time_offset_min": 4.5,
+          "best_offset_rmse": 7.477398305938238e-05,
+          "best_offset_rmse_reduction_fraction": 0.9904117360207234,
+          "cosRAA_input_range": [
+            0.3649131655693054,
+            0.39112335443496704
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.007581801342541,
+          "model_normalized_cosRAA_center": 0.18941601673643296,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-06T06:45:00Z",
+          "timestamp_bjt": "2025-07-06T14:45:00+08:00",
+          "delta_minutes_from_case": 15,
+          "cosSOZ_input_range": [
+            0.8556519150733948,
+            0.8607724905014038
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.008673126332638871,
+          "cosSOZ_noaa_nominal_rmse": 0.008673231077289215,
+          "cosSOZ_noaa_nominal_max_abs": 0.00875268789550454,
+          "best_uniform_NOAA_time_offset_min": 4.5,
+          "best_offset_rmse": 6.921052137275908e-05,
+          "best_offset_rmse_reduction_fraction": 0.9920202147554922,
+          "cosRAA_input_range": [
+            0.32503506541252136,
+            0.350317120552063
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 0.8934087711883232,
+          "model_normalized_cosRAA_center": 0.10276387825630752,
+          "day_mask_center": 1.0
+        }
+      ],
+      "case_mean_nominal_rmse": 0.007823063337814497,
+      "case_mean_abs_error": 0.007789230519279115,
+      "case_best_shared_offset_min": 4.5,
+      "case_best_shared_offset_rmse": 7.695871978371386e-05
+    },
+    "4": {
+      "station_id": "sili",
+      "false_pixel_rc": [
+        0,
+        6
+      ],
+      "frames": [
+        {
+          "timestamp_utc": "2025-07-07T05:00:00Z",
+          "timestamp_bjt": "2025-07-07T13:00:00+08:00",
+          "delta_minutes_from_case": -15,
+          "cosSOZ_input_range": [
+            0.9905778765678406,
+            0.9922764301300049
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.0020698301232420957,
+          "cosSOZ_noaa_nominal_rmse": 0.002070490292037972,
+          "cosSOZ_noaa_nominal_max_abs": 0.002163851632836944,
+          "best_uniform_NOAA_time_offset_min": 4.75,
+          "best_offset_rmse": 3.68281504699537e-05,
+          "best_offset_rmse_reduction_fraction": 0.9822128359589148,
+          "cosRAA_input_range": [
+            0.6403353810310364,
+            0.6985732913017273
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.4446866514669163,
+          "model_normalized_cosRAA_center": 0.8675477459643125,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-07T05:15:00Z",
+          "timestamp_bjt": "2025-07-07T13:15:00+08:00",
+          "delta_minutes_from_case": 0,
+          "cosSOZ_input_range": [
+            0.9816392660140991,
+            0.9838552474975586
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.0031246005146408646,
+          "cosSOZ_noaa_nominal_rmse": 0.0031250302706451495,
+          "cosSOZ_noaa_nominal_max_abs": 0.003215440338479536,
+          "best_uniform_NOAA_time_offset_min": 4.75,
+          "best_offset_rmse": 2.3306114800354048e-05,
+          "best_offset_rmse_reduction_fraction": 0.9925421155054788,
+          "cosRAA_input_range": [
+            0.5190855264663696,
+            0.5627974271774292
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.4093216516749485,
+          "model_normalized_cosRAA_center": 0.5799063946015184,
+          "day_mask_center": 1.0
+        },
+        {
+          "timestamp_utc": "2025-07-07T05:30:00Z",
+          "timestamp_bjt": "2025-07-07T13:30:00+08:00",
+          "delta_minutes_from_case": 15,
+          "cosSOZ_input_range": [
+            0.9692240953445435,
+            0.9719327688217163
+          ],
+          "cosSOZ_noaa_nominal_mae": 0.004171651671778243,
+          "cosSOZ_noaa_nominal_rmse": 0.0041719660356750845,
+          "cosSOZ_noaa_nominal_max_abs": 0.004259083520738782,
+          "best_uniform_NOAA_time_offset_min": 4.75,
+          "best_offset_rmse": 7.288485219811992e-05,
+          "best_offset_rmse_reduction_fraction": 0.9825298548514367,
+          "cosRAA_input_range": [
+            0.4401201009750366,
+            0.48167556524276733
+          ],
+          "day_mask_unique": [
+            1.0
+          ],
+          "day_mask_mismatch_vs_cosSOZ_ge_85deg": 0,
+          "model_normalized_cosSOZ_center": 1.3596464302830673,
+          "model_normalized_cosRAA_center": 0.39610652801172885,
+          "day_mask_center": 1.0
+        }
+      ],
+      "case_mean_nominal_rmse": 0.0032382116898425307,
+      "case_mean_abs_error": 0.003122027436553734,
+      "case_best_shared_offset_min": 4.75,
+      "case_best_shared_offset_rmse": 4.9029546649840365e-05
+    }
+  },
+  "interpretation_limit": "The saved solar input channels match the original per-pixel AGRI SOZ/SOA/SAA formula exactly in all 12 selected frames. The fitted NOAA time offset is only a nominal-UTC cross-check; it is not evidence of an input error or a clock correction because the original source angles already match exactly."
+}

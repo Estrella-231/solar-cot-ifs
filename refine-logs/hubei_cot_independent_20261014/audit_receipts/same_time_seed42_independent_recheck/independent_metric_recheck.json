@@ -1,0 +1,292 @@
+{
+  "state": "HUBEI_SAME_TIME_SEED42_SAVED_PREDICTIONS_INDEPENDENT_RECHECK",
+  "input_mode": "same_time",
+  "seed": 42,
+  "test_payloads_read": 0,
+  "bootstrap": {
+    "method": "paired target-date cluster bootstrap",
+    "replicates": 10000,
+    "seed": 20261017
+  },
+  "stations": {
+    "Niushou": {
+      "n": 856,
+      "unique_dates": 22,
+      "paired_key_sha256": "0c96399e22abb153ac3ae38fdb62ce5462d151d1ab96f2e844b0d1bb578fd4bc",
+      "arms": {
+        "A": {
+          "rmse_wm2": 75.99621854743754,
+          "mae_wm2": 57.00478514966394,
+          "metadata_check": "PASS"
+        },
+        "AC": {
+          "rmse_wm2": 74.68178594115366,
+          "mae_wm2": 54.951189026230004,
+          "metadata_check": "PASS"
+        },
+        "AP": {
+          "rmse_wm2": 75.31221212477277,
+          "mae_wm2": 56.1968669163283,
+          "metadata_check": "PASS"
+        }
+      },
+      "paired_error_differences": {
+        "AC_minus_A": {
+          "delta_rmse_wm2": -1.314432606283873,
+          "delta_mae_wm2": -2.053596123433934,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -3.519622185777719,
+              1.0770535598423896
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -3.7410881689645303,
+              -0.3277454991003691
+            ]
+          }
+        },
+        "AP_minus_A": {
+          "delta_rmse_wm2": -0.6840064226647655,
+          "delta_mae_wm2": -0.8079182333356414,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -0.912993637359141,
+              -0.44421493419171765
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -1.0221590057968004,
+              -0.6062048964298714
+            ]
+          }
+        },
+        "AC_minus_AP": {
+          "delta_rmse_wm2": -0.6304261836191074,
+          "delta_mae_wm2": -1.2456778900982926,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -2.717450783910306,
+              1.620908173157616
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -2.878992632832649,
+              0.37367175924046747
+            ]
+          }
+        }
+      },
+      "bundle_hashes": {
+        "A": {
+          "bundle_sha256": "21132a80ac1ba53174ca4a60a256ce415a6e7118b927bd865bbe059e4107ca26",
+          "metadata_sha256": "824c02b68a0c833ce1c9a2f619dcbe80d754a46cef1e912acdc787b739be2b1c"
+        },
+        "AC": {
+          "bundle_sha256": "a715b484e74962256b42192418d3dd9a9621b7c62c642208084f33f6b55b4c54",
+          "metadata_sha256": "000eeb551bb572e89d9d85b9d2267b8263c7c6deb36b58af2222dc1c6c7dfd8d"
+        },
+        "AP": {
+          "bundle_sha256": "481dd7d0a45d4c6a6e908b537dff80d84c3e80546723455ed3a23273f2ce00e3",
+          "metadata_sha256": "7dc785393629753cc16c5069efd2380397d2a62e9be1ad3c4d38e5c9f6e7ff4a"
+        }
+      },
+      "test_payloads_read": 0
+    },
+    "Wangzhai": {
+      "n": 784,
+      "unique_dates": 21,
+      "paired_key_sha256": "8fed5f6aa7b4bd72b1a2704f1e56b12970c93381e97c1c69a77b1f680295776b",
+      "arms": {
+        "A": {
+          "rmse_wm2": 67.89636854738526,
+          "mae_wm2": 50.52968477857442,
+          "metadata_check": "PASS"
+        },
+        "AC": {
+          "rmse_wm2": 66.10744292609822,
+          "mae_wm2": 48.12722386226923,
+          "metadata_check": "PASS"
+        },
+        "AP": {
+          "rmse_wm2": 67.3380982203358,
+          "mae_wm2": 49.92477640215085,
+          "metadata_check": "PASS"
+        }
+      },
+      "paired_error_differences": {
+        "AC_minus_A": {
+          "delta_rmse_wm2": -1.7889256212870492,
+          "delta_mae_wm2": -2.4024609163051878,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 21,
+            "ci95_percentile": [
+              -3.420763068458594,
+              -0.3638272508084647
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 21,
+            "ci95_percentile": [
+              -4.259782853946174,
+              -0.7991002886282812
+            ]
+          }
+        },
+        "AP_minus_A": {
+          "delta_rmse_wm2": -0.5582703270494704,
+          "delta_mae_wm2": -0.6049083764235732,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 21,
+            "ci95_percentile": [
+              -0.8051336406697557,
+              -0.34708057095043854
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 21,
+            "ci95_percentile": [
+              -0.8552271471470961,
+              -0.37865883521341
+            ]
+          }
+        },
+        "AC_minus_AP": {
+          "delta_rmse_wm2": -1.2306552942375788,
+          "delta_mae_wm2": -1.7975525398816146,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 21,
+            "ci95_percentile": [
+              -2.6634574072595862,
+              0.034117339463944386
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 21,
+            "ci95_percentile": [
+              -3.4494217808862015,
+              -0.31651170621057756
+            ]
+          }
+        }
+      },
+      "bundle_hashes": {
+        "A": {
+          "bundle_sha256": "2e98e48ff5292279d1e9659e63962a18c02b11cd5ac1d7f6effd82b367938347",
+          "metadata_sha256": "28a63cfd5d33d4d452cd13f9a8d0ef55f31631b67e9e52a54b70627a4f427bc8"
+        },
+        "AC": {
+          "bundle_sha256": "99bdfb6973df67e7c802104a8adf44b01128ea5450f95dfd02ba597161654754",
+          "metadata_sha256": "05cb6fc66a9d73806f9d8ec1ce7f9c5fa91dbc2d7564322e6e84b693074c3daf"
+        },
+        "AP": {
+          "bundle_sha256": "b6240a37f98d3a07b06568e85395111eeeaba12dd49a36b9a7d5a298ec9969e9",
+          "metadata_sha256": "c95f99e6472f855061053f927016d4a8eb443b4624f1705f115b1de94a13f12a"
+        }
+      },
+      "test_payloads_read": 0
+    },
+    "Mizhuang": {
+      "n": 816,
+      "unique_dates": 22,
+      "paired_key_sha256": "d28f1236ff6117183fb5794701768b8942108f2eb9812150d944e9ba2414e94f",
+      "arms": {
+        "A": {
+          "rmse_wm2": 81.59083589476585,
+          "mae_wm2": 56.91485074372259,
+          "metadata_check": "PASS"
+        },
+        "AC": {
+          "rmse_wm2": 76.14625901496551,
+          "mae_wm2": 53.70659964267785,
+          "metadata_check": "PASS"
+        },
+        "AP": {
+          "rmse_wm2": 81.24190481130279,
+          "mae_wm2": 56.38445676598634,
+          "metadata_check": "PASS"
+        }
+      },
+      "paired_error_differences": {
+        "AC_minus_A": {
+          "delta_rmse_wm2": -5.444576879800337,
+          "delta_mae_wm2": -3.2082511010447377,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -11.636660208210303,
+              0.10858020239886287
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -6.636354880050789,
+              -0.04593944224839638
+            ]
+          }
+        },
+        "AP_minus_A": {
+          "delta_rmse_wm2": -0.34893108346305723,
+          "delta_mae_wm2": -0.5303939777362459,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -0.6816356976939453,
+              -0.09095928875622804
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -0.7795233304604929,
+              -0.3214136905346552
+            ]
+          }
+        },
+        "AC_minus_AP": {
+          "delta_rmse_wm2": -5.09564579633728,
+          "delta_mae_wm2": -2.677857123308492,
+          "delta_rmse_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -11.467828927809446,
+              0.6624225204441107
+            ]
+          },
+          "delta_mae_ci95_by_date_wm2": {
+            "independent_date_blocks": 22,
+            "ci95_percentile": [
+              -6.002219005957698,
+              0.3459309899632864
+            ]
+          }
+        }
+      },
+      "bundle_hashes": {
+        "A": {
+          "bundle_sha256": "60261c43ed6162d0c5cf12a0a2cf250aa2e53824d0662956ad01f8cfff61502f",
+          "metadata_sha256": "60b105769eb5079fd3368b0842c76fd271e81210610a4cdd5bdd10362b0a56e1"
+        },
+        "AC": {
+          "bundle_sha256": "3dcdb52962028c5f399182da75323adaa92d6090cb7ecae9782a9df009d358d3",
+          "metadata_sha256": "e9f068dff861508db810d7899e94ca5a2d631bf115a01684e3d29b3dcb27374d"
+        },
+        "AP": {
+          "bundle_sha256": "02090bc0d914aba7b54c0a92d675dd907f31150322ca245bd51f1a20c4a3d382",
+          "metadata_sha256": "c5203da1be24f0c04ea4625586e5a3c0d55fe8cb0f5069fc1a23cbfbd92027eb"
+        }
+      },
+      "test_payloads_read": 0
+    }
+  }
+}

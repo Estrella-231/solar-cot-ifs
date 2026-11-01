@@ -1,0 +1,35 @@
+{
+  "state": "COMPLETE_PAIRED_RENDERED_COT_COMPARISON",
+  "station": "Zhujia",
+  "sequence": 2082,
+  "init_time_bjt": "2025-08-02T06:00:00+08:00",
+  "target_time_bjt": [
+    "2025-08-02T07:00:00+08:00",
+    "2025-08-02T08:00:00+08:00",
+    "2025-08-02T09:00:00+08:00",
+    "2025-08-02T10:00:00+08:00"
+  ],
+  "leads_minutes": [
+    60,
+    120,
+    180,
+    240
+  ],
+  "columns": [
+    "observed future AGRI false-colour",
+    "SimVP forecast AGRI false-colour",
+    "CPP COT retrieval reference",
+    "frozen R(SimVP forecast AGRI)",
+    "frozen R(observed future AGRI), offline diagnostic only"
+  ],
+  "cot_scale": "shared source-rendered physical COT scale 0-8",
+  "limits": [
+    "fifth column uses future observed AGRI and is not causally available at forecast issue time",
+    "CPP is a retrieval reference, not independent physical truth",
+    "composition reuses matching map panels from the two source figures; it does not rerun retrieval"
+  ],
+  "source_manifests": {
+    "forecast_vs_cpp": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\figures\\cpp_vs_forecast_cot_trajectory_20260922\\manifest.json",
+    "cpp_vs_real_agri": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\figures\\cpp_vs_real_agri_cot_trajectory_20260922\\manifest.json"
+  }
+}

@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N fghi_head2g_prof
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8:gpus=2
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+LOG=$EXP/logs/future_ghi_head_profile_2g_${PBS_JOBID}.log
+mkdir -p "$EXP/logs" "$EXP/results"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_fghi_head_profile_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node23-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 2 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly two node23 GPUs, got $GPU_TEXT"; exit 31
+fi
+export CUDA_VISIBLE_DEVICES=$(printf '%s\n' "$GPU_TEXT" | paste -sd, -)
+nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -m py_compile "$EXP/profile_future_ghi_head_dp2g.py" "$EXP/train_future_ghi_heads.py"
+python -u "$EXP/profile_future_ghi_head_dp2g.py" --steps 24 --warmup 4 --batch-size 1792 \
+  --output "$EXP/results/future_ghi_head_profile_2g_20261020.json"

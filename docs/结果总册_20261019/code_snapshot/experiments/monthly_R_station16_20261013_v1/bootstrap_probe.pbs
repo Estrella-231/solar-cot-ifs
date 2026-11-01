@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N monthly_R_bootstrap_probe
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=2:gpus=1
+#PBS -l walltime=00:02:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/bootstrap_probe.log
+set -euxo pipefail
+echo PROBE_USER_SCRIPT_STARTED
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+python -V
+p=$(mktemp -d /tmp/monthly_R_probe_XXXXXX)
+echo PROBE_TEMP=$p
+sleep 20
+echo PROBE_COMPLETE

@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\title{Spatial Cloud-Optical-Thickness Representations for FY-4B Irradiance Nowcasting with IFS Guidance}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+This study asks whether retaining the spatial structure of retrieved cloud optical thickness (COT) improves station-level irradiance nowcasting under a fixed satellite extrapolation backbone, and whether IFS provides additional forecast skill. Full COT maps are compared with summary statistics and controls for model capacity and retrieval supervision. These are hypotheses to be tested, not established performance gains.
+\end{abstract}
+\section{Introduction}
+The central question is whether the spatial organization of optical thickness around a station helps a GHI network interpret a fixed multispectral forecast. Summary statistics discard much of this organization. COT derived from the same imagery is a supervised representation and an inductive bias, rather than an independent observation. The study prioritizes the COT representation; IFS complementarity is a second, separately tested question.
+\section{Related Work}
+The comparison focuses on COT-based irradiance estimation and nowcasting, spatial satellite-to-station mappings, and satellite--numerical-weather-prediction coupling. A detailed comparison with the closest studies is required before making a novelty claim. Concatenating a COT map alone is not assumed to establish methodological novelty.
+\section{Data and Forecasting Task}
+The study concerns Sili and Zhujia in Hunan. Eight historical frames predict sixteen future frames at 15-minute intervals. Let $t$ denote the final historical timestamp and let $\Delta=15$ minutes. For lead $k$,
+\begin{equation}
+\tau_k=t+k\Delta,\quad \mathcal I_{t,k}=(t+(k-1)\Delta,t+k\Delta],\quad k=1,\ldots,16.
+\end{equation}
+The interval-mean target and its reconstruction are
+\begin{equation}
+\bar k_{s,k}=\frac{\bar G_{s,k}}{\bar G^{cs}_{s,k}},\qquad
+\widehat G_{s,k}=\widehat k_{s,k}\bar G^{cs}_{s,k}.
+\end{equation}
+Ground observations serve only as supervision and evaluation targets. Future observed AGRI and CPP do not enter deployable inference. CPP is a retrieval reference product, not error-free physical truth. IFS products must have been released by initialization; accumulated radiation is converted to interval flux using its documented step convention.
+\section{Fixed-Backbone Spatial COT Representation}
+A frozen Hunan-trained SimVP $S$ maps historical imagery to predicted AGRI fields. A frozen retrieval model $R$ maps those predicted fields and deterministic solar geometry $g$ to log-transformed COT:
+\begin{equation}
+\widehat A_k=S(A_{\mathrm{hist}})_k,\qquad
+\widehat L_{s,k}=R(\widehat A_{s,k},g_{s,k}),\qquad L=\log(1+\mathrm{COT}).
+\end{equation}
+For each station and lead, the full available $16\times16$ COT patch is retained and aligned pixel by pixel with the thirteen AGRI channels. It is not a single statistic broadcast over the patch, nor a full regional COT image. Training-only normalization gives $Z_L=(\widehat L-\mu_{L,\mathrm{train}})/\sigma_{L,\mathrm{train}}$, using shared spatial statistics so that pixel positions are preserved.
+\begin{equation}
+X_{s,k}=\operatorname{concat}_{\mathrm{channel}}(Z_{A,s,k},Z_{L,s,k})
+\in\mathbb R^{14\times16\times16},\qquad
+\widehat k_{s,k}=\operatorname{softplus}\bigl(H_\theta(X_{s,k},g_{s,k},k,s,n_{s,k})\bigr).
+\end{equation}
+The planned first-stage head keeps the existing two convolutional layers, global average pooling, and small multilayer perceptron. The COT map enters before the first convolution; geometry, lead, station, and optional interval-aligned IFS radiation enter the readout. IFS radiation is normalized by interval clear-sky irradiance. Absent conditions use fixed zero slots shared by the matched controls. No gradient updates $S$ or $R$, and no upper bound of one is imposed on the predicted clear-sky index.
+The training objective remains irradiance-scaled squared error:
+\begin{equation}
+\mathcal L=\frac{1}{N}\sum_{i=1}^{N}w_i
+\left(\frac{\widehat k_i\bar G^{cs}_i-\bar G_i}{1000\ \mathrm{W\,m^{-2}}}\right)^2.
+\end{equation}
+Sample weights and valid-daylight masks are fixed across variants. The initial comparison changes the representation while holding the loss, upstream weights, and readout architecture fixed.
+\section{Experimental Protocol}
+The first comparison trains matched AGRI-only, AGRI-plus-COT-statistics, and AGRI-plus-COT-map heads on identical samples with paired seeds. A common fourteen-channel input and four-statistic readout slot are used; unused slots are zero. Because zero slots do not provide active capacity, an additional AGRI-derived spatial-channel control is required. A spatial latent control from the same frozen retrieval model tests whether any gain is specific to explicit COT rather than retrieval supervision.
+A deterministic permutation of noncentral COT pixels preserves the center and permutation-invariant summary statistics while disrupting spatial arrangement. Retrained controls and frozen-model perturbations are reported separately; neither establishes physical causality.
+The second comparison uses AGRI alone, AGRI with spatial COT, AGRI with IFS, and AGRI with both, on a common causally valid IFS cohort. The primary endpoint is the equal-station mean of all-lead GHI RMSE; station-specific and lead-specific RMSE, MAE, and bias are also reported. Three paired seeds and paired target-date block resampling quantify uncertainty. For station-equally weighted matched mean squared errors, the interaction is
+\begin{equation}
+I=\operatorname{MSE}(A)-\operatorname{MSE}(AC)-\operatorname{MSE}(AN)+\operatorname{MSE}(ACN).
+\end{equation}
+A negative interaction indicates a greater-than-additive error reduction on this scale only when uncertainty supports that interpretation. Incremental IFS skill does not by itself establish such synergy. Model selection and the analysis protocol are frozen before independent test evaluation.
+\section{Results}
+Results will be populated from saved matched predictions after the controlled experiments. The evaluation will report representation comparisons, capacity and supervision controls, IFS increments, and lead-dependent retrieval-error propagation. No performance improvement is assumed.
+\section{Discussion}
+Spatial COT can also transmit retrieval and extrapolation errors to the GHI network. The analysis will distinguish explicit representation effects from supervision and capacity, and examine station-specific failures. Improved average accuracy alone does not demonstrate a physical mechanism. Conclusions will be limited to the evaluated Hunan stations, periods, cloud conditions, and patch scale.
+\section{Conclusion}
+Conclusions will follow the completed controlled experiments. Neither spatial-COT superiority nor IFS synergy is established at the planning stage.
+\end{document}

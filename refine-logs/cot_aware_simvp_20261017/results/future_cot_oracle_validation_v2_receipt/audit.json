@@ -1,0 +1,569 @@
+{
+  "state": "COMPLETE_PAIRED_FUTURE_COT_ORACLE_VALIDATION_AUDIT",
+  "interpretation": "oracle-only information ceiling; observed future AGRI-derived COT is unavailable to deployable forecasts",
+  "primary_metric": "equal-station mean of seed-averaged validation GHI RMSE; negative delta favors the left arm",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "target_bjt_date_blocks": 52,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261020,
+  "arms": {
+    "A": "no COT",
+    "AH": "observed-history COT only",
+    "AC": "history COT plus observed-future-AGRI\u2192frozen-R future COT oracle"
+  },
+  "equal_station_mean_seed_rmse_wm2": {
+    "A": 130.92885985831265,
+    "AH": 131.04025678106373,
+    "AC": 113.53648661408013
+  },
+  "per_station_mean_seed_rmse_wm2": {
+    "sili": {
+      "A": 146.1640098919075,
+      "AH": 146.13578301795843,
+      "AC": 124.0770424740806
+    },
+    "zhujia": {
+      "A": 115.6937098247178,
+      "AH": 115.94473054416903,
+      "AC": 102.99593075407968
+    }
+  },
+  "pairwise_delta_rmse_wm2": {
+    "AC_minus_AH": -17.5037701669836,
+    "AC_minus_A": -17.392373244232516,
+    "AH_minus_A": 0.1113969227510836
+  },
+  "date_block_bootstrap_95pct_ci_wm2": {
+    "AC_minus_AH": [
+      -23.552269362178684,
+      -11.9702542279675
+    ],
+    "AC_minus_A": [
+      -23.30764012491309,
+      -12.02522005408675
+    ],
+    "AH_minus_A": [
+      -0.5039312192067853,
+      0.7794318118303317
+    ]
+  },
+  "raw_metrics": [
+    {
+      "seed": 42,
+      "station": "sili",
+      "arm": "A",
+      "n": 32159,
+      "rmse_wm2": 144.58842830509232,
+      "mae_wm2": 90.83226755602283,
+      "bias_wm2": -2.653308930650743,
+      "first_hour_rmse_wm2": 119.68644382144686,
+      "two_to_four_hour_rmse_wm2": 158.7154980704428
+    },
+    {
+      "seed": 42,
+      "station": "sili",
+      "arm": "AH",
+      "n": 32159,
+      "rmse_wm2": 144.80267304369914,
+      "mae_wm2": 90.9551353618289,
+      "bias_wm2": -3.9499926520312627,
+      "first_hour_rmse_wm2": 119.61105310256966,
+      "two_to_four_hour_rmse_wm2": 158.99554386746084
+    },
+    {
+      "seed": 42,
+      "station": "sili",
+      "arm": "AC",
+      "n": 32159,
+      "rmse_wm2": 123.20049230465402,
+      "mae_wm2": 68.81214634041974,
+      "bias_wm2": 3.399936053271419,
+      "first_hour_rmse_wm2": 113.66542598659821,
+      "two_to_four_hour_rmse_wm2": 128.85968105725232
+    },
+    {
+      "seed": 42,
+      "station": "zhujia",
+      "arm": "A",
+      "n": 34431,
+      "rmse_wm2": 117.5160548982584,
+      "mae_wm2": 78.8021120579542,
+      "bias_wm2": -3.1699835375207592,
+      "first_hour_rmse_wm2": 108.60494479960224,
+      "two_to_four_hour_rmse_wm2": 123.41815319216238
+    },
+    {
+      "seed": 42,
+      "station": "zhujia",
+      "arm": "AH",
+      "n": 34431,
+      "rmse_wm2": 117.92139697322888,
+      "mae_wm2": 79.04714227893567,
+      "bias_wm2": -3.5111170437875168,
+      "first_hour_rmse_wm2": 109.20979909225045,
+      "two_to_four_hour_rmse_wm2": 123.69236442281098
+    },
+    {
+      "seed": 42,
+      "station": "zhujia",
+      "arm": "AC",
+      "n": 34431,
+      "rmse_wm2": 102.97732528163633,
+      "mae_wm2": 67.31916682062544,
+      "bias_wm2": -1.1724688820202676,
+      "first_hour_rmse_wm2": 103.82758976606746,
+      "two_to_four_hour_rmse_wm2": 102.80320563363651
+    },
+    {
+      "seed": 43,
+      "station": "sili",
+      "arm": "A",
+      "n": 32159,
+      "rmse_wm2": 146.88679834533946,
+      "mae_wm2": 88.45779364733683,
+      "bias_wm2": -11.243251072991072,
+      "first_hour_rmse_wm2": 119.20609979069918,
+      "two_to_four_hour_rmse_wm2": 162.8162213060258
+    },
+    {
+      "seed": 43,
+      "station": "sili",
+      "arm": "AH",
+      "n": 32159,
+      "rmse_wm2": 146.5619248915417,
+      "mae_wm2": 88.5805480032986,
+      "bias_wm2": -9.48059633575876,
+      "first_hour_rmse_wm2": 119.38629840585746,
+      "two_to_four_hour_rmse_wm2": 162.24659062659944
+    },
+    {
+      "seed": 43,
+      "station": "sili",
+      "arm": "AC",
+      "n": 32159,
+      "rmse_wm2": 124.22409762083933,
+      "mae_wm2": 68.62236329393507,
+      "bias_wm2": -5.714191531415194,
+      "first_hour_rmse_wm2": 114.5092031759099,
+      "two_to_four_hour_rmse_wm2": 129.9695555850446
+    },
+    {
+      "seed": 43,
+      "station": "zhujia",
+      "arm": "A",
+      "n": 34431,
+      "rmse_wm2": 114.23307216186781,
+      "mae_wm2": 79.36327918320465,
+      "bias_wm2": 7.017149001683077,
+      "first_hour_rmse_wm2": 103.02855842839116,
+      "two_to_four_hour_rmse_wm2": 121.12703583698072
+    },
+    {
+      "seed": 43,
+      "station": "zhujia",
+      "arm": "AH",
+      "n": 34431,
+      "rmse_wm2": 114.73701843865382,
+      "mae_wm2": 79.68475365924054,
+      "bias_wm2": 7.295292940583826,
+      "first_hour_rmse_wm2": 103.50043711885236,
+      "two_to_four_hour_rmse_wm2": 121.66040217510793
+    },
+    {
+      "seed": 43,
+      "station": "zhujia",
+      "arm": "AC",
+      "n": 34431,
+      "rmse_wm2": 102.92179348453492,
+      "mae_wm2": 67.95139949512325,
+      "bias_wm2": -0.5454649817829662,
+      "first_hour_rmse_wm2": 102.20257615321854,
+      "two_to_four_hour_rmse_wm2": 103.67911649803892
+    },
+    {
+      "seed": 44,
+      "station": "sili",
+      "arm": "A",
+      "n": 32159,
+      "rmse_wm2": 147.01680302529078,
+      "mae_wm2": 88.908862558805,
+      "bias_wm2": 2.792979983852598,
+      "first_hour_rmse_wm2": 118.7237638267808,
+      "two_to_four_hour_rmse_wm2": 163.34238661579587
+    },
+    {
+      "seed": 44,
+      "station": "sili",
+      "arm": "AH",
+      "n": 32159,
+      "rmse_wm2": 147.04275111863444,
+      "mae_wm2": 88.00732202825894,
+      "bias_wm2": -10.044299635861549,
+      "first_hour_rmse_wm2": 119.43241718562324,
+      "two_to_four_hour_rmse_wm2": 163.3496215912957
+    },
+    {
+      "seed": 44,
+      "station": "sili",
+      "arm": "AC",
+      "n": 32159,
+      "rmse_wm2": 124.8065374967484,
+      "mae_wm2": 72.38526959594084,
+      "bias_wm2": -8.04826076320815,
+      "first_hour_rmse_wm2": 116.00182567846694,
+      "two_to_four_hour_rmse_wm2": 129.94486434626003
+    },
+    {
+      "seed": 44,
+      "station": "zhujia",
+      "arm": "A",
+      "n": 34431,
+      "rmse_wm2": 115.33200241402717,
+      "mae_wm2": 80.17748256068421,
+      "bias_wm2": 5.75479309173709,
+      "first_hour_rmse_wm2": 105.74424279760416,
+      "two_to_four_hour_rmse_wm2": 121.07775203127021
+    },
+    {
+      "seed": 44,
+      "station": "zhujia",
+      "arm": "AH",
+      "n": 34431,
+      "rmse_wm2": 115.1757762206244,
+      "mae_wm2": 79.3654210322319,
+      "bias_wm2": 8.051436797414794,
+      "first_hour_rmse_wm2": 105.81374934811711,
+      "two_to_four_hour_rmse_wm2": 120.97760172762185
+    },
+    {
+      "seed": 44,
+      "station": "zhujia",
+      "arm": "AC",
+      "n": 34431,
+      "rmse_wm2": 103.0886734960678,
+      "mae_wm2": 68.44866064085348,
+      "bias_wm2": -0.583305654055561,
+      "first_hour_rmse_wm2": 103.55474695618022,
+      "two_to_four_hour_rmse_wm2": 102.84166812306317
+    }
+  ],
+  "per_station_lead_metrics": [
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "A_rmse_wm2": 111.6320336781199,
+      "AH_rmse_wm2": 112.21092250452237,
+      "AC_rmse_wm2": 112.24235960908571,
+      "AC_minus_AH_wm2": 0.031437104563337925,
+      "AC_minus_A_wm2": 0.6103259309658142
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "A_rmse_wm2": 116.68369493893056,
+      "AH_rmse_wm2": 116.77209137068583,
+      "AC_rmse_wm2": 113.94686157369853,
+      "AC_minus_AH_wm2": -2.8252297969873013,
+      "AC_minus_A_wm2": -2.7368333652320302
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "A_rmse_wm2": 121.70970470770203,
+      "AH_rmse_wm2": 122.02940634962944,
+      "AC_rmse_wm2": 115.37390020812931,
+      "AC_minus_AH_wm2": -6.655506141500126,
+      "AC_minus_A_wm2": -6.335804499572717
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "A_rmse_wm2": 126.13670433847687,
+      "AH_rmse_wm2": 126.25631668237223,
+      "AC_rmse_wm2": 117.22484341995818,
+      "AC_minus_AH_wm2": -9.031473262414053,
+      "AC_minus_A_wm2": -8.911860918518698
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "A_rmse_wm2": 130.85239643652884,
+      "AH_rmse_wm2": 130.9035138235812,
+      "AC_rmse_wm2": 118.9589743277463,
+      "AC_minus_AH_wm2": -11.944539495834888,
+      "AC_minus_A_wm2": -11.89342210878253
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "A_rmse_wm2": 135.61412631711914,
+      "AH_rmse_wm2": 135.51154290245665,
+      "AC_rmse_wm2": 121.18801032377006,
+      "AC_minus_AH_wm2": -14.323532578686596,
+      "AC_minus_A_wm2": -14.426115993349086
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "A_rmse_wm2": 139.9057753936104,
+      "AH_rmse_wm2": 139.70235547104434,
+      "AC_rmse_wm2": 122.52959758605004,
+      "AC_minus_AH_wm2": -17.172757884994297,
+      "AC_minus_A_wm2": -17.376177807560367
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "A_rmse_wm2": 143.91010809757688,
+      "AH_rmse_wm2": 143.6660426095245,
+      "AC_rmse_wm2": 124.11654962529559,
+      "AC_minus_AH_wm2": -19.54949298422892,
+      "AC_minus_A_wm2": -19.79355847228129
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "A_rmse_wm2": 147.0724988260098,
+      "AH_rmse_wm2": 146.83759248585804,
+      "AC_rmse_wm2": 125.19392849261264,
+      "AC_minus_AH_wm2": -21.643663993245397,
+      "AC_minus_A_wm2": -21.87857033339715
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "A_rmse_wm2": 150.5117979260863,
+      "AH_rmse_wm2": 150.368109433984,
+      "AC_rmse_wm2": 126.16381055854661,
+      "AC_minus_AH_wm2": -24.204298875437374,
+      "AC_minus_A_wm2": -24.347987367539687
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "A_rmse_wm2": 155.06553340987102,
+      "AH_rmse_wm2": 154.97883720262544,
+      "AC_rmse_wm2": 127.24369016112568,
+      "AC_minus_AH_wm2": -27.735147041499758,
+      "AC_minus_A_wm2": -27.82184324874534
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "A_rmse_wm2": 159.2532678410214,
+      "AH_rmse_wm2": 159.27649413687638,
+      "AC_rmse_wm2": 128.54486084097127,
+      "AC_minus_AH_wm2": -30.731633295905112,
+      "AC_minus_A_wm2": -30.70840700005013
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "A_rmse_wm2": 163.77184289459592,
+      "AH_rmse_wm2": 163.92469399674454,
+      "AC_rmse_wm2": 129.9092794955296,
+      "AC_minus_AH_wm2": -34.015414501214934,
+      "AC_minus_A_wm2": -33.86256339906632
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "A_rmse_wm2": 168.23329894150712,
+      "AH_rmse_wm2": 168.22141872363795,
+      "AC_rmse_wm2": 131.669894067091,
+      "AC_minus_AH_wm2": -36.551524656546945,
+      "AC_minus_A_wm2": -36.56340487441611
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "A_rmse_wm2": 172.0716614456402,
+      "AH_rmse_wm2": 171.86664173181452,
+      "AC_rmse_wm2": 133.26119433070937,
+      "AC_minus_AH_wm2": -38.60544740110515,
+      "AC_minus_A_wm2": -38.810467114930816
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "A_rmse_wm2": 175.72866314216654,
+      "AH_rmse_wm2": 175.47367700520348,
+      "AC_rmse_wm2": 134.77338822958927,
+      "AC_minus_AH_wm2": -40.70028877561421,
+      "AC_minus_A_wm2": -40.955274912577266
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "A_rmse_wm2": 102.74362770643768,
+      "AH_rmse_wm2": 103.459970602824,
+      "AC_rmse_wm2": 103.017855465416,
+      "AC_minus_AH_wm2": -0.44211513740799546,
+      "AC_minus_A_wm2": 0.2742277589783271
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "A_rmse_wm2": 104.25439777932758,
+      "AH_rmse_wm2": 104.72590166217118,
+      "AC_rmse_wm2": 103.34845580072073,
+      "AC_minus_AH_wm2": -1.377445861450454,
+      "AC_minus_A_wm2": -0.9059419786068474
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "A_rmse_wm2": 107.60095050323882,
+      "AH_rmse_wm2": 107.83042557841428,
+      "AC_rmse_wm2": 104.14736798784713,
+      "AC_minus_AH_wm2": -3.683057590567145,
+      "AC_minus_A_wm2": -3.4535825153916875
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "A_rmse_wm2": 108.391346224619,
+      "AH_rmse_wm2": 108.53041002767414,
+      "AC_rmse_wm2": 102.25947651222783,
+      "AC_minus_AH_wm2": -6.270933515446302,
+      "AC_minus_A_wm2": -6.131869712391165
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "A_rmse_wm2": 110.19930640592383,
+      "AH_rmse_wm2": 110.3479098971938,
+      "AC_rmse_wm2": 102.14453054085193,
+      "AC_minus_AH_wm2": -8.20337935634187,
+      "AC_minus_A_wm2": -8.054775865071903
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "A_rmse_wm2": 111.7037648111221,
+      "AH_rmse_wm2": 111.80901250295729,
+      "AC_rmse_wm2": 102.31892076771119,
+      "AC_minus_AH_wm2": -9.490091735246097,
+      "AC_minus_A_wm2": -9.384844043410908
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "A_rmse_wm2": 113.21170894315519,
+      "AH_rmse_wm2": 113.36199436496325,
+      "AC_rmse_wm2": 102.82260654298966,
+      "AC_minus_AH_wm2": -10.539387821973591,
+      "AC_minus_A_wm2": -10.389102400165527
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "A_rmse_wm2": 114.87254931507266,
+      "AH_rmse_wm2": 115.11720760807044,
+      "AC_rmse_wm2": 103.00284511956166,
+      "AC_minus_AH_wm2": -12.114362488508789,
+      "AC_minus_A_wm2": -11.869704195511005
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "A_rmse_wm2": 115.4779547490172,
+      "AH_rmse_wm2": 115.79121420948519,
+      "AC_rmse_wm2": 102.2540803915633,
+      "AC_minus_AH_wm2": -13.537133817921884,
+      "AC_minus_A_wm2": -13.223874357453894
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "A_rmse_wm2": 116.16697892972287,
+      "AH_rmse_wm2": 116.38865222248938,
+      "AC_rmse_wm2": 102.11556903763916,
+      "AC_minus_AH_wm2": -14.273083184850222,
+      "AC_minus_A_wm2": -14.051409892083711
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "A_rmse_wm2": 117.38651254260857,
+      "AH_rmse_wm2": 117.54418147939695,
+      "AC_rmse_wm2": 102.48527425673525,
+      "AC_minus_AH_wm2": -15.058907222661702,
+      "AC_minus_A_wm2": -14.901238285873319
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "A_rmse_wm2": 119.88304056936397,
+      "AH_rmse_wm2": 120.07022898296323,
+      "AC_rmse_wm2": 102.60182522502764,
+      "AC_minus_AH_wm2": -17.46840375793559,
+      "AC_minus_A_wm2": -17.28121534433633
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "A_rmse_wm2": 122.41039185185254,
+      "AH_rmse_wm2": 122.60140346014595,
+      "AC_rmse_wm2": 102.76190555905266,
+      "AC_minus_AH_wm2": -19.83949790109328,
+      "AC_minus_A_wm2": -19.648486292799873
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "A_rmse_wm2": 124.87192655534466,
+      "AH_rmse_wm2": 125.110917832251,
+      "AC_rmse_wm2": 103.5417394477286,
+      "AC_minus_AH_wm2": -21.569178384522402,
+      "AC_minus_A_wm2": -21.330187107616055
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "A_rmse_wm2": 127.5255583498252,
+      "AH_rmse_wm2": 127.80347765700161,
+      "AC_rmse_wm2": 104.28541226146463,
+      "AC_minus_AH_wm2": -23.51806539553698,
+      "AC_minus_A_wm2": -23.240146088360575
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "A_rmse_wm2": 131.06435707318423,
+      "AH_rmse_wm2": 131.3631874429711,
+      "AC_rmse_wm2": 104.90513555968211,
+      "AC_minus_AH_wm2": -26.458051883289002,
+      "AC_minus_A_wm2": -26.159221513502118
+    }
+  ],
+  "first_hour_guard": {
+    "sili": {
+      "A": 119.20543581297561,
+      "AH": 119.47658956468347,
+      "AC": 114.72548494699168
+    },
+    "zhujia": {
+      "A": 105.79258200853252,
+      "AH": 106.1746618530733,
+      "AC": 103.19497095848874
+    }
+  },
+  "paired_key_rule": "exact (station, init, target, lead, GHI row) and truth equality across arms and seeds",
+  "oracle_only": true,
+  "deployable": false,
+  "future_observed_agri_used_as_input": true,
+  "future_cpp_used_as_input": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "pack_manifest_sha256": "92ba5f761ec566c4af63422cf6e2d66d48da4015b7bfe918948bef8cd274a4ca",
+  "claim_boundary": "cannot be reported as operational forecast gain; a positive ceiling only localizes headroom to forecast-COT quality/alignment, while a null ceiling shifts attention to GHI fusion/representation/labels"
+}

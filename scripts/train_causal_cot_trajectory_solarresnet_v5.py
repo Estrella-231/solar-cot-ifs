@@ -189,7 +189,8 @@ def fit_train_cot_norm(train_banks, sequence):
             "mean_value": float(mean), "std_value": float(variance.sqrt())}
 
 
-def main(root, forecast_dir, history_dir, out, epochs, batch, run_seed, cot_normalization_json=None):
+def main(root, forecast_dir, history_dir, out, epochs, batch, run_seed, cot_normalization_json=None,
+         selected_groups=GROUPS):
     root, forecast_dir, history_dir, out = (item.resolve() for item in (root, forecast_dir, history_dir, out))
     if out.exists():
         raise RuntimeError("refuse to overwrite trajectory run")
@@ -244,7 +245,7 @@ def main(root, forecast_dir, history_dir, out, epochs, batch, run_seed, cot_norm
     if batch > profile_result["training_batch"]:
         raise RuntimeError("requested batch exceeds the safe profiled batch")
     contract = {"state": "EXPLORATORY_CAUSAL_COT_TRAJECTORY_CPP_PROVENANCE_UNRESOLVED", "test_used": False,
-                "groups": list(GROUPS), "seed": run_seed, "epochs_max": epochs, "batch": batch,
+                "groups": list(selected_groups), "seed": run_seed, "epochs_max": epochs, "batch": batch,
                 "frozen_S": True, "frozen_R": True, "head": "SolarResNet image trunk plus causal dilated 3D COT trajectory fusion",
                 "forbidden": "no full-patch average; no COT statistics; no post-target forecast map; no reference CPP",
                 "cot_normalization": {"fit": "one scalar over only unique training sequences and all COT pixels/times",
@@ -263,7 +264,7 @@ def main(root, forecast_dir, history_dir, out, epochs, batch, run_seed, cot_norm
         if len(station_train) == 0 or len(station_val) == 0:
             raise RuntimeError("missing station cohort: " + station_name)
         report["runs"][station_name] = {}
-        for group in GROUPS:
+        for group in selected_groups:
             seed(run_seed)
             model = CausalCOTTrajectorySolarResNetV5().cuda()
             optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4, weight_decay=1e-4)
@@ -312,9 +313,11 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--cot-normalization-json", type=Path,
                         help="reuse a frozen train-only COT mean/std from a matched reference run")
+    parser.add_argument("--groups", nargs="+", choices=GROUPS, default=list(GROUPS),
+                        help="optional subset of paired COT input groups")
     parser.add_argument("--allow-unverified-cpp", action="store_true")
     args = parser.parse_args()
     if not args.allow_unverified_cpp:
         raise RuntimeError("requires explicit exploratory CPP authorization")
     main(args.root, args.forecast_dir, args.history_dir, args.out, args.epochs, args.batch, args.seed,
-         args.cot_normalization_json)
+         args.cot_normalization_json, tuple(args.groups))

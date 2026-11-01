@@ -1,0 +1,39 @@
+{
+  "state": "RUNNING_MSE_CONTROL_ARM",
+  "timestamp_bjt": "2026-10-21T12:29+08:00",
+  "job_id": "215355.tc6000",
+  "pbs_state": "R",
+  "allocation": "node22-gpu/1",
+  "nvidia_smi": "index 1, NVIDIA A800-SXM4-80GB, 81920 MiB",
+  "data_preflight": "PASS_ATTEMPT13_TRAIN_VAL_INPUTS_AND_CPP_PHYSICAL_TARGETS",
+  "train_windows": 4086,
+  "validation_windows": 407,
+  "exact_cpp_supported_targets_verified": 19481,
+  "profile": {
+    "state": "PASS_JOINT_AGRI_FROZEN_R_CPP_COT_STEP_PROFILE",
+    "batch": 16,
+    "peak_allocated_gib": 69.29149198532104,
+    "elapsed_seconds": 19.299513448029757,
+    "simvp_gradient_finite": true,
+    "frozen_r_parameter_grads_none": true
+  },
+  "pair": {
+    "state": "ATTEMPT13_PAIR_RUNNING",
+    "epochs_per_arm": 50,
+    "expected_updates_per_arm": 12800,
+    "same_initialization_seed": 42
+  },
+  "active_arm": "mse_control",
+  "cot_aux_arm_started": false,
+  "checkpoints_or_final_metrics_available": false,
+  "queue_unfinished": 1,
+  "queue_limit": 3,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "log": "../attempt13_retry3.log",
+  "elapsed_walltime_reported": "00:03:08",
+  "active_epoch": 0,
+  "active_epoch_step": 46,
+  "steps_per_epoch": 282,
+  "progress_note": "first observed progress snapshot; per-step rate still warming and not yet a reliable full-run ETA"
+}

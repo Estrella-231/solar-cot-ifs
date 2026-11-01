@@ -1,0 +1,67 @@
+{
+  "state": "HUBEI_FORECAST_HEADS_27_CHECKPOINTS_HASHED_TEST_CLOSED",
+  "scope": "forecast GHI head weights FA/FAC/FAP, trained train/validation artifacts only; no test or buffer payload",
+  "host": "zjnu-hpc / tc6000",
+  "remote_run_root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_forecast_ghi_20261017",
+  "inventory_method": "remote sha256sum over checkpoint files; no checkpoint deserialization",
+  "training_pack_report_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+  "frozen_split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "oof_train_bank_report_sha256": "fdba5b914b4f53d4cfcf9c30a35b7363b11848de11a85643474705630c86fc4e",
+  "trainer_source": {
+    "path": "scripts/train_hubei_ghi_heads_normreload_20261017.py",
+    "sha256": "fd15bf6f939cb81d09bd05e6fc889f88e53e8a9e40366d417fa195848caf5999"
+  },
+  "normalization_contract": {
+    "path_pattern": "results/{run_dir}/normalization_contract.json",
+    "sha256": "4e4b93bd77119bf3c6a3003effed4e62e81f7c5bb726de85f62c99de1291a2aa",
+    "run_dirs": [
+      "forecast_FA_FAC_seed42_normreload_v2", "forecast_FA_FAC_seed43_normreload_v2", "forecast_FA_FAC_seed44_normreload_v2",
+      "forecast_FAP_seed42_normreload_20261018", "forecast_FAP_seed43_normreload_20261018", "forecast_FAP_seed44_normreload_20261018"
+    ]
+  },
+  "run_metadata_sha256": {
+    "forecast_FA_FAC_seed42_normreload_v2": "a6980127db59895cafec16cb34897df3b42d1ba742e30e4bb1b240c26ef9e33c",
+    "forecast_FA_FAC_seed43_normreload_v2": "e73e7a9e54715e8a55eb0bc191e7652c27c356849e49a1cba8b1b1b3635d91dd",
+    "forecast_FA_FAC_seed44_normreload_v2": "560d8d980d6e579e8be89b6b98e163fe3584b4b45e53433161898039ba2fa4a7",
+    "forecast_FAP_seed42_normreload_20261018": "f45b560bb2f79f0786c2266747d7776316a19e967066bb6be80fda3089726d07",
+    "forecast_FAP_seed43_normreload_20261018": "ac2d8ab322bcfdb9cfe14fb6aa350966316d11e33de2a751fa0528dcb4255f84",
+    "forecast_FAP_seed44_normreload_20261018": "ed7e4f002cd27816eb2a79bf083fcda4c00117a6e4f6531442e5fcb39dec5d02"
+  },
+  "head_checkpoints": [
+    {"seed":42,"station":"Niushou","arm":"FA","path":"results/forecast_FA_FAC_seed42_normreload_v2/Niushou/FA_best.pt","sha256":"7714357da1a1cff536bb40cd5b5ced60f2fecfa8f25a3e519166f0facf380d91"},
+    {"seed":42,"station":"Niushou","arm":"FAC","path":"results/forecast_FA_FAC_seed42_normreload_v2/Niushou/FAC_best.pt","sha256":"77e89757c32255b4a2b0494fe7a9bf839c082b5811acaef05efea670ecc11356"},
+    {"seed":42,"station":"Niushou","arm":"FAP","path":"results/forecast_FAP_seed42_normreload_20261018/Niushou/FAP_best.pt","sha256":"aa2daadcc856629c0853045512d08b5d93105ea64432f84931dfdeb1487a4bbd"},
+    {"seed":42,"station":"Wangzhai","arm":"FA","path":"results/forecast_FA_FAC_seed42_normreload_v2/Wangzhai/FA_best.pt","sha256":"d3f441f2944b83a441a69c7ed50db55375c0bcb781b51b54c045e401b6da64d2"},
+    {"seed":42,"station":"Wangzhai","arm":"FAC","path":"results/forecast_FA_FAC_seed42_normreload_v2/Wangzhai/FAC_best.pt","sha256":"57c3071285f36a7ea4f193c66852c4eca3143a666d7b2c65cb40bc030800ba40"},
+    {"seed":42,"station":"Wangzhai","arm":"FAP","path":"results/forecast_FAP_seed42_normreload_20261018/Wangzhai/FAP_best.pt","sha256":"545b9b2ccad8630093679b60695c854e3d569cf3cee9cc5258fa57c9c8da727f"},
+    {"seed":42,"station":"Mizhuang","arm":"FA","path":"results/forecast_FA_FAC_seed42_normreload_v2/Mizhuang/FA_best.pt","sha256":"3e40e1210876d8892d11b260db87049a0abd96dda45694fe1d7671aa59e69207"},
+    {"seed":42,"station":"Mizhuang","arm":"FAC","path":"results/forecast_FA_FAC_seed42_normreload_v2/Mizhuang/FAC_best.pt","sha256":"e0020b30958c18af82d3ed6f0614721eba01adc1e9a513e491d43baafa31dadf"},
+    {"seed":42,"station":"Mizhuang","arm":"FAP","path":"results/forecast_FAP_seed42_normreload_20261018/Mizhuang/FAP_best.pt","sha256":"409d5c063c6f1120ca7da7ac092030a0b3a488915c4d44960cf7959c3bffac10"},
+    {"seed":43,"station":"Niushou","arm":"FA","path":"results/forecast_FA_FAC_seed43_normreload_v2/Niushou/FA_best.pt","sha256":"d62816862c8f49c69059b704adb2e3c76ae2c0a879a93f7b1a6afd0f772cd144"},
+    {"seed":43,"station":"Niushou","arm":"FAC","path":"results/forecast_FA_FAC_seed43_normreload_v2/Niushou/FAC_best.pt","sha256":"c3d16014469899167a41c5f017ba2b555df40e56bd1fd4f5eb4efd0f3cda7da8"},
+    {"seed":43,"station":"Niushou","arm":"FAP","path":"results/forecast_FAP_seed43_normreload_20261018/Niushou/FAP_best.pt","sha256":"0414ba56f59c0cb4e62df9c548e780556becd945bb6d6fa1a1082b001fb4e408"},
+    {"seed":43,"station":"Wangzhai","arm":"FA","path":"results/forecast_FA_FAC_seed43_normreload_v2/Wangzhai/FA_best.pt","sha256":"9980ce9667c33c78293cad3be7bcc0214b27f79177f72b4125b63ba36da066cc"},
+    {"seed":43,"station":"Wangzhai","arm":"FAC","path":"results/forecast_FA_FAC_seed43_normreload_v2/Wangzhai/FAC_best.pt","sha256":"fbac4daa6de5265afc33c952363894e1f6e11a399c23923f39b9a4fd6f5ca87b"},
+    {"seed":43,"station":"Wangzhai","arm":"FAP","path":"results/forecast_FAP_seed43_normreload_20261018/Wangzhai/FAP_best.pt","sha256":"1616fcd895f4a38e616f25edbd49fa225a4e88bc7824382e95a8386531454602"},
+    {"seed":43,"station":"Mizhuang","arm":"FA","path":"results/forecast_FA_FAC_seed43_normreload_v2/Mizhuang/FA_best.pt","sha256":"3488d529aef1548af49f512e879f0c3faf6540bd5058bd958ec8a7912d573139"},
+    {"seed":43,"station":"Mizhuang","arm":"FAC","path":"results/forecast_FA_FAC_seed43_normreload_v2/Mizhuang/FAC_best.pt","sha256":"880b46152213625e134e49ce0f7a583e0491073d189fdefcc018b2ae8f8fd1e4"},
+    {"seed":43,"station":"Mizhuang","arm":"FAP","path":"results/forecast_FAP_seed43_normreload_20261018/Mizhuang/FAP_best.pt","sha256":"483c1cb70ee6f3ed081b9f08e407e779bea02f6c1fd7b5495661de668ba25d7f"},
+    {"seed":44,"station":"Niushou","arm":"FA","path":"results/forecast_FA_FAC_seed44_normreload_v2/Niushou/FA_best.pt","sha256":"fa005e3dc1b9ff5e9ae4d098f0d861227e4d16d06743a0bb7f99be1eb5708ed6"},
+    {"seed":44,"station":"Niushou","arm":"FAC","path":"results/forecast_FA_FAC_seed44_normreload_v2/Niushou/FAC_best.pt","sha256":"a8e630768581e2a037f99fe7b24dfb7e8249be8d232df7a1160c4b8783ea3fce"},
+    {"seed":44,"station":"Niushou","arm":"FAP","path":"results/forecast_FAP_seed44_normreload_20261018/Niushou/FAP_best.pt","sha256":"238fe1ebcc96b73ee67efce5d07b3a125bc03e814d2fc421ec0257ec196af21d"},
+    {"seed":44,"station":"Wangzhai","arm":"FA","path":"results/forecast_FA_FAC_seed44_normreload_v2/Wangzhai/FA_best.pt","sha256":"c6b241ef563ccc4fa22bf27b97f72681a34aeb4896aff025f902166a4536d314"},
+    {"seed":44,"station":"Wangzhai","arm":"FAC","path":"results/forecast_FA_FAC_seed44_normreload_v2/Wangzhai/FAC_best.pt","sha256":"6faae770e3857c5417299c1ab2b1cf63c0ed4f87ed57c3bb0b46a969c48e5784"},
+    {"seed":44,"station":"Wangzhai","arm":"FAP","path":"results/forecast_FAP_seed44_normreload_20261018/Wangzhai/FAP_best.pt","sha256":"16c4e71f323eadb3b3c1d9b648857c9ada88f8c4c7b805c76458712b2754614f"},
+    {"seed":44,"station":"Mizhuang","arm":"FA","path":"results/forecast_FA_FAC_seed44_normreload_v2/Mizhuang/FA_best.pt","sha256":"7534039a3ac732437ed6f0c70eabbd93629918bbc5da5f98fd85d127c25030c8"},
+    {"seed":44,"station":"Mizhuang","arm":"FAC","path":"results/forecast_FA_FAC_seed44_normreload_v2/Mizhuang/FAC_best.pt","sha256":"97bc85960c22fd63b647e06ac10918dabf5503b428b75f50c9d05abbb40b79cb"},
+    {"seed":44,"station":"Mizhuang","arm":"FAP","path":"results/forecast_FAP_seed44_normreload_20261018/Mizhuang/FAP_best.pt","sha256":"15d8e42697e48bf40cc1c30fa2d4f721927f351eef623838007849d17e90501f"}
+  ],
+  "upstream_test_inference_lineage": {
+    "state": "NOT_BOUND",
+    "missing": ["test-date full-train SimVP checkpoint and normalization", "frozen R checkpoint and normalization", "inference sources and exact test-input builder", "chain-wide ledger claimed before first payload access", "test-key freeze and real test inference receipt"],
+    "test_release_authorized": false
+  },
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "note": "This supersedes the incomplete 18-checkpoint manifest only for forecast-head checkpoint inventory. It is not a test-release receipt and does not authorize test inference or scoring."
+}

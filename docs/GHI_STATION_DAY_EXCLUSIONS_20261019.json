@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "date_timezone": "Asia/Shanghai",
+  "scope": "GHI station observations, labels and paired evaluation; no raw-file deletion",
+  "exclusions": [
+    {
+      "station": "sili",
+      "bjt_date": "2024-09-05",
+      "reason": "User confirmed continuous-zero day as invalid station data on 2026-10-19",
+      "authority": "Direct user instruction in this conversation",
+      "action": "exclude_all_GHI_targets_for_this_station_BJT_date",
+      "source_evidence": "results/cot_interval_history_20261015/audit/workbook_audit.json",
+      "label_evidence": "results/interval_alignment_20261015/ghi_rows_source.csv"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "state": "PREFLIGHT_PASS_AND_TRAINING_STARTED",
+  "started_local": "2026-10-21 08:04 CST",
+  "training_device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "gpu_before_launch": "1489 MiB / 8188 MiB (desktop processes), no CUDA training process",
+  "server_pbs_before_launch": "3/3 unfinished jobs: 215314-215316 (Hubei fold2-4; not this run)",
+  "remote_job_submitted": false,
+  "smoke": "PASS_COT_DUALPATH_HCV_INPUT_AND_MODEL_SMOKE; H rows 72345 Sili / 79417 Zhujia; H inference sequences 7181",
+  "scorer_synthetic_test": "PASS",
+  "feature_formula_and_train_only_norm_test": "PASS",
+  "sources": {
+    "p_xc": "causal P-XC prediction from history AGRI+COT",
+    "simvp_r": "causal SimVP predicted AGRI passed through frozen U-only R",
+    "cpp_used_as_input": false,
+    "future_observed_agri_used_as_input": false,
+    "test_payload_opened": false,
+    "buffer_payload_opened": false
+  },
+  "sha256": {
+    "inference_manifest.json": "cfc3e2b965bfcaec7e1c8c6f818107af1581a31903f3dfbb549b24985f4fc793",
+    "test_score_direct_cot_dualpath_hcv.py": "38bb68947729fe42a7edfedc2654efebaa7128c709e2e1ae0444e14aa5d68f91",
+    "test_direct_cot_dualpath_features.py": "4a4cdb5974e88cb5c3ef11efb8b2baaad5c89875aae58116d8f8cf3a88ccf424",
+    "COT_DUALPATH_DISAGREEMENT_GHI_HCV_PLAN_20261021.md": "5f41dba56fd4a10c60685b0af8a77638cfcc7bf84f42b2f2368c931e5b694b08",
+    "score_direct_cot_dualpath_hcv.py": "c974ead58d70cd986f6084ebf67ec385e1188bca2936f0971aee22b9c8c1c689",
+    "run_direct_cot_dualpath_hcv.py": "0a40781da625e4360b1dde126e9b92e98f5b8c50689a2581ae13b9ff4c35b2ed",
+    "bank_manifest.json": "0369bb4ec699071a1056a78b2ccaf3e4b54ef018494709ac3c20ef0140927a13"
+  }
+}

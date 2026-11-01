@@ -1,0 +1,274 @@
+{
+  "state": "COMPLETE_FP64_PAIRED_SCORE",
+  "evaluation_scope": "frozen monthly validation; exploratory, not independent test",
+  "sample_count": 4226,
+  "station_count": 2,
+  "seed_count": 3,
+  "equal_station_equal_seed_mean_RMSE_Wm2": {
+    "M00": 89.48542709546139,
+    "M10": 88.26364668531124,
+    "M01": 88.18634679967101,
+    "M11": 87.7950122742789
+  },
+  "contrasts": [
+    {
+      "name": "COT_plus_cloud_vs_COT",
+      "candidate": "M11",
+      "baseline": "M10",
+      "candidate_minus_baseline_RMSE_Wm2": -0.4686344110323404,
+      "relative_RMSE_reduction_percent": 0.530948390001577,
+      "date_block_95pct_CI_delta_Wm2": [
+        -1.0065261306885809,
+        0.04671302326828376
+      ],
+      "date_block_95pct_CI_relative_reduction_percent": [
+        -0.04989010946831683,
+        1.2172124589781719
+      ],
+      "seed_equal_station_delta_Wm2": {
+        "42": -0.4003897743738918,
+        "43": -0.3139133395779936,
+        "44": -0.6916001191451926
+      },
+      "station_mean_delta_Wm2": {
+        "sili": 0.07447682438218806,
+        "zhujia": -1.011745646446883
+      },
+      "bootstrap_replicates": 2000,
+      "bootstrap_block_count": 26
+    },
+    {
+      "name": "COT_plus_cloud_vs_cloud_only",
+      "candidate": "M11",
+      "baseline": "M01",
+      "candidate_minus_baseline_RMSE_Wm2": -0.3913345253921108,
+      "relative_RMSE_reduction_percent": 0.4437586311190415,
+      "date_block_95pct_CI_delta_Wm2": [
+        -2.2725983888146284,
+        1.2093355527902252
+      ],
+      "date_block_95pct_CI_relative_reduction_percent": [
+        -1.276147551226262,
+        2.772648753822043
+      ],
+      "seed_equal_station_delta_Wm2": {
+        "42": -0.7196242198817089,
+        "43": -0.34911100297790654,
+        "44": -0.10526835331678797
+      },
+      "station_mean_delta_Wm2": {
+        "sili": -1.3215153094333374,
+        "zhujia": 0.5388462586490874
+      },
+      "bootstrap_replicates": 2000,
+      "bootstrap_block_count": 26
+    },
+    {
+      "name": "COT_only_vs_base",
+      "candidate": "M10",
+      "baseline": "M00",
+      "candidate_minus_baseline_RMSE_Wm2": -1.2217804101501457,
+      "relative_RMSE_reduction_percent": 1.3653400892267888,
+      "date_block_95pct_CI_delta_Wm2": [
+        -3.644554532588265,
+        0.7252714826158744
+      ],
+      "date_block_95pct_CI_relative_reduction_percent": [
+        -0.738238388652614,
+        4.331112669304069
+      ],
+      "seed_equal_station_delta_Wm2": {
+        "42": -1.3416289915048623,
+        "43": -1.1426038402778431,
+        "44": -1.1811083986677602
+      },
+      "station_mean_delta_Wm2": {
+        "sili": -2.462158100225153,
+        "zhujia": 0.018597279924833288
+      },
+      "bootstrap_replicates": 2000,
+      "bootstrap_block_count": 26
+    },
+    {
+      "name": "cloud_only_vs_base",
+      "candidate": "M01",
+      "baseline": "M00",
+      "candidate_minus_baseline_RMSE_Wm2": -1.2990802957903753,
+      "relative_RMSE_reduction_percent": 1.4517227418544258,
+      "date_block_95pct_CI_delta_Wm2": [
+        -2.372885187046195,
+        -0.4230931742018032
+      ],
+      "date_block_95pct_CI_relative_reduction_percent": [
+        0.45635737605943383,
+        2.755754759809231
+      ],
+      "seed_equal_station_delta_Wm2": {
+        "42": -1.0223945459970452,
+        "43": -1.1074061768779302,
+        "44": -1.7674401644961648
+      },
+      "station_mean_delta_Wm2": {
+        "sili": -1.0661659664096277,
+        "zhujia": -1.5319946251711372
+      },
+      "bootstrap_replicates": 2000,
+      "bootstrap_block_count": 26
+    },
+    {
+      "name": "joint_vs_base",
+      "candidate": "M11",
+      "baseline": "M00",
+      "candidate_minus_baseline_RMSE_Wm2": -1.690414821182486,
+      "relative_RMSE_reduction_percent": 1.8890392280065702,
+      "date_block_95pct_CI_delta_Wm2": [
+        -4.339602504832795,
+        0.4566687263700867
+      ],
+      "date_block_95pct_CI_relative_reduction_percent": [
+        -0.48009553787357756,
+        5.099062662515257
+      ],
+      "seed_equal_station_delta_Wm2": {
+        "42": -1.742018765878754,
+        "43": -1.4565171798558367,
+        "44": -1.8727085178129528
+      },
+      "station_mean_delta_Wm2": {
+        "sili": -2.387681275842965,
+        "zhujia": -0.9931483665220497
+      },
+      "bootstrap_replicates": 2000,
+      "bootstrap_block_count": 26
+    }
+  ],
+  "frozen_decision_rule": {
+    "C1": {
+      "three_seed_mean_delta_negative": true,
+      "at_least_two_of_three_seed_deltas_negative": true,
+      "both_station_mean_deltas_nonpositive": false,
+      "date_block_CI_upper_below_zero": false,
+      "C1_supported_by_frozen_rule": false
+    },
+    "C2": {
+      "three_seed_mean_delta_negative": true,
+      "at_least_two_of_three_seed_deltas_negative": true,
+      "both_station_mean_deltas_nonpositive": false,
+      "date_block_CI_upper_below_zero": false,
+      "C2_supported_by_frozen_rule": false
+    },
+    "C2_claim_status": "descriptive_only_until_C1_passes"
+  },
+  "date_block_definition": "within each month, maximal runs of consecutive BJT validation dates, split into consecutive chunks of two; final singleton retained if required",
+  "date_block_count": 26,
+  "date_blocks": [
+    [
+      "2024-04-19",
+      "2024-04-20"
+    ],
+    [
+      "2024-05-29",
+      "2024-05-30"
+    ],
+    [
+      "2024-06-11",
+      "2024-06-12"
+    ],
+    [
+      "2024-07-09",
+      "2024-07-10"
+    ],
+    [
+      "2024-08-16",
+      "2024-08-17"
+    ],
+    [
+      "2024-09-04"
+    ],
+    [
+      "2024-10-25",
+      "2024-10-26"
+    ],
+    [
+      "2024-11-16",
+      "2024-11-17"
+    ],
+    [
+      "2024-12-24",
+      "2024-12-25"
+    ],
+    [
+      "2025-01-04",
+      "2025-01-05"
+    ],
+    [
+      "2025-02-09",
+      "2025-02-10"
+    ],
+    [
+      "2025-03-13",
+      "2025-03-14"
+    ],
+    [
+      "2025-04-17",
+      "2025-04-18"
+    ],
+    [
+      "2025-05-03",
+      "2025-05-04"
+    ],
+    [
+      "2025-06-15",
+      "2025-06-16"
+    ],
+    [
+      "2025-07-08",
+      "2025-07-09"
+    ],
+    [
+      "2025-08-21",
+      "2025-08-22"
+    ],
+    [
+      "2025-10-06",
+      "2025-10-07"
+    ],
+    [
+      "2025-11-05",
+      "2025-11-06"
+    ],
+    [
+      "2025-12-02",
+      "2025-12-03"
+    ],
+    [
+      "2026-01-03",
+      "2026-01-04"
+    ],
+    [
+      "2026-02-20",
+      "2026-02-21"
+    ],
+    [
+      "2026-03-01",
+      "2026-03-02"
+    ],
+    [
+      "2026-04-20",
+      "2026-04-21"
+    ],
+    [
+      "2026-05-05",
+      "2026-05-06"
+    ],
+    [
+      "2026-06-24",
+      "2026-06-25"
+    ]
+  ],
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261020,
+  "bootstrap_unit": "shared validation BJT date blocks across all arms, stations and seeds",
+  "scoring_dtype": "float64 independently recomputed from saved per-row predictions and labels",
+  "test_payloads_read": 0
+}

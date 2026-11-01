@@ -1,0 +1,43 @@
+{
+  "state": "RESOURCE_SNAPSHOT_NO_SAFE_GPU_FOR_CPP_BATCH",
+  "checked_utc": "2026-10-13T02:00:51Z",
+  "pbs": {
+    "host": "zjnu-hpc",
+    "command": "qstat -u slfu",
+    "output": "no jobs listed",
+    "unfinished_jobs_for_account": 0
+  },
+  "fd107": {
+    "host": "3090",
+    "gpu_snapshot": [
+      {"index": 0, "model": "NVIDIA RTX A6000", "memory_total_mib": 49140, "memory_used_mib": 30636, "utilization_percent": 0},
+      {"index": 1, "model": "NVIDIA RTX A6000", "memory_total_mib": 49140, "memory_used_mib": 32265, "utilization_percent": 100},
+      {"index": 2, "model": "NVIDIA RTX A6000", "memory_total_mib": 49140, "memory_used_mib": 13880, "utilization_percent": 99},
+      {"index": 3, "model": "NVIDIA RTX A6000", "memory_total_mib": 49140, "memory_used_mib": 15288, "utilization_percent": 97},
+      {"index": 4, "model": "NVIDIA RTX A6000", "memory_total_mib": 49140, "memory_used_mib": 41521, "utilization_percent": 0},
+      {"index": 5, "model": "NVIDIA RTX A6000", "memory_total_mib": 49140, "memory_used_mib": 27932, "utilization_percent": 99}
+    ],
+    "storage": "/home/Data_Pool_3: 266T available of 1018T",
+    "ssh_state_after_snapshot": "intermittent; raw HDF filename audit command exited successfully but its receipt retrieval is pending"
+  },
+  "fd201": {
+    "host": "4090",
+    "local_storage": "/tmp: 353G available",
+    "system_python": "/usr/bin/python3; torch import failed",
+    "gpu_snapshot": [
+      {"index": 0, "model": "NVIDIA GeForce RTX 4090", "memory_total_mib": 24564, "memory_used_mib": 19393, "utilization_percent": 100},
+      {"index": 1, "model": "NVIDIA GeForce RTX 4090", "memory_total_mib": 24564, "memory_used_mib": 19393, "utilization_percent": 100},
+      {"index": 2, "model": "NVIDIA GeForce RTX 4090", "memory_total_mib": 24564, "memory_used_mib": 19393, "utilization_percent": 100},
+      {"index": 3, "model": "NVIDIA GeForce RTX 4090", "memory_total_mib": 24564, "memory_used_mib": 18709, "utilization_percent": 0},
+      {"index": 4, "model": "NVIDIA GeForce RTX 4090", "memory_total_mib": 24564, "memory_used_mib": 18709, "utilization_percent": 0},
+      {"index": 5, "model": "NVIDIA GeForce RTX 4090", "memory_total_mib": 24564, "memory_used_mib": 18709, "utilization_percent": 0}
+    ],
+    "ssh_access": "available; no GPU has free memory"
+  },
+  "fd172_fd248": {
+    "ssh_access": "probes did not return within 15 seconds; no resource state inferred"
+  },
+  "training_submitted": false,
+  "reason": "All six GPUs had substantial memory allocations; high compute utilization on four devices. No card was confirmed safely available for this experiment.",
+  "test_payload_opened": false
+}

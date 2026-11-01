@@ -1,0 +1,534 @@
+{
+  "state": "PASS_CPP_COMMON_SUPPORT_ADJACENT_LEAD_CHANGE_AUDIT",
+  "purpose": "Does the SimVP-to-R forecast preserve observed 15-minute COT evolution, and is the loss upstream in AGRI extrapolation or downstream retrieval response?",
+  "bank": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/results/simvp_supervision_cot_allval_20261017_v2/mse/forecast_cot_val_bank.npz",
+  "bank_sha256": "e1cafb8232b1a1aa83bf57a83dbf98a6342fa4a6b7c68eda7451fab920b257d4",
+  "split": "validation only; no test payloads read",
+  "support": "CPP analysis: CPP valid at both adjacent forecast leads in station-centred 3x3. Proxy analysis: finite R(observed future AGRI) at both adjacent leads over the full validation cohort.",
+  "temporal_definition": "delta at lead t+15 minus lead t for adjacent +15...+240 min target slots; lead pairs are evaluated within each forecast sequence",
+  "reference_limit": "CPP is a retrieval reference, not independent physical truth; R(observed future AGRI) is an offline retrieval-response comparator, not truth",
+  "overlap_note": "Forecast windows overlap; uncertainty resamples BJT target-date clusters, not individual pixel transitions. Repeated target transitions across initializations remain distinct forecast cases.",
+  "caveat": "A strong/weak change score does not isolate cloud-motion error from retrieval error; interpret offline R(observed future AGRI) only as a decomposition aid.",
+  "seed": 20261017,
+  "bootstrap_replicates": 5000,
+  "stations": {
+    "Sili": {
+      "n_pixel_transitions": 37017,
+      "target_dates_bjt": 7,
+      "actual_change_rmse": 4.3927553780812545,
+      "methods": {
+        "original_simvp": {
+          "delta_rmse": 4.426424048468718,
+          "delta_mae": 2.614471858727946,
+          "delta_bias": -0.0881614901146524,
+          "through_origin_slope_predicted_vs_reference_change": 0.04588073841600177,
+          "change_correlation": 0.13321072162059724,
+          "date_block_95pct_rmse_interval": [
+            3.048513170680208,
+            5.560712750515744
+          ],
+          "n_pixel_transitions": 37017,
+          "target_dates_bjt": 7
+        },
+        "mse_finetune": {
+          "delta_rmse": 4.432759992980094,
+          "delta_mae": 2.6220266761247886,
+          "delta_bias": -0.10773974369082125,
+          "through_origin_slope_predicted_vs_reference_change": 0.04755871540958221,
+          "change_correlation": 0.13414769646923363,
+          "date_block_95pct_rmse_interval": [
+            3.0864995837659643,
+            5.567552726844868
+          ],
+          "n_pixel_transitions": 37017,
+          "target_dates_bjt": 7
+        },
+        "temporal_change_finetune": {
+          "delta_rmse": 4.43127205605455,
+          "delta_mae": 2.6198260535404008,
+          "delta_bias": -0.10627867583601568,
+          "through_origin_slope_predicted_vs_reference_change": 0.046911163779071514,
+          "change_correlation": 0.13342119739061517,
+          "date_block_95pct_rmse_interval": [
+            3.069370987623098,
+            5.565854820091703
+          ],
+          "n_pixel_transitions": 37017,
+          "target_dates_bjt": 7
+        },
+        "spatial_gradient_finetune": {
+          "delta_rmse": 4.433880566147607,
+          "delta_mae": 2.6223048907324107,
+          "delta_bias": -0.10662924023723554,
+          "through_origin_slope_predicted_vs_reference_change": 0.046976815219185945,
+          "change_correlation": 0.13278956851968368,
+          "date_block_95pct_rmse_interval": [
+            3.097169441220477,
+            5.585934450877496
+          ],
+          "n_pixel_transitions": 37017,
+          "target_dates_bjt": 7
+        },
+        "observed_future_agri_to_R_offline": {
+          "delta_rmse": 3.3634911420391234,
+          "delta_mae": 2.0128062597195915,
+          "delta_bias": -0.031463584744975306,
+          "through_origin_slope_predicted_vs_reference_change": 0.49209114864881365,
+          "change_correlation": 0.6504992864405199,
+          "date_block_95pct_rmse_interval": [
+            2.334046772143589,
+            4.226277739599388
+          ],
+          "n_pixel_transitions": 37017,
+          "target_dates_bjt": 7
+        },
+        "last_frame_persistence": {
+          "delta_rmse": 4.3927553780812545,
+          "delta_mae": 2.534788764322846,
+          "delta_bias": 0.2114153895498443,
+          "through_origin_slope_predicted_vs_reference_change": 0.0,
+          "change_correlation": null,
+          "date_block_95pct_rmse_interval": [
+            2.9725747207857953,
+            5.62267512159427
+          ],
+          "n_pixel_transitions": 37017,
+          "target_dates_bjt": 7
+        }
+      },
+      "paired_comparisons": {
+        "original_simvp_minus_persistence_delta_RMSE": {
+          "difference": 0.03366867038746335,
+          "date_block_95pct_interval": [
+            -0.10146336583304727,
+            0.19945916302802602
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "mse_finetune_minus_persistence_delta_RMSE": {
+          "difference": 0.04000461489883911,
+          "date_block_95pct_interval": [
+            -0.09746100919768223,
+            0.20546642642163215
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "temporal_change_finetune_minus_persistence_delta_RMSE": {
+          "difference": 0.03851667797329572,
+          "date_block_95pct_interval": [
+            -0.09944852930774002,
+            0.20484191353132802
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "spatial_gradient_finetune_minus_persistence_delta_RMSE": {
+          "difference": 0.04112518806635279,
+          "date_block_95pct_interval": [
+            -0.0967299399948924,
+            0.20784941516105657
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "observed_future_agri_to_R_offline_minus_persistence_delta_RMSE": {
+          "difference": -1.0292642360421311,
+          "date_block_95pct_interval": [
+            -1.6533386158429417,
+            -0.5007859458795623
+          ],
+          "negative_favors_forecast_change": true
+        }
+      }
+    },
+    "Zhujia": {
+      "n_pixel_transitions": 37656,
+      "target_dates_bjt": 7,
+      "actual_change_rmse": 2.3123158907010617,
+      "methods": {
+        "original_simvp": {
+          "delta_rmse": 2.4336148963334874,
+          "delta_mae": 1.0481117442656738,
+          "delta_bias": -0.040922674956957714,
+          "through_origin_slope_predicted_vs_reference_change": 0.006583070579682066,
+          "change_correlation": 0.01900803403797305,
+          "date_block_95pct_rmse_interval": [
+            1.3878856991151627,
+            3.630991551613156
+          ],
+          "n_pixel_transitions": 37656,
+          "target_dates_bjt": 7
+        },
+        "mse_finetune": {
+          "delta_rmse": 2.4350625566740947,
+          "delta_mae": 1.0544692145681966,
+          "delta_bias": -0.05012113770096528,
+          "through_origin_slope_predicted_vs_reference_change": 0.007911840861342972,
+          "change_correlation": 0.02265013047821186,
+          "date_block_95pct_rmse_interval": [
+            1.3878258823660703,
+            3.6530882303517984
+          ],
+          "n_pixel_transitions": 37656,
+          "target_dates_bjt": 7
+        },
+        "temporal_change_finetune": {
+          "delta_rmse": 2.431524290155288,
+          "delta_mae": 1.0526456498040242,
+          "delta_bias": -0.04987830273197484,
+          "through_origin_slope_predicted_vs_reference_change": 0.007735470555018153,
+          "change_correlation": 0.02246990006512983,
+          "date_block_95pct_rmse_interval": [
+            1.4041624474272298,
+            3.623559484112284
+          ],
+          "n_pixel_transitions": 37656,
+          "target_dates_bjt": 7
+        },
+        "spatial_gradient_finetune": {
+          "delta_rmse": 2.4348217102911462,
+          "delta_mae": 1.0542776878228803,
+          "delta_bias": -0.05078430619316516,
+          "through_origin_slope_predicted_vs_reference_change": 0.007379526775455633,
+          "change_correlation": 0.02126616556078003,
+          "date_block_95pct_rmse_interval": [
+            1.394050050039117,
+            3.584436759500305
+          ],
+          "n_pixel_transitions": 37656,
+          "target_dates_bjt": 7
+        },
+        "observed_future_agri_to_R_offline": {
+          "delta_rmse": 1.9951004623102302,
+          "delta_mae": 0.8512295244032662,
+          "delta_bias": 0.04730105444186599,
+          "through_origin_slope_predicted_vs_reference_change": 0.5745591363554977,
+          "change_correlation": 0.607721774623311,
+          "date_block_95pct_rmse_interval": [
+            1.190827440510979,
+            2.920973750390687
+          ],
+          "n_pixel_transitions": 37656,
+          "target_dates_bjt": 7
+        },
+        "last_frame_persistence": {
+          "delta_rmse": 2.3123158907010617,
+          "delta_mae": 0.9775301873569567,
+          "delta_bias": -0.037593823429388995,
+          "through_origin_slope_predicted_vs_reference_change": 0.0,
+          "change_correlation": null,
+          "date_block_95pct_rmse_interval": [
+            1.4224076807911907,
+            3.313073090691096
+          ],
+          "n_pixel_transitions": 37656,
+          "target_dates_bjt": 7
+        }
+      },
+      "paired_comparisons": {
+        "original_simvp_minus_persistence_delta_RMSE": {
+          "difference": 0.12129900563242568,
+          "date_block_95pct_interval": [
+            -0.006714520836088589,
+            0.29989582837548623
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "mse_finetune_minus_persistence_delta_RMSE": {
+          "difference": 0.12274666597303296,
+          "date_block_95pct_interval": [
+            -0.006216941365581984,
+            0.2956043634547165
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "temporal_change_finetune_minus_persistence_delta_RMSE": {
+          "difference": 0.11920839945422612,
+          "date_block_95pct_interval": [
+            -0.006968466227326836,
+            0.2877418831077714
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "spatial_gradient_finetune_minus_persistence_delta_RMSE": {
+          "difference": 0.12250581959008455,
+          "date_block_95pct_interval": [
+            -0.00647271126293687,
+            0.29547413235374487
+          ],
+          "negative_favors_forecast_change": true
+        },
+        "observed_future_agri_to_R_offline_minus_persistence_delta_RMSE": {
+          "difference": -0.3172154283908315,
+          "date_block_95pct_interval": [
+            -0.49016011268849624,
+            -0.10341825514106469
+          ],
+          "negative_favors_forecast_change": true
+        }
+      }
+    }
+  },
+  "full_cohort_proxy_response_temporal_change": {
+    "Sili": {
+      "n_pixel_transitions": 423900,
+      "target_dates_bjt": 52,
+      "reference": "R(observed future AGRI), offline proxy response; not independent COT truth",
+      "methods": {
+        "original_simvp": {
+          "delta_rmse": 9.955282555170719,
+          "delta_mae": 3.993671749281321,
+          "delta_bias": 0.08689169645616676,
+          "reference_change_rmse": 11.691782798342901,
+          "through_origin_slope_predicted_vs_reference_change": 0.33353187922340777,
+          "change_correlation": 0.5326314977784992,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -1.7365002431721823,
+            "date_block_95pct_interval": [
+              -2.395633604825755,
+              -1.2122455980826932
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "mse_finetune": {
+          "delta_rmse": 9.941863589359635,
+          "delta_mae": 4.00114827199692,
+          "delta_bias": 0.061220134067341586,
+          "reference_change_rmse": 11.691782798342901,
+          "through_origin_slope_predicted_vs_reference_change": 0.3393982622750237,
+          "change_correlation": 0.5353500085780444,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_original_simvp": {
+            "difference": -0.01341896581108415,
+            "date_block_95pct_interval": [
+              -0.0505775099274373,
+              0.025972735210722468
+            ]
+          },
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -1.7499192089832665,
+            "date_block_95pct_interval": [
+              -2.422725262406994,
+              -1.2133212965947804
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "temporal_change_finetune": {
+          "delta_rmse": 9.908917571105174,
+          "delta_mae": 3.981657289269234,
+          "delta_bias": 0.059740975877242454,
+          "reference_change_rmse": 11.691782798342901,
+          "through_origin_slope_predicted_vs_reference_change": 0.3380737046661241,
+          "change_correlation": 0.5382633859747574,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_original_simvp": {
+            "difference": -0.046364984065544235,
+            "date_block_95pct_interval": [
+              -0.08456106885636686,
+              -0.013184613526112153
+            ]
+          },
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -1.7828652272377266,
+            "date_block_95pct_interval": [
+              -2.4578321547311734,
+              -1.2474031833127828
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "spatial_gradient_finetune": {
+          "delta_rmse": 9.935306818118036,
+          "delta_mae": 3.999146008302847,
+          "delta_bias": 0.06273432836096787,
+          "reference_change_rmse": 11.691782798342901,
+          "through_origin_slope_predicted_vs_reference_change": 0.33941361916219637,
+          "change_correlation": 0.5359908856031962,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_original_simvp": {
+            "difference": -0.01997573705268252,
+            "date_block_95pct_interval": [
+              -0.05609856651274683,
+              0.01950392367496994
+            ]
+          },
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -1.7564759802248648,
+            "date_block_95pct_interval": [
+              -2.4274813452972457,
+              -1.2202471002765072
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "observed_future_agri_to_R_offline": {
+          "delta_rmse": 0.0,
+          "delta_mae": 0.0,
+          "delta_bias": 0.0,
+          "reference_change_rmse": 11.691782798342901,
+          "through_origin_slope_predicted_vs_reference_change": 1.0,
+          "change_correlation": 1.0,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52
+        },
+        "last_frame_persistence": {
+          "delta_rmse": 11.691782798342901,
+          "delta_mae": 5.213754705355748,
+          "delta_bias": -0.10481342392291655,
+          "reference_change_rmse": 11.691782798342901,
+          "through_origin_slope_predicted_vs_reference_change": 0.0,
+          "change_correlation": null,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52
+        }
+      }
+    },
+    "Zhujia": {
+      "n_pixel_transitions": 423900,
+      "target_dates_bjt": 52,
+      "reference": "R(observed future AGRI), offline proxy response; not independent COT truth",
+      "methods": {
+        "original_simvp": {
+          "delta_rmse": 9.179668831043053,
+          "delta_mae": 3.406157462894355,
+          "delta_bias": 0.11822832647690079,
+          "reference_change_rmse": 11.364080419897094,
+          "through_origin_slope_predicted_vs_reference_change": 0.3916493697636227,
+          "change_correlation": 0.5933205055659759,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -2.184411588854042,
+            "date_block_95pct_interval": [
+              -3.0759111078575905,
+              -1.4944361688893124
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "mse_finetune": {
+          "delta_rmse": 9.20266531192725,
+          "delta_mae": 3.4240112673910224,
+          "delta_bias": 0.10571144406552505,
+          "reference_change_rmse": 11.364080419897094,
+          "through_origin_slope_predicted_vs_reference_change": 0.3973075349003241,
+          "change_correlation": 0.5920465376031594,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_original_simvp": {
+            "difference": 0.022996480884197368,
+            "date_block_95pct_interval": [
+              -0.004939338355815303,
+              0.05828333229376171
+            ]
+          },
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -2.1614151079698445,
+            "date_block_95pct_interval": [
+              -3.0584378446888953,
+              -1.469056270259797
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "temporal_change_finetune": {
+          "delta_rmse": 9.166480525793657,
+          "delta_mae": 3.404405584402757,
+          "delta_bias": 0.10402923471392596,
+          "reference_change_rmse": 11.364080419897094,
+          "through_origin_slope_predicted_vs_reference_change": 0.39618440944942973,
+          "change_correlation": 0.5952790418493904,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_original_simvp": {
+            "difference": -0.013188305249395071,
+            "date_block_95pct_interval": [
+              -0.04670341225086951,
+              0.0180061827379669
+            ]
+          },
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -2.197599894103437,
+            "date_block_95pct_interval": [
+              -3.1042223992386164,
+              -1.492524890130174
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "spatial_gradient_finetune": {
+          "delta_rmse": 9.199484689497194,
+          "delta_mae": 3.423024150605645,
+          "delta_bias": 0.10609864124688018,
+          "reference_change_rmse": 11.364080419897094,
+          "through_origin_slope_predicted_vs_reference_change": 0.39691776615003654,
+          "change_correlation": 0.5922774820368656,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52,
+          "paired_delta_RMSE_minus_original_simvp": {
+            "difference": 0.019815858454141022,
+            "date_block_95pct_interval": [
+              -0.009083257962104251,
+              0.055277408600087015
+            ]
+          },
+          "paired_delta_RMSE_minus_persistence": {
+            "difference": -2.164595730399901,
+            "date_block_95pct_interval": [
+              -3.0621958541771765,
+              -1.4708035212617059
+            ],
+            "negative_favors_model_trajectory": true
+          }
+        },
+        "observed_future_agri_to_R_offline": {
+          "delta_rmse": 0.0,
+          "delta_mae": 0.0,
+          "delta_bias": 0.0,
+          "reference_change_rmse": 11.364080419897094,
+          "through_origin_slope_predicted_vs_reference_change": 1.0,
+          "change_correlation": 1.0,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52
+        },
+        "last_frame_persistence": {
+          "delta_rmse": 11.364080419897094,
+          "delta_mae": 4.83492061878737,
+          "delta_bias": -0.05611056054514439,
+          "reference_change_rmse": 11.364080419897094,
+          "through_origin_slope_predicted_vs_reference_change": 0.0,
+          "change_correlation": null,
+          "n_pixel_transitions": 423900,
+          "target_dates_bjt": 52
+        }
+      }
+    }
+  },
+  "banks": {
+    "original_simvp": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/results/forecast_agri3x3_allval_20261014_v1/forecast_cot_val_bank.npz",
+      "sha256": "0acc9e4095b8d401e609b50905f7252b6c897c93698cd1e3a774e32ec84ecaaf"
+    },
+    "mse_finetune": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/results/simvp_supervision_cot_allval_20261017_v2/mse/forecast_cot_val_bank.npz",
+      "sha256": "e1cafb8232b1a1aa83bf57a83dbf98a6342fa4a6b7c68eda7451fab920b257d4"
+    },
+    "temporal_change_finetune": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/results/simvp_supervision_cot_allval_20261017_v2/temporal/forecast_cot_val_bank.npz",
+      "sha256": "82fc8d054bb14bd4d3faa1d90f67de39f7d9154f4d239587aa6cd5f61b9f97c6"
+    },
+    "spatial_gradient_finetune": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/results/simvp_supervision_cot_allval_20261017_v2/spatial/forecast_cot_val_bank.npz",
+      "sha256": "a8f444929cb2db559a5e4d4d113e96db810de5fdee4e13ea12b6dab2aa4cc89f"
+    }
+  },
+  "reference_source_bank": {
+    "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/results/simvp_supervision_cot_allval_20261017_v2/mse/forecast_cot_val_bank.npz",
+    "sha256": "e1cafb8232b1a1aa83bf57a83dbf98a6342fa4a6b7c68eda7451fab920b257d4"
+  }
+}

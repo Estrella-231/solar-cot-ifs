@@ -1,0 +1,46 @@
+#!/bin/bash
+#PBS -N hn_afno_cot_ghi_resume
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/afno_cot_ghi_retrain_resume_20260924.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE_FORECAST=$ROOT/data/forecast_cot_trajectory_trainval_20260918_v1
+HISTORY=$ROOT/data/history_cot_trajectory_trainval_20260918_v1
+AFNO_BANK=$ROOT/data/forecast_cot_trajectory_afno_trainval_20260924_v1
+HEAD_REF=$ROOT/runs/causal_cot_trajectory_solarresnet_v5_b1_seed42_iofix_20260921/complete.json
+OUT=$ROOT/runs/afno_cot_matched_ghi_retrain_seed42_20260924
+SIMVP_RUN=$OUT/simvp_cot
+AFNO_RUN=$OUT/afno_cot
+cd "$ROOT"
+hostname
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -m py_compile scripts/train_causal_cot_trajectory_solarresnet_v5.py
+python - "$SIMVP_RUN/complete.json" "$AFNO_BANK/audit.json" <<'PY'
+import json, pathlib, sys
+head=json.loads(pathlib.Path(sys.argv[1]).read_text())
+bank=json.loads(pathlib.Path(sys.argv[2]).read_text())
+assert head.get('state')=='COMPLETE_EXPLORATORY_CAUSAL_COT_TRAJECTORY'
+assert head.get('test_used') is False and head.get('groups')==['AC_F','AC_ST']
+assert bank.get('state')=='COMPLETE_FORECAST_COT_TRAJECTORY_SIDECAR' and bank.get('test_used') is False
+assert [bank['splits'][s]['samples'] for s in ('train','val')]==[27675,4258]
+PY
+test -f "$BASE_FORECAST/audit.json"
+test -f "$HISTORY/audit.json"
+test ! -e "$AFNO_RUN"
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py \
+  --root "$ROOT" --forecast-dir "$AFNO_BANK" --history-dir "$HISTORY" \
+  --out "$AFNO_RUN" --epochs 10 --batch 1536 --seed 42 \
+  --cot-normalization-json "$HEAD_REF" --groups AC_F AC_ST --allow-unverified-cpp \
+  > "$ROOT/train_afno_cot_matched_ghi_afno_seed42_20260924.log" 2>&1
+echo AFNO_COT_MATCHED_GHI_AFNO_RETRAIN_COMPLETE

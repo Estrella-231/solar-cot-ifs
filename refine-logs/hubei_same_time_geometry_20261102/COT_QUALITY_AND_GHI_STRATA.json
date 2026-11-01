@@ -1,0 +1,109 @@
+{
+  "quality": {
+    "reference": "CPP retrieval, not independent truth",
+    "grid": "all valid 16x16 pixels",
+    "frames": 264,
+    "dates": 16,
+    "pixels": 67187,
+    "rmse": 10.828621807509123,
+    "mae": 6.054267930899201,
+    "bias": 1.1854848199490815
+  },
+  "coverage": [
+    {
+      "station": "Niushou",
+      "all": 663,
+      "CPP_valid": 217
+    },
+    {
+      "station": "Wangzhai",
+      "all": 607,
+      "CPP_valid": 190
+    },
+    {
+      "station": "Mizhuang",
+      "all": 635,
+      "CPP_valid": 205
+    }
+  ],
+  "strata": [
+    {
+      "name": "Near-zero",
+      "n": 226,
+      "dates": 9,
+      "station_seed_cells": 9,
+      "A_rmse": 96.82009332255458,
+      "AC_rmse": 92.75158174293004,
+      "gain_pct": 4.202135569184343,
+      "gain_ci95": [
+        2.2336588052781594,
+        13.732652991986537
+      ],
+      "delta_ci95": [
+        -9.978932466408104,
+        -1.847239058020711
+      ],
+      "A_bias": 2.9207918096634513,
+      "AC_bias": 9.830271225472636
+    },
+    {
+      "name": "Thin",
+      "n": 61,
+      "dates": 4,
+      "station_seed_cells": 9,
+      "A_rmse": 126.80114623570866,
+      "AC_rmse": 119.0760620540905,
+      "gain_pct": 6.092282610173035,
+      "gain_ci95": [
+        -2.7760281584247233,
+        15.433767349455861
+      ],
+      "delta_ci95": [
+        -15.869118319849576,
+        3.441226121336925
+      ],
+      "A_bias": -6.605081871880425,
+      "AC_bias": -11.668656357053726
+    },
+    {
+      "name": "Moderate",
+      "n": 185,
+      "dates": 6,
+      "station_seed_cells": 9,
+      "A_rmse": 84.17609138557445,
+      "AC_rmse": 78.3964772684266,
+      "gain_pct": 6.866099413756256,
+      "gain_ci95": [
+        -35.4008622945243,
+        16.6829423582477
+      ],
+      "delta_ci95": [
+        -16.51728329387845,
+        10.83562336798229
+      ],
+      "A_bias": -8.974932784947327,
+      "AC_bias": -19.54116059153787
+    },
+    {
+      "name": "Thick",
+      "n": 140,
+      "dates": 6,
+      "station_seed_cells": 9,
+      "A_rmse": 51.52057765566584,
+      "AC_rmse": 33.22377170142552,
+      "gain_pct": 35.513588524813784,
+      "gain_ci95": [
+        29.916314395123365,
+        44.4310344668835
+      ],
+      "delta_ci95": [
+        -33.583879538212614,
+        -13.439082666664984
+      ],
+      "A_bias": 22.407564812598878,
+      "AC_bias": 0.6350747189665289
+    }
+  ],
+  "scope": "same corrected-R and paired GHI prediction lineage; valid station-centre CPP only for strata; missing CPP retained in total GHI score",
+  "intervals": "5000 paired target-date draws per stratum; retain fixed available station-seed cells, reject draws with zero records in any cell"
+}

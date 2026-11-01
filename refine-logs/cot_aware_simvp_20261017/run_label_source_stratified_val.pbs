@@ -1,0 +1,30 @@
+#!/bin/bash
+#PBS -N cot_strat_audit
+#PBS -q normal
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/experiments/cot_aware_simvp_20261017
+PACK=$PROJECT/refine-logs/cot_retrieved_forecast_20261013/data/sequence_cpp_pack_20261017
+SIDECARS=$PROJECT/refine-logs/cot_retrieved_forecast_20261013/data/frame_sidecars_20261017_v1
+RBANK=$PROJECT/experiments/monthly_R_station16_20261013_v1/results/new_monthly_R_seed42_cot_bank_v1
+OUT=$EXP/results/label_source_stratified_val_1024.json
+
+if [ -e "$OUT" ] || [ -e "$OUT.lock" ]; then
+  echo "REFUSE_DUPLICATE_LABEL_SOURCE_AUDIT"
+  exit 31
+fi
+touch "$OUT.lock"
+trap 'rm -f "$OUT.lock"' EXIT
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+python -m py_compile "$EXP/audit_label_source_disagreement.py"
+python -u "$EXP/audit_label_source_disagreement.py" \
+  --pack "$PACK" --sidecars "$SIDECARS" --r-bank "$RBANK" \
+  --sample-size 1024 --seed 20261019 --output "$OUT"
+echo "LABEL_SOURCE_STRATIFIED_AUDIT_COMPLETE split=val test_payloads_opened=false"

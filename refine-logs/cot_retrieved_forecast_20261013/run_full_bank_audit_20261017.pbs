@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N cot_bank_audit17
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/cot_retrieved_forecast_20261013/logs/full_bank_audit_20261017.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BRANCH=$ROOT/refine-logs/cot_retrieved_forecast_20261013
+BANK=$ROOT/experiments/monthly_R_station16_20261013_v1/results/new_monthly_R_seed42_cot_bank_v1
+OUT=$BRANCH/results/data_gate/retrieved_cot_full_bank_audit_20261017.json
+PACK=$BRANCH/data/frame_sidecars_20261017_v1
+test -s "$BANK/bank_manifest.json"
+test ! -e "$OUT"
+test ! -e "$PACK"
+python -u "$BRANCH/audit_retrieved_cot_full_bank_20261017.py" \
+  --bank "$BANK" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --output "$OUT" \
+  --pack-dir "$PACK"
+echo FULL_R_COT_BANK_AUDIT_AND_FRAME_PACK_COMPLETE

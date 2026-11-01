@@ -1,0 +1,402 @@
+{
+  "state": "COMPLETE_SOURCE_ONLY_ZERO_FLAGS",
+  "rule": "5min interval midpoint NOAA elevation >=10deg, exactly 0, >=12 contiguous 5min records; missing times break runs",
+  "rule_identity": "candidate_QC1_suspect_not_confirmed_fault",
+  "stations": {
+    "sili": {
+      "native_requested": 167199,
+      "day_zero_records": 1731,
+      "persistent_zero_records": 1128,
+      "persistent_runs": [
+        {
+          "station": "sili",
+          "start_bjt": "2024-06-27 06:40:00",
+          "end_bjt": "2024-06-27 16:45:00",
+          "zero_5min_records": 122,
+          "duration_minutes": 610,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-06-28 06:40:00",
+          "end_bjt": "2024-06-28 17:30:00",
+          "zero_5min_records": 131,
+          "duration_minutes": 655,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-06-29 06:40:00",
+          "end_bjt": "2024-06-29 18:15:00",
+          "zero_5min_records": 140,
+          "duration_minutes": 700,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-06-30 06:40:00",
+          "end_bjt": "2024-06-30 18:35:00",
+          "zero_5min_records": 144,
+          "duration_minutes": 720,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-09-05 07:05:00",
+          "end_bjt": "2024-09-05 16:00:00",
+          "zero_5min_records": 108,
+          "duration_minutes": 540,
+          "split": [
+            "val"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-11-10 07:40:00",
+          "end_bjt": "2024-11-10 16:50:00",
+          "zero_5min_records": 111,
+          "duration_minutes": 555,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-11-11 08:05:00",
+          "end_bjt": "2024-11-11 16:50:00",
+          "zero_5min_records": 106,
+          "duration_minutes": 530,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-11-13 07:45:00",
+          "end_bjt": "2024-11-13 09:00:00",
+          "zero_5min_records": 16,
+          "duration_minutes": 80,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-11-13 09:35:00",
+          "end_bjt": "2024-11-13 16:50:00",
+          "zero_5min_records": 88,
+          "duration_minutes": 440,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2024-12-09 08:05:00",
+          "end_bjt": "2024-12-09 16:45:00",
+          "zero_5min_records": 105,
+          "duration_minutes": 525,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "sili",
+          "start_bjt": "2025-06-05 08:10:00",
+          "end_bjt": "2025-06-05 12:50:00",
+          "zero_5min_records": 57,
+          "duration_minutes": 285,
+          "split": [
+            "train"
+          ]
+        }
+      ],
+      "zero_by_split": {
+        "train": 1571,
+        "val": 160
+      },
+      "max_run_records": 144
+    },
+    "zhujia": {
+      "native_requested": 167199,
+      "day_zero_records": 2092,
+      "persistent_zero_records": 1541,
+      "persistent_runs": [
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-04-13 07:00:00",
+          "end_bjt": "2024-04-13 08:45:00",
+          "zero_5min_records": 22,
+          "duration_minutes": 110,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-04-20 14:25:00",
+          "end_bjt": "2024-04-20 15:45:00",
+          "zero_5min_records": 17,
+          "duration_minutes": 85,
+          "split": [
+            "val"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-06-08 06:30:00",
+          "end_bjt": "2024-06-08 09:40:00",
+          "zero_5min_records": 39,
+          "duration_minutes": 195,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-06-15 14:40:00",
+          "end_bjt": "2024-06-15 16:05:00",
+          "zero_5min_records": 18,
+          "duration_minutes": 90,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-06-22 14:30:00",
+          "end_bjt": "2024-06-22 15:40:00",
+          "zero_5min_records": 15,
+          "duration_minutes": 75,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-07-01 06:35:00",
+          "end_bjt": "2024-07-01 18:40:00",
+          "zero_5min_records": 146,
+          "duration_minutes": 730,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-07-04 06:35:00",
+          "end_bjt": "2024-07-04 18:40:00",
+          "zero_5min_records": 146,
+          "duration_minutes": 730,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-07-28 06:45:00",
+          "end_bjt": "2024-07-28 07:55:00",
+          "zero_5min_records": 15,
+          "duration_minutes": 75,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-08-24 14:25:00",
+          "end_bjt": "2024-08-24 15:40:00",
+          "zero_5min_records": 16,
+          "duration_minutes": 80,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-10-05 14:15:00",
+          "end_bjt": "2024-10-05 16:00:00",
+          "zero_5min_records": 22,
+          "duration_minutes": 110,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-10-19 14:35:00",
+          "end_bjt": "2024-10-19 16:05:00",
+          "zero_5min_records": 19,
+          "duration_minutes": 95,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-04 07:45:00",
+          "end_bjt": "2024-11-04 16:00:00",
+          "zero_5min_records": 100,
+          "duration_minutes": 500,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-05 07:45:00",
+          "end_bjt": "2024-11-05 16:50:00",
+          "zero_5min_records": 110,
+          "duration_minutes": 550,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-06 07:45:00",
+          "end_bjt": "2024-11-06 16:45:00",
+          "zero_5min_records": 109,
+          "duration_minutes": 545,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-07 07:45:00",
+          "end_bjt": "2024-11-07 16:45:00",
+          "zero_5min_records": 109,
+          "duration_minutes": 545,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-08 07:50:00",
+          "end_bjt": "2024-11-08 16:45:00",
+          "zero_5min_records": 108,
+          "duration_minutes": 540,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-11 08:05:00",
+          "end_bjt": "2024-11-11 16:45:00",
+          "zero_5min_records": 105,
+          "duration_minutes": 525,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-16 07:55:00",
+          "end_bjt": "2024-11-16 10:05:00",
+          "zero_5min_records": 27,
+          "duration_minutes": 135,
+          "split": [
+            "val"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-27 08:05:00",
+          "end_bjt": "2024-11-27 16:35:00",
+          "zero_5min_records": 103,
+          "duration_minutes": 515,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-28 12:05:00",
+          "end_bjt": "2024-11-28 16:35:00",
+          "zero_5min_records": 55,
+          "duration_minutes": 275,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-11-30 08:10:00",
+          "end_bjt": "2024-11-30 16:35:00",
+          "zero_5min_records": 102,
+          "duration_minutes": 510,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-12-05 08:15:00",
+          "end_bjt": "2024-12-05 09:50:00",
+          "zero_5min_records": 20,
+          "duration_minutes": 100,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2024-12-09 08:15:00",
+          "end_bjt": "2024-12-09 16:35:00",
+          "zero_5min_records": 101,
+          "duration_minutes": 505,
+          "split": [
+            "train"
+          ]
+        },
+        {
+          "station": "zhujia",
+          "start_bjt": "2025-03-16 10:45:00",
+          "end_bjt": "2025-03-16 12:05:00",
+          "zero_5min_records": 17,
+          "duration_minutes": 85,
+          "split": [
+            "train"
+          ]
+        }
+      ],
+      "zero_by_split": {
+        "train": 1992,
+        "val": 100
+      },
+      "max_run_records": 146
+    }
+  },
+  "counts": {
+    "train/sili/none/main": 23391,
+    "train/sili/none/nonmain": 27080,
+    "train/sili/other_day_zero/main": 419,
+    "train/sili/persistent_day_zero_60min/main": 345,
+    "train/sili/persistent_day_zero_60min/nonmain": 1,
+    "train/zhujia/none/main": 25446,
+    "train/zhujia/none/nonmain": 24933,
+    "train/zhujia/other_day_zero/main": 341,
+    "train/zhujia/persistent_day_zero_60min/main": 516,
+    "val/sili/none/main": 2051,
+    "val/sili/none/nonmain": 2369,
+    "val/sili/other_day_zero/main": 41,
+    "val/sili/persistent_day_zero_60min/main": 36,
+    "val/zhujia/none/main": 2295,
+    "val/zhujia/none/nonmain": 2146,
+    "val/zhujia/other_day_zero/main": 40,
+    "val/zhujia/persistent_day_zero_60min/main": 16
+  },
+  "test_payloads_read": 0,
+  "official_labels_changed": false
+}

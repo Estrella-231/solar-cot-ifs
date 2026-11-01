@@ -1,0 +1,51 @@
+{
+  "client_observed_utc": "2026-10-30 12:06:02 UTC",
+  "server_observed_cst": "2026-10-30 19:47:07 CST",
+  "job": "216594.tc6000",
+  "qstat_live": "Unknown Job Id (no current queue entry)",
+  "pbs_history": {
+    "exit_status": 0,
+    "walltime": "49:02:13",
+    "completed_at_server_cst": "2026-10-30 19:22:45",
+    "tracejob_evidence": "exit status 0 handled; resources_used.walltime=49:02:13"
+  },
+  "training_complete": {
+    "status": "PASS",
+    "epochs": 150,
+    "global_step": 66300,
+    "best_forecast_rmse": 0.4330495718969827,
+    "test_payloads_read": 0
+  },
+  "progress": {
+    "state": "complete",
+    "global_step": 66300
+  },
+  "final_full_validation": {
+    "epoch": 150,
+    "sequence_count": 3140,
+    "normalized_rmse": 0.43321090821287395,
+    "normalized_mae": 0.227604739419128,
+    "matched_model_rmse": 0.43221085906761125,
+    "matched_persistence_rmse": 0.7918376840585947,
+    "mse_skill_vs_persistence": 0.7020667214916401,
+    "test_payloads_read": 0
+  },
+  "best_full_validation": {
+    "epoch": 145,
+    "normalized_rmse": 0.4330495718969827,
+    "normalized_mae": 0.22734800724059157,
+    "matched_persistence_rmse": 0.7918376840585947,
+    "mse_skill_vs_persistence": 0.7022953971573591,
+    "validation_sequences": 3140
+  },
+  "files": {
+    "last_pt_mtime_server": "2026-10-30 19:22:22 +0800",
+    "last_pt_bytes": 1053155194,
+    "best_pt_mtime_server": "2026-10-30 17:45:14 +0800",
+    "best_pt_bytes": 1053155194,
+    "training_complete_mtime": "2026-10-30 19:22:22 +0800",
+    "validation_epoch150_mtime": "2026-10-30 19:22:21 +0800"
+  },
+  "error_scan": "No traceback, OOM, CUDA error, NaN, or Inf found in launch log; grep error term only matched formal start marker HUNAN_FORMAL_8GPU_START.",
+  "method": "Read qstat/qstat history, lightweight completion/progress/validation JSON, stat metadata, and log scan only. No test payload read, no checkpoint loaded, no job launched."
+}

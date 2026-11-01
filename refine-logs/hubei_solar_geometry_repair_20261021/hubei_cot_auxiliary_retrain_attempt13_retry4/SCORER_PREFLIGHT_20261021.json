@@ -1,0 +1,48 @@
+{
+  "state": "PASS_SYNTHETIC_SCORER_PREFLIGHT",
+  "checked_local": "2026-10-21 13:01:02 +08:00",
+  "source": "synthetic arrays only; no forecast/test payloads",
+  "checks": {
+    "py_compile": "PASS",
+    "cli_help": "PASS",
+    "bootstrap_function_smoke": "PASS; deterministic expected delta and CI verified",
+    "end_to_end_synthetic": "PASS",
+    "synthetic_sequences": 407,
+    "leads_per_sequence": 16,
+    "paired_keys": 6512,
+    "metric_rows": 224,
+    "scopes": [
+      "all_patch",
+      "station_pixel",
+      "station_3x3"
+    ],
+    "station_labels": [
+      "ALL_PATCH",
+      "Niushou",
+      "Wangzhai",
+      "Mizhuang"
+    ],
+    "equal_station_delta_aux_minus_mse": -1.0,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "sha256": {
+    "scorer": "1b06a317a05a00472431e25b23169efb445479a4e1d51a139945294259ab2d1d",
+    "inference": "ade344f5775679f6aa44f8b16fd571053c80a2bf50d9feba173e6561aa041677"
+  },
+  "live_pbs_snapshot": {
+    "observed": "2026-10-21 12:40:05 CST",
+    "unfinished_jobs": 2,
+    "cap": 3,
+    "paired_training_job": "215356.tc6000",
+    "paired_training_state": "R",
+    "node": "node22",
+    "gpu": "node22-gpu/1",
+    "elapsed": "00:14:13",
+    "current_arm": "mse_control",
+    "latest_log_marker": "START_ARM mse_control",
+    "result": "No paired COT forecast result yet",
+    "other_visible_job": "215358.tc6000 cot_observed_ref, normal queue"
+  },
+  "claim_boundary": "Preflight only; synthetic verification is not model evidence or forecast skill."
+}

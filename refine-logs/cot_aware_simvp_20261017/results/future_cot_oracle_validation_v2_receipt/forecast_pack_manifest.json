@@ -1,0 +1,106 @@
+{
+  "state": "COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK",
+  "train_forecast_oof": true,
+  "train_forecast_source": "train rows use date-heldout five-fold SimVP epoch-12 OOF forecasts; validation rows use the fixed full-train SimVP; both use observed 8-frame input only",
+  "forecast_bank_oof_fold_count": 5,
+  "warning": "Train rows use date-heldout five-fold SimVP OOF predictions; validation rows use the fixed full-train SimVP. This is validation screening, not independent-test evidence.",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "sample_key": "(station,init_time_utc,target_time_utc,lead)",
+  "rows": {
+    "train": 714914,
+    "val": 66590
+  },
+  "history_offsets_minutes": [
+    -15,
+    0
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "context_rule": "three causal frames [target-30,target-15,target]; history slots are init-15 and init, so +15 uses both history slots then forecast lead +15",
+  "input_sources": {
+    "history_agri": "observed AGRI before init only",
+    "history_cot": "frozen R on observed history AGRI only",
+    "future_agri": "frozen SimVP prediction only",
+    "future_cot": "frozen R applied to predicted AGRI only",
+    "geometry": "deterministic target-frame cosSOZ/cosRAA"
+  },
+  "normalization_fit": "per-channel AGRI and log1p(COT) mean/std from the materialized training forecast instances only; shared by A and AC",
+  "AGRI_mean": [
+    0.2127627821582737,
+    0.2287031925052866,
+    0.263304840903351,
+    0.032497559327828475,
+    0.1805623041648093,
+    0.12547157251740254,
+    238.5728256195044,
+    246.0594447428413,
+    254.2171018689162,
+    272.93200547583285,
+    274.10450697438046,
+    272.14011005544916,
+    259.49769615689206
+  ],
+  "AGRI_std": [
+    0.17068391455481485,
+    0.1968697284187056,
+    0.18768050974091355,
+    0.050417609267554404,
+    0.12198581773635425,
+    0.09391734028759273,
+    7.248584565814783,
+    8.536117065536567,
+    9.921544136280277,
+    17.080055256270526,
+    17.85745918655674,
+    17.59944625493965,
+    12.441660889309901
+  ],
+  "COT_log1p_mean": 1.830495106763079,
+  "COT_log1p_std": 1.4592501942234066,
+  "producer_sha256": "934bdbfda204baf35d9bba65349674e54707cc013477f975a3d78496f6fb1628",
+  "forecast_bank_manifest_sha256": "d4446ac1db5f2f83d72b3a70a886b9535841542a5d37e72c1435540ecaf553f7",
+  "crosswalk_sha256": "72ac770357e82b795ac5ed8f6dcfca125a8d3b53b13dd89aceacbbad62beed60",
+  "crosswalk_keys_sha256": "e642e2260e13cbefd0c03f482a91847b7dc67e3bf94fc3668e86f8f065fc3e86",
+  "ghi_label_pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "array_sha256": {
+    "train": {
+      "agri_raw.npy": "2e148ed2fa7aab82db66c4f0e9fce6fddd6ad530d68bc2b00235f57e2420eae1",
+      "geometry.npy": "1356b2b917fd37670e00b33684e20b33ff42667a8c2294b6b19adc3ede0553e8",
+      "cot_log1p.npy": "ca884c7f3b480c200a9dad44fe571c7b844fa568b229600d3b200d998bedf922",
+      "ghi.npy": "deeb66d5171db1d9b00fc0db71cc813f2ff71debd0afb0b3ff75df9b72c2ca70",
+      "clear.npy": "ed7940de231418d6ff6a2a061eb85b3f95f7a38ac0ec0eb0b54ca3397eded90f",
+      "keys.csv": "db8c3612817af490f95e7277454d094954eef657d1b2c42ee32db1bba280ddb5"
+    },
+    "val": {
+      "agri_raw.npy": "57dc8c547660944dbcec679606b74c1f7c1e77a8f45763afd151b01b80f704d0",
+      "geometry.npy": "c1c47d8ba55b1d640e42d8856fb88018658fbdd3ae0693b55901ab24d4d6a0f4",
+      "cot_log1p.npy": "afa8c033ed0301e45e8ad4d49976aff7c2a732449e851941f388d1f42d56e1d9",
+      "ghi.npy": "ed549954d6c666a916681c04abcc57fe8b8d3e15654e109067f4b7fef4795cbf",
+      "clear.npy": "df94f371a1172cedc6f4d914931cb0a0e4342a8eccb42b0c634941d40427e290",
+      "keys.csv": "7a3a3f67cd2a3264a783052a3fb7736a52781a51971c6b2f4bf22506bba4084f"
+    }
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false,
+  "builder": "vectorized_chunk_gather",
+  "chunk_rows": 4096,
+  "benchmark_limit_rows_per_split": null
+}

@@ -1,0 +1,70 @@
+{
+  "state": "T16_CASE_PAYLOAD_EXTRACTED",
+  "event_manifest_sha256": "a63f15f984b7fd3437554ffee8a05dfb2ee22f4c00ec975e2ea4a38544603635",
+  "cpp_pack_audit_sha256": "029a998af443e7ee9e6fd85923c877e027b11afed5ae3804692b2652b3b239c9",
+  "ghi_pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "ghi_label_table_sha256": "a86c2425ac4e6e8259fcaa4b5b2e083ee427d16e12d4eb1b44aa87751b75988d",
+  "test_payloads_read": 0,
+  "GHI_numeric_values_read_after_manifest_freeze": true,
+  "GHI_prediction_inputs_are": "same-time observed AGRI, solar geometry and R-COT; diagnostic replay, not a forecast",
+  "false_color_bands": {
+    "red": "C06 (2.25 um)",
+    "green": "C03 (0.86 um)",
+    "blue": "C02 (0.65 um)"
+  },
+  "transforms": "raw AGRI reflectance values; case-global 2nd/98th percentile display normalization is applied by plotting script; no spatial interpolation",
+  "arrays": {
+    "false_color_rgb_raw": {
+      "shape": [
+        4,
+        17,
+        3,
+        16,
+        16
+      ],
+      "dtype": "float32"
+    },
+    "cpp_cot_physical": {
+      "shape": [
+        4,
+        17,
+        16,
+        16
+      ],
+      "dtype": "float32"
+    },
+    "cpp_quality_mask": {
+      "shape": [
+        4,
+        17,
+        16,
+        16
+      ],
+      "dtype": "uint8"
+    },
+    "observed_ghi_15min_wm2": {
+      "shape": [
+        4,
+        17
+      ],
+      "dtype": "float64"
+    },
+    "clear_sky_ghi_15min_wm2": {
+      "shape": [
+        4,
+        17
+      ],
+      "dtype": "float64"
+    },
+    "ghi_head_predictions_3seed": {
+      "shape": [
+        4,
+        17,
+        3,
+        3
+      ],
+      "dtype": "float64"
+    }
+  },
+  "source": "train/validation-only CPP station16 pack, GHI pack, frozen validation labels and saved A/AC/AP predictions"
+}

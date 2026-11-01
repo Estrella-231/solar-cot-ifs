@@ -1,0 +1,146 @@
+#!/bin/bash
+#PBS -N hb_val_v2
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+FOLD="${FOLD:?submit with FOLD=3 or FOLD=4}"
+TRAIN_JOBID="${TRAIN_JOBID:?pass the completed S training PBS job id}"
+TRAIN_JOBTAG="${TRAIN_JOBTAG:?pass the underscore-form run tag}"
+case "$FOLD" in
+  3)
+    EXPECTED_INDEX_SHA256=645fdd03bba09d49616f91f91cdd4b00a824eafed0249447c7f14dfbb62e91ee
+    EXPECTED_NORM_SHA256=f8ff7379b4695b246150565e71651d05267e65be1d08c69f6fd6788082f2b1f2
+    EXPECTED_CHECKPOINT_SHA256=50f184270207695b1d69c7f2db47c33e1571395320304d4862560ff0e4430577
+    ;;
+  4)
+    EXPECTED_INDEX_SHA256=93a04d191eebbb19da465ac4cb285181d78c6a674d556d563fdf533b930b0035
+    EXPECTED_NORM_SHA256=128a92c62bbe14c242837b62d730294be26aa92a276cd334d67a67747b6b60b5
+    EXPECTED_CHECKPOINT_SHA256=5637925fd0d4bc092c6f5f8996b20cf356f8bcf0b4cb358768e8856aec3f03a3
+    ;;
+  *) echo "invalid fold: $FOLD" >&2; exit 2 ;;
+esac
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017
+CONTROL="$ROOT/control"
+RUNROOT="$ROOT/oof_training"
+REPO="$CONTROL/simvp_code_fd201_syncval_20261017"
+METHOD="$REPO/openstl/methods/simvp.py"
+EXPECTED_METHOD_SHA256=2978846a553c13529caceb201888bfc52984abe19677ed36a6e478cef393bb78
+PY=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_cot_independent_20261017/.venv_simvp/bin/python
+INFER="$CONTROL/tooling_20261017/infer_hubei_simvp_trainval_patches_20261016_v2_20261017.py"
+AUDIT="$CONTROL/tooling_oof_merge_20261017_v5/audit_hubei_simvp_oof_fold_val_shards_20261017.py"
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+TRAIN_EXIT_RECEIPT="$CONTROL/training_exit_receipts/${TRAIN_JOBID//./_}_v2.json"
+INDEX="$CONTROL/fold_${FOLD}/simvp_trainval_index_pbs.csv"
+NORM="$CONTROL/fold_${FOLD}/simvp_train_only_norm.npz"
+TRAIN_RUN="$RUNROOT/runs/S_oof_fold${FOLD}_seed42_20261016_pbs${TRAIN_JOBTAG}"
+TRAIN_LAUNCH="$RUNROOT/S_oof_fold${FOLD}_seed42_20261016_pbs${TRAIN_JOBTAG}"
+CHECKPOINT="$TRAIN_RUN/checkpoints/best.ckpt"
+JOBTAG="${PBS_JOBID//./_}"
+OUT="$RUNROOT/S_oof_fold${FOLD}_fullval_rescore_v2_${JOBTAG}"
+exec > "$ROOT/fold${FOLD}_fullval_v2_${JOBTAG}.pbs.log" 2>&1
+trap 'rc=$?; printf "SCRIPT_ERROR rc=%s line=%s command=%q\n" "$rc" "$LINENO" "$BASH_COMMAND" >&2' ERR
+echo "script_started_utc=$(date -u -Is) fold=$FOLD train_job=$TRAIN_JOBID pbs_job=$PBS_JOBID"
+
+test -x "$PY" && test -f "$INFER" && test -f "$AUDIT" && test -d "$REPO/openstl"
+test -f "$METHOD" && test -f "$INDEX" && test -f "$NORM" && test -f "$CHECKPOINT" && test -f "$TRAIN_EXIT_RECEIPT"
+test -f "$TRAIN_LAUNCH/launch_manifest.txt"
+find "$TRAIN_RUN" -maxdepth 1 -type f -name 'train_*.log' -print -quit | grep -q .
+test ! -e "$OUT"
+test "$(sha256sum "$METHOD" | awk '{print $1}')" = "$EXPECTED_METHOD_SHA256"
+grep -Fqx "simvp_validation_method_sha256=$EXPECTED_METHOD_SHA256" "$TRAIN_LAUNCH/launch_manifest.txt"
+test "$(sha256sum "$INDEX" | awk '{print $1}')" = "$EXPECTED_INDEX_SHA256"
+test "$(sha256sum "$NORM" | awk '{print $1}')" = "$EXPECTED_NORM_SHA256"
+test "$(sha256sum "$CHECKPOINT" | awk '{print $1}')" = "$EXPECTED_CHECKPOINT_SHA256"
+
+# Validate the immutable login-node accounting receipt. Compute nodes cannot
+# necessarily read scheduler accounting logs, so the receipt is captured before
+# submission from the tc6000 login node by record_hubei_pbs_exit_receipt_20261017.py.
+"$PY" - "$TRAIN_EXIT_RECEIPT" "$TRAIN_JOBID" <<'PY'
+import json, re, sys
+from pathlib import Path
+r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+assert r.get("status") == "PBS_TRAINING_EXIT_CONFIRMED"
+assert r.get("job_id") == sys.argv[2] and r.get("exit_status") == 0
+assert r.get("evidence_source") == "tracejob queried over SSH from tc6000 login node"
+assert re.search(r"Exit_status=0(?:\s|$)", r.get("exit_record_line", ""))
+print("TRAINING_EXIT_RECEIPT_PASS job=" + sys.argv[2])
+PY
+
+TRAIN_INFO=$("$QSTAT" -f "$PBS_JOBID")
+GPU_IDS=$(tr -d '[:space:]' <<< "$TRAIN_INFO" | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+test "$(awk -F, '{print NF}' <<< "$GPU_IDS")" -eq 1
+
+VAL_COUNT=$(awk -F, 'NR>1 && $1=="val" {n++} END {print n+0}' "$INDEX")
+test "$VAL_COUNT" -eq 407
+
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+BASE=/public/home/slfu/miniconda3/envs/swc
+export LD_LIBRARY_PATH="$BASE/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}" CUDA_VISIBLE_DEVICES="$GPU_IDS"
+mkdir "$OUT"
+{
+  echo "fold=$FOLD"
+  echo "train_job_id=$TRAIN_JOBID"
+  echo "train_exit_status=0"
+  echo "training_exit_receipt_sha256=$(sha256sum "$TRAIN_EXIT_RECEIPT" | awk '{print $1}')"
+  echo "index_sha256=$EXPECTED_INDEX_SHA256"
+  echo "norm_sha256=$EXPECTED_NORM_SHA256"
+  echo "checkpoint_sha256=$EXPECTED_CHECKPOINT_SHA256"
+  echo "inference_script_sha256=$(sha256sum "$INFER" | awk '{print $1}')"
+  echo "fullval_runner_sha256=$(sha256sum "$0" | awk '{print $1}')"
+  echo "validation_sequences=$VAL_COUNT"
+  echo "test_payloads_read=0"
+  nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total --format=csv
+} > "$OUT/launch_manifest.txt"
+
+"$PY" "$INFER" \
+  --repo "$REPO" --index "$INDEX" --norm "$NORM" --checkpoint "$CHECKPOINT" \
+  --output "$OUT/bank" --batch-size 4 --workers 2 --device cuda:0 --splits val
+
+"$PY" - "$OUT/bank" "$INDEX" "$NORM" "$CHECKPOINT" <<'PY'
+import csv, json, math, sys
+from pathlib import Path
+import hashlib
+import numpy as np
+
+def sha(path):
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
+
+out, index, norm, ckpt = map(Path, sys.argv[1:])
+r = json.loads((out / "BANK_REPORT.json").read_text())
+assert r["state"] == "SIMVP_R_PATCH_TRAINVAL_FORECAST_BANK"
+assert r.get("test_payloads_read") == 0
+assert r.get("buffer_payloads_read") == 0
+assert r.get("test_or_buffer_rows") == 0
+assert r["inferred_splits"] == ["val"]
+assert r["sequences_by_split"] == {"val": 407}
+assert r["sequences_written_by_split"] == {"train": 0, "val": 407}
+assert r["index_sha256"] == sha(index)
+assert r["normalization_sha256"] == sha(norm)
+assert r["checkpoint_sha256"] == sha(ckpt)
+pred = np.load(out / "val/pred_agri_patch.npy", mmap_mode="r", allow_pickle=False)
+true = np.load(out / "val/true_agri_patch.npy", mmap_mode="r", allow_pickle=False)
+geom = np.load(out / "val/future_geometry_patch.npy", mmap_mode="r", allow_pickle=False)
+assert pred.shape == true.shape == (407, 16, 13, 16, 16)
+assert geom.shape == (407, 16, 3, 16, 16)
+assert all(np.isfinite(a).all() for a in (pred, true, geom))
+with (out / "val/keys.csv").open(newline="", encoding="utf-8") as f:
+    keys = list(csv.DictReader(f))
+assert len(keys) == 407 and len({k["init_time_bjt"] for k in keys}) > 0
+print("FOLD_FULLVAL_BANK_PASS test_buffer_closed=1 rows=407")
+PY
+
+"$PY" "$AUDIT" --index "$INDEX" --fold "$FOLD" --shard-dir "$OUT/bank" \
+  --output "$OUT/FOLD${FOLD}_VALIDATION_RELOAD_AUDIT.json"
+
+test -s "$OUT/FOLD${FOLD}_VALIDATION_RELOAD_AUDIT.json"
+echo "validation_reload_audit_sha256=$(sha256sum "$OUT/FOLD${FOLD}_VALIDATION_RELOAD_AUDIT.json" | awk '{print $1}')" >> "$OUT/launch_manifest.txt"
+echo "finished_utc=$(date -u -Is)" >> "$OUT/launch_manifest.txt"

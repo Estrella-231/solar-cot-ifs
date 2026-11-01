@@ -1,0 +1,45 @@
+{
+  "state": "VALIDATION_DAY_BLOCK_BOOTSTRAP_COMPLETE",
+  "dates_n": 22,
+  "date_range": [
+    "20250822",
+    "20260629"
+  ],
+  "bootstrap_replicates": 2000,
+  "seed": 20261013,
+  "test_payloads_read": 0,
+  "point_station_equal_seed_mean_rmse_wm2": {
+    "A": 74.36052684507706,
+    "AC": 71.42825990120498,
+    "AP": 73.89372754274801
+  },
+  "delta_ac_minus_a_wm2": {
+    "point": -2.9322669438720794,
+    "ci95_percentile": [
+      -5.069512388001878,
+      -0.9394967784033007
+    ]
+  },
+  "delta_ac_minus_ap_wm2": {
+    "point": -2.4654676415430288,
+    "ci95_percentile": [
+      -4.5987046601022525,
+      -0.4522561093794011
+    ]
+  },
+  "endpoint_bootstrap_ci95_wm2": {
+    "A": [
+      64.10620570502077,
+      83.99164440876164
+    ],
+    "AC": [
+      61.3634405162367,
+      81.15868383333287
+    ],
+    "AP": [
+      63.563464440229986,
+      83.65552667588163
+    ]
+  },
+  "method": "Shared BJT validation-date resampling; same sampled dates for all stations, arms, and training seeds; within station/seed RMSE recomputed, then station and seed equal-weighted."
+}

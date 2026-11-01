@@ -1,0 +1,30 @@
+{
+  "state": "HUBEI_GHI_HEADS_SEED_COMPLETE",
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "pack_sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+  "trainer_sha256": "f420151f279f5d8a42e58a594594c2235b07e13cad6256536916e5f66378afa0",
+  "parameter_counts": {
+    "A": 22177,
+    "AC": 24489,
+    "AP": 24613
+  },
+  "stations": [
+    "Niushou",
+    "Wangzhai",
+    "Mizhuang"
+  ],
+  "arms": [
+    "A",
+    "AC",
+    "AP"
+  ],
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "normalization": "station-specific train-only AGRI and log1p(COT); geometry physical",
+  "loss": "MSE((pred_kt*interval_clear_sky_GHI - observed_GHI)/1000)",
+  "target": "15-minute label in the original engineering W/m2 operating convention; sensor calibration/export metadata not independently verified",
+  "test_payloads_read": 0,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "elapsed_s": 59.804824352264404
+}

@@ -4,8 +4,8 @@
   "COT_rows": 100480,
   "GHI_rows": 63480,
   "stations": {
-    "sili": 7652,
-    "zhujia": 8268
+    "sili": 30516,
+    "zhujia": 32964
   },
   "head_sha256": {
     "sili/42/M00": "385498bd5b562cd31cfc34bf95512684faa3ffbfba3f2306a8a9c9af61523d7b",
@@ -21,7 +21,7 @@
     "zhujia/44/M00": "c723fbc3e7b66590d1d6f48440483d9266fd10abe9260b6a025cd77a063da775",
     "zhujia/44/M10": "a4f422ed2cf9a25c62a48eb61797f46c6f923d6209a68317293e5946be58a77d"
   },
-  "elapsed_seconds": 651.5067158648744,
+  "elapsed_seconds": 652.3465075446293,
   "R_precision": "GPU_FP32",
   "SimVP_precision": "GPU_FP32, original frozen weights and trained legacy geometry; no fine tuning",
   "scope": "all 3140 frozen validation windows; fixed Hubei DyDiff and Hunan SimVP, R and paired GHI heads; no retraining",
@@ -31,5 +31,12 @@
     "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028/full_validation_20261029/evaluation_shards2/rank1/completion.json",
     "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028/full_validation_20261029/evaluation_shards2/rank2/completion.json",
     "/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanDyDiff_20261028/full_validation_20261029/evaluation_shards2/rank3/completion.json"
+  ],
+  "elapsed_seconds_scope": "maximum evaluator shard duration; excludes forecast generation, queue time and merge/score",
+  "shard_elapsed_seconds": [
+    651.5067158648744,
+    651.9550620904192,
+    652.3465075446293,
+    652.3043402992189
   ]
 }

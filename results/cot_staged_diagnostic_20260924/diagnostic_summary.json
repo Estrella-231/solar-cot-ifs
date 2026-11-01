@@ -1,0 +1,231 @@
+{
+  "state": "COMPLETE_VALIDATION_DIAGNOSTIC",
+  "test_used": false,
+  "input_domain": "observed real AGRI validation rows only",
+  "cpu_vs_saved_gpu_replay": {
+    "classifier_probability_max_abs_delta": 0.002973705530166626,
+    "classifier_probability_p99_abs_delta": 0.0007433891296386719,
+    "expert_route_prediction_max_abs_delta_cot": 0.12331008911132812,
+    "expert_route_prediction_p99_abs_delta_cot": 0.01981353759765625,
+    "routing_uses": "saved GPU probabilities; expert values are CPU replays"
+  },
+  "route_comparison": {
+    "frozen_R": {
+      "all": {
+        "n": 1664013,
+        "rmse": 4.246164357954129,
+        "mae": 2.0322568576609616,
+        "bias": 0.08917117386999573
+      },
+      "near_zero_cot_lt0p1": {
+        "n": 648648,
+        "rmse": 0.7711762602460607,
+        "mae": 0.1537713455584661,
+        "bias": 0.15302039319979527
+      },
+      "cloud_cot_ge0p1": {
+        "n": 1015365,
+        "rmse": 5.400748161564884,
+        "mae": 3.232294155040977,
+        "bias": 0.04838222760945317
+      },
+      "thick_cot_ge30": {
+        "n": 75843,
+        "rmse": 11.949837475285749,
+        "mae": 9.466581617423273,
+        "bias": -4.553351823943747
+      },
+      "station_5x5": {
+        "n": 162454,
+        "rmse": 3.943565943946213,
+        "mae": 1.8235625491538845,
+        "bias": 0.1396097633048798
+      }
+    },
+    "model_classification_route": {
+      "all": {
+        "n": 1664013,
+        "rmse": 4.338288534856156,
+        "mae": 2.095325932799154,
+        "bias": 0.3760111056913304
+      },
+      "near_zero_cot_lt0p1": {
+        "n": 648648,
+        "rmse": 0.8251285104546098,
+        "mae": 0.13469607472979742,
+        "bias": 0.1318751076913639
+      },
+      "cloud_cot_ge0p1": {
+        "n": 1015365,
+        "rmse": 5.514445467077899,
+        "mae": 3.3478396950196108,
+        "bias": 0.5319730768353841
+      },
+      "thick_cot_ge30": {
+        "n": 75843,
+        "rmse": 11.670822882657543,
+        "mae": 9.286491084697488,
+        "bias": -3.555492508943279
+      },
+      "station_5x5": {
+        "n": 162454,
+        "rmse": 4.046192762450712,
+        "mae": 1.884314138242243,
+        "bias": 0.41097847580871216
+      }
+    },
+    "CPP_reference_class_route_oracle_diagnostic": {
+      "all": {
+        "n": 1664013,
+        "rmse": 4.30199304767073,
+        "mae": 2.032512716421709,
+        "bias": 0.3404962834306161
+      },
+      "near_zero_cot_lt0p1": {
+        "n": 648648,
+        "rmse": 0.015954757297824265,
+        "mae": 0.006993308856577358,
+        "bias": 0.003985027763453284
+      },
+      "cloud_cot_ge0p1": {
+        "n": 1015365,
+        "rmse": 5.507262823700384,
+        "mae": 3.326480021458131,
+        "bias": 0.55547055668801
+      },
+      "thick_cot_ge30": {
+        "n": 75843,
+        "rmse": 11.670774332637306,
+        "mae": 9.286472961586155,
+        "bias": -3.5554743858319444
+      },
+      "station_5x5": {
+        "n": 162454,
+        "rmse": 4.025196835109011,
+        "mae": 1.8403022081952563,
+        "bias": 0.39390347413692517
+      }
+    },
+    "class_gate": {
+      "threshold_probability": 0.5,
+      "classification_accuracy": 0.9105962513514017,
+      "false_cloud_rate_among_near_zero": 0.05918155918155918,
+      "missed_cloud_rate_among_cloud": 0.10871066069836956,
+      "valid_pixels": 1664013,
+      "self_vs_oracle_mse_delta": 0.3135986328125,
+      "near_zero_self_vs_oracle_mse_delta": 0.6805824041366577
+    },
+    "near_zero_context": {
+      "day_mask_false_cloud_fraction": 0.05918155918155918,
+      "night_mask_false_cloud_fraction": 0.0,
+      "low_sun_cosSOZ_lt0p2_false_cloud_fraction": 0.05142766997949203,
+      "higher_sun_cosSOZ_ge0p2_false_cloud_fraction": 0.05933613220749406,
+      "within_one_pixel_of_CPP_cloud_fraction_false_cloud_rate": 0.2636324005453888,
+      "farther_than_one_pixel_from_CPP_cloud_false_cloud_rate": 0.018425212865291633,
+      "patch_border_false_cloud_rate": 0.08303707465718639,
+      "patch_interior_false_cloud_rate": 0.051780974657924396,
+      "patch_border_high_cot_ge10_rate": 0.0016082613847976975,
+      "patch_interior_high_cot_ge10_rate": 0.0009130095785208436
+    }
+  },
+  "rgb_channel_limits_1_99pct": {
+    "0": [
+      0.034491248428821564,
+      0.7247409820556641
+    ],
+    "1": [
+      0.022261854261159897,
+      0.7719520926475525
+    ],
+    "2": [
+      0.039326123893260956,
+      0.7577318549156189
+    ]
+  },
+  "rgb_definition": "pseudo RGB with R=C03, G=C02, B=C01; fixed validation-wide 1st-99th percentile stretch",
+  "case_selection": "distinct validation rows with CPP COT<0.1 and model-routed COT>=10; rank by largest predicted COT",
+  "cases": [
+    {
+      "index": "15506",
+      "station_id": "zhujia",
+      "timestamp_utc": "2025-07-06T08:15:00Z",
+      "timestamp_bjt": "2025-07-06T16:15:00+08:00",
+      "split": "validation",
+      "original_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202507/20250706/202507060815.npz",
+      "sidecar_path": "/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905/data/cpp_aligned_20260905_v2/samples/zhujia/2025/202507/20250706/202507060815.npz",
+      "original_sha256": "2b6d2085fda32323acde39ec78217228b5960711f87d4bcb21516d3dea37ae4c",
+      "sidecar_sha256": "813dc22bbdcdd879c3de6c5ac312efdf994fea4b1c1057dd499faab47fe4d762",
+      "status": "ok",
+      "valid_pixels": "256",
+      "selected_pixel_row": 0,
+      "selected_pixel_col": 9,
+      "selected_false_cloud_prediction_cot": 36.92710876464844,
+      "selected_CPP_reference_cot": 0.0,
+      "selected_cloud_probability": 0.987481415271759,
+      "cosSOZ": 0.636876106262207,
+      "day_mask": 1.0
+    },
+    {
+      "index": "6655",
+      "station_id": "sili",
+      "timestamp_utc": "2025-07-14T05:15:00Z",
+      "timestamp_bjt": "2025-07-14T13:15:00+08:00",
+      "split": "validation",
+      "original_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202507/20250714/202507140515.npz",
+      "sidecar_path": "/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905/data/cpp_aligned_20260905_v2/samples/sili/2025/202507/20250714/202507140515.npz",
+      "original_sha256": "6406f31feda54a6a57fc7bba5d8a066eb20fa7a35528bbd7e240552f244b4682",
+      "sidecar_sha256": "c75b48433e6b3da9bef85e842bfa1cf80495999e982f7ebb2975a6353af13f41",
+      "status": "ok",
+      "valid_pixels": "256",
+      "selected_pixel_row": 0,
+      "selected_pixel_col": 9,
+      "selected_false_cloud_prediction_cot": 36.583797454833984,
+      "selected_CPP_reference_cot": 0.0,
+      "selected_cloud_probability": 0.9873078465461731,
+      "cosSOZ": 0.9810560345649719,
+      "day_mask": 1.0
+    },
+    {
+      "index": "15499",
+      "station_id": "zhujia",
+      "timestamp_utc": "2025-07-06T06:30:00Z",
+      "timestamp_bjt": "2025-07-06T14:30:00+08:00",
+      "split": "validation",
+      "original_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/zhujia/2025/202507/20250706/202507060630.npz",
+      "sidecar_path": "/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905/data/cpp_aligned_20260905_v2/samples/zhujia/2025/202507/20250706/202507060630.npz",
+      "original_sha256": "c83ba6cc5f680df098c682611cd721324aab36bf82f8f5db1fd84d4d9759457b",
+      "sidecar_sha256": "6ab6a30597545951f77e79a333c19dc50f62231dd2a6e978324ea75f39a994e3",
+      "status": "ok",
+      "valid_pixels": "256",
+      "selected_pixel_row": 8,
+      "selected_pixel_col": 11,
+      "selected_false_cloud_prediction_cot": 35.27219009399414,
+      "selected_CPP_reference_cot": 0.0,
+      "selected_cloud_probability": 0.9858998656272888,
+      "cosSOZ": 0.884925365447998,
+      "day_mask": 1.0
+    },
+    {
+      "index": "6327",
+      "station_id": "sili",
+      "timestamp_utc": "2025-07-07T05:15:00Z",
+      "timestamp_bjt": "2025-07-07T13:15:00+08:00",
+      "split": "validation",
+      "original_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_Station16_Combined/sili/2025/202507/20250707/202507070515.npz",
+      "sidecar_path": "/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905/data/cpp_aligned_20260905_v2/samples/sili/2025/202507/20250707/202507070515.npz",
+      "original_sha256": "ceb892ffa6c0a043a34dbc48f681b285d55ab3ba49d0bb50b6565483709204c3",
+      "sidecar_sha256": "b2a50af2798ead2cce7281dbe6003051fbe09c1ca8c6daf75b14c37dfa34de6b",
+      "status": "ok",
+      "valid_pixels": "256",
+      "selected_pixel_row": 0,
+      "selected_pixel_col": 6,
+      "selected_false_cloud_prediction_cot": 32.39706039428711,
+      "selected_CPP_reference_cot": 0.0,
+      "selected_cloud_probability": 0.985759437084198,
+      "cosSOZ": 0.9826488494873047,
+      "day_mask": 1.0
+    }
+  ],
+  "validation_rows": 6536,
+  "test_payloads_read": 0
+}

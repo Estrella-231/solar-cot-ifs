@@ -1,0 +1,148 @@
+{
+  "state": "INDEPENDENT_FP64_RECOMPUTE_PASS",
+  "scope": "all monthly-split validation forecast instances; fixed seed42 AC head; offline 2x2 input attribution",
+  "test_payload_opened": false,
+  "instances": 66590,
+  "unique_sequences": 2817,
+  "unique_BJT_target_date_blocks": 52,
+  "BJT_dates": [
+    "2024-04-19",
+    "2024-04-20",
+    "2024-05-29",
+    "2024-05-30",
+    "2024-06-11",
+    "2024-06-12",
+    "2024-07-09",
+    "2024-07-10",
+    "2024-08-16",
+    "2024-08-17",
+    "2024-09-04",
+    "2024-09-05",
+    "2024-10-25",
+    "2024-10-26",
+    "2024-11-16",
+    "2024-11-17",
+    "2024-12-24",
+    "2024-12-25",
+    "2025-01-04",
+    "2025-01-05",
+    "2025-02-09",
+    "2025-02-10",
+    "2025-03-13",
+    "2025-03-14",
+    "2025-04-17",
+    "2025-04-18",
+    "2025-05-03",
+    "2025-05-04",
+    "2025-06-15",
+    "2025-06-16",
+    "2025-07-08",
+    "2025-07-09",
+    "2025-08-21",
+    "2025-08-22",
+    "2025-10-06",
+    "2025-10-07",
+    "2025-11-05",
+    "2025-11-06",
+    "2025-12-02",
+    "2025-12-03",
+    "2026-01-03",
+    "2026-01-04",
+    "2026-02-20",
+    "2026-02-21",
+    "2026-03-01",
+    "2026-03-02",
+    "2026-04-20",
+    "2026-04-21",
+    "2026-05-05",
+    "2026-05-06",
+    "2026-06-24",
+    "2026-06-25"
+  ],
+  "station_equal_RMSE_Wm2_by_arm": {
+    "TT": 118.13744182431006,
+    "FT": 126.46136680621645,
+    "TF": 125.4189802011237,
+    "FF": 139.39319644189248
+  },
+  "station_equal_delta_RMSE_Wm2_by_contrast": {
+    "AGRI_effect_at_same_time_COT": 8.323924981906394,
+    "COT_effect_at_true_AGRI": 7.281538376813657,
+    "COT_effect_at_forecast_AGRI": 12.931829635676038,
+    "AGRI_effect_at_forecast_COT": 13.974216240768776,
+    "joint_forecast_input_effect": 21.255754617582433
+  },
+  "date_block_paired_bootstrap_95CI_Wm2": {
+    "AGRI_effect_at_same_time_COT": [
+      3.0119102561049718,
+      14.144142879740869
+    ],
+    "COT_effect_at_true_AGRI": [
+      4.524087983265995,
+      10.54270712166048
+    ],
+    "COT_effect_at_forecast_AGRI": [
+      9.725232957565968,
+      16.582162987600398
+    ],
+    "AGRI_effect_at_forecast_COT": [
+      7.84253041745341,
+      20.694544446945663
+    ],
+    "joint_forecast_input_effect": [
+      14.215011662599043,
+      29.13690241142389
+    ]
+  },
+  "bootstrap_replicates": 5000,
+  "bootstrap_unit": "BJT target-date blocks; same resample applied to both stations and all arms",
+  "by_station": {
+    "sili": {
+      "n_instances": 32159,
+      "unique_sequences": 2507,
+      "unique_target_times": 2106,
+      "arms": {
+        "TT": {
+          "RMSE_Wm2": 127.80315488222494,
+          "MAE_Wm2": 72.43153433174601
+        },
+        "FT": {
+          "RMSE_Wm2": 137.58028913809605,
+          "MAE_Wm2": 81.72920474183394
+        },
+        "TF": {
+          "RMSE_Wm2": 132.63563732029732,
+          "MAE_Wm2": 76.42669727439691
+        },
+        "FF": {
+          "RMSE_Wm2": 151.28624825453983,
+          "MAE_Wm2": 91.26482000107026
+        }
+      }
+    },
+    "zhujia": {
+      "n_instances": 34431,
+      "unique_sequences": 2711,
+      "unique_target_times": 2298,
+      "arms": {
+        "TT": {
+          "RMSE_Wm2": 108.47172876639516,
+          "MAE_Wm2": 74.20395755212837
+        },
+        "FT": {
+          "RMSE_Wm2": 115.34244447433684,
+          "MAE_Wm2": 78.08195053504667
+        },
+        "TF": {
+          "RMSE_Wm2": 118.2023230819501,
+          "MAE_Wm2": 80.05385069348159
+        },
+        "FF": {
+          "RMSE_Wm2": 127.50014462924514,
+          "MAE_Wm2": 85.86351300105814
+        }
+      }
+    }
+  },
+  "interpretation": "TT is an offline same-time oracle reference; FF uses forecast AGRI and its frozen-R COT, but the AC head was trained with actual AGRI and same-time R-COT. These are fixed-head input-shift diagnostics, not operational GHI forecast scores. Overlapping windows remain correlated within dates; date-block intervals address date clustering but do not make overlapping sequences independent."
+}

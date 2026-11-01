@@ -1,0 +1,187 @@
+﻿id,title,meaning,scope,kind,source,group
+P001,当前证据总览：哪些问题已回答，哪些仍待验证？,按科学问题定位材料；各区域与模型设置分开，不将不同实验的百分比拼接。,截至2026-10-19的文件核对；服务器快照14:13 BJT,table,,总览
+P002,阅读目录：按科学问题查找 1,页码直接对应本PDF；每页一个表或图。最新辅助监督、资产与权重目录位于后半册。,完整结果＋历史探索＋工程复现,table,PAGE_INDEX.csv,目录
+P003,阅读目录：按科学问题查找 2,页码直接对应本PDF；每页一个表或图。最新辅助监督、资产与权重目录位于后半册。,完整结果＋历史探索＋工程复现,table,PAGE_INDEX.csv,目录
+P004,阅读目录：按科学问题查找 3,页码直接对应本PDF；每页一个表或图。最新辅助监督、资产与权重目录位于后半册。,完整结果＋历史探索＋工程复现,table,PAGE_INDEX.csv,目录
+P005,阅读目录：按科学问题查找 4,页码直接对应本PDF；每页一个表或图。最新辅助监督、资产与权重目录位于后半册。,完整结果＋历史探索＋工程复现,table,PAGE_INDEX.csv,目录
+P006,研究范围：五站、两个独立区域与日期覆盖,说明数据范围；两个区域分别训练、分别评价，不称零样本迁移。,研究设计示意；不作为实验成绩,figure,F:\CODE_Classify\辐照度预报\solar-cot-ifs\paper\figures\fig1_study_regions_coverage.png,总览
+P007,方法关系：同期COT增量与未来应用如何区分？,图区分观测AGRI反演COT与预测AGRI反演COT，避免混淆同期和预报。,研究设计示意；不作为实验成绩,figure,F:\CODE_Classify\辐照度预报\solar-cot-ifs\paper\figures\fig2_cot_estimation_forecast_workflow.png,总览
+P008,湖南同期估计：COT能否改善紧凑GHI模型？｜Result,三种子两站等权RMSE约降低3.02%；评价的是目标时刻真实AGRI辅助的同期估计。,验证集；同期GHI估计；已完成,table,experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md,E01
+P009,湖南同期估计：COT能否改善紧凑GHI模型？｜Result,三种子两站等权RMSE约降低3.02%；评价的是目标时刻真实AGRI辅助的同期估计。,验证集；同期GHI估计；已完成,table,experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md,E01
+P010,湖南同期估计：COT能否改善紧凑GHI模型？｜Paired uncertainty,三种子两站等权RMSE约降低3.02%；评价的是目标时刻真实AGRI辅助的同期估计。,验证集；同期GHI估计；已完成,table,experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md,E01
+P011,湖南同期估计：COT能否改善紧凑GHI模型？｜配套图 3,三种子两站等权RMSE约降低3.02%；评价的是目标时刻真实AGRI辅助的同期估计。,验证集；同期GHI估计；已完成,figure,paper/figures/fig4_cot_incremental_value.png,E01
+P012,湖北独立区域：同期COT收益能否重复？｜结果,采用最新归一化重载及2026-10-18复算口径：三站等权RMSE降低约4.49%，与湖南分开报告。,湖北三站；22个验证目标日期；三种子；已完成,table,refine-logs/hubei_cot_independent_20261014/SAME_TIME_THREE_SEED_VALIDATION_20261017.md,E02
+P013,湖北独立区域：同期COT收益能否重复？｜结果,采用最新归一化重载及2026-10-18复算口径：三站等权RMSE降低约4.49%，与湖南分开报告。,湖北三站；22个验证目标日期；三种子；已完成,table,refine-logs/hubei_cot_independent_20261014/SAME_TIME_THREE_SEED_VALIDATION_20261017.md,E02
+P014,湖北独立区域：同期COT收益能否重复？｜配套图 4,采用最新归一化重载及2026-10-18复算口径：三站等权RMSE降低约4.49%，与湖南分开报告。,湖北三站；22个验证目标日期；三种子；已完成,figure,refine-logs/hubei_cot_independent_20261014/validation_cases_normreload_20261017/Mizhuang_validation_cases.png,E02
+P015,湖北独立区域：同期COT收益能否重复？｜配套图 5,采用最新归一化重载及2026-10-18复算口径：三站等权RMSE降低约4.49%，与湖南分开报告。,湖北三站；22个验证目标日期；三种子；已完成,figure,refine-logs/hubei_cot_independent_20261014/validation_cases_normreload_20261017/Niushou_validation_cases.png,E02
+P016,湖北独立区域：同期COT收益能否重复？｜配套图 6,采用最新归一化重载及2026-10-18复算口径：三站等权RMSE降低约4.49%，与湖南分开报告。,湖北三站；22个验证目标日期；三种子；已完成,figure,refine-logs/hubei_cot_independent_20261014/validation_cases_normreload_20261017/Wangzhai_validation_cases.png,E02
+P017,反演质量：COT对CPP参考的误差有多大？｜配套图 7,先量化输入COT的参考一致性及厚云偏差，再解释下游价值；CPP不是独立物理真值。,湖南与湖北各自验证；空间与样本范围不同；已完成,figure,paper/figures/fig3_retrieval_quality.png,E03
+P018,厚度分层：GHI收益主要出现在哪些云厚？｜all_validation,湖南CPP参考厚云子组RMSE降幅22.45%；其余组较小且区间跨零。分层收益不代表总体收益。,湖南同期；中心像元CPP参考分箱；不是预测云况；已完成,table,refine-logs/cot_value_first_20261013/results/cot_thickness_story_20261014/COT_THICKNESS_GHI_VALIDATION_20261014.md,E04
+P019,厚度分层：GHI收益主要出现在哪些云厚？｜CPP_reference_centre,湖南CPP参考厚云子组RMSE降幅22.45%；其余组较小且区间跨零。分层收益不代表总体收益。,湖南同期；中心像元CPP参考分箱；不是预测云况；已完成,table,refine-logs/cot_value_first_20261013/results/cot_thickness_story_20261014/COT_THICKNESS_GHI_VALIDATION_20261014.md,E04
+P020,厚度分层：GHI收益主要出现在哪些云厚？｜R_retrieved_centre,湖南CPP参考厚云子组RMSE降幅22.45%；其余组较小且区间跨零。分层收益不代表总体收益。,湖南同期；中心像元CPP参考分箱；不是预测云况；已完成,table,refine-logs/cot_value_first_20261013/results/cot_thickness_story_20261014/COT_THICKNESS_GHI_VALIDATION_20261014.md,E04
+P021,厚度分层：GHI收益主要出现在哪些云厚？｜配套图 8,湖南CPP参考厚云子组RMSE降幅22.45%；其余组较小且区间跨零。分层收益不代表总体收益。,湖南同期；中心像元CPP参考分箱；不是预测云况；已完成,figure,paper/figures/fig5_hunan_cpp_cot_strata.png,E04
+P022,太阳资源：高太阳高度与日辐照量是否改善？｜Results,高太阳高度和完整日照日期的误差用于检查实际资源估计意义；MAE降低与日偏差更负可以并存。,湖南验证；高太阳高度及完整日期敏感性；已完成,table,paper/analyses/solar_resource_validation_20261017/REPORT.md,E05
+P023,容量与反演特征：收益是否超过普通辅助表示？｜Results,区分COT辅助表示、额外头部容量和反演器隐藏特征；不能把全部收益唯一归于显式物理值。,验证集；同期GHI估计；已完成,table,refine-logs/cot_value_first_20261013/results/T18_RAL_RESULTS_20261014.md,E06
+P024,容量与反演特征：收益是否超过普通辅助表示？｜Results,区分COT辅助表示、额外头部容量和反演器隐藏特征；不能把全部收益唯一归于显式物理值。,验证集；同期GHI估计；已完成,table,refine-logs/cot_value_first_20261013/results/T18_RAL_RESULTS_20261014.md,E06
+P025,湖北同R特征对照：显式COT是否优于隐藏特征？｜湖北 AL 结果独立复算（验证集）,采用重载后的隐藏特征对照；COT与隐藏特征差异需按共同样本和区间判断，不能引用被取代的旧汇总。,湖北同期；最新归一化重载；已完成,table,refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_20261017/AL_RESULT_AUDIT_20261017.md,E07
+P026,湖北同R特征对照：显式COT是否优于隐藏特征？｜湖北 AL 结果独立复算（验证集）,采用重载后的隐藏特征对照；COT与隐藏特征差异需按共同样本和区间判断，不能引用被取代的旧汇总。,湖北同期；最新归一化重载；已完成,table,refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_20261017/AL_RESULT_AUDIT_20261017.md,E07
+P027,湖北三站共同时间：站点缺测会改变结论吗？｜三站共同目标时刻敏感性（validation only）,统一三站目标时刻后检验表示差异，避免不同站点样本构成造成误解。,湖北同期；三站486个共同目标时刻；已完成,table,refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_20261017/THREE_STATION_COMMON_TIME_SENSITIVITY_20261017.md,E08
+P028,湖北三站共同时间：站点缺测会改变结论吗？｜三站共同目标时刻敏感性（validation only）,统一三站目标时刻后检验表示差异，避免不同站点样本构成造成误解。,湖北同期；三站486个共同目标时刻；已完成,table,refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_20261017/THREE_STATION_COMMON_TIME_SENSITIVITY_20261017.md,E08
+P029,湖北条件差异：月份和太阳高度有何影响？｜太阳高度分层,展示验证增益的条件性；月份和太阳角分层不能替代独立晴空、阴天分类。,湖北最新重载验证；描述性条件分层；已完成,table,refine-logs/hubei_cot_independent_20261014/HUBEI_VALIDATION_SUBGROUPS_NORMRELOAD_20261017.md,E09
+P030,湖北条件差异：月份和太阳高度有何影响？｜月份分层,展示验证增益的条件性；月份和太阳角分层不能替代独立晴空、阴天分类。,湖北最新重载验证；描述性条件分层；已完成,table,refine-logs/hubei_cot_independent_20261014/HUBEI_VALIDATION_SUBGROUPS_NORMRELOAD_20261017.md,E09
+P031,更强AGRI残差：COT仍有额外收益吗？｜Result,统一输入残差模型中，AGRI残差RMSE111.277、AGRI+COT113.419，差异区间跨零；COT收益依赖比较模型。,验证集；同期GHI估计；已完成,table,experiments/monthly_R_station16_20261013_v1/crossfit_signed_residual/UNIFIED_FEATURE_RESIDUAL_RESULTS_20261014.md,E10
+P032,更强AGRI残差：COT仍有额外收益吗？｜配套图 9,统一输入残差模型中，AGRI残差RMSE111.277、AGRI+COT113.419，差异区间跨零；COT收益依赖比较模型。,验证集；同期GHI估计；已完成,figure,docs/组会原始材料_20261016/10_残差修正/残差修正效果.png,E10
+P033,有符号残差：早期修正结果与后续统一对照｜Main result,保留早期残差探索作为演进材料；最终增量判断以统一输入残差结果为准。,验证集；同期GHI估计；历史探索；已被统一输入对照补充,table,experiments/monthly_R_station16_20261013_v1/crossfit_signed_residual/OOF_SIGNED_RESIDUAL_RESULTS_20261014.md,E11
+P034,三帧COT：历史变化是否真的被利用？｜2. 太阳几何：发现可复现的单位错误,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",table,results/cot_interval_history_20261015/REPORT.md,E12
+P035,三帧COT：历史变化是否真的被利用？｜4. 独立FP64结果,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",table,results/cot_interval_history_20261015/REPORT.md,E12
+P036,三帧COT：历史变化是否真的被利用？｜配套图 10,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",figure,results/cot_interval_history_20261015/audit/solar_geometry_correction.png,E12
+P037,三帧COT：历史变化是否真的被利用？｜配套图 11,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",figure,results/cot_interval_history_20261015/figures/case0_sili.png,E12
+P038,三帧COT：历史变化是否真的被利用？｜配套图 12,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",figure,results/cot_interval_history_20261015/figures/case1_sili.png,E12
+P039,三帧COT：历史变化是否真的被利用？｜配套图 13,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",figure,results/cot_interval_history_20261015/figures/case2_zhujia.png,E12
+P040,三帧COT：历史变化是否真的被利用？｜配套图 14,三帧3×3输入确实影响GHI，但总体RMSE点改善仅0.24%，日期区间跨零。,"湖南三帧离线区间反演；4,263条验证；已完成",figure,results/cot_interval_history_20261015/figures/case3_zhujia.png,E12
+P041,R太阳几何修正：COT误差是否降低？｜Question and result,修正太阳几何后单独评价R；反演指标改善不自动代表GHI改善。,湖南R验证；几何单因素；已完成,table,experiments/r_solar_geometry_corrected_20261015/RESULT_REPORT.md,E13
+P042,R太阳几何修正：COT误差是否降低？｜Validation metrics,修正太阳几何后单独评价R；反演指标改善不自动代表GHI改善。,湖南R验证；几何单因素；已完成,table,experiments/r_solar_geometry_corrected_20261015/RESULT_REPORT.md,E13
+P043,R太阳几何修正：COT误差是否降低？｜By station,修正太阳几何后单独评价R；反演指标改善不自动代表GHI改善。,湖南R验证；几何单因素；已完成,table,experiments/r_solar_geometry_corrected_20261015/RESULT_REPORT.md,E13
+P044,R太阳几何修正：COT误差是否降低？｜By CPP reference COT category,修正太阳几何后单独评价R；反演指标改善不自动代表GHI改善。,湖南R验证；几何单因素；已完成,table,experiments/r_solar_geometry_corrected_20261015/RESULT_REPORT.md,E13
+P045,修正后的R进入GHI：上游改善能否传递？｜Three paired GHI arms,在GHI端检查几何修正的实际作用，避免只凭R误差判断下游收益。,验证集；同期GHI估计；已完成,table,experiments/r_geometry_downstream_ghi_20261016/REPORT.md,E14
+P046,高GHI低估：增大高透过损失的收益与代价｜配对结果,高GHI低估减轻，但低、中kt误差增加；总体未达到替换要求，高值改善不能归为COT贡献。,验证集；同期GHI估计；已完成,table,experiments/high_kt_loss_20261016/REPORT.md,E15
+P047,高GHI低估：增大高透过损失的收益与代价｜原失败案例是否修好,高GHI低估减轻，但低、中kt误差增加；总体未达到替换要求，高值改善不能归为COT贡献。,验证集；同期GHI估计；已完成,table,experiments/high_kt_loss_20261016/REPORT.md,E15
+P048,高GHI低估：增大高透过损失的收益与代价｜配套图 15,高GHI低估减轻，但低、中kt误差增加；总体未达到替换要求，高值改善不能归为COT贡献。,验证集；同期GHI估计；已完成,figure,experiments/high_kt_loss_20261016/figures/loss_tradeoff.png,E15
+P049,高GHI低估：增大高透过损失的收益与代价｜配套图 16,高GHI低估减轻，但低、中kt误差增加；总体未达到替换要求，高值改善不能归为COT贡献。,验证集；同期GHI估计；已完成,figure,experiments/high_kt_loss_20261016/figures/six_real_cloud_loss_comparison.png,E15
+P050,真实云事件：COT为什么有时把GHI调错方向？｜数据与选样,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,table,experiments/cot_underestimate_forensics_20261016/REPORT.md,E16
+P051,真实云事件：COT为什么有时把GHI调错方向？｜六个失败案例：真实云图、COT和辐照度,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,table,experiments/cot_underestimate_forensics_20261016/REPORT.md,E16
+P052,真实云事件：COT为什么有时把GHI调错方向？｜云高、视差与云影：当前证据边界,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,table,experiments/cot_underestimate_forensics_20261016/REPORT.md,E16
+P053,真实云事件：COT为什么有时把GHI调错方向？｜据此决定下一步,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,table,experiments/cot_underestimate_forensics_20261016/REPORT.md,E16
+P054,真实云事件：COT为什么有时把GHI调错方向？｜配套图 17,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/existing_CTH_current_model_context.png,E16
+P055,真实云事件：COT为什么有时把GHI调错方向？｜配套图 18,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/local_COT_sensitivity.png,E16
+P056,真实云事件：COT为什么有时把GHI调错方向？｜配套图 19,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/pair_1_sili.png,E16
+P057,真实云事件：COT为什么有时把GHI调错方向？｜配套图 20,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/pair_2_sili.png,E16
+P058,真实云事件：COT为什么有时把GHI调错方向？｜配套图 21,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/pair_3_sili.png,E16
+P059,真实云事件：COT为什么有时把GHI调错方向？｜配套图 22,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/pair_4_zhujia.png,E16
+P060,真实云事件：COT为什么有时把GHI调错方向？｜配套图 23,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/pair_5_zhujia.png,E16
+P061,真实云事件：COT为什么有时把GHI调错方向？｜配套图 24,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/pair_6_zhujia.png,E16
+P062,真实云事件：COT为什么有时把GHI调错方向？｜配套图 25,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,experiments/cot_underestimate_forensics_20261016/figures/R_CPP_failure_comparison.png,E16
+P063,真实云事件：COT为什么有时把GHI调错方向？｜配套图 26,并列改善与失败案例，检查真实AGRI、COT和GHI；案例用于解释现象，不能估计总体收益。,湖南同期；固定失败和匹配案例诊断；已完成,figure,paper/figures/fig6_sili_high_change_event.png,E16
+P064,云高与云影：空间代表性是否有可用证据？｜样本与比较口径,利用可追溯CPP云高作视差与云影离线诊断；可视化不等于已证明生产模型完成校正。,湖南少量真实案例；离线物理诊断；已完成,table,experiments/monthly_R_station16_20261013/cot_shadow_projection_20261014/REPORT.md,E17
+P065,云高与云影：空间代表性是否有可用证据？｜配套图 27,利用可追溯CPP云高作视差与云影离线诊断；可视化不等于已证明生产模型完成校正。,湖南少量真实案例；离线物理诊断；已完成,figure,experiments/monthly_R_station16_20261013/cot_shadow_projection_20261014/CTH_PARALLAX_SHADOW_VALIDATION_20261014.png,E17
+P066,输入扰动：GHI模型使用了哪些COT信息？｜Results,固定模型输入替换揭示依赖性；替换后的分布变化不能等同公平重训后的COT净收益。,湖南同期；固定模型诊断；已完成,table,experiments/monthly_R_station16_20261013_v1/results/COT_INPUT_DEPENDENCE_VALIDATION_20261013.md,E18
+P067,晴空屏蔽oracle：COT变准是否让GHI更准？｜主要发现,参考掩膜离线清零可改变COT误差，却未必改善固定GHI头；oracle不是可部署成绩。,湖南train/val；不可部署oracle诊断；已完成,table,refine-logs/cot_mask_necessity_20261014/M0_M1_RESULTS.md,E19
+P068,晴空屏蔽oracle：COT变准是否让GHI更准？｜参考晴空门控：固定GHI头,参考掩膜离线清零可改变COT误差，却未必改善固定GHI头；oracle不是可部署成绩。,湖南train/val；不可部署oracle诊断；已完成,table,refine-logs/cot_mask_necessity_20261014/M0_M1_RESULTS.md,E19
+P069,可部署保守判云：重训GHI头后是否受益？｜验证结果,门控COT与原COT各自训练匹配头；seed42未显示净收益，停止无条件扩种子。,湖南验证；seed42门控配对；已完成,table,results/paired_gate_ghi_seed42_20261015_attempt1/REPORT.md,E20
+P070,门控退化归因：误清云能解释多少？｜逐时刻统计,检查被清零与未改变的局部COT记录；误差变化不能全部归于误清云。,湖南固定模型事后诊断；已完成,table,results/gate_ghi_forensics_20261015/REPORT.md,E21
+P071,门控退化归因：误清云能解释多少？｜固定门控头的恢复诊断,检查被清零与未改变的局部COT记录；误差变化不能全部归于误清云。,湖南固定模型事后诊断；已完成,table,results/gate_ghi_forensics_20261015/REPORT.md,E21
+P072,门控退化归因：误清云能解释多少？｜配套图 28,检查被清零与未改变的局部COT记录；误差变化不能全部归于误清云。,湖南固定模型事后诊断；已完成,figure,results/gate_ghi_forensics_20261015/figures/sili_focus_cn.png,E21
+P073,门控退化归因：误清云能解释多少？｜配套图 29,检查被清零与未改变的局部COT记录；误差变化不能全部归于误清云。,湖南固定模型事后诊断；已完成,figure,results/gate_ghi_forensics_20261015/figures/zhujia_focus_cn.png,E21
+P074,门控退化归因：误清云能解释多少？｜配套图 30,检查被清零与未改变的局部COT记录；误差变化不能全部归于误清云。,湖南固定模型事后诊断；已完成,figure,results/gate_ghi_forensics_20261015/pdf_page1_render.png,E21
+P075,站点GHI输入范围：小邻域是否足够？｜关键证据摘录,空间范围消融解释选择小邻域的依据；旧划分实验不能当成新月度主成绩。,旧划分预报GHI尺寸消融；历史对照；历史对照,table,docs/FORECAST_GHI_WINDOW_ABLATION_20261004.md,E22
+P076,最新COT预报：固定SimVP与等预算监督对照｜Results,"3,140验证序列、46个CPP日期的同掩膜COT评价；直接预测COT候选没有超过固定SimVP→R。",湖南未来+15～+240分钟；单种子筛选；已完成,table,refine-logs/cot_retrieved_forecast_20261013/FULLTRAIN_RESULTS_20261017.md,E23
+P077,最新COT预报：固定SimVP与等预算监督对照｜配套图 31,"3,140验证序列、46个CPP日期的同掩膜COT评价；直接预测COT候选没有超过固定SimVP→R。",湖南未来+15～+240分钟；单种子筛选；已完成,figure,paper/figures/fig7_forecast_cot_supervision.png,E23
+P078,直接COT幅值损失：厚云误差能否修复？｜What the matched evaluation shows,相同CPP像元上检查幅值损失；局部厚云误差小改动没有转化为总体COT优势。,湖南未来COT；同掩膜幅值单因素；已完成,table,refine-logs/cot_retrieved_forecast_20261013/results/SAME_SUPPORT_AMPLITUDE_DIAGNOSIS_20261017.md,E24
+P079,直接COT幅值损失：厚云误差能否修复？｜Fixed physical-amplitude loss follow-up,相同CPP像元上检查幅值损失；局部厚云误差小改动没有转化为总体COT优势。,湖南未来COT；同掩膜幅值单因素；已完成,table,refine-logs/cot_retrieved_forecast_20261013/results/SAME_SUPPORT_AMPLITUDE_DIAGNOSIS_20261017.md,E24
+P080,独立厚云事件：位置、峰值和到达时间｜Same-event results,七个厚云事件集中在三个日期；用事件显示云团检出与峰值问题，不能作独立总体推断。,湖南验证；七事件描述性分解；已完成,table,refine-logs/cot_retrieved_forecast_20261013/results/event_cohort_decomposition_20261017/EVENT_COHORT_DECOMPOSITION_20261017.md,E25
+P081,离线位置对齐：错位还是厚度演变？｜Event-equal scores,使用未来参考作位置对齐仅用于归因；对齐后误差不作为预报成绩。,湖南未来COT；不可部署离线诊断；已完成,table,refine-logs/cot_retrieved_forecast_20261013/results/position_amplitude_events_20261017/EVENT_POSITION_AMPLITUDE_DIAGNOSTIC_20261017.md,E26
+P082,时间变化：预测COT轨迹是否过平？｜配套图 32,与真实未来AGRI经同R得到的代理轨迹比较，预测变化相关但幅度衰减；代理不是物理真值。,湖南52个目标日期；R到R代理对照；已完成,figure,refine-logs/cot_value_first_20261013/results/cot_temporal_change_audit_20261017/cot_temporal_change_scatter.png,E27
+P083,固定GHI头2×2替换：图像与COT误差如何传递？｜全验证窗结果,分别替换预测AGRI与预测COT，定量诊断观测输入头面对预测输入的误差；不是预测输入重训成绩。,"湖南2,817序列、52日期；离线固定头归因；已完成",table,refine-logs/cot_value_first_20261013/results/fixed_head_2x2_allval_agri_cot_attribution_20261014_v1/ALLVAL_FIXED_HEAD_ATTRIBUTION_20261014.md,E28
+P084,固定GHI头2×2替换：图像与COT误差如何传递？｜全验证窗结果,分别替换预测AGRI与预测COT，定量诊断观测输入头面对预测输入的误差；不是预测输入重训成绩。,"湖南2,817序列、52日期；离线固定头归因；已完成",table,refine-logs/cot_value_first_20261013/results/fixed_head_2x2_allval_agri_cot_attribution_20261014_v1/ALLVAL_FIXED_HEAD_ATTRIBUTION_20261014.md,E28
+P085,历史COT输运：与Cloud-FNO文献如何比较？｜全云况物理 COT RMSE,保留站点像元的1～4小时误差；区域、分辨率及参考不同，只作跨研究描述，不排名。,旧验证集历史输运；文献描述性参照；已完成,table,results/history_cot_cloud_fno_20261015/REPORT.md,E29
+P086,历史COT输运：与Cloud-FNO文献如何比较？｜配套图 33,保留站点像元的1～4小时误差；区域、分辨率及参考不同，只作跨研究描述，不排名。,旧验证集历史输运；文献描述性参照；已完成,figure,results/history_cot_cloud_fno_20261015/hourly_comparison.png,E29
+P087,历史COT预报GHI：修正选模流程后的配对结果｜Overall result (all 16 leads pooled),使用日期留出选模后比较AGRI、历史COT输运及混合输入；该结果不能与同期3%混合。,湖南旧COT输运；attempt3日期留出；已完成,table,refine-logs/history_cot_forecast_ghi_20261015/attempt3_results.md,E30
+P088,历史COT预报GHI：修正选模流程后的配对结果｜Selected leads,使用日期留出选模后比较AGRI、历史COT输运及混合输入；该结果不能与同期3%混合。,湖南旧COT输运；attempt3日期留出；已完成,table,refine-logs/history_cot_forecast_ghi_20261015/attempt3_results.md,E30
+P089,历史COT预报GHI：修正选模流程后的配对结果｜配套图 34,使用日期留出选模后比较AGRI、历史COT输运及混合输入；该结果不能与同期3%混合。,湖南旧COT输运；attempt3日期留出；已完成,figure,refine-logs/history_cot_forecast_ghi_20261015/forecast_ghi_cot_bar_attempt3_zh.png,E30
+P090,历史COT预报GHI：修正选模流程后的配对结果｜配套图 35,使用日期留出选模后比较AGRI、历史COT输运及混合输入；该结果不能与同期3%混合。,湖南旧COT输运；attempt3日期留出；已完成,figure,refine-logs/history_cot_forecast_ghi_20261015/forecast_ghi_rmse_by_lead_attempt3_zh.png,E30
+P091,湖北未来GHI：预测COT是否带来净增益？｜汇总结果,预测AGRI基线77.150、加入预测COT78.155 W/m²；差异区间跨零，未显示预报净增益。,湖北三站；22验证日期；最新归一化重载；已完成,table,refine-logs/hubei_cot_independent_20261014/FORECAST_GHI_NORMRELOAD_THREE_SEED_VALIDATION_20261017.md,E31
+P092,湖北未来GHI：预测COT是否带来净增益？｜配套图 36,预测AGRI基线77.150、加入预测COT78.155 W/m²；差异区间跨零，未显示预报净增益。,湖北三站；22验证日期；最新归一化重载；已完成,figure,refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_three_seed_normreload_20261017/figures/validation_per_lead_FA_FAC.png,E31
+P093,湖南最新未来GHI：完整预测COT与收缩输入｜比较回答的问题,最新三种子screen中总体差异很小且区间跨零；训练forecast为in-sample，五折OOF复验尚未完成。,2026-10-19湖南未来GHI筛选；非最终预报结论；已完成,table,refine-logs/cot_aware_simvp_20261017/FUTURE_GHI_COT_PILOT_DIAGNOSIS_20261019.md,E32
+P094,湖南最新未来GHI：完整预测COT与收缩输入｜分层线索,最新三种子screen中总体差异很小且区间跨零；训练forecast为in-sample，五折OOF复验尚未完成。,2026-10-19湖南未来GHI筛选；非最终预报结论；已完成,table,refine-logs/cot_aware_simvp_20261017/FUTURE_GHI_COT_PILOT_DIAGNOSIS_20261019.md,E32
+P095,湖南最新未来GHI：完整预测COT与收缩输入｜固定头对齐敏感度审计,最新三种子screen中总体差异很小且区间跨零；训练forecast为in-sample，五折OOF复验尚未完成。,2026-10-19湖南未来GHI筛选；非最终预报结论；已完成,table,refine-logs/cot_aware_simvp_20261017/FUTURE_GHI_COT_PILOT_DIAGNOSIS_20261019.md,E32
+P096,监督来源：CPP与R伪标签是否等价？｜共同有效像元上的来源差异,共同均值接近掩盖近零虚警与厚云压缩；R回退区与CPP覆盖区的云况构成也不同。,"2026-10-19验证抽样1,024窗口；参考差异诊断；已完成",table,refine-logs/cot_aware_simvp_20261017/results/label_source_disagreement_summary.md,E33
+P097,监督来源：CPP与R伪标签是否等价？｜CPP覆盖区与R回退区的分布,共同均值接近掩盖近零虚警与厚云压缩；R回退区与CPP覆盖区的云况构成也不同。,"2026-10-19验证抽样1,024窗口；参考差异诊断；已完成",table,refine-logs/cot_aware_simvp_20261017/results/label_source_disagreement_summary.md,E33
+P098,监督来源：CPP与R伪标签是否等价？｜按CPP参考云厚分层的R偏差,共同均值接近掩盖近零虚警与厚云压缩；R回退区与CPP覆盖区的云况构成也不同。,"2026-10-19验证抽样1,024窗口；参考差异诊断；已完成",table,refine-logs/cot_aware_simvp_20261017/results/label_source_disagreement_summary.md,E33
+P099,云与厚云检出：FAR、POD、CSI分别说明什么？｜结果,回归误差与云检出应同时报告：POD看漏报，FAR看虚警，CSI综合命中、漏报与虚警；分母与阈值按原报告。,湖南反演验证；CPP-COT阈值识别；已完成,table,refine-logs/cot_value_first_20261013/COT_CLOUD_DETECTION_VALIDATION_20261013.md,E34
+P100,云与厚云检出：FAR、POD、CSI分别说明什么？｜配套图 37,回归误差与云检出应同时报告：POD看漏报，FAR看虚警，CSI综合命中、漏报与虚警；分母与阈值按原报告。,湖南反演验证；CPP-COT阈值识别；已完成,figure,docs/组会原始材料_20261016/02_厚度分层/COT云与厚云检出指标_R验证.png,E34
+P101,数据划分：每个月的训练和验证覆盖如何？｜配套图 38,明确连续日期留出与缓冲，解释四季覆盖；这页是结果评价的样本定义，不是模型技能。,新月度日期划分；test仅路径和日期元数据；已完成,figure,experiments/monthly_block_20261002/manifests_v1/monthly_split_counts_bar_zh.png,E35
+P102,数据划分：每个月的训练和验证覆盖如何？｜配套图 39,明确连续日期留出与缓冲，解释四季覆盖；这页是结果评价的样本定义，不是模型技能。,新月度日期划分；test仅路径和日期元数据；已完成,figure,experiments/monthly_block_20261002/manifests_v1/monthly_split_timeline_zh.png,E35
+P103,历史探索：空间COT初筛｜原始结果,早期空间图输入只带来很小点改善，属于旧数据和旧头部探索。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SPATIAL_B1_PILOT_RESULTS_20260917.md,E36
+P104,历史探索：空间排列控制｜Results,检查空间置换与容量因素；不得据早期头部结论否定全部空间表示。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SPATIAL_B2_CONTROLS_RESULTS_20260917.md,E37
+P105,历史探索：AFNO固定GHI头替换｜AFNO COT paired frozen-GHI-head comparison (2026-09-23),替换外推器输入用于检查分布变化；不等于各自匹配训练后的优劣。,历史划分/模型；不进入当前主成绩；历史探索,table,results/afno_fixed_ghi_head_swap_20260923/README.md,E38
+P106,历史探索：AFNO固定GHI头替换｜配套图 40,替换外推器输入用于检查分布变化；不等于各自匹配训练后的优劣。,历史划分/模型；不进入当前主成绩；历史探索,figure,results/afno_fixed_ghi_head_swap_20260923/paired_rmse_delta.png,E38
+P107,历史探索：输运与厚度残差｜Best validation checkpoint,旧输运与学习厚度残差比较，不与月度新划分合并。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_TRANSPORT_THICKNESS_PILOT_RESULTS_20260928.md,E39
+P108,历史探索：输运与厚度残差｜Sili station-pixel validation audit (2026-09-28),旧输运与学习厚度残差比较，不与月度新划分合并。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_TRANSPORT_THICKNESS_PILOT_RESULTS_20260928.md,E39
+P109,"历史探索：输运与厚度残差｜Full local-64 validation audit completed (2026-09-28, supersedes submission snapshot above)",旧输运与学习厚度残差比较，不与月度新划分合并。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_TRANSPORT_THICKNESS_PILOT_RESULTS_20260928.md,E39
+P110,历史探索：输运与厚度残差｜Low-COT penalty ablation completed (2026-09-28),旧输运与学习厚度残差比较，不与月度新划分合并。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_TRANSPORT_THICKNESS_PILOT_RESULTS_20260928.md,E39
+P111,历史探索：完整历史与重复末帧｜结果,历史通道堆叠未获得稳定收益；并非显式云轨迹建模的否定证据。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_FULL_COT_HISTORY_PILOT_RESULTS_20260928.md,E40
+P112,历史探索：完整历史与重复末帧｜配套图 41,历史通道堆叠未获得稳定收益；并非显式云轨迹建模的否定证据。,历史划分/模型；不进入当前主成绩；历史探索,figure,results/regional_station_cot_20260927/sili_full_vs_repeat_last_history_20260928_v5/history_control_validation.png,E40
+P113,历史探索：低COT惩罚消融｜Outcome,关闭低COT惩罚后仍未超过输运，说明该项不足以解释全部退化。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_LOW_COT_PENALTY_ABLATION_RESULTS_20260928.md,E41
+P114,历史探索：历史信息探针｜Results,固定模型输入替换检查历史是否被使用；属于依赖性诊断。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/SILI_HISTORY_INFORMATION_PROBE_RESULTS_20260928.md,E42
+P115,历史探索：历史信息探针｜配套图 42,固定模型输入替换检查历史是否被使用；属于依赖性诊断。,历史划分/模型；不进入当前主成绩；历史探索,figure,results/regional_station_cot_20260927/sili_history_information_probe_20260928_v2/history_information_probe.png,E42
+P116,历史探索：竺家残差容量对照｜Results,历史残差容量匹配结果用于追溯路线，不替代统一输入新对照。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/ZHUJIA_RESIDUAL_CAPACITY_CONTROL_RESULTS_20260927.md,E43
+P117,历史探索：旧天气分层｜排除项,保留天气与站点差异的早期描述；不同样本和模型不能直接纵向归因。,历史划分/模型；不进入当前主成绩；历史探索,table,docs/STATION_WEATHER_COT_DIAGNOSIS_20260912.md,E44
+P118,10月19日最终复算：CPP/R混合辅助监督能否保住云厚？｜站点中心3×3,同一CPP有效像元：总体RMSE未超过原始基线；CSI小改善与近零虚警增大并存，候选未通过预定筛选。,"3,140验证序列；46个CPP目标日期；seed42；COT无量纲；站点中心3×3",table,sources/remote_20261019/mixed_independent_cot_audit.json,最新辅助监督
+P119,10月19日不确定性：CPP/R混合辅助监督的RMSE差是否明确？｜站点中心3×3,区间跨零，未证实COT RMSE净改善；厚云CSI与虚警应同时检查，不能仅挑有利指标。,"同样本、同日期配对10,000次bootstrap；不是独立test",table,sources/remote_20261019/mixed_independent_cot_audit.json,最新辅助监督
+P120,10月19日最终复算：CPP/R混合辅助监督能否保住云厚？｜完整16×16,同一CPP有效像元：总体RMSE未超过原始基线；CSI小改善与近零虚警增大并存，候选未通过预定筛选。,"3,140验证序列；46个CPP目标日期；seed42；COT无量纲；完整16×16",table,sources/remote_20261019/mixed_independent_cot_audit.json,最新辅助监督
+P121,10月19日不确定性：CPP/R混合辅助监督的RMSE差是否明确？｜完整16×16,区间跨零，未证实COT RMSE净改善；厚云CSI与虚警应同时检查，不能仅挑有利指标。,"同样本、同日期配对10,000次bootstrap；不是独立test",table,sources/remote_20261019/mixed_independent_cot_audit.json,最新辅助监督
+P122,10月19日最终复算：CPP-only辅助监督能否保住云厚？｜站点中心3×3,同一CPP有效像元：总体RMSE未超过原始基线；CSI小改善与近零虚警增大并存，候选未通过预定筛选。,"3,140验证序列；46个CPP目标日期；seed42；COT无量纲；站点中心3×3",table,sources/remote_20261019/cpp_only_independent_cot_audit.json,最新辅助监督
+P123,10月19日不确定性：CPP-only辅助监督的RMSE差是否明确？｜站点中心3×3,区间跨零，未证实COT RMSE净改善；厚云CSI与虚警应同时检查，不能仅挑有利指标。,"同样本、同日期配对10,000次bootstrap；不是独立test",table,sources/remote_20261019/cpp_only_independent_cot_audit.json,最新辅助监督
+P124,10月19日最终复算：CPP-only辅助监督能否保住云厚？｜完整16×16,同一CPP有效像元：总体RMSE未超过原始基线；CSI小改善与近零虚警增大并存，候选未通过预定筛选。,"3,140验证序列；46个CPP目标日期；seed42；COT无量纲；完整16×16",table,sources/remote_20261019/cpp_only_independent_cot_audit.json,最新辅助监督
+P125,10月19日不确定性：CPP-only辅助监督的RMSE差是否明确？｜完整16×16,区间跨零，未证实COT RMSE净改善；厚云CSI与虚警应同时检查，不能仅挑有利指标。,"同样本、同日期配对10,000次bootstrap；不是独立test",table,sources/remote_20261019/cpp_only_independent_cot_audit.json,最新辅助监督
+P126,湖北最新完整预报对照：COT与容量分支都有效吗？,包含10月18日补齐的容量臂；三组比较均未显示明确未来GHI改善。,湖北三站、三种子、22目标日期；最新归一化重载；不是test,table,refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_fap_three_seed_20261018/forecast_fap_three_seed_validation_recheck.json,湖北最终三臂
+P127,湖北未来GHI不确定性：预报收益尚未得到支持,区间跨零既不证明改善，也不证明三种方法等效；保留全部正负结果。,"10,000次配对目标日期bootstrap；Δ为前者减后者",table,refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_fap_three_seed_20261018/forecast_fap_three_seed_validation_recheck.json,湖北最终三臂
+P128,最新服务器权重：COT辅助与未来GHI筛选 1,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P129,最新服务器权重：COT辅助与未来GHI筛选 2,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P130,最新服务器权重：COT辅助与未来GHI筛选 3,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P131,最新服务器权重：COT辅助与未来GHI筛选 4,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P132,最新服务器权重：COT辅助与未来GHI筛选 5,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P133,最新服务器权重：COT辅助与未来GHI筛选 6,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P134,最新服务器权重：COT辅助与未来GHI筛选 7,本次通过SSH读取文件目录和大小；step4000用于已完成辅助监督，OOF过程权重不当作最终模型。,共同根目录见REMOTE_CHECKPOINT_INDEX.tsv绝对路径；本次SSH目录快照,table,REMOTE_CHECKPOINT_INDEX.tsv,远端现存权重
+P135,复现导航：如何从一页结果找到数据、代码和权重？,图表页标注来源编号；本册sources保留报告快照，code_snapshot保留实际代码。checkpoint只编目，不复制庞大权重。,本次目录盘点，不等同重新完成所有训练,table,,总览
+P136,结果来源索引：科学问题对应哪个报告？,所有路径以solar-cot-ifs仓库根目录为基准；全文报告快照另存sources。,来源目录,table,,复现索引
+P137,结果来源索引：科学问题对应哪个报告？,所有路径以solar-cot-ifs仓库根目录为基准；全文报告快照另存sources。,来源目录,table,,复现索引
+P138,结果来源索引：科学问题对应哪个报告？,所有路径以solar-cot-ifs仓库根目录为基准；全文报告快照另存sources。,来源目录,table,,复现索引
+P139,结果来源索引：科学问题对应哪个报告？,所有路径以solar-cot-ifs仓库根目录为基准；全文报告快照另存sources。,来源目录,table,,复现索引
+P140,结果来源索引：科学问题对应哪个报告？,所有路径以solar-cot-ifs仓库根目录为基准；全文报告快照另存sources。,来源目录,table,,复现索引
+P141,代码与checkpoint：湖南同期估计：COT能否改善紧凑GHI模型？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md,E01
+P142,代码与checkpoint：湖北独立区域：同期COT收益能否重复？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,refine-logs/hubei_cot_independent_20261014/SAME_TIME_THREE_SEED_VALIDATION_20261017.md,E02
+P143,代码与checkpoint：更强AGRI残差：COT仍有额外收益吗？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,experiments/monthly_R_station16_20261013_v1/crossfit_signed_residual/UNIFIED_FEATURE_RESIDUAL_RESULTS_20261014.md,E10
+P144,代码与checkpoint：三帧COT：历史变化是否真的被利用？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,results/cot_interval_history_20261015/REPORT.md,E12
+P145,代码与checkpoint：R太阳几何修正：COT误差是否降低？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,experiments/r_solar_geometry_corrected_20261015/RESULT_REPORT.md,E13
+P146,代码与checkpoint：修正后的R进入GHI：上游改善能否传递？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,experiments/r_geometry_downstream_ghi_20261016/REPORT.md,E14
+P147,代码与checkpoint：高GHI低估：增大高透过损失的收益与代价,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,experiments/high_kt_loss_20261016/REPORT.md,E15
+P148,代码与checkpoint：真实云事件：COT为什么有时把GHI调错方向？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,experiments/cot_underestimate_forensics_20261016/REPORT.md,E16
+P149,代码与checkpoint：晴空屏蔽oracle：COT变准是否让GHI更准？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,refine-logs/cot_mask_necessity_20261014/M0_M1_RESULTS.md,E19
+P150,代码与checkpoint：可部署保守判云：重训GHI头后是否受益？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,results/paired_gate_ghi_seed42_20261015_attempt1/REPORT.md,E20
+P151,代码与checkpoint：站点GHI输入范围：小邻域是否足够？,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,docs/FORECAST_GHI_WINDOW_ABLATION_20261004.md,E22
+P152,代码与checkpoint：最新COT预报：固定SimVP与等预算监督对照,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,refine-logs/cot_retrieved_forecast_20261013/FULLTRAIN_RESULTS_20261017.md,E23
+P153,代码与checkpoint：历史COT预报GHI：修正选模流程后的配对结果,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,refine-logs/history_cot_forecast_ghi_20261015/attempt3_results.md,E30
+P154,代码与checkpoint：湖南最新未来GHI：完整预测COT与收缩输入,将该实验的结果、实现和现存权重连到一起；示例路径不是自动选模指令。,工程复现附录,table,refine-logs/cot_aware_simvp_20261017/FUTURE_GHI_COT_PILOT_DIAGNOSIS_20261019.md,E32
+P155,完整checkpoint目录：1–10 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P156,完整checkpoint目录：11–20 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P157,完整checkpoint目录：21–30 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P158,完整checkpoint目录：31–40 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P159,完整checkpoint目录：41–50 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P160,完整checkpoint目录：51–60 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P161,完整checkpoint目录：61–70 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P162,完整checkpoint目录：71–80 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P163,完整checkpoint目录：81–90 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P164,完整checkpoint目录：91–100 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P165,完整checkpoint目录：101–110 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P166,完整checkpoint目录：111–120 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P167,完整checkpoint目录：121–130 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P168,完整checkpoint目录：131–140 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P169,完整checkpoint目录：141–150 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P170,完整checkpoint目录：151–160 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P171,完整checkpoint目录：161–170 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P172,完整checkpoint目录：171–180 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P173,完整checkpoint目录：181–190 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P174,完整checkpoint目录：191–200 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P175,完整checkpoint目录：201–210 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P176,完整checkpoint目录：211–220 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P177,完整checkpoint目录：221–230 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P178,完整checkpoint目录：231–240 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P179,完整checkpoint目录：241–250 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P180,完整checkpoint目录：251–260 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P181,完整checkpoint目录：261–270 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P182,完整checkpoint目录：271–280 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P183,完整checkpoint目录：281–290 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P184,完整checkpoint目录：291–300 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P185,完整checkpoint目录：301–307 / 307,便于定位已有权重；不将本地存在误写成重新完成重载验收。,本次实际文件盘点；绝对路径保存在CSV,table,,权重目录
+P186,作废材料：哪些CPP评价图不能再引用？,旧CPP局部/全局索引错配的图已作废；旧29.13/23.04等数值不作为结果收录。,工程更正记录；不与修复后分数混算,table,,总览

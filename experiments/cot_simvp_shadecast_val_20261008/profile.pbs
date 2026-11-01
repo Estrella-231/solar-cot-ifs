@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N cotcmp_prof
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_simvp_shadecast_val_20261008/results_v1/profile.pbs.log
+set -euo pipefail
+
+SOLAR=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+SHADE=/public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSHADECastMonthlyRepair_20261004
+EXP=$SOLAR/experiments/cot_simvp_shadecast_val_20261008
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+OUT=$EXP/results_v1/profile_r3
+CACHE=/dev/shm/slfu_cot_simvp_shadecast_val_20261008_profile
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+source /public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSHADECastOfficial_20260924/.venv/bin/activate
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export SHADECAST_VENDOR_PATH=$SHADE/vendor/GenerativeNowcasting
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node21-gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES=$GPU
+test ! -e "$OUT/complete.json"
+nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+cd "$EXP"
+sha256sum -c deployment.sha256
+python -m py_compile compare_val.py
+python -u compare_val.py --solar-root "$SOLAR" --shade-root "$SHADE" \
+  --data-root "$DATA" --cache "$CACHE" --output "$OUT" --mode profile \
+  --profile-sequences 32 --members 10 --member-batch 2 --steps 20 --workers 4

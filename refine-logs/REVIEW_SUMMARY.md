@@ -1,4 +1,8 @@
+> Current status (2026-11-02): this is a retained historical planning/tracking document. Use [the repository index](../docs/REPOSITORY_INDEX.md) and [current model route](../docs/GHI_HEAD_ROUTE_20261102.md); old pending jobs and mandatory isolation steps below are not current instructions.
+
 # ARIS方法审查摘要
+
+2026-09-17说明：下列评分仅针对历史方案；当前已改为完整COT空间场，见FINAL_PROPOSAL.md与EXPERIMENT_PLAN.md。新方案尚未重新审查，不继承旧版READY或分数。
 
 2026-09-05；3轮；GPT-5.6-Sol xhigh；同一家族独立审查，仅provisional；CALIBRATION: none。
 

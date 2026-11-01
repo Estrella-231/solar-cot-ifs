@@ -1,0 +1,11 @@
+{
+  "prepare_job": "217108.tc6000",
+  "paired_job": "217109.tc6000",
+  "before": "",
+  "after_prepare": "\ntc6000: \n                                                                                          Req'd    Req'd       Elap\nJob ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time\n----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------\n217108.tc6000           slfu        gpu              hb_sync_prepare     --      1      2    --   00:30:00 Q       -- \n",
+  "after_submit": "\ntc6000: \n                                                                                          Req'd    Req'd       Elap\nJob ID                  Username    Queue            Jobname          SessID  NDS   TSK   Memory   Time    S   Time\n----------------------- ----------- ---------------- ---------------- ------ ----- ------ ------ --------- - ---------\n217108.tc6000           slfu        gpu              hb_sync_prepare     --      1      2    --   00:30:00 Q       -- \n217109.tc6000           slfu        gpu              hb_sync_pair        --      1      8    --   02:00:00 H       -- \n",
+  "training_gpu_node": "node21",
+  "gpu_count": 2,
+  "batch512_unchanged": true,
+  "test_payloads_read": 0
+}

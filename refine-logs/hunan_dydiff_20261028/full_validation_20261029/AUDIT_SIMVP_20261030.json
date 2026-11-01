@@ -1,0 +1,49 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-30",
+  "auditor": "independent Codex subagent /root/audit_simvp_full_gain",
+  "reviewer_model": "not exposed by audit interface",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "overall_verdict": "WARN",
+  "deterministic_verdict": "PASS",
+  "reason_code": "reused_validation_and_scope_limits",
+  "remote_access": "read-only",
+  "test_payloads_read": 0,
+  "checks": {
+    "gt_provenance": "PASS to frozen station labels; original workbook not rebuilt",
+    "score_normalization": "PASS",
+    "result_existence": "PASS",
+    "dead_code": "WARN unused generated AGRI metric sums",
+    "scope": "WARN reused validation; not all windows have GHI labels",
+    "input_causality": "PASS inspected main forecast construction",
+    "no_cot_control": "PASS input and actual checkpoint weights",
+    "eval_type": "real_gt for GHI; retrieval reference or proxy for COT"
+  },
+  "fixed_local_defect": "rank0 stations/elapsed inherited by merged receipt; raw predictions and scores unchanged",
+  "report": "AUDIT_SIMVP_20261030.md",
+  "audited_input_hashes": {
+    "evaluate_full_gpu.py": "1bf3320846ed147103c919a2b296abae205c25137b9e7d5b22769553ed3e256d",
+    "generate_full.py": "d29db9ac96bf5f3f34b3aadb1a84f37f4f1174c73e61f7b7e625f2f1f8282ed5",
+    "merge_shards.py": "eb641f8c06d5469529bd231faefc20047ce4428645cbc3c48e4120b36a8fd326",
+    "score_saved.py": "7cefd93b90c1c4b7d812b61a352e98216b4068cdac2593947dcbecce6df905aa",
+    "score_extended.py": "f065f71bf4aa52fa2018b0b004041a8a4c10f562c9d5f44726640c85284f6ff2",
+    "evaluation_attempt1/ghi_rows.csv": "2c21bd0f37b62d29eb696932fe505509bb0739055ddcd59852c7708ddb64d0a1",
+    "evaluation_attempt1/ghi_predictions.npz": "7ec0e813a4d2be92fe6c83ac0f3684029b74ff4d22f7f9a48dae8d7d805cad0b",
+    "evaluation_attempt1/ghi_scores_fp64.json": "7db5d3169973cef5e72d3c1127bcc8079c5d82d7769da51e253e043b53aa07b3",
+    "evaluation_attempt1/completion.json": "53d14a742a2caa8d0e2b732fff22a195a18a06fad8b1e0b3e31c9edac0fa63ce",
+    "audit_simvp_sources_20261030/remote_provenance.json": "785565b3fda0b835de08aa2682a5b212dbeb0dbd39355e2d8bf46d3c88c2ae86",
+    "audit_simvp_numeric_20261030/independent_numeric_audit.json": "1b8ef470b4abfc5a6ec3c9a6a7833122b4f8853cf7250c8517c662e6848d549e",
+    "audit_simvp_numeric_20261030/frozen_blocks_and_clear_sensitivity.json": "a5bb3e78a1736b70c52faec9d20178a00da5ade21c95f6ecdd0d2652f5ff88d7"
+  },
+  "claims": [
+    {
+      "claim": "current frozen validation macro RMSE reduction of 1.633204 percent",
+      "impact": "supported with validation qualifier"
+    },
+    {
+      "claim": "independent-test or both-stations-significant improvement",
+      "impact": "unsupported"
+    }
+  ]
+}

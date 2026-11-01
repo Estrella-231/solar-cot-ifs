@@ -1,0 +1,20 @@
+{
+  "state": "FIXED_AND_INTEGRATION_RECHECKED_BEFORE_GHI_STAGE",
+  "timestamp_bjt": "2026-10-21T07:20:00+08:00",
+  "issue": "run_stages.py passed R_runs_attempt12/full/val to evaluate_forecast_cot.py, while the evaluator expects val_keys.csv and validation arrays directly under R_runs_attempt12/full; first isolated run therefore looked for full/val/val_keys.csv and failed.",
+  "fix": "Changed the --r-validation argument to R_runs_attempt12/full. Preserved the pre-fix source as run_stages_attempt12.py locally and run_stages_pre_rvalpathfix_attempt12.py remotely.",
+  "original_run_stages_sha256": "f34c8762b62b32305143e4b3741a78b32f80688584a2785b54f05683e49402f6",
+  "patched_run_stages_sha256": "23e08552869502b75319354404a7f6021527ff7761e628eec021343495a2146d",
+  "cpu_preview_script_sha256": "6e9897ed9523dde64ba330d91794b7c94fecdd429ef421db0c4a2fc6470f09e8",
+  "checks": {
+    "local_py_compile": "PASS",
+    "remote_py_compile": "PASS",
+    "remote_source_matches_patched_sha256": "PASS",
+    "cpu_fp32_validation_cot_bank": "PASS; 407x16x1x16x16; test=0; buffer=0",
+    "forecast_cot_evaluator_integration": "PASS; 112 rows; 1164 paired init-target-lead keys",
+    "downstream_canonical_outputs_overwritten": false
+  },
+  "production_scope": "The live attempt12 GHI stage will use the patched run_stages.py after all forecast banks are complete; active SimVP training jobs were not changed.",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0
+}

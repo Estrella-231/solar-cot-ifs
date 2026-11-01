@@ -1,0 +1,29 @@
+{
+  "chain": "historical AGRI -> frozen SimVP forecast AGRI -> frozen R -> physical COT",
+  "reference": "matched future CPP, evaluation only",
+  "scale": "16x16, errors computed per pixel",
+  "split": "monthly validation",
+  "windows": 271,
+  "cpp_supported_target_dates": 8,
+  "test_read": 0,
+  "simvp_checkpoint_sha256": "f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4",
+  "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "source": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\cot_value_first_20261013\\results\\forecast_cot_val_bank_20261014_v1\\forecast_cot_metrics_fp64.json",
+  "station_metrics": [
+    {
+      "station": "sili",
+      "n_pixels": 276736,
+      "forecast_simvp_to_R_rmse_cot": 29.131844915024473,
+      "forecast_simvp_to_R_mae_cot": 25.154748113284473,
+      "forecast_simvp_to_R_bias_cot": -14.496064491579936
+    },
+    {
+      "station": "zhujia",
+      "n_pixels": 273664,
+      "forecast_simvp_to_R_rmse_cot": 23.043068978614663,
+      "forecast_simvp_to_R_mae_cot": 18.191109194985327,
+      "forecast_simvp_to_R_bias_cot": -12.947794491716952
+    }
+  ],
+  "extraction": "existing independently FP64-recomputed metrics; no new inference"
+}

@@ -1,0 +1,34 @@
+#!/bin/bash
+#PBS -N f_cot_shift
+#PBS -q normal
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+BANK=$EXP/results/future_simvp_r_bank_v1
+OUT=$EXP/results/forecast_cot_bank_input_shift_20261019.json
+LOG=$EXP/logs/forecast_cot_bank_input_shift_${PBS_JOBID}.log
+exec > >(tee -a "$LOG") 2>&1
+
+if [ -e "$OUT" ] || [ -e "$OUT.lock" ]; then
+  echo "REFUSE_DUPLICATE_FORECAST_COT_BANK_SHIFT_AUDIT"
+  exit 31
+fi
+touch "$OUT.lock"
+trap 'rm -f "$OUT.lock"' EXIT
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+EXPECTED=9346193dd500ecba587c6374ca86b4b5abf016c0b41777925053c89f2ae56bdf
+ACTUAL=$(sha256sum "$EXP/audit_forecast_cot_bank_distribution.py" | awk '{print $1}')
+if [ "$ACTUAL" != "$EXPECTED" ]; then
+  echo "REFUSE_DIAGNOSTIC_SCRIPT_HASH_MISMATCH expected=$EXPECTED actual=$ACTUAL"
+  exit 32
+fi
+python -m py_compile "$EXP/audit_forecast_cot_bank_distribution.py"
+python -u "$EXP/audit_forecast_cot_bank_distribution.py" --bank "$BANK" --output "$OUT"
+python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_FORECAST_COT_BANK_INPUT_SHIFT_DIAGNOSTIC"; assert x.get("test_payload_opened") is False and x.get("buffer_payload_opened") is False; print("FORECAST_COT_BANK_SHIFT_AUDIT_PASS")' "$OUT"

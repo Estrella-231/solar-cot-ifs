@@ -1,0 +1,120 @@
+#!/bin/bash
+#PBS -N fghi_dp0res
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8:gpus=2
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+: "${FOLD_ID:?submit with qsub -v FOLD_ID=0..2}"
+[[ "$FOLD_ID" =~ ^[0-2]$ ]] || { echo "invalid FOLD_ID=$FOLD_ID"; exit 2; }
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+ROOT=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SOURCE=$EXP/droppath0_source_20261020
+SPLIT=$EXP/results/future_ghi_oof_manifests_v1/fold_$FOLD_ID
+RUN=$EXP/results/future_ghi_oof_droppath0_v3_prewarmed/fold_${FOLD_ID}_ddp2g
+CACHE=/tmp/slfu_future_ghi_oof_droppath0_v1_shared
+RECEIPT=$EXP/results/future_ghi_oof_droppath0_v3_prewarmed/cache_prewarm_after_pause.json
+LOG=$EXP/logs/future_ghi_oof_droppath0_resume_fold${FOLD_ID}_${PBS_JOBID}.log
+SEED=$((42 + FOLD_ID))
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$PROJECT"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8"
+
+cd "$EXP"
+sha256sum -c DROPPATH0_RESUME_SHA256SUMS
+python -m py_compile train_monthly_simvp_oof_ddp_resume_20261020.py test_future_ghi_oof_ddp_semantics_rankrng.py test_ddp_syncbn_gpu_rankrng_20261020.py "$SOURCE/triad_models.py" "$SOURCE/simvp.py" "$SOURCE/hunan_data.py" "$SOURCE/train_monthly_simvp_20261002.py"
+python test_future_ghi_oof_ddp_semantics_rankrng.py
+
+TRAIN=$RUN/training
+CHECKPOINT=$TRAIN/last.pt
+RESUME_COPY=$TRAIN/resume_from_epoch005.pt
+INITIAL_META=$TRAIN/run_metadata_pre_resume.json
+test -d "$CACHE" || { echo "REFUSE: shared train cache missing"; exit 30; }
+test -f "$RECEIPT" || { echo "REFUSE: train-only cache receipt missing"; exit 30; }
+CACHE_COUNT=$(find "$CACHE" -type f -name '*.npz' | wc -l)
+if [ "$CACHE_COUNT" -ne 49108 ]; then echo "REFUSE: expected 49108 prewarmed train frames, found $CACHE_COUNT"; exit 30; fi
+test -f "$CHECKPOINT" || { echo "REFUSE: atomic epoch checkpoint missing"; exit 30; }
+test ! -e "$RESUME_COPY" || { echo "REFUSE: resume copy already exists"; exit 30; }
+test ! -e "$INITIAL_META" || { echo "REFUSE: pre-resume metadata already exists"; exit 30; }
+test ! -e "$TRAIN/training_complete.json" || { echo "REFUSE: fold already complete"; exit 30; }
+python - <<'PY' "$FOLD_ID" "$SEED" "$RUN" "$SPLIT" "$SOURCE" "$CHECKPOINT" "$RECEIPT"
+import hashlib,json,sys,torch
+from pathlib import Path
+fold,seed=map(int,sys.argv[1:3]); run,split,source,ckpt,receipt=map(Path,sys.argv[3:])
+def sha(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+ return h.hexdigest()
+meta=json.loads((run/'training/run_metadata.json').read_text())
+audit=json.loads((split/'manifest_audit.json').read_text())
+norm=json.loads((split/'hunan_train_norm.json').read_text())
+epochs=[json.loads((run/f'training/epoch_{i:03d}.json').read_text()) for i in range(1,6)]
+profile=json.loads((run/'ddp_profile.json').read_text())
+cache_meta=json.loads(receipt.read_text())
+assert meta['fold']==fold and meta['seed']==seed and meta['global_batch']==20 and meta['world_size']==2
+assert meta['model_code_sha256']==sha(source/'triad_models.py')
+assert 'drop_path_prob=0.0' in (source/'triad_models.py').read_text()
+assert meta['manifest_sha256']==audit['manifest_sha256']==norm['manifest_sha256']
+assert audit['sequence_counts']['test']==0 and audit['validation_test_used'] is False
+assert meta['heldout_payload_read'] is False and meta['test_payloads_read']==0
+assert all(x['epoch']==i and x['heldout_payload_read'] is False for i,x in enumerate(epochs,1))
+assert profile['state']=='TWO_GPU_GLOBAL_BATCH20_PROFILE' and profile['world_size']==2 and profile['global_batch']==20
+assert profile['max_rank_peak_allocated_gib']<34 and profile['steps_measured']>=20
+assert profile['projected_12_epoch_hours_p90']<28
+assert cache_meta['state']=='COMPLETE_OOF_TRAIN_ONLY_RAWCACHE_PREWARM'
+assert cache_meta['test_payload_opened'] is False and cache_meta['validation_payload_opened'] is False and cache_meta['cpp_opened'] is False
+payload=torch.load(ckpt,map_location='cpu',weights_only=False)
+assert payload['epoch']==5 and payload['step']==epochs[-1]['step']
+assert payload['metadata']==meta and payload['metadata']['initialization']=='random'
+assert payload['metadata']['heldout_payload_read'] is False and payload['metadata']['test_payloads_read']==0
+print('DROPPATH0_RESUME_PREFLIGHT_PASS',json.dumps({'fold':fold,'seed':seed,'epoch':payload['epoch'],'step':payload['step'],'checkpoint_sha256':sha(ckpt),'profile_p90_hours':profile['projected_12_epoch_hours_p90'],'train_cache_frames':cache_meta['unique_train_frames']}))
+PY
+cp -p "$TRAIN/run_metadata.json" "$INITIAL_META"
+cp -p "$CHECKPOINT" "$RESUME_COPY"
+sha256sum "$RESUME_COPY"
+
+FREE_KIB=$(df -Pk /tmp | awk 'NR==2{print $4}')
+MIN_KIB=$((260*1024*1024))
+if (( FREE_KIB < MIN_KIB )); then echo "REFUSE: node23 /tmp below 260 GiB"; exit 31; fi
+GPU_ASSIGNMENT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node23-gpu/[0-9]+' | sort -Vu)
+if [ "$(printf '%s\n' "$GPU_ASSIGNMENT" | sed '/^$/d' | wc -l)" -ne 2 ]; then
+  echo "REFUSE: expected exactly two node23 GPUs, got: $GPU_ASSIGNMENT"; exit 32
+fi
+GPU_TEXT=$(printf '%s\n' "$GPU_ASSIGNMENT" | sed 's#node23-gpu/##' | paste -sd, -)
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID FOLD=$FOLD_ID SEED=$SEED GPU_ASSIGNMENT=$GPU_ASSIGNMENT CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES NODE=$(hostname)"
+df -h /tmp
+nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+JOB_NUM=${PBS_JOBID%%.*}
+PORT=$((30000 + JOB_NUM % 20000))
+run_ddp() {
+  torchrun --nnodes=1 --nproc_per_node=2 --rdzv_backend=c10d \
+    --rdzv_endpoint="127.0.0.1:${PORT}" --rdzv_id="${PBS_JOBID}-${PORT}" "$@"
+}
+run_ddp test_ddp_syncbn_gpu_rankrng_20261020.py
+run_ddp train_monthly_simvp_oof_ddp_resume_20261020.py --mode train \
+  --root "$ROOT" --source "$SOURCE" --cache "$CACHE" --manifests "$SPLIT" \
+  --output "$RUN" --workers 3 --fold "$FOLD_ID" --seed "$SEED" \
+  --resume-checkpoint "$RESUME_COPY"
+
+python - <<'PY' "$TRAIN/training_complete.json" "$FOLD_ID" "$RESUME_COPY"
+import hashlib,json,sys
+from pathlib import Path
+p=Path(sys.argv[1]); fold=int(sys.argv[2]); ck=Path(sys.argv[3]); x=json.loads(p.read_text())
+h=hashlib.sha256(ck.read_bytes()).hexdigest()
+assert x['state']=='COMPLETE_OOF_SIMVP_FIXED_EPOCH_TRAINING' and x['selected_checkpoint']=='epoch_012.pt'
+assert x['fold']==fold and x['resumed_from_epoch']==5 and x['epochs']==12
+assert x['heldout_payload_read'] is False and x['test_payloads_read']==0
+print('DROPPATH0_RESUME_COMPLETE_PASS',x)
+PY
+

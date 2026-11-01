@@ -1,0 +1,61 @@
+{
+  "schema": "retrieved_cot_forecaster_v1_candidate",
+  "status": "PASS_SYNTHETIC_ENGINEERING_SMOKE_REAL_DATA_TRAINING_BLOCKED",
+  "task": "forecast future COT maps from retrieved historical COT maps",
+  "region": "Hunan",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payload_access": false,
+  "source_agri_mode": "real_observed_agri_for_retrieval",
+  "history": {
+    "frames": 8,
+    "cadence_minutes": 15,
+    "channels": ["log1p_cot_div_log101", "retrieval_valid_mask", "cosSOZ", "cosRAA", "day_mask"],
+    "shape": "[B,8,5,H,W] after concatenation",
+    "invalid_history_value": 0,
+    "valid_physical_cot_zero_retained": true
+  },
+  "known_geometry": {
+    "frames": 24,
+    "channels": ["cosSOZ", "cosRAA", "day_mask"],
+    "includes_history_and_future_target_times": true
+  },
+  "target": {
+    "frames": 16,
+    "leads_minutes": [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240],
+    "output": "nonnegative log1p(COT)/log(101)",
+    "training_references": ["frozen_R(real_future_AGRI)", "CPP_on_joint_valid_pixels_else_R"],
+    "future_agri_or_labels_passed_to_forward": false
+  },
+  "model": {
+    "spatial_encoder": "shared per-frame CNN with stride-8 latent map",
+    "historical_temporal_operator": "Conv3d on the 8 observed latent frames only",
+    "temporal_mapping": "learned 8-to-16 channel projection",
+    "future_geometry": "known deterministic geometry encoder added per lead",
+    "decoder": "shared per-lead CNN to full-resolution COT map",
+    "width": 96,
+    "initialization": "random; no old checkpoint warm start"
+  },
+  "initial_loss": "equal-weight per-lead masked MSE(log1p(COT)/log(101))",
+  "primary_reference_metric": "CPP physical-COT RMSE on fixed common support",
+  "regional_shape": "not frozen until the selected R native grid and bank support are verified",
+  "model_source": "scripts/retrieved_cot_forecaster_20261013.py",
+  "engineering_smoke": {
+    "result": "PASS_SYNTHETIC_ENGINEERING_SMOKE",
+    "evidence": "smoke_results/smoke_gpu0_fd201_20261013.json",
+    "scope_limit": "single synthetic batch; not COT accuracy, real-data validation, throughput profile, or training"
+  },
+  "data_gate": {
+    "new_monthly_R": "not available as a completed checkpoint",
+    "existing_old_R_test_date_overlap_days": 34,
+    "new_monthly_test_days": 52,
+    "test_payload_access": false,
+    "formal_prediction_training_allowed": false,
+    "blocker": "date-safe new-split R and train/validation retrieved-COT frame bank required"
+  },
+  "inference_inputs_exclude": [
+    "future AGRI",
+    "future CPP",
+    "future retrieved-COT labels",
+    "future target validity masks"
+  ]
+}

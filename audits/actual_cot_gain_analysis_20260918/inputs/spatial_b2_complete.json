@@ -1,0 +1,331 @@
+{
+  "state": "COMPLETE_EXPLORATORY_B2_CONTROLS",
+  "test_used": false,
+  "groups": [
+    "AC_shuffle",
+    "A_proxy"
+  ],
+  "seed": 42,
+  "epochs": 10,
+  "batch": 2048,
+  "lr": 0.0003,
+  "loss": "mean(w*((pred_kt*clear-ghi)/1000)^2)",
+  "base_pack_audit_sha256": "3de1c9d622bc5838ef11db2347c675d4b7db9b8e1106ce7ac5a478215e7ee08c",
+  "sidecar_audit_sha256": "e98bc3e91871ef34c2c8cb498c960e3c231cd750f923574fa86a15d5578f5edf",
+  "script_sha256": "571ae77544f139f825b8c1eca760597a70a4604101377b80c5975a8b011543ab",
+  "runs": {
+    "AC_shuffle": {
+      "best_epoch_0based": 7,
+      "station_equal_ghi_rmse": 148.68839508686926,
+      "station_ghi_rmse": [
+        165.09386432605842,
+        132.2829258476801
+      ],
+      "station_counts": [
+        49806,
+        50043
+      ],
+      "epochs": [
+        {
+          "epoch": 0,
+          "train_weighted_normalized_ghi_mse": 0.025726635381393845,
+          "station_equal_ghi_rmse": 153.98452910196056,
+          "station_ghi_rmse": [
+            171.78436882179156,
+            136.18468938212953
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 19.884405246993992
+        },
+        {
+          "epoch": 1,
+          "train_weighted_normalized_ghi_mse": 0.019656417627232102,
+          "station_equal_ghi_rmse": 153.95914844234795,
+          "station_ghi_rmse": [
+            170.02734526188163,
+            137.89095162281424
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 2.0164226350025274
+        },
+        {
+          "epoch": 2,
+          "train_weighted_normalized_ghi_mse": 0.01938141102781706,
+          "station_equal_ghi_rmse": 153.06577432150522,
+          "station_ghi_rmse": [
+            169.1619655470979,
+            136.96958309591255
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.5914773249533027
+        },
+        {
+          "epoch": 3,
+          "train_weighted_normalized_ghi_mse": 0.019125159525155543,
+          "station_equal_ghi_rmse": 152.23562041613002,
+          "station_ghi_rmse": [
+            167.7398625232153,
+            136.73137830904474
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.3237172620138153
+        },
+        {
+          "epoch": 4,
+          "train_weighted_normalized_ghi_mse": 0.018863518831380342,
+          "station_equal_ghi_rmse": 150.17752129847295,
+          "station_ghi_rmse": [
+            166.2385690274497,
+            134.1164735694962
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.084171182999853
+        },
+        {
+          "epoch": 5,
+          "train_weighted_normalized_ghi_mse": 0.018623087707646126,
+          "station_equal_ghi_rmse": 153.82830854995223,
+          "station_ghi_rmse": [
+            168.8197019674533,
+            138.83691513245114
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.095451126981061
+        },
+        {
+          "epoch": 6,
+          "train_weighted_normalized_ghi_mse": 0.018395609030898024,
+          "station_equal_ghi_rmse": 148.9855860106178,
+          "station_ghi_rmse": [
+            165.6748185350427,
+            132.29635348619286
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9117726789554581
+        },
+        {
+          "epoch": 7,
+          "train_weighted_normalized_ghi_mse": 0.01818045399306315,
+          "station_equal_ghi_rmse": 148.68839508686926,
+          "station_ghi_rmse": [
+            165.09386432605842,
+            132.2829258476801
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9116409000125714
+        },
+        {
+          "epoch": 8,
+          "train_weighted_normalized_ghi_mse": 0.017984060147489975,
+          "station_equal_ghi_rmse": 150.49962621220078,
+          "station_ghi_rmse": [
+            167.68554196572478,
+            133.31371045867675
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.98569777503144
+        },
+        {
+          "epoch": 9,
+          "train_weighted_normalized_ghi_mse": 0.01779329371075106,
+          "station_equal_ghi_rmse": 150.0268106289435,
+          "station_ghi_rmse": [
+            167.4987463419624,
+            132.55487491592464
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9128559139790013
+        }
+      ],
+      "checkpoint_sha256": "5fd9702cf017f7779843f189823cac32ff1df2329e635c9545ace6330b49436b",
+      "predictions_sha256": "8ba027777be714bfe1c0f1d3b301d6c8a94688c67c45b72e14f9e5e2e0244ec3"
+    },
+    "A_proxy": {
+      "best_epoch_0based": 7,
+      "station_equal_ghi_rmse": 148.99847921159846,
+      "station_ghi_rmse": [
+        165.35059020163268,
+        132.64636822156427
+      ],
+      "station_counts": [
+        49806,
+        50043
+      ],
+      "epochs": [
+        {
+          "epoch": 0,
+          "train_weighted_normalized_ghi_mse": 0.02572454383536047,
+          "station_equal_ghi_rmse": 153.92003989985602,
+          "station_ghi_rmse": [
+            171.72999712324756,
+            136.1100826764645
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.8968007189687341
+        },
+        {
+          "epoch": 1,
+          "train_weighted_normalized_ghi_mse": 0.01965892892595957,
+          "station_equal_ghi_rmse": 153.74131411406802,
+          "station_ghi_rmse": [
+            169.83081656039326,
+            137.65181166774275
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.2943458739900962
+        },
+        {
+          "epoch": 2,
+          "train_weighted_normalized_ghi_mse": 0.019384554328808413,
+          "station_equal_ghi_rmse": 152.88782811888277,
+          "station_ghi_rmse": [
+            169.06465474294595,
+            136.71100149481958
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.1060160879860632
+        },
+        {
+          "epoch": 3,
+          "train_weighted_normalized_ghi_mse": 0.019121571343466086,
+          "station_equal_ghi_rmse": 152.12625297024692,
+          "station_ghi_rmse": [
+            167.65952056960606,
+            136.59298537088782
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.0607905889628455
+        },
+        {
+          "epoch": 4,
+          "train_weighted_normalized_ghi_mse": 0.018862273769770226,
+          "station_equal_ghi_rmse": 150.22136148287632,
+          "station_ghi_rmse": [
+            166.29584605124876,
+            134.14687691450388
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 1.0950030559906736
+        },
+        {
+          "epoch": 5,
+          "train_weighted_normalized_ghi_mse": 0.0186335919079661,
+          "station_equal_ghi_rmse": 153.6796394766273,
+          "station_ghi_rmse": [
+            168.82291113327562,
+            138.53636781997898
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9910383939859457
+        },
+        {
+          "epoch": 6,
+          "train_weighted_normalized_ghi_mse": 0.01840181148960413,
+          "station_equal_ghi_rmse": 149.1682500975189,
+          "station_ghi_rmse": [
+            165.8844052476237,
+            132.45209494741408
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9068937000120059
+        },
+        {
+          "epoch": 7,
+          "train_weighted_normalized_ghi_mse": 0.018189913268830234,
+          "station_equal_ghi_rmse": 148.99847921159846,
+          "station_ghi_rmse": [
+            165.35059020163268,
+            132.64636822156427
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9058790259878151
+        },
+        {
+          "epoch": 8,
+          "train_weighted_normalized_ghi_mse": 0.017987590694250582,
+          "station_equal_ghi_rmse": 151.1815714375975,
+          "station_ghi_rmse": [
+            168.36922215758577,
+            133.99392071760926
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9080804599798284
+        },
+        {
+          "epoch": 9,
+          "train_weighted_normalized_ghi_mse": 0.01778531093596849,
+          "station_equal_ghi_rmse": 150.72329441103085,
+          "station_ghi_rmse": [
+            167.72505420866605,
+            133.72153461339568
+          ],
+          "station_counts": [
+            49806,
+            50043
+          ],
+          "seconds": 0.9823249030159786
+        }
+      ],
+      "checkpoint_sha256": "06f220538f8d650e0dabfee875a8c28645c3a6a9483e3e6597e4c3735fb14c4b",
+      "predictions_sha256": "3825844e15c56b7811e3805b0cadeecf0ff397e8f73287cf1899ab8a141aa913"
+    }
+  },
+  "next": "No seeds, IFS, or test until controls are reviewed."
+}

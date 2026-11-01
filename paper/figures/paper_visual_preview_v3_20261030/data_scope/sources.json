@@ -1,0 +1,66 @@
+{
+  "purpose": "177-mm provisional manuscript figure with verified station-coordinate constants and explicitly pending final coverage",
+  "regions_independently_trained": true,
+  "map_type": "Longitude/latitude coordinate locator, equirectangular local aspect correction; no basemap or administrative boundaries",
+  "station_coordinates": [
+    {
+      "station": "Niushou",
+      "region": "Hubei",
+      "latitude": 32.08,
+      "longitude": 112.04
+    },
+    {
+      "station": "Wangzhai",
+      "region": "Hubei",
+      "latitude": 32.04,
+      "longitude": 112.12
+    },
+    {
+      "station": "Mizhuang",
+      "region": "Hubei",
+      "latitude": 32.12,
+      "longitude": 112.2
+    },
+    {
+      "station": "Sili",
+      "region": "Hunan",
+      "latitude": 25.9478611111,
+      "longitude": 112.347916667
+    },
+    {
+      "station": "Zhujia",
+      "region": "Hunan",
+      "latitude": 29.566666667,
+      "longitude": 112.45
+    }
+  ],
+  "coordinate_provenance_note": "Hubei constants agree between both active label-geometry scripts. Hunan constants agree with the archived station-patch inventory and existing Fig1. This is a configuration locator, not a new geolocation survey.",
+  "date_coverage_status": "pending; final corrected model sample manifests were not bound in this figure task",
+  "date_coverage_policy": "No first-last interval is rendered as continuous availability. Historical inventory endpoint dates and sample counts are intentionally omitted.",
+  "numerical_payload_read": false,
+  "test_or_buffer_payload_read": false,
+  "sources": [
+    {
+      "path": "scripts\\add_hubei_interval_clear_sky.py",
+      "sha256": "6e5399bcd87459b81bea3ea53d6a6b016dc7107d900ca3113136edd12bd69df4"
+    },
+    {
+      "path": "scripts\\attach_hubei_daylight_mask.py",
+      "sha256": "f2426f42dfae5d71c88c10cc83726abdab1cc9a0272f7616b33c937043478a7e"
+    },
+    {
+      "path": "docs\\COT_REAL_FORECAST_PAIR_INVENTORY_20260908.md",
+      "sha256": "b4c2c8066abfb01876464b85161c5f8042ef37165101ac95bad553e33f13ac17"
+    },
+    {
+      "path": "docs\\ACTUAL_DATA_INVENTORY_HUNAN_HUBEI_20261016.md",
+      "sha256": "4f6bb2d5351915fb7d30518ee6848aba7615b6ac25f6ed8e9fdeb8b055ba4ce1"
+    }
+  ],
+  "physical_dimensions_mm": [
+    177,
+    122
+  ],
+  "raster_dpi": 450,
+  "status": "layout preview; final calendar remains a placeholder"
+}

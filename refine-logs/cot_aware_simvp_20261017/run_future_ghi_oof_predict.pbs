@@ -1,0 +1,70 @@
+#!/bin/bash
+#PBS -N fghi_oof_pred
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+FOLD="${1:-${FOLD_ID:-}}"
+if [[ ! "$FOLD" =~ ^[0-4]$ ]]; then
+  echo "Usage: qsub run_future_ghi_oof_predict.pbs <fold 0..4>" >&2
+  exit 2
+fi
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+SOURCE=$PROJECT/experiments/hunan_monthly_block_20261002/code
+RROOT=$PROJECT/experiments/monthly_R_station16_20261013_v1
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+MANIFEST=$EXP/results/future_ghi_oof_manifests_v1/fold_${FOLD}
+TRAIN_ROOT=$EXP/results/future_ghi_oof_training_v1
+case "$FOLD" in
+  0|1) TRAIN=$TRAIN_ROOT/fold_${FOLD} ;;
+  2)   TRAIN=$TRAIN_ROOT/fold_2_ddp2g_resume_v1 ;;
+  3)   TRAIN=$TRAIN_ROOT/fold_3_ddp2g_v1 ;;
+  4)   TRAIN=$TRAIN_ROOT/fold_4_ddp2g_rankrng_v1 ;;
+esac
+BANK_INDEX=$EXP/results/future_simvp_r_bank_v1/index.csv
+OUT=$EXP/results/future_ghi_oof_banks_v1/fold_${FOLD}
+CACHE=/tmp/slfu_future_ghi_oof_predict_f${FOLD}_${PBS_JOBID//[^A-Za-z0-9]/_}
+LOG=$EXP/logs/future_ghi_oof_predict_f${FOLD}_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$EXP"
+sha256sum -c FUTURE_GHI_OOF_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_oof_predict_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+python -m py_compile "$EXP/predict_future_ghi_oof_fold.py"
+python "$EXP/test_predict_future_ghi_oof_fold.py"
+python - <<'PY' "$MANIFEST" "$TRAIN" "$OUT"
+import json,sys
+from pathlib import Path
+m,t,o=map(Path,sys.argv[1:])
+split=json.loads((m/'manifest_audit.json').read_text())
+done=json.loads((t/'training/training_complete.json').read_text())
+assert split['frame_disjoint_splits'] is True and split['train_val_frame_intersection']==0
+assert done['state']=='COMPLETE_OOF_SIMVP_FIXED_EPOCH_TRAINING'
+assert done['selected_checkpoint']=='epoch_012.pt'
+assert done['heldout_payload_read'] is False and done['test_payloads_read']==0
+assert done['fold']==split['fold']
+assert not o.exists(), 'refusing to overwrite prediction output'
+print('OOF_PREDICT_PREFLIGHT_PASS',m,'TRAIN_RUN',t)
+PY
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"; exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID FOLD=$FOLD GPU_ID=$GPU_TEXT NODE=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/predict_future_ghi_oof_fold.py" \
+  --project "$PROJECT" --simvp-source "$SOURCE" --fold-manifest "$MANIFEST" \
+  --fold-run "$TRAIN" --fold-oof-ids "$MANIFEST/fold_oof_ids.txt" \
+  --bank-index "$BANK_INDEX" --r-root "$RROOT" --data-root "$DATA" \
+  --cache "$CACHE" --output "$OUT"
+echo "FUTURE_GHI_OOF_PREDICT_FOLD${FOLD}_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

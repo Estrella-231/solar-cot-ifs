@@ -1,5 +1,11 @@
 # Research Output Manifest
 
+## Current entry points (2026-11-02)
+
+This manifest retains dated production events; their old status is not a current execution instruction. See [current and historical asset index](docs/REPOSITORY_INDEX.md), [machine-readable status](docs/ASSET_STATUS.json), [selected GHI heads](configs/hunan_active_ghi_heads.json), and [paper version index](paper/VERSION_INDEX.md). Current Hunan forecasting uses observed-image-trained frozen heads (66,086 validation records: 122.588 to 120.502 W/m²); forecast-trained heads are a completed, non-selected comparison. Correct-geometry Hubei same-time results are recorded separately (74.406 to 68.629 W/m²). Raw arrays and complete weights remain in the locations recorded by experiment trackers; this publication does not remove historical evidence.
+
+## Historical production events
+
 | Timestamp | Skill | File | Stage | Description |
 |-----------|-------|------|-------|-------------|
 | 2026-09-26 | experiment-plan | refine-logs/hunan_cpp_region_20260926/EXPERIMENT_PLAN_20260926.md; EXPERIMENT_PLAN.md | planning | 湖南256区域CPP：全局tile坐标复现、区域I/O、CLP+COT、分层一致性与1000帧吞吐门槛；未启动 |
@@ -83,3 +89,30 @@
 
 | 2026-09-27 | experiment-bridge / run-experiment / result-to-claim / scientific-visualization | scripts/train_zhujia_residual_capacity_control_20260927.py; scripts/run_zhujia_residual_capacity_control_20260927_node21.pbs; scripts/audit_zhujia_residual_capacity_control_20260927.py; scripts/plot_zhujia_residual_capacity_curves_20260927.py; docs/EXPERIMENT_CODE_REVIEW_20260927.md; docs/ZHUJIA_RESIDUAL_CAPACITY_CONTROL_RESULTS_20260927.md; results/zhujia_residual_capacity_control_20260927/; .aris/traces/result-to-claim/2026-09-28_run01/ | results | PBS 210971 sanity与210972正式配对均exit 0；1624行配对审计通过；AGRI残差126.323，COT回退基线127.295 W/m²；test未用 |
 | 2026-09-27 | scientific-visualization | scripts/plot_zhujia_cot_ghi_case_forensics_20260927.py; docs/ZHUJIA_COT_EVENT_FORENSICS_20260927.md; results/zhujia_cot_ghi_case_forensics_20260927_v4/ | diagnostic | 验证集中三个真实序列的AGRI伪彩色、forecast/oracle COT和GHI曲线图；test未使用 |
+# 2026-10-14 可部署判云与GHI配对重训计划
+
+- `refine-logs/cot_cloud_gate_retrain_20261014/EXPERIMENT_PLAN_20261014.md`：用户指定三阶段修复协议；固定名`EXPERIMENT_PLAN.md`。
+- `refine-logs/cot_cloud_gate_retrain_20261014/EXPERIMENT_TRACKER_20261014.md`：待执行状态；固定名`EXPERIMENT_TRACKER.md`。
+- 本次只制定计划，无训练提交；旧掩膜计划/tracker已添加新协议链接。
+
+# 2026-10-14 判云计划执行前置核验
+
+- `refine-logs/cot_cloud_gate_retrain_20261014/EXECUTION_STATUS_20261014.md`：B0数据/队列检查；缺训练CLP侧车且CPP源不在PBS，未提交训练。
+
+# 2026-10-15 零值源审计与区间对应修正
+
+- `results/interval_alignment_20261015/ZERO_SOURCE_AUDIT_20261015.md`、原XML审计、逐标签QC标记及保存头敏感性：train/val源3,823个白天0全部为显式字符串0；业务缺测/故障语义未知，原标签不变。
+- `refine-logs/interval_ghi_alignment_20261015/EXPERIMENT_PLAN_20261015.md`与固定名计划；对应日期版/固定名tracker：质量候选与实际扫描时间的参数量不变区间读出协议。
+- `refine-logs/cot_cloud_gate_retrain_20261014/audit_daylight_zeros.py`、`audit_zero_workbook_xml.py`、`build_interval_manifest.py`、`interval_ghi_head.py`及CPU提交脚本：64条真实时间权重和共享头CPU见证通过；全量元数据PBS214192，无GPU训练、无test。
+- `refine-logs/cot_cloud_gate_retrain_20261014/build_interval_scan_clear.py`与`results/interval_alignment_20261015/scan_clear_values.csv`：以pvlib 0.9.1 Ineichen按逐帧实际扫描时刻生成C_j；重建C15最大绝对差5e-9 W/m²。
+- `refine-logs/cot_cloud_gate_retrain_20261014/build_interval_tensor_pack.py`、`run_interval_tensor_pack_20261015.pbs`及`results/interval_alignment_20261015/tensor_pack_submission.json`：提交PBS214221 CPU打包共同三帧输入；运行中，不含模型训练或test。
+- `results/interval_alignment_20261015/SCAN_CLEAR_VALUES_20261015.md`：记录C_j算法和C15独立复现差异。
+- `experiments/monthly_R_station16_20261013_v1/train_interval_ghi_pilot.py`、`refine-logs/cot_cloud_gate_retrain_20261014/run_interval_ghi_profile_seed42_20261015.pbs`：T2通过后单卡profile并执行固定seed42四组配对计划；PBS尚未提交。
+- `refine-logs/interval_ghi_alignment_20261015/EXPERIMENT_PLAN.md`与`EXPERIMENT_TRACKER.md`（含日期版）：T2a完成、T2b作业运行状态。
+
+# 2026-10-19 Future-GHI OOF follow-up
+
+- `refine-logs/cot_aware_simvp_20261017/FUTURE_GHI_OOF_EXPERIMENT_PLAN_20261019_115329.md` and `FUTURE_GHI_OOF_EXPERIMENT_PLAN.md`: date-block five-fold OOF forecast-input protocol, controls, resource budget, stop gates; no training submitted.
+- `refine-logs/cot_aware_simvp_20261017/FUTURE_GHI_COT_PILOT_DIAGNOSIS_20261019_115457.md` and `FUTURE_GHI_COT_PILOT_DIAGNOSIS_20261019.md`: fixed-head counterfactual results plus corrected BJT fold feasibility.
+- `refine-logs/cot_aware_simvp_20261017/audit_future_ghi_oof_fold_feasibility.py` and `test_audit_future_ghi_oof_fold_feasibility.py`: metadata-only train-fold audit and synthetic witness.
+- `refine-logs/cot_aware_simvp_20261017/results/future_ghi_oof_fold_feasibility_v2.json`: UTC-to-BJT corrected fold coverage and zero train/heldout frame-overlap results; no imagery or labels opened.

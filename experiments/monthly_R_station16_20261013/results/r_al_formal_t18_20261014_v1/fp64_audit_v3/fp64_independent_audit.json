@@ -1,0 +1,352 @@
+{
+  "state": "INDEPENDENT_FP64_T18_AL_AUDIT_PASS",
+  "scope": "new monthly split validation only; AL hidden R feature versus paired A/AC/AP heads",
+  "sample_key": "(station,target_time_utc)",
+  "n_val_rows": 4479,
+  "by_station_n": {
+    "sili": 2128,
+    "zhujia": 2351
+  },
+  "unique_BJT_dates_by_station": {
+    "sili": [
+      "2024-04-19",
+      "2024-04-20",
+      "2024-05-29",
+      "2024-05-30",
+      "2024-06-11",
+      "2024-06-12",
+      "2024-07-09",
+      "2024-07-10",
+      "2024-08-16",
+      "2024-08-17",
+      "2024-09-04",
+      "2024-09-05",
+      "2024-10-25",
+      "2024-10-26",
+      "2024-11-16",
+      "2024-11-17",
+      "2024-12-24",
+      "2024-12-25",
+      "2025-04-17",
+      "2025-04-18",
+      "2025-05-03",
+      "2025-05-04",
+      "2025-06-15",
+      "2025-06-16",
+      "2025-07-08",
+      "2025-07-09",
+      "2025-08-21",
+      "2025-08-22",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-12-02",
+      "2025-12-03",
+      "2026-01-03",
+      "2026-01-04",
+      "2026-02-20",
+      "2026-02-21",
+      "2026-03-01",
+      "2026-03-02",
+      "2026-04-20",
+      "2026-04-21",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-06-24",
+      "2026-06-25"
+    ],
+    "zhujia": [
+      "2024-04-19",
+      "2024-04-20",
+      "2024-05-29",
+      "2024-05-30",
+      "2024-06-11",
+      "2024-06-12",
+      "2024-07-09",
+      "2024-07-10",
+      "2024-08-16",
+      "2024-08-17",
+      "2024-09-04",
+      "2024-10-25",
+      "2024-11-16",
+      "2024-11-17",
+      "2024-12-24",
+      "2024-12-25",
+      "2025-01-04",
+      "2025-01-05",
+      "2025-02-09",
+      "2025-02-10",
+      "2025-03-13",
+      "2025-03-14",
+      "2025-04-17",
+      "2025-04-18",
+      "2025-05-03",
+      "2025-05-04",
+      "2025-06-15",
+      "2025-06-16",
+      "2025-07-08",
+      "2025-07-09",
+      "2025-08-21",
+      "2025-08-22",
+      "2025-10-06",
+      "2025-10-07",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-12-02",
+      "2025-12-03",
+      "2026-01-03",
+      "2026-01-04",
+      "2026-02-20",
+      "2026-02-21",
+      "2026-03-01",
+      "2026-03-02",
+      "2026-04-20",
+      "2026-04-21",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-06-24",
+      "2026-06-25"
+    ]
+  },
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payload_opened": false,
+  "all_inputs_finite_on_station_support": true,
+  "metrics_by_arm_station_seed": {
+    "A": {
+      "sili": {
+        "42": {
+          "n": 2128,
+          "RMSE_Wm2": 135.24120683628504,
+          "MAE_Wm2": 77.85880559962476,
+          "bias_Wm2": 0.8345876473190948
+        },
+        "43": {
+          "n": 2128,
+          "RMSE_Wm2": 136.19730708692526,
+          "MAE_Wm2": 78.96198561024576,
+          "bias_Wm2": 4.3527032715961855
+        },
+        "44": {
+          "n": 2128,
+          "RMSE_Wm2": 134.02807463150296,
+          "MAE_Wm2": 78.44984600114655,
+          "bias_Wm2": 1.7222540416932077
+        }
+      },
+      "zhujia": {
+        "42": {
+          "n": 2351,
+          "RMSE_Wm2": 110.62526391626568,
+          "MAE_Wm2": 77.98320054626656,
+          "bias_Wm2": 1.3267102324696851
+        },
+        "43": {
+          "n": 2351,
+          "RMSE_Wm2": 114.23596067528264,
+          "MAE_Wm2": 81.10826227615117,
+          "bias_Wm2": 4.008382344945867
+        },
+        "44": {
+          "n": 2351,
+          "RMSE_Wm2": 113.55444552993706,
+          "MAE_Wm2": 79.63028145330715,
+          "bias_Wm2": 1.65860481421854
+        }
+      }
+    },
+    "AC": {
+      "sili": {
+        "42": {
+          "n": 2128,
+          "RMSE_Wm2": 132.63908165403484,
+          "MAE_Wm2": 73.45443754956753,
+          "bias_Wm2": -0.3640449569637265
+        },
+        "43": {
+          "n": 2128,
+          "RMSE_Wm2": 132.92327960930103,
+          "MAE_Wm2": 74.33403032731968,
+          "bias_Wm2": 3.179435625168203
+        },
+        "44": {
+          "n": 2128,
+          "RMSE_Wm2": 131.54050241932234,
+          "MAE_Wm2": 74.59776408760338,
+          "bias_Wm2": 0.287936432819866
+        }
+      },
+      "zhujia": {
+        "42": {
+          "n": 2351,
+          "RMSE_Wm2": 106.89054231438169,
+          "MAE_Wm2": 73.17673197527286,
+          "bias_Wm2": -2.8054862114170307
+        },
+        "43": {
+          "n": 2351,
+          "RMSE_Wm2": 106.14287428047164,
+          "MAE_Wm2": 72.07224724978607,
+          "bias_Wm2": -1.7295023598053523
+        },
+        "44": {
+          "n": 2351,
+          "RMSE_Wm2": 111.30446972011221,
+          "MAE_Wm2": 76.39846846300121,
+          "bias_Wm2": -1.1176737311875369
+        }
+      }
+    },
+    "AP": {
+      "sili": {
+        "42": {
+          "n": 2128,
+          "RMSE_Wm2": 135.0978364622284,
+          "MAE_Wm2": 77.65097843601144,
+          "bias_Wm2": 0.7353823441608914
+        },
+        "43": {
+          "n": 2128,
+          "RMSE_Wm2": 136.217193508475,
+          "MAE_Wm2": 79.01023899509852,
+          "bias_Wm2": 4.281325897903366
+        },
+        "44": {
+          "n": 2128,
+          "RMSE_Wm2": 133.9026739147676,
+          "MAE_Wm2": 78.29136262771009,
+          "bias_Wm2": 1.796925201416307
+        }
+      },
+      "zhujia": {
+        "42": {
+          "n": 2351,
+          "RMSE_Wm2": 110.34464678226223,
+          "MAE_Wm2": 77.79729044868922,
+          "bias_Wm2": 1.1978609666092985
+        },
+        "43": {
+          "n": 2351,
+          "RMSE_Wm2": 114.00889984537461,
+          "MAE_Wm2": 80.90584989590508,
+          "bias_Wm2": 4.01239976333414
+        },
+        "44": {
+          "n": 2351,
+          "RMSE_Wm2": 113.36008211259939,
+          "MAE_Wm2": 79.39422311360227,
+          "bias_Wm2": 1.6709758559948096
+        }
+      }
+    },
+    "AL": {
+      "sili": {
+        "42": {
+          "n": 2128,
+          "RMSE_Wm2": 132.562159258809,
+          "MAE_Wm2": 73.84304016772897,
+          "bias_Wm2": 0.49054242392367087
+        },
+        "43": {
+          "n": 2128,
+          "RMSE_Wm2": 133.73207890352563,
+          "MAE_Wm2": 74.84390678613144,
+          "bias_Wm2": 3.0596698526755697
+        },
+        "44": {
+          "n": 2128,
+          "RMSE_Wm2": 131.70040153738654,
+          "MAE_Wm2": 73.70002787405816,
+          "bias_Wm2": -0.44256976924958863
+        }
+      },
+      "zhujia": {
+        "42": {
+          "n": 2351,
+          "RMSE_Wm2": 106.11537007753364,
+          "MAE_Wm2": 71.92653471105764,
+          "bias_Wm2": -4.106386071198386
+        },
+        "43": {
+          "n": 2351,
+          "RMSE_Wm2": 106.42305974528308,
+          "MAE_Wm2": 71.19312154553556,
+          "bias_Wm2": -1.9067807071968081
+        },
+        "44": {
+          "n": 2351,
+          "RMSE_Wm2": 108.31032582219434,
+          "MAE_Wm2": 71.63080560321836,
+          "bias_Wm2": -4.784884274454817
+        }
+      }
+    }
+  },
+  "station_equal_mean_RMSE_Wm2": {
+    "A": 123.98037644603309,
+    "AC": 120.24012499960396,
+    "AP": 123.8218887709512,
+    "AL": 119.80723255745536
+  },
+  "station_equal_delta_RMSE_Wm2": {
+    "AL-A": -4.173143888577727,
+    "AL-AC": -0.43289244214859934,
+    "AL-AP": -4.01465621349584,
+    "AC-A": -3.740251446429127
+  },
+  "date_block_paired_bootstrap_95CI_Wm2": {
+    "AL-A": [
+      -7.137495161194817,
+      -1.3901959059441127
+    ],
+    "AL-AC": [
+      -1.4757664003214088,
+      0.6768235527207931
+    ],
+    "AL-AP": [
+      -6.913617148518067,
+      -1.2648444457486017
+    ],
+    "AC-A": [
+      -6.074348955451339,
+      -1.6473778775164394
+    ]
+  },
+  "bootstrap_replicates": 2000,
+  "bootstrap_unit": "within-station BJT target-date blocks, paired across arms and seeds; station date support resampled independently; duplicate dates retained",
+  "bootstrap_seed": 20261014,
+  "input_prediction_sha256": {
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed42_v1/sili/A_val_prediction_ghi_wm2.npy": "3c2ecc4f0127b26a169ac5ea5f76f780059ea8d360b098fa1cb59a4f7549cd50",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed43_v1/sili/A_val_prediction_ghi_wm2.npy": "857847a8d11af7b4a9d334f797d4cb7269bacc9ff802d6aa40aba803844eae5e",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed44_v1/sili/A_val_prediction_ghi_wm2.npy": "3e8698a5e3667cebc6edf59f25bb7d87025760b53b682b3c38b7384c362d68e6",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed42_v1/sili/AC_val_prediction_ghi_wm2.npy": "b687c91ddeeca2f8d0fa2f8f38884f086e7d9c7fb53d1bdda3c7d545d29bfc41",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed43_v1/sili/AC_val_prediction_ghi_wm2.npy": "faa4224683d2b898e9ee1c1a0eb765b0ced505b7190aca7da441d337dba228ef",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed44_v1/sili/AC_val_prediction_ghi_wm2.npy": "cfb79aaf0dc0746b2d4bf04722e469a691e1146e50a97e6e3b443ce6be2630d9",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed42_v1/sili/AP_val_prediction_ghi_wm2.npy": "86bfe3a52e58940f845de38e164361840982cf2b167db03f92afd2cb858a67cc",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed43_v1/sili/AP_val_prediction_ghi_wm2.npy": "09677bf36ee17217ac7961464fb54dd1972d58ff90d0f3635b84e854c7f78ebe",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed44_v1/sili/AP_val_prediction_ghi_wm2.npy": "16016d7d67e8d87b35304631c73a9ea07fd4d5d1c060985960ad8c2fc11c0322",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/r_al_formal_t18_20261014_v1/sili_seed42/AL_val_prediction_ghi_wm2.npy": "9bb4e5397b6e7fd38bc3b2145792e31fc722dca1d94798e6e008aedd51bfa67c",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/r_al_formal_t18_20261014_v1/sili_seed43/AL_val_prediction_ghi_wm2.npy": "7ddde1ebc9a882c95ff73aecb6615cfe40726c2f9a927699766445eb7d43ab98",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/r_al_formal_t18_20261014_v1/sili_seed44/AL_val_prediction_ghi_wm2.npy": "b8b2ccf13fabc3faecceba15b18aa59043e20c00a59c11b6a3a48b689508f3d8",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed42_v1/zhujia/A_val_prediction_ghi_wm2.npy": "44982b3f492640c559dde5875f1c45b1414f38cb182c4c04f0aee5713f658519",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed43_v1/zhujia/A_val_prediction_ghi_wm2.npy": "7a76259c28eb13584274c4a0fa643a4d7d2378d7fa55189d167356b792be9916",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed44_v1/zhujia/A_val_prediction_ghi_wm2.npy": "2ae49f478248a5db027f8c96472c6b499befe4a4626131dc78553421ba84b398",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed42_v1/zhujia/AC_val_prediction_ghi_wm2.npy": "4cfb1bb61161bd1b487365543e8538e9d8fb863f145f49a23b20074d140125ba",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed43_v1/zhujia/AC_val_prediction_ghi_wm2.npy": "371f4b4c5855c585c54ef6c0c27bbcd3e8f4311fa9625aedb2ec4190e877cc65",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed44_v1/zhujia/AC_val_prediction_ghi_wm2.npy": "c339714e8fdb7d3a6b7e4763c8156b386b246a5ce44ac86e80b2d67d56a2adf8",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed42_v1/zhujia/AP_val_prediction_ghi_wm2.npy": "6e8aad3fd741d187973a2432167084512e5b0378ffd289d4ac2bbbee032bc076",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed43_v1/zhujia/AP_val_prediction_ghi_wm2.npy": "a51daa81dde66798ece82115f10933add29059132fe0506479fcf21093fd66c2",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/ghi_heads_new_r_seed44_v1/zhujia/AP_val_prediction_ghi_wm2.npy": "e569fe0e1bccf03d0c652f79d620a40982ae5a3fcaa680b06aec1adb4c716788",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/r_al_formal_t18_20261014_v1/zhujia_seed42/AL_val_prediction_ghi_wm2.npy": "798ef6ed7a3f2a993d5466ddfd64cba777beaf4dacf88e4f657249d0c0480b42",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/r_al_formal_t18_20261014_v1/zhujia_seed43/AL_val_prediction_ghi_wm2.npy": "602d595af5c3969d1f92aa58dadd31d2f81608e9fad13124dd7b2b640a4006b8",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/r_al_formal_t18_20261014_v1/zhujia_seed44/AL_val_prediction_ghi_wm2.npy": "c20f1c5c8ce80115384bb5d77e0cdfc8c6cba2858e21ac435501032d79de061e"
+  },
+  "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "training_manifest_sha256": {
+    "sili_seed42": "ffe86ce8c685c7d60a93137f4c1246218c94b74d5f57e25b693e9d4736babe7d",
+    "sili_seed43": "91139bbffd795967d8e53b67581e2d799e45776e180c6ab64b1aeff1ed1d450e",
+    "sili_seed44": "4573741fed9bad19ca4cb56d327cb9c1ca5074e1508c53f23150c0fd17bc1364",
+    "zhujia_seed42": "0b0e348c1d45a5671ec7d9c11ecd05f113f185c6acf23a8c33deaa65c1e0a11d",
+    "zhujia_seed43": "076bf724c7dd8481a535261da4f336c85d24c62bc08815efc84d60a2147b5440",
+    "zhujia_seed44": "8e47ffab8589f0babb3e15ca7b5ca7bb39b8c3ae6faa1351f4f6cb504c7e51e3"
+  },
+  "limitations": "Validation-only causal representation control under one frozen R and 3x3 head; CPP is not independent truth; no test/generalization claim."
+}

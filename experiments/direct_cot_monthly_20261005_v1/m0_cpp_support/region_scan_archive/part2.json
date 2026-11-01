@@ -1,0 +1,122 @@
+{
+  "state": "TRAIN_VAL_FULL_REGION_CPP_MASK_AUDIT",
+  "test_used": false,
+  "grid_max_coordinate_error_degrees": 0.0,
+  "mask": "finite COT in [0,100] AND CLP in {0,1,2} AND all13 AGRI valid bits AND day_mask>0.5 AND cosSOZ>cos80",
+  "products_processed": 3919,
+  "cpp_payloads_read": 2303,
+  "no_day_or_agri_support_skipped_before_cpp_read": 1616,
+  "read_failure_count": 35,
+  "read_failures": [
+    "202506290645",
+    "202507040400",
+    "202507040415",
+    "202507110815",
+    "202507112245",
+    "202507120200",
+    "202507121015",
+    "202507130500",
+    "202507130530",
+    "202507132345",
+    "202507141015",
+    "202507150400",
+    "202507160000",
+    "202507160545",
+    "202507172245",
+    "202507180115",
+    "202507190515",
+    "202507210400",
+    "202507210800",
+    "202507220900",
+    "202507221015",
+    "202507230445",
+    "202507230915",
+    "202507232300",
+    "202507240000",
+    "202507241015",
+    "202507250245",
+    "202507250730",
+    "202507250830",
+    "202507250900",
+    "202507251045",
+    "202508150615",
+    "202508190700",
+    "202508250600",
+    "202508290615"
+  ],
+  "aggregates": {
+    "all/all": {
+      "products": 3919,
+      "supported_products": 2267,
+      "target_occurrences": 48227,
+      "supervised_pixels": 2041349923,
+      "nearzero_pixels": 731735611,
+      "cloud_ge_0_1_pixels": 1309614312,
+      "thick_ge30_pixels": 155331377
+    },
+    "train/all": {
+      "products": 3919,
+      "supported_products": 2267,
+      "target_occurrences": 48227,
+      "supervised_pixels": 2041349923,
+      "nearzero_pixels": 731735611,
+      "cloud_ge_0_1_pixels": 1309614312,
+      "thick_ge30_pixels": 155331377
+    },
+    "train/JJA": {
+      "products": 3882,
+      "supported_products": 2244,
+      "target_occurrences": 48129,
+      "supervised_pixels": 2036846865,
+      "nearzero_pixels": 729632060,
+      "cloud_ge_0_1_pixels": 1307214805,
+      "thick_ge30_pixels": 154958632
+    },
+    "train/2025-06": {
+      "products": 162,
+      "supported_products": 99,
+      "target_occurrences": 2020,
+      "supervised_pixels": 89720812,
+      "nearzero_pixels": 11560633,
+      "cloud_ge_0_1_pixels": 78160179,
+      "thick_ge30_pixels": 9441714
+    },
+    "train/2025-07": {
+      "products": 1862,
+      "supported_products": 1076,
+      "target_occurrences": 23072,
+      "supervised_pixels": 975515498,
+      "nearzero_pixels": 357247549,
+      "cloud_ge_0_1_pixels": 618267949,
+      "thick_ge30_pixels": 66664425
+    },
+    "train/2025-08": {
+      "products": 1858,
+      "supported_products": 1069,
+      "target_occurrences": 23037,
+      "supervised_pixels": 971610555,
+      "nearzero_pixels": 360823878,
+      "cloud_ge_0_1_pixels": 610786677,
+      "thick_ge30_pixels": 78852493
+    },
+    "train/SON": {
+      "products": 37,
+      "supported_products": 23,
+      "target_occurrences": 98,
+      "supervised_pixels": 4503058,
+      "nearzero_pixels": 2103551,
+      "cloud_ge_0_1_pixels": 2399507,
+      "thick_ge30_pixels": 372745
+    },
+    "train/2025-09": {
+      "products": 37,
+      "supported_products": 23,
+      "target_occurrences": 98,
+      "supervised_pixels": 4503058,
+      "nearzero_pixels": 2103551,
+      "cloud_ge_0_1_pixels": 2399507,
+      "thick_ge30_pixels": 372745
+    }
+  },
+  "scope": "full 256x256 region; CPP supported timestamps only; CPP is not read when no pixel can satisfy the predefined daylight/AGRI mask"
+}

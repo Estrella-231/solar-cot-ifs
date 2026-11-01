@@ -1,0 +1,786 @@
+{
+  "state": "HUBEI_TEST_TRUTH_SOURCE_CANDIDATE_INVENTORY_METADATA_ONLY",
+  "scope": "exact source paths and byte hashes; frozen test dates mapped to declared source windows; timestamp-only complete-window support",
+  "inputs": {
+    "trainval_source_report": {
+      "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\trainval_labels_20261015_v1\\REPORT.json",
+      "name": "REPORT.json",
+      "size_bytes": 10780,
+      "sha256": "7efe20b75f889cc8fb6b0876d2ef4b6c03196481345a86fe2e0fd59f49ef08ff"
+    },
+    "frozen_split": {
+      "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\frozen_split_20261015_v1\\day_assignment.csv",
+      "name": "day_assignment.csv",
+      "size_bytes": 7967,
+      "sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6"
+    },
+    "monthly_archive": {
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_s79spdfmjaq912_2146\\msg\\file\\2026-05\\按采集点聚合时间(1).zip",
+      "name": "按采集点聚合时间(1).zip",
+      "size_bytes": 43879108,
+      "sha256": "fc3bd7c9737b66a531562a1ed520c05cc9e1bf99cb67be97f35a97478a7b6785"
+    },
+    "apr_may_workbook": {
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_s79spdfmjaq912_2146\\msg\\file\\2026-06\\天气数据_2026040100-2026053123.xlsx",
+      "name": "天气数据_2026040100-2026053123.xlsx",
+      "size_bytes": 16047444,
+      "sha256": "d4781696f42231bd2ebf54e05c43eed98ecbf084506be1ab78a0c14b3631d50a"
+    },
+    "jun_jul6_workbook": {
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_9cu5hzfp80wc12_2631\\msg\\file\\2026-08\\天气数据_2026-06-01-2026-07-06.xlsx",
+      "name": "天气数据_2026-06-01-2026-07-06.xlsx",
+      "size_bytes": 9652040,
+      "sha256": "7b06d7931c6079b21e6d2b744879bc59c0a693f1251ab663d688a376bfe94398"
+    },
+    "jul7_14_workbook": {
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_9cu5hzfp80wc12_2631\\msg\\file\\2026-08\\天气数据_2026-07-07-2026-07-14.xlsx",
+      "name": "天气数据_2026-07-07-2026-07-14.xlsx",
+      "size_bytes": 2018831,
+      "sha256": "37793b3b5d70f974b9a7e9c703c348bd9c8a1d1ee671fa19f0f066be325fad5f"
+    },
+    "timestamp_support": {
+      "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\timestamp_support_20261015_v2\\target_timestamp_support.csv",
+      "name": "target_timestamp_support.csv",
+      "size_bytes": 3518771,
+      "sha256": "7583169836fd958830fe262a0718c328c57d79c7b4df1194870ee1a1162598b7"
+    }
+  },
+  "monthly_archive_members": {
+    "天气数据_202508.xlsx": {
+      "archive_member": "天气数据_202508.xlsx",
+      "size_bytes": null,
+      "sha256": "28db70a1769371a925489748d32e3f48cfa8b25b7f9dd0b9b3b2b280452a55a1",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202509.xlsx": {
+      "archive_member": "天气数据_202509.xlsx",
+      "size_bytes": null,
+      "sha256": "97940bcdcd96ef39a9474724ddf8f674eb22588810722430d6f0f980a0720ade",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202510.xlsx": {
+      "archive_member": "天气数据_202510.xlsx",
+      "size_bytes": null,
+      "sha256": "6d2cd4368ac77a55cb922eb084d6e187ea6737ed770eeb2e8ef7c963a5f55bb7",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202511.xlsx": {
+      "archive_member": "天气数据_202511.xlsx",
+      "size_bytes": null,
+      "sha256": "6ea64dfb452b843aad6e6e314b924bdc8fd3f5428eeff2684478f72d3c8cf994",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202512.xlsx": {
+      "archive_member": "天气数据_202512.xlsx",
+      "size_bytes": null,
+      "sha256": "c7095833a999abef6906a6e6a5e59dd1af862bf1884e323575f0bae51eada19a",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202601.xlsx": {
+      "archive_member": "天气数据_202601.xlsx",
+      "size_bytes": null,
+      "sha256": "67fc6204b4f1b8791a03587c130a5caaefe029ca779d26924da61a14dacbc92e",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202602.xlsx": {
+      "archive_member": "天气数据_202602.xlsx",
+      "size_bytes": null,
+      "sha256": "4be0ce8632567cdb8500c07c3efadb6d9223920f79c7562219c1932e923986be",
+      "matches_trainval_source_report": true
+    },
+    "天气数据_202603.xlsx": {
+      "archive_member": "天气数据_202603.xlsx",
+      "size_bytes": null,
+      "sha256": "ee03b7a5ed1854386a4be23c0a18cf3e3b387dbf6d249e34c5d79f8171653bd2",
+      "matches_trainval_source_report": true
+    }
+  },
+  "apr_may_workbook_digest_status": {
+    "path": "C:\\Users\\29728\\xwechat_files\\wxid_s79spdfmjaq912_2146\\msg\\file\\2026-06\\天气数据_2026040100-2026053123.xlsx",
+    "name": "天气数据_2026040100-2026053123.xlsx",
+    "size_bytes": 16047444,
+    "sha256": "d4781696f42231bd2ebf54e05c43eed98ecbf084506be1ab78a0c14b3631d50a",
+    "matches_trainval_source_report": null,
+    "matches_pinned_digest": true,
+    "pinned_digest_sha256": "d4781696f42231bd2ebf54e05c43eed98ecbf084506be1ab78a0c14b3631d50a",
+    "digest_evidence_path": "solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/PROGRESS_20261017_COT_SOURCE_REBUILD.md (2026-10-18 source-workbook audit entry)"
+  },
+  "standalone_workbooks": {
+    "jun_jul6_workbook": {
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_9cu5hzfp80wc12_2631\\msg\\file\\2026-08\\天气数据_2026-06-01-2026-07-06.xlsx",
+      "name": "天气数据_2026-06-01-2026-07-06.xlsx",
+      "size_bytes": 9652040,
+      "sha256": "7b06d7931c6079b21e6d2b744879bc59c0a693f1251ab663d688a376bfe94398",
+      "matches_trainval_source_report": true
+    },
+    "jul7_14_workbook": {
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_9cu5hzfp80wc12_2631\\msg\\file\\2026-08\\天气数据_2026-07-07-2026-07-14.xlsx",
+      "name": "天气数据_2026-07-07-2026-07-14.xlsx",
+      "size_bytes": 2018831,
+      "sha256": "37793b3b5d70f974b9a7e9c703c348bd9c8a1d1ee671fa19f0f066be325fad5f",
+      "matches_trainval_source_report": true
+    }
+  },
+  "test_target_dates_bjt": [
+    "20250809",
+    "20250810",
+    "20250917",
+    "20250918",
+    "20251016",
+    "20251017",
+    "20251111",
+    "20251112",
+    "20251214",
+    "20251215",
+    "20260122",
+    "20260123",
+    "20260203",
+    "20260204",
+    "20260321",
+    "20260322",
+    "20260429",
+    "20260430",
+    "20260515",
+    "20260516",
+    "20260614",
+    "20260615"
+  ],
+  "date_to_source_window": {
+    "20250809": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202508.xlsx"
+    },
+    "20250810": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202508.xlsx"
+    },
+    "20250917": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202509.xlsx"
+    },
+    "20250918": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202509.xlsx"
+    },
+    "20251016": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202510.xlsx"
+    },
+    "20251017": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202510.xlsx"
+    },
+    "20251111": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202511.xlsx"
+    },
+    "20251112": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202511.xlsx"
+    },
+    "20251214": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202512.xlsx"
+    },
+    "20251215": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202512.xlsx"
+    },
+    "20260122": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202601.xlsx"
+    },
+    "20260123": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202601.xlsx"
+    },
+    "20260203": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202602.xlsx"
+    },
+    "20260204": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202602.xlsx"
+    },
+    "20260321": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202603.xlsx"
+    },
+    "20260322": {
+      "source_key": "monthly_archive",
+      "source_name": "天气数据_202603.xlsx"
+    },
+    "20260429": {
+      "source_key": "apr_may_workbook",
+      "source_name": "天气数据_2026040100-2026053123.xlsx"
+    },
+    "20260430": {
+      "source_key": "apr_may_workbook",
+      "source_name": "天气数据_2026040100-2026053123.xlsx"
+    },
+    "20260515": {
+      "source_key": "apr_may_workbook",
+      "source_name": "天气数据_2026040100-2026053123.xlsx"
+    },
+    "20260516": {
+      "source_key": "apr_may_workbook",
+      "source_name": "天气数据_2026040100-2026053123.xlsx"
+    },
+    "20260614": {
+      "source_key": "jun_jul6_workbook",
+      "source_name": "天气数据_2026-06-01-2026-07-06.xlsx"
+    },
+    "20260615": {
+      "source_key": "jun_jul6_workbook",
+      "source_name": "天气数据_2026-06-01-2026-07-06.xlsx"
+    }
+  },
+  "test_dates_by_source_window": {
+    "apr_may_workbook": 4,
+    "jun_jul6_workbook": 2,
+    "monthly_archive": 16
+  },
+  "source_workbook_timestamp_column_q_metadata": {
+    "天气数据_202508.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 42137,
+        "first_timestamp": "2025-08-01 00:00:14",
+        "last_timestamp": "2025-08-31 23:59:41",
+        "frozen_test_dates_with_any_timestamp": [
+          "20250809",
+          "20250810"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 42538,
+        "first_timestamp": "2025-08-01 00:00:11",
+        "last_timestamp": "2025-08-31 23:59:55",
+        "frozen_test_dates_with_any_timestamp": [
+          "20250809",
+          "20250810"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 42314,
+        "first_timestamp": "2025-08-01 00:00:03",
+        "last_timestamp": "2025-08-31 23:59:31",
+        "frozen_test_dates_with_any_timestamp": [
+          "20250809",
+          "20250810"
+        ]
+      }
+    },
+    "天气数据_202509.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 40947,
+        "first_timestamp": "2025-09-01 00:00:41",
+        "last_timestamp": "2025-09-30 23:59:39",
+        "frozen_test_dates_with_any_timestamp": [
+          "20250917",
+          "20250918"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 41096,
+        "first_timestamp": "2025-09-01 00:00:55",
+        "last_timestamp": "2025-09-30 23:59:16",
+        "frozen_test_dates_with_any_timestamp": [
+          "20250917",
+          "20250918"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 41186,
+        "first_timestamp": "2025-09-01 00:00:31",
+        "last_timestamp": "2025-09-30 23:59:52",
+        "frozen_test_dates_with_any_timestamp": [
+          "20250917",
+          "20250918"
+        ]
+      }
+    },
+    "天气数据_202510.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 42042,
+        "first_timestamp": "2025-10-01 00:00:39",
+        "last_timestamp": "2025-10-31 23:59:06",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251016",
+          "20251017"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 41254,
+        "first_timestamp": "2025-10-01 00:00:16",
+        "last_timestamp": "2025-10-31 23:59:57",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251016",
+          "20251017"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 42443,
+        "first_timestamp": "2025-10-01 00:00:52",
+        "last_timestamp": "2025-10-31 23:59:36",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251016",
+          "20251017"
+        ]
+      }
+    },
+    "天气数据_202511.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 40711,
+        "first_timestamp": "2025-11-01 00:00:06",
+        "last_timestamp": "2025-11-30 23:59:55",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251111",
+          "20251112"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 41239,
+        "first_timestamp": "2025-11-01 00:00:57",
+        "last_timestamp": "2025-11-30 23:52:12",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251111",
+          "20251112"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 41342,
+        "first_timestamp": "2025-11-01 00:00:36",
+        "last_timestamp": "2025-11-30 23:59:01",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251111",
+          "20251112"
+        ]
+      }
+    },
+    "天气数据_202512.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 42251,
+        "first_timestamp": "2025-12-01 00:00:55",
+        "last_timestamp": "2025-12-31 23:59:45",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251214",
+          "20251215"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 42385,
+        "first_timestamp": "2025-12-01 00:07:12",
+        "last_timestamp": "2025-12-31 23:59:30",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251214",
+          "20251215"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 42520,
+        "first_timestamp": "2025-12-01 00:00:01",
+        "last_timestamp": "2025-12-31 23:59:03",
+        "frozen_test_dates_with_any_timestamp": [
+          "20251214",
+          "20251215"
+        ]
+      }
+    },
+    "天气数据_202601.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 41483,
+        "first_timestamp": "2026-01-01 00:00:45",
+        "last_timestamp": "2026-01-31 23:59:30",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260122",
+          "20260123"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 42405,
+        "first_timestamp": "2026-01-01 00:00:30",
+        "last_timestamp": "2026-01-31 23:59:16",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260122",
+          "20260123"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 42329,
+        "first_timestamp": "2026-01-01 00:00:03",
+        "last_timestamp": "2026-01-31 23:59:25",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260122",
+          "20260123"
+        ]
+      }
+    },
+    "天气数据_202602.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 32971,
+        "first_timestamp": "2026-02-01 00:00:30",
+        "last_timestamp": "2026-02-28 23:59:00",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260203",
+          "20260204"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 36168,
+        "first_timestamp": "2026-02-01 00:00:16",
+        "last_timestamp": "2026-02-28 23:59:36",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260203",
+          "20260204"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 38203,
+        "first_timestamp": "2026-02-01 00:00:25",
+        "last_timestamp": "2026-02-28 23:59:29",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260203",
+          "20260204"
+        ]
+      }
+    },
+    "天气数据_202603.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 41451,
+        "first_timestamp": "2026-03-01 00:00:00",
+        "last_timestamp": "2026-03-31 23:59:52",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260321",
+          "20260322"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 40598,
+        "first_timestamp": "2026-03-01 00:00:36",
+        "last_timestamp": "2026-03-31 23:59:00",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260321",
+          "20260322"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 41573,
+        "first_timestamp": "2026-03-01 00:00:29",
+        "last_timestamp": "2026-03-31 23:59:49",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260321",
+          "20260322"
+        ]
+      }
+    },
+    "天气数据_2026040100-2026053123.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 82213,
+        "first_timestamp": "2026-04-01 00:00:52",
+        "last_timestamp": "2026-05-31 23:59:27",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260429",
+          "20260430",
+          "20260515",
+          "20260516"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 73646,
+        "first_timestamp": "2026-04-01 00:00:00",
+        "last_timestamp": "2026-05-31 23:59:34",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260429",
+          "20260430",
+          "20260515",
+          "20260516"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 81763,
+        "first_timestamp": "2026-04-01 00:00:49",
+        "last_timestamp": "2026-05-31 23:59:28",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260429",
+          "20260430",
+          "20260515",
+          "20260516"
+        ]
+      }
+    },
+    "天气数据_2026-06-01-2026-07-06.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 47102,
+        "first_timestamp": "2026-06-01 00:00:27",
+        "last_timestamp": "2026-07-06 23:59:54",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260614",
+          "20260615"
+        ]
+      },
+      "米庄供电所": {
+        "timestamp_rows": 46475,
+        "first_timestamp": "2026-06-01 00:00:34",
+        "last_timestamp": "2026-07-06 23:59:22",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260614",
+          "20260615"
+        ]
+      },
+      "牛首供电所": {
+        "timestamp_rows": 48318,
+        "first_timestamp": "2026-06-01 00:00:28",
+        "last_timestamp": "2026-07-06 23:59:23",
+        "frozen_test_dates_with_any_timestamp": [
+          "20260614",
+          "20260615"
+        ]
+      }
+    },
+    "天气数据_2026-07-07-2026-07-14.xlsx": {
+      "王寨供电所": {
+        "timestamp_rows": 9928,
+        "first_timestamp": "2026-07-07 00:00:54",
+        "last_timestamp": "2026-07-14 08:55:09",
+        "frozen_test_dates_with_any_timestamp": []
+      },
+      "米庄供电所": {
+        "timestamp_rows": 9685,
+        "first_timestamp": "2026-07-07 00:00:22",
+        "last_timestamp": "2026-07-14 08:53:46",
+        "frozen_test_dates_with_any_timestamp": []
+      },
+      "牛首供电所": {
+        "timestamp_rows": 9790,
+        "first_timestamp": "2026-07-07 00:00:23",
+        "last_timestamp": "2026-07-14 08:55:21",
+        "frozen_test_dates_with_any_timestamp": []
+      }
+    }
+  },
+  "date_to_station_timestamp_presence": {
+    "20250809": {
+      "source_name": "天气数据_202508.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20250810": {
+      "source_name": "天气数据_202508.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20250917": {
+      "source_name": "天气数据_202509.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20250918": {
+      "source_name": "天气数据_202509.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20251016": {
+      "source_name": "天气数据_202510.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20251017": {
+      "source_name": "天气数据_202510.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20251111": {
+      "source_name": "天气数据_202511.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20251112": {
+      "source_name": "天气数据_202511.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20251214": {
+      "source_name": "天气数据_202512.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20251215": {
+      "source_name": "天气数据_202512.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260122": {
+      "source_name": "天气数据_202601.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260123": {
+      "source_name": "天气数据_202601.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260203": {
+      "source_name": "天气数据_202602.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260204": {
+      "source_name": "天气数据_202602.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260321": {
+      "source_name": "天气数据_202603.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260322": {
+      "source_name": "天气数据_202603.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260429": {
+      "source_name": "天气数据_2026040100-2026053123.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260430": {
+      "source_name": "天气数据_2026040100-2026053123.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260515": {
+      "source_name": "天气数据_2026040100-2026053123.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260516": {
+      "source_name": "天气数据_2026040100-2026053123.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260614": {
+      "source_name": "天气数据_2026-06-01-2026-07-06.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    },
+    "20260615": {
+      "source_name": "天气数据_2026-06-01-2026-07-06.xlsx",
+      "station_sheet_timestamp_present": {
+        "Niushou": true,
+        "Wangzhai": true,
+        "Mizhuang": true
+      },
+      "all_three_station_sheets_present": true
+    }
+  },
+  "timestamp_support": {
+    "metadata_only": true,
+    "test_date_support_rows_seen": 6147,
+    "complete15_candidate_targets_by_station": {
+      "Mizhuang": 1521,
+      "Niushou": 1620,
+      "Wangzhai": 1642
+    },
+    "three_station_common_complete15_candidate_targets": 980,
+    "common_target_set_sha256": "3aae31dac84b738377fc1a46bae141605e0d7a8d889e1ea130d9a0e799f3f1b5",
+    "radiation_values_read": false,
+    "interpretation": "timestamp completeness candidates only; not validated labels or authorized forecast keys"
+  },
+  "test_radiation_cells_decoded": 0,
+  "test_radiation_values_read": false,
+  "test_truth_pack_created": false,
+  "test_evaluation_authorized": false,
+  "instrument_unit_metadata_verified": false,
+  "notes": [
+    "The worksheet timestamp column Q was scanned without reading the radiation-value column; frozen test dates are mapped to exact source filenames and per-station timestamp presence is reported.",
+    "April-May digest is pinned from a prior progress record and is not independently listed in the train/validation REPORT.json or B0 audit; it is not called an independent source audit.",
+    "Timestamp support counts only indicate complete minute-bin candidates and do not establish radiation-value validity, instrument units, test independence, or forecast-key release.",
+    "The inherited W/m2 operating contract and right-closed 15-minute label rule are not independent instrument calibration evidence.",
+    "No test or buffer radiation cells, AGRI pixels, CPP/COT payloads, or predictions were decoded by this utility."
+  ]
+}

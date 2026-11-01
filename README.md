@@ -1,4 +1,8 @@
-# 2026-11-02 用户确定：真实图训练GHI头
+# Solar COT / GHI：当前入口
+
+**先看[当前使用与历史记录索引](docs/REPOSITORY_INDEX.md)**：区分正在选用的模型、已完成但未采用的对照、科学负结果、失效来源、运行故障与待完成事项。机器索引见[ASSET_STATUS.json](docs/ASSET_STATUS.json)，唯一[论文版本入口](paper/VERSION_INDEX.md)。历史记录保留，不把所有旧方案当作现行指令。
+
+## 2026-11-02 用户确定：真实图训练GHI头
 
 当前主路线使用真实同期AGRI三帧训练的既有GHI头，冻结后接预测AGRI及预测COT进行预报。不再用预测图训练或微调GHI头；不得把这类变化隐含在“全train重训”中。此决定覆盖此前“两条训练路径均可默认推进”的表述。train/validation/test外层日期清单与其他数据规则不变。
 

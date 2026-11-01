@@ -1,0 +1,53 @@
+#!/bin/bash
+#PBS -N fgcot_ghi_diag
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ACTUAL_R=$PROJECT/experiments/monthly_R_station16_20261013_v1/data/ghi_head_pack_new_r_v1
+CAL=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+BASE=$EXP/results/future_ghi_oof_cot_reliability_v1
+TEMP=$EXP/results/future_ghi_oof_cot_temporal_increment_v1
+TEMP_CAL=$EXP/results/future_cot_oof_temporal_increment_v1/temporal_increment_calibration.json
+OUT=$EXP/results/future_cot_ghi_conditional_diagnostic_v1.json
+LOG=$EXP/logs/future_cot_ghi_conditional_diagnostic_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_cot_ghi_conditional_pycache
+python -m py_compile audit_future_cot_ghi_conditional.py
+python - "$PACK/pack_manifest.json" "$ACTUAL_R/pack_manifest.json" "$CAL" "$TEMP_CAL" <<'PY'
+import json,hashlib,sys
+def sha(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''):h.update(b)
+ return h.hexdigest()
+f=json.load(open(sys.argv[1]));r=json.load(open(sys.argv[2]));c=json.load(open(sys.argv[3]));t=json.load(open(sys.argv[4]))
+assert f['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK' and f['train_forecast_oof'] is True and f['forecast_bank_oof_fold_count']==5
+assert f['test_payload_opened'] is False and f['buffer_payload_opened'] is False and f['future_observed_agri_used_as_input'] is False and f['cpp_used_as_input'] is False
+assert r['state']=='COMPLETE' and r['split_id']==f['split_id'] and r['test_payload_opened'] is False
+assert c['forecast_pack_manifest_sha256']==sha(sys.argv[1]) and c['test_payload_opened'] is False and c['buffer_payload_opened'] is False
+assert t['predeclared_cot_pre_gate']=='PASS' and t['test_payload_opened'] is False and t['buffer_payload_opened'] is False
+print('CONDITIONAL_VALIDATION_DIAGNOSTIC_PREFLIGHT_PASS')
+PY
+test ! -e "$OUT"
+python -u audit_future_cot_ghi_conditional.py --forecast-pack "$PACK" --actual-r-pack "$ACTUAL_R" --calibration "$CAL" \
+  --baseline-root "$BASE" --temporal-root "$TEMP" --output "$OUT" --bootstrap 2000
+python - "$OUT" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]));assert d['state']=='COMPLETE_VALIDATION_DIAGNOSTIC_COT_ERROR_VS_GHI_INCREMENT'
+assert d['valid_rows_total']==66590 and d['valid_rows_exact_actual_R']>60000 and d['target_bjt_date_blocks']>=20
+assert d['cpp_used'] is False and d['actual_r_used_only_as_validation_diagnostic_reference'] is True
+assert d['validation_used_for_fitting_or_threshold_selection'] is False
+assert d['test_payload_opened'] is False and d['buffer_payload_opened'] is False and d['future_observed_agri_used_as_inference_input'] is False
+print('CONDITIONAL_COT_GHI_DIAGNOSTIC_COMPLETE',len(d['group_metrics']))
+PY

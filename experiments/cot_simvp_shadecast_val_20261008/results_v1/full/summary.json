@@ -1,0 +1,783 @@
+{
+  "state": "COMPLETE_EXPLORATORY_R_PROXY_VALIDATION_COMPARISON",
+  "experiment": "cot_simvp_shadecast_val_20261008",
+  "split": "hunan_monthly_block_2d_buffer1d_seed42_v1/val_only",
+  "validation_sequences": 3140,
+  "monthly_validation_blocks": 26,
+  "manifest_sha256": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2",
+  "normalization_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+  "checkpoint_sha256": {
+    "vae": "b5a940c943e51c8ccd37f2ab6331bcd21d268d8ed0b23d6538fb9ebec27069d1",
+    "nowcaster": "76dd84a81d9d368e6b6fdf509fc731e501713dc33ee872c312407e3bcb3171ce",
+    "diffusion": "3a4985d17070ade7c79aaac3b4326b846b4f8b920b3e4a4540f9d25b815a7a95",
+    "simvp": "f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4",
+    "R256": "74ddd7b2e78c29716260c9a790e0824659f2976d95b4598c3511c9816e77ad25"
+  },
+  "source_sha256": {
+    "simvp_code": "9273447d357bad92bcf3cd976b65fb4c440187da456fb56d5f36ded349c681eb",
+    "r_arch": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+    "compare_script": "3efd1ae4ed18bc1169a90727f99d2b2541c6a3631bfd9fcb9dcad11eb8632472",
+    "profile_pbs": "3ed42690f6aac49bc12855a591efcf8f5384c37207ce1da443c35317e6030b41",
+    "full_pbs": "91e772c39d2028c0a2b16a02bff4e42e5e3a279bfcc2c6642479bb09b08f9c01"
+  },
+  "r_provenance": {
+    "state": "OLDER_EXPLORATORY_CPP_PAIRED_R_NOT_MONTHLY_R",
+    "purpose": "regional R feasibility and CPP-reference validation only",
+    "source_cpp_physical_qa": "unresolved; CPP is retrieval reference, not independent truth",
+    "normalization_sha256": "f0838fa8883a24e918c508255a0c6846e21b9b8a2ed1ce8bed972fa3fbe62a0e",
+    "excluded_new_val_unique_target_frames_seen_in_r_train": 431,
+    "excluded_new_val_unique_target_frames_seen_in_r_checkpoint_validation": 191,
+    "eligible_new_val_unique_target_frames": 3403,
+    "total_new_val_unique_target_frames": 4025
+  },
+  "methods": [
+    "simvp",
+    "shadecast_nowcaster",
+    "shadecast_diffusion_mean_agri"
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "cot_reference": "same frozen R applied to real future AGRI; retrieval proxy, not physical truth",
+  "diffusion_output": "R applied to the 10-member AGRI ensemble-mean map; official PLMS, 20 steps, eta=0, EMA",
+  "metrics": {
+    "simvp": {
+      "agri_full_spatial_nonleak_validation": {
+        "short_15_60": {
+          "mae_z": 0.13016924781348563,
+          "rmse_z": 0.2330401486431879,
+          "mae_physical_by_channel": [
+            0.02013076451355562,
+            0.02408174463332698,
+            0.023840938763404745,
+            0.0057569372030356,
+            0.017555865386236744,
+            0.014029802799365155,
+            0.9258465801564099,
+            1.1172166622389195,
+            1.3690165697713814,
+            2.516050070279143,
+            2.5446923777375132,
+            2.5479870725267912,
+            1.7978943714940498
+          ],
+          "rmse_physical_by_channel": [
+            0.03583026692678479,
+            0.0439238463584479,
+            0.040133489473136365,
+            0.01501670774720377,
+            0.03031722208163173,
+            0.023721075434599597,
+            1.5374458394502684,
+            1.9193178073100232,
+            2.420265722325043,
+            4.184111511104168,
+            4.249331768063029,
+            4.257796310428169,
+            3.004822776398189
+          ],
+          "pixel_channel_count": 8676967367.0
+        },
+        "long_120_240": {
+          "mae_z": 0.23185333536190553,
+          "rmse_z": 0.4336533161509198,
+          "mae_physical_by_channel": [
+            0.03198222332143958,
+            0.03765496610282823,
+            0.0344709865317103,
+            0.009381850617632161,
+            0.02589303708525201,
+            0.02088619409955898,
+            1.8163399270033938,
+            2.1801586565573348,
+            2.698701717638135,
+            4.998767734406259,
+            5.174263198733952,
+            5.1426684248954055,
+            3.6018417918883863
+          ],
+          "rmse_physical_by_channel": [
+            0.05795544730992352,
+            0.06922496547271402,
+            0.05982877366302467,
+            0.02783966169317926,
+            0.04549898235641543,
+            0.036034216967364446,
+            3.1941256382212546,
+            4.019950365347585,
+            5.091724532112713,
+            8.41097380381709,
+            8.7089846580186,
+            8.676204035062486,
+            6.334997465522526
+          ],
+          "pixel_channel_count": 19621009668.0
+        }
+      },
+      "agri_r_safe_daylight": {
+        "short_15_60": {
+          "mae_z": 0.16665262206499465,
+          "rmse_z": 0.2763773190033339,
+          "mae_physical_by_channel": [
+            0.03202131891437927,
+            0.0389008130788516,
+            0.037223734424540314,
+            0.00890227281402233,
+            0.027740664233916912,
+            0.02231797710992771,
+            0.9417833542840947,
+            1.1284015072732194,
+            1.3922855688560114,
+            2.62833667877492,
+            2.6579464716368015,
+            2.652164612398797,
+            1.8263470897362686
+          ],
+          "rmse_physical_by_channel": [
+            0.04769615463628175,
+            0.05862021672988125,
+            0.053166390251684105,
+            0.02002274990373138,
+            0.04023684631721374,
+            0.03153437934011731,
+            1.5519149156499614,
+            1.9378251279664152,
+            2.44027511306406,
+            4.2822887798820926,
+            4.347301909676468,
+            4.340780132553915,
+            3.0274443909891247
+          ],
+          "pixel_channel_count": 4770887862.0
+        },
+        "long_120_240": {
+          "mae_z": 0.29021934566308594,
+          "rmse_z": 0.4923031729444856,
+          "mae_physical_by_channel": [
+            0.052943588839215586,
+            0.0627316743914598,
+            0.05613052623780824,
+            0.01531005619956236,
+            0.04243460574543246,
+            0.03429030111758391,
+            1.7791349547786082,
+            2.1240133511619326,
+            2.6492129006008995,
+            5.099241036277291,
+            5.274449751367912,
+            5.222678814634689,
+            3.5756229606245595
+          ],
+          "rmse_physical_by_channel": [
+            0.0773722052423897,
+            0.09246664736742544,
+            0.07964480855330655,
+            0.03720855813014539,
+            0.06061314443727321,
+            0.04802434258495833,
+            3.1003139013971053,
+            3.904696616324775,
+            4.958593835459533,
+            8.37687538968817,
+            8.670827707608245,
+            8.618386197438793,
+            6.2224498262644055
+          ],
+          "pixel_channel_count": 10891099323.0
+        }
+      },
+      "cot_proxy_vs_R_real_agri": {
+        "short_15_60": {
+          "log1p_cot_mae": 0.27647617751374176,
+          "log1p_cot_rmse": 0.47306785515836847,
+          "physical_cot_mae": 4.080992853939629,
+          "physical_cot_rmse": 6.4368512306998165,
+          "common_pixels": 366991374.0
+        },
+        "long_120_240": {
+          "log1p_cot_mae": 0.4874092380368965,
+          "log1p_cot_rmse": 0.7999675962338623,
+          "physical_cot_mae": 6.38490974781165,
+          "physical_cot_rmse": 9.801375704441103,
+          "common_pixels": 837776871.0
+        }
+      },
+      "retrieved_thick_proxy": {
+        "short_15_60": {
+          "reference_definition": "R(real future AGRI) >= 10 COT proxy",
+          "miss_rate": 0.06772507160086223,
+          "false_alarm_rate": 0.08482813579817072,
+          "thick_reference_pixels": 192683783.0,
+          "non_thick_reference_pixels": 174307591.0
+        },
+        "long_120_240": {
+          "reference_definition": "R(real future AGRI) >= 10 COT proxy",
+          "miss_rate": 0.11525220202331574,
+          "false_alarm_rate": 0.15734682173813017,
+          "thick_reference_pixels": 431949786.0,
+          "non_thick_reference_pixels": 405827085.0
+        }
+      }
+    },
+    "shadecast_nowcaster": {
+      "agri_full_spatial_nonleak_validation": {
+        "short_15_60": {
+          "mae_z": 0.11124760385413004,
+          "rmse_z": 0.22039062637844975,
+          "mae_physical_by_channel": [
+            0.017256763707829297,
+            0.021184900571162932,
+            0.019789470311274295,
+            0.00480834352674361,
+            0.014855415666346523,
+            0.01164329235259891,
+            0.7465475140236658,
+            0.9212686384195531,
+            1.1715187398873819,
+            2.222714820582833,
+            2.2461982594121683,
+            2.3064833231134316,
+            1.5384311917879643
+          ],
+          "rmse_physical_by_channel": [
+            0.033582849785568435,
+            0.042257541075213234,
+            0.03717806251150831,
+            0.01470573940524486,
+            0.028334986268364212,
+            0.021915279803893538,
+            1.3809151725162168,
+            1.7791379676770818,
+            2.2794265989326163,
+            3.9732985115584376,
+            4.043588408169526,
+            4.0944784556504965,
+            2.8278180125485033
+          ],
+          "pixel_channel_count": 8676967367.0
+        },
+        "long_120_240": {
+          "mae_z": 0.23437484997305003,
+          "rmse_z": 0.4587153168825327,
+          "mae_physical_by_channel": [
+            0.03376212798190482,
+            0.03961708859930005,
+            0.03616390150721042,
+            0.008995817230649267,
+            0.02713120741898859,
+            0.02124372589980086,
+            1.7555681045181597,
+            2.1345732530063164,
+            2.6810943368253706,
+            5.031374277214611,
+            5.232828601911556,
+            5.2408058937834765,
+            3.6210941617600736
+          ],
+          "rmse_physical_by_channel": [
+            0.06325896089830296,
+            0.07583531468411812,
+            0.06594973041566009,
+            0.029094051797719327,
+            0.04993119318794045,
+            0.039161474176075135,
+            3.251631552044146,
+            4.162153245977198,
+            5.299257357241404,
+            8.80549195820454,
+            9.167796220439659,
+            9.210294565313223,
+            6.661114841557933
+          ],
+          "pixel_channel_count": 19621009668.0
+        }
+      },
+      "agri_r_safe_daylight": {
+        "short_15_60": {
+          "mae_z": 0.1455329798791663,
+          "rmse_z": 0.26090044854421357,
+          "mae_physical_by_channel": [
+            0.028261776835333808,
+            0.03567390424926204,
+            0.03266038570763213,
+            0.0077543744492411795,
+            0.024384613976700244,
+            0.019235072509253832,
+            0.7681655884485159,
+            0.9607559520238521,
+            1.1901606044550757,
+            2.3162888154099956,
+            2.328935520844984,
+            2.342600950466392,
+            1.5774159179833729
+          ],
+          "rmse_physical_by_channel": [
+            0.044470480542850625,
+            0.056278346124017116,
+            0.04913023115680859,
+            0.01958633010275057,
+            0.03736346690740831,
+            0.02907594243172327,
+            1.3951475009977952,
+            1.8084519368209766,
+            2.290829298987007,
+            4.04945087505257,
+            4.115167958408729,
+            4.136177574531894,
+            2.8376090549671296
+          ],
+          "pixel_channel_count": 4770887862.0
+        },
+        "long_120_240": {
+          "mae_z": 0.2958668662921268,
+          "rmse_z": 0.5195453401196712,
+          "mae_physical_by_channel": [
+            0.056127410551829196,
+            0.06698592552583124,
+            0.05984797644431515,
+            0.015050416432251324,
+            0.04479127854028005,
+            0.0353676494975077,
+            1.7119574071990535,
+            2.0803541906860925,
+            2.6075532424208148,
+            5.111610062260545,
+            5.303314003813768,
+            5.259681664493844,
+            3.595755730246402
+          ],
+          "rmse_physical_by_channel": [
+            0.08380681717588626,
+            0.10078784031171201,
+            0.08702785338420166,
+            0.03885158887574953,
+            0.0657951328026124,
+            0.05182565917169495,
+            3.1456271309123367,
+            4.030793211143794,
+            5.115213688363682,
+            8.695063804876343,
+            9.040767004498626,
+            9.037022542878514,
+            6.476535528533662
+          ],
+          "pixel_channel_count": 10891099323.0
+        }
+      },
+      "cot_proxy_vs_R_real_agri": {
+        "short_15_60": {
+          "log1p_cot_mae": 0.23963399882271275,
+          "log1p_cot_rmse": 0.4424694988750655,
+          "physical_cot_mae": 3.546300624131324,
+          "physical_cot_rmse": 5.826999493771986,
+          "common_pixels": 366991374.0
+        },
+        "long_120_240": {
+          "log1p_cot_mae": 0.5409504496976992,
+          "log1p_cot_rmse": 0.9138539661223437,
+          "physical_cot_mae": 7.002386682613054,
+          "physical_cot_rmse": 11.072095430285522,
+          "common_pixels": 837776871.0
+        }
+      },
+      "retrieved_thick_proxy": {
+        "short_15_60": {
+          "reference_definition": "R(real future AGRI) >= 10 COT proxy",
+          "miss_rate": 0.05547557678997822,
+          "false_alarm_rate": 0.07196251711148942,
+          "thick_reference_pixels": 192683783.0,
+          "non_thick_reference_pixels": 174307591.0
+        },
+        "long_120_240": {
+          "reference_definition": "R(real future AGRI) >= 10 COT proxy",
+          "miss_rate": 0.14179381721004025,
+          "false_alarm_rate": 0.1557602494668388,
+          "thick_reference_pixels": 431949786.0,
+          "non_thick_reference_pixels": 405827085.0
+        }
+      }
+    },
+    "shadecast_diffusion_mean_agri": {
+      "agri_full_spatial_nonleak_validation": {
+        "short_15_60": {
+          "mae_z": 0.24499369877689392,
+          "rmse_z": 0.37938292774681837,
+          "mae_physical_by_channel": [
+            0.039325101867605926,
+            0.04163625414820829,
+            0.04483606626504555,
+            0.007965122292366233,
+            0.031843058725981505,
+            0.021649934882583103,
+            2.6109136187150934,
+            2.756844446948533,
+            2.711511556322927,
+            4.510492984505833,
+            4.5955815528163,
+            4.456682375596443,
+            3.203158356051068
+          ],
+          "rmse_physical_by_channel": [
+            0.06267581586280148,
+            0.07028838309736976,
+            0.06820835324375772,
+            0.021375780754261765,
+            0.04657940325872913,
+            0.03403349064039138,
+            3.5047922898440276,
+            3.8610880160111525,
+            4.126714333361832,
+            6.366434269802968,
+            6.497217197778379,
+            6.40062410254117,
+            4.722254421479495
+          ],
+          "pixel_channel_count": 8676967367.0
+        },
+        "long_120_240": {
+          "mae_z": 0.41113387821261427,
+          "rmse_z": 0.6454538490681745,
+          "mae_physical_by_channel": [
+            0.06422749589814679,
+            0.06954714763735187,
+            0.07086118873081604,
+            0.012677996619806906,
+            0.04889126446868064,
+            0.034504781077069696,
+            4.115295948567944,
+            4.503297798717686,
+            4.680664153377809,
+            8.076786398601076,
+            8.351032811774882,
+            8.19549752488871,
+            5.790349830153884
+          ],
+          "rmse_physical_by_channel": [
+            0.10053794172479169,
+            0.11427905749565394,
+            0.10747999609296223,
+            0.036289093533203816,
+            0.07064912474675852,
+            0.05269889767425219,
+            5.684194034813961,
+            6.550627729599102,
+            7.413500946556545,
+            11.606749634177156,
+            12.008902626719777,
+            11.918586438389692,
+            8.779166421310682
+          ],
+          "pixel_channel_count": 19621009668.0
+        }
+      },
+      "agri_r_safe_daylight": {
+        "short_15_60": {
+          "mae_z": 0.2920657934392438,
+          "rmse_z": 0.43798541463671714,
+          "mae_physical_by_channel": [
+            0.05661546950861737,
+            0.06438788461042882,
+            0.06464862381867029,
+            0.010750234346468227,
+            0.043659986711750746,
+            0.032275093964069954,
+            2.5765155924262055,
+            2.736791687498303,
+            2.7472752381906402,
+            4.677327865000467,
+            4.757197334428352,
+            4.550836714702727,
+            3.289411975609307
+          ],
+          "rmse_physical_by_channel": [
+            0.08225052194619584,
+            0.09340095201475435,
+            0.08917789498885398,
+            0.02833497360422385,
+            0.05996941327360573,
+            0.04478155780009251,
+            3.461277800238249,
+            3.835334133327045,
+            4.11053001176867,
+            6.456480659463978,
+            6.568064956235401,
+            6.386296530107928,
+            4.696280176149542
+          ],
+          "pixel_channel_count": 4770887862.0
+        },
+        "long_120_240": {
+          "mae_z": 0.48033612334605397,
+          "rmse_z": 0.726011965916116,
+          "mae_physical_by_channel": [
+            0.09237226009411267,
+            0.10654032973210141,
+            0.10029676920888203,
+            0.018368874306342344,
+            0.0647354294334413,
+            0.04997267492216541,
+            3.978410029312086,
+            4.340908193449383,
+            4.590175085776818,
+            8.248782167797305,
+            8.51996289704558,
+            8.282823533878023,
+            5.794616980040219
+          ],
+          "rmse_physical_by_channel": [
+            0.13140537792133905,
+            0.15099584417726294,
+            0.13954324843978239,
+            0.048307600159057495,
+            0.08965904846542347,
+            0.06850794908166959,
+            5.479236977974152,
+            6.318683052720662,
+            7.174516033576662,
+            11.538365065884213,
+            11.907319373473493,
+            11.70463903039875,
+            8.539745551182339
+          ],
+          "pixel_channel_count": 10891099323.0
+        }
+      },
+      "cot_proxy_vs_R_real_agri": {
+        "short_15_60": {
+          "log1p_cot_mae": 0.29514001909922943,
+          "log1p_cot_rmse": 0.4832013354157946,
+          "physical_cot_mae": 4.6640343173903185,
+          "physical_cot_rmse": 7.773943006248381,
+          "common_pixels": 366991374.0
+        },
+        "long_120_240": {
+          "log1p_cot_mae": 0.6252320285857853,
+          "log1p_cot_rmse": 0.9155129094415334,
+          "physical_cot_mae": 8.399082259835758,
+          "physical_cot_rmse": 13.006732581344162,
+          "common_pixels": 837776871.0
+        }
+      },
+      "retrieved_thick_proxy": {
+        "short_15_60": {
+          "reference_definition": "R(real future AGRI) >= 10 COT proxy",
+          "miss_rate": 0.10285492474475655,
+          "false_alarm_rate": 0.043114169365119616,
+          "thick_reference_pixels": 192683783.0,
+          "non_thick_reference_pixels": 174307591.0
+        },
+        "long_120_240": {
+          "reference_definition": "R(real future AGRI) >= 10 COT proxy",
+          "miss_rate": 0.2573376480385616,
+          "false_alarm_rate": 0.0904958327263938,
+          "thick_reference_pixels": 431949786.0,
+          "non_thick_reference_pixels": 405827085.0
+        }
+      }
+    }
+  },
+  "monthly_block_bootstrap": {
+    "short_15_60": {
+      "shadecast_nowcaster": {
+        "agri_full_rmse_z": {
+          "candidate_minus_simvp": -0.012649522264738033,
+          "delta_ci95": [
+            -0.014559403073623257,
+            -0.010841059174472742
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "agri_r_safe_rmse_z": {
+          "candidate_minus_simvp": -0.015476870459120273,
+          "delta_ci95": [
+            -0.01792765972819107,
+            -0.013188891310816268
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "cot_proxy_log1p_rmse": {
+          "candidate_minus_simvp": -0.030598356283303096,
+          "delta_ci95": [
+            -0.043584957534831104,
+            -0.018605895342506205
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "retrieved_thick_proxy_miss_rate": {
+          "candidate_minus_simvp": -0.012249494810884012,
+          "delta_ci95": [
+            -0.020424519237741252,
+            -0.0056831724470515505
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "interpretation": "Paired candidate-minus-SimVP interval over the same sampled monthly blocks; not an independent-truth CI."
+      },
+      "shadecast_diffusion_mean_agri": {
+        "agri_full_rmse_z": {
+          "candidate_minus_simvp": 0.14634277910363058,
+          "delta_ci95": [
+            0.1176379180704528,
+            0.17724012038471637
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "agri_r_safe_rmse_z": {
+          "candidate_minus_simvp": 0.16160809563338324,
+          "delta_ci95": [
+            0.12412721555204509,
+            0.1991665613377761
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "cot_proxy_log1p_rmse": {
+          "candidate_minus_simvp": 0.010133480257426108,
+          "delta_ci95": [
+            -0.020064380683137633,
+            0.04094514973959813
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "retrieved_thick_proxy_miss_rate": {
+          "candidate_minus_simvp": 0.035129853143894316,
+          "delta_ci95": [
+            0.022155800919058943,
+            0.04719076274285058
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "interpretation": "Paired candidate-minus-SimVP interval over the same sampled monthly blocks; not an independent-truth CI."
+      }
+    },
+    "long_120_240": {
+      "shadecast_nowcaster": {
+        "agri_full_rmse_z": {
+          "candidate_minus_simvp": 0.02506200073161302,
+          "delta_ci95": [
+            0.017968584499026465,
+            0.032658346756510595
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "agri_r_safe_rmse_z": {
+          "candidate_minus_simvp": 0.027242167175185572,
+          "delta_ci95": [
+            0.017406484288455395,
+            0.03778108647490542
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "cot_proxy_log1p_rmse": {
+          "candidate_minus_simvp": 0.11388636988848166,
+          "delta_ci95": [
+            0.04870112077682327,
+            0.1859036773013993
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "retrieved_thick_proxy_miss_rate": {
+          "candidate_minus_simvp": 0.026541615186724515,
+          "delta_ci95": [
+            0.00503316063099265,
+            0.04790962055647418
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "interpretation": "Paired candidate-minus-SimVP interval over the same sampled monthly blocks; not an independent-truth CI."
+      },
+      "shadecast_diffusion_mean_agri": {
+        "agri_full_rmse_z": {
+          "candidate_minus_simvp": 0.21180053291725487,
+          "delta_ci95": [
+            0.17442149772996535,
+            0.25120644939232467
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "agri_r_safe_rmse_z": {
+          "candidate_minus_simvp": 0.23370879297163039,
+          "delta_ci95": [
+            0.18157864639414542,
+            0.2866592898913364
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "cot_proxy_log1p_rmse": {
+          "candidate_minus_simvp": 0.11554531320767125,
+          "delta_ci95": [
+            0.04543632957969943,
+            0.186905988200507
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "retrieved_thick_proxy_miss_rate": {
+          "candidate_minus_simvp": 0.14208544601524584,
+          "delta_ci95": [
+            0.11741693282383514,
+            0.16319281354671172
+          ],
+          "bootstrap_draws": 10000,
+          "clusters": 26,
+          "cluster_unit": "monthly validation block"
+        },
+        "interpretation": "Paired candidate-minus-SimVP interval over the same sampled monthly blocks; not an independent-truth CI."
+      }
+    }
+  },
+  "support": "All paired AGRI metrics exclude every target timestamp seen by old R training or checkpoint-selection validation; spatial support is the identical per-channel future QA mask. R-safe AGRI metrics and COT further require all-13-channel validity, day_mask, cosSOZ>cos80, and the same R-disjoint timestamps.",
+  "cpp_used": false,
+  "test_payloads_read": 0,
+  "limitations": [
+    "exploratory validation only; no new monthly R exists",
+    "COT outputs are all from AGRI through an older exploratory R and are not independent COT observations",
+    "CPP quality chain is unresolved and CPP files were not read",
+    "R-train and R-selection-validation timestamp overlaps are excluded from every paired method",
+    "monthly-block bootstrap reflects validation block variability, not R or CPP uncertainty",
+    "no model weights were trained or selected in this run"
+  ]
+}

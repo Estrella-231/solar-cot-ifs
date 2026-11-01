@@ -1,0 +1,222 @@
+{
+  "status": "BOUNDED_TRAIN_VAL_PAYLOAD_SCHEMA_AUDIT",
+  "test_payloads_opened": 0,
+  "samples": {
+    "train": {
+      "time_bjt": "202508010600",
+      "agri": {
+        "keys": [
+          "SAA",
+          "SAZ",
+          "SOA",
+          "SOZ",
+          "clear_sky_aggregation",
+          "clear_sky_model",
+          "clear_sky_timezone",
+          "cosRAA",
+          "cosSOZ",
+          "day_mask",
+          "ghi_clear",
+          "ghi_cs",
+          "ghi_obs",
+          "kc_raw",
+          "kc_target",
+          "metadata",
+          "patch",
+          "perez_enhancement",
+          "station_elevation_source",
+          "sza",
+          "used_pvlib",
+          "valid_mask",
+          "weather_obs"
+        ],
+        "patch": {
+          "shape": [
+            20,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 7.83037394285202e-05,
+          "finite_max": 297.79998779296875
+        },
+        "cosSOZ": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.04736946523189545,
+          "finite_max": 0.05919910594820976
+        },
+        "cosRAA": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": -0.5462145209312439,
+          "finite_max": -0.5315902233123779
+        },
+        "day_mask": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 1.0,
+          "finite_max": 1.0
+        },
+        "r_input_16ch": {
+          "shape": [
+            16,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": -0.5462145209312439,
+          "finite_max": 295.19000244140625
+        }
+      },
+      "cpp_fixed_v2": {
+        "array": {
+          "shape": [
+            4,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.0,
+          "finite_max": 12.706323623657227
+        },
+        "cot_plane": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.0,
+          "finite_max": 6.585295677185059
+        },
+        "finite_0_100_fraction": 1.0,
+        "finite_nan_fraction": 0.0,
+        "effective_mask_pixels": 256
+      }
+    },
+    "val": {
+      "time_bjt": "202508220615",
+      "agri": {
+        "keys": [
+          "SAA",
+          "SAZ",
+          "SOA",
+          "SOZ",
+          "clear_sky_aggregation",
+          "clear_sky_model",
+          "clear_sky_timezone",
+          "cosRAA",
+          "cosSOZ",
+          "day_mask",
+          "ghi_clear",
+          "ghi_cs",
+          "ghi_obs",
+          "kc_raw",
+          "kc_target",
+          "metadata",
+          "patch",
+          "perez_enhancement",
+          "station_elevation_source",
+          "sza",
+          "used_pvlib",
+          "valid_mask",
+          "weather_obs"
+        ],
+        "patch": {
+          "shape": [
+            20,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.0006471127271652222,
+          "finite_max": 297.9700012207031
+        },
+        "cosSOZ": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.04289236292243004,
+          "finite_max": 0.05376030504703522
+        },
+        "cosRAA": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": -0.43653181195259094,
+          "finite_max": -0.4209286868572235
+        },
+        "day_mask": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 1.0,
+          "finite_max": 1.0
+        },
+        "r_input_16ch": {
+          "shape": [
+            16,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": -0.43653181195259094,
+          "finite_max": 293.95001220703125
+        }
+      },
+      "cpp_fixed_v2": {
+        "array": {
+          "shape": [
+            4,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.0,
+          "finite_max": 14.717947959899902
+        },
+        "cot_plane": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "finite_fraction": 1.0,
+          "finite_min": 0.0,
+          "finite_max": 12.262777328491211
+        },
+        "finite_0_100_fraction": 1.0,
+        "finite_nan_fraction": 0.0,
+        "effective_mask_pixels": 256
+      }
+    }
+  }
+}

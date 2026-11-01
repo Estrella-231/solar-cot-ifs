@@ -1,0 +1,65 @@
+{
+  "region": "Hunan",
+  "shape": [
+    256,
+    256
+  ],
+  "crop": {
+    "row_start": 1213,
+    "row_end_exclusive": 1469,
+    "col_start": 2061,
+    "col_end_exclusive": 2317
+  },
+  "pixel_center_extent": {
+    "lon_min": 106.44000244140625,
+    "lon_max": 116.63999938964844,
+    "lat_min": 22.280000686645508,
+    "lat_max": 32.47999954223633
+  },
+  "time_conventions": {
+    "data_filename": "UTC",
+    "aux_filename_and_month": "BJT (UTC+8)",
+    "solar_geometry_time_basis": "nominal UTC from the AGRI filename; obs_time_offset_s retains the actual per-scan-line timing for optional later recomputation"
+  },
+  "requested_start_utc": "2024-04-01 00:00:00",
+  "requested_end_utc_exclusive": null,
+  "selected_first_utc": "20240401000000",
+  "selected_last_utc": "20260725081500",
+  "selected_count": 76173,
+  "source_counts": {
+    "historical": 71526,
+    "realtime": 4647
+  },
+  "source_precedence": "historical *_V0001.HDF, then realtime fill",
+  "channels": "C01-C15,SAA,SAZ,SOA,SOZ,day_mask",
+  "day_mask": "SOZ < 85 degrees",
+  "visible_zeroing": "C01-C06 only where SOZ >= 90 degrees",
+  "aux_schema_version": 2,
+  "data_schema_version": 1,
+  "aux_fields": {
+    "cosSOZ": "cos(SOZ), computed at nominal filename UTC",
+    "cosRAA": "cos(SOA-SAA), computed at nominal filename UTC",
+    "day_mask": "1 where nominal-time SOZ < 85 degrees, else 0",
+    "agri_valid_bits": "uint16 bit0-bit14 for C01-C15; 1 means raw DN and calibrated value passed fill, mask, valid-range and LUT checks before night zeroing",
+    "agri_valid_mask": "uint8 source-calibration validity before visible-channel night zeroing; 1 where all 13 AGRI channels used by the current SimVP input (C01-C06,C09-C15) are valid",
+    "obs_time_offset_s": "actual NOMObsTime scan-line midpoint minus nominal filename UTC, seconds; NaN where source scan time is unavailable",
+    "agri_valid_fraction": "cached mean of agri_valid_mask for indexing",
+    "all_channel_valid_fraction": "cached fraction with all C01-C15 valid",
+    "obs_time_valid_fraction": "cached finite fraction of obs_time_offset_s",
+    "obs_time_offset_min_s": "cached finite minimum observation offset",
+    "obs_time_offset_max_s": "cached finite maximum observation offset",
+    "source_type": "historical or realtime source selected for this frame",
+    "source_hdf": "absolute source HDF path used for this frame",
+    "source_size_bytes": "source file size verified stable during the read",
+    "source_mtime_ns": "source file mtime_ns verified stable during the read",
+    "cal_quality_flag": "raw 15-element CalQualityFlag; no undocumented interpretation",
+    "l1_quality_flag": "raw 15-element L1QualityFlag; no undocumented interpretation",
+    "nav_quality_flag": "raw 15-element NavQualityFlag; no undocumented interpretation",
+    "data_quality": "raw root Data Quality attribute; -1 if unavailable",
+    "incomplete_scans": "raw root Incomplete Scans attribute; -1 if unavailable",
+    "qa_scan_flag": "raw root QA_Scan_Flag attribute; -1 if unavailable",
+    "qa_pixel_flag": "raw root QA_Pixel_Flag attribute; -1 if unavailable",
+    "sun_avoidance_flag": "raw root Sun Avoidance Flag attribute; -1 if unavailable"
+  },
+  "created_bjt": "2026-07-25 08:46:07"
+}

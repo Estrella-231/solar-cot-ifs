@@ -1,0 +1,262 @@
+{
+  "state": "COMPLETE_HIGH_GHI_DESCRIPTIVE",
+  "evaluation_scope": "same-time frozen monthly validation; descriptive subset only",
+  "threshold_GHI_Wm2": 800.0,
+  "threshold_applied_to": "observed 15-minute interval-mean GHI",
+  "unique_rows": 219,
+  "station_rows": {
+    "sili": 124,
+    "zhujia": 95
+  },
+  "seed_station_prediction_pairs": 657,
+  "arm_metrics_equal_station_equal_seed": [
+    {
+      "arm": "M00",
+      "equal_station_equal_seed_RMSE_Wm2": 165.31372505862174,
+      "equal_station_equal_seed_MAE_Wm2": 135.08836149335517,
+      "equal_station_equal_seed_MBE_Wm2": -130.62777815269897
+    },
+    {
+      "arm": "M10",
+      "equal_station_equal_seed_RMSE_Wm2": 168.05399106650364,
+      "equal_station_equal_seed_MAE_Wm2": 135.79993451457946,
+      "equal_station_equal_seed_MBE_Wm2": -131.1953038771003
+    },
+    {
+      "arm": "M01",
+      "equal_station_equal_seed_RMSE_Wm2": 164.7636380934627,
+      "equal_station_equal_seed_MAE_Wm2": 134.19269910120465,
+      "equal_station_equal_seed_MBE_Wm2": -130.7076800075978
+    },
+    {
+      "arm": "M11",
+      "equal_station_equal_seed_RMSE_Wm2": 166.54287620378963,
+      "equal_station_equal_seed_MAE_Wm2": 133.5459845930962,
+      "equal_station_equal_seed_MBE_Wm2": -129.86948885180956
+    }
+  ],
+  "primary_paired_M11_minus_M10_RMSE": {
+    "delta_RMSE_Wm2_candidate_minus_baseline": -1.5111148627140096,
+    "date_block_95pct_CI_delta_Wm2": [
+      -5.5000746317479905,
+      2.0315751479691535
+    ],
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20261020,
+    "bootstrap_block_count": 26,
+    "bootstrap_draws_rejected_for_empty_station_seed_support": 0
+  },
+  "primary_paired_M11_minus_M10_SSE": {
+    "M10_total_SSE_W2m4": 18547219.665237762,
+    "M11_total_SSE_W2m4": 18256579.302638516,
+    "delta_SSE_W2m4_candidate_minus_baseline": -290640.362599249,
+    "relative_SSE_reduction_percent": 1.5670292790243956,
+    "mean_delta_SSE_per_seed_station_row_W2m4": -442.37498112518875,
+    "improved_pairs_delta_SSE_below_zero": 399,
+    "worsened_pairs_delta_SSE_above_zero": 258,
+    "unchanged_pairs": 0
+  },
+  "per_run": {
+    "M00": [
+      {
+        "seed": 42,
+        "station": "sili",
+        "n": 124,
+        "rmse": 164.8482663782907,
+        "mae": 126.01797657628214,
+        "mbe": -121.0223632320281
+      },
+      {
+        "seed": 42,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 167.92816329193684,
+        "mae": 147.39892513877467,
+        "mbe": -143.3493273283306
+      },
+      {
+        "seed": 43,
+        "station": "sili",
+        "n": 124,
+        "rmse": 161.92626099101827,
+        "mae": 120.26493047898815,
+        "mbe": -115.73445424725932
+      },
+      {
+        "seed": 43,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 173.36986793649754,
+        "mae": 153.71064581620067,
+        "mbe": -150.2421206825658
+      },
+      {
+        "seed": 44,
+        "station": "sili",
+        "n": 124,
+        "rmse": 156.75917360275486,
+        "mae": 116.65782805412046,
+        "mbe": -113.25827223254788
+      },
+      {
+        "seed": 44,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 167.05061815123221,
+        "mae": 146.4798628957648,
+        "mbe": -140.16013119346218
+      }
+    ],
+    "M10": [
+      {
+        "seed": 42,
+        "station": "sili",
+        "n": 124,
+        "rmse": 172.2813863039202,
+        "mae": 130.0108133131458,
+        "mbe": -128.39938477546937
+      },
+      {
+        "seed": 42,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 166.36577335976375,
+        "mae": 146.1061099403783,
+        "mbe": -140.77304559004935
+      },
+      {
+        "seed": 43,
+        "station": "sili",
+        "n": 124,
+        "rmse": 166.03143259212035,
+        "mae": 121.65255540417087,
+        "mbe": -115.81532533707157
+      },
+      {
+        "seed": 43,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 171.60478179409301,
+        "mae": 151.3143599660773,
+        "mbe": -146.96124524568256
+      },
+      {
+        "seed": 44,
+        "station": "sili",
+        "n": 124,
+        "rmse": 164.4439686763305,
+        "mae": 117.89862208212575,
+        "mbe": -112.15578386860508
+      },
+      {
+        "seed": 44,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 167.59660367279398,
+        "mae": 147.81714638157894,
+        "mbe": -143.06703844572368
+      }
+    ],
+    "M01": [
+      {
+        "seed": 42,
+        "station": "sili",
+        "n": 124,
+        "rmse": 167.41301413799874,
+        "mae": 126.91742287912676,
+        "mbe": -122.0957764656313
+      },
+      {
+        "seed": 42,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 168.2431497875677,
+        "mae": 147.1842991879112,
+        "mbe": -144.59068153782894
+      },
+      {
+        "seed": 43,
+        "station": "sili",
+        "n": 124,
+        "rmse": 163.09944568763802,
+        "mae": 121.99561137537802,
+        "mbe": -118.58040102066532
+      },
+      {
+        "seed": 43,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 171.12093598603184,
+        "mae": 150.15642764442845,
+        "mbe": -146.6963587710732
+      },
+      {
+        "seed": 44,
+        "station": "sili",
+        "n": 124,
+        "rmse": 158.56498904432559,
+        "mae": 119.04581377583165,
+        "mbe": -116.90496629284274
+      },
+      {
+        "seed": 44,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 160.14029391721428,
+        "mae": 139.8566197445518,
+        "mbe": -135.37789595754523
+      }
+    ],
+    "M11": [
+      {
+        "seed": 42,
+        "station": "sili",
+        "n": 124,
+        "rmse": 169.98293596719986,
+        "mae": 126.43268634426978,
+        "mbe": -123.3854500555223
+      },
+      {
+        "seed": 42,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 162.55488234717592,
+        "mae": 141.13582056949014,
+        "mbe": -138.1607640316612
+      },
+      {
+        "seed": 43,
+        "station": "sili",
+        "n": 124,
+        "rmse": 168.98038445851006,
+        "mae": 124.65762550600114,
+        "mbe": -119.47296659408077
+      },
+      {
+        "seed": 43,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 167.09517142634104,
+        "mae": 145.17723774157074,
+        "mbe": -143.0092844109786
+      },
+      {
+        "seed": 44,
+        "station": "sili",
+        "n": 124,
+        "rmse": 163.65538351229378,
+        "mae": 116.7585680561681,
+        "mbe": -110.7684311405305
+      },
+      {
+        "seed": 44,
+        "station": "zhujia",
+        "n": 95,
+        "rmse": 166.98849951121696,
+        "mae": 147.1139693410773,
+        "mbe": -144.4200368780839
+      }
+    ]
+  },
+  "test_payloads_read": 0
+}

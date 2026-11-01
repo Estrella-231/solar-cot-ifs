@@ -1,0 +1,25 @@
+#!/bin/bash
+# RETIRED: CPP source is not mounted on PBS node22; the full pack must be
+# created on FD-107 with run_pack_fd107.sh, then hash-checked before transfer.
+echo "ERROR: CPP source is unavailable on this PBS filesystem. Use run_pack_fd107.sh on FD-107."
+exit 2
+#PBS -N monthly_R_pack
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/pack.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+mkdir -p "$EXP/logs" "$EXP/data"
+test ! -e "$EXP/data/pack_trainval_v1"
+python -u "$EXP/scripts/pack_station16_cpp_agri.py" \
+  --candidates "$EXP/input/target_candidates_train_val.csv" \
+  --cpp-inventory "$EXP/input/cpp_file_support_by_frame.csv" \
+  --data-root "$DATA" --grid-static "$DATA/grid_static.npz" \
+  --output "$EXP/data/pack_trainval_v1"

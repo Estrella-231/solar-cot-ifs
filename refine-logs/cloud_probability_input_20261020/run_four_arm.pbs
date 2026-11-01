@@ -1,0 +1,45 @@
+#!/bin/bash
+#PBS -N cprob_ghi4
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/logs/four_arm_attempt1.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/cloud_probability_input_20261020
+PACK=$ROOT/experiments/cot_interval_history_20261015_v1/data_attempt2
+RBANK=$ROOT/experiments/r_geometry_downstream_ghi_20261016/data/paired_r_cot_bank_v1
+PBANK=$ROOT/experiments/monthly_R_station16_20261013_v1/results/conservative_gate_cot_bank_20261015_attempt1
+POLICY=$EXP/GHI_STATION_DAY_EXCLUSIONS_20261019.json
+OUT=$EXP/results/four_arm_paired_v1_attempt1
+test ! -e "$OUT"
+python - <<'PY'
+import json
+root='/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments'
+checks=[
+ (root+'/cot_interval_history_20261015_v1/data_attempt2/pack_manifest.json','state','COMPLETE'),
+ (root+'/r_geometry_downstream_ghi_20261016/data/paired_r_cot_bank_v1/bank_manifest.json','state','COMPLETE_PAIRED_R_COT_HISTORY_BANK'),
+ (root+'/monthly_R_station16_20261013_v1/results/conservative_gate_cot_bank_20261015_attempt1/bank_manifest.json','state','COMPLETE'),
+]
+for p,k,v in checks:
+ m=json.load(open(p)); assert m.get(k)==v,(p,m.get(k))
+assert json.load(open(checks[0][0]))['test_payload_opened'] is False
+assert json.load(open(checks[1][0]))['test_payloads_read']==0
+assert json.load(open(checks[2][0]))['test_payload_opened'] is False
+assert json.load(open(checks[0][0]))['split_id']=='hunan_monthly_block_2d_buffer1d_seed42_v1'
+print('SOURCE_MANIFESTS_PASS')
+PY
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+cd "$ROOT"
+python -u "$EXP/train_four_arm.py" \
+  --pack "$PACK" --r-bank "$RBANK" --p-bank "$PBANK" \
+  --exclusion-policy "$POLICY" --output "$OUT" --batch 1792 --epochs 30 --seeds 42 43 44 --stations sili zhujia
+echo FOUR_ARM_PAIRED_GHI_COMPLETE

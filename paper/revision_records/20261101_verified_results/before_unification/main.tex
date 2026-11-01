@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,tabularx,placeins,url}
+\setlength{\emergencystretch}{2em}
+\newcommand{\pending}[1]{\textit{[To be completed: #1]}}
+\newcommand{\figslot}[3]{%
+\begin{figure}[!htbp]\centering
+\fbox{\begin{minipage}[c][32mm][c]{0.92\linewidth}\centering #1\end{minipage}}
+\caption{#2}\label{#3}\end{figure}}
+\title{Cloud Optical Thickness for Satellite-Based Solar Irradiance Estimation and Short-Term Forecasting}
+\author{}\date{}
+\begin{document}
+\begin{center}\LARGE\bfseries
+Cloud Optical Thickness for Satellite-Based Solar Irradiance Estimation and Short-Term Forecasting
+\end{center}
+\begin{abstract}
+Cloud optical thickness (COT) characterizes the attenuation of solar radiation by clouds. This study investigates whether including retrieved COT improves global horizontal irradiance (GHI) estimation when multispectral satellite imagery is already available. A retrieval model trained using satellite cloud products generates local COT fields, which are combined with AGRI imagery and solar geometry to estimate 15-minute mean GHI. Models with and without COT are compared at three stations in Hubei and two in Hunan, with separate training for each region. We evaluate overall errors and their dependence on cloud optical thickness, and examine cloud-passage and growth--dissipation events. We then apply the irradiance models to cloud images predicted 15--240 minutes ahead. Controlled input substitutions assess how errors in these images affect retrieved COT and GHI forecasts. On the regional validation sets, adding COT reduces single-image GHI RMSE from 77.29 to 69.14 W\,m$^{-2}$ in Hubei (10.54\%) and from 108.18 to 103.99 W\,m$^{-2}$ in Hunan (3.87\%). The largest reduction in the Hubei reference-covered subsets occurs for thick clouds, although coverage is limited. With independently trained Hunan DyDiff imagery and three-frame irradiance models, predicted COT reduces 15--240 min GHI RMSE from 124.96 to 122.79 W\,m$^{-2}$ (1.74\%). The analysis examines when COT improves irradiance estimates and how cloud-image prediction errors affect this improvement in forecasting.
+\end{abstract}
+
+\section{Introduction}
+Clouds modulate the solar radiation reaching the surface, and changes in their location and optical thickness can produce substantial variability at a ground station. Geostationary multispectral imagery provides frequent observations of these changes and underpins satellite estimates of surface solar irradiance \cite{huang2019}. Cloud optical thickness (COT) describes extinction through a cloud column. Its retrieval from reflected solar radiation has a physical basis, although the inverse problem can be ambiguous for optically thin water clouds \cite{nakajima1990}. These properties make COT a potentially useful representation for irradiance estimation.
+
+Satellite irradiance methods have long represented cloud attenuation explicitly. Early cloud-index methods relate observed reflectance to clear-surface and cloudy references \cite{cano1986}; Heliosat-2 combines calibrated satellite observations with atmospheric-optics modelling \cite{rigollier2004}. These indices are distinct from COT. Physical approaches instead use retrieved cloud properties in radiative-transfer calculations or their approximations. Takenaka et al. developed a neural-network approximation of radiative transfer for surface radiation estimation \cite{takenaka2011}, while Heliosat-4 separates clear-sky irradiance and cloud extinction using lookup tables and satellite cloud properties \cite{qu2017}. These studies establish the role of cloud optical properties in radiation estimation; they do not determine how much an explicit COT input adds to a model that already receives multispectral imagery.
+
+Data-driven retrievals learn spectral, spatial, and temporal relationships with surface irradiance. Chen et al. examined spectral selection for global and direct irradiance estimation \cite{chen2023}. STARNet incorporates neighbouring spatial and temporal information from FY-4A \cite{song2025}, and Schuurman and Meyer combined satellite-product emulation with ground-observation fine-tuning for Meteosat irradiance retrieval \cite{schuurman2025}. Cloud-property information can also be learned separately: Xia et al. retrieved nighttime COT from FY-4B for single-layer non-precipitating clouds \cite{xia2025}. In a hybrid irradiance approach, Liao and Coimbra compared CNNs with and without SCOPE-derived features and extended the approach to short-term forecasting \cite{liao2024}. Together, these approaches motivate testing a cloud-supervised representation alongside the original imagery. In our case, COT is derived from those same observations; it introduces cloud-property supervision without adding an independent measurement.
+
+The contribution of this representation may depend on cloud conditions. Cloud optical properties and aerosols affect radiation errors \cite{pap2024}, while satellite viewing geometry and the displacement between a cloud and its surface shadow complicate comparisons with station measurements \cite{wiltink2025}. Recent FY-4B forecasting work also employs weather-dependent correction of satellite-to-station irradiance differences \cite{shen2026fy4b}. Overall error alone therefore gives an incomplete description of performance. We compare the effect of COT within fixed optical-thickness ranges and examine continuous cloud-passage, growth, and dissipation events. These comparisons link an aggregate gain to the cloud conditions and irradiance variations in which it occurs.
+
+Forecasting introduces uncertainty in the future cloud field. Sirch et al. extrapolated cloud optical thickness for direct-normal irradiance nowcasting \cite{sirch2017}; Miller et al. combined cloud advection, cloud properties, and shadow geometry in solar irradiance forecasts \cite{miller2018}. Learned approaches predict different intermediate quantities: IrradianceNet forecasts satellite-derived irradiance fields \cite{nielsen2021}, Chen et al. use a chain of deep-learning models for satellite-based intraday forecasting \cite{chen2024}, and Cloud-FNO predicts cloud physical properties \cite{zhang2026}. These approaches demonstrate several ways to connect cloud evolution and radiation, with different forecast targets and reference data.
+
+In our image-extrapolation chain, the retrieval and irradiance models receive predicted imagery. Errors in cloud position, boundaries, or growth and decay can reach GHI both through the image input and through retrieved COT. Comparisons of satellite nowcasting methods show that numerical accuracy, spatial appearance, and performance under different sky conditions need not favour the same model \cite{cui2024}. We therefore assess the effect of image prediction through paired input substitutions and aligned cloud and irradiance trajectories, alongside overall error statistics, to examine complementary aspects of forecast performance \cite{yang2020}.
+
+We address three questions: (1) how much does local COT improve GHI estimation beyond AGRI imagery and solar geometry; (2) under which optical-thickness conditions and cloud events does the improvement occur; and (3) how much of that benefit remains in 15--240 min forecasts, and how is it constrained by cloud-image extrapolation errors? Hubei provides the primary station comparisons, while independently trained Hunan models provide complementary regional evidence. The work focuses on the contribution of cloud-property representation and its error propagation; developing an improved image-extrapolation model is a subsequent research question.
+
+\section{Study area and data}
+\subsection{Regions, satellite observations, and cloud reference}
+The primary region contains Niushou, Wangzhai, and Mizhuang in Hubei. Sili and Zhujia in Hunan form the complementary region. Models and normalization are fitted independently within each region. Regional results are reported separately because station observations have different native temporal sampling.
+
+The AGRI inputs comprise thirteen channels, C01--C06 and C09--C15, with region-specific geolocation. The same station indices register the imagery, geometry, and COT fields. The COT retriever reads a $16\times16$ patch; the irradiance model uses its central $3\times3$ neighbourhood. CPP provides COT and cloud-phase information for retrieval supervision and cloud-condition analysis. It is a satellite retrieval reference, with uncertainty and incomplete temporal coverage. Its availability does not determine inclusion in the main GHI evaluation.
+
+\pending{Table 1: final station coordinates, observation periods, native sampling, and numbers of dates and samples in each partition.}
+\begin{table}[!htbp]\centering\small
+\caption{Regional observations and temporal partitions. Coordinates, periods, native sampling, and partition counts will be filled from the final data summary.}\label{tab:data}
+\begin{tabularx}{\linewidth}{lXX}\toprule
+Region & Stations & Observation and partition details\\\midrule
+Hubei & Niushou; Wangzhai; Mizhuang & \pending{coordinates, periods, sampling, counts}\\
+Hunan & Sili; Zhujia & \pending{coordinates, periods, sampling, counts}\\\bottomrule
+\end{tabularx}\end{table}
+\figslot{Station map and observation coverage}{Study regions and temporal coverage of AGRI, station GHI, and CPP reference observations. Coverage is shown separately from the span between the first and last records.}{fig:regions}
+
+\subsection{Irradiance targets and solar geometry}
+Let $\tau$ denote the end of a 15-minute target interval. The target is the interval-mean GHI, $\bar G_{s,\tau}$, at station $s$. Hunan five-minute interval-end records are aggregated as
+\begin{equation}
+\bar G_{s,\tau}=\frac13\sum_{j=0}^{2}G^{(5)}_{s,\tau-5j\,\mathrm{min}}.
+\label{eq:interval}
+\end{equation}
+Hubei labels are formed from the valid one-minute bins in the same right-closed interval; incomplete windows are excluded. The clear-sky irradiance $\bar G^{cs}_{s,\tau}$ is averaged over that interval using the Ineichen--Perez model \cite{ineichen,pvlibclear}. The learning target and reconstruction are
+\begin{equation}
+k_{s,\tau}=\frac{\bar G_{s,\tau}}{\bar G^{cs}_{s,\tau}},\qquad
+\widehat G_{s,\tau}=\widehat k_{s,\tau}\bar G^{cs}_{s,\tau}.
+\label{eq:kt}
+\end{equation}
+The clear-sky index is not capped at one. GHI observations serve as labels, not model inputs. Solar geometry is computed from UTC, latitude, and longitude and registered with each image. The cosine of solar zenith and the cosine of the solar--viewing relative azimuth provide the geometric inputs; the retriever also receives a daytime indicator.
+
+\subsection{Temporal sampling}
+Training, validation, and final evaluation dates are separated at the date-block level to reduce dependence between fitting and evaluation samples \cite{roberts2017}. For Hunan, sufficiently covered months reserve separate two-day blocks for validation and testing, with one-day buffers; months with fewer than twenty eligible days contribute only training data. Each forecasting example contains eight historical and sixteen future frames at 15-minute intervals, all within the same partition. Normalization is fitted on training data alone. \pending{Complete Table 1 with the fixed Hubei partition and the final evaluated cohorts.}
+
+\section{Methods}
+\subsection{Supervised COT retrieval}
+For imagery $A_\tau$ and geometry $g_\tau$, the retriever produces a nonnegative log-COT field,
+\begin{equation}
+L_\tau=R_\theta(A_\tau,g_\tau),\qquad C_\tau=\exp(L_\tau)-1.
+\label{eq:retrieval}
+\end{equation}
+The retriever follows the U-Net encoder--decoder architecture \cite{unet2015}, with two downsampling stages, feature widths 32, 64, and 128, and skip-connected upsampling to the original $16\times16$ grid. Convolutional blocks use batch normalization and SiLU; the final softplus produces nonnegative $L_\tau$. It is trained against $\log(1+C^{CPP})$ with a masked Huber objective \cite{huber1964},
+\begin{equation}
+\mathcal L_R=\frac{\sum_{i,p}m_{i,p}\rho_{0.1}\!\left(L_{i,p}-\log(1+C^{CPP}_{i,p})\right)}{\sum_{i,p}m_{i,p}},
+\label{eq:retrieval-loss}
+\end{equation}
+where $m$ identifies valid common input and reference pixels. Valid zero-COT references are retained. Training normalization is retained at inference; inference validity uses available inputs and geometry, without requiring a future CPP reference. Reference-quality criteria apply to supervised training and reference-based evaluation. The retrieval-model parameters remain fixed during irradiance-model training and forecasting.
+
+\subsection{Irradiance estimation using local COT fields}
+Let $\mathcal P_s$ select the station-centred $3\times3$ field. AGRI channels and log-COT are standardized with training statistics:
+\begin{equation}
+X_{s,\tau,c}=\frac{\mathcal P_sA_{\tau,c}-\mu_c}{\sigma_c},\qquad
+Z_{s,\tau}=\frac{\mathcal P_sL_\tau-\mu_L}{\sigma_L}.
+\label{eq:standardization}
+\end{equation}
+The model receives all nine COT values in their original spatial arrangement, preserving local variation and differences in magnitude between samples. The two irradiance models are
+\begin{equation}
+\widehat k^A_{s,\tau}=H_A(X_{s,\tau},g_{s,\tau}),\qquad
+\widehat k^{AC}_{s,\tau}=H_{AC}(X_{s,\tau},g_{s,\tau},Z_{s,\tau}).
+\label{eq:heads}
+\end{equation}
+The encoded local features are used to predict the station clear-sky index. The main comparison estimates 15-minute mean GHI from one image acquired at the end of that interval. A three-frame configuration additionally uses $\tau-30$, $\tau-15$, and $\tau$ minutes and is treated separately. Input frame count is held fixed within each COT comparison.
+
+The models minimize physical GHI mean squared error, scaled for numerical convenience:
+\begin{equation}
+\mathcal L_H=\frac1N\sum_i\left[\frac{\widehat k_i\bar G^{cs}_i-\bar G_i}{1000\ \mathrm{W\,m^{-2}}}\right]^2.
+\label{eq:ghi-loss}
+\end{equation}
+Paired training uses the same examples, random seeds, sample order, optimization budget, and selection rule. Table~\ref{tab:training} specifies the final architecture and settings for each evaluated configuration.
+\begin{table}[!htbp]\centering\small
+\caption{Model configurations and training settings, reported separately for the main single-frame comparison and the temporal extension.}\label{tab:training}
+\begin{tabularx}{\linewidth}{lXX}\toprule
+Component & Fixed input definition & Settings to report\\\midrule
+COT retriever & 13 AGRI + 3 geometry/daytime channels; $16\times16$ & \pending{normalization, optimizer, batch, epochs, selection}\\
+GHI estimator & $3\times3$ AGRI + geometry, with/without COT & \pending{widths, parameters, frame count, batch, updates}\\
+Image extrapolator & 8 historical frames; 16 future frames & \pending{regional model, normalization, checkpoint selection}\\\bottomrule
+\end{tabularx}\end{table}
+
+\subsection{Short-term forecasting}
+With initialization $t$ defined by the last historical image, a fixed image predictor $S_\psi$ generates
+\begin{equation}
+\widehat A_{t+k\Delta}=S_\psi(A_{t-7\Delta:t},g)_{k},\qquad
+\widehat C_{t+k\Delta}=\exp R_\theta(\widehat A_{t+k\Delta},g_{t+k\Delta})-1,
+\label{eq:forecast}
+\end{equation}
+for $k=1,\ldots,16$ and $\Delta=15$ min. SimVP serves as the fixed baseline \cite{simvp,simvpv2}. The complementary Hunan experiment also uses a diffusion-based image predictor, DyDiff, trained independently on Hunan data. We use the exponential-moving-average weights after 150 epochs and one forecast member generated with 25 sampling steps. Both image predictors use the same downstream comparisons. Future solar geometry is deterministic. Future observed imagery and CPP are excluded from forecasting inputs.
+
+We apply the two irradiance models trained on observed imagery to forecast imagery, keeping their parameters fixed, to determine whether the benefit of including COT persists in forecasting. Models trained specifically on forecast imagery are evaluated separately. For the three-frame configuration, +15 min includes two known historical frames and +30 min includes one; results for leads $\geq45$ min separately assess inputs consisting entirely of forecast imagery.
+\figslot{Observed AGRI $\rightarrow$ retrieved COT $\rightarrow$ GHI\\[4pt]
+Historical AGRI $\rightarrow$ forecast AGRI $\rightarrow$ forecast COT $\rightarrow$ GHI}{COT-assisted estimation and forecasting. The paired GHI inputs differ only in the inclusion of a local COT representation. The forecasting branch preserves the distinction between historical observations and predicted future fields.}{fig:framework}
+
+\section{Experimental design}
+\subsection{Evaluation of the contribution of COT}
+Each comparison uses identical station, initialization where applicable, target time, GHI label, and valid daytime mask. Results are computed for each station and random seed before equal-weight averaging within region. We report physical RMSE, MAE, bias, and the relative RMSE reduction
+\begin{equation}
+\eta=100\frac{\mathrm{RMSE}_{A}-\mathrm{RMSE}_{AC}}{\mathrm{RMSE}_{A}}.
+\label{eq:gain}
+\end{equation}
+Uncertainty is evaluated by paired resampling of date blocks, retaining overlapping forecast records within the same resampled block. This follows the principle of resampling groups rather than treating correlated records as independent observations \cite{field2007}. The final tables identify the evaluation partition and date count. Additional image features with matched irradiance-model capacity and features extracted from the fixed COT retrieval model are evaluated to distinguish the effects of model capacity and cloud-property supervision.
+
+\subsection{Cloud conditions and continuous events}
+GHI errors are stratified by station-centre CPP reference COT using fixed near-zero, thin, moderate, and thick bins: $[0,0.1)$, $[0.1,5)$, $[5,30)$, and $[30,100]$. All models are compared on the same samples with valid CPP references within each bin; the numbers of samples and dates are reported. The overall GHI evaluation also includes samples without CPP observations. Solar-geometry and regional stratification test whether an apparent cloud-thickness pattern reflects other conditions.
+
+Continuous cases combine actual AGRI composites, retrieved and reference COT, and interval-mean GHI on a common time axis. Event definitions use cloud evolution and data completeness rather than improvement by one model. Cloud passage, growth, and dissipation are examined together with cases where COT does not improve GHI. These cases interpret the aggregate results rather than replace them.
+
+\subsection{Effects of cloud-image prediction errors on COT and GHI}
+We keep the retrieval model and the irradiance model with COT unchanged and evaluate all input combinations on the same samples. Let $A^o$ and $A^f$ denote observed and forecast imagery, and let $C^o=R_C(A^o,g)$ and $C^f=R_C(A^f,g)$ denote the corresponding physical COT fields from the same retriever. The four input combinations $(A^o,C^o)$, $(A^f,C^o)$, $(A^o,C^f)$, and $(A^f,C^f)$ isolate sensitivity to the image and COT input routes. The first three use future observations and serve only as offline mechanism experiments.
+
+All comparisons use the same stations, forecast initialization times, target intervals, observations, valid samples, and sample weights. The preprocessing, including log-COT standardization, is identical for every input combination. In the three-frame configuration, known historical positions remain identical; only future positions are replaced. For $a,b\in\{0,1\}$, define $E_{ab}$ as mean squared GHI error, with 0 denoting observed-derived inputs and 1 forecast-derived inputs. Then
+\begin{equation}
+E_{11}-E_{00}=\underbrace{(E_{10}-E_{00})}_{D_A}
++\underbrace{(E_{01}-E_{00})}_{D_C}
++\underbrace{(E_{11}-E_{10}-E_{01}+E_{00})}_{I}.
+\label{eq:propagation}
+\end{equation}
+The interaction $I$ allows the GHI response to joint input errors to differ from the sum of separate replacements. This is an exact decomposition of prediction-error sensitivity, not a decomposition into independent physical causes. All terms are evaluated as MSE on the same samples. COT trajectory errors, cloud-boundary displacement, and timing of station irradiance changes provide physical interpretation of the replacement contrasts.
+
+To determine whether image prediction errors reduce the improvement from COT, we also evaluate the irradiance model without COT on observed and forecast imagery using the same samples. Let its MSEs be $B_o$ and $B_f$. The COT advantages are $V_o=B_o-E_{00}$ and $V_f=B_f-E_{11}$, so
+\begin{equation}
+V_o-V_f=(E_{11}-E_{00})-(B_f-B_o).
+\label{eq:value-loss}
+\end{equation}
+A positive value indicates that replacing observed imagery with forecast imagery reduces the MSE advantage of the model with COT; a negative value indicates that this advantage increases. The sign is evaluated before interpreting any reduction in forecasting benefit.
+
+\FloatBarrier
+\section{Results}
+\subsection{Evaluation of retrieved COT}
+We first compare retrieved COT with CPP references at the station pixel and surrounding neighbourhood, and examine how retrieval errors vary with optical thickness. \pending{Insert regional RMSE, MAE, bias, thick-cloud detection, and the common reference sample/date counts. Describe both agreement and systematic residuals.}
+\figslot{COT density comparisons and thickness-dependent bias}{COT retrieval quality and its dependence on reference optical thickness. Regional panels use their respective common reference samples.}{fig:retrieval}
+
+\subsection{Effect of COT on irradiance estimation}
+Adding COT improves single-image GHI estimation in both regional validation sets (Fig.~\ref{fig:gain}). In Hubei, the station- and seed-averaged RMSE decreases from 77.285 to 69.142 W\,m$^{-2}$, a reduction of 10.54\%. The paired difference is $-8.143$ W\,m$^{-2}$ (95\% two-day-block interval: $[-14.999,-3.361]$). MAE decreases from 56.616 to 46.723 W\,m$^{-2}$, and positive bias decreases from 24.799 to 13.236 W\,m$^{-2}$. The evaluation contains 2,195 station--time records in ten two-day blocks, with three random initializations. All three station means improve: Niushou, 76.851 to 63.978; Wangzhai, 70.539 to 63.137; and Mizhuang, 84.466 to 80.312 W\,m$^{-2}$.
+
+The complementary Hunan single-image comparison contains 4,440 station--time records across 51 target dates. RMSE decreases from 108.181 to 103.995 W\,m$^{-2}$ (3.87\%), with a paired difference of $-4.187$ W\,m$^{-2}$ and a 95\% date-block interval of $[-6.652,-1.855]$. Sili improves from 103.558 to 99.877 W\,m$^{-2}$ and Zhujia from 112.805 to 108.113 W\,m$^{-2}$. These independently trained regional comparisons indicate a repeatable benefit for the evaluated configurations, without requiring equal absolute errors or equal percentage gains between regions.
+
+The Hunan representation controls provide context for this improvement (Table~\ref{tab:controls}). Additional image features yield an RMSE of 108.014 W\,m$^{-2}$, close to the baseline, whereas retrieval-model features yield 103.456 W\,m$^{-2}$, comparable to explicit COT. Thus, cloud-supervised features can be useful without expressing that information solely as optical thickness. The result supports COT as a useful representation in this setting, but does not establish that explicit thickness is uniquely responsible for the entire gain. In the Hubei cloud-probability comparison, continuous cloud probability alone yields 74.053 W\,m$^{-2}$; combining probability with COT yields 68.815 W\,m$^{-2}$. Its additional reduction relative to COT alone is 0.47\%, with a 95\% interval of $[-1.23,2.62]$\%, providing no clear overall incremental benefit.
+\begin{table}[!htbp]\centering\small
+\caption{Hunan single-image representation controls on the same 4,440 validation records. RMSE is averaged equally across two stations and three initializations.}\label{tab:controls}
+\begin{tabularx}{\linewidth}{Xrr}\toprule
+Input representation & RMSE (W\,m$^{-2}$) & Reduction (\%)\\\midrule
+AGRI + solar geometry & 108.181 & ---\\
+Additional image features & 108.014 & 0.15\\
+Explicit COT & 103.995 & 3.87\\
+Retrieval-model features & 103.456 & 4.37\\\bottomrule
+\end{tabularx}\end{table}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{figures/verified_results_20261101/estimation_station.pdf}
+\caption{Station-wise GHI estimation errors using observed imagery, averaged over three initializations. Hubei uses 2,195 records; Hunan uses 4,440. The regional samples and models are independent.}\label{fig:gain}\end{figure}
+
+\subsection{Dependence on optical thickness and cloud conditions}
+The Hubei reference-covered subsets show a marked dependence on optical thickness (Fig.~\ref{fig:thickness}). For near-zero, thin, moderate, and thick reference COT, RMSE decreases from 88.704 to 85.145, from 116.483 to 106.130, from 77.587 to 75.281, and from 57.139 to 34.527 W\,m$^{-2}$, respectively. The corresponding reductions are 4.01\%, 8.89\%, 2.97\%, and 39.57\%. The thick-cloud subset contains 173 station--time records in four two-day blocks; its 95\% reduction interval is $[28.04,50.05]$\%. Near-zero, thin, and moderate subsets contain 268, 71, and 211 records across six, three, and five blocks, respectively, and their reduction intervals include zero. The overall GHI result includes records without CPP and therefore is not a weighted average of these four subsets.
+
+In the thick-cloud subset, mean bias decreases from $+36.097$ to $+6.093$ W\,m$^{-2}$, consistent with correcting excessive transmitted irradiance under strong attenuation. This does not imply a universal downward correction: moderate-cloud bias changes from $+14.490$ to $-11.023$ W\,m$^{-2}$, while near-zero bias increases from $+6.218$ to $+14.284$ W\,m$^{-2}$. At Mizhuang, near-zero-COT RMSE increases from 114.775 to 118.948 W\,m$^{-2}$. The strongest aggregate improvement therefore coexists with adverse responses in particular conditions and stations. The non-monotonic reductions and limited reference coverage preclude a general claim that benefit increases continuously with thickness.
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{figures/verified_results_20261101/thickness.pdf}
+\caption{Hubei GHI errors (left) and relative RMSE reductions after adding COT (right), conditional on station-centre CPP COT. Error bars show 95\% paired two-day-block intervals. Counts denote station--time records and date blocks, not independent pixels.}\label{fig:thickness}\end{figure}
+
+\subsection{Cloud events and irradiance response}
+\pending{Describe a continuous cloud-passage or growth/decay event: cloud location, COT change, measured GHI change, and the corresponding difference between irradiance models. Include a contrasting event with little gain or an adverse response.}
+\figslot{AGRI and COT sequence above aligned GHI and COT trajectories}{Cloud evolution and station irradiance response. All curves use the same 15-minute target intervals. Cases illustrate both effective and ineffective use of the COT representation.}{fig:events}
+
+\subsection{Effect of COT on forecasting and propagation of image prediction errors}
+Predicted COT retains a positive effect when the Hunan irradiance models, trained on observed imagery, are applied without parameter updates to independently trained Hunan DyDiff forecasts. Across 63,480 common GHI records and 51 target dates, the station- and seed-averaged RMSE decreases from 124.958 to 122.788 W\,m$^{-2}$ (1.74\%). The paired difference is $-2.171$ W\,m$^{-2}$, with a 95\% date-block interval of $[-3.685,-0.735]$. Sili improves from 137.222 to 133.815 W\,m$^{-2}$ (2.48\%) and Zhujia from 112.695 to 111.761 W\,m$^{-2}$ (0.83\%); all six station--initialization pairs improve. These are validation results for fixed irradiance models, rather than results from forecast-adapted retraining.
+
+For +45 to +240 min, all three input frames are predicted. On the corresponding 55,673 records, RMSE decreases from 128.555 to 126.308 W\,m$^{-2}$ (1.75\%), with a paired interval of $[-3.776,-0.808]$ W\,m$^{-2}$. The benefit therefore persists beyond the first two leads, which include observed historical frames. Using the same samples and irradiance models with SimVP imagery gives 127.421 versus 125.340 W\,m$^{-2}$ (1.63\%). The lead-dependent contrasts are shown in Fig.~\ref{fig:forecast}. Although DyDiff has lower point RMSEs, paired intervals for its difference from SimVP include zero for both irradiance models; this comparison does not establish superiority of one image predictor.
+
+A controlled COT replacement indicates that errors in predicted COT still limit the accuracy of the COT-assisted forecast. Keeping the DyDiff AGRI input and the COT-assisted irradiance model fixed, replacing predicted COT at future positions with COT retrieved from observed future imagery decreases RMSE from 122.788 to 108.941 W\,m$^{-2}$; the paired difference is $-13.847$ W\,m$^{-2}$ (95\% interval: $[-17.582,-10.636]$). Conversely, replacing future COT with its last observed value increases RMSE to 129.516 W\,m$^{-2}$, a paired increase of 6.728 W\,m$^{-2}$ ($[3.587,10.035]$). The former is an offline observed-input diagnostic, not an attainable forecast score; together, the contrasts indicate that predicted COT carries useful evolution information while retaining substantial error.
+
+\pending{Complete the aligned COT trajectories and all four input combinations before assigning the image-route, COT-route, and interaction terms in Eq.~\ref{eq:propagation}.}
+
+\pending{Use the aligned cloud fields and GHI trajectories to identify whether cloud displacement, weakened optical-thickness evolution, or delayed growth/decay accounts for the error pattern. State the supported role of image extrapolation in limiting the forecast gain.}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{figures/verified_results_20261101/forecast_lead.pdf}
+\caption{Lead-dependent change in Hunan GHI RMSE after adding predicted COT for two image predictors. Each point averages three random-seed-specific RMSE differences at the same station and lead; negative values favour COT. Curves are validation point estimates without lead-wise confidence intervals.}\label{fig:forecast}\end{figure}
+
+\FloatBarrier
+\section{Discussion}
+\subsection{Contribution of COT to irradiance estimation}
+COT describes optical attenuation by clouds and provides a physically interpretable input to the irradiance model. Training the retrieval model against cloud products may help the irradiance model use cloud information that is implicit in the spectral inputs. Comparisons with additional image features and retrieval-model features assess how much of the improvement is associated with increased model capacity or cloud-property supervision. The Hunan retrieval-feature contrast suggests that cloud-product supervision contributes a useful representation, while the Hubei thickness analysis identifies a substantial correction of positive bias in the sampled thick-cloud conditions. These findings support a practical value of COT without demonstrating that a scalar optical-thickness field contains uniquely useful information beyond all alternative cloud-supervised features.
+
+Thickness-dependent gains should be interpreted through both attenuation and irradiance variability. Radiative-transfer-based estimation links optical-property errors to surface fluxes, while unresolved broken clouds complicate agreement with point observations \cite{takenaka2011}. Cloud edges, diffuse radiation, and changes during a 15-minute interval further complicate the mapping to station GHI. Cloud-shadow displacement and viewing parallax can also change which cloud pixels are relevant to a station \cite{miller2018,wiltink2025}. The continuous cases connect these processes to the conditions in which the added representation succeeds or fails.
+
+\subsection{Cloud-image extrapolation as a constraint on forecasting benefit}
+Errors in predicted cloud images can affect GHI directly through the spectral and spatial inputs and indirectly through the COT retrieved from those images. Errors in cloud position can change the location and timing of attenuation at the station. Spatial smoothing can reduce local COT contrasts, while errors in cloud growth and dissipation can suppress or delay changes in optical thickness. Prior nowcasting studies distinguish spatial appearance and numerical errors, and identify difficulties in representing cloud evolution \cite{chen2024,cui2024}. If the COT-related improvement is smaller with forecast imagery, these processes could help explain the reduction.
+
+The input-replacement results distinguish two questions: whether COT helps relative to an imagery baseline, and how accurate the COT-assisted model could be with better COT inputs. On the same Hunan records and with the same three-frame models, observed imagery gives 90.318 W\,m$^{-2}$ without COT and 89.155 W\,m$^{-2}$ with COT, a 1.29\% reduction whose paired interval includes zero ($[-3.345,0.958]$ W\,m$^{-2}$). This point reduction is smaller than the 1.74\% obtained with DyDiff imagery. Hence, these comparisons do not show that extrapolation reduces the relative benefit of COT. Nevertheless, the large improvement after replacing forecast-derived COT with observed-derived COT indicates a sensitivity to errors entering through this input. It does not separate cloud-image prediction error from retrieval behaviour on predicted images or the irradiance model's response to the substituted inputs. The single-image and three-frame percentage gains also involve different samples and representations and cannot be interpreted as an error budget.
+
+Improving the prediction of cloud position, boundaries, and optical-thickness evolution is therefore a direction for further research. Holding the retrieval and irradiance models fixed would allow future work to test whether more accurate cloud-image predictions lead to further reductions in GHI forecast error.
+
+\subsection{Applicability and limitations}
+The applicability of the results depends on regional sampling, reference-product uncertainty, and the number of independent weather periods evaluated. CPP-based error measures assess agreement with a retrieval reference, whereas GHI performance is assessed against station observations. Ground-reference quality also matters: a recent FY-4B validation study showed that radiometer quality can materially affect the assessment of satellite irradiance products \cite{chen2025fy4b}. Representation controls and adverse cases remain relevant to the interpretation even when the average COT effect is positive. \pending{Consolidate the final evaluation scope and the principal residual limitation here, without repeating operational status in the results.}
+
+\section{Conclusions}
+This study evaluates explicit COT as a local representation for satellite GHI estimation and follows its effect into short-term forecasting. On the evaluated single-image validation sets, COT reduces regional GHI RMSE by 10.54\% in Hubei and 3.87\% in Hunan. The Hubei reference-covered thick-cloud subset shows a larger reduction, accompanied by a decrease in positive bias, while near-zero and moderate conditions include adverse responses. With Hunan DyDiff predictions and fixed three-frame irradiance models, the 15--240 min RMSE reduction is 1.74\%, and remains 1.75\% when all three input frames are predicted. Fixed-model COT replacements indicate both useful predicted evolution and remaining sensitivity to COT input errors; they do not identify a unique physical cause or demonstrate a reduction of relative COT benefit due to image extrapolation. The resulting evidence provides a basis for improving irradiance-relevant cloud evolution in future image-extrapolation models.
+\FloatBarrier
+\begin{thebibliography}{99}\small
+\bibitem{huang2019}
+Guanghui Huang, Zhanqing Li, Xin Li, et al.
+Estimating surface solar irradiance from satellites: Past, present, and future perspectives.
+\textit{Remote Sensing of Environment}, 233:111371, 2019.
+\url{https://doi.org/10.1016/j.rse.2019.111371}.
+\bibitem{nakajima1990}
+Teruyuki Nakajima and Michael D. King.
+Determination of the Optical Thickness and Effective Particle Radius of Clouds from Reflected Solar Radiation Measurements. Part I: Theory.
+\textit{Journal of the Atmospheric Sciences}, 47(15):1878--1893, 1990.
+\url{https://doi.org/10.1175/1520-0469(1990)047<1878:DOTOTA>2.0.CO;2}.
+\bibitem{cano1986}
+D. Cano, J. M. Monget, M. Albuisson, et al.
+A method for the determination of the global solar radiation from meteorological satellite data.
+\textit{Solar Energy}, 37(1):31--39, 1986.
+\url{https://doi.org/10.1016/0038-092X(86)90104-0}.
+\bibitem{rigollier2004}
+C. Rigollier, M. Lef\`{e}vre and L. Wald.
+The method Heliosat-2 for deriving shortwave solar radiation from satellite images.
+\textit{Solar Energy}, 77(2):159--169, 2004.
+\url{https://doi.org/10.1016/j.solener.2004.04.017}.
+\bibitem{takenaka2011}
+H. Takenaka, T. Y. Nakajima, A. Higurashi, et al.
+Estimation of solar radiation using a neural network based on radiative transfer.
+\textit{Journal of Geophysical Research: Atmospheres}, 116(D8):D08215, 2011.
+\url{https://doi.org/10.1029/2009JD013337}.
+\bibitem{qu2017}
+Zhipeng Qu, Armel Oumbe, Philippe Blanc, et al.
+Fast radiative transfer parameterisation for assessing the surface solar irradiance: The Heliosat-4 method.
+\textit{Meteorologische Zeitschrift}, 26(1):33--57, 2017.
+\url{https://doi.org/10.1127/metz/2016/0781}.
+\bibitem{chen2023}
+Shanlin Chen, Chengxi Li, Yuying Xie and Mengying Li.
+Global and direct solar irradiance estimation using deep learning and selected spectral satellite images.
+\textit{Applied Energy}, 352:121979, 2023.
+\url{https://doi.org/10.1016/j.apenergy.2023.121979}.
+\bibitem{song2025}
+Mengmeng Song, Dazhi Yang, Hongrong Shi, et al.
+STARNet: A Deep-Learning Algorithm for Surface Shortwave Radiation Retrieval From Fengyun-4A.
+\textit{Geophysical Research Letters}, 52(13):e2025GL116237, 2025.
+\url{https://doi.org/10.1029/2025GL116237}.
+\bibitem{schuurman2025}
+K. R. Schuurman and Angela Meyer.
+Surface solar radiation: AI satellite retrieval can outperform Heliosat and generalizes to other climate zones.
+\textit{International Journal of Remote Sensing}, 46(8):3331--3362, 2025.
+\url{https://doi.org/10.1080/01431161.2025.2471596}.
+\bibitem{xia2025}
+Daozhen Xia, Dongzhi Zhao, Kailin Li, et al.
+Retrieval of Cloud Optical Thickness During Nighttime from FY-4B AGRI Using a Convolutional Neural Network.
+\textit{Remote Sensing}, 17(5):737, 2025.
+\url{https://doi.org/10.3390/rs17050737}.
+\bibitem{liao2024}
+Zhouyi Liao and Carlos F.M. Coimbra.
+Hybrid solar irradiance nowcasting and forecasting with the SCOPE method and convolutional neural networks.
+\textit{Renewable Energy}, 232:121055, 2024.
+\url{https://doi.org/10.1016/j.renene.2024.121055}.
+\bibitem{pap2024}
+Kyriakoula Papachristopoulou, Ilias Fountoulakis, Alkiviadis F. Bais, et al.
+Effects of clouds and aerosols on downwelling surface solar irradiance nowcasting and short-term forecasting.
+\textit{Atmospheric Measurement Techniques}, 17(7):1851--1877, 2024.
+\url{https://doi.org/10.5194/amt-17-1851-2024}.
+\bibitem{wiltink2025}
+Job I. Wiltink, Hartwig Deneke, Chiel C. van Heerwaarden and Jan Fokke Meirink.
+Evaluating parallax and shadow correction methods for global horizontal irradiance retrievals from Meteosat SEVIRI.
+\textit{Atmospheric Measurement Techniques}, 18(16):3917--3936, 2025.
+\url{https://doi.org/10.5194/amt-18-3917-2025}.
+\bibitem{shen2026fy4b}
+Long Shen, Yuan Yao, Yang Cui, et al.
+A weather typing adaptive bias correction method for FY-4B satellite-driven solar radiation nowcasting.
+\textit{Solar Energy}, 312:114600, 2026.
+\url{https://doi.org/10.1016/j.solener.2026.114600}.
+\bibitem{sirch2017}
+Tobias Sirch, Luca Bugliaro, Tobias Zinner, et al.
+Cloud and DNI nowcasting with MSG/SEVIRI for the optimized operation of concentrating solar power plants.
+\textit{Atmospheric Measurement Techniques}, 10(2):409--429, 2017.
+\url{https://doi.org/10.5194/amt-10-409-2017}.
+\bibitem{miller2018}
+Steven D. Miller, Matthew A. Rogers, John M. Haynes, et al.
+Short-term solar irradiance forecasting via satellite/model coupling.
+\textit{Solar Energy}, 168:102--117, 2018.
+\url{https://doi.org/10.1016/j.solener.2017.11.049}.
+\bibitem{nielsen2021}
+Andreas H. Nielsen, Alexandros Iosifidis and Henrik Karstoft.
+IrradianceNet: Spatiotemporal deep learning model for satellite-derived solar irradiance short-term forecasting.
+\textit{Solar Energy}, 228:659--669, 2021.
+\url{https://doi.org/10.1016/j.solener.2021.09.073}.
+\bibitem{chen2024}
+Shanlin Chen, Chengxi Li, Roland Stull and Mengying Li.
+Improved satellite-based intra-day solar forecasting with a chain of deep learning models.
+\textit{Energy Conversion and Management}, 313:118598, 2024.
+\url{https://doi.org/10.1016/j.enconman.2024.118598}.
+\bibitem{zhang2026}
+Feng Zhang, Xin Hong, Zhijun Zhao, et al.
+Short-Term Forecasting of Cloud Physical Properties Based on Fourier Neural Operator Method.
+\textit{Geophysical Research Letters}, 53(8):e2025GL119553, 2026.
+\url{https://doi.org/10.1029/2025GL119553}.
+\bibitem{cui2024}
+Yang Cui, Ping Wang, Jan Fokke Meirink, et al.
+Solar radiation nowcasting based on geostationary satellite images and deep learning models.
+\textit{Solar Energy}, 282:112866, 2024.
+\url{https://doi.org/10.1016/j.solener.2024.112866}.
+\bibitem{yang2020}
+Dazhi Yang, Stefano Alessandrini, Javier Antonanzas, et al.
+Verification of deterministic solar forecasts.
+\textit{Solar Energy}, 210:20--37, 2020.
+\url{https://doi.org/10.1016/j.solener.2020.04.019}.
+\bibitem{ineichen}
+Pierre Ineichen and Richard Perez.
+A new airmass independent formulation for the Linke turbidity coefficient.
+\textit{Solar Energy}, 73(3):151--157, 2002.
+\url{https://doi.org/10.1016/S0038-092X(02)00045-2}.
+\bibitem{pvlibclear}
+William F. Holmgren, Clifford W. Hansen and Mark A. Mikofski.
+pvlib python: a python package for modeling solar energy systems.
+\textit{Journal of Open Source Software}, 3(29):884, 2018.
+\url{https://doi.org/10.21105/joss.00884}.
+\bibitem{roberts2017}
+David R. Roberts, Volker Bahn, Simone Ciuti, et al.
+Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure.
+\textit{Ecography}, 40(8):913--929, 2017.
+\url{https://doi.org/10.1111/ecog.02881}.
+\bibitem{unet2015}
+Olaf Ronneberger, Philipp Fischer and Thomas Brox.
+U-Net: Convolutional Networks for Biomedical Image Segmentation.
+\textit{Medical Image Computing and Computer-Assisted Intervention -- MICCAI 2015}, 9351:234--241, 2015.
+\url{https://doi.org/10.1007/978-3-319-24574-4_28}.
+\bibitem{huber1964}
+Peter J. Huber.
+Robust Estimation of a Location Parameter.
+\textit{The Annals of Mathematical Statistics}, 35(1):73--101, 1964.
+\url{https://doi.org/10.1214/aoms/1177703732}.
+\bibitem{simvp}
+Zhangyang Gao, Cheng Tan, Lirong Wu and Stan Z. Li.
+SimVP: Simpler Yet Better Video Prediction.
+\textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 3170--3180, 2022.
+\url{https://openaccess.thecvf.com/content/CVPR2022/html/Gao_SimVP_Simpler_Yet_Better_Video_Prediction_CVPR_2022_paper.html}.
+\bibitem{simvpv2}
+Cheng Tan, Zhangyang Gao, Siyuan Li and Stan Z. Li.
+SimVPv2: Towards Simple Yet Powerful Spatiotemporal Predictive Learning.
+\textit{IEEE Transactions on Multimedia}, 27:5170--5184, 2025.
+\url{https://doi.org/10.1109/TMM.2025.3543051}.
+\bibitem{field2007}
+C. A. Field and A. H. Welsh.
+Bootstrapping clustered data.
+\textit{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}, 69(3):369--390, 2007.
+\url{https://doi.org/10.1111/j.1467-9868.2007.00593.x}.
+\bibitem{chen2025fy4b}
+Y. Chen, D. Yang, C. Huang, et al.
+Validating physical and semi-empirical satellite-based irradiance retrievals using high- and low-accuracy radiometric observations in a monsoon-influenced continental climate.
+\textit{Atmospheric Measurement Techniques}, 18(23):7315--7336, 2025.
+\url{https://doi.org/10.5194/amt-18-7315-2025}.
+\end{thebibliography}
+\end{document}

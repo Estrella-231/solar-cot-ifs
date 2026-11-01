@@ -1,0 +1,405 @@
+{
+  "purpose": "Post-hoc sensitivity only; not a replacement of preregistered target-date bootstrap",
+  "seed": 20261028,
+  "nboot": 5000,
+  "date_blocks": [
+    [
+      "2024-04-19",
+      "2024-04-20"
+    ],
+    [
+      "2024-05-29",
+      "2024-05-30"
+    ],
+    [
+      "2024-06-11",
+      "2024-06-12"
+    ],
+    [
+      "2024-07-09",
+      "2024-07-10"
+    ],
+    [
+      "2024-08-16",
+      "2024-08-17"
+    ],
+    [
+      "2024-09-04"
+    ],
+    [
+      "2024-10-25",
+      "2024-10-26"
+    ],
+    [
+      "2024-11-16",
+      "2024-11-17"
+    ],
+    [
+      "2024-12-24",
+      "2024-12-25"
+    ],
+    [
+      "2025-01-04",
+      "2025-01-05"
+    ],
+    [
+      "2025-02-09",
+      "2025-02-10"
+    ],
+    [
+      "2025-03-13",
+      "2025-03-14"
+    ],
+    [
+      "2025-04-17",
+      "2025-04-18"
+    ],
+    [
+      "2025-05-03",
+      "2025-05-04"
+    ],
+    [
+      "2025-06-15",
+      "2025-06-16"
+    ],
+    [
+      "2025-07-08",
+      "2025-07-09"
+    ],
+    [
+      "2025-08-21",
+      "2025-08-22"
+    ],
+    [
+      "2025-10-06",
+      "2025-10-07"
+    ],
+    [
+      "2025-11-05",
+      "2025-11-06"
+    ],
+    [
+      "2025-12-02",
+      "2025-12-03"
+    ],
+    [
+      "2026-01-03",
+      "2026-01-04"
+    ],
+    [
+      "2026-02-20",
+      "2026-02-21"
+    ],
+    [
+      "2026-03-01",
+      "2026-03-02"
+    ],
+    [
+      "2026-04-20",
+      "2026-04-21"
+    ],
+    [
+      "2026-05-05",
+      "2026-05-06"
+    ],
+    [
+      "2026-06-24",
+      "2026-06-25"
+    ]
+  ],
+  "full_consecutive_block_count": 26,
+  "full_month_count": 26,
+  "bjt_init_target_different_dates": 0,
+  "utc_init_target_different_dates": 11524,
+  "no_cross_month": true,
+  "scopes": {
+    "full": {
+      "consecutive_validation_dates": {
+        "clusters": 26,
+        "delta_ci": [
+          -3.87503196138196,
+          -0.49132080924740834
+        ],
+        "ci_excludes_zero": true,
+        "positive_fraction": 0.005,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "ci": [
+              -4.715355522246699,
+              -1.550012224077303
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "ci": [
+              -4.82666601524682,
+              -1.1481510144399507
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "ci": [
+              -4.4859096324758205,
+              -0.7860834215360064
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "ci": [
+              -4.498424638994493,
+              0.6594834883156739
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "ci": [
+              -3.511274030385084,
+              1.8389159907924124
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "ci": [
+              -4.553467827713876,
+              1.7392568387545766
+            ],
+            "zero_denominators": 0
+          }
+        ]
+      },
+      "calendar_month": {
+        "clusters": 26,
+        "delta_ci": [
+          -3.87503196138196,
+          -0.49132080924740834
+        ],
+        "ci_excludes_zero": true,
+        "positive_fraction": 0.005,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "ci": [
+              -4.715355522246699,
+              -1.550012224077303
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "ci": [
+              -4.82666601524682,
+              -1.1481510144399507
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "ci": [
+              -4.4859096324758205,
+              -0.7860834215360064
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "ci": [
+              -4.498424638994493,
+              0.6594834883156739
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "ci": [
+              -3.511274030385084,
+              1.8389159907924124
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "ci": [
+              -4.553467827713876,
+              1.7392568387545766
+            ],
+            "zero_denominators": 0
+          }
+        ]
+      }
+    },
+    "no_overlap": {
+      "consecutive_validation_dates": {
+        "clusters": 23,
+        "delta_ci": [
+          -4.7561236250405035,
+          -0.6908977631348286
+        ],
+        "ci_excludes_zero": true,
+        "positive_fraction": 0.0032,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "ci": [
+              -5.401953125160751,
+              -1.8313099744608698
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "ci": [
+              -5.497090230242495,
+              -1.1851480239080636
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "ci": [
+              -5.1499971939656835,
+              -0.9920821893615142
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "ci": [
+              -6.309561269518024,
+              0.5634773102500845
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "ci": [
+              -4.662066144005994,
+              1.7812510783838713
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "ci": [
+              -6.095523546855229,
+              1.7647671901280528
+            ],
+            "zero_denominators": 0
+          }
+        ]
+      },
+      "calendar_month": {
+        "clusters": 23,
+        "delta_ci": [
+          -4.7561236250405035,
+          -0.6908977631348286
+        ],
+        "ci_excludes_zero": true,
+        "positive_fraction": 0.0032,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "ci": [
+              -5.401953125160751,
+              -1.8313099744608698
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "ci": [
+              -5.497090230242495,
+              -1.1851480239080636
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "ci": [
+              -5.1499971939656835,
+              -0.9920821893615142
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "ci": [
+              -6.309561269518024,
+              0.5634773102500845
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "ci": [
+              -4.662066144005994,
+              1.7812510783838713
+            ],
+            "zero_denominators": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "ci": [
+              -6.095523546855229,
+              1.7647671901280528
+            ],
+            "zero_denominators": 0
+          }
+        ]
+      }
+    }
+  },
+  "day_support": {
+    "formula_source": "refine-logs/cot_value_first_20261013/build_trainval_labels_from_workbooks.py:67-80",
+    "station_coords_source": "same file:26-27",
+    "NOAA_cosine_min": 0.00042286587031237916,
+    "NOAA_cosine_le0_rows": 0,
+    "NOAA_SZA_gt85_rows": 2013,
+    "NOAA_SZA_gt80_rows": 5653,
+    "clear_le20_rows": 1464,
+    "note": "GHI label day support is SZA<90 and interval clear>0; R training mask SOZ<80 is a separate support."
+  },
+  "coverage_accounting": {
+    "included_rows": 63480,
+    "excluded_rows": 37000,
+    "total_rows": 100480,
+    "expected_3140x2x16": 100480,
+    "excluded_reasons": {
+      "no_frozen_valid_GHI_row": 36232,
+      "approved_invalid_day": 768
+    },
+    "union_windows": 3140,
+    "included_windows": 2728,
+    "unique_excluded_keys": 37000,
+    "included_excluded_key_intersection": 0
+  }
+}

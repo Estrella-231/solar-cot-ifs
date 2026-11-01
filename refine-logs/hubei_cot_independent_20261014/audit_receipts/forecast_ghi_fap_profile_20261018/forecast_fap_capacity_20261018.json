@@ -1,0 +1,56 @@
+{
+  "state": "HUBEI_GHI_HEAD_SINGLE_GPU_PROFILE_COMPLETE",
+  "profile_station": "Mizhuang",
+  "profile_rows": 20611,
+  "input_mode": "forecast",
+  "arms": [
+    "FAP"
+  ],
+  "parameter_counts": {
+    "FAP": 24613
+  },
+  "results": [
+    {
+      "station": "Mizhuang",
+      "arm": "FAP",
+      "batch": 128,
+      "updates_per_epoch_min_support": 161,
+      "examples_per_second": 27023.933877372852,
+      "peak_GiB": 0.15500593185424805
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "FAP",
+      "batch": 256,
+      "updates_per_epoch_min_support": 80,
+      "examples_per_second": 54397.91093333014,
+      "peak_GiB": 0.15708589553833008
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "FAP",
+      "batch": 512,
+      "updates_per_epoch_min_support": 40,
+      "examples_per_second": 112928.15697138822,
+      "peak_GiB": 0.15831613540649414
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "FAP",
+      "batch": 1024,
+      "updates_per_epoch_min_support": 20,
+      "examples_per_second": 235725.0850932295,
+      "peak_GiB": 0.16272974014282227
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "FAP",
+      "batch": 1536,
+      "updates_per_epoch_min_support": 13,
+      "examples_per_second": 350509.89831039845,
+      "peak_GiB": 0.1671433448791504
+    }
+  ],
+  "test_payloads_read": 0,
+  "selection": "largest batch with >=12 updates/epoch and within 3% of best measured examples/s across all arms"
+}

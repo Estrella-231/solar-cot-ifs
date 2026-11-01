@@ -1,0 +1,115 @@
+{
+  "status": "HUBEI_SIMVP_FOLD4_CHECKPOINT_RELOAD_VALIDATION_AUDIT_PASSED_TEST_CLOSED",
+  "fold_id": 4,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "test_or_buffer_rows": 0,
+  "train_index_rows_metadata_only": 3279,
+  "validation_sequences_inferred": 407,
+  "unique_validation_key_coverage": 407,
+  "checkpoint_sha256": "5637925fd0d4bc092c6f5f8996b20cf356f8bcf0b4cb358768e8856aec3f03a3",
+  "normalization_sha256": "128a92c62bbe14c242837b62d730294be26aa92a276cd334d67a67747b6b60b5",
+  "index_sha256": "93a04d191eebbb19da465ac4cb285181d78c6a674d556d563fdf533b930b0035",
+  "stage_manifest_sha256": null,
+  "channel_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "patch_origin_crop_256": [
+    103,
+    118
+  ],
+  "patch_size": 16,
+  "shard_count": 1,
+  "shard_ids": [
+    0
+  ],
+  "full_field_validation_metrics": {
+    "normalized_mse": 0.23877881695781972,
+    "normalized_mae": 0.30015010735537895,
+    "element_count": 5548015616,
+    "sequence_count": 407,
+    "scope": "all 13 predicted AGRI channels, all 16 leads and full 256x256 field in frozen normalized space"
+  },
+  "shards": [
+    {
+      "shard_index": 0,
+      "sequence_count": 407,
+      "local_stage_manifest_sha256": null,
+      "channel_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "lead_minutes": [
+        15,
+        30,
+        45,
+        60,
+        75,
+        90,
+        105,
+        120,
+        135,
+        150,
+        165,
+        180,
+        195,
+        210,
+        225,
+        240
+      ],
+      "patch_origin_crop_256": [
+        103,
+        118
+      ],
+      "patch_size": 16,
+      "test_payloads_read": 0,
+      "buffer_payloads_read": 0,
+      "test_or_buffer_rows": 0,
+      "prediction_sha256": "296b0b22887074dd7b0fbd1e27ccf076a0e9c3bba48a9641b0c1a71a05d4c3fd",
+      "truth_sha256": "8e4b397a4195ceab29dcacbbafb75e560554d74075955bc1361839c91f7fe4d6",
+      "geometry_sha256": "08f4ba44a675ecdaeb04f16ba528cab09dc81494d4facecb96f439dd1f7d6b78",
+      "bank_report_sha256": "586b29ccb3e30502316aebb849789f39ed1a0ce3ae6b88c1da760b5746de63dd"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+#!/bin/bash
+#PBS -N cot_traj_hcv
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/agri_direct_cot_20261020/logs/cot_traj_hcv.pbs.out
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+BANK=$EXP/results/direct_cot_forecast_row_bank_v1
+INFER=$EXP/results/direct_cot_hv_inference_v1
+OUT=$EXP/results/direct_cot_trajectory_hcv_v1
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+LOG=$EXP/logs/cot_traj_hcv_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+
+QSTAT_TEXT=$($PBS_QSTAT -u slfu)
+printf '%s\n' "$QSTAT_TEXT"
+UNFINISHED=$(printf '%s\n' "$QSTAT_TEXT" | awk '$1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+test -s "$BANK/bank_manifest.json" && test -s "$INFER/inference_manifest.json"
+test ! -e "$OUT"
+python -m py_compile run_direct_cot_trajectory_hcv.py score_direct_cot_trajectory_hcv.py
+python run_direct_cot_trajectory_hcv.py --bank "$BANK" --inference "$INFER" --output "$OUT" --smoke
+
+GPU_TEXT=$($PBS_QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test -n "$GPU_TEXT" && test "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "STAGE=gpu_gate_pass gpu_id=$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u run_direct_cot_trajectory_hcv.py --bank "$BANK" --inference "$INFER" --output "$OUT"
+python -u score_direct_cot_trajectory_hcv.py --run "$OUT" --output "$OUT/score/trajectory_hcv_metrics.json" --bootstrap 5000
+python - "$OUT/run_manifest.json" "$OUT/score/trajectory_hcv_metrics.json" <<'PY'
+import json,sys
+m=json.load(open(sys.argv[1])); s=json.load(open(sys.argv[2]))
+assert m['state']=='COMPLETE_COT_TRAJECTORY_H_CV'
+assert s['state']=='COMPLETE_COT_TRAJECTORY_H_CV_SCORE'
+for x in (m,s):
+ for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_input'):
+  assert x[k] is False,(k,x[k])
+print('COT_TRAJECTORY_H_CV_COMPLETE',s['results']['predeclared_gate']['pass'])
+PY
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+echo COT_TRAJECTORY_H_CV_FINISHED test_buffer_future_observations_closed=1

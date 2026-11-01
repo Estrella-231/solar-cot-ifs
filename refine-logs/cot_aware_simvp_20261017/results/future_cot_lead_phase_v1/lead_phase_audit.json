@@ -1,0 +1,125 @@
+{
+  "state": "COMPLETE_NESTED_TRAIN_ONLY_FUTURE_COT_LEAD_PHASE_AUDIT",
+  "candidate_shifts_minutes": [
+    -15,
+    0,
+    15
+  ],
+  "selected_shift_full_train_minutes": 0,
+  "full_train_macro_center_rmse_by_shift": {
+    "-15": 0.6765828142563503,
+    "0": 0.6241312573353449,
+    "15": 0.6926031182209651
+  },
+  "outer_fold_selected_shifts": {
+    "0": {
+      "selected_shift_minutes": 0,
+      "train_macro_center_rmse_by_shift": {
+        "-15": 0.6795659293731053,
+        "0": 0.6236815522114436,
+        "15": 0.6902229140202204
+      }
+    },
+    "1": {
+      "selected_shift_minutes": 0,
+      "train_macro_center_rmse_by_shift": {
+        "-15": 0.6811248292525609,
+        "0": 0.6270902782678605,
+        "15": 0.6967958211898804
+      }
+    },
+    "2": {
+      "selected_shift_minutes": 0,
+      "train_macro_center_rmse_by_shift": {
+        "-15": 0.6726919581492742,
+        "0": 0.6237059454123179,
+        "15": 0.6901971499125162
+      }
+    },
+    "3": {
+      "selected_shift_minutes": 0,
+      "train_macro_center_rmse_by_shift": {
+        "-15": 0.6751008321841557,
+        "0": 0.6231092572212219,
+        "15": 0.6924983580907186
+      }
+    },
+    "4": {
+      "selected_shift_minutes": 0,
+      "train_macro_center_rmse_by_shift": {
+        "-15": 0.674596122900645,
+        "0": 0.6231092095375061,
+        "15": 0.6931786199410757
+      }
+    }
+  },
+  "outer_fold_selection_frequency": {
+    "-15": 0,
+    "0": 5,
+    "15": 0
+  },
+  "nested_equal_station_equal_lead_center_delta_candidate_minus_current_log1p": 0.0,
+  "nested_center_delta_date_block_ci95_log1p": [
+    0.0,
+    0.0
+  ],
+  "nested_patch_delta_equal_station_equal_lead_log1p": 0.0,
+  "nested_patch_delta_date_block_ci95_log1p": [
+    0.0,
+    0.0
+  ],
+  "stations": {
+    "sili": {
+      "baseline_center_rmse_log1p": 0.6774353981018066,
+      "nested_shift_center_rmse_log1p": 0.6774353981018066,
+      "delta_center_rmse_log1p": 0.0,
+      "baseline_patch_rmse_log1p": 0.6747877597808838,
+      "nested_shift_patch_rmse_log1p": 0.6747877597808838
+    },
+    "zhujia": {
+      "baseline_center_rmse_log1p": 0.5984519720077515,
+      "nested_shift_center_rmse_log1p": 0.5984519720077515,
+      "delta_center_rmse_log1p": 0.0,
+      "baseline_patch_rmse_log1p": 0.5965057611465454,
+      "nested_shift_patch_rmse_log1p": 0.5965057611465454
+    }
+  },
+  "rows": 671110,
+  "target_bjt_date_blocks": 577,
+  "leads_scored_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225
+  ],
+  "plus15_source": "direct same-sequence OOF forecast-COT bank frame at target lead + 15 min",
+  "plus15_bank_vs_pack_crosscheck_rows": 656410,
+  "plus15_bank_vs_pack_crosscheck_max_abs_log1p": 0.0,
+  "forecast_bank_manifest_sha256": "d4446ac1db5f2f83d72b3a70a886b9535841542a5d37e72c1435540ecaf553f7",
+  "forecast_cot_bank_sha256": "aaaefedad4b80b64304870bae622efe099bcfa45adb776280b5a189fe54a0080",
+  "gate": "NO_GO",
+  "gate_rule": "center date-block 95% CI wholly below zero; neither station center RMSE worsens; same shift selected in >=4/5 outer folds",
+  "forecast_pack_manifest_sha256": "cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233",
+  "forecast_cot_sha256": "ca884c7f3b480c200a9dad44fe571c7b844fa568b229600d3b200d998bedf922",
+  "oracle_pack_manifest_sha256": "92ba5f761ec566c4af63422cf6e2d66d48da4015b7bfe918948bef8cd274a4ca",
+  "oracle_train_cot_sha256": "7e2d5313a4c00e4d296d529f67a401d2ab09e942a86e5f4cfef5adbd5759d4db",
+  "calibration_sha256": "d1a0d104fc84c2223be5397a11d4e3730025475384880c8206c9f5420499645b",
+  "bank_index_sha256": "7d9d04324cfbaab81ace4189ba6ecf8841b5d13ccc0e5146fcb8acc3cfd099df",
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_inference_input": false,
+  "cpp_used": false,
+  "validation_labels_used_for_fit": false,
+  "oracle_future_agri_used_only_as_train_reference": true
+}

@@ -1,0 +1,45 @@
+{
+  "state": "LOCAL_TEST_SOURCE_FILES_PRESENT_AND_HASH_MATCHED_METADATA_ONLY",
+  "checked_on": "2026-10-18",
+  "purpose": "Recheck existence, byte size, and SHA-256 of source containers named in source_inventory.json without decoding workbook cells or archive members.",
+  "semantic_payload_decoded": false,
+  "test_radiation_values_read": false,
+  "test_truth_pack_created": false,
+  "test_evaluation_authorized": false,
+  "files": [
+    {
+      "key": "monthly_archive",
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_s79spdfmjaq912_2146\\msg\\file\\2026-05\\按采集点聚合时间(1).zip",
+      "size_bytes": 43879108,
+      "sha256": "fc3bd7c9737b66a531562a1ed520c05cc9e1bf99cb67be97f35a97478a7b6785",
+      "matches_inventory": true
+    },
+    {
+      "key": "apr_may_workbook",
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_s79spdfmjaq912_2146\\msg\\file\\2026-06\\天气数据_2026040100-2026053123.xlsx",
+      "size_bytes": 16047444,
+      "sha256": "d4781696f42231bd2ebf54e05c43eed98ecbf084506be1ab78a0c14b3631d50a",
+      "matches_inventory": true,
+      "trainval_source_report_binding": "not present; this check confirms local file bytes match the previously pinned inventory digest only"
+    },
+    {
+      "key": "jun_jul6_workbook",
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_9cu5hzfp80wc12_2631\\msg\\file\\2026-08\\天气数据_2026-06-01-2026-07-06.xlsx",
+      "size_bytes": 9652040,
+      "sha256": "7b06d7931c6079b21e6d2b744879bc59c0a693f1251ab663d688a376bfe94398",
+      "matches_inventory": true
+    },
+    {
+      "key": "jul7_14_workbook",
+      "path": "C:\\Users\\29728\\xwechat_files\\wxid_9cu5hzfp80wc12_2631\\msg\\file\\2026-08\\天气数据_2026-07-07-2026-07-14.xlsx",
+      "size_bytes": 2018831,
+      "sha256": "37793b3b5d70f974b9a7e9c703c348bd9c8a1d1ee671fa19f0f066be325fad5f",
+      "matches_inventory": true
+    }
+  ],
+  "limitations": [
+    "SHA-256 confirms byte identity with the existing candidate inventory, not instrument calibration or radiation-field correctness.",
+    "The unresolved 2026-06-14 prior-replay contact review remains separate.",
+    "No source workbook radiation values or test/buffer arrays were read."
+  ]
+}

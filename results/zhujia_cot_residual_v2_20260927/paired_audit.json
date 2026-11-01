@@ -1,0 +1,143 @@
+{
+  "state": "PAIRED_VALIDATION_AUDIT_COMPLETE",
+  "scope": "single-seed 512-train-sequence/128-validation-sequence Zhujia pilot; validation only",
+  "test_used": false,
+  "paired_rows": 1624,
+  "initialization_days": 70,
+  "initialization_day_range_BJT": [
+    "2025-07-01",
+    "2025-09-10"
+  ],
+  "row_ids_truth_leads_identical": true,
+  "results": {
+    "zero": {
+      "n": 1624,
+      "rmse": 127.29536959218576,
+      "mae": 93.01428577453731,
+      "bias": -11.703474798994144
+    },
+    "fusion": {
+      "n": 1624,
+      "rmse": 134.91052348192665,
+      "mae": 93.72294716200179,
+      "bias": -21.09440941024321
+    },
+    "residual": {
+      "n": 1624,
+      "rmse": 127.29536959218576,
+      "mae": 93.01428577453731,
+      "bias": -11.703474798994144
+    }
+  },
+  "lead_rmse_W_m2": {
+    "15": {
+      "zero": 109.8431274646636,
+      "fusion": 127.33360351438529,
+      "residual": 109.8431274646636
+    },
+    "30": {
+      "zero": 114.12966335106796,
+      "fusion": 126.5625165321828,
+      "residual": 114.12966335106796
+    },
+    "45": {
+      "zero": 109.93038032770302,
+      "fusion": 121.50858322398865,
+      "residual": 109.93038032770302
+    },
+    "60": {
+      "zero": 115.0620709392282,
+      "fusion": 127.24654881779959,
+      "residual": 115.0620709392282
+    },
+    "75": {
+      "zero": 119.54302403632654,
+      "fusion": 129.2709931579255,
+      "residual": 119.54302403632654
+    },
+    "90": {
+      "zero": 120.6832329773162,
+      "fusion": 127.10947263066824,
+      "residual": 120.6832329773162
+    },
+    "105": {
+      "zero": 129.21655558283956,
+      "fusion": 129.47601013702177,
+      "residual": 129.21655558283956
+    },
+    "120": {
+      "zero": 132.5491504392329,
+      "fusion": 130.72563865787998,
+      "residual": 132.5491504392329
+    },
+    "135": {
+      "zero": 131.69721581997936,
+      "fusion": 136.14100728859083,
+      "residual": 131.69721581997936
+    },
+    "150": {
+      "zero": 130.18510415920667,
+      "fusion": 130.9991097513112,
+      "residual": 130.18510415920667
+    },
+    "165": {
+      "zero": 140.11604392645975,
+      "fusion": 146.31552259290672,
+      "residual": 140.11604392645975
+    },
+    "180": {
+      "zero": 126.47614998979466,
+      "fusion": 135.19772149912504,
+      "residual": 126.47614998979466
+    },
+    "195": {
+      "zero": 127.28429254474662,
+      "fusion": 136.0784107098779,
+      "residual": 127.28429254474662
+    },
+    "210": {
+      "zero": 138.61945366242122,
+      "fusion": 146.72215902340133,
+      "residual": 138.61945366242122
+    },
+    "225": {
+      "zero": 145.1767544663882,
+      "fusion": 153.5611307631735,
+      "residual": 145.1767544663882
+    },
+    "240": {
+      "zero": 145.2165231293671,
+      "fusion": 155.6235334692722,
+      "residual": 145.2165231293671
+    }
+  },
+  "paired_day_bootstrap": {
+    "fusion": {
+      "unit": "BJT initialization day",
+      "days": 70,
+      "repetitions": 5000,
+      "seed": 20260927,
+      "delta_rmse_candidate_minus_zero": 7.615153889740881,
+      "percentile_95pct": [
+        -1.32955636643786,
+        17.34012556479688
+      ],
+      "fraction_candidate_better": 0.0534
+    },
+    "residual": {
+      "unit": "BJT initialization day",
+      "days": 70,
+      "repetitions": 5000,
+      "seed": 20260927,
+      "delta_rmse_candidate_minus_zero": 0.0,
+      "percentile_95pct": [
+        0.0,
+        0.0
+      ],
+      "fraction_candidate_better": 0.0
+    }
+  },
+  "residual_equals_zero_predictions_exactly": true,
+  "source_run": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/zhujia_cot_residual_seed42_20260927_v2",
+  "validation_contract": "COMPLETE_EXPLORATORY_REGIONAL_GHI_PILOT_BANK"
+}

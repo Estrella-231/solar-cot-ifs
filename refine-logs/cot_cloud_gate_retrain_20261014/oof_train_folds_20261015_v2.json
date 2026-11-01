@@ -1,0 +1,53 @@
+{
+  "seed": 20261015,
+  "folds": 3,
+  "grouping": "contiguous BJT-date blocks within each month; both stations share a date fold",
+  "train_samples": 15414,
+  "train_dates": 494,
+  "test_payloads_read": 0,
+  "clp_sidecar_sha256": "361c79e40f40fd3c39c50b48e4c003b3fb64c90c32183e8304f54adc7b8cea01",
+  "by_fold": {
+    "0": {
+      "samples": 5001,
+      "dates": 163,
+      "stations": {
+        "sili": 2502,
+        "zhujia": 2499
+      },
+      "valid_pixels": 1273038,
+      "clp_counts": {
+        "0": 503946,
+        "1": 481462,
+        "2": 287630
+      }
+    },
+    "1": {
+      "samples": 5153,
+      "dates": 165,
+      "stations": {
+        "sili": 2581,
+        "zhujia": 2572
+      },
+      "valid_pixels": 1312755,
+      "clp_counts": {
+        "0": 368306,
+        "1": 629840,
+        "2": 314609
+      }
+    },
+    "2": {
+      "samples": 5260,
+      "dates": 166,
+      "stations": {
+        "sili": 2643,
+        "zhujia": 2617
+      },
+      "valid_pixels": 1336031,
+      "clp_counts": {
+        "0": 371689,
+        "1": 663125,
+        "2": 301217
+      }
+    }
+  }
+}

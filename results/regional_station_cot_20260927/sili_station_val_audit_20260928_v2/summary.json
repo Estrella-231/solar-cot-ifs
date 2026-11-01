@@ -1,0 +1,119 @@
+{
+  "n_station_leads": 5664,
+  "thick_station_leads": 204,
+  "clear_station_leads": 3530,
+  "simvp": {
+    "mae": 4.7721943855285645,
+    "rmse": 8.604350090026855,
+    "bias": 0.5846605896949768,
+    "thick_mae": 24.310192108154297,
+    "thick_rmse": 28.362627029418945,
+    "thick_miss_lt10": 67,
+    "thick_miss_rate_lt10": 0.3284313725490196,
+    "clear_false_ge10": 173,
+    "clear_false_rate_ge10": 0.049008498583569406,
+    "iou_cot30": 0.09903381642512077
+  },
+  "persistence": {
+    "mae": 4.543240070343018,
+    "rmse": 8.457788467407227,
+    "bias": 0.004785527009516954,
+    "thick_mae": 21.528919219970703,
+    "thick_rmse": 26.9208984375,
+    "thick_miss_lt10": 55,
+    "thick_miss_rate_lt10": 0.2696078431372549,
+    "clear_false_ge10": 165,
+    "clear_false_rate_ge10": 0.046742209631728045,
+    "iou_cot30": 0.1838006230529595
+  },
+  "transport": {
+    "mae": 4.6860432624816895,
+    "rmse": 8.737893104553223,
+    "bias": 0.3036160171031952,
+    "thick_mae": 20.34897232055664,
+    "thick_rmse": 25.162761688232422,
+    "thick_miss_lt10": 47,
+    "thick_miss_rate_lt10": 0.23039215686274508,
+    "clear_false_ge10": 175,
+    "clear_false_rate_ge10": 0.049575070821529746,
+    "iou_cot30": 0.1977715877437326
+  },
+  "learned": {
+    "mae": 4.0825514793396,
+    "rmse": 8.049142837524414,
+    "bias": -0.5218700766563416,
+    "thick_mae": 25.074234008789062,
+    "thick_rmse": 28.816335678100586,
+    "thick_miss_lt10": 64,
+    "thick_miss_rate_lt10": 0.3137254901960784,
+    "clear_false_ge10": 127,
+    "clear_false_rate_ge10": 0.03597733711048159,
+    "iou_cot30": 0.08661417322834646
+  },
+  "peak_event_count": 54,
+  "peak_event_mean": {
+    "simvp": {
+      "_at_reference_peak": 20.594030604318338,
+      "_max": 25.07533703026948,
+      "_peak_time_error_min": -12.5
+    },
+    "persistence": {
+      "_at_reference_peak": 20.641203586742954,
+      "_max": 20.641203586742954,
+      "_peak_time_error_min": -92.5
+    },
+    "transport": {
+      "_at_reference_peak": 21.886011388207542,
+      "_max": 25.52353544019489,
+      "_peak_time_error_min": 24.444444444444443
+    },
+    "learned": {
+      "_at_reference_peak": 18.73118110663361,
+      "_max": 24.637329119223136,
+      "_peak_time_error_min": -26.666666666666668
+    }
+  },
+  "case_candidate_counts": {
+    "cloud_growth": 11,
+    "cloud_decay": 12,
+    "persistent_thick": 16,
+    "clear_reference": 210
+  },
+  "selected_cases": {
+    "cloud_growth": {
+      "row": 202,
+      "original_sequence_index": 2332,
+      "init_day_BJT": "2025-08-05",
+      "reference_peak_cot": 80.17047882080078
+    },
+    "cloud_decay": {
+      "row": 47,
+      "original_sequence_index": 541,
+      "init_day_BJT": "2025-07-09",
+      "reference_peak_cot": 68.7473373413086
+    },
+    "persistent_thick": {
+      "row": 249,
+      "original_sequence_index": 2866,
+      "init_day_BJT": "2025-08-14",
+      "reference_peak_cot": 67.8375244140625
+    },
+    "clear_reference": {
+      "row": 466,
+      "original_sequence_index": 4145,
+      "init_day_BJT": "2025-09-07",
+      "reference_peak_cot": 0.0
+    }
+  },
+  "source": {
+    "best_epoch": 1,
+    "test_used": false,
+    "split": "validation",
+    "station_patch_pixel": [
+      32,
+      32
+    ],
+    "reference": "CPP COT retrieval, not independent in-situ cloud truth",
+    "support": "CPP valid mask intersected with pure-transport in-domain support"
+  }
+}

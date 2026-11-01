@@ -1,0 +1,69 @@
+{
+  "figure": "cot_conditional_information",
+  "physical_size_mm": [
+    177,
+    133
+  ],
+  "scope": "Hubei development-date three-fold OOF probes; not independent validation/test",
+  "rows": 32838,
+  "target_dates": 50,
+  "first_date": "20250806",
+  "last_date": "20260712",
+  "horizons_minutes": [
+    15,
+    240
+  ],
+  "aggregation": "RMSE separately for station x original GHI model source; equal-weight mean across 3 x 3",
+  "uncertainty": "Saved paired target-date cluster percentile bootstrap CI, 5000 replicates, seed20261023",
+  "source_substitution": "Posthoc cold reuse of original fitted probes, no new fits",
+  "COT_reference": "Frozen R applied to actual future AGRI; not independent CPP truth",
+  "inference_availability": "Actual-image COT column is offline; predicted column has causal inputs only",
+  "transformations": "Read stored scores; verify point estimates from saved daily SSE/counts; no refitting or sample filtering",
+  "journal_requirements": "Not yet selected; provisional print dimensions, not a compliance claim",
+  "semantic_colors": {
+    "reference_and_context": "#586976",
+    "predicted_future_COT": "#C06100",
+    "actual_future_COT_offline": "#80549A"
+  },
+  "verification": {
+    "main": {
+      "max_rmse_difference": 0.0,
+      "max_ci_difference": 0.0,
+      "dates": 50,
+      "arms": [
+        "G1",
+        "context",
+        "forecast_COT",
+        "observed_R_OFFLINE"
+      ]
+    },
+    "cross": {
+      "max_rmse_difference": 0.0,
+      "max_ci_difference": 0.0,
+      "dates": 50,
+      "arms": [
+        "G1",
+        "context",
+        "forecast_train_forecast_infer",
+        "observed_train_observed_infer_OFFLINE",
+        "observed_train_forecast_infer",
+        "forecast_train_observed_infer_OFFLINE"
+      ]
+    }
+  },
+  "source_sha256": {
+    "refine-logs\\hubei_cot_conditional_information_20261023\\RESULTS.json": "e863ce0805bf6259fc233b759a0a9b27cd75a0d867511a503f55364b14e4d0d3",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\DATE_SUMS.npz": "38b3d1904fbe70ee4a50ced3f524142310cf631cdcc5b9459f8b90108954a1c8",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\RESULTS.json": "d1fe30f3febde9524c52fbe70ff32da8c950ccc498c8e3d14033378e79c57be8",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\DATE_SUMS.npz": "e9bcc7d13edbb124ebbb9088fa00f5183fe2fb2618c83daa8a75fc0a368ea3ee",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\RESULT_REPORT.md": "6ec67fadebc015e6531dba7fc11eb0fa4dcb6fe9b11017c26fed0e8afbf0cf9c",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\score.py": "b0e98225590191336b39d1449a72b4a582a2961040f2c716a0ec80a8cb8249ae",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source.py": "2ac316f02c4f1d9d4feb589d7722a7c29f9d5a62951aa04d65d8fd7aa2055182"
+  },
+  "software": {
+    "python": "3.9.23",
+    "numpy": "1.26.4",
+    "matplotlib": "3.9.4"
+  },
+  "code_sha256": "f0f411825769f653f29075b4c1409ce69ca847ee922ce183a862b41672786909"
+}

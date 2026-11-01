@@ -1,0 +1,42 @@
+{
+  "status": "TRAIN_VAL_R_PATH_MAPPING_COMPLETE_METADATA_ONLY",
+  "source_manifest_sha256": "d7ce0a0dcb117660ebdf754ac1da18565a7a0808478d675e00a30e367d2e5367",
+  "frozen_split_assignment_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "output_sha256": "3bae20a9607b941e544199b9f2900414b266ad11456e82d9bf51e7bd78c972f8",
+  "rows_written_train_val_only": 3479,
+  "unique_source_timestamps": 4310,
+  "array_or_CPP_payloads_read": 0,
+  "test_CPP_values_read": 0,
+  "path_existence_checks_only": true,
+  "counts_by_frozen_split": {
+    "train": {
+      "all_manifest_rows": 3178,
+      "agri_path_present": 3178,
+      "fixedv2_cpp_path_present": 3178,
+      "old_split_test_but_frozen_trainval": 213
+    },
+    "val": {
+      "all_manifest_rows": 301,
+      "agri_path_present": 301,
+      "fixedv2_cpp_path_present": 301,
+      "old_split_test_but_frozen_trainval": 56
+    },
+    "test": {
+      "all_manifest_rows": 296,
+      "agri_path_present": 296,
+      "fixedv2_cpp_path_present": 296,
+      "old_split_test_but_frozen_trainval": 0
+    },
+    "buffer": {
+      "all_manifest_rows": 535,
+      "agri_path_present": 535,
+      "fixedv2_cpp_path_present": 535,
+      "old_split_test_but_frozen_trainval": 0
+    }
+  },
+  "missing_agri_trainval_count": 0,
+  "missing_fixedv2_cpp_trainval_count": 0,
+  "wrong_historical_cpp_root_count": 0,
+  "output_scope": "Only frozen train/val path rows written. Test paths checked for metadata existence only.",
+  "required_next": "Before payload use, independently verify fixed_v2 file schema, AGRI channel/geometry schema, no-NaN-target mask, train-only normalization, and real-batch/reload/FP64/profile gates."
+}

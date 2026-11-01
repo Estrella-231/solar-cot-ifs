@@ -1,0 +1,57 @@
+{
+  "state": "COMPLETE_VALIDATION_16_LEAD_OBSERVED_AGRI_COT_RETRIEVAL",
+  "test_used": false,
+  "selection": "same predeclared temporal-median validation sequence as prior figures; no AGRI/COT/GHI/error selection",
+  "sequence": "hunan_202508012015",
+  "station": "zhujia",
+  "station_pixel": [
+    8,
+    8
+  ],
+  "init_time_bjt": "2025-08-02T06:00:00+08:00",
+  "leads_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "input_contract": "actual target AGRI plus target-time cosSOZ/cosRAA/day_mask, passed through frozen R",
+  "scope": "future observed AGRI is used only for validation error-propagation diagnosis and never enters deployment or GHI-head training",
+  "r_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "rgb_contract": {
+    "red": "C02",
+    "green": "C03",
+    "blue": "C01",
+    "gamma": 2.2,
+    "shared_percentile_stretch": [
+      1,
+      99
+    ],
+    "low": [
+      0.018265971075743438,
+      0.02624351717531681,
+      0.028220127522945403
+    ],
+    "high": [
+      0.13605209589004527,
+      0.26315245032310486,
+      0.14398697018623352
+    ]
+  },
+  "output_files": {
+    "observed_agri_cot_trajectory.pdf": "de819eab1f719aad3e86bc31a6252461600db44eb841d0589a0b5b2e41cd4d38",
+    "observed_agri_cot_trajectory.png": "b525accfd14d4f5d74c3bb03505ea2582fe3422a5dc1e7e04edf7f9edc516ff4"
+  }
+}

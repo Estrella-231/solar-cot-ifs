@@ -1,0 +1,92 @@
+{
+  "state": "PASS_BOUNDED_FROZEN_CACHE_GEOMETRY_AUDIT",
+  "test_used": false,
+  "source": "evenly spaced 4 train + 4 validation frozen forecast shards; no outcome-based selection",
+  "source_shards": [
+    {
+      "split": "train",
+      "name": "shard_00000.npz",
+      "sha256": "0794381b2457b8f6f10495f45ddfec54f7de3f0569503101ab6719173da8c78c"
+    },
+    {
+      "split": "train",
+      "name": "shard_00384.npz",
+      "sha256": "392b75db5d1a49375040ab4482c2b8806758f6e9f993b192544453ea05715d69"
+    },
+    {
+      "split": "train",
+      "name": "shard_00768.npz",
+      "sha256": "1e5126e8f056aec5a4b199d5d813491fed287060c0a76c167ad25fb432caa7f7"
+    },
+    {
+      "split": "train",
+      "name": "shard_01153.npz",
+      "sha256": "b44bdf653574493ee4daa121e65d111479a0e02e08862d88cfdbe8ea1a700dd7"
+    },
+    {
+      "split": "val",
+      "name": "shard_00000.npz",
+      "sha256": "f83720e330a40ead5d1f4a1313bdbc078a41e3532e36e0a6ddc27e2e9da7271f"
+    },
+    {
+      "split": "val",
+      "name": "shard_00059.npz",
+      "sha256": "042fd2f3da129f66af529d2cec4a5679254a1f700514f742bbbcffcaafe64757"
+    },
+    {
+      "split": "val",
+      "name": "shard_00118.npz",
+      "sha256": "c59e04b51e9d64c319c5de3e768b0c0d72485df5652abc5ea59627a06fbebabb"
+    },
+    {
+      "split": "val",
+      "name": "shard_00177.npz",
+      "sha256": "b731de00eb706fcef176314233579a9b0f98d99a4ac9ec62cffcc158fcaaf074"
+    }
+  ],
+  "head_geometry": "target-lead patch mean cosSOZ/cosRAA plus day_mask",
+  "station_geometry": "same target-lead geometry at [8,8]",
+  "head_A_AC_identity": "both paired groups index the same data[g,station,lead]; only COT tensor is zeroed or retained",
+  "cosine_range": {
+    "min": [
+      -0.9927607774734497,
+      -0.992760956287384
+    ],
+    "max": [
+      0.9991697072982788,
+      0.9991652965545654
+    ]
+  },
+  "day_mask_values": [
+    0.0,
+    1.0
+  ],
+  "centre_minus_patch_mean": {
+    "mean_abs": [
+      0.00023992208021951183,
+      0.001550134509240071,
+      0.000937686604299363
+    ],
+    "p99_abs": [
+      0.0004377479199320078,
+      0.0024877261093934067,
+      0.0
+    ],
+    "max_abs": [
+      0.00044736609561368823,
+      0.49425180349498987,
+      0.3125
+    ],
+    "fraction_abs_gt_0p01": [
+      0.0,
+      0.0019904458598726115,
+      0.0031847133757961785
+    ],
+    "fraction_abs_gt_0p10": [
+      0.0,
+      0.0019904458598726115,
+      0.0029856687898089174
+    ]
+  },
+  "boundary": "this verifies cache range, target-lead alignment representation and patch-vs-centre magnitude; it does not independently prove astronomy or aux-file generation"
+}

@@ -75,7 +75,7 @@ def GHI():
  (cbank/'source_manifest.json').write_text(json.dumps(dict(state='CORRECTED_SOLAR_FORECAST_COT_BANKS_TEST_CLOSED',source_roles=source,test_payloads_read=0,buffer_payloads_read=0),indent=2))
  # Required diagnostics must finish before any downstream GHI-head training.
  cot_eval=BASE/'forecast_COT_eval_attempt12'
- run([sys.executable,CODE/'evaluate_forecast_cot.py','--cot-bank',cbank/'validation.npy','--simvp-keys',BASE/'S_banks_attempt12'/'full'/'val'/'keys.csv','--r-validation',BASE/'R_runs_attempt12'/'full'/'val','--output',cot_eval,'--bootstrap-draws',2000])
+ run([sys.executable,CODE/'evaluate_forecast_cot.py','--cot-bank',cbank/'validation.npy','--simvp-keys',BASE/'S_banks_attempt12'/'full'/'val'/'keys.csv','--r-validation',BASE/'R_runs_attempt12'/'full','--output',cot_eval,'--bootstrap-draws',2000])
  eval_meta=json.loads((cot_eval/'forecast_cot_metrics.json').read_text());assert eval_meta['state']=='VALIDATION_ONLY_FORECAST_COT_DIAGNOSTIC_CPP_RETRIEVAL_REFERENCE' and eval_meta['test_payloads_read']==eval_meta['buffer_payloads_read']==0
  rows=records(OLD/'pack/rows.csv');centers={'Niushou':(8,6),'Wangzhai':(9,8),'Mizhuang':(7,10)};ag=[];gg=[];cc=[]
  for r in rows:

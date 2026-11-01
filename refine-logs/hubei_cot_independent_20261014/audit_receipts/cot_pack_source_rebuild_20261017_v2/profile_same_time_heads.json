@@ -1,0 +1,92 @@
+{
+  "state": "HUBEI_GHI_HEAD_SINGLE_GPU_PROFILE_COMPLETE",
+  "profile_station": "Mizhuang",
+  "profile_rows": 8832,
+  "input_mode": "same_time",
+  "arms": [
+    "A",
+    "AC",
+    "AP"
+  ],
+  "parameter_counts": {
+    "A": 22177,
+    "AC": 24489,
+    "AP": 24613
+  },
+  "results": [
+    {
+      "station": "Mizhuang",
+      "arm": "A",
+      "batch": 128,
+      "updates_per_epoch_min_support": 69,
+      "examples_per_second": 53157.8770209026,
+      "peak_GiB": 0.14755868911743164
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "A",
+      "batch": 256,
+      "updates_per_epoch_min_support": 34,
+      "examples_per_second": 67110.99467031215,
+      "peak_GiB": 0.14963865280151367
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "A",
+      "batch": 512,
+      "updates_per_epoch_min_support": 17,
+      "examples_per_second": 183118.28958767303,
+      "peak_GiB": 0.15086889266967773
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "AC",
+      "batch": 128,
+      "updates_per_epoch_min_support": 69,
+      "examples_per_second": 42482.1081294672,
+      "peak_GiB": 0.1475968360900879
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "AC",
+      "batch": 256,
+      "updates_per_epoch_min_support": 34,
+      "examples_per_second": 85244.08308890795,
+      "peak_GiB": 0.14967679977416992
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "AC",
+      "batch": 512,
+      "updates_per_epoch_min_support": 17,
+      "examples_per_second": 190800.73035838315,
+      "peak_GiB": 0.15090703964233398
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "AP",
+      "batch": 128,
+      "updates_per_epoch_min_support": 69,
+      "examples_per_second": 11558.138233759253,
+      "peak_GiB": 0.1475968360900879
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "AP",
+      "batch": 256,
+      "updates_per_epoch_min_support": 34,
+      "examples_per_second": 72619.06772122631,
+      "peak_GiB": 0.14967679977416992
+    },
+    {
+      "station": "Mizhuang",
+      "arm": "AP",
+      "batch": 512,
+      "updates_per_epoch_min_support": 17,
+      "examples_per_second": 152469.12120764804,
+      "peak_GiB": 0.15090703964233398
+    }
+  ],
+  "test_payloads_read": 0,
+  "selection": "largest batch with >=12 updates/epoch and within 3% of best measured examples/s across all arms"
+}

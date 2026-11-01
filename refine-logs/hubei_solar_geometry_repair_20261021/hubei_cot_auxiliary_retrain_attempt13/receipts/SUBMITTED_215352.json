@@ -1,0 +1,30 @@
+{
+  "state": "SUBMITTED_QUEUED",
+  "timestamp_bjt": "2026-10-21T12:19:58+08:00",
+  "job_id": "215352.tc6000",
+  "queue_before": {
+    "unfinished_jobs": 0,
+    "limit": 3
+  },
+  "queue_after": {
+    "unfinished_jobs": 1,
+    "limit": 3
+  },
+  "pbs_state": "Q",
+  "pbs_queue": "gpu",
+  "requested_resources": "node22:ppn=8:gpus=1",
+  "walltime": "36:00:00",
+  "actual_training_started": false,
+  "preflight": "PASS_ATTEMPT13_TRAIN_VAL_INPUTS_AND_CPP_PHYSICAL_TARGETS",
+  "import_smoke": "ATTEMPT13_IMPORT_SMOKE_PASS",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "log": "../attempt13_retry2.log",
+  "script_sha256": {
+    "attempt13_pair.pbs": "e7735df4893c55005abfd4c86892b6a359719b96d7c3ffe75434d75ccf319e2b",
+    "attempt13_import_smoke.py": "57c0446a89488897c98e6df270f9d2abf6eaee61e0c9383342229fe937010b70",
+    "sitecustomize.py": "a73c31670a994158c4ef9ac4acda38a12b82dcb03fcdee6241c0708e7735bd6f",
+    "run_pair_attempt13.py": "884ed207bbee382d03fd73b8910f69559db4fd5692bed9d77f76929b4c4cdfaa"
+  },
+  "note": "First clean retry after preserving prior failure logs and adding attempt-local dependency/API compatibility layer."
+}

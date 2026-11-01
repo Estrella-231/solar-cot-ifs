@@ -1,0 +1,60 @@
+{
+  "state": "PASS_FULL_AGRI_TRAINVAL_BANK_KEYED_TEST_CLOSED",
+  "manifest_rows": 22061,
+  "bank_rows": 22061,
+  "bank_rows_by_split": {
+    "train": 20206,
+    "val": 1855
+  },
+  "bank_rows_match_manifest_exactly": true,
+  "prediction_shape": [
+    22061,
+    1,
+    16,
+    16
+  ],
+  "prediction_finite_nonnegative": true,
+  "prediction_min_max": [
+    0.0,
+    74.91889953613281
+  ],
+  "prediction_element_count": 5647616,
+  "daylight_clear_label_support_by_station_split": {
+    "Mizhuang/train": {
+      "eligible_labels": 9047,
+      "matched_agri_cot": 7800
+    },
+    "Mizhuang/val": {
+      "eligible_labels": 816,
+      "matched_agri_cot": 735
+    },
+    "Niushou/train": {
+      "eligible_labels": 9332,
+      "matched_agri_cot": 8013
+    },
+    "Niushou/val": {
+      "eligible_labels": 856,
+      "matched_agri_cot": 766
+    },
+    "Wangzhai/train": {
+      "eligible_labels": 9178,
+      "matched_agri_cot": 7893
+    },
+    "Wangzhai/val": {
+      "eligible_labels": 784,
+      "matched_agri_cot": 694
+    }
+  },
+  "three_station_common_target_times_in_split": 5351,
+  "matched_support_rows_written": 25901,
+  "support_csv_sha256": "85b65348a6f449e9a244822a62bc43c7f5ac1bacd0d5594e80910b1117552790",
+  "bank_prediction_sha256": "5c9f84dfcb45ce124d195641c2974f00b620f38ccbfa306d39012d08f6394de6",
+  "bank_rows_sha256": "7e76d876eae46bdd58ffdb3131dc8036b2b72bfeb0bed4fb1bd2a2632ee8fb77",
+  "manifest_sha256": "f6280abbbd4c5ae990e9f18d27ad0880be1a4a69adfc031d6c5d89734cddf479",
+  "test_payloads_read": 0,
+  "ghi_values_used_for_this_audit": false,
+  "source_time_semantics_gate": "not decided by filename-key equality; see B0 audit",
+  "ghi_unit_gate": "open; this is support/key audit only, not training authorization",
+  "train_cot_predictions_are_oof": false,
+  "cpp_reference": "cpp_16_fixed_v2 is retrieval supervision, not independent truth"
+}

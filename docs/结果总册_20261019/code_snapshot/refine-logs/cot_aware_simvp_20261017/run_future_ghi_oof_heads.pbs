@@ -1,0 +1,90 @@
+#!/bin/bash
+#PBS -N fghi_oof_heads
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+RROOT=$PROJECT/experiments/monthly_R_station16_20261013_v1
+BASE=$EXP/results/future_simvp_r_bank_v1
+OOF_BANKS=$EXP/results/future_ghi_oof_banks_v1
+MANIFESTS=$EXP/results/future_ghi_oof_manifests_v1
+MERGED=$EXP/results/future_simvp_r_bank_oof_v1
+CROSS_REPORT=$EXP/results/future_ghi_crosswalk.json
+CROSS_KEYS=$EXP/results/future_ghi_crosswalk_keys.npz
+LABEL_PACK=$RROOT/data/ghi_head_pack_new_r_v1
+PACK=$EXP/results/future_ghi_oof_head_pack_v1
+RUN=$EXP/results/future_ghi_oof_cot_source_heads_v1
+SEED42_AUDIT=$EXP/results/future_ghi_oof_seed42_audit_v1.json
+FINAL_AUDIT=$EXP/results/future_ghi_oof_source_validation_audit_v1.json
+LOG=$EXP/logs/future_ghi_oof_heads_${PBS_JOBID}.log
+mkdir -p "$EXP/logs" "$EXP/results"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$EXP"
+sha256sum -c FUTURE_GHI_OOF_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_oof_heads_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+python -m py_compile "$EXP/build_future_ghi_head_pack.py" "$EXP/train_future_ghi_heads.py" "$EXP/audit_future_ghi_a_ac.py" "$EXP/merge_future_ghi_oof_bank.py"
+python "$EXP/test_future_ghi_oof_provenance.py"
+python "$EXP/test_audit_future_ghi_a_ac.py"
+python "$EXP/test_merge_future_ghi_oof_bank.py"
+python - <<'PY' "$EXP" "$OOF_BANKS" "$MANIFESTS" "$MERGED" "$RUN" "$PACK" "$SEED42_AUDIT" "$FINAL_AUDIT"
+import json,sys
+from pathlib import Path
+exp,banks,manifests,merged,run,pack,seed42,final=map(Path,sys.argv[1:])
+if any(x.exists() for x in (merged,run,pack,seed42,final)):
+    raise SystemExit('REFUSE: OOF head stage output already exists; preserve it and version new outputs')
+audit=json.loads((manifests/'manifest_build_audit.json').read_text())
+assert audit['oof_bank_coverage']==audit['bank_train_sequences']==30436
+assert all(x['train_heldout_frame_intersection']==0 for x in audit['folds'])
+for fold in range(5):
+    d=banks/f'fold_{fold}'
+    m=json.loads((d/'bank_manifest.json').read_text())
+    assert m['state']=='COMPLETE_FUTURE_GHI_OOF_FOLD_FORECASTS'
+    assert m['future_observed_agri_read'] is False and m['cpp_read'] is False
+    assert m['buffer_payload_opened'] is False and m['validation_test_payload_opened'] is False
+print('FIVE_FOLD_OOF_BANK_PREFLIGHT_PASS')
+PY
+
+python "$EXP/merge_future_ghi_oof_bank.py" \
+  --base-bank "$BASE" --fold-manifests "$MANIFESTS" \
+  --fold-bank "$OOF_BANKS/fold_0" --fold-bank "$OOF_BANKS/fold_1" \
+  --fold-bank "$OOF_BANKS/fold_2" --fold-bank "$OOF_BANKS/fold_3" \
+  --fold-bank "$OOF_BANKS/fold_4" --output "$MERGED"
+python "$EXP/build_future_ghi_head_pack.py" \
+  --forecast-bank "$MERGED" --crosswalk "$CROSS_REPORT" --keys "$CROSS_KEYS" \
+  --ghi-pack "$LABEL_PACK" --output "$PACK"
+python - <<'PY' "$PACK/pack_manifest.json"
+import json,sys
+x=json.load(open(sys.argv[1])); assert x['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK'
+assert x['train_forecast_oof'] is True and x['forecast_bank_oof_fold_count']==5
+assert x['test_payload_opened'] is False and x['buffer_payload_opened'] is False
+assert x['future_observed_agri_used_as_input'] is False and x['cpp_used_as_input'] is False
+print('OOF_GHI_PACK_PROVENANCE_PASS',x['rows'])
+PY
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"; exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+# Seed 42 is a structural and pairing gate. The three-seed screen is fixed in
+# advance; validation scores do not tune inputs, weights, or architecture.
+python -u "$EXP/train_future_ghi_heads.py" --pack "$PACK" --output "$RUN" --seeds 42 --epochs 30 --batch-size 1792 --station both
+python -u "$EXP/audit_future_ghi_a_ac.py" --run-root "$RUN" --output "$SEED42_AUDIT" --seeds 42 --bootstrap 2000 --require-oof
+python -u "$EXP/train_future_ghi_heads.py" --pack "$PACK" --output "$RUN" --seeds 43 44 --epochs 30 --batch-size 1792 --station both --append
+python -u "$EXP/audit_future_ghi_a_ac.py" --run-root "$RUN" --output "$FINAL_AUDIT" --seeds 42 43 44 --bootstrap 2000 --require-oof
+python -u "$EXP/audit_future_ghi_cot_strata.py" --pack "$PACK" --run-root "$RUN" \
+  --output "$EXP/results/future_ghi_oof_cot_strata_audit_v1.json" --seeds 42 43 44
+echo "FUTURE_GHI_OOF_SCREEN_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

@@ -1,0 +1,58 @@
+{
+  "state": "COMPLETE_DIRECT_COT_SAME_HEAD_COUNTERFACTUAL_BLOCK_BOOTSTRAP",
+  "scope": "validation-only seed42 frozen P-XC heads; identical AGRI/geometry; with predicted COT vs neutral zero normalized COT; diagnostic not new trained candidate",
+  "bootstrap": {
+    "repetitions": 5000,
+    "seed": 20261020,
+    "blocks": 26,
+    "unit": "frozen consecutive two-day monthly validation blocks, with replacement and multiplicity retained"
+  },
+  "bands": {
+    "all_16_leads": {
+      "site_equal_point_delta_rmse": -2.7502841815941537,
+      "site_equal_block_bootstrap_95ci": [
+        -7.060748329038094,
+        1.1397065036511558
+      ],
+      "station_point_metrics": {
+        "sili": {
+          "with_cot_rmse": 131.87679600864968,
+          "neutral_cot_rmse": 134.58304132026535,
+          "delta_rmse_with_minus_neutral": -2.7062453116156746
+        },
+        "zhujia": {
+          "with_cot_rmse": 143.22621054227875,
+          "neutral_cot_rmse": 146.02053359385138,
+          "delta_rmse_with_minus_neutral": -2.7943230515726327
+        }
+      }
+    },
+    "lead_15_60": {
+      "site_equal_point_delta_rmse": -6.392852573263454,
+      "site_equal_block_bootstrap_95ci": [
+        -10.80567078737618,
+        -2.2377538153519057
+      ],
+      "station_point_metrics": {
+        "sili": {
+          "with_cot_rmse": 111.04781140958256,
+          "neutral_cot_rmse": 117.24550200572106,
+          "delta_rmse_with_minus_neutral": -6.1976905961385
+        },
+        "zhujia": {
+          "with_cot_rmse": 130.14701880096723,
+          "neutral_cot_rmse": 136.73503335135564,
+          "delta_rmse_with_minus_neutral": -6.588014550388408
+        }
+      }
+    }
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false,
+  "validation_keys_sha256": {
+    "sili": "1a3b7bd64c871b122955765b4ae22b139eacca3a09f43d2318df8fdd8d856b76",
+    "zhujia": "632a10c7d5823a23e41663422b90daa943c8317aea0061333a11727de35a073c"
+  }
+}

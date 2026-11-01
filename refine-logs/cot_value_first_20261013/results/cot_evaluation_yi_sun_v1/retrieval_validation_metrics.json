@@ -1,0 +1,267 @@
+{
+  "state": "PASS_INDEPENDENT_PHYSICAL_COT_VALIDATION_RECOMPUTE",
+  "split": "monthly_block_validation_only",
+  "test_payloads_read": 0,
+  "reference": "FY-4B CPP retrieval; not independent in-situ truth",
+  "prediction_transform": "expm1(pred_log1p_cot) exactly once, float64",
+  "sample_count": 1398,
+  "station_sample_counts": {
+    "sili": 700,
+    "zhujia": 698
+  },
+  "unique_bjt_target_dates": 57,
+  "target_date_range_bjt": [
+    "2024-04-18",
+    "2026-03-02"
+  ],
+  "common_support_pixels_16x16": 356169,
+  "possible_pixels_16x16": 357888,
+  "coverage_16x16": 0.9951968213519313,
+  "prediction_physical_range_on_support": [
+    0.0005035890320298014,
+    91.07820966077466
+  ],
+  "reference_physical_range_on_support": [
+    0.0,
+    77.79380798339844
+  ],
+  "scale_definition": {
+    "station_pixel_8_8": "station-centered crop center, zero-based [8,8]",
+    "local_3x3_7_10": "crop rows/columns [7:10], retains each physical pixel",
+    "station_patch_16x16": "native station-centered patch, not a regional full-field score"
+  },
+  "metrics": {
+    "station_pixel_8_8": {
+      "by_station": {
+        "sili": {
+          "n_pixels": 695,
+          "rmse": 8.72185851254985,
+          "mae": 4.794326612090448,
+          "bias": 0.8597405886783566,
+          "r2_sse": 0.6506895204247303
+        },
+        "zhujia": {
+          "n_pixels": 695,
+          "rmse": 8.242450776199266,
+          "mae": 3.743665828388385,
+          "bias": -0.24685759215376837,
+          "r2_sse": 0.7311632571506196
+        }
+      },
+      "two_station_equal_weight": {
+        "rmse": 8.482154644374559,
+        "mae": 4.2689962202394165,
+        "bias": 0.3064414982622941,
+        "r2_sse": 0.6909263887876749
+      },
+      "pooled_pixels_diagnostic": {
+        "n_pixels": 1390,
+        "rmse": 8.485540958330418,
+        "mae": 4.268996220239417,
+        "bias": 0.30644149826229405,
+        "r2_sse": 0.6975803659196966
+      }
+    },
+    "local_3x3_7_10": {
+      "by_station": {
+        "sili": {
+          "n_pixels": 6255,
+          "rmse": 8.794230810329083,
+          "mae": 4.884522796878805,
+          "bias": 0.8111868923829296,
+          "r2_sse": 0.645081760566458
+        },
+        "zhujia": {
+          "n_pixels": 6255,
+          "rmse": 8.249139453379936,
+          "mae": 3.735221282144532,
+          "bias": -0.2528582512717756,
+          "r2_sse": 0.7313269338701558
+        }
+      },
+      "two_station_equal_weight": {
+        "rmse": 8.52168513185451,
+        "mae": 4.309872039511669,
+        "bias": 0.27916432055557705,
+        "r2_sse": 0.6882043472183069
+      },
+      "pooled_pixels_diagnostic": {
+        "n_pixels": 12510,
+        "rmse": 8.526042378109867,
+        "mae": 4.309872039511669,
+        "bias": 0.2791643205555771,
+        "r2_sse": 0.6953157583062997
+      }
+    },
+    "station_patch_16x16": {
+      "by_station": {
+        "sili": {
+          "n_pixels": 178019,
+          "rmse": 9.673508942031255,
+          "mae": 5.508269328278505,
+          "bias": 0.7506281360313622,
+          "r2_sse": 0.5861588165217313
+        },
+        "zhujia": {
+          "n_pixels": 178150,
+          "rmse": 8.432662284047074,
+          "mae": 3.7849884584199556,
+          "bias": -0.1922411913278895,
+          "r2_sse": 0.7215530693715091
+        }
+      },
+      "two_station_equal_weight": {
+        "rmse": 9.053085613039165,
+        "mae": 4.646628893349231,
+        "bias": 0.27919347235173636,
+        "r2_sse": 0.6538559429466202
+      },
+      "pooled_pixels_diagnostic": {
+        "n_pixels": 356169,
+        "rmse": 9.074092379589063,
+        "mae": 4.646311979476951,
+        "bias": 0.2790200773034811,
+        "r2_sse": 0.6641362261785622
+      }
+    }
+  },
+  "reference_cot_strata_16x16": {
+    "reference_cot_lt_0_1": {
+      "sili": {
+        "n_pixels": 47847,
+        "rmse": 12.894439178904996,
+        "mae": 5.470434235711744,
+        "bias": 5.470295473782575,
+        "r2_sse": -8941022.63535658
+      },
+      "zhujia": {
+        "n_pixels": 80400,
+        "rmse": 8.87379931830935,
+        "mae": 2.4507787540364423,
+        "bias": 2.4488527193407905,
+        "r2_sse": -620749.160482452
+      }
+    },
+    "reference_cot_0_1_to_lt_30": {
+      "sili": {
+        "n_pixels": 103961,
+        "rmse": 5.8652943632483785,
+        "mae": 4.077355770574438,
+        "bias": 0.5704850005258066,
+        "r2_sse": 0.4324521195865815
+      },
+      "zhujia": {
+        "n_pixels": 73037,
+        "rmse": 4.216458744789575,
+        "mae": 2.609854152051335,
+        "bias": 0.3164238822094941,
+        "r2_sse": 0.6927616535436952
+      }
+    },
+    "reference_cot_ge_30": {
+      "sili": {
+        "n_pixels": 26211,
+        "rmse": 13.985411458181138,
+        "mae": 11.252784991416668,
+        "bias": -7.150408169301866,
+        "r2_sse": -1.04543406483387
+      },
+      "zhujia": {
+        "n_pixels": 24713,
+        "rmse": 14.278924990098618,
+        "mae": 11.598638948715728,
+        "bias": -10.287952816533725,
+        "r2_sse": -1.1117718870597613
+      }
+    }
+  },
+  "bjt_target_date_cluster_bootstrap": {
+    "replicates": 2000,
+    "seed": 20261013,
+    "estimator": "equal mean of station metrics, resampling target BJT dates with replacement",
+    "confidence_intervals": {
+      "station_pixel_8_8": {
+        "rmse": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            6.0106070975541686,
+            11.144296188331483
+          ]
+        },
+        "mae": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            3.0172355054583675,
+            5.923808296813289
+          ]
+        },
+        "bias": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            -1.19244848626377,
+            1.99377926527179
+          ]
+        }
+      },
+      "local_3x3_7_10": {
+        "rmse": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            6.046590812463379,
+            11.191002417564642
+          ]
+        },
+        "mae": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            3.064785745031354,
+            5.963067579490639
+          ]
+        },
+        "bias": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            -1.2186317064056351,
+            1.9563160527542705
+          ]
+        }
+      },
+      "station_patch_16x16": {
+        "rmse": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            6.562737459631692,
+            11.828872776087614
+          ]
+        },
+        "mae": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            3.401940997533624,
+            6.31812760901188
+          ]
+        },
+        "bias": {
+          "valid_replicates": 2000,
+          "percentile_95_ci": [
+            -1.2619225642981007,
+            2.0393264721537836
+          ]
+        }
+      }
+    }
+  },
+  "ssim": {
+    "status": "NOT_COMPUTED",
+    "reason": "train-only physical COT q99.9 scale is not bundled with the validation NPZ; local 3x3 is also below the fixed 11x11 window."
+  },
+  "source_sha256": {
+    "predictions": "08c9cc92df549f12412873e9b8e50f308f35f79451693fa10b229a3346c15785",
+    "clp_reference": "ff11cea370fa9618d51492922deb81f8f21473ee16743c31b875475d417f2314"
+  },
+  "limitations": [
+    "CPP COT is a retrieval reference, not an independent physical truth.",
+    "Only the previously available validation prediction bank is scored; it is not an untouched test result.",
+    "The station-patch metric is not a regional full-image evaluation."
+  ]
+}

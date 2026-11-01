@@ -1,0 +1,41 @@
+{
+  "state": "PASS_CORRECT_UTC_R_PACK_INDEPENDENT_AUDIT_TEST_CLOSED",
+  "rows": 3479,
+  "counts_by_split": {
+    "train": {
+      "rows": 3178,
+      "supervised_rows": 2741,
+      "valid_pixels": 699085
+    },
+    "val": {
+      "rows": 301,
+      "supervised_rows": 262,
+      "valid_pixels": 66630
+    }
+  },
+  "array_shapes": {
+    "x_norm": [
+      3479,
+      16,
+      16,
+      16
+    ],
+    "target": [
+      3479,
+      1,
+      16,
+      16
+    ],
+    "mask": [
+      3479,
+      1,
+      16,
+      16
+    ]
+  },
+  "hashes_match": true,
+  "pack_status_sha256": "2db17d161f4d38ba3d55232a6dafd9efcf4b23fab65734a0bc8483be63c6d0d5",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "CPP_reference_caveat": "retrieval supervision, not independent truth"
+}

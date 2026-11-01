@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -N sili_hist_probe
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l mem=16gb
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/sili_history_information_probe_20260928_v1.pbs.log
+set -euo pipefail
+trap 'rc=$?; echo "FAILED: line=$LINENO status=$rc"; exit "$rc"' ERR
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=8 OPENBLAS_NUM_THREADS=8 MKL_NUM_THREADS=8 NUMEXPR_NUM_THREADS=8 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/regional_station_cot_20260925
+BANK=$EXP/sili_cot_dynamics_bank_train512_val512_20260927_v1
+OUT=$EXP/sili_history_information_probe_20260928_v1
+SCRIPT=$EXP/scripts/diagnose_sili_history_information_20260928.py
+test -s "$BANK/complete.json"
+test "$(python -c 'import json,sys; print(str(json.load(open(sys.argv[1])).get("test_used")))' "$BANK/complete.json")" = False
+test ! -e "$OUT"
+python -m py_compile "$SCRIPT"
+sha256sum "$SCRIPT" "$BANK/complete.json"
+free -h
+df -h "$EXP"
+python -u "$SCRIPT" --bank "$BANK" --output "$OUT" --station 0 --ridge-alpha 0.01
+echo SILI_HISTORY_INFORMATION_PROBE_COMPLETE

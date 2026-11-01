@@ -1,0 +1,104 @@
+{
+  "state": "HUBEI_TRAIN_DATE_OOF_FOLDS_FROZEN_METADATA_ONLY",
+  "source_split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "fold_manifest_sha256": "f22af1e10d473bb256d5e320bc83b5468c527b7f722220806bcd86cbf7239907",
+  "fold_count": 5,
+  "train_dates": 250,
+  "dates_by_fold": {
+    "0": 55,
+    "1": 55,
+    "2": 51,
+    "3": 46,
+    "4": 43
+  },
+  "month_fold_date_counts": {
+    "2025-08": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 4,
+      "4": 4
+    },
+    "2025-09": {
+      "0": 5,
+      "1": 5,
+      "2": 4,
+      "3": 4,
+      "4": 4
+    },
+    "2025-10": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 4,
+      "4": 4
+    },
+    "2025-11": {
+      "0": 5,
+      "1": 5,
+      "2": 4,
+      "3": 4,
+      "4": 4
+    },
+    "2025-12": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 4,
+      "4": 4
+    },
+    "2026-01": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 4,
+      "4": 4
+    },
+    "2026-02": {
+      "0": 4,
+      "1": 4,
+      "2": 4,
+      "3": 4,
+      "4": 3
+    },
+    "2026-03": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5,
+      "4": 4
+    },
+    "2026-04": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 4,
+      "4": 4
+    },
+    "2026-05": {
+      "0": 5,
+      "1": 5,
+      "2": 4,
+      "3": 4,
+      "4": 4
+    },
+    "2026-06": {
+      "0": 3,
+      "1": 3,
+      "2": 2,
+      "3": 2,
+      "4": 2
+    },
+    "2026-07": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 2
+    }
+  },
+  "validation_dates_used_for_folds": 0,
+  "test_or_buffer_dates_read": 0,
+  "assignment_rule": "within each calendar month, sort train BJT dates by SHA256(hubei-oof-datefold-v1|month|date), assign round-robin to folds 0..4",
+  "use_rule": "For each fold, train S and R only on other frozen train dates; select/checkpoint using the unchanged global validation dates only; predict held-out fold after training. Keep all sequence windows within one BJT date and global train split."
+}

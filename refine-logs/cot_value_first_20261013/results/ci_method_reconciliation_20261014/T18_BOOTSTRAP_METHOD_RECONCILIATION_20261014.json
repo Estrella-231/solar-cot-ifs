@@ -1,0 +1,60 @@
+{
+  "state": "PASS_T18_BOOTSTRAP_METHOD_RECONCILIATION",
+  "scope": "validation-only saved T18 predictions; no test payloads",
+  "test_payloads_read": 0,
+  "n_rows": 4479,
+  "n_union_bjt_dates": 52,
+  "station_bjt_date_counts": {
+    "sili": 44,
+    "zhujia": 50
+  },
+  "point_difference_wm2": {
+    "AL-A": -4.173143888577727,
+    "AL-AC": -0.43289244214859224,
+    "AL-AP": -4.014656213495833,
+    "AC-A": -3.7402514464291343
+  },
+  "union_date_shared_pairing_95ci_wm2_seed_20261013": {
+    "AL-A": [
+      -7.265562853518796,
+      -1.233902439355707
+    ],
+    "AL-AC": [
+      -1.5652992780727613,
+      0.7462389021657633
+    ],
+    "AL-AP": [
+      -7.089295995870848,
+      -1.111380956890157
+    ],
+    "AC-A": [
+      -6.179576809008933,
+      -1.597258751862952
+    ]
+  },
+  "station_separate_date_95ci_wm2_seed_20261014": {
+    "AL-A": [
+      -7.137495161194817,
+      -1.3901959059440994
+    ],
+    "AL-AC": [
+      -1.4757664003214088,
+      0.676823552720779
+    ],
+    "AL-AP": [
+      -6.913617148518081,
+      -1.2648444457485943
+    ],
+    "AC-A": [
+      -6.074348955451318,
+      -1.6473778775164394
+    ]
+  },
+  "input_sha256": {
+    "paired_predictions_fp64.npz": "709bf77b97d2c24c41a6857acb3720d3d9ec6df08985f29bf9d5b491ca8c9fc5",
+    "paired_val_keys.csv": "ca8de0064912567d7c882e406125c5fb02121c30e3115ac54d6f0086f3267baf",
+    "primary_audit_ghi_heads_three_seed.py": "4b1602378a5a2c3cdd0cbcc645ab8f8495f74a9b1f401a11da35fc08bc400af7",
+    "T18_verify_t18_r_al_saved_predictions.py": "f489865871fd7800a62ce8c3405f8912fe422da0270181abf441cdbb8c9a63ad"
+  },
+  "interpretation": "Both intervals are paired and use the same saved predictions and point estimand; the primary interval shares sampled BJT target dates across stations, while T18 sensitivity samples each station's dates independently. Use the preregistered shared-date interval for the primary AC-A claim. The other interval is a station-separate resampling sensitivity, not a prediction or metric error."
+}

@@ -1,0 +1,38 @@
+#!/bin/bash
+#PBS -N ghi_ms_cot_swap_val
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_dynamics_20260924/ghi_motion_source_fixed_head_validation_20260926.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/cot_dynamics_20260924
+TRIAD=$ROOT/HunanBackboneTriad_20260921/geometry24_v2
+HEAD=$EXP/ghi_b1_simvp_geometry24_seed42_v1
+SIMVP=$EXP/simvp_geometry24_val_cot_image_bank_v1
+HISTORY=$SOLAR/data/history_cot_trajectory_real_agri_rpair_20260923/original_R
+IMAGE=$EXP/simvp_geometry24_v5_input_trainval_v1
+FORECAST=$TRIAD/evaluation/four_backbones_cpp_cot_val_20260923_geometry24_v2
+OUT=$EXP/ghi_motion_source_fixed_head_validation_20260926
+test ! -e "$OUT"
+test -f "$HEAD/complete.json"
+test -f "$SIMVP/complete.json"
+test -f "$HISTORY/audit.json"
+test -f "$IMAGE/audit.json"
+test -f "$FORECAST/contract.json"
+test -f "$FORECAST/motion_source/forecast_cot_log1p.npy"
+python -m py_compile "$EXP/scripts/eval_motion_source_geometry24_frozen_ghi_head_20260926.py"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+python -u "$EXP/scripts/eval_motion_source_geometry24_frozen_ghi_head_20260926.py" \
+  --solar-root "$SOLAR" --head-run "$HEAD" --simvp-bank "$SIMVP" \
+  --history-dir "$HISTORY" --image-sidecar "$IMAGE" --cpp-forecast-root "$FORECAST" \
+  --output "$OUT" --batch 1024

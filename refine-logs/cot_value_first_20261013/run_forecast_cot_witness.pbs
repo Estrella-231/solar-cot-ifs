@@ -1,0 +1,41 @@
+#!/bin/bash
+#PBS -N cot_s2r_witness_v2
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/logs/forecast_cot_witness_20261014_v2.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/cot_value_first_20261013
+S=$ROOT/experiments/hunan_monthly_block_20261002
+R=$ROOT/experiments/monthly_R_station16_20261013_v1
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+OUT=$EXP/results/forecast_cot_witness_20261014_v2
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+test ! -e "$OUT"
+test "$(sha256sum "$S/manifests_v1/hunan_8to16.csv" | awk '{print $1}')" = f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2
+test "$(sha256sum "$S/runs/simvp_seed42_v1/training/best.pt" | awk '{print $1}')" = f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4
+test "$(sha256sum "$R/results/seed42_v1/best.pt" | awk '{print $1}')" = 342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -m py_compile "$EXP/replay_forecast_cot_witness.py"
+python -u "$EXP/replay_forecast_cot_witness.py" \
+  --solar-root "$ROOT" \
+  --data-root "$DATA" \
+  --manifest "$S/manifests_v1/hunan_8to16.csv" \
+  --norm "$S/manifests_v1/hunan_train_norm.json" \
+  --simvp-checkpoint "$S/runs/simvp_seed42_v1/training/best.pt" \
+  --simvp-source "$S/code" \
+  --r-checkpoint "$R/results/seed42_v1/best.pt" \
+  --r-source "$R/scripts/train_station16_R.py" \
+  --r-norm "$R/results/seed42_v1/normalization.json" \
+  --r-pack-rows "$R/data/pack_trainval_v1/rows.csv" \
+  --r-validation-predictions "$R/results/seed42_v1/validation_predictions.npz" \
+  --candidate "$R/input/target_candidates_train_val.csv" \
+  --output "$OUT"
+echo COT_SIMVP_TO_R_WITNESS_COMPLETE

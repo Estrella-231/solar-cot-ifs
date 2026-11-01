@@ -1,0 +1,79 @@
+{
+  "audit_time_utc": "2026-10-18T01:36:48Z",
+  "scope": "Metadata-only online inventory of 16 exact FY-4B AGRI L1 Full Disk 4KM train/validation keys, June-July 2026",
+  "portal": "https://data.nsmc.org.cn/DataPortal/cn/data/dataset.html?satelliteCode=FY4B",
+  "access": "Unauthenticated GET metadata only; no login, cart, order, download, or raster/pixel read",
+  "product_id": "FY4B-_AGRI--_N_DISK_1330E_L1-_FDI-_MULT_NOM_YYYYMMDDhhmmss_YYYYMMDDhhmmss_4000M_Vnnnn.HDF",
+  "endpoints": [
+    "/DataPortal/v1/data/selection/file/subcount",
+    "/DataPortal/v1/data/selection/subfilesearchrecord",
+    "/DataPortal/v1/data/selection/subfile"
+  ],
+  "query_contract": {
+    "time_basis": "UTC; full UTC day 00:00:00 through 23:59:59",
+    "area": "cbAllArea=on, cbGHIArea=on, cbSliceArea empty",
+    "pagination": "beginIndex=1, endIndex=100",
+    "timeSelection": "all",
+    "other_filters": "periodTime, daynight, where, sliceAreas, converStatus, rdbIsEvery empty",
+    "coordinate_parameter_names": ["east_CoordValue", "west_CoordValue", "north_CoordValue", "south_CoordValue"],
+    "coordinate_values": {"east_CoordValue": 180, "west_CoordValue": -180, "north_CoordValue": 90, "south_CoordValue": -90},
+    "official_listing_script": "https://data.nsmc.org.cn/DataPortal/js/page.data.file.list.js?v=1.0.250314",
+    "official_listing_script_sha256": "76bb1bcda61fa05f00cd87ad21287ff7021baf843650f419e74cf599071fae23",
+    "reproducible_query_script_path": "tooling_20261017/recheck_nsmc_agri_metadata.ps1",
+    "reproducible_query_script_sha256": "0f00be0d0ed49b471d3af3baedfa43cea02f10f8abdf34b156f86bbe8c067a33",
+    "archive_name_hash_method": "Sort ARCHIVENAME strings ascending, join with LF (no trailing LF), UTF-8 encode, SHA-256"
+  },
+  "positive_control": {
+    "utc_date": "2026-06-13",
+    "subcount": 95,
+    "subfile_records": 95,
+    "exact_starts_found": [
+      "2026-06-13T08:15:00Z",
+      "2026-06-13T08:30:00Z"
+    ],
+    "example_archive_names": [
+      "FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260613081500_20260613082959_4000M_V0001.HDF",
+      "FY4B-_AGRI--_N_DISK_1050E_L1-_FDI-_MULT_NOM_20260613083000_20260613084459_4000M_V0001.HDF"
+    ]
+  },
+  "gap_dates": [
+    {"utc_date": "2026-06-11", "listed_records": 93, "expected_keys": 2, "exact_matches": 0},
+    {"utc_date": "2026-06-19", "listed_records": 93, "expected_keys": 2, "exact_matches": 0},
+    {"utc_date": "2026-06-20", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-06-21", "listed_records": 93, "expected_keys": 2, "exact_matches": 0},
+    {"utc_date": "2026-06-22", "listed_records": 93, "expected_keys": 2, "exact_matches": 0},
+    {"utc_date": "2026-06-23", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-07-02", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-07-04", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-07-05", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-07-06", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-07-07", "listed_records": 94, "expected_keys": 1, "exact_matches": 0},
+    {"utc_date": "2026-07-13", "listed_records": 94, "expected_keys": 1, "exact_matches": 0}
+  ],
+  "live_recheck_utc_20261018T013648Z": {
+    "date_list_query_subfile_counts_and_sorted_archive_name_sha256": [
+      {"utc_date":"2026-06-11","records":93,"sha256":"10e35a5b2eb643b61e360179f1829f03cade330f1787278181477ecbab81f963"},
+      {"utc_date":"2026-06-19","records":93,"sha256":"df7e0577e17b531f4b7e25d28a22e948d275f3fd7f04699cd9f0026a4de89125"},
+      {"utc_date":"2026-06-20","records":94,"sha256":"4e29140942c599d14b2979c5d5f01c88a3453a9e7b2f2566d34bf10b0a8bab6e"},
+      {"utc_date":"2026-06-21","records":93,"sha256":"87804f69a5f5b2c3d32d168480c3e688f14cbcd8d34356861ec866402e50cdbd"},
+      {"utc_date":"2026-06-22","records":93,"sha256":"d8065ccf996652050850a592912b74e4e8e5afbb2c33203f268b6eb361c0c9af"},
+      {"utc_date":"2026-06-23","records":94,"sha256":"0a005c8b1cb5ae38814389b19045d727ec54af8b41d6d0ef8b72fd25da4fcf28"},
+      {"utc_date":"2026-07-02","records":94,"sha256":"43ecad1e8d1414a2761b4b6e7afeaae49a2128b2c46bdd42470d206f0d270fc8"},
+      {"utc_date":"2026-07-04","records":94,"sha256":"eb7e37a66c0e65230585fb3c862630d13c8f60abeaf394a5c0b5596aeb218678"},
+      {"utc_date":"2026-07-05","records":94,"sha256":"a8c4c5a88828e275ba975d8d0bc749ecb9a0bced8a87b6e606d033401729492f"},
+      {"utc_date":"2026-07-06","records":94,"sha256":"9b00a8ad26a99b329aed6143067324aa9101c1cd886aaebcd5f03f5667fa4202"},
+      {"utc_date":"2026-07-07","records":94,"sha256":"07c2f42ab5f7e274a6c19f26a2e7bee8722bc0b89541232302fca88d075f0017"},
+      {"utc_date":"2026-07-13","records":94,"sha256":"af65e5099017dfd777f05dcb853c52544c772d92c93f81aaf5648e65f0c63a04"}
+    ],
+    "target_gap_keys": 16,
+    "exact_archive_name_matches": 0,
+    "result_scope": "Public online filename metadata only; no download, authentication, or raster access."
+  },
+  "exact_missing_utc_starts": [
+    "202606110815", "202606110830", "202606192045", "202606192100",
+    "202606202130", "202606212200", "202606212215", "202606222245",
+    "202606222300", "202606230000", "202607022015", "202607040815",
+    "202607050815", "202607060900", "202607070945", "202607131200"
+  ],
+  "result_boundary": "Positive control validates the query keys and exact UTC-start matching. A live re-query at 2026-10-18T01:36:48Z found zero exact archive-name matches for the same 16 train/validation gap keys; per-day record counts and sorted ARCHIVENAME list hashes are recorded under live_recheck_utc_20261018T013648Z. This establishes absence from the public online listing at that audit time only, not from offline tapes, private mirrors, or other authorized archives. No files were downloaded or read."
+}

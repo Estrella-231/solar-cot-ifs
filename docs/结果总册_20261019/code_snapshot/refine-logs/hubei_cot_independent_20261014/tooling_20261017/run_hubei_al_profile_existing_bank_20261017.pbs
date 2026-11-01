@@ -1,0 +1,56 @@
+#!/bin/bash
+#PBS -N hb_al_prof2
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=01:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+PACK="$ROOT/source_rebuild_20261017_v2/pack"
+AL="$ROOT/al_normreload_20261017"
+FEATURES="$AL/features_r_dec1_trainval_rebuildv2"
+SCRIPTS="$ROOT/scripts"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+AUDIT="$AL/feature_bank_key_audit_20261017.json"
+PROFILE="$AL/profile_al_rebuildv2.json"
+mkdir -p "$AL/logs"
+exec > "$AL/logs/profile_existing_bank_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPTS:${PYTHONPATH:-}"
+
+test -s "$PACK/pack_report.json"
+test -s "$FEATURES/AL_FEATURE_REPORT.json"
+test ! -e "$AUDIT"
+test ! -e "$PROFILE"
+"$PY" "$SCRIPTS/audit_hubei_al_feature_bank_keys_20261017.py" \
+  --pack "$PACK" --feature-bank "$FEATURES" --output "$AUDIT" \
+  | tee "$AL/logs/feature_key_audit_${PBS_JOBID//./_}.log"
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/train_hubei_ghi_head_al_20261017.py" \
+  --pack "$PACK" --r-feature-bank "$FEATURES" --output "$AL/profile_scratch_20261017" \
+  --seed 42 --batch-size 512 --profile-only --profile-output "$PROFILE" \
+  | tee "$AL/logs/profile_${PBS_JOBID//./_}.log"
+
+"$PY" - "$PROFILE" "$AUDIT" <<'PY'
+import json,sys
+from pathlib import Path
+p=json.loads(Path(sys.argv[1]).read_text()); a=json.loads(Path(sys.argv[2]).read_text())
+assert p['state']=='HUBEI_GHI_HEAD_AL_SINGLE_GPU_PROFILE_COMPLETE'
+assert p['input_mode']=='same_time' and p['test_payloads_read']==0
+assert p['measurements'] and a['state']=='HUBEI_AL_FEATURE_BANK_KEY_AUDIT_PASS_TEST_CLOSED'
+assert a['key_sets_equal'] and a['test_payloads_read']==0
+print('AL_CURRENT_PACK_KEY_AUDIT_AND_SINGLE_GPU_PROFILE_PASS',flush=True)
+PY

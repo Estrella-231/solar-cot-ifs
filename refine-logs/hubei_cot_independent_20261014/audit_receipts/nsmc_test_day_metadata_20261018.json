@@ -1,0 +1,44 @@
+{
+  "audit_time_utc": "2026-10-18T01:39:02Z",
+  "scope": "Metadata-only inventory of UTC archive dates intersecting frozen Hubei test dates 2026-06-14 and 2026-06-15 BJT",
+  "portal": "https://data.nsmc.org.cn/DataPortal/cn/data/dataset.html?satelliteCode=FY4B",
+  "access": "Unauthenticated GET metadata only; no login, cart, order, download, or raster/pixel read",
+  "product_id": "FY4B-_AGRI--_N_DISK_1330E_L1-_FDI-_MULT_NOM_YYYYMMDDhhmmss_YYYYMMDDhhmmss_4000M_Vnnnn.HDF",
+  "utc_archive_dates_queried": [
+    {"utc_date": "2026-06-13", "subcount": 95, "subfile_records": 95, "missing_utc_start": "2026-06-13T17:00:00Z", "sorted_archive_name_list_sha256": "096f4e7b1265ed0bf32312d3f4ed4c687ac590a0247786636688da298bf6ecc0"},
+    {"utc_date": "2026-06-14", "subcount": 95, "subfile_records": 95, "missing_utc_start": "2026-06-14T17:00:00Z", "sorted_archive_name_list_sha256": "884f55ca3ef68a523dafaeb375e32d617a2a8700d89378ae9f913d194b2b44f0"},
+    {"utc_date": "2026-06-15", "subcount": 95, "subfile_records": 95, "missing_utc_start": "2026-06-15T17:00:00Z", "sorted_archive_name_list_sha256": "cb2368932b0c84e068afdcbd5ee0cb338c4b7e4ccb8608cef73378de27e907f0"}
+  ],
+  "query_contract": {
+    "endpoint": "/DataPortal/v1/data/selection/subfile",
+    "params": {"productID": "FY4B-_AGRI--_N_DISK_1330E_L1-_FDI-_MULT_NOM_YYYYMMDDhhmmss_YYYYMMDDhhmmss_4000M_Vnnnn.HDF", "txtBeginDate": "UTC day", "txtBeginTime": "00:00:00", "txtEndDate": "same UTC day", "txtEndTime": "23:59:59", "east_CoordValue": 180, "west_CoordValue": -180, "north_CoordValue": 90, "south_CoordValue": -90, "cbAllArea": "on", "cbGHIArea": "on", "cbSliceArea": "", "timeSelection": "all", "periodTime": "", "daynight": "", "where": "", "sliceAreas": "", "converStatus": "", "rdbIsEvery": "", "beginIndex": 1, "endIndex": 100},
+    "official_listing_script": "https://data.nsmc.org.cn/DataPortal/js/page.data.file.list.js?v=1.0.250314",
+    "official_listing_script_sha256": "76bb1bcda61fa05f00cd87ad21287ff7021baf843650f419e74cf599071fae23",
+    "reproducible_query_script_path": "tooling_20261017/recheck_nsmc_agri_metadata.ps1",
+    "reproducible_query_script_sha256": "0f00be0d0ed49b471d3af3baedfa43cea02f10f8abdf34b156f86bbe8c067a33",
+    "archive_name_hash_method": "Sort ARCHIVENAME strings ascending, join with LF (no trailing LF), UTF-8 encode, SHA-256"
+  },
+  "dates": [
+    {
+      "frozen_test_date_bjt": "2026-06-14",
+      "required_utc_start": "2026-06-13T16:00:00Z",
+      "required_utc_end": "2026-06-14T15:45:00Z",
+      "listed_slots_in_required_window": 95,
+      "expected_15min_slots": 96,
+      "unlisted_utc_start": "2026-06-13T17:00:00Z",
+      "equivalent_missing_bjt_start": "2026-06-14T01:00:00+08:00",
+      "window_coverage_status": "95_OF_96_METADATA_LISTED"
+    },
+    {
+      "frozen_test_date_bjt": "2026-06-15",
+      "required_utc_start": "2026-06-14T16:00:00Z",
+      "required_utc_end": "2026-06-15T15:45:00Z",
+      "listed_slots_in_required_window": 95,
+      "expected_15min_slots": 96,
+      "unlisted_utc_start": "2026-06-14T17:00:00Z",
+      "equivalent_missing_bjt_start": "2026-06-15T01:00:00+08:00",
+      "window_coverage_status": "95_OF_96_METADATA_LISTED"
+    }
+  ],
+  "result_boundary": "A fresh read-only subfile requery returned 95 distinct archive starts on each UTC date; each UTC date is missing 17:00Z. Correctly treating filename timestamps as UTC without converting them through the workstation timezone yields 95/96 starts in each BJT test window: the missing starts correspond to 01:00 BJT on June 14 and June 15. This reconciles the UTC daily totals with the cross-midnight BJT windows; the previous 96/96 claim came from incorrectly converting timezone-naive UTC filename timestamps. Hashes and full query contract are retained above; raw response bodies/full filename lists are not embedded, so source metadata remains less independently auditable than a retained response artifact. No archive file content was requested or examined. These dates have known prior evaluation contact in the project audit and are not automatically eligible as untouched blind-test dates."
+}

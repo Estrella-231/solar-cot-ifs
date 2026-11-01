@@ -1,0 +1,35 @@
+#!/bin/bash
+#PBS -N cot_observed_ref
+#PBS -q normal
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=01:00:00
+#PBS -j oe
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+OUT=$EXP/results/dense_observed_v_reference_patches_v1
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$EXP/logs/dense_observed_reference_${PBS_JOBID}.log") 2>&1
+qtext=$($QSTAT -u slfu)
+printf '%s\n' "$qtext"
+n=$(printf '%s\n' "$qtext" | awk '$1 ~ /^[0-9]+\./ {n++} END {print n+0}')
+test "$n" -le 3
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES=""
+cd "$EXP"
+"$PY" - <<'PY'
+import json,shutil
+from pathlib import Path
+p=Path('results/dense_observed_v_smoke_20261021_v1/source_reload_check.json')
+r=json.loads(p.read_text())
+assert r['state']=='PASS_THREE_FRAME_SIX_STATION_PATCH_SOURCE_RELOAD'
+assert all(x['agri_max_abs_difference']<=1e-6 for x in r['matches'])
+assert shutil.disk_usage('.').free>=2*(1<<30)
+PY
+"$PY" "$EXP/extract_dense_observed_reference.py" \
+  --base "$EXP" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --days "$ROOT/experiments/hunan_monthly_block_20261002/manifests_v1/day_assignment.csv" \
+  --output "$OUT"

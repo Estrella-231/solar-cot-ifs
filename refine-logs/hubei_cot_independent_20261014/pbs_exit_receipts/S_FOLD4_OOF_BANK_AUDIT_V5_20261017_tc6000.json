@@ -1,0 +1,81 @@
+{
+  "state": "HUBEI_SIMVP_SINGLE_FOLD_OOF_BANK_INTEGRITY_PASS_TEST_CLOSED",
+  "count": 807,
+  "source_index_sha256": "6291a33e95199b13e93fdd696ad0f793af0d273efa6adaf71cb7adc9401644f6",
+  "source_bank_report_sha256": "bff22705d67364dbf3de57e03c0fc3051c6561f401db69ff13a4fbc22359a097",
+  "checkpoint_sha256": "5637925fd0d4bc092c6f5f8996b20cf356f8bcf0b4cb358768e8856aec3f03a3",
+  "normalization_sha256": "128a92c62bbe14c242837b62d730294be26aa92a276cd334d67a67747b6b60b5",
+  "shapes": {
+    "pred_agri_patch": [
+      807,
+      16,
+      13,
+      16,
+      16
+    ],
+    "true_agri_patch": [
+      807,
+      16,
+      13,
+      16,
+      16
+    ],
+    "future_geometry_patch": [
+      807,
+      16,
+      3,
+      16,
+      16
+    ]
+  },
+  "channel_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "patch_origin_crop_256": [
+    103,
+    118
+  ],
+  "patch_size": 16,
+  "arrays_sha256": {
+    "pred_agri_patch": "74fad46fceaebdf20ea34a434c42229716344b3a81399466ca2afac9f5452ba6",
+    "true_agri_patch": "ab3bdb1bad360ee7489c3a1604eb6bf141663a15eefbbf02b321bc810232e545",
+    "future_geometry_patch": "62c745777a4d34fec5b892953ed4ad100fed239bbcab1bbd1f5597db534bd304"
+  },
+  "finite": true,
+  "keys_exactly_match_ordered_oof_index": true,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "test_or_buffer_rows": 0,
+  "ghi_labels_read": false,
+  "scope": "one-fold train-date OOF AGRI bank integrity only; not a GHI skill result"
+}

@@ -1,0 +1,77 @@
+#!/bin/bash
+#PBS -N direct_cot_PU_fix
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/agri_direct_cot_20261020/logs/direct_cot_p_u_corrected.pbs.out
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+PS4='+ ${BASH_SOURCE}:${LINENO}: '
+set -x
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+OOF=$ROOT/refine-logs/cot_aware_simvp_20261017
+SOURCE=$ROOT/experiments/hunan_monthly_block_20261002/code
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SUPPORT=$EXP/data/sequence_support_v1
+RPACK=$EXP/data/r_u_pack_v2
+RRUN=$EXP/results/r_u_train_v1
+SIMVPNORM=$OOF/results/future_ghi_oof_manifests_v1/fold_1/hunan_train_norm.json
+GRID=$EXP/data/grid_static.npz
+GEOMETRY=$EXP/solar_geometry_corrected.py
+CACHE=$EXP/results/predictor_u_v1/u_teacher_cache
+OUT=$EXP/results/predictor_u_corrected_v1
+LOG=$EXP/logs/direct_cot_p_u_corrected_${PBS_JOBID}.log
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+
+test -d "$CACHE" && test -s "$CACHE/cache_manifest.json"
+test -s "$RRUN/epoch_050.pt" && test -s "$SIMVPNORM" && test -s "$GRID"
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["last_epoch"])' "$RRUN/status.json")" = "COMPLETE_R_U_FIXED_EPOCH_50 50"
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["test_payloads_read"],x["buffer_payloads_read"],x["h_payloads_read"],x["outer_validation_payloads_read"])' "$EXP/results/predictor_u_v1/paired_training_complete.json")" = "COMPLETE_P_C_AND_P_XC_FIXED_EPOCH_12 0 0 0 0"
+test ! -e "$OUT"
+test "$(sha256sum "$EXP/train_future_cot_u_corrected.py" | cut -d' ' -f1)" = "997003d2259f8ee4548e3e24c18bcec2c68db9775c5e7c7e613e565e95537fba"
+python - "$CACHE" "$RRUN/epoch_050.pt" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+p=Path(sys.argv[1]); m=json.loads((p/'cache_manifest.json').read_text())
+if m.get('state')!='COMPLETE_U_ONLY_RU_TEACHER_CACHE': raise SystemExit('cache state incomplete')
+if m.get('teacher_value_space') not in (None,'log1p_cot'): raise SystemExit('unsupported teacher value space')
+if m.get('h_payloads_read')!=0 or m.get('outer_validation_payloads_read')!=0 or m.get('test_payloads_read')!=0 or m.get('buffer_payloads_read')!=0: raise SystemExit('cache isolation flags failed')
+def sha(q):
+ h=hashlib.sha256()
+ with q.open('rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+ return h.hexdigest()
+for name,want in m['artifacts_sha256'].items():
+ if sha(p/name)!=want: raise SystemExit('cache hash mismatch: '+name)
+if m.get('r_checkpoint_sha256')!=sha(Path(sys.argv[2])): raise SystemExit('cache R_U checkpoint binding mismatch')
+print('CORRECTED_P_CACHE_PREFLIGHT_PASS teacher_space=log1p_cot')
+PY
+python -m py_compile "$EXP/train_future_cot_u_corrected.py"
+python "$EXP/test_train_future_cot_unit_contract.py"
+
+GPU_TEXT=$($PBS_QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test -n "$GPU_TEXT" && test "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+python -u "$EXP/train_future_cot_u_corrected.py" --mode train \
+  --support "$SUPPORT" --r-pack "$RPACK" --r-run "$RRUN" --simvp-norm "$SIMVPNORM" \
+  --source "$SOURCE" --data-root "$DATA" --grid-static "$GRID" --geometry-source "$GEOMETRY" \
+  --cache "$CACHE" --output "$OUT" --workers 4
+
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["test_payloads_read"],x["buffer_payloads_read"],x["h_payloads_read"],x["outer_validation_payloads_read"])' "$OUT/paired_training_complete.json")" = "COMPLETE_P_C_AND_P_XC_FIXED_EPOCH_12 0 0 0 0"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+echo DIRECT_COT_P_C_AND_P_XC_CORRECTED_COMPLETE test_payloads_opened=0 buffer_payloads_opened=0

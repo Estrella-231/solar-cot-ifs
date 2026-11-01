@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -N hb_cot_patch_cache4
+#PBS -q normal
+#PBS -l nodes=node5:ppn=1,mem=8gb,walltime=06:00:00
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt4/cache_build.log
+#PBS -e /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt4/cache_build.err
+
+set -euo pipefail
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022
+ATTEMPT=$BASE/cache_attempt4
+SRC=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+
+test -f "$ATTEMPT/build_station_patch_cache.py"
+test -f "$SRC/agri_trainval_staged.csv"
+test -f "$SRC/cot_bank_correctutc_attempt3/cot_pred_trainval_full.npy"
+test -f "$SRC/cot_bank_correctutc_attempt3/rows.csv"
+test -f "$SRC/cot_bank_correctutc_attempt3/BANK_REPORT.json"
+test -f "$SRC/cpp_attempt2/rows_correct_utc.csv"
+test -f "$SRC/cpp_attempt2/cpp_supervision_trainval.npz"
+test ! -e "$ATTEMPT/cache"
+
+"$PY" -m py_compile "$ATTEMPT/build_station_patch_cache.py"
+"$PY" "$ATTEMPT/build_station_patch_cache.py" \
+  --agri-manifest "$SRC/agri_trainval_staged.csv" \
+  --bank-rows "$SRC/cot_bank_correctutc_attempt3/rows.csv" \
+  --bank-array "$SRC/cot_bank_correctutc_attempt3/cot_pred_trainval_full.npy" \
+  --bank-report "$SRC/cot_bank_correctutc_attempt3/BANK_REPORT.json" \
+  --cpp-rows "$SRC/cpp_attempt2/rows_correct_utc.csv" \
+  --cpp-npz "$SRC/cpp_attempt2/cpp_supervision_trainval.npz" \
+  --output "$ATTEMPT/cache" \
+  --chunk 128 --progress-every 2048

@@ -1,0 +1,58 @@
+{
+  "observed_client_utc": "2026-10-30 10:17:33 UTC",
+  "observed_server_cst": "2026-10-30 17:58:27 CST",
+  "job": "216594.tc6000",
+  "qstat_state": "R",
+  "node": "node21",
+  "gpus": "8x A100-SXM4-40GB (GPU0-7)",
+  "progress": {
+    "state": "training",
+    "epoch": 146,
+    "batch": 360,
+    "global_step": 64450,
+    "planned_epochs": 150,
+    "planned_steps": 66300,
+    "test_payloads_read": 0
+  },
+  "completed_epochs": 145,
+  "latest_full_val": {
+    "epoch": 145,
+    "normalized_rmse": 0.4330495718969827,
+    "normalized_mae": 0.22734800724059157,
+    "matched_model_rmse": 0.4320449576972312,
+    "matched_persistence_rmse": 0.7918376840585947,
+    "mse_skill_vs_persistence": 0.7022953971573591,
+    "sequence_count": 3140
+  },
+  "best_full_val_normalized_rmse": 0.4330495718969827,
+  "latest_full_val_elapsed_seconds": 1614.6280762334354,
+  "latest_ordinary_epoch_durations_seconds": [
+    1052.0884881247766,
+    1050.6874512420036,
+    1052.4871725142002,
+    1050.2905067568645
+  ],
+  "recent_ordinary_mean_seconds": 1051.386,
+  "full_validation_extra_over_ordinary_seconds": 563.24,
+  "eta_remaining_from_snapshot_seconds": 4980,
+  "eta_duration": "about 1h23m",
+  "eta_cst_from_server_clock": "about 19:21 CST",
+  "eta_note": "Duration only; server/client clocks differed, so no client-clock subtraction was used.",
+  "last_checkpoint": {
+    "file": "last.pt",
+    "size_bytes": 1053155194,
+    "mtime_server_cst": "2026-10-30 17:56:30"
+  },
+  "best_checkpoint": {
+    "file": "best.pt",
+    "size_bytes": 1053155194,
+    "mtime_server_cst": "2026-10-30 17:45:14"
+  },
+  "progress_mtime_server_cst": "2026-10-30 17:58:18",
+  "latest_gpu_sample_server_cst": "2026-10-30 17:57:57.839",
+  "gpu_utilization": "100% all 8 GPUs",
+  "gpu_memory_mib": "31557-39537 of 40536",
+  "error_scan": "No traceback/OOM/CUDA error/NaN/Inf/error hits in scanned recent 5000 log lines.",
+  "completion_marker": "None found",
+  "methods": "Read qstat, progress JSON, checkpoint stat only, bounded recent JSONL event parse, and GPU CSV tail. No checkpoint loaded; no test payload read; no job control."
+}

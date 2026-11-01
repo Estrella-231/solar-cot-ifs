@@ -1,0 +1,76 @@
+#!/bin/bash
+#PBS -N hb_coldstart3
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SAME="$ROOT/hubei_al_same_time_20261017/source_rebuild_20261017_v2"
+FCST="$ROOT/hubei_forecast_ghi_20261017"
+PACK_FCST="$FCST/pack"
+RUNS="$FCST/results"
+OUT="$FCST/audit_coldstart_normreload_20261017_v3"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+SCRIPT_SAME="$SAME/scripts/audit_hubei_checkpoint_coldstart_normreload_20261017_v3.py"
+SCRIPT_FCST="$FCST/scripts/audit_hubei_checkpoint_coldstart_normreload_20261017_v3.py"
+TRAINER_SAME="$SAME/scripts/train_hubei_ghi_heads_normreload_20261017.py"
+TRAINER_FCST="$FCST/scripts/train_hubei_ghi_heads_normreload_20261017.py"
+mkdir -p "$OUT"
+exec > "$OUT/job_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+test -f "$SAME/pack/pack_report.json"
+test -f "$PACK_FCST/pack_report.json"
+test -f "$SCRIPT_SAME"
+test -f "$SCRIPT_FCST"
+test -f "$TRAINER_SAME"
+test -f "$TRAINER_FCST"
+test ! -e "$OUT/same_time_coldstart_audit.json"
+test ! -e "$OUT/forecast_coldstart_audit.json"
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+used=$(nvidia-smi --id="${GPU_ARRAY[0]}" --query-gpu=memory.used --format=csv,noheader,nounits)
+test "$used" -lt 500
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$GPU_IDS"
+
+"$PY" - "$SAME" "$PACK_FCST" <<'PY'
+import json, sys
+from pathlib import Path
+same, fcst = map(Path, sys.argv[1:])
+same_pack = json.loads((same/'pack/pack_report.json').read_text())
+fcst_pack = json.loads((fcst/'pack_report.json').read_text())
+assert same_pack['test_and_buffer_values_read'] == 0
+assert fcst_pack['test_and_buffer_values_read'] == 0
+assert same_pack['state'] == 'HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED'
+assert same_pack['same_keys_all_arms'] is True
+assert fcst_pack['same_keys_all_arms'] is True
+assert fcst_pack['input_mode'] == 'forecast'
+print('COLDSTART_PREFLIGHT_PASS same_time_and_forecast_packs_trainval_only=1 common_keys=1 test_closed=1', flush=True)
+PY
+
+export PYTHONPATH="$SAME/scripts:${PYTHONPATH:-}"
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPT_SAME" \
+  --pack "$SAME/pack" --input-mode same_time --trainer-source "$TRAINER_SAME" --device cuda \
+  --run "42=$SAME/training/same_time_seed42_normreload_v1" \
+  --run "43=$SAME/training/same_time_seed43_normreload_v1" \
+  --run "44=$SAME/training/same_time_seed44_normreload_v1" \
+  --output "$OUT/same_time_coldstart_audit.json" | tee "$OUT/same_time_coldstart.log"
+
+export PYTHONPATH="$FCST/scripts:${PYTHONPATH:-}"
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPT_FCST" \
+  --pack "$PACK_FCST" --input-mode forecast --trainer-source "$TRAINER_FCST" --device cuda \
+  --run "42=$RUNS/forecast_FA_FAC_seed42_normreload_v2" \
+  --run "43=$RUNS/forecast_FA_FAC_seed43_normreload_v2" \
+  --run "44=$RUNS/forecast_FA_FAC_seed44_normreload_v2" \
+  --output "$OUT/forecast_coldstart_audit.json" | tee "$OUT/forecast_coldstart.log"
+
+echo HUBEI_CHECKPOINT_COLDSTART_AUDIT_V3_COMPLETE_TEST_CLOSED

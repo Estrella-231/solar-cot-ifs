@@ -1,0 +1,467 @@
+{
+  "state": "COMPLETE_DENSE_R_FIELD_AND_EVENT_DIAGNOSTIC",
+  "scope": "development V; learned observed-image R reference, not CPP truth/GHI gain",
+  "reference_frames": 4025,
+  "forecast_sequences": 3140,
+  "complete_center_windows": 2511,
+  "fixed_daily_windows": 102,
+  "fixed_daily_windows_by_station": {
+    "sili": 51,
+    "zhujia": 51
+  },
+  "run_coverage": [
+    {
+      "station": "sili",
+      "single_frame_runs": 18,
+      "two_frame_events": 46
+    },
+    {
+      "station": "zhujia",
+      "single_frame_runs": 9,
+      "two_frame_events": 37
+    }
+  ],
+  "event_station_stats": {
+    "sili": {
+      "unique_reference_events": 46,
+      "evaluable_events": 15,
+      "censored_reference": 30,
+      "no_complete_window": 1,
+      "arms": {
+        "cot_last": {
+          "events": 15,
+          "detected": 6,
+          "missed": 9,
+          "predicted_left_censored": 6,
+          "arrival_n": 0,
+          "arrival_mae_min": null,
+          "arrival_bias_min": null,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -3.262599891836883,
+              "mae": 4.328915390843416,
+              "median": -1.2656974792480469
+            },
+            "peak_time_error_min": {
+              "n": 0,
+              "mean": null,
+              "mae": null,
+              "median": null
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -3.134055988150923,
+              "mae": 4.511227849341345,
+              "median": -1.2494639158248901
+            },
+            "windows": 51,
+            "tp": 232,
+            "fp": 152,
+            "fn": 16,
+            "pod": 0.9354838709677419,
+            "far": 0.3958333333333333,
+            "csi": 0.58
+          }
+        },
+        "cot_simvp_r": {
+          "events": 15,
+          "detected": 11,
+          "missed": 4,
+          "predicted_left_censored": 9,
+          "arrival_n": 2,
+          "arrival_mae_min": 52.5,
+          "arrival_bias_min": -52.5,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": 0.6697160816185322,
+              "mae": 5.37148217990191,
+              "median": 0.15487147867679596
+            },
+            "peak_time_error_min": {
+              "n": 51,
+              "mean": 1.4705882352941178,
+              "mae": 57.35294117647059,
+              "median": 0.0
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": 0.04959513617715999,
+              "mae": 5.500116048581606,
+              "median": -0.004474361427128315
+            },
+            "windows": 51,
+            "tp": 220,
+            "fp": 136,
+            "fn": 28,
+            "pod": 0.8870967741935484,
+            "far": 0.38202247191011235,
+            "csi": 0.5729166666666666
+          }
+        },
+        "cot_p_c": {
+          "events": 15,
+          "detected": 4,
+          "missed": 11,
+          "predicted_left_censored": 4,
+          "arrival_n": 0,
+          "arrival_mae_min": null,
+          "arrival_bias_min": null,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -12.751429681684456,
+              "mae": 18.217203105197232,
+              "median": -10.739689826965332
+            },
+            "peak_time_error_min": {
+              "n": 45,
+              "mean": -50.666666666666664,
+              "mae": 75.33333333333333,
+              "median": -45.0
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -13.533838519863053,
+              "mae": 19.19344100297666,
+              "median": -12.43241024017334
+            },
+            "windows": 51,
+            "tp": 34,
+            "fp": 29,
+            "fn": 214,
+            "pod": 0.13709677419354838,
+            "far": 0.4603174603174603,
+            "csi": 0.12274368231046931
+          }
+        },
+        "cot_p_xc": {
+          "events": 15,
+          "detected": 8,
+          "missed": 7,
+          "predicted_left_censored": 3,
+          "arrival_n": 5,
+          "arrival_mae_min": 42.0,
+          "arrival_bias_min": -18.0,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -3.577729719672717,
+              "mae": 7.0700295259263,
+              "median": -2.108006000518799
+            },
+            "peak_time_error_min": {
+              "n": 45,
+              "mean": -2.0,
+              "mae": 52.0,
+              "median": 0.0
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -4.023785497116692,
+              "mae": 7.539227441464569,
+              "median": -1.248679280281067
+            },
+            "windows": 51,
+            "tp": 171,
+            "fp": 85,
+            "fn": 77,
+            "pod": 0.6895161290322581,
+            "far": 0.33203125,
+            "csi": 0.5135135135135135
+          }
+        }
+      }
+    },
+    "zhujia": {
+      "unique_reference_events": 37,
+      "evaluable_events": 12,
+      "censored_reference": 24,
+      "no_complete_window": 1,
+      "arms": {
+        "cot_last": {
+          "events": 12,
+          "detected": 3,
+          "missed": 9,
+          "predicted_left_censored": 3,
+          "arrival_n": 0,
+          "arrival_mae_min": null,
+          "arrival_bias_min": null,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -4.84220962615355,
+              "mae": 5.596692307998299,
+              "median": -3.04388427734375
+            },
+            "peak_time_error_min": {
+              "n": 0,
+              "mean": null,
+              "mae": null,
+              "median": null
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -4.591208174322531,
+              "mae": 5.68212467118842,
+              "median": -3.2548322677612305
+            },
+            "windows": 51,
+            "tp": 195,
+            "fp": 45,
+            "fn": 32,
+            "pod": 0.8590308370044053,
+            "far": 0.1875,
+            "csi": 0.7169117647058824
+          }
+        },
+        "cot_simvp_r": {
+          "events": 12,
+          "detected": 7,
+          "missed": 5,
+          "predicted_left_censored": 5,
+          "arrival_n": 2,
+          "arrival_mae_min": 30.0,
+          "arrival_bias_min": 30.0,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -0.3219679925298574,
+              "mae": 5.289590450588102,
+              "median": -0.2424960434436798
+            },
+            "peak_time_error_min": {
+              "n": 51,
+              "mean": 4.411764705882353,
+              "mae": 57.35294117647059,
+              "median": 0.0
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -0.74762136014361,
+              "mae": 5.666653326986467,
+              "median": -0.7055801153182983
+            },
+            "windows": 51,
+            "tp": 210,
+            "fp": 64,
+            "fn": 17,
+            "pod": 0.9251101321585903,
+            "far": 0.23357664233576642,
+            "csi": 0.7216494845360825
+          }
+        },
+        "cot_p_c": {
+          "events": 12,
+          "detected": 1,
+          "missed": 11,
+          "predicted_left_censored": 1,
+          "arrival_n": 0,
+          "arrival_mae_min": null,
+          "arrival_bias_min": null,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -11.891551103077683,
+              "mae": 17.67394500503353,
+              "median": -6.356856346130371
+            },
+            "peak_time_error_min": {
+              "n": 48,
+              "mean": -65.0,
+              "mae": 72.5,
+              "median": -45.0
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -12.783825940945569,
+              "mae": 18.495202203591663,
+              "median": -6.752919673919678
+            },
+            "windows": 51,
+            "tp": 28,
+            "fp": 4,
+            "fn": 199,
+            "pod": 0.12334801762114538,
+            "far": 0.125,
+            "csi": 0.12121212121212122
+          }
+        },
+        "cot_p_xc": {
+          "events": 12,
+          "detected": 2,
+          "missed": 10,
+          "predicted_left_censored": 2,
+          "arrival_n": 0,
+          "arrival_mae_min": null,
+          "arrival_bias_min": null,
+          "daily_window": {
+            "peak_error": {
+              "n": 51,
+              "mean": -2.7437613152113616,
+              "mae": 7.499369779492126,
+              "median": -0.3729041516780853
+            },
+            "peak_time_error_min": {
+              "n": 50,
+              "mean": -13.5,
+              "mae": 75.9,
+              "median": -22.5
+            },
+            "patch3_peak_error": {
+              "n": 51,
+              "mean": -3.120202926882342,
+              "mae": 8.060237544570484,
+              "median": -0.8096618056297302
+            },
+            "windows": 51,
+            "tp": 139,
+            "fp": 52,
+            "fn": 88,
+            "pod": 0.6123348017621145,
+            "far": 0.27225130890052357,
+            "csi": 0.4982078853046595
+          }
+        }
+      }
+    }
+  },
+  "primary_station3_metrics": [
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "lead_minutes": "all",
+      "arm": "cot_last",
+      "n": 563505,
+      "rmse": 24.257234730104802,
+      "mae": 12.46595798379746,
+      "bias": 8.21683103153558,
+      "pred_sd": 28.201847793376878,
+      "ref_sd": 16.88722199256582,
+      "corr": 0.5875321212003094,
+      "thick_pod": 0.8419909394550283,
+      "thick_far": 0.40107099013673114,
+      "thick_csi": 0.5384136044713997
+    },
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "lead_minutes": "all",
+      "arm": "cot_simvp_r",
+      "n": 563505,
+      "rmse": 9.716780162657281,
+      "mae": 5.977630243703187,
+      "bias": 1.117024480918361,
+      "pred_sd": 17.243114802269478,
+      "ref_sd": 16.88722199256582,
+      "corr": 0.8402384111122104,
+      "thick_pod": 0.8347975511236415,
+      "thick_far": 0.29978286099359813,
+      "thick_csi": 0.6149972050812719
+    },
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "lead_minutes": "all",
+      "arm": "cot_p_c",
+      "n": 563505,
+      "rmse": 11.940001123924004,
+      "mae": 7.323917252998178,
+      "bias": -2.0207372279421003,
+      "pred_sd": 13.986711212843911,
+      "ref_sd": 16.88722199256582,
+      "corr": 0.7246632009357983,
+      "thick_pod": 0.58468038890418,
+      "thick_far": 0.22127769191138588,
+      "thick_csi": 0.5013810656851425
+    },
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "lead_minutes": "all",
+      "arm": "cot_p_xc",
+      "n": 563505,
+      "rmse": 9.380008584656851,
+      "mae": 5.750284708514465,
+      "bias": -0.5533447779071841,
+      "pred_sd": 15.769184036838485,
+      "ref_sd": 16.88722199256582,
+      "corr": 0.8377222972422526,
+      "thick_pod": 0.7456501201377679,
+      "thick_far": 0.21949605220126767,
+      "thick_csi": 0.6163954789752671
+    }
+  ],
+  "primary_station3_changes": [
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "arm": "cot_last",
+      "n": 516381,
+      "rmse": 3.3764762181935066,
+      "mae": 1.8982693867317784,
+      "pred_sd": 0.0,
+      "reference_sd": 3.37466205572428,
+      "sd_ratio": 0.0,
+      "corr": null
+    },
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "arm": "cot_simvp_r",
+      "n": 516381,
+      "rmse": 3.820841205082327,
+      "mae": 2.2075905091035533,
+      "pred_sd": 2.0654067980512205,
+      "reference_sd": 3.37466205572428,
+      "sd_ratio": 0.6120336685410523,
+      "corr": 0.07579033474536052
+    },
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "arm": "cot_p_c",
+      "n": 516381,
+      "rmse": 3.4909041674988353,
+      "mae": 2.033702034145431,
+      "pred_sd": 1.193050939763609,
+      "reference_sd": 3.37466205572428,
+      "sd_ratio": 0.35353197448019813,
+      "corr": 0.07766824375146854
+    },
+    {
+      "reference": "dense_observed_R",
+      "scale": "station3",
+      "station": "both",
+      "arm": "cot_p_xc",
+      "n": 516381,
+      "rmse": 3.6096276838260604,
+      "mae": 2.1161401792684473,
+      "pred_sd": 1.5098747164055684,
+      "reference_sd": 3.37466205572428,
+      "sd_ratio": 0.44741508674755714,
+      "corr": 0.06281011874608156
+    }
+  ],
+  "source": {
+    "script_sha256": "faa800cba75ba7bdb67064ad7c2396ccd6206581dfdb62a4dcc02bf7137ff3b5",
+    "reference_receipt_sha256": "56c1220daab33e6095a4837cd4d238e291462e1f0004c8fa9fed7b027dc7827f",
+    "forecast_manifest_sha256": "cfc3e2b965bfcaec7e1c8c6f818107af1581a31903f3dfbb549b24985f4fc793",
+    "event_helper_sha256": "c2ea83c614b48385c72ad5affb460579cc609bacf955b64418a4c2706aecc7df",
+    "protocol_sha256": "3efb4e81cd6c9268a4a73e9ad67b52ec9e6b318d1c367591f6543f190388f1df"
+  },
+  "training_started": false,
+  "ghi_labels_read": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observations_used_by_deployable_inference": false,
+  "uncertainty": "descriptive; no new independent confirmation or model selection"
+}

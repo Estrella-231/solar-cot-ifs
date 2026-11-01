@@ -1,0 +1,34 @@
+{
+  "state": "PASS_LEGACY_VALIDATION_FORMULA_AND_CROP_WITNESS",
+  "scope": "12 selected real-AGRI validation frames, each matched by station and UTC time; only each station 16x16 patch was compared; test not accessed",
+  "source_contract": "20 channels: C01-C15, SAA(index 15), SAZ(index 16), SOA(index 17), SOZ(index 18), day_mask(index 19); channel 13 in the 0-based source list is C13",
+  "source_npz_sha256": "bae9abc99f9d7996eb7dfa37c7c8de17a0e988489d0501cf8d38f35a86787471",
+  "packed_npz_sha256": "7e913a7d7e1e7b5e3c053e83176108f05bca0b7174c1d58391882b42c18e9f50",
+  "original_audit_sha256": "375d601fa543dcc11db8fe8e2fa27c38cefa5e30dcb9ba2a482b0ff85e9303e4",
+  "frames": 12,
+  "stored_original_audit_max_abs_error": {
+    "13_raw_imagery_channels": 0.0,
+    "cosSOZ": 0.0,
+    "cosRAA": 0.0,
+    "day_mask_mismatch_pixels": 0
+  },
+  "independent_recompute_errors": {
+    "cosSOZ_max_abs": 5.9223136728014936e-08,
+    "cosRAA_max_abs": 8.8957146704427e-08,
+    "day_mask_mismatched_pixels": 0
+  },
+  "center_3x3": {
+    "cosSOZ_range": [
+      0.5917590147245516,
+      0.9915460362940289
+    ],
+    "cosRAA_range": [
+      0.12445302759661024,
+      0.743435221872644
+    ],
+    "pixels_per_frame": 9,
+    "crop": "[7:10,7:10], station center [8,8]"
+  },
+  "normalization": "packed channels store raw bounded cosines; archived training mean/std are not applied in the local 3x3 head contract",
+  "boundary": "supporting formula/crop evidence from archived validation cases only; not current monthly-cohort row-level witness or new-test evidence; no new test payload accessed"
+}

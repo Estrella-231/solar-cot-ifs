@@ -1,0 +1,41 @@
+#!/bin/bash
+#PBS -N hb_oof_input_aud1
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l mem=16gb
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/oof_history_input_audit_attempt1/pbs.out.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+RUN=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022/oof_history_input_audit_attempt1
+SCRIPT=$RUN/audit_oof_history_input_parity.py
+STAGED_ROWS=$RUN/agri_paths_trainval_staged.csv
+FOLD_MAP=$RUN/date_folds.csv
+FULL_PACK=$PROJECT/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2
+FOLD_ROOT=$PROJECT/experiments/hubei_forecast_correctutc_20261020/runtime_attempt2/R_fold_packs_attempt1
+OUT=$RUN/evidence/audit.json
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+
+echo "OOF_INPUT_PARITY_AUDIT_START job=$PBS_JOBID host=$(hostname)"
+test -f "$SCRIPT"
+test -f "$STAGED_ROWS"
+test -f "$FOLD_MAP"
+test -f "$FULL_PACK/pack_status.json"
+test -f "$FULL_PACK/x_norm.npy"
+test -f "$FULL_PACK/norm.json"
+test -d "$FOLD_ROOT"
+test ! -e "$OUT"
+"$PY" -m py_compile "$SCRIPT"
+"$PY" "$SCRIPT" --staged-rows "$STAGED_ROWS" --fold-map "$FOLD_MAP" --full-pack "$FULL_PACK" --fold-root "$FOLD_ROOT" --out "$OUT"
+"$PY" - <<'PY' "$OUT"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='PASS_EXISTING_R_FOLD_INPUTS_MATCH_STAGED_TRAIN_VAL_AGRI_TEST_CLOSED', x
+assert x['test_payloads_read']==0 and x['buffer_payloads_read']==0, x
+assert x['cpp_target_or_quality_payloads_read']==0 and x['ghi_labels_read']==0, x
+assert x['staged_train_dates_missing_from_fold_map']==[] and x['staged_val_dates_in_fold_map']==[], x
+assert x['max_abs_raw_input_error_all_packs'] <= x['absolute_tolerance'], x
+print('OOF_INPUT_PARITY_GATE_PASS',x['max_abs_raw_input_error_all_packs'],x['max_abs_geometry_day_mask_error_all_packs'])
+PY

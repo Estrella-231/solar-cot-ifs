@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -N hn_gold_probe
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=00:05:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/audits/pbs_gold_probe_20260919.log
+
+set -euo pipefail
+date -Is
+hostname
+echo PBS_GOLD_PROBE_REACHED_USER_SCRIPT

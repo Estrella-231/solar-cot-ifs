@@ -1,0 +1,61 @@
+{
+  "state": "PASS_METADATA_ONLY_HV_GHI_COVERAGE_AUDIT",
+  "sequence_index_sha256": "2368637c724e433e088909a96b96615c2d89d3fcf95a35e403e56bb97912cdf0",
+  "h_sequences_sha256": "5f2ab9818ac830063186d4ec79ae4014f00c8a84c1ef65b55d0d27b54dd11f36",
+  "v_sequences_sha256": "86d43458c61ed05abf85868dc571c4da2e2fd52c65821dfaf40a3d8895270183",
+  "old_fold1_index_sha256": "6aa7e2b3d55b17b75a3590e63dec1f9470e9865a4090c843c92a3e79a025426e",
+  "old_fold1_manifest_sha256": "9544e786eb8ef7f56fd1e12747c21a47345f45e7f391cb5fc4484a5232be929b",
+  "station_day_exclusions_sha256": "5effcb6c87ca0a530c8d1c0b960e2450fca4a0804425dc715145cc6df4a0f957",
+  "splits": {
+    "H": {
+      "manifest_sequences": 7181,
+      "sequences_with_any_labeled_GHI": 6430,
+      "sequence_station_pairs_with_any_label": 12009,
+      "sequence_station_pairs_with_all_16_leads": 6336,
+      "common_labeled_rows": 151762,
+      "rows_by_station": {
+        "sili": 72345,
+        "zhujia": 79417
+      },
+      "quality_excluded_rows": {},
+      "common_scoreable_rows_after_station_day_exclusions": 151762,
+      "scoreable_rows_by_station": {
+        "sili": 72345,
+        "zhujia": 79417
+      },
+      "unmapped_label_key_indices": 0,
+      "label_keys_sha256": "db8c3612817af490f95e7277454d094954eef657d1b2c42ee32db1bba280ddb5"
+    },
+    "V": {
+      "manifest_sequences": 3140,
+      "sequences_with_any_labeled_GHI": 2817,
+      "sequence_station_pairs_with_any_label": 5218,
+      "sequence_station_pairs_with_all_16_leads": 2846,
+      "common_labeled_rows": 66590,
+      "rows_by_station": {
+        "sili": 32159,
+        "zhujia": 34431
+      },
+      "quality_excluded_rows": {
+        "sili:2024-09-05": 504
+      },
+      "common_scoreable_rows_after_station_day_exclusions": 66086,
+      "scoreable_rows_by_station": {
+        "sili": 31655,
+        "zhujia": 34431
+      },
+      "unmapped_label_key_indices": 0,
+      "label_keys_sha256": "7a3a3f67cd2a3264a783052a3fb7736a52781a51971c6b2f4bf22506bba4084f"
+    },
+    "old_fold1_bank": {
+      "sequences": 6430,
+      "H_sequences": 6430,
+      "not_H_sequences": 0,
+      "labeled_H_sequences_missing_from_old_bank": 0,
+      "H_manifest_sequences_without_any_GHI_label": 751,
+      "V_manifest_sequences_with_any_GHI_label": 2817
+    }
+  },
+  "payloads_opened": false,
+  "test_or_buffer_paths_read": false
+}

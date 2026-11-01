@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -N fghi_cot_cf
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_head_pack_v1
+RUN=$EXP/results/future_ghi_cot_shrink_v1
+OUT=$EXP/results/future_ghi_cot_counterfactual_v1.json
+LOG=$EXP/logs/future_ghi_cot_counterfactual_${PBS_JOBID}.log
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$PROJECT"
+(cd "$EXP" && sha256sum -c FUTURE_GHI_COUNTERFACTUAL_SHA256SUMS)
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+python "$EXP/test_audit_future_ghi_cot_counterfactual.py"
+python -m py_compile "$EXP/audit_future_ghi_cot_counterfactual.py"
+python -c 'import json,sys; p=json.load(open(sys.argv[1])); r=json.load(open(sys.argv[2])); assert p.get("state")=="COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK"; assert all(p.get(k) is False for k in ("test_payload_opened","buffer_payload_opened","future_observed_agri_used_as_input","cpp_used_as_input")); assert r.get("state")=="COMPLETE_FUTURE_GHI_COT_SHRINKAGE_SCREENING_PILOT" and r.get("test_payload_opened") is False; print("COUNTERFACTUAL_PACK_AND_PILOT_GATES_PASS")' "$PACK/pack_manifest.json" "$RUN/run_manifest.json"
+if [ -e "$OUT" ] || [ -e "${OUT%.json}.csv" ]; then
+  echo "REFUSE: counterfactual output already exists"
+  exit 31
+fi
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"
+  exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_cf_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/audit_future_ghi_cot_counterfactual.py" \
+  --pack "$PACK" --run-root "$RUN" --output "$OUT" --batch-size 512 --bootstrap 2000
+python -c 'import json,sys; x=json.load(open(sys.argv[1])); assert x.get("state")=="COMPLETE_VALIDATION_FUTURE_COT_COUNTERFACTUAL_SENSITIVITY_AUDIT"; assert all(x.get(k) is False for k in ("test_payload_opened","buffer_payload_opened","future_observed_agri_read","cpp_read")); print("FUTURE_COT_COUNTERFACTUAL_AUDIT_PASS")' "$OUT"
+echo "FUTURE_GHI_COT_COUNTERFACTUAL_COMPLETE test_payload_opened=0"

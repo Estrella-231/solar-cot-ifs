@@ -1,0 +1,35 @@
+{
+  "state": "PILOT_RUNNING",
+  "test_used": false,
+  "seed": 42,
+  "initial_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "initial_checkpoint": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/runs/cot_repaired_seed42_v1/best.pt",
+  "source_script_sha256": "ecbf14bb90a8b356c3d53230e6c5b62f18c960fbac03c56bf77bad568fd5a268",
+  "pack_hashes": {
+    "x_raw.npy": "d2a8088476ccbe8971a770dbe0d20d3b5379e89dfb1a4bc227c6082ef75f345d",
+    "target.npy": "e7e330fd7245212ff09b58f0cbb841a60020e583f4e4121e90b76958d595ba33",
+    "mask.npy": "c134bc31d54cbbab89523a9825bf32cefc226d89b75d85bf6c588295b63547c4",
+    "rows.csv": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69",
+    "norm.json": "affb70cf0d645402adf6cef89311eb34599074d1856f447fcfd2cb2f3e6b1328",
+    "test_references.csv": "31397b92fc8bbfd42bf80c62796b08f7206a288d311c8f77483f827a83da0e9f",
+    "pack_config.json": "0315e81dadf012edcb75ccfbda7eb7393e68309e8ff3b9ffe349f687598bbda8"
+  },
+  "train_rows": 11978,
+  "validation_rows": 6536,
+  "nonfinite_input_values_imputed": 0,
+  "arms": [
+    "log_control",
+    "low_cot_weighted"
+  ],
+  "epochs": 24,
+  "batch": 256,
+  "lr": 0.0001,
+  "low_cot_extra_weight": 1.0,
+  "optimizer": "AdamW weight_decay=1e-4",
+  "precision": "FP32",
+  "selection": "lowest same-mask validation CPP COT<0.1 RMSE for both arms; baseline epoch -1 retained",
+  "low_cot_weighted": "log1p Huber delta=0.1; train weight 1+low_cot_extra_weight*I(CPP_COT<0.1)",
+  "input_domain": "observed real AGRI for both train and validation; no forecast AGRI",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "pbs_job_id": "210458.tc6000"
+}

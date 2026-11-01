@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -N cot_U_fit_pack
+#PBS -q normal
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES=""
+cd "$EXP"
+exec > >(tee -a "logs/u_train_fit_sample_${PBS_JOBID}.log") 2>&1
+/public/home/slfu/miniconda3/envs/swc/bin/python extract_u_train_fit_sample.py \
+  --base "$EXP" --output "$EXP/results/u_train_fit_sample_v1_20261021"

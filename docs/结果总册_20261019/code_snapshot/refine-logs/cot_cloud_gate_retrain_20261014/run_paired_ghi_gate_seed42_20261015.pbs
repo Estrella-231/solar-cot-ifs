@@ -1,0 +1,37 @@
+#!/bin/bash
+#PBS -N cot_gate_ghi42
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/c1_conservative_gate_20261015/logs/paired_ghi_seed42_attempt1.log
+set -euo pipefail
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1
+C1=$ROOT/c1_conservative_gate_20261015
+RAW_PACK=$ROOT/data/ghi_head_pack_new_r_v1
+GATE_PACK=$ROOT/data/ghi_head_pack_gate_c1_20261015_attempt1
+AUDIT=$C1/output_attempt3/paired_pack_audit.json
+OUT=$ROOT/results/paired_gate_ghi_seed42_20261015_attempt1
+
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -s "$AUDIT"
+grep -q 'PASS_PAIRED_RAW_GATE_PACKS' "$AUDIT"
+test ! -e "$OUT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+python -u "$C1/scripts/train_paired_ghi_gate_seed42.py" \
+  --raw-pack "$RAW_PACK" \
+  --gate-pack "$GATE_PACK" \
+  --pair-audit "$AUDIT" \
+  --head-source "$ROOT/head_candidate_v0.py" \
+  --output "$OUT" \
+  --seed 42 --epochs 30 --batch-size 2000
+echo PAIRED_RAW_GATE_GHI_SEED42_COMPLETE

@@ -1,0 +1,52 @@
+{
+  "state": "HUBEI_FROZEN_R_FULL_AGRI_TRAINVAL_BANK_COMPLETE_TEST_CLOSED",
+  "trainval_rows_by_split": {
+    "train": 20206,
+    "val": 1855
+  },
+  "prediction_shape": [
+    22061,
+    1,
+    16,
+    16
+  ],
+  "finite_nonnegative": true,
+  "prediction_min_max": [
+    0.0,
+    74.91889953613281
+  ],
+  "test_payloads_read": 0,
+  "test_path_rows_in_manifest": 0,
+  "cpp_supervision_not_required_for_inference": true,
+  "normalization_source": "R fixed-v2 pack, fitted on CPP-supervised frozen train subset only",
+  "normalized_nonfinite_input_values_by_channel": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "day_mask_off_pixels": 2857609,
+  "pixels_total": 5647616,
+  "cot_sentinel": "0 where AGRI day_mask <= 0.5; model output not claimed outside daytime retrieval support",
+  "frozen_R_checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+  "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "manifest_sha256": "f6280abbbd4c5ae990e9f18d27ad0880be1a4a69adfc031d6c5d89734cddf479",
+  "norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+  "prediction_sha256": "5c9f84dfcb45ce124d195641c2974f00b620f38ccbfa306d39012d08f6394de6",
+  "rows_sha256": "7e76d876eae46bdd58ffdb3131dc8036b2b72bfeb0bed4fb1bd2a2632ee8fb77",
+  "batch": 256,
+  "train_predictions_are_oof": false,
+  "note": "R predictions cover every frozen train/validation AGRI NPZ path. CPP is retrieval supervision, not independent truth; train predictions are in-domain, not OOF."
+}

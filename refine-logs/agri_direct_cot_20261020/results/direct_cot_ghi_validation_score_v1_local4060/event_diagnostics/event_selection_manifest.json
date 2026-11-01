@@ -1,0 +1,72 @@
+{
+  "state": "COMPLETE_DIRECT_COT_B2_EVENT_DIAGNOSTIC_SELECTION",
+  "claim_scope": "posthoc validation examples only; not causal proof or independent test",
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_inference_input": false,
+  "selection_rule": "Sili: longest contiguous (>=3 leads) CPP-center COT>=30 run with largest P-XC improvement vs none; Zhujia: CPP-center COT<1 run with largest P-XC degradation vs none. Matched controls use same bin, same month if available, similar cosSOZ, non-degrading P-XC and baseline RMSE <= candidate-run median.",
+  "eligible_runs": {
+    "sili_cpp_ge30": 72,
+    "zhujia_cpp_lt1": 301
+  },
+  "selected": {
+    "sili": {
+      "signal": {
+        "station": "sili",
+        "init": "2025-07-09 03:00:00",
+        "month": "2025-07",
+        "bin": "CPP COT >=30",
+        "n": 3,
+        "lead_start": 210,
+        "lead_end": 240,
+        "delta_rmse_pxc_minus_none": -34.19117574299115,
+        "delta_rmse_pxc_minus_simvp_r": 2.0532041572253092,
+        "base_rmse": 151.4008919949819,
+        "mean_cossoz": 0.8683340748151144
+      },
+      "control": {
+        "station": "sili",
+        "init": "2025-06-15 01:45:00",
+        "month": "2025-06",
+        "bin": "CPP COT >=30",
+        "n": 8,
+        "lead_start": 15,
+        "lead_end": 120,
+        "delta_rmse_pxc_minus_none": -3.7583246247028086,
+        "delta_rmse_pxc_minus_simvp_r": -1.3322008578976323,
+        "base_rmse": 71.52657598794968,
+        "mean_cossoz": 0.9153561964631081
+      }
+    },
+    "zhujia": {
+      "signal": {
+        "station": "zhujia",
+        "init": "2025-08-22 03:15:00",
+        "month": "2025-08",
+        "bin": "CPP COT <1",
+        "n": 5,
+        "lead_start": 180,
+        "lead_end": 240,
+        "delta_rmse_pxc_minus_none": 121.23853435988323,
+        "delta_rmse_pxc_minus_simvp_r": 17.382759467492008,
+        "base_rmse": 236.03239463198466,
+        "mean_cossoz": 0.8114189267158508
+      },
+      "control": {
+        "station": "zhujia",
+        "init": "2025-08-21 22:15:00",
+        "month": "2025-08",
+        "bin": "CPP COT <1",
+        "n": 14,
+        "lead_start": 45,
+        "lead_end": 240,
+        "delta_rmse_pxc_minus_none": -0.7889640681290331,
+        "delta_rmse_pxc_minus_simvp_r": 2.8164219843762552,
+        "base_rmse": 38.65825516171147,
+        "mean_cossoz": 0.5249021723866463
+      }
+    }
+  },
+  "event_csv_sha256": "2b1d87a1a461e48257a9dc5b0d6ff9654bcecb6c62c4c331d1823a971feb7621"
+}

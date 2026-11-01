@@ -1,0 +1,26 @@
+{
+  "state": "VALIDATION_ONLY_CPU_FP32_PREVIEW_NOT_FINAL",
+  "device": "CPU",
+  "precision": "float32",
+  "batch_size": 512,
+  "shape": [
+    407,
+    16,
+    1,
+    16,
+    16
+  ],
+  "rows": 407,
+  "corrected_S_checkpoint_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+  "corrected_R_checkpoint_sha256": "d8f25a34ac1bf6fdd9005d2ea9d52d02dd3c2c24e4758e6cd74061121d6b5d0b",
+  "R_normalization_sha256": "4db7bb624a7a11edb7c337fa108a0a426a5018a2b885c520e894b988d3394446",
+  "SimVP_key_sha256": "1f32d09268ac1a5446bb54c717b0cc6e663ca198c3d516d9da821cc94b28f134",
+  "predicted_AGRI_sha256": "bb126fa0638f55894f8dbf61d2f800597719db94ce40583409abadf222827483",
+  "future_geometry_sha256": "4dbcf2cf8318283abaa89c9323593d8951a399deeff1281d60f5134c50a6a4f5",
+  "COT_preview_sha256": "1d737b56d29528d130b88314536a8ec252e5ca7e564f4a8021400ee08ba399ba",
+  "preprocessing": "same 16-channel train-fitted z-score as corrected R; valid=day_mask>0.5 and cosSOZ>cos(80deg)",
+  "inputs": "full-train SimVP predictions on validation windows only; no observed future AGRI or CPP input",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "authority": "preview only; canonical GPU attempt12 output remains authoritative"
+}

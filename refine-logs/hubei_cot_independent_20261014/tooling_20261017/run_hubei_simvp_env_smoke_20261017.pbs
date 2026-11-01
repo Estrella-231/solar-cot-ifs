@@ -1,0 +1,50 @@
+#!/bin/bash
+#PBS -N hb_simvp_env
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_cot_independent_20261017
+STAGE=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017
+ENV="$ROOT/.venv_simvp"
+REPO="$STAGE/control/simvp_code_fd201_20261017"
+SCRIPT="$ROOT/hubei_simvp_env_smoke_20261017.py"
+SPEC="$ROOT/env-spec-zjnu-hpc-hubei-simvp-v2.json"
+PY="$ENV/bin/python"
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+exec > "$ROOT/env_smoke_${PBS_JOBID//./_}.pbs.log" 2>&1
+
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+BASE=/public/home/slfu/miniconda3/envs/swc
+export LD_LIBRARY_PATH="$BASE/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}"
+
+test -x "$PY"
+test -f "$SPEC" && test -f "$SCRIPT"
+test -f "$STAGE/stage_verification_receipt.json"
+test -f "$STAGE/control/pbs_fold_input_receipt.json"
+test -f "$STAGE/control/fold_2/simvp_trainval_index_pbs.csv"
+test -f "$STAGE/control/fold_2/norm/simvp_train_only_norm.npz"
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+test "$(awk -F, '{print NF}' <<< "$GPU_IDS")" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU_IDS"
+hostname
+echo "PBS_JOBID=$PBS_JOBID GPU_IDS=$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.total,memory.used --format=csv
+"$PY" - <<'PY'
+import cv2, fvcore, iopath, timm, torch, torchvision, pytorch_lightning, skimage
+from openstl.datasets.dataloader_hbagri import HBAGRIDataset
+from openstl.methods.simvp import SimVP
+print("IMPORT_WITNESS_PASS", torch.__version__, torch.version.cuda,
+      pytorch_lightning.__version__, timm.__version__, cv2.__version__,
+      HBAGRIDataset.__name__, SimVP.__name__)
+PY
+
+OUT="$ROOT/env_witness_${PBS_JOBID//./_}"
+"$PY" -u "$SCRIPT" --root "$STAGE" --fold 2 --repo "$REPO" --env "$SPEC" --out "$OUT"
+test -f "$OUT/ENV_SMOKE_REPORT.json"
+grep -q 'HUBEI_SIMVP_PBS_GPU_ENV_REAL_TRAIN_BATCH_FORWARD_BACKWARD_RELOAD_PASS' "$OUT/ENV_SMOKE_REPORT.json"
+echo "HUBEI_SIMVP_ENV_SMOKE_COMPLETE report=$OUT/ENV_SMOKE_REPORT.json"

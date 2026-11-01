@@ -1,0 +1,59 @@
+#!/bin/bash
+#PBS -N hb_st_norm
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017/source_rebuild_20261017_v2
+PACK="$ROOT/pack"
+SCRIPTS="$ROOT/scripts"
+SEED="${SEED:?submit with qsub -v SEED=42}"
+OUT="$ROOT/training/same_time_seed${SEED}_normreload_v1"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$ROOT/training" "$ROOT/logs"
+exec > "$ROOT/logs/train_same_time_normreload_seed${SEED}_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPTS:${PYTHONPATH:-}"
+
+test -s "$PACK/pack_report.json"
+test ! -e "$OUT"
+"$PY" - "$PACK/pack_report.json" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+p=Path(sys.argv[1]); d=json.loads(p.read_text())
+sha=hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha == "e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515"
+assert d["state"] == "HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED"
+assert d["samples"] == 29351 and d["test_and_buffer_values_read"] == 0
+assert d["feature_array_sha256"] == "112c88ecdb1351e5af9c83458b01c6c1bd4e98982e0436589e14b442919c0be2"
+print(f"SAME_TIME_PACK_GATE_PASS sha256={sha} samples=29351 test_buffer=0", flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nSEED=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$SEED" "$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/train_hubei_ghi_heads_normreload_20261017.py" \
+  --pack "$PACK" --output "$OUT" --input-mode same_time \
+  --arms A AC AP --seed "$SEED" --epochs 30 --batch-size 512
+
+test -s "$OUT/run_metadata.json"
+test -s "$OUT/all_metrics.jsonl"
+"$PY" - "$OUT/run_metadata.json" <<'PY'
+import json, sys
+from pathlib import Path
+p=json.loads(Path(sys.argv[1]).read_text())
+assert p["state"] == "HUBEI_GHI_HEADS_SEED_COMPLETE"
+assert p["test_payloads_read"] == 0 and set(p["arms"]) == {"A", "AC", "AP"}
+print("HUBEI_SAME_TIME_GHI_NORMRELOAD_SEED_COMPLETE_TEST_CLOSED", flush=True)
+PY

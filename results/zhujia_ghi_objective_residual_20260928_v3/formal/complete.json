@@ -1,0 +1,91 @@
+{
+  "state": "COMPLETE_ZHUJIA_GHI_OBJECTIVE_RESIDUAL_PILOT",
+  "station": "Zhujia",
+  "seed": 42,
+  "train_sequences": 485,
+  "val_sequences": 127,
+  "actual_updates_per_arm": {
+    "agri_residual": 600,
+    "cot_residual": 600
+  },
+  "source_zero_checkpoint_sha256": "ff087540eea05335619d1386469b3f90da7bf9c795c9d95b9ba03e943ef87cc6",
+  "source_fusion_checkpoint_sha256": "29a5390cd8fd615c420c9bc6f6b41c877b622dde3db4315d3eafb88326d09485",
+  "sili_checkpoint_sha256": "4d243d0c8c3be33cff83ad8307c6d2e1bcde59d8a9bae6cac17bfd8e87ea7d4c",
+  "batch": 512,
+  "lr": 0.0003,
+  "cot_limit_kt": 0.15,
+  "delta_penalty": 0.05,
+  "training_objective": "weighted mean of ((pred_kt-target_kt)*clear_sky_GHI/1000)^2 + penalty*((delta_kt*clear_sky_GHI/1000)^2)",
+  "validation_selection": "unweighted Zhujia validation GHI RMSE; step 0 exact fallback included",
+  "arms": {
+    "agri_residual": {
+      "updates": 600,
+      "best_step": 0,
+      "metrics": {
+        "n": 1624,
+        "rmse": 127.29536959218576,
+        "mae": 93.01428577453731,
+        "bias": -11.703474798994144,
+        "lead_rmse": {
+          "15": 109.8431274646636,
+          "30": 114.12966335106796,
+          "45": 109.93038032770302,
+          "60": 115.0620709392282,
+          "75": 119.54302403632654,
+          "90": 120.6832329773162,
+          "105": 129.21655558283956,
+          "120": 132.5491504392329,
+          "135": 131.69721581997936,
+          "150": 130.18510415920667,
+          "165": 140.11604392645975,
+          "180": 126.47614998979466,
+          "195": 127.28429254474662,
+          "210": 138.61945366242122,
+          "225": 145.1767544663882,
+          "240": 145.2165231293671
+        }
+      },
+      "final_loss_mean_last100": 0.018812587969005107
+    },
+    "cot_residual": {
+      "updates": 600,
+      "best_step": 0,
+      "metrics": {
+        "n": 1624,
+        "rmse": 127.29536959218576,
+        "mae": 93.01428577453731,
+        "bias": -11.703474798994144,
+        "lead_rmse": {
+          "15": 109.8431274646636,
+          "30": 114.12966335106796,
+          "45": 109.93038032770302,
+          "60": 115.0620709392282,
+          "75": 119.54302403632654,
+          "90": 120.6832329773162,
+          "105": 129.21655558283956,
+          "120": 132.5491504392329,
+          "135": 131.69721581997936,
+          "150": 130.18510415920667,
+          "165": 140.11604392645975,
+          "180": 126.47614998979466,
+          "195": 127.28429254474662,
+          "210": 138.61945366242122,
+          "225": 145.1767544663882,
+          "240": 145.2165231293671
+        }
+      },
+      "final_loss_mean_last100": 0.010722942743450403
+    }
+  },
+  "test_used": false,
+  "station_id": 1,
+  "pilot_bank_contract": "COMPLETE_EXPLORATORY_REGIONAL_GHI_PILOT_BANK",
+  "pilot_bank_complete_sha256": "9069423f65dac2cd3b4b30cfabdf4369a43839fd1bfd924a19ccd20dae906286",
+  "capacity_control": "identical residual trainable parameter count, shared initial weights and data order; AGRI arm zeros COT values but retains causal validity mask",
+  "output_sha256": {
+    "agri_residual_best.pt": "1d1af1665de92eaa24439deca917e45a86bafa27c37ab2694580010e425526d1",
+    "cot_residual_best.pt": "0c9115adbe99a0b431e46ecb5719961e29b3a70f8679372cb9568d5a056bcf7f",
+    "agri_residual_val_predictions.npz": "b36b158bfffa5be3b9efda9ec0347c16f156c6d2b64d85ac17d5e2401dee063d",
+    "cot_residual_val_predictions.npz": "b36b158bfffa5be3b9efda9ec0347c16f156c6d2b64d85ac17d5e2401dee063d"
+  }
+}

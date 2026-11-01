@@ -1,0 +1,475 @@
+{
+  "test_used": false,
+  "training_performed": false,
+  "cohort": "same fixed 128 Sili validation sequences as the regional station COT pilot; includes sequences without valid CPP targets",
+  "motion": "saved full-precision last-step regional C13 phase-correlation displacement from observed history; source coordinates are target minus lead times displacement",
+  "station_grid_rc": [
+    163,
+    148
+  ],
+  "domain_definition": "64x64, 128x128, and 256x256 square source windows centred on the same station pixel",
+  "interpretation_limit": "geometric coordinate inclusion only; ignores real AGRI validity, R error, cloud-layer wind, deformation, evolution, CPP accuracy, and GHI impact",
+  "lead_metrics": [
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 15,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 30,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 45,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 60,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 75,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 90,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 105,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9921875,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 120,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9921875,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 135,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.990625,
+      "records_with_all_station_5x5_sources_fraction": 0.984375,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 150,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.984375,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.98125,
+      "records_with_all_station_5x5_sources_fraction": 0.96875,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 165,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9453125,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.95625,
+      "records_with_all_station_5x5_sources_fraction": 0.9453125,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 180,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9453125,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9453125,
+      "records_with_all_station_5x5_sources_fraction": 0.9453125,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 195,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9453125,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9453125,
+      "records_with_all_station_5x5_sources_fraction": 0.9453125,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 210,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9453125,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9421875,
+      "records_with_all_station_5x5_sources_fraction": 0.9296875,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 225,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9296875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.93125,
+      "records_with_all_station_5x5_sources_fraction": 0.9140625,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 240,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9140625,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.915625,
+      "records_with_all_station_5x5_sources_fraction": 0.8984375,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 15,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 30,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 45,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 60,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 75,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 90,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 105,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.9921875
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 120,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.9921875
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 135,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.9921875
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 150,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.984375
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 165,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.96875
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 180,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 0.9453125
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 195,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9984375,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.9453125
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 210,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9921875,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.9453125
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 225,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9921875,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.9453125
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 240,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9921875,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.9140625
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 15,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 30,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 45,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 60,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 75,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 90,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 105,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 120,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 135,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 150,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 165,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 180,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 195,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 210,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 225,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 240,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    }
+  ],
+  "at_240_min": [
+    {
+      "source_domain_pixels": 64,
+      "lead_minutes": 240,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9140625,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.915625,
+      "records_with_all_station_5x5_sources_fraction": 0.8984375,
+      "records_with_entire_target_64x64_sources_fraction": 0.0
+    },
+    {
+      "source_domain_pixels": 128,
+      "lead_minutes": 240,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 0.9921875,
+      "station_5x5_pixelwise_geometric_support_fraction": 0.9921875,
+      "records_with_all_station_5x5_sources_fraction": 0.9921875,
+      "records_with_entire_target_64x64_sources_fraction": 0.9140625
+    },
+    {
+      "source_domain_pixels": 256,
+      "lead_minutes": 240,
+      "sequences": 128,
+      "station_pixel_geometric_support_fraction": 1.0,
+      "station_5x5_pixelwise_geometric_support_fraction": 1.0,
+      "records_with_all_station_5x5_sources_fraction": 1.0,
+      "records_with_entire_target_64x64_sources_fraction": 1.0
+    }
+  ]
+}

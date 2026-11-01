@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -N cot_RU_Uonly
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/agri_direct_cot_20261020/logs/r_u_train_v1.log
+set -euo pipefail
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export LD_LIBRARY_PATH=/public/home/slfu/miniconda3/envs/swc/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+PACK=$EXP/data/r_u_pack_v2
+OUT=$EXP/results/r_u_train_v1
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+
+test -d "$PACK"
+test ! -e "$OUT"
+test "$(python -c 'import json,sys; j=json.load(open(sys.argv[1])); print(j["state"],j["test_payloads_read"],j["buffer_payloads_read"],j["u_h_frame_intersection"])' "$PACK/pack_audit.json")" = "PASS_U_ONLY_R_PACK 0 0 0"
+test "$(sha256sum "$EXP/train_r_u.py" | cut -d' ' -f1)" = "8cb2cf64c9e7edbb2670d12fb5e0f8f87cbc31886e93d417822b7a3efa72f6ec"
+
+TMP_AVAIL=$(df -PB1 /tmp | awk 'NR==2 {print $4}')
+test "$TMP_AVAIL" -ge 26843545600
+GPU=$($PBS_QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+df -h /tmp
+
+python -u "$EXP/train_r_u.py" \
+  --pack "$PACK" \
+  --output "$OUT" \
+  --seed 42 --epochs 50 --effective-batch 1024 --microbatch 1024
+
+test "$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["state"])' "$OUT/status.json")" = "COMPLETE_R_U_FIXED_EPOCH_50"
+test "$(python -c 'import json,sys; j=json.load(open(sys.argv[1])); print(j["test_payloads_read"],j["buffer_payloads_read"])' "$OUT/status.json")" = "0 0"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+echo R_U_FIXED_50_EPOCHS_COMPLETE

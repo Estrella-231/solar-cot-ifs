@@ -1,0 +1,44 @@
+#!/bin/bash
+#PBS -N fghi_rel_s42
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+CAL=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+RUN=$EXP/results/future_ghi_oof_cot_reliability_v1
+AUDIT=$EXP/results/future_ghi_oof_cot_reliability_seed42_structural_audit.json
+mkdir -p "$EXP/logs" "$EXP/results"
+JOB_LOG="$EXP/logs/future_ghi_oof_cot_reliability_seed42_${PBS_JOBID}.log"
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$PROJECT"
+sha256sum -c "$EXP/FUTURE_GHI_COT_RELIABILITY_SHA256SUMS"
+test "$(sha256sum "$CAL" | awk '{print $1}')" = d1a0d104fc84c2223be5397a11d4e3730025475384880c8206c9f5420499645b
+test "$(sha256sum "$PACK/pack_manifest.json" | awk '{print $1}')" = cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_cot_reliability_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+python "$EXP/test_future_ghi_cot_reliability.py"
+python "$EXP/test_audit_future_ghi_cot_reliability.py"
+python -m py_compile "$EXP/train_future_ghi_heads_cot_reliability.py" "$EXP/audit_future_ghi_cot_reliability.py"
+test ! -e "$RUN"
+test ! -e "$AUDIT"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"; exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/train_future_ghi_heads_cot_reliability.py" \
+  --pack "$PACK" --calibration "$CAL" --output "$RUN" --seeds 42 \
+  --epochs 30 --batch-size 1792 --station both
+python -u "$EXP/audit_future_ghi_cot_reliability.py" \
+  --run-root "$RUN" --output "$AUDIT" --seeds 42 --bootstrap 2000
+echo "FUTURE_GHI_COT_RELIABILITY_SEED42_STRUCTURAL_PASS test_payload_opened=0 buffer_payload_opened=0"

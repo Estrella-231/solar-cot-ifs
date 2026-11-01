@@ -1,0 +1,69 @@
+#!/bin/bash
+#PBS -N fghi_oof_f0r
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=30:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+WORKERS="${WORKER_COUNT:-0}"
+if [[ ! "$WORKERS" =~ ^[0-6]$ ]]; then
+  echo "workers must be 0..6" >&2
+  exit 2
+fi
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+SPLIT=$EXP/results/future_ghi_oof_manifests_v1/fold_0
+RUN=$EXP/results/future_ghi_oof_training_v1/fold_0
+SOURCE=$PROJECT/experiments/hunan_monthly_block_20261002/code
+CACHE=/tmp/slfu_future_ghi_oof_fold0_resume_${PBS_JOBID//[^A-Za-z0-9]/_}
+LOG=$EXP/logs/future_ghi_oof_fold0_resume_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$PROJECT"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8"
+
+cd "$PROJECT/experiments/hunan_monthly_block_20261002"
+sha256sum -c deployment.sha256
+cd "$EXP"
+python -m py_compile train_monthly_simvp_oof_20261019.py resume_future_ghi_oof_fold.py test_resume_future_ghi_oof_fold.py
+python test_resume_future_ghi_oof_fold.py
+python - <<'PY' "$RUN" "$SPLIT"
+import json,sys
+from pathlib import Path
+run=Path(sys.argv[1]); split=Path(sys.argv[2]); t=run/'training'
+assert t.is_dir() and (t/'last.pt').is_file() and (t/'epoch_001.json').is_file()
+assert not (t/'training_complete.json').exists()
+e=json.loads((t/'epoch_001.json').read_text())
+m=json.loads((t/'run_metadata.json').read_text())
+assert e['epoch']==1 and e['step']==1292 and m['fold']==0 and m['seed']==42
+assert not (t/'resume_from_epoch001.pt').exists(), 'refusing to overwrite a prior recovery checkpoint'
+assert (split/'hunan_train_norm.json').is_file() and (run/'profile.json').is_file()
+print('OOF_FOLD0_RESUME_PREFLIGHT_PASS',e,m['manifest_sha256'])
+PY
+cp -p "$RUN/training/last.pt" "$RUN/training/resume_from_epoch001.pt"
+sha256sum "$RUN/training/resume_from_epoch001.pt"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"
+  exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname) FOLD=0 SEED=42 WORKERS=$WORKERS"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/resume_future_ghi_oof_fold.py" \
+  --root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --source "$SOURCE" --cache "$CACHE" --manifests "$SPLIT" --output "$RUN" \
+  --resume-checkpoint "$RUN/training/resume_from_epoch001.pt" \
+  --workers "$WORKERS" --fold 0 --seed 42 --checkpoint-epoch 1 --checkpoint-step 1292
+python - <<'PY' "$RUN/training/training_complete.json"
+import json,sys
+x=json.load(open(sys.argv[1]));assert x['state']=='COMPLETE_OOF_SIMVP_FIXED_EPOCH_TRAINING';assert x['selected_checkpoint']=='epoch_012.pt';assert x['fold']==0 and x['resumed_from_epoch']==1;assert x['heldout_payload_read'] is False and x['test_payloads_read']==0
+print('OOF_FOLD0_RESUME_COMPLETE_PASS')
+PY
+echo "FUTURE_GHI_OOF_FOLD0_RESUME_COMPLETE heldout_payload_read=0 test_payload_opened=0"

@@ -1,0 +1,62 @@
+{
+  "state": "COMPLETE_SAME_KEY_FORECAST_VS_ORACLE_COT_DIAGNOSTIC",
+  "scope": "validation only; both branches use the same five-fold OOF forecast AGRI, station, GHI labels and keys; oracle COT is frozen R applied to observed future AGRI",
+  "pairing": {
+    "forecast_keys_sha256": "7a3a3f67cd2a3264a783052a3fb7736a52781a51971c6b2f4bf22506bba4084f",
+    "oracle_keys_sha256": "7a3a3f67cd2a3264a783052a3fb7736a52781a51971c6b2f4bf22506bba4084f",
+    "keys_byte_identical": true,
+    "rows": 66590,
+    "stations": [
+      "sili",
+      "zhujia"
+    ],
+    "lead_minutes": [
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      105,
+      120,
+      135,
+      150,
+      165,
+      180,
+      195,
+      210,
+      225,
+      240
+    ],
+    "target_bjt_dates": 52
+  },
+  "cot_measurement": "forecast and oracle cot_log1p arrays are compared at slot 2 (target time) in the central station pixel and full 3x3 patch; COT is recovered by expm1 for physical-unit metrics",
+  "thickness_bins": "oracle central-pixel COT: <1, 1-<10, >=10; descriptive strata, CPP is not used",
+  "forecast_pack_sha256": "cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233",
+  "oracle_pack_sha256": "92ba5f761ec566c4af63422cf6e2d66d48da4015b7bfe918948bef8cd274a4ca",
+  "forecast_ghi_audit_sha256": "505b9fd014c8da61ea3bba392fa46a95e89352b42e5a2836380b0854d770b6c9",
+  "oracle_ghi_audit_sha256": "bc15455edbfa0383abf79ae5e691f809156d7cfb66b12b4f8242465474d8bfcb",
+  "overall_cot_metrics": {
+    "group": "all",
+    "station": "both_equal_row_weight",
+    "lead_minutes": "all",
+    "cot_stratum": "all",
+    "n": 66590,
+    "center_rmse_log1p": 0.6924493135746902,
+    "patch_rmse_log1p": 0.6923917357448532,
+    "center_bias_log1p": -0.10110784830845586,
+    "center_corr": 0.8896633963867735,
+    "center_rmse_cot": 7.671033556119409,
+    "patch_rmse_cot": 7.725927067580186,
+    "center_mean_forecast_cot": 14.281276623076854,
+    "center_mean_oracle_cot": 15.132748560679,
+    "center_std_ratio": 0.9497681870657934,
+    "patch_spatial_contrast_ratio": 0.4559249148131985,
+    "spatial_anomaly_corr": 0.36372695216599205,
+    "spatial_anomaly_rmse_log1p": 0.12110395935968987
+  },
+  "ghi_ac_rmse_gap_mean_wm2": -15.955948470347355,
+  "claim_boundary": "diagnostic comparison, not independent-test evidence or deployable oracle forecast",
+  "test_payload_opened": false,
+  "buffer_payload_opened": false
+}

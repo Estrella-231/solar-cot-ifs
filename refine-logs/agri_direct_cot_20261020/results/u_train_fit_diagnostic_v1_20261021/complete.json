@@ -1,0 +1,34 @@
+{
+  "state": "COMPLETE_FROZEN_U_TRAIN_FIT_DIAGNOSTIC",
+  "station_windows": 1024,
+  "u_sequences": 512,
+  "batch": 128,
+  "inference_dtype": "CUDA BF16 autocast; no optimizer or gradient",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "peak_allocated_bytes": 606889472,
+  "elapsed_seconds": 2.8909999999996217,
+  "checkpoints_sha256": {
+    "cot_p_c": "7258ea13ea210347f94a49174ec2e6ac88a241463ec74220aa9d30a2c7ba1b37",
+    "cot_p_xc": "4b926f3a94d2228505d9acce0a7d36adbd90cbd8ef221d9db02045b35fea50df"
+  },
+  "source": {
+    "sample_receipt_sha256": "737006a0824b2dfb49abd96b755789632f3ea9822cd733354ed82574e058070f",
+    "script_sha256": "9e8f6cce323629e581306aec9cd01f4db353d971bbf5d08c5299d86907d08774",
+    "plan_sha256": "1b4dba1839fc111f38662a08acb82ed42550127d6da5b0343bc14148108f83c0",
+    "v_descriptors_sha256": "cc11c4836524c80a712a7a8333a689a94821bfade29fae4e97563547c31c406c"
+  },
+  "training_started": false,
+  "ghi_labels_read": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "ghi_gain_established": false,
+  "scope": "training-fit diagnostic only; different sample distributions and FP16/FP32 R references prohibit unbiased U-V generalization or gain claims",
+  "artifacts_sha256": {
+    "cot_p_c.npy": "86feb85c5c6d673db7c11a0e4dee02a92be68c24bff016567ee39af4c2160e1b",
+    "cot_p_xc.npy": "3f1ac3e071adf1eaa32d5ba38a378266048bf3914da166b0e54e5917f26b7515",
+    "u_field_metrics.csv": "157f289c906c2cf31a55684700b6fa1c4c450a12e56abf1563be1c325d661725",
+    "u_first_difference_metrics.csv": "bf57cb11359d9574a6b8bc34803043b05b18de02e1b720ee29bd8fd5dda012e9",
+    "u_reference_strata.csv": "fe5a751ddeee9c55fcb87c941d0ecc90b7d5442cee016452c0e6813ad2431b11",
+    "u_v_descriptive_comparison.csv": "7d9f27e0cb9b0cd182acda104a909db6b08359d69e42b89a38940e08fd3846c7"
+  }
+}

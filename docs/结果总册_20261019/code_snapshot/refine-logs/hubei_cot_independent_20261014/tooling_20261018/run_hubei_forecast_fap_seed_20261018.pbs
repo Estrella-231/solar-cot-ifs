@@ -1,0 +1,60 @@
+#!/bin/bash
+#PBS -N hb_fc_fap
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_forecast_ghi_20261017
+PACK="$ROOT/pack"
+SCRIPTS="$ROOT/scripts"
+SEED="${SEED:?submit with qsub -v SEED=42}"
+OUT="$ROOT/results/forecast_FAP_seed${SEED}_normreload_20261018"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$ROOT/logs" "$ROOT/results"
+exec > "$ROOT/logs/train_fap_seed${SEED}_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPTS:${PYTHONPATH:-}"
+
+test -s "$PACK/pack_report.json"
+test ! -e "$OUT"
+"$PY" - "$PACK/pack_report.json" <<'PY'
+import json, sys
+from pathlib import Path
+p=json.loads(Path(sys.argv[1]).read_text())
+assert p["state"] == "HUBEI_GHI_FORECAST_HEADS_TRAINVAL_PACK_TEST_CLOSED"
+assert p["train_forecast_inputs_are_oof"] is True and p["oof_fold_count"] == 5
+assert p["validation_forecast_source"] == "frozen_full_train_S_R"
+assert p["test_and_buffer_values_read"] == 0 and p["samples"] == 70171
+print("FORECAST_PACK_GATE_PASS samples=70171 OOF=5 test_buffer=0", flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nSEED=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$SEED" "$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/train_hubei_ghi_heads_normreload_20261017.py" \
+  --pack "$PACK" --output "$OUT" --input-mode forecast \
+  --arms FAP --seed "$SEED" --epochs 30 --batch-size 1536
+
+test -s "$OUT/run_metadata.json"
+test -s "$OUT/all_metrics.jsonl"
+"$PY" - "$OUT/run_metadata.json" <<'PY'
+import json, sys
+from pathlib import Path
+p=json.loads(Path(sys.argv[1]).read_text())
+assert p["state"] == "HUBEI_GHI_HEADS_SEED_COMPLETE"
+assert p["test_payloads_read"] == 0 and p["input_mode"] == "forecast"
+assert p["arms"] == ["FAP"] and p["seed"] in (42, 43, 44)
+assert p["epochs"] == 30 and p["batch_size"] == 1536
+print("HUBEI_FORECAST_FAP_SEED_COMPLETE_TEST_CLOSED", flush=True)
+PY

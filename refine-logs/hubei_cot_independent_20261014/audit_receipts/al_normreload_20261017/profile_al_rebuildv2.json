@@ -1,0 +1,30 @@
+{
+  "state": "HUBEI_GHI_HEAD_AL_SINGLE_GPU_PROFILE_COMPLETE",
+  "profile_station": "Mizhuang",
+  "train_rows": 8832,
+  "input_mode": "same_time",
+  "measurements": [
+    {
+      "batch": 128,
+      "updates_per_epoch": 69,
+      "examples_per_second": 19330.82656643178,
+      "peak_GiB": 0.1524486541748047
+    },
+    {
+      "batch": 256,
+      "updates_per_epoch": 34,
+      "examples_per_second": 43550.590471871656,
+      "peak_GiB": 0.15452861785888672
+    },
+    {
+      "batch": 512,
+      "updates_per_epoch": 17,
+      "examples_per_second": 106188.77399084585,
+      "peak_GiB": 0.15575885772705078
+    }
+  ],
+  "AP_parameter_count": 24613,
+  "AL_parameter_count": 24549,
+  "test_payloads_read": 0,
+  "selection": "largest batch with at least 12 train updates per epoch and within 3% of measured throughput maximum"
+}

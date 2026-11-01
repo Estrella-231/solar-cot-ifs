@@ -1,0 +1,81 @@
+#!/bin/bash
+#PBS -N hb_al_v2
+#PBS -q gpu
+#PBS -l nodes=1:ppn=12:gpus=3
+#PBS -l walltime=06:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+PY=/public/home/slfu/miniconda3/envs/swc/bin
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+SCRIPT="$ROOT/scripts"
+PACK="$ROOT/pack"
+FEATURES="$ROOT/features_r_dec1_trainval_maskfix_v2"
+RUNROOT="$ROOT/runs_maskfix_v2"
+exec > "$ROOT/job_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+
+"$PY/python" - "$ROOT" <<'PY'
+import csv, hashlib, json, sys
+from pathlib import Path
+import numpy as np
+r=Path(sys.argv[1])
+pack=json.loads((r/'pack/pack_report.json').read_text())
+feature=json.loads((r/'features_r_dec1_trainval_maskfix_v2/AL_FEATURE_REPORT.json').read_text())
+profile=json.loads((r/'profile_al.json').read_text())
+assert pack['state']=='HUBEI_GHI_HEADS_COMMON_TRAINVAL_PACK_TEST_CLOSED'
+assert pack['test_and_buffer_values_read']==0
+assert feature['state']=='HUBEI_FROZEN_R_DEC1_AL_FEATURE_BANK_TRAINVAL_COMPLETE_TEST_CLOSED'
+assert feature['test_payloads_read']==0 and feature['ghi_labels_read'] is False and feature['cpp_payloads_read']==0
+assert feature['split_sha256']==pack['split_sha256']=='6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6'
+h=hashlib.sha256((r/'features_r_dec1_trainval_maskfix_v2/r_dec1_station_3x3.npy').read_bytes()).hexdigest()
+assert h==feature['feature_file_sha256']
+arr=np.load(r/'features_r_dec1_trainval_maskfix_v2/r_dec1_station_3x3.npy',mmap_mode='r',allow_pickle=False)
+assert arr.shape==(12301,3,16,3,3)
+with (r/'features_r_dec1_trainval_maskfix_v2/rows.csv').open(newline='') as f: rows=list(csv.DictReader(f))
+assert len(rows)==12301 and len({x['time_bjt'] for x in rows})==12301 and all(x['split'] in {'train','val'} for x in rows)
+assert profile['state']=='HUBEI_GHI_HEAD_AL_SINGLE_GPU_PROFILE_COMPLETE'
+assert (r/'profile_selection.txt').read_text().strip()=='SELECTED_BATCH=512'
+assert not (r/'runs_maskfix_v2').exists()
+print('HUBEI_AL_V2_PRECHECK_PASS train_val_only=1 feature_rows=12301 batch=512 test_closed=1',flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 3
+for g in "${GPU_ARRAY[@]}"; do
+  used=$(nvidia-smi --id="$g" --query-gpu=memory.used --format=csv,noheader,nounits)
+  test "$used" -lt 500
+done
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPUS=%s\n' "$PBS_JOBID" "$GPU_IDS"
+
+seeds=(42 43 44)
+pids=()
+for i in 0 1 2; do
+  seed="${seeds[$i]}"
+  out="$RUNROOT/seed${seed}"
+  test ! -e "$out"
+  CUDA_VISIBLE_DEVICES="${GPU_ARRAY[$i]}" "$PY/python" "$SCRIPT/train_hubei_ghi_head_al_20261017.py" \
+    --pack "$PACK" --r-feature-bank "$FEATURES" --output "$out" \
+    --seed "$seed" --epochs 30 --batch-size 512 > "$ROOT/train_v2_seed${seed}.log" 2>&1 &
+  pids[$i]=$!
+done
+status=0
+for p in "${pids[@]}"; do wait "$p" || status=1; done
+test "$status" -eq 0
+"$PY/python" - "$RUNROOT" <<'PY'
+import json,sys
+from pathlib import Path
+r=Path(sys.argv[1])
+for seed in (42,43,44):
+ d=json.loads((r/f'seed{seed}/run_metadata.json').read_text())
+ assert d['state']=='HUBEI_GHI_HEAD_AL_SEED_COMPLETE'
+ assert d['test_payloads_read']==0
+print('HUBEI_AL_ALL_SEEDS_COMPLETE test_closed=1',flush=True)
+PY

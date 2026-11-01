@@ -1,0 +1,36 @@
+#!/bin/bash
+#PBS -N hb_cot_patch_aud6
+#PBS -q normal
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=8gb
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache_audit_attempt1.pbs.log
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022
+CODE=$BASE/cache_attempt5
+CACHE=$BASE/cache_attempt5/cache
+OUT=$BASE/cache_attempt5/cache_audit_attempt1
+ROWS=$PROJECT/experiments/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3/rows.csv
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+mkdir -p "$(dirname /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt5/cache_audit_attempt1/audit.log)"
+mkdir -p "$BASE/cache_attempt5"
+exec > >(tee -a "$BASE/cache_attempt5/cache_audit_attempt1/audit_${PBS_JOBID}.log") 2>&1
+echo "CACHE_AUDIT_START job=$PBS_JOBID host=$(hostname)"
+test -f "$CODE/audit_station_patch_cache.py"
+test -f "$CACHE/cache_report.json"
+test -f "$ROWS"
+"$PY" -m py_compile "$CODE/audit_station_patch_cache.py"
+"$PY" "$CODE/audit_station_patch_cache.py" --cache "$CACHE" --source-bank-rows "$ROWS" --out "$OUT"
+test -f "$OUT/cache_audit.json"
+"$PY" - <<'PY' "$OUT/cache_audit.json"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED', x
+assert x['test_payloads_read']==0 and x['buffer_payloads_read']==0, x
+assert x['forecast_pairs']['val']['unique_target_dates']>=12, x
+assert min(x['forecast_pairs']['val']['pairs_by_lead_minutes'].values())>=200, x
+print('G1S_CACHE_AUDIT_GATE_PASS',x['forecast_pairs']['val'])
+PY
+

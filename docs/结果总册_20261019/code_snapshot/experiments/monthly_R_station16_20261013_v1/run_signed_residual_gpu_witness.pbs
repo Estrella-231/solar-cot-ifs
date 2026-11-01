@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -N resid_gpu_witness
+#PBS -q gpu
+#PBS -l nodes=1:ppn=4:gpus=1
+#PBS -l walltime=00:20:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/signed_residual_gpu_witness.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+cd "$EXP"
+python -u witness_signed_residual_cuda.py \
+  --pack "$EXP/data/ghi_head_pack_new_r_v1" \
+  --baseline "$EXP/results/ghi_heads_new_r_seed42_v1/sili"

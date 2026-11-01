@@ -1,0 +1,16 @@
+{
+  "state": "FAILED_AFTER_TRAIN_VAL_CPP_PREFLIGHT_BEFORE_PROFILE",
+  "job_id": "215340.tc6000",
+  "exit_status": 1,
+  "elapsed_walltime": "00:00:31",
+  "pbs_node": "node22",
+  "physical_gpu": "node22-gpu/1",
+  "failure": "ModuleNotFoundError: No module named cv2 while importing OpenSTL package",
+  "data_preflight": "PASS_ATTEMPT13_TRAIN_VAL_INPUTS_AND_CPP_PHYSICAL_TARGETS",
+  "profile_started": false,
+  "training_started": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "logs": ["../attempt13_retry1.log", "../profile/batch_16.log"],
+  "repair_in_progress": "install opencv-python-headless==4.10.0.84 into attempt-local python_vendor without changing shared conda environment"
+}

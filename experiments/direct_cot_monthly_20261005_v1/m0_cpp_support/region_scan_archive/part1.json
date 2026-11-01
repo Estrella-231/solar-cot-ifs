@@ -1,0 +1,146 @@
+{
+  "state": "TRAIN_VAL_FULL_REGION_CPP_MASK_AUDIT",
+  "test_used": false,
+  "grid_max_coordinate_error_degrees": 0.0,
+  "mask": "finite COT in [0,100] AND CLP in {0,1,2} AND all13 AGRI valid bits AND day_mask>0.5 AND cosSOZ>cos80",
+  "products_processed": 3919,
+  "cpp_payloads_read": 2227,
+  "no_day_or_agri_support_skipped_before_cpp_read": 1692,
+  "read_failure_count": 23,
+  "read_failures": [
+    "202501010730",
+    "202501270900",
+    "202501290000",
+    "202501290200",
+    "202502010300",
+    "202502030500",
+    "202502070300",
+    "202502070800",
+    "202502180000",
+    "202502200100",
+    "202502220400",
+    "202503030100",
+    "202503080100",
+    "202503080900",
+    "202503300400",
+    "202505110100",
+    "202505150200",
+    "202506210815",
+    "202506220015",
+    "202506220630",
+    "202506220700",
+    "202506230315",
+    "202506230430"
+  ],
+  "aggregates": {
+    "all/all": {
+      "products": 3919,
+      "supported_products": 2188,
+      "target_occurrences": 48488,
+      "supervised_pixels": 1991027712,
+      "nearzero_pixels": 463040775,
+      "cloud_ge_0_1_pixels": 1527986937,
+      "thick_ge30_pixels": 444207987
+    },
+    "train/all": {
+      "products": 3919,
+      "supported_products": 2188,
+      "target_occurrences": 48488,
+      "supervised_pixels": 1991027712,
+      "nearzero_pixels": 463040775,
+      "cloud_ge_0_1_pixels": 1527986937,
+      "thick_ge30_pixels": 444207987
+    },
+    "train/DJF": {
+      "products": 992,
+      "supported_products": 442,
+      "target_occurrences": 12320,
+      "supervised_pixels": 393845706,
+      "nearzero_pixels": 132890807,
+      "cloud_ge_0_1_pixels": 260954899,
+      "thick_ge30_pixels": 113138504
+    },
+    "train/2024-12": {
+      "products": 27,
+      "supported_products": 10,
+      "target_occurrences": 332,
+      "supervised_pixels": 8833648,
+      "nearzero_pixels": 7942512,
+      "cloud_ge_0_1_pixels": 891136,
+      "thick_ge30_pixels": 52736
+    },
+    "train/2025-01": {
+      "products": 579,
+      "supported_products": 257,
+      "target_occurrences": 7416,
+      "supervised_pixels": 228679744,
+      "nearzero_pixels": 106062594,
+      "cloud_ge_0_1_pixels": 122617150,
+      "thick_ge30_pixels": 40330063
+    },
+    "train/2025-02": {
+      "products": 386,
+      "supported_products": 175,
+      "target_occurrences": 4572,
+      "supervised_pixels": 156332314,
+      "nearzero_pixels": 18885701,
+      "cloud_ge_0_1_pixels": 137446613,
+      "thick_ge30_pixels": 72755705
+    },
+    "train/MAM": {
+      "products": 1280,
+      "supported_products": 747,
+      "target_occurrences": 15724,
+      "supervised_pixels": 686360745,
+      "nearzero_pixels": 197247958,
+      "cloud_ge_0_1_pixels": 489112787,
+      "thick_ge30_pixels": 155751622
+    },
+    "train/2025-03": {
+      "products": 423,
+      "supported_products": 239,
+      "target_occurrences": 5148,
+      "supervised_pixels": 212934465,
+      "nearzero_pixels": 57736502,
+      "cloud_ge_0_1_pixels": 155197963,
+      "thick_ge30_pixels": 65213609
+    },
+    "train/2025-04": {
+      "products": 397,
+      "supported_products": 252,
+      "target_occurrences": 4796,
+      "supervised_pixels": 233559413,
+      "nearzero_pixels": 74435082,
+      "cloud_ge_0_1_pixels": 159124331,
+      "thick_ge30_pixels": 40806570
+    },
+    "train/2025-05": {
+      "products": 460,
+      "supported_products": 256,
+      "target_occurrences": 5780,
+      "supervised_pixels": 239866867,
+      "nearzero_pixels": 65076374,
+      "cloud_ge_0_1_pixels": 174790493,
+      "thick_ge30_pixels": 49731443
+    },
+    "train/JJA": {
+      "products": 1647,
+      "supported_products": 999,
+      "target_occurrences": 20444,
+      "supervised_pixels": 910821261,
+      "nearzero_pixels": 132902010,
+      "cloud_ge_0_1_pixels": 777919251,
+      "thick_ge30_pixels": 175317861
+    },
+    "train/2025-06": {
+      "products": 1647,
+      "supported_products": 999,
+      "target_occurrences": 20444,
+      "supervised_pixels": 910821261,
+      "nearzero_pixels": 132902010,
+      "cloud_ge_0_1_pixels": 777919251,
+      "thick_ge30_pixels": 175317861
+    }
+  },
+  "scope": "full 256x256 region; CPP supported timestamps only; CPP is not read when no pixel can satisfy the predefined daylight/AGRI mask"
+}

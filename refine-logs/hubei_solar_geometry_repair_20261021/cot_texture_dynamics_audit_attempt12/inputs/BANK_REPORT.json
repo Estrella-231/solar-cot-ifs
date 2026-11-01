@@ -1,0 +1,109 @@
+{
+  "state": "SIMVP_R_PATCH_TRAINVAL_FORECAST_BANK",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "test_or_buffer_rows": 0,
+  "split_counts": {
+    "train": 4086,
+    "val": 407,
+    "test": 0,
+    "buffer": 0
+  },
+  "sequences_by_split": {
+    "val": 407
+  },
+  "sequences_written_by_split": {
+    "train": 0,
+    "val": 407
+  },
+  "shard_index": 0,
+  "shard_count": 1,
+  "shard_policy": "original per-split index modulo shard_count; output sample_index is canonical per-split index",
+  "smoke_test_cap_per_split": null,
+  "inferred_splits": [
+    "val"
+  ],
+  "agri_tensor_shape_per_split": [
+    "N",
+    16,
+    13,
+    16,
+    16
+  ],
+  "future_geometry_shape_per_split": [
+    "N",
+    16,
+    3,
+    16,
+    16
+  ],
+  "patch_origin_crop_256": [
+    103,
+    118
+  ],
+  "patch_size": 16,
+  "station_center_rc_in_patch": {
+    "Niushou": [
+      8,
+      6
+    ],
+    "Wangzhai": [
+      9,
+      8
+    ],
+    "Mizhuang": [
+      7,
+      10
+    ]
+  },
+  "channel_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "initialization": "last observed input frame timestamp (BJT)",
+  "time_key_source": "all 24 source data UTC filenames +8h must equal auxiliary BJT filenames; keys use auxiliary BJT",
+  "checkpoint_sha256": "3db49fce2b83601faaaad4526d43007bb503a42f7fb44613e085c6eda96eac8a",
+  "normalization_sha256": "40ef5fef39659d861a818e1783d183362be6a726bcdb42d91e4c2bca3cb58e94",
+  "index_sha256": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+  "prediction_policy": "raw denormalized SimVP output; no clipping or interpolation",
+  "normalization_scope": "frozen train-only statistics",
+  "local_stage": null,
+  "full_field_validation_metrics": {
+    "val": {
+      "normalized_mse": 0.2359205759993749,
+      "normalized_mae": 0.30500858892974814,
+      "element_count": 5548015616,
+      "sequence_count": 407,
+      "metric_scope": "full 256x256 output field, all 13 AGRI channels and 16 leads, frozen normalized space"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "status": "CORRECTED_ORIGINAL_512_COHORT_COMPARISON",
+  "test_read": false,
+  "previous_figure_status": "WITHDRAWN_AS_ANSWER_TO_THIS_REQUEST; 128-cohort point values match saved summary but change the requested experiment",
+  "original_figure_semantics": "historical retrieved-COT forecasting, not target-time observed-image retrieval RMSE",
+  "sequences": 512,
+  "initialization_days": 72,
+  "per_hour_counts": [
+    360,
+    372,
+    343,
+    322
+  ],
+  "raw_recomputation_verified": [
+    "simvp",
+    "transport",
+    "persistence"
+  ],
+  "hybrid": "original v5 update96 saved metric retained; no local per-sample hybrid rerun",
+  "v5_simvp_axis_bug": "f[:,0] repeats first forecast frame over all target leads; independently reproduced against saved station targets; use corrected per-lead NPZ series",
+  "axis_witness": [
+    {
+      "lead_minutes": 15,
+      "repeated_first_rmse": 5.7873504734510215,
+      "v5_saved_simvp_rmse": 5.787350458463608,
+      "corrected_simvp_rmse": 5.7873504734510215
+    },
+    {
+      "lead_minutes": 30,
+      "repeated_first_rmse": 6.296604653342658,
+      "v5_saved_simvp_rmse": 6.29660474938197,
+      "corrected_simvp_rmse": 6.669930059691424
+    },
+    {
+      "lead_minutes": 45,
+      "repeated_first_rmse": 7.221510060983272,
+      "v5_saved_simvp_rmse": 7.221510102052547,
+      "corrected_simvp_rmse": 8.11335817988054
+    },
+    {
+      "lead_minutes": 60,
+      "repeated_first_rmse": 7.60024714935449,
+      "v5_saved_simvp_rmse": 7.600247242126188,
+      "corrected_simvp_rmse": 7.960477269847872
+    },
+    {
+      "lead_minutes": 75,
+      "repeated_first_rmse": 8.053054658162766,
+      "v5_saved_simvp_rmse": 8.0530546880606,
+      "corrected_simvp_rmse": 7.943564448112733
+    },
+    {
+      "lead_minutes": 90,
+      "repeated_first_rmse": 8.044415375652834,
+      "v5_saved_simvp_rmse": 8.044415409473048,
+      "corrected_simvp_rmse": 7.175072575274399
+    },
+    {
+      "lead_minutes": 105,
+      "repeated_first_rmse": 8.501479012838043,
+      "v5_saved_simvp_rmse": 8.501479011774856,
+      "corrected_simvp_rmse": 7.416726684980875
+    },
+    {
+      "lead_minutes": 120,
+      "repeated_first_rmse": 9.182926571292393,
+      "v5_saved_simvp_rmse": 9.18292659138582,
+      "corrected_simvp_rmse": 7.920746225844229
+    },
+    {
+      "lead_minutes": 135,
+      "repeated_first_rmse": 9.236435410554046,
+      "v5_saved_simvp_rmse": 9.236435432880537,
+      "corrected_simvp_rmse": 8.297300265425994
+    },
+    {
+      "lead_minutes": 150,
+      "repeated_first_rmse": 10.078045568170905,
+      "v5_saved_simvp_rmse": 10.078045535096631,
+      "corrected_simvp_rmse": 9.04038227906124
+    },
+    {
+      "lead_minutes": 165,
+      "repeated_first_rmse": 10.567479140911574,
+      "v5_saved_simvp_rmse": 10.567479224120468,
+      "corrected_simvp_rmse": 9.845137209054032
+    },
+    {
+      "lead_minutes": 180,
+      "repeated_first_rmse": 10.57565261853735,
+      "v5_saved_simvp_rmse": 10.575652643204725,
+      "corrected_simvp_rmse": 9.625500662232419
+    },
+    {
+      "lead_minutes": 195,
+      "repeated_first_rmse": 10.98772259812729,
+      "v5_saved_simvp_rmse": 10.987722578383686,
+      "corrected_simvp_rmse": 10.03487598717528
+    },
+    {
+      "lead_minutes": 210,
+      "repeated_first_rmse": 11.21460906520861,
+      "v5_saved_simvp_rmse": 11.214609003771029,
+      "corrected_simvp_rmse": 10.191579864647675
+    },
+    {
+      "lead_minutes": 225,
+      "repeated_first_rmse": 11.171889132470234,
+      "v5_saved_simvp_rmse": 11.171889115597288,
+      "corrected_simvp_rmse": 10.229949402483873
+    },
+    {
+      "lead_minutes": 240,
+      "repeated_first_rmse": 11.228233009155167,
+      "v5_saved_simvp_rmse": 11.22823303579614,
+      "corrected_simvp_rmse": 10.329317782351763
+    }
+  ],
+  "source_hashes": {
+    "results\\regional_station_cot_20260927\\sili_station_val_audit_20260928_v2\\station_tracks.npz": "e9b3162fc417ae5c94aec1879a6f04d0453253ed508070cf9c296385bb6bdffa",
+    "results\\regional_station_cot_20260927\\sili_full_vs_repeat_last_history_20260928_v5\\full_history\\training_complete.json": "01459f0ea5265b2801f56d29853618712fa8f5528bf47788f0c4bfacf7e1c919",
+    "results\\history_cot_cloud_fno_20261015\\hourly_metrics.csv": "a9d18710ec519e5b3a1a802f4aed2f1a48544b29d9bafa4e42f8a81c4c820c30",
+    "results\\cot_lead_evaluation_20261003_v2\\station_512_per_lead.csv": "d203fcd2ce4679172239f0f3ccea00bfe8cace680543a8b678369278c373abab"
+  }
+}

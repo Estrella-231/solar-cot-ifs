@@ -1,0 +1,136 @@
+#!/bin/bash
+#PBS -N direct_COT_HV_inf
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/agri_direct_cot_20261020/logs/direct_cot_hv_inference_v1.pbs.out
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+PS4='+ ${BASH_SOURCE}:${LINENO}: '
+set -x
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+OOF=$ROOT/refine-logs/cot_aware_simvp_20261017
+SOURCE=$ROOT/experiments/hunan_monthly_block_20261002/code
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SUPPORT=$EXP/data/sequence_support_v1
+RPACK=$EXP/data/r_u_pack_v2
+RRUN=$EXP/results/r_u_train_v1
+PRUN=$EXP/results/predictor_u_v1
+SIMVPNORM=$OOF/results/future_ghi_oof_manifests_v1/fold_1/hunan_train_norm.json
+SIMVPRUN=$OOF/results/future_ghi_oof_training_v1/fold_1
+SIMVPMANIFEST=$OOF/results/future_ghi_oof_manifests_v1/fold_1
+LABELS=$OOF/results/future_ghi_oof_head_pack_v2
+SEQUENCE_MANIFEST=$OOF/results/future_ghi_oof_manifests_v1/fold_1/hunan_8to16.csv
+COVERAGE=$EXP/results/hv_coverage_audit_v1/coverage.json
+EXCLUSIONS=$ROOT/experiments/cloud_probability_input_20261020/GHI_STATION_DAY_EXCLUSIONS_20261019.json
+EXCLUSIONS_SHA256=5effcb6c87ca0a530c8d1c0b960e2450fca4a0804425dc715145cc6df4a0f957
+GRID=$EXP/data/grid_static.npz
+GEOMETRY=$EXP/solar_geometry_corrected.py
+OUT=$EXP/results/direct_cot_hv_inference_v1
+ROWBANK=$EXP/results/direct_cot_forecast_row_bank_v1
+GHIPACK=$EXP/results/direct_cot_single_frame_ghi_pack_v1
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+LOG=$EXP/logs/direct_cot_hv_inference_v1_${PBS_JOBID}.log
+
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+
+QSTAT_TEXT=$($PBS_QSTAT -u slfu)
+printf '%s\n' "$QSTAT_TEXT"
+UNFINISHED=$(printf '%s\n' "$QSTAT_TEXT" | awk 'NR>5 && $1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+echo "STAGE=account_queue_gate unfinished=$UNFINISHED limit=3"
+test -d "$SUPPORT" && test -d "$RPACK" && test -d "$RRUN" && test -d "$PRUN"
+test -d "$LABELS" && test -s "$SEQUENCE_MANIFEST" && test -s "$COVERAGE" && test -s "$EXCLUSIONS"
+test "$(sha256sum "$EXCLUSIONS" | cut -d' ' -f1)" = "$EXCLUSIONS_SHA256"
+test -s "$SIMVPRUN/training/epoch_012.pt" && test -s "$SIMVPNORM"
+test -s "$GRID" && test -s "$GEOMETRY"
+test ! -e "$OUT" && test ! -e "$ROWBANK" && test ! -e "$GHIPACK"
+
+python - "$SUPPORT" "$RRUN" "$PRUN" "$SIMVPRUN" "$SIMVPMANIFEST" "$GEOMETRY" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+support,rrun,prun,simrun,simmanifest,geometry=map(Path,sys.argv[1:])
+def read(p): return json.loads(p.read_text())
+def sha(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+ return h.hexdigest()
+sa=read(support/'support_audit.json')
+assert sa['state']=='PASS_24_FRAME_SUPPORT_DISJOINT_U_H_V'
+assert sa['test_or_buffer_numeric_payloads_opened']==0 and sa['test_rows_selected']==0
+rs=read(rrun/'status.json'); assert rs['state']=='COMPLETE_R_U_FIXED_EPOCH_50'
+assert rs['checkpoint_sha256']==sha(rrun/'epoch_050.pt')=='f3aa05346bb835efe941b0a462cd1001dc3af6bc9f68c2de4d351970136ab52c'
+assert rs['normalization_sha256']==sha(rrun/'normalization.json')=='e2577b729e39100fc6079494b775c1c3fb328540a1ad98d4bb13e1a2b1e070ec'
+ss=read(simrun/'training/training_complete.json')
+assert ss['state']=='COMPLETE_OOF_SIMVP_FIXED_EPOCH_TRAINING' and ss['selected_checkpoint']=='epoch_012.pt'
+assert ss['checkpoint_sha256']==sha(simrun/'training/epoch_012.pt')=='13e120c5cbe2e937ceba6334ffee160c4df6d193c0256eb3ca339094b4c02616'
+assert ss['heldout_payload_read'] is False and ss['test_payloads_read']==0
+assert sha(simmanifest/'hunan_train_norm.json')=='eefe2ed3090898f268d87fb3c137c4955d5f7f3f5a95bd944f5a2a6adddcdb3c'
+pn=read(prun/'paired_training_complete.json')
+assert pn['state']=='COMPLETE_P_C_AND_P_XC_FIXED_EPOCH_12'
+assert pn['test_payloads_read']==0 and pn['buffer_payloads_read']==0
+trainer_sha='152451e366da51d45ba93a682b1ef6fd5d9d1a0522d678b619fa38e520a0e93d'
+for mode in ('P-C','P-XC'):
+ m=read(prun/mode/'run_metadata.json')
+ assert m['p_code_sha256']==trainer_sha,(mode,m.get('p_code_sha256'))
+ ck=prun/mode/'epoch_012.pt'
+ assert sha(ck)==pn[mode]['checkpoint_sha256'],mode
+ assert read(prun/mode/'status.json')['state']==f'COMPLETE_{mode.replace("-","_")}_FIXED_EPOCH_12'
+assert sha(geometry)=='04779daf8cf1f7ca06b5119b603dfe51234fb9913149f617b3d37deeda4376a5'
+assert read(rrun/'run_metadata.json')['geometry']=='corrected EOT radians-to-degrees; frozen Hunan grid_static'
+print('INFERENCE_SOURCE_RECEIPTS_PASS',json.dumps({'simvp_sha256':ss['checkpoint_sha256'],'r_sha256':rs['checkpoint_sha256'],'p_c':pn['P-C']['checkpoint_sha256'],'p_xc':pn['P-XC']['checkpoint_sha256'],'test_buffer_reads':0}))
+PY
+
+python -m py_compile "$EXP/predict_direct_cot_hv.py" "$EXP/build_direct_cot_forecast_row_bank.py" "$EXP/build_direct_cot_single_frame_ghi_pack.py" "$EXP/test_direct_cot_hv_pipeline_contract.py"
+python "$EXP/test_direct_cot_hv_pipeline_contract.py"
+test "$(sha256sum "$EXP/train_future_cot_u.py" | cut -d' ' -f1)" = "152451e366da51d45ba93a682b1ef6fd5d9d1a0522d678b619fa38e520a0e93d"
+test "$(sha256sum "$EXP/predict_direct_cot_hv.py" | cut -d' ' -f1)" = "d475a17dd93ef4d285601fca700d5970fb281b2d430859c523734986441ca8ca"
+test "$(sha256sum "$EXP/build_direct_cot_forecast_row_bank.py" | cut -d' ' -f1)" = "f0110656996c478da18078c54f13172a165a66700b1fa9a770b7b51dce3927b9"
+test "$(sha256sum "$EXP/build_direct_cot_single_frame_ghi_pack.py" | cut -d' ' -f1)" = "aa6b308776a5b2ab25b15a3a8a9bd9d92454b0852e9114f6afb1688aa105ad05"
+test "$(sha256sum "$EXP/test_direct_cot_hv_pipeline_contract.py" | cut -d' ' -f1)" = "0a1f9ee7a0792f72567ca57310a6e060dca6e2dcc345578b65cd55f5001073db"
+GPU_TEXT=$($PBS_QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test -n "$GPU_TEXT" && test "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "STAGE=gpu_gate_pass gpu_id=$GPU_TEXT node=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+python -u "$EXP/predict_direct_cot_hv.py" \
+  --support "$SUPPORT" --simvp-source "$SOURCE" --simvp-run "$SIMVPRUN" \
+  --simvp-manifest "$SIMVPMANIFEST" --r-pack "$RPACK" --r-run "$RRUN" \
+  --p-run "$PRUN" --data-root "$DATA" --grid-static "$GRID" \
+  --geometry-source "$GEOMETRY" --output "$OUT" \
+  --batch-sequences 4 --r-batch 256 --frame-cache 64
+
+python -u "$EXP/build_direct_cot_forecast_row_bank.py" \
+  --inference "$OUT" --support "$SUPPORT" --sequence-manifest "$SEQUENCE_MANIFEST" \
+  --labels "$LABELS" --coverage-audit "$COVERAGE" --exclusions "$EXCLUSIONS" \
+  --output "$ROWBANK"
+python -u "$EXP/build_direct_cot_single_frame_ghi_pack.py" --bank "$ROWBANK" --output "$GHIPACK"
+python - "$OUT" "$ROWBANK" "$GHIPACK" <<'PY'
+import json,sys
+from pathlib import Path
+inf,bank,pack=map(Path,sys.argv[1:])
+i=json.loads((inf/'inference_manifest.json').read_text())
+b=json.loads((bank/'bank_manifest.json').read_text())
+p=json.loads((pack/'pack_manifest.json').read_text())
+assert i['state']=='COMPLETE_CAUSAL_DIRECT_COT_HV_INFERENCE'
+assert b['state']=='COMPLETE_DIRECT_COT_FORECAST_ROW_BANK'
+assert p['state']=='COMPLETE_DIRECT_COT_SINGLE_FRAME_GHI_PACK'
+for m in (i,b,p):
+ for k in ('test_payload_opened','buffer_payload_opened'):
+  if k in m: assert m[k] is False,(k,m[k])
+assert i['future_observed_agri_read'] is False and i['cpp_read'] is False and i['ghi_labels_read'] is False
+assert b['future_observed_agri_used_as_input'] is False and b['cpp_used_as_input'] is False
+print('DIRECT_COT_HV_AND_GHI_PACK_COMPLETE',json.dumps({'counts':p['counts'],'test_buffer_opened':False}))
+PY

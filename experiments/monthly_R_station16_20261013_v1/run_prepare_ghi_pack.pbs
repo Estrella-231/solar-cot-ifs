@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N cot_ghi_pack
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/prepare_ghi_pack_new_r.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/monthly_R_station16_20261013_v1
+BASE=$ROOT/experiments/cot_value_first_20261013
+BANK=$EXP/results/new_monthly_R_seed42_cot_bank_v1
+test -s "$BANK/bank_manifest.json"
+python -u "$EXP/prepare_ghi_head_pack.py" \
+  --labels "$BASE/data/ghi_kt_trainval_v1/ghi_kt_train_val.csv" \
+  --candidate "$BASE/input/target_candidates_train_val.csv" \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --cot-bank "$BANK" \
+  --output "$EXP/data/ghi_head_pack_new_r_v1"
+echo GHI_HEAD_PACK_COMPLETE

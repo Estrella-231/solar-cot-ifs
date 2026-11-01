@@ -1,0 +1,69 @@
+{
+  "status": "TRAIN_VAL_NOAA_DAYLIGHT_MASK_ATTACHED_CLEAR_SKY_PENDING",
+  "source_label_sha256": "729771d288df1092cd26660bb641e958125ba4684c6d7c0e7bbc6b64ccdb2f2c",
+  "output_sha256": "6e28520c778b75de24b37cd3692dd6d4482ab2567423b5e18ed3200fdc199a72",
+  "test_values_read": 0,
+  "day_mask": "NOAA solar cosine > 0 (SZA < 90 deg), same function as Hunan M0 builder",
+  "coordinates_source": "B0_SOURCE_AUDIT_20261014.md; station table coordinates rounded to 4 decimals",
+  "coordinates": {
+    "Niushou": {
+      "latitude": 32.08,
+      "longitude": 112.04
+    },
+    "Wangzhai": {
+      "latitude": 32.04,
+      "longitude": 112.12
+    },
+    "Mizhuang": {
+      "latitude": 32.12,
+      "longitude": 112.2
+    }
+  },
+  "counts_by_station_split": {
+    "Niushou": {
+      "train": {
+        "slots": 23093,
+        "day": 11676,
+        "valid_label": 18472,
+        "valid_daylight_label": 9334
+      },
+      "val": {
+        "slots": 2045,
+        "day": 1038,
+        "valid_label": 1652,
+        "valid_daylight_label": 856
+      }
+    },
+    "Wangzhai": {
+      "train": {
+        "slots": 23093,
+        "day": 11679,
+        "valid_label": 18241,
+        "valid_daylight_label": 9179
+      },
+      "val": {
+        "slots": 2045,
+        "day": 1037,
+        "valid_label": 1540,
+        "valid_daylight_label": 784
+      }
+    },
+    "Mizhuang": {
+      "train": {
+        "slots": 23093,
+        "day": 11680,
+        "valid_label": 17882,
+        "valid_daylight_label": 9049
+      },
+      "val": {
+        "slots": 2045,
+        "day": 1038,
+        "valid_label": 1624,
+        "valid_daylight_label": 817
+      }
+    }
+  },
+  "clear_sky_filter": "not applied; Ineichen interval mean remains to be computed",
+  "normalization": "not fit",
+  "unit": "provisional legacy W/m2 convention; source instrument metadata unresolved"
+}

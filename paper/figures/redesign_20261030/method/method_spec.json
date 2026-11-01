@@ -1,0 +1,212 @@
+{
+  "title": "COT-assisted GHI estimation and forecast input availability",
+  "canvas": {
+    "width": 1020,
+    "height": 870
+  },
+  "style": {
+    "font_family": "Times New Roman, serif",
+    "font_size": 18,
+    "bg_color": "#FFFFFF",
+    "palette": [
+      "#F3F6F6"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "agri",
+      "label": "Observed AGRI\n13 bands; 16 \u00d7 16",
+      "x": 110,
+      "y": 150,
+      "width": 175,
+      "height": 100
+    },
+    {
+      "id": "crop",
+      "label": "Local AGRI + geometry\n15 \u00d7 3 \u00d7 3",
+      "x": 330,
+      "y": 150,
+      "width": 185,
+      "height": 100
+    },
+    {
+      "id": "agri_encoder",
+      "label": "Pixelwise encoder\n15 \u2192 32 \u2192 32",
+      "x": 535,
+      "y": 150,
+      "width": 170,
+      "height": 70
+    },
+    {
+      "id": "R",
+      "label": "Frozen retriever R\n13 bands + geometry",
+      "x": 110,
+      "y": 325,
+      "width": 185,
+      "height": 70
+    },
+    {
+      "id": "cot",
+      "label": "Retrieved COT\n16 \u00d7 16 \u2192 local 3 \u00d7 3",
+      "x": 330,
+      "y": 325,
+      "width": 185,
+      "height": 100
+    },
+    {
+      "id": "cot_encoder",
+      "label": "COT encoder\n1 \u2192 4",
+      "x": 535,
+      "y": 325,
+      "width": 170,
+      "height": 70
+    },
+    {
+      "id": "merge",
+      "label": "Concatenate\nthen ordered flatten",
+      "x": 738,
+      "y": 235,
+      "width": 160,
+      "height": 85
+    },
+    {
+      "id": "head",
+      "label": "MLP\n324 \u2192 64 \u2192 32 \u2192 1",
+      "x": 915,
+      "y": 235,
+      "width": 145,
+      "height": 85
+    },
+    {
+      "id": "ghi",
+      "label": "Clear-sky scaling\n15-min mean GHI",
+      "x": 890,
+      "y": 385,
+      "width": 190,
+      "height": 75
+    },
+    {
+      "id": "history",
+      "label": "8 observed frames\nending at t",
+      "x": 100,
+      "y": 625,
+      "width": 165,
+      "height": 75
+    },
+    {
+      "id": "simvp",
+      "label": "Fixed SimVP\n256 \u00d7 256 region",
+      "x": 310,
+      "y": 625,
+      "width": 165,
+      "height": 75
+    },
+    {
+      "id": "pred",
+      "label": "16 predicted AGRI\nframes; 13 bands",
+      "x": 520,
+      "y": 625,
+      "width": 165,
+      "height": 75
+    },
+    {
+      "id": "map",
+      "label": "Frozen R + GHI head\naligned local inputs",
+      "x": 735,
+      "y": 625,
+      "width": 180,
+      "height": 75
+    },
+    {
+      "id": "forecast",
+      "label": "16 GHI forecasts\n+15 to +240 min",
+      "x": 930,
+      "y": 625,
+      "width": 130,
+      "height": 75
+    }
+  ],
+  "edges": [
+    {
+      "from": "agri",
+      "to": "crop",
+      "color": "#20272B"
+    },
+    {
+      "from": "crop",
+      "to": "agri_encoder",
+      "color": "#20272B"
+    },
+    {
+      "from": "agri",
+      "to": "R",
+      "color": "#20272B"
+    },
+    {
+      "from": "R",
+      "to": "cot",
+      "color": "#20272B"
+    },
+    {
+      "from": "cot",
+      "to": "cot_encoder",
+      "color": "#20272B"
+    },
+    {
+      "from": "agri_encoder",
+      "to": "merge",
+      "color": "#20272B"
+    },
+    {
+      "from": "cot_encoder",
+      "to": "merge",
+      "color": "#20272B"
+    },
+    {
+      "from": "merge",
+      "to": "head",
+      "color": "#20272B"
+    },
+    {
+      "from": "head",
+      "to": "ghi",
+      "color": "#20272B"
+    },
+    {
+      "from": "history",
+      "to": "simvp",
+      "color": "#20272B"
+    },
+    {
+      "from": "simvp",
+      "to": "pred",
+      "color": "#20272B"
+    },
+    {
+      "from": "pred",
+      "to": "map",
+      "color": "#20272B"
+    },
+    {
+      "from": "map",
+      "to": "forecast",
+      "color": "#20272B"
+    }
+  ],
+  "labels": [
+    {
+      "text": "(a) Aligned local estimation",
+      "x": 20,
+      "y": 35,
+      "font_size": 22,
+      "anchor": "start"
+    },
+    {
+      "text": "(b) Forecast inputs available at initialization",
+      "x": 20,
+      "y": 535,
+      "font_size": 22,
+      "anchor": "start"
+    }
+  ]
+}

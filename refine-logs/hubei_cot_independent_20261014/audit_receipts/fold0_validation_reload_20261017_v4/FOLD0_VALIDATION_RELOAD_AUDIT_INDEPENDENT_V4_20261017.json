@@ -1,0 +1,61 @@
+{
+  "status": "HUBEI_SIMVP_FOLD0_CHECKPOINT_RELOAD_VALIDATION_AUDIT_PASSED_TEST_CLOSED",
+  "fold_id": 0,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "train_index_rows_metadata_only": 3263,
+  "validation_sequences_inferred": 407,
+  "unique_validation_key_coverage": 407,
+  "checkpoint_sha256": "2e9e6d50dd5693f7a856a3acb57aea96d5fe4dade67e9d5252f4f28b683ef86c",
+  "normalization_sha256": "1dbc3be2391cb530a6b438bcf9bd8c4093252a88cbbef295a74eec97cccfa2b2",
+  "index_sha256": "4886e60f93a4490862ba8e9bbd5e8b302c35a599508bc03315a8ded530de3cc4",
+  "stage_manifest_sha256": "73e0f91955a7e8c07d69a1e6d79c900275ff000f350a826fb2fa04e79e47571a",
+  "shard_count": 4,
+  "shard_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "full_field_validation_metrics": {
+    "normalized_mse": 0.2526323377375774,
+    "normalized_mae": 0.32262082325771335,
+    "element_count": 5548015616,
+    "sequence_count": 407,
+    "scope": "all 13 predicted AGRI channels, all 16 leads and full 256x256 field in frozen normalized space"
+  },
+  "shards": [
+    {
+      "shard_index": 0,
+      "sequence_count": 102,
+      "prediction_sha256": "c438f5468a267e137b7cc74dc462dde2d4953a589cf9af2a4eadf1a0ea61d872",
+      "truth_sha256": "c19d34a2d6061c63c1048899026a5ba1b7b2ea2eab2145014f1269419b6f07c5",
+      "geometry_sha256": "ca8239083482cc07c3ae41b430539bd659269bae42b5d549e9c79e34733d21fe",
+      "bank_report_sha256": "af1e88f8136632bc45aba335aa2676a5d19674cdb90313d579ef402f597a46e7"
+    },
+    {
+      "shard_index": 1,
+      "sequence_count": 102,
+      "prediction_sha256": "d9d732858a6d40ed02eb1a6140e9f0a28dbcb733ae8d5b3c7d33c940695c8d4e",
+      "truth_sha256": "12ec9b8f4bc95f391de9cc85e6ee08be05bc78eacab0523ed1e4599ebfab1830",
+      "geometry_sha256": "62f2ff890564d2c22c14fa2d1bd536201818143fc486d9d8addba93a50051579",
+      "bank_report_sha256": "39160b31458c76f492f01253555c837b7eed420ae07f44443a2f2e32141f6eff"
+    },
+    {
+      "shard_index": 2,
+      "sequence_count": 102,
+      "prediction_sha256": "aaaa57bdd6c5bad1709d3e3ed7d11cacbabd0b583703448a46ffeecc7a562293",
+      "truth_sha256": "9d05c5d02d035ad37d67166f28d8987d97a907b43466d8721112e546cdc519c6",
+      "geometry_sha256": "fd243af0d72db00aacf47245d52fafae3e650efdaea90725a668efb8ec24ea62",
+      "bank_report_sha256": "eaa6cff653e684efe6c5c399100e7b5c603bd771a864ad7c55d49eaa4de25165"
+    },
+    {
+      "shard_index": 3,
+      "sequence_count": 101,
+      "prediction_sha256": "6cc5ff15eab165afb1430f3beb5a31575f6baf80331fce1b1e1ae02953cb5d9d",
+      "truth_sha256": "b87dfaebc8ced1ea173f285bdd429fe816783a4f60efa1efaa75ca693ccf5b11",
+      "geometry_sha256": "2deca3768cbfde3b371151c910bf5b8baa61eb176fbe39a584f9c4a253992bbd",
+      "bank_report_sha256": "bf23928f6e82f70d7a557672e7424de57a7d245c7dc313b545be7faf8d8cddd2"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+#!/bin/bash
+#PBS -N fghi_ac50_strata
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+RUN=$EXP/results/future_ghi_oof_cot_shrink_v2
+OUT=$EXP/results/future_ghi_oof_cot_shrink_strata_audit_v2.json
+LOG=$EXP/logs/future_ghi_ac50_strata_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+sha256sum -c FUTURE_GHI_OOF_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_ac50_strata_pycache
+python -m py_compile audit_future_ghi_cot_strata.py
+python test_audit_future_ghi_cot_strata.py
+test ! -e "$OUT"
+python - <<'PY' "$PACK/pack_manifest.json" "$RUN/run_manifest.json"
+import hashlib,json,sys
+p=json.load(open(sys.argv[1])); r=json.load(open(sys.argv[2]))
+assert p['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK'
+assert p['test_payload_opened'] is False and p['buffer_payload_opened'] is False
+assert r['state']=='COMPLETE_FUTURE_GHI_COT_SHRINKAGE_SCREENING_PILOT'
+assert r['train_forecast_oof'] is True and r['forecast_bank_oof_fold_count']==5
+assert r['test_payload_opened'] is False and len(r['runs'])==24
+assert hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest()==r['pack_manifest_sha256']
+print('AC50_STRATA_SOURCE_PREFLIGHT_PASS')
+PY
+python -u audit_future_ghi_cot_strata.py --pack "$PACK" --run-root "$RUN" --output "$OUT" --seeds 42 43 44
+echo "AC50_COT_AND_LEAD_STRATA_DIAGNOSTIC_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

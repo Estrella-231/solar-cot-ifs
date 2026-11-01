@@ -1,0 +1,68 @@
+#!/bin/bash
+#PBS -N direct_COT_GHI_station
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+
+: "${STATION:?submit with qsub -v STATION=sili or STATION=zhujia}"
+test "$STATION" = sili -o "$STATION" = zhujia
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+PACK=$EXP/results/direct_cot_single_frame_ghi_pack_v1
+OUT=$EXP/results/direct_cot_single_frame_ghi_heads_v1/${STATION}_worker
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+LOG=$EXP/logs/direct_cot_single_frame_ghi_${STATION}_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} STATION=$STATION NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+
+QSTAT_TEXT=$($PBS_QSTAT -u slfu)
+printf '%s\n' "$QSTAT_TEXT"
+UNFINISHED=$(printf '%s\n' "$QSTAT_TEXT" | awk '$1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+echo "STAGE=account_queue_gate unfinished=$UNFINISHED limit=3"
+test -s "$PACK/pack_manifest.json" && test ! -e "$OUT"
+python - "$PACK/pack_manifest.json" "$STATION" <<'PY'
+import json,sys
+m=json.load(open(sys.argv[1])); station=sys.argv[2]
+assert m['state']=='COMPLETE_DIRECT_COT_SINGLE_FRAME_GHI_PACK'
+assert m['arms']==['none','simvp_r','p_c','p_xc']
+assert m['stations']==['sili','zhujia'] and station in m['stations']
+assert m['train_partition']=='H' and m['validation_partition']=='V' and m['normalization_fit_partition']=='H'
+assert m['normalization_and_common_key_contract']=='PASS_TRAIN_ONLY_NORMALIZATION_AND_COMMON_KEYS'
+for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_input'):
+ assert m[k] is False,(k,m[k])
+print('GHI_PACK_AND_ISOLATION_PASS',station,m['counts'][station+'/train'],m['counts'][station+'/val'])
+PY
+python -m py_compile "$EXP/single_frame_ghi_head.py" "$EXP/train_single_frame_direct_cot_ghi.py" "$EXP/test_direct_cot_ghi_pack.py"
+python "$EXP/test_direct_cot_ghi_pack.py"
+test "$(sha256sum "$EXP/single_frame_ghi_head.py" | cut -d' ' -f1)" = "66b87d77552a3bc67702ab04bd0d95c69c71099431093f2b19e4b05450b73ba2"
+test "$(sha256sum "$EXP/train_single_frame_direct_cot_ghi.py" | cut -d' ' -f1)" = "2a9bc3be173900ced59def1122a57351a71af3fdc5f2919c60070afbf8a960ed"
+test "$(sha256sum "$EXP/test_direct_cot_ghi_pack.py" | cut -d' ' -f1)" = "d47eacd3a68b0e643d50329cf7416125bc7f8605d64cb5a721ae18329b5ecd88"
+GPU_TEXT=$($PBS_QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test -n "$GPU_TEXT" && test "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+echo "STAGE=station_fixed_budget_train station=$STATION gpu_id=$GPU_TEXT"
+python -u "$EXP/train_single_frame_direct_cot_ghi.py" --pack "$PACK" --output "$OUT" \
+  --seeds 42 43 44 --epochs 30 --batch-size 512 --station "$STATION"
+python - "$OUT/run_manifest.json" "$STATION" "$PACK/pack_manifest.json" <<'PY'
+import hashlib,json,sys
+m=json.load(open(sys.argv[1])); station=sys.argv[2]
+sha=hashlib.sha256(open(sys.argv[3],'rb').read()).hexdigest()
+assert m['state']=='COMPLETE_DIRECT_COT_SINGLE_FRAME_GHI_HEADS'
+assert m['arms']==['none','simvp_r','p_c','p_xc'] and m['stations']==[station]
+assert m['seeds']==[42,43,44] and m['epochs']==30 and m['effective_batch']==512
+assert len(m['runs'])==12 and m['pack_manifest_sha256']==sha
+for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_input'):
+ assert m[k] is False,(k,m[k])
+print('DIRECT_COT_GHI_STATION_COMPLETE',station,'runs=12','pack_sha256='+sha)
+PY

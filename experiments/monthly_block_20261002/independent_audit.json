@@ -1,0 +1,20 @@
+{
+  "reviewer": "monthly_split_audit",
+  "status": "PASS_METADATA_AND_DEPLOYMENT_PREFLIGHT",
+  "complete_windows_checked": 41662,
+  "sequence_counts": {"train": 35320, "val": 3140, "test": 3202},
+  "unique_frames": {"train": 51236, "val": 4497, "test": 4536},
+  "cross_split_frame_intersections": 0,
+  "cross_split_timestamp_intersections": 0,
+  "heldout_calendar_day_buffers_verified": true,
+  "val_season_sequences": {"DJF": 785, "MAM": 949, "JJA": 882, "SON": 524},
+  "new_train_only_normalization_list_verified": true,
+  "test_payloads_read": 0,
+  "old_checkpoint_loaded": false,
+  "geometry_contract": "history_8_then_target_16_v2",
+  "remote_trainer_help_passed": true,
+  "remote_pbs_syntax_passed": true,
+  "remote_deployment_hashes_passed": true,
+  "runtime_gpu_profile_passed": false,
+  "note": "This verifies preparation and metadata; GPU profile is a dependent runtime gate, not yet executed."
+}

@@ -1,0 +1,65 @@
+#!/bin/bash
+#PBS -N fghi_oof_f0
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=36:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+SPLIT=$EXP/results/future_ghi_oof_manifests_v1/fold_0
+RUN=$EXP/results/future_ghi_oof_training_v1/fold_0
+SOURCE=$PROJECT/experiments/hunan_monthly_block_20261002/code
+CACHE=/tmp/slfu_future_ghi_oof_fold0_${PBS_JOBID//[^A-Za-z0-9]/_}
+LOG=$EXP/logs/future_ghi_oof_fold0_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$PROJECT"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8"
+
+cd "$PROJECT/experiments/hunan_monthly_block_20261002"
+sha256sum -c deployment.sha256
+cd "$EXP"
+python -m py_compile build_future_ghi_oof_manifests.py train_monthly_simvp_oof_20261019.py
+python test_build_future_ghi_oof_manifests.py
+python test_train_monthly_simvp_oof_20261019.py
+python - <<'PY' "$SPLIT" "$RUN"
+import json,sys
+from pathlib import Path
+s=Path(sys.argv[1]); r=Path(sys.argv[2])
+a=json.loads((s/'manifest_audit.json').read_text())
+b=json.loads((s.parent/'manifest_build_audit.json').read_text())
+assert a['frame_disjoint_splits'] and a['train_val_frame_intersection']==0
+assert a['sequence_counts']['test']==0 and a['validation_test_used'] is False
+assert a['purged_cross_bjt_date_sequences']==1967
+assert b['oof_bank_coverage']==b['bank_train_sequences']==30436
+assert not r.exists(), 'refusing to overwrite an existing fold run'
+assert not (s/'hunan_train_norm.json').exists(), 'refusing to reuse an old normalization'
+print('OOF_FOLD0_PREFLIGHT_PASS',b['folds'][0])
+PY
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 1 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected exactly one node22 GPU, got $GPU_TEXT"
+  exit 32
+fi
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname)"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+mkdir -p "$RUN"
+ARGS=(--root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+      --source "$SOURCE" --cache "$CACHE" --manifests "$SPLIT" --output "$RUN" --workers 4 --fold 0 --seed 42)
+python -u "$EXP/train_monthly_simvp_oof_20261019.py" --mode normalize "${ARGS[@]}"
+python -u "$EXP/train_monthly_simvp_oof_20261019.py" --mode profile "${ARGS[@]}"
+python -u "$EXP/train_monthly_simvp_oof_20261019.py" --mode train "${ARGS[@]}"
+python - <<'PY' "$RUN/training/training_complete.json"
+import json,sys
+x=json.load(open(sys.argv[1]));assert x['state']=='COMPLETE_OOF_SIMVP_FIXED_EPOCH_TRAINING';assert x['selected_checkpoint']=='epoch_012.pt';assert x['heldout_payload_read'] is False and x['test_payloads_read']==0
+print('OOF_FOLD0_FIXED_EPOCH_COMPLETE_PASS')
+PY
+echo "FUTURE_GHI_OOF_FOLD0_COMPLETE heldout_payload_read=0 test_payload_opened=0"

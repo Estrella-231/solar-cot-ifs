@@ -1,0 +1,59 @@
+#!/bin/bash
+#PBS -N hb_cot_prof1_g1s
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=16:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/gpu_training_attempt8/profile_1gpu.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022
+CODE=$BASE/cache_attempt6
+ATTEMPT=$BASE/gpu_training_attempt8
+SHARED_CACHE=$BASE/cache_attempt5/cache
+AUDIT=$BASE/cache_attempt5/cache_audit/cache_audit.json
+PROFILE=$ATTEMPT/profile_v8
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+mkdir -p "$ATTEMPT" "$PROFILE"
+exec > >(tee -a "$ATTEMPT/profile_${PBS_JOBID}.log") 2>&1
+echo "G1S_SINGLE_GPU_PROFILE_START job=$PBS_JOBID host=$(hostname)"
+set -x
+
+test -f "$CODE/train_station_patch_cot_forecaster.py"
+test -f "$CODE/select_profile_workers.py"
+test -f "$SHARED_CACHE/cache_report.json"
+test -f "$AUDIT"
+"$PY" - <<'PY' "$AUDIT"
+import json, sys
+x=json.load(open(sys.argv[1]))
+assert x.get('state') == 'PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED', x
+assert x.get('test_payloads_read') == 0 and x.get('buffer_payloads_read') == 0, x
+print('CACHE_AUDIT_GATE_PASS')
+PY
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$CODE:$PROJECT/scripts${PYTHONPATH:+:$PYTHONPATH}"
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU_TEXT=$(qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | tr -d '[:space:]' | cut -d/ -f2 | sort -un)
+GPU_COUNT=$(printf '%s\n' "$GPU_TEXT" | sed '/^$/d' | wc -l)
+test "$GPU_COUNT" -eq 1
+export CUDA_VISIBLE_DEVICES=$(printf '%s\n' "$GPU_TEXT" | paste -sd, -)
+echo "ASSIGNED_NODE22_GPU_IDS=$GPU_TEXT CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-compute-apps=pid --format=csv,noheader)"
+
+LOCAL_ROOT="/tmp/g1s_cot_${PBS_JOBID}"
+LOCAL_CACHE=$LOCAL_ROOT/cache
+mkdir -p "$LOCAL_CACHE" "$LOCAL_ROOT/cache_audit"
+cp -a "$SHARED_CACHE"/. "$LOCAL_CACHE"/
+cp "$AUDIT" "$LOCAL_ROOT/cache_audit/cache_audit.json"
+cd "$CODE"
+test ! -f "$PROFILE/profile_1gpu.json"
+"$PY" -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node=1 \
+  train_station_patch_cot_forecaster.py --mode profile --cache "$LOCAL_CACHE" --output "$PROFILE" \
+  --global-batch 32 --seed 42 --width 96 --profile-warmup 5 --profile-steps 30 \
+  --loader-workers 0
+echo "G1S_SINGLE_GPU_PROFILE_COMPLETE job=$PBS_JOBID global_batch=32"

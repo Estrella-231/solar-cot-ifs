@@ -1,0 +1,32 @@
+{
+  "state": "HUBEI_FROZEN_R_DEC1_AL_FEATURE_BANK_TRAINVAL_COMPLETE_TEST_CLOSED",
+  "feature": "frozen Hubei R dec1 activation before COT head; station-specific 3x3 crop",
+  "channels": 16,
+  "stations": [
+    "Niushou",
+    "Wangzhai",
+    "Mizhuang"
+  ],
+  "rows": 12301,
+  "feature_shape": [
+    12301,
+    3,
+    16,
+    3,
+    3
+  ],
+  "ghi_pack_rows": 29351,
+  "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "pack_report_sha256": "e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515",
+  "feature_report_sha256": "fd66cbaa839c03197f07d0f1206617ced35104581778dd37d47d1520bd1f8f81",
+  "frozen_R_checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+  "frozen_R_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "frozen_R_norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+  "agri_source_mode": "staged-month-basename-remap",
+  "test_payloads_read": 0,
+  "ghi_labels_read": false,
+  "cpp_payloads_read": 0,
+  "feature_file_sha256": "ab3473de16b06a915d11154c2ecc2c027f1cd968d4c1f0557502a753bfa3a17d",
+  "rows_sha256": "48f9e897fdac23565b9f4bb75327e036710757141e054669440756e3e9d9bdb2",
+  "note": "Train/validation only. R is frozen and used as a feature extractor; this control tests whether local R hidden features explain the AC increment, not whether R is an independent truth source."
+}

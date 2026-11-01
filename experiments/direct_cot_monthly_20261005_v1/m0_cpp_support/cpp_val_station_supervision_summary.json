@@ -1,0 +1,483 @@
+{
+  "state": "VAL_STATION_5X5_MASK_AUDIT",
+  "test_used": false,
+  "method": "finite COT 0..100 AND CLP in {0,1,2} AND all13 AGRI valid bits AND day_mask>0.5 AND cosSOZ>cos80",
+  "products": 1330,
+  "quality_read_failure_count": 8,
+  "quality_read_failures": [
+    {
+      "utc": "202410260600",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241026/FY4B_AGRI_20241026060000.nc"
+    },
+    {
+      "utc": "202411161400",
+      "error": "prior scan stalled in NFS NetCDF read; excluded conservatively",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20241116/FY4B_AGRI_20241116140000.nc"
+    },
+    {
+      "utc": "202508220215",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250822/FY4B_AGRI_20250822021500.nc"
+    },
+    {
+      "utc": "202508220300",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250822/FY4B_AGRI_20250822030000.nc"
+    },
+    {
+      "utc": "202511050800",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251105/FY4B_AGRI_20251105080000.nc"
+    },
+    {
+      "utc": "202511061400",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251106/FY4B_AGRI_20251106140000.nc"
+    },
+    {
+      "utc": "202511061500",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251106/FY4B_AGRI_20251106150000.nc"
+    },
+    {
+      "utc": "202512020500",
+      "error": "NetCDF: HDF error",
+      "path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20251202/FY4B_AGRI_20251202050000.nc"
+    }
+  ],
+  "station_month_season": {
+    "sili/MAM": {
+      "supported_products": 126,
+      "products": 233,
+      "effective_pixels": 3150,
+      "zero_pixels": 741,
+      "thick_ge30_pixels": 858,
+      "unique_BJT_days": 12
+    },
+    "sili/2024-04": {
+      "supported_products": 22,
+      "products": 35,
+      "effective_pixels": 550,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 261,
+      "unique_BJT_days": 2
+    },
+    "zhujia/MAM": {
+      "supported_products": 126,
+      "products": 233,
+      "effective_pixels": 3150,
+      "zero_pixels": 985,
+      "thick_ge30_pixels": 1009,
+      "unique_BJT_days": 12
+    },
+    "zhujia/2024-04": {
+      "supported_products": 22,
+      "products": 35,
+      "effective_pixels": 550,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 300,
+      "unique_BJT_days": 2
+    },
+    "sili/2024-05": {
+      "supported_products": 24,
+      "products": 43,
+      "effective_pixels": 600,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 174,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2024-05": {
+      "supported_products": 24,
+      "products": 43,
+      "effective_pixels": 600,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 395,
+      "unique_BJT_days": 2
+    },
+    "sili/JJA": {
+      "supported_products": 337,
+      "products": 602,
+      "effective_pixels": 8425,
+      "zero_pixels": 1119,
+      "thick_ge30_pixels": 996,
+      "unique_BJT_days": 12
+    },
+    "sili/2024-06": {
+      "supported_products": 24,
+      "products": 43,
+      "effective_pixels": 600,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 125,
+      "unique_BJT_days": 2
+    },
+    "zhujia/JJA": {
+      "supported_products": 343,
+      "products": 602,
+      "effective_pixels": 8575,
+      "zero_pixels": 3743,
+      "thick_ge30_pixels": 41,
+      "unique_BJT_days": 12
+    },
+    "zhujia/2024-06": {
+      "supported_products": 24,
+      "products": 43,
+      "effective_pixels": 600,
+      "zero_pixels": 180,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2024-07": {
+      "supported_products": 22,
+      "products": 37,
+      "effective_pixels": 550,
+      "zero_pixels": 251,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2024-07": {
+      "supported_products": 22,
+      "products": 37,
+      "effective_pixels": 550,
+      "zero_pixels": 10,
+      "thick_ge30_pixels": 14,
+      "unique_BJT_days": 2
+    },
+    "sili/2024-08": {
+      "supported_products": 22,
+      "products": 35,
+      "effective_pixels": 550,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 152,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2024-08": {
+      "supported_products": 22,
+      "products": 35,
+      "effective_pixels": 550,
+      "zero_pixels": 133,
+      "thick_ge30_pixels": 26,
+      "unique_BJT_days": 2
+    },
+    "sili/SON": {
+      "supported_products": 85,
+      "products": 175,
+      "effective_pixels": 2125,
+      "zero_pixels": 815,
+      "thick_ge30_pixels": 139,
+      "unique_BJT_days": 10
+    },
+    "sili/2024-09": {
+      "supported_products": 19,
+      "products": 32,
+      "effective_pixels": 475,
+      "zero_pixels": 346,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/SON": {
+      "supported_products": 83,
+      "products": 175,
+      "effective_pixels": 2035,
+      "zero_pixels": 939,
+      "thick_ge30_pixels": 708,
+      "unique_BJT_days": 10
+    },
+    "zhujia/2024-09": {
+      "supported_products": 21,
+      "products": 32,
+      "effective_pixels": 485,
+      "zero_pixels": 397,
+      "thick_ge30_pixels": 35,
+      "unique_BJT_days": 2
+    },
+    "sili/2024-10": {
+      "supported_products": 19,
+      "products": 39,
+      "effective_pixels": 475,
+      "zero_pixels": 197,
+      "thick_ge30_pixels": 33,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2024-10": {
+      "supported_products": 19,
+      "products": 39,
+      "effective_pixels": 475,
+      "zero_pixels": 250,
+      "thick_ge30_pixels": 82,
+      "unique_BJT_days": 2
+    },
+    "sili/2024-11": {
+      "supported_products": 20,
+      "products": 43,
+      "effective_pixels": 500,
+      "zero_pixels": 58,
+      "thick_ge30_pixels": 106,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2024-11": {
+      "supported_products": 16,
+      "products": 43,
+      "effective_pixels": 400,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 366,
+      "unique_BJT_days": 2
+    },
+    "sili/DJF": {
+      "supported_products": 124,
+      "products": 320,
+      "effective_pixels": 3100,
+      "zero_pixels": 2000,
+      "thick_ge30_pixels": 167,
+      "unique_BJT_days": 12
+    },
+    "sili/2024-12": {
+      "supported_products": 16,
+      "products": 40,
+      "effective_pixels": 400,
+      "zero_pixels": 300,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/DJF": {
+      "supported_products": 122,
+      "products": 320,
+      "effective_pixels": 3050,
+      "zero_pixels": 1267,
+      "thick_ge30_pixels": 538,
+      "unique_BJT_days": 12
+    },
+    "zhujia/2024-12": {
+      "supported_products": 16,
+      "products": 40,
+      "effective_pixels": 400,
+      "zero_pixels": 225,
+      "thick_ge30_pixels": 25,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-01": {
+      "supported_products": 37,
+      "products": 116,
+      "effective_pixels": 925,
+      "zero_pixels": 925,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-01": {
+      "supported_products": 35,
+      "products": 116,
+      "effective_pixels": 875,
+      "zero_pixels": 175,
+      "thick_ge30_pixels": 146,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-02": {
+      "supported_products": 20,
+      "products": 43,
+      "effective_pixels": 500,
+      "zero_pixels": 242,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-02": {
+      "supported_products": 20,
+      "products": 43,
+      "effective_pixels": 500,
+      "zero_pixels": 225,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-03": {
+      "supported_products": 12,
+      "products": 34,
+      "effective_pixels": 300,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 260,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-03": {
+      "supported_products": 12,
+      "products": 34,
+      "effective_pixels": 300,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 273,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-04": {
+      "supported_products": 24,
+      "products": 37,
+      "effective_pixels": 600,
+      "zero_pixels": 204,
+      "thick_ge30_pixels": 1,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-04": {
+      "supported_products": 24,
+      "products": 37,
+      "effective_pixels": 600,
+      "zero_pixels": 394,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-05": {
+      "supported_products": 24,
+      "products": 43,
+      "effective_pixels": 600,
+      "zero_pixels": 37,
+      "thick_ge30_pixels": 162,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-05": {
+      "supported_products": 24,
+      "products": 43,
+      "effective_pixels": 600,
+      "zero_pixels": 91,
+      "thick_ge30_pixels": 41,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-06": {
+      "supported_products": 96,
+      "products": 170,
+      "effective_pixels": 2400,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 535,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-06": {
+      "supported_products": 98,
+      "products": 170,
+      "effective_pixels": 2450,
+      "zero_pixels": 1613,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-07": {
+      "supported_products": 94,
+      "products": 170,
+      "effective_pixels": 2350,
+      "zero_pixels": 862,
+      "thick_ge30_pixels": 165,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-07": {
+      "supported_products": 98,
+      "products": 170,
+      "effective_pixels": 2450,
+      "zero_pixels": 1134,
+      "thick_ge30_pixels": 1,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-08": {
+      "supported_products": 79,
+      "products": 147,
+      "effective_pixels": 1975,
+      "zero_pixels": 6,
+      "thick_ge30_pixels": 19,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-08": {
+      "supported_products": 79,
+      "products": 147,
+      "effective_pixels": 1975,
+      "zero_pixels": 673,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-10": {
+      "supported_products": 9,
+      "products": 25,
+      "effective_pixels": 225,
+      "zero_pixels": 214,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-10": {
+      "supported_products": 9,
+      "products": 25,
+      "effective_pixels": 225,
+      "zero_pixels": 125,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-11": {
+      "supported_products": 18,
+      "products": 36,
+      "effective_pixels": 450,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-11": {
+      "supported_products": 18,
+      "products": 36,
+      "effective_pixels": 450,
+      "zero_pixels": 167,
+      "thick_ge30_pixels": 225,
+      "unique_BJT_days": 2
+    },
+    "sili/2025-12": {
+      "supported_products": 15,
+      "products": 41,
+      "effective_pixels": 375,
+      "zero_pixels": 33,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2025-12": {
+      "supported_products": 15,
+      "products": 41,
+      "effective_pixels": 375,
+      "zero_pixels": 142,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2026-01": {
+      "supported_products": 16,
+      "products": 41,
+      "effective_pixels": 400,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 167,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2026-01": {
+      "supported_products": 16,
+      "products": 41,
+      "effective_pixels": 400,
+      "zero_pixels": 0,
+      "thick_ge30_pixels": 367,
+      "unique_BJT_days": 2
+    },
+    "sili/2026-02": {
+      "supported_products": 20,
+      "products": 39,
+      "effective_pixels": 500,
+      "zero_pixels": 500,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2026-02": {
+      "supported_products": 20,
+      "products": 39,
+      "effective_pixels": 500,
+      "zero_pixels": 500,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "sili/2026-03": {
+      "supported_products": 20,
+      "products": 41,
+      "effective_pixels": 500,
+      "zero_pixels": 500,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    },
+    "zhujia/2026-03": {
+      "supported_products": 20,
+      "products": 41,
+      "effective_pixels": 500,
+      "zero_pixels": 500,
+      "thick_ge30_pixels": 0,
+      "unique_BJT_days": 2
+    }
+  }
+}

@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N source_domain_eval
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/source_domain_eval_20260928.pbs.log
+set -euo pipefail
+trap 'rc=$?; echo "FAILED: line=$LINENO status=$rc"; exit "$rc"' ERR
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONUNBUFFERED=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/regional_station_cot_20260925
+SCRIPT=$ROOT/scripts/evaluate_regional_source_domains_20260928.py
+test -s "$EXP/r256_full_exploratory_seed42_node22/best.pt"
+test -s "$EXP/regional_ghi_pilot_bank_20260927_v1/val/sequence_indices.npy"
+test ! -e "$EXP/source_domain_eval_20260928"
+python -m py_compile "$SCRIPT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total,memory.used,utilization.gpu --format=csv
+python -u "$SCRIPT" \
+  --solar-root "$ROOT" \
+  --hunan-source /public/home/slfu/ttzhou/swc/irradiance_forecast/HunanSimVPFull_20260906 \
+  --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --r-run "$EXP/r256_full_exploratory_seed42_node22" \
+  --r-cache "$EXP/agri_cpp_pair_bank_v1" \
+  --ghi-bank "$EXP/regional_ghi_pilot_bank_20260927_v1" \
+  --output "$EXP/source_domain_eval_20260928" --batch 32
+echo REGIONAL_SOURCE_DOMAIN_EVAL_COMPLETE

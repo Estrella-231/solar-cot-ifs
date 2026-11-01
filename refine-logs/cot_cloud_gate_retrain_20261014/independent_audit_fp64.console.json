@@ -1,0 +1,169 @@
+{
+  "state": "PASS_INDEPENDENT_FP64_CLOUD_GATE_AUDIT",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "selected_checkpoint_epoch": 24,
+  "probability_threshold": 0.5,
+  "cloud_proxy_threshold_cot": 0.1,
+  "thick_threshold_cot": 30.0,
+  "samples": 1398,
+  "BJT_target_dates": 46,
+  "valid_pixels": 356169,
+  "common_R_CLP_mask_exact": true,
+  "test_payloads_read": 0,
+  "by_station": {
+    "sili": {
+      "cloud_classifier": {
+        "n": 178019,
+        "TP": 126501,
+        "FP": 12519,
+        "FN": 4603,
+        "TN": 34396,
+        "POD": 0.964890468635587,
+        "FAR": 0.09005179110919292,
+        "CSI": 0.8807851110198227
+      },
+      "R_COT_ge0.1_proxy": {
+        "n": 178019,
+        "TP": 128408,
+        "FP": 14783,
+        "FN": 2696,
+        "TN": 32132,
+        "POD": 0.9794361728093727,
+        "FAR": 0.10323972875390212,
+        "CSI": 0.880188090782592
+      },
+      "COT_RMSE_raw": 9.673508942031255,
+      "COT_RMSE_gated": 9.688078694300765,
+      "thick_raw": {
+        "n": 178019,
+        "TP": 16410,
+        "FP": 11525,
+        "FN": 9801,
+        "TN": 140283,
+        "POD": 0.6260730227766969,
+        "FAR": 0.41256488276355824,
+        "CSI": 0.4348632605469578
+      },
+      "thick_gated": {
+        "n": 178019,
+        "TP": 16410,
+        "FP": 11525,
+        "FN": 9801,
+        "TN": 140283,
+        "POD": 0.6260730227766969,
+        "FAR": 0.41256488276355824,
+        "CSI": 0.4348632605469578
+      },
+      "valid_pixels": 178019
+    },
+    "zhujia": {
+      "cloud_classifier": {
+        "n": 178150,
+        "TP": 97084,
+        "FP": 15457,
+        "FN": 9498,
+        "TN": 56111,
+        "POD": 0.9108855153778311,
+        "FAR": 0.13734550075083748,
+        "CSI": 0.7955161874482747
+      },
+      "R_COT_ge0.1_proxy": {
+        "n": 178150,
+        "TP": 91377,
+        "FP": 15990,
+        "FN": 15205,
+        "TN": 55578,
+        "POD": 0.8573398885365259,
+        "FAR": 0.14892844169996367,
+        "CSI": 0.7454965244917273
+      },
+      "COT_RMSE_raw": 8.432662284047074,
+      "COT_RMSE_gated": 8.431011635194103,
+      "thick_raw": {
+        "n": 178150,
+        "TP": 18089,
+        "FP": 6001,
+        "FN": 6624,
+        "TN": 147436,
+        "POD": 0.7319629344879214,
+        "FAR": 0.24910751349107513,
+        "CSI": 0.5889496646480432
+      },
+      "thick_gated": {
+        "n": 178150,
+        "TP": 18089,
+        "FP": 6001,
+        "FN": 6624,
+        "TN": 147436,
+        "POD": 0.7319629344879214,
+        "FAR": 0.24910751349107513,
+        "CSI": 0.5889496646480432
+      },
+      "valid_pixels": 178150
+    }
+  },
+  "station_equal_mean": {
+    "COT_RMSE_raw": 9.053085613039165,
+    "COT_RMSE_gated": 9.059545164747433,
+    "cloud_FAR_raw_proxy": 0.1260840852269329,
+    "cloud_FAR_gate": 0.1136986459300152
+  },
+  "pixel_pooled_COT_RMSE": {
+    "raw": 9.074092379589063,
+    "gated": 9.08109157989929
+  },
+  "paired_date_cluster_bootstrap_95ci": {
+    "delta_station_equal_COT_RMSE": [
+      0.0010942889664459666,
+      0.01373756737923537
+    ],
+    "delta_station_equal_cloud_FAR": [
+      -0.021795634537506856,
+      -0.0023342424781503286
+    ],
+    "sili_delta_cloud_POD": [
+      -0.024500731423305167,
+      -0.006847821457463529
+    ],
+    "zhujia_delta_cloud_POD": [
+      0.01514393718569133,
+      0.09209162574194406
+    ],
+    "sili_delta_thick_POD": [
+      0.0,
+      0.0
+    ],
+    "zhujia_delta_thick_POD": [
+      0.0,
+      0.0
+    ],
+    "sili_delta_thick_CSI": [
+      0.0,
+      0.0
+    ],
+    "zhujia_delta_thick_CSI": [
+      0.0,
+      0.0
+    ]
+  },
+  "bootstrap_replicates": 2000,
+  "deltas_gate_minus_raw_proxy": {
+    "station_equal_COT_RMSE": 0.006459551708267952,
+    "station_equal_cloud_FAR": -0.012385439296917697
+  },
+  "pre_registered_B1_gate": {
+    "COT_RMSE_reduced": false,
+    "cloud_FAR_reduced": true,
+    "cloud_FAR_reduced_each_station": true,
+    "cloud_POD_drop_le_1pp_each_station": false,
+    "thick_POD_drop_le_1pp_each_station": true,
+    "thick_CSI_drop_le_0.01_each_station": true,
+    "proceed_to_B2": false,
+    "reason": "Gate threshold is fixed at 0.5; station-equal COT RMSE does not decrease and Sili cloud POD drops by more than 1 percentage point. Stop this candidate per preregistered rule; do not tune threshold or launch GHI retraining."
+  },
+  "provenance": {
+    "classifier_output": "remote_result_retry1/validation_predictions.npz",
+    "R_output": "R_validation_predictions_seed42.npz",
+    "CLP_sidecar": "clp_trainval.npz"
+  }
+}

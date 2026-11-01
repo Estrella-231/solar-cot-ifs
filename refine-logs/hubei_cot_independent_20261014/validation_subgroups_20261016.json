@@ -1,0 +1,5388 @@
+{
+  "state": "COMPLETE_DESCRIPTIVE_HUBEI_VALIDATION_MONTH_SOLAR_ELEVATION_SUBGROUPS",
+  "scope": "saved train/validation pack and saved validation predictions only",
+  "test_or_buffer_payloads_read": 0,
+  "selection_warning": "best epochs were selected on validation; subgroup results are exploratory and selection-affected, not independent confirmation",
+  "cloud_strata": "omitted: independent CPP/CLP cloud labels are unavailable for the June-July extension; predicted COT was not used to define weather classes",
+  "unit_contract": "original engineering W/m2 operating convention; sensor calibration/export metadata not independently verified",
+  "solar_elevation_bins_deg": [
+    0,
+    15,
+    30,
+    45,
+    90
+  ],
+  "aggregation": "RMSE per station, equal station weight within each seed, then equal seed weight; AC deltas paired by station and seed",
+  "results": {
+    "month:202508": {
+      "n_validation_rows": 244,
+      "n_by_station": {
+        "Niushou": 85,
+        "Wangzhai": 77,
+        "Mizhuang": 82
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 106.91002243006419,
+          "seed_station_equal_rmse_wm2": {
+            "42": 107.8409781829697,
+            "43": 107.60393379811678,
+            "44": 105.28515530910607
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 85,
+              "rmse_wm2": 112.55875134943564,
+              "mae_wm2": 87.19870686741436,
+              "bias_wm2": -58.30673257813734
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 85,
+              "rmse_wm2": 115.64595364461941,
+              "mae_wm2": 89.78770507293589,
+              "bias_wm2": -65.04123212239321
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 85,
+              "rmse_wm2": 110.62246675130106,
+              "mae_wm2": 85.94859695644939,
+              "bias_wm2": -52.51736280146767
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 77,
+              "rmse_wm2": 100.567268949177,
+              "mae_wm2": 70.5922434926033,
+              "bias_wm2": -7.358217463090822
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 77,
+              "rmse_wm2": 100.3217685860944,
+              "mae_wm2": 71.25143021190321,
+              "bias_wm2": -10.593883412998991
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 77,
+              "rmse_wm2": 100.32504230299857,
+              "mae_wm2": 70.3979545936182,
+              "bias_wm2": -12.19983759754664
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 82,
+              "rmse_wm2": 110.39691425029645,
+              "mae_wm2": 76.51739533136531,
+              "bias_wm2": 41.28069655706243
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 82,
+              "rmse_wm2": 106.84407916363655,
+              "mae_wm2": 73.64204678302858,
+              "bias_wm2": 34.66499847900577
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 82,
+              "rmse_wm2": 104.90795687301858,
+              "mae_wm2": 73.68536038515045,
+              "bias_wm2": 32.75237649824561
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 106.43934886116665,
+          "seed_station_equal_rmse_wm2": {
+            "42": 106.20609220039607,
+            "43": 106.82551826998757,
+            "44": 106.2864361131163
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 85,
+              "rmse_wm2": 106.98121136546925,
+              "mae_wm2": 83.03594713351306,
+              "bias_wm2": -51.85717918031356
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 85,
+              "rmse_wm2": 109.33162821051808,
+              "mae_wm2": 84.90144090161604,
+              "bias_wm2": -55.740135779801534
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 85,
+              "rmse_wm2": 109.34572005360953,
+              "mae_wm2": 85.13507322633967,
+              "bias_wm2": -51.68294719738119
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 77,
+              "rmse_wm2": 100.47843276053563,
+              "mae_wm2": 70.59956803453433,
+              "bias_wm2": -3.6790675640880286
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 77,
+              "rmse_wm2": 105.28650021425373,
+              "mae_wm2": 75.36204489446305,
+              "bias_wm2": -7.279602548905781
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 77,
+              "rmse_wm2": 100.06490738672734,
+              "mae_wm2": 70.05555977682015,
+              "bias_wm2": -11.435132459386603
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 82,
+              "rmse_wm2": 111.15863247518334,
+              "mae_wm2": 76.09302562620582,
+              "bias_wm2": 39.42900276184082
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 82,
+              "rmse_wm2": 105.8584263851909,
+              "mae_wm2": 71.87040848775608,
+              "bias_wm2": 36.73152850386573
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 82,
+              "rmse_wm2": 109.44868089901206,
+              "mae_wm2": 76.9132017493248,
+              "bias_wm2": 33.099804042316066
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 106.7117678110685,
+          "seed_station_equal_rmse_wm2": {
+            "42": 107.30175920443817,
+            "43": 107.36089750193958,
+            "44": 105.47264672682773
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 85,
+              "rmse_wm2": 111.32394118882301,
+              "mae_wm2": 86.23703330474741,
+              "bias_wm2": -57.510018462994516
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 85,
+              "rmse_wm2": 114.9816073412409,
+              "mae_wm2": 89.32222925319391,
+              "bias_wm2": -64.86934008282773
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 85,
+              "rmse_wm2": 110.85853269561585,
+              "mae_wm2": 86.21044082080617,
+              "bias_wm2": -53.08515747014214
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 77,
+              "rmse_wm2": 100.40197903437306,
+              "mae_wm2": 70.42989146206286,
+              "bias_wm2": -7.8442355065376725
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 77,
+              "rmse_wm2": 100.48857984856127,
+              "mae_wm2": 71.6225426394444,
+              "bias_wm2": -11.45348030986724
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 77,
+              "rmse_wm2": 100.69295923007462,
+              "mae_wm2": 70.86291616226171,
+              "bias_wm2": -12.888828162249032
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 82,
+              "rmse_wm2": 110.17935739011845,
+              "mae_wm2": 76.19227170798837,
+              "bias_wm2": 40.819796552018424
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 82,
+              "rmse_wm2": 106.61250531601655,
+              "mae_wm2": 73.3799601080941,
+              "bias_wm2": 34.4447044032376
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 82,
+              "rmse_wm2": 104.8664482547927,
+              "mae_wm2": 73.28641411298659,
+              "bias_wm2": 32.28672079778299
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -0.4706735688975338,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 0.7617182248868914
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -0.9856527784456546
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 4.540724025993484
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -5.577539983966389
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -6.314325434101335
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.2767466976915358
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -0.08883618864138043
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 4.964731628159342
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.26013491627122676
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -0.27241894990184157,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 0.9792750850648844
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -0.7540789308256564
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 4.58223264421936
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -4.342729823353764
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -5.649979130722826
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.512812642006324
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 0.07645372616256907
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 4.7979203656924625
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.6280518433472793
+            }
+          ]
+        }
+      }
+    },
+    "month:202509": {
+      "n_validation_rows": 238,
+      "n_by_station": {
+        "Niushou": 81,
+        "Wangzhai": 78,
+        "Mizhuang": 79
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 58.60981106491374,
+          "seed_station_equal_rmse_wm2": {
+            "42": 59.76948313612413,
+            "43": 57.274455231196335,
+            "44": 58.78549482742077
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 81,
+              "rmse_wm2": 61.531599974374366,
+              "mae_wm2": 42.88966369121853,
+              "bias_wm2": 19.493089553095217
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 81,
+              "rmse_wm2": 58.16300021899454,
+              "mae_wm2": 40.79388855712741,
+              "bias_wm2": 19.870170163542586
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 81,
+              "rmse_wm2": 63.660152425984656,
+              "mae_wm2": 45.526986977395914,
+              "bias_wm2": 27.343996797274386
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 78,
+              "rmse_wm2": 62.35864688626107,
+              "mae_wm2": 41.60172654453587,
+              "bias_wm2": -2.7164159211380863
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 78,
+              "rmse_wm2": 59.96040118612102,
+              "mae_wm2": 40.80202378783948,
+              "bias_wm2": 6.752697795939942
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 78,
+              "rmse_wm2": 58.594903021833304,
+              "mae_wm2": 39.22197768296255,
+              "bias_wm2": 3.5166340987429394
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 79,
+              "rmse_wm2": 55.41820254773695,
+              "mae_wm2": 39.186461356810376,
+              "bias_wm2": -2.2940443182670616
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 79,
+              "rmse_wm2": 53.69996428847346,
+              "mae_wm2": 36.02619008757645,
+              "bias_wm2": 8.017702371447902
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 79,
+              "rmse_wm2": 54.10142903444436,
+              "mae_wm2": 36.045936098734884,
+              "bias_wm2": 0.21342990051106184
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 60.20580679623256,
+          "seed_station_equal_rmse_wm2": {
+            "42": 62.04824053357974,
+            "43": 59.299979309034164,
+            "44": 59.269200546083766
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 81,
+              "rmse_wm2": 57.369828909375805,
+              "mae_wm2": 37.187571598584825,
+              "bias_wm2": 8.015811981403349
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 81,
+              "rmse_wm2": 52.58499541046971,
+              "mae_wm2": 34.13347942379798,
+              "bias_wm2": 1.8980758683870973
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 81,
+              "rmse_wm2": 59.751388158210595,
+              "mae_wm2": 40.927617487003225,
+              "bias_wm2": 18.46335517221855
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 78,
+              "rmse_wm2": 63.41119250255303,
+              "mae_wm2": 41.7450462803267,
+              "bias_wm2": -15.799915895054792
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 78,
+              "rmse_wm2": 60.646765510993276,
+              "mae_wm2": 40.710655725179,
+              "bias_wm2": -15.572316729845719
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 78,
+              "rmse_wm2": 57.816361658779265,
+              "mae_wm2": 38.40089751517502,
+              "bias_wm2": -4.093939875513733
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 79,
+              "rmse_wm2": 65.36370018881038,
+              "mae_wm2": 42.73245007733378,
+              "bias_wm2": -21.85915583853103
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 79,
+              "rmse_wm2": 64.66817700563949,
+              "mae_wm2": 39.34125951635121,
+              "bias_wm2": -19.91935506109384
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 79,
+              "rmse_wm2": 60.23985182126145,
+              "mae_wm2": 38.81529914396756,
+              "bias_wm2": -12.725249762470021
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 58.40786316701136,
+          "seed_station_equal_rmse_wm2": {
+            "42": 59.66201915265139,
+            "43": 56.95057714246085,
+            "44": 58.61099320592183
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 81,
+              "rmse_wm2": 61.330059513209825,
+              "mae_wm2": 42.60994507754106,
+              "bias_wm2": 19.081520967599417
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 81,
+              "rmse_wm2": 57.40882307477934,
+              "mae_wm2": 39.912764126400425,
+              "bias_wm2": 18.50576729344687
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 81,
+              "rmse_wm2": 63.18916454767848,
+              "mae_wm2": 44.911046841802694,
+              "bias_wm2": 26.63244659645644
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 78,
+              "rmse_wm2": 62.353293539767165,
+              "mae_wm2": 41.46785988683592,
+              "bias_wm2": -3.5464520839726528
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 78,
+              "rmse_wm2": 59.283976727168046,
+              "mae_wm2": 40.38234594064908,
+              "bias_wm2": 4.775530009524514
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 78,
+              "rmse_wm2": 58.167470973794714,
+              "mae_wm2": 38.97555349236772,
+              "bias_wm2": 1.8774150193949493
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 79,
+              "rmse_wm2": 55.30270440497716,
+              "mae_wm2": 39.09551864018357,
+              "bias_wm2": -3.1428683044129535
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 79,
+              "rmse_wm2": 54.15893162543517,
+              "mae_wm2": 36.18754281452562,
+              "bias_wm2": 6.575566661225844
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 79,
+              "rmse_wm2": 54.47634409629231,
+              "mae_wm2": 36.351890313604116,
+              "bias_wm2": -1.1589943036036212
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 1.5959957313188093,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 9.94549764107343
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 10.968212717166033
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 6.138422786817095
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -4.161771064998561
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -5.578004808524831
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -3.9087642677740604
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 1.0525456162919582
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 0.6863643248722582
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.778541363054039
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 1.797943629221199,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 10.06099578383322
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 10.50924538020432
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 5.763507724969145
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -3.9602306038340203
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.823827664309633
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -3.437776389467885
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 1.0578989627858633
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 1.3627887838252306
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.3511093150154494
+            }
+          ]
+        }
+      }
+    },
+    "month:202510": {
+      "n_validation_rows": 215,
+      "n_by_station": {
+        "Niushou": 75,
+        "Wangzhai": 70,
+        "Mizhuang": 70
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 87.7008487282608,
+          "seed_station_equal_rmse_wm2": {
+            "42": 86.64776583564644,
+            "43": 86.63879637122234,
+            "44": 89.81598397791363
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 75,
+              "rmse_wm2": 100.63666732573179,
+              "mae_wm2": 82.46222639123599,
+              "bias_wm2": 78.34638614058494
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 75,
+              "rmse_wm2": 92.26095599213654,
+              "mae_wm2": 77.23253765145938,
+              "bias_wm2": 71.88056682626406
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 75,
+              "rmse_wm2": 104.50924353521555,
+              "mae_wm2": 89.07093290686608,
+              "bias_wm2": 87.48535673499107
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 70,
+              "rmse_wm2": 89.80735143780191,
+              "mae_wm2": 75.02493838412421,
+              "bias_wm2": 70.25237422840935
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 70,
+              "rmse_wm2": 93.51656569172869,
+              "mae_wm2": 77.50648471457617,
+              "bias_wm2": 73.29193607228143
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 70,
+              "rmse_wm2": 93.30826620721777,
+              "mae_wm2": 75.16750503097262,
+              "bias_wm2": 70.02017855473927
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 70,
+              "rmse_wm2": 69.4992787434056,
+              "mae_wm2": 57.56679206064769,
+              "bias_wm2": 47.04224138430187
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 70,
+              "rmse_wm2": 74.13886742980176,
+              "mae_wm2": 61.522079053946904,
+              "bias_wm2": 55.69543194941112
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 70,
+              "rmse_wm2": 71.63044219130761,
+              "mae_wm2": 56.59618729182652,
+              "bias_wm2": 43.896267598015925
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 79.24406820043015,
+          "seed_station_equal_rmse_wm2": {
+            "42": 79.97398337733783,
+            "43": 71.5741406887607,
+            "44": 86.18408053519192
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 75,
+              "rmse_wm2": 94.00562377622742,
+              "mae_wm2": 76.03586002071698,
+              "bias_wm2": 69.96385460893313
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 75,
+              "rmse_wm2": 82.9308063998808,
+              "mae_wm2": 67.56812769929569,
+              "bias_wm2": 56.290738478104274
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 75,
+              "rmse_wm2": 97.7633723074111,
+              "mae_wm2": 82.45349909981091,
+              "bias_wm2": 78.93584488431613
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 70,
+              "rmse_wm2": 82.86051274649031,
+              "mae_wm2": 66.07467976297652,
+              "bias_wm2": 58.8731349331992
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 70,
+              "rmse_wm2": 72.81966668666742,
+              "mae_wm2": 56.060700418267935,
+              "bias_wm2": 43.72009978464671
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 70,
+              "rmse_wm2": 90.10190049513054,
+              "mae_wm2": 72.23614616564342,
+              "bias_wm2": 65.25579219375338
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 70,
+              "rmse_wm2": 63.05581360929576,
+              "mae_wm2": 51.21070684194565,
+              "bias_wm2": 27.55160438503538
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 70,
+              "rmse_wm2": 58.971948979733924,
+              "mae_wm2": 47.010233325617655,
+              "bias_wm2": 22.237911931106023
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 70,
+              "rmse_wm2": 70.68696880303412,
+              "mae_wm2": 56.47734589065824,
+              "bias_wm2": 37.6265206694603
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 86.6412341100483,
+          "seed_station_equal_rmse_wm2": {
+            "42": 85.57276324027124,
+            "43": 86.13525239428687,
+            "44": 88.2156866955868
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 75,
+              "rmse_wm2": 100.17000905956573,
+              "mae_wm2": 81.90673747897148,
+              "bias_wm2": 77.68636882662773
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 75,
+              "rmse_wm2": 93.34536740654538,
+              "mae_wm2": 77.86104551672935,
+              "bias_wm2": 72.22976703365644
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 75,
+              "rmse_wm2": 104.06137094140777,
+              "mae_wm2": 88.74696473797162,
+              "bias_wm2": 87.15001364747683
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 70,
+              "rmse_wm2": 88.41187699992994,
+              "mae_wm2": 73.49363206795283,
+              "bias_wm2": 68.61773725577763
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 70,
+              "rmse_wm2": 91.89638480923284,
+              "mae_wm2": 75.55766280378614,
+              "bias_wm2": 71.0275569336755
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 70,
+              "rmse_wm2": 90.33046617970507,
+              "mae_wm2": 72.40281342778887,
+              "bias_wm2": 66.6501287971224
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 70,
+              "rmse_wm2": 68.13640366131806,
+              "mae_wm2": 56.41188500949315,
+              "bias_wm2": 45.270996018818444
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 70,
+              "rmse_wm2": 73.1640049670824,
+              "mae_wm2": 60.299335168089186,
+              "bias_wm2": 53.95039917571204
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 70,
+              "rmse_wm2": 70.25522296564755,
+              "mae_wm2": 55.406684616633825,
+              "bias_wm2": 41.6316454069955
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -8.456780527830647,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -6.443465134109836
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -15.16691845006784
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -0.9434733882734889
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -6.631043549504369
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -9.33014959225575
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -6.745871227804443
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -6.946838691311598
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -20.69689900506127
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -3.2063657120872335
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -7.397165909618151,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -5.080590052022295
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -14.192055987348482
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 0.4317458373865719
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -6.164385283338305
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -10.414561006664584
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -6.29799863399667
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -5.55136425343963
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -19.076718122565424
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.22856568457453363
+            }
+          ]
+        }
+      }
+    },
+    "month:202511": {
+      "n_validation_rows": 205,
+      "n_by_station": {
+        "Niushou": 73,
+        "Wangzhai": 66,
+        "Mizhuang": 66
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 38.753736973507976,
+          "seed_station_equal_rmse_wm2": {
+            "42": 40.200520109885574,
+            "43": 40.631114214760636,
+            "44": 35.42957659587771
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 32.79398723452016,
+              "mae_wm2": 27.052616939458947,
+              "bias_wm2": 15.378840372476676
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 32.882669921558076,
+              "mae_wm2": 27.02633499017317,
+              "bias_wm2": 14.090069805310197
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 37.60431129881399,
+              "mae_wm2": 32.143506289038754,
+              "bias_wm2": 19.586553600246777
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 46.874887697927186,
+              "mae_wm2": 35.41413243018994,
+              "bias_wm2": 20.77444736574861
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 48.985503711385725,
+              "mae_wm2": 36.0500480024652,
+              "bias_wm2": 23.152820645182423
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 40.40807513290419,
+              "mae_wm2": 26.973184507509526,
+              "bias_wm2": 7.905834238129583
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 40.93268539720937,
+              "mae_wm2": 33.23857989873398,
+              "bias_wm2": 24.84530475656643
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 40.025169011338114,
+              "mae_wm2": 31.59682355426026,
+              "bias_wm2": 23.99685379738609
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 28.276343355914975,
+              "mae_wm2": 22.73437455511003,
+              "bias_wm2": 10.737121736800129
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 34.557260736749384,
+          "seed_station_equal_rmse_wm2": {
+            "42": 34.54060266885806,
+            "43": 35.83996182124823,
+            "44": 33.29121772014187
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 30.600990318523063,
+              "mae_wm2": 24.478814917782397,
+              "bias_wm2": 13.408522242858801
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 28.164038480516492,
+              "mae_wm2": 20.9681435967349,
+              "bias_wm2": 4.4682457207204545
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 35.052886056720325,
+              "mae_wm2": 29.545432475025525,
+              "bias_wm2": 17.996881118478022
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 41.63678067787169,
+              "mae_wm2": 28.3311635777072,
+              "bias_wm2": 14.60436315995387
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 46.11250171350251,
+              "mae_wm2": 30.040745273119573,
+              "bias_wm2": 16.865630205494888
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 38.94905542096263,
+              "mae_wm2": 25.26924734466681,
+              "bias_wm2": 6.62400336456344
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 31.384037010179416,
+              "mae_wm2": 25.671698923702493,
+              "bias_wm2": 14.651754382320426
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 33.24334526972567,
+              "mae_wm2": 26.38667841492729,
+              "bias_wm2": 15.247134593512977
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 25.871711682742674,
+              "mae_wm2": 20.497206079576053,
+              "bias_wm2": 9.800792304290967
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 38.04223778098916,
+          "seed_station_equal_rmse_wm2": {
+            "42": 39.04705964655774,
+            "43": 40.21587847724141,
+            "44": 34.86377521916834
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 31.802206498224578,
+              "mae_wm2": 25.973604559898376,
+              "bias_wm2": 13.996644851279585
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 32.56839662121669,
+              "mae_wm2": 26.683313087751603,
+              "bias_wm2": 13.263390282755845
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 37.305282668111744,
+              "mae_wm2": 31.84167528351488,
+              "bias_wm2": 18.963614222070532
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 45.880629533104276,
+              "mae_wm2": 34.48246591854276,
+              "bias_wm2": 19.780824651095
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 47.912169695166284,
+              "mae_wm2": 35.09822211798394,
+              "bias_wm2": 22.651600829128064
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 39.576548375337254,
+              "mae_wm2": 26.220968426967207,
+              "bias_wm2": 6.681702626586864
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 39.45834290834436,
+              "mae_wm2": 32.01744670432174,
+              "bias_wm2": 23.02797162973068
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 40.16706911534125,
+              "mae_wm2": 31.781325846120264,
+              "bias_wm2": 24.284694485705007
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 27.709494614056023,
+              "mae_wm2": 22.25239217879646,
+              "bias_wm2": 10.24706849331657
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -4.196476236758589,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -9.548648387029953
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -6.781823741612442
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -2.4046316731723003
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -2.192996915997096
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.718631441041584
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -2.5514252420936643
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -5.2381070200554944
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -2.8730019978832146
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.4590197119415578
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -3.4849770442397765,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -8.074305898164948
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -6.9237238456155765
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -1.837782931313349
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -1.2012161797015146
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.4043581407002
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -2.2523966113914184
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -4.243848855232585
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -1.7996679816637737
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.6274929543746239
+            }
+          ]
+        }
+      }
+    },
+    "month:202512": {
+      "n_validation_rows": 193,
+      "n_by_station": {
+        "Niushou": 66,
+        "Wangzhai": 64,
+        "Mizhuang": 63
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 67.03544528611378,
+          "seed_station_equal_rmse_wm2": {
+            "42": 65.30257768312056,
+            "43": 69.37950340685184,
+            "44": 66.42425476836894
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 64.6841349171049,
+              "mae_wm2": 53.24200930559274,
+              "bias_wm2": -9.913215303059781
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 66.69369594510225,
+              "mae_wm2": 55.332122954455286,
+              "bias_wm2": -7.803087053876935
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 66.03560077796645,
+              "mae_wm2": 54.70458886388576,
+              "bias_wm2": -9.076536051251672
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 64,
+              "rmse_wm2": 68.26369003824277,
+              "mae_wm2": 52.96802505501546,
+              "bias_wm2": -13.553369488799945
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 64,
+              "rmse_wm2": 70.42917637542519,
+              "mae_wm2": 56.820138034410775,
+              "bias_wm2": -5.544556912966073
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 64,
+              "rmse_wm2": 70.01387250350685,
+              "mae_wm2": 54.08735233475454,
+              "bias_wm2": -14.187375485198572
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 63,
+              "rmse_wm2": 62.959908094014004,
+              "mae_wm2": 50.627007365226746,
+              "bias_wm2": -6.274882802887569
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 63,
+              "rmse_wm2": 71.0156379000281,
+              "mae_wm2": 60.390275811392165,
+              "bias_wm2": -3.5281295852055625
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 63,
+              "rmse_wm2": 63.223291023633514,
+              "mae_wm2": 49.49683603975508,
+              "bias_wm2": -9.544957537499686
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 67.40843210828973,
+          "seed_station_equal_rmse_wm2": {
+            "42": 65.32833338582334,
+            "43": 70.77993821362395,
+            "44": 66.11702472542191
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 65.138957444034,
+              "mae_wm2": 54.32752957578862,
+              "bias_wm2": -8.575503523602631
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 66.64947322856162,
+              "mae_wm2": 55.98788130554286,
+              "bias_wm2": -8.078197861259634
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 65.98609390455564,
+              "mae_wm2": 54.48879797350276,
+              "bias_wm2": -10.740171264518391
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 64,
+              "rmse_wm2": 67.07061028818477,
+              "mae_wm2": 52.576132599962875,
+              "bias_wm2": -13.099303071154281
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 64,
+              "rmse_wm2": 71.63873801341235,
+              "mae_wm2": 58.31110298912972,
+              "bias_wm2": -6.351998629979789
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 64,
+              "rmse_wm2": 69.14718968786829,
+              "mae_wm2": 53.76562740793452,
+              "bias_wm2": -15.179399812128395
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 63,
+              "rmse_wm2": 63.77543242525124,
+              "mae_wm2": 52.292871108130804,
+              "bias_wm2": -5.2832540141211615
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 63,
+              "rmse_wm2": 74.05160339889791,
+              "mae_wm2": 63.62730497689474,
+              "bias_wm2": -1.9270399704812065
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 63,
+              "rmse_wm2": 63.2177905838418,
+              "mae_wm2": 50.52102635209523,
+              "bias_wm2": -11.093010718860324
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 66.50079916715858,
+          "seed_station_equal_rmse_wm2": {
+            "42": 64.75219324391789,
+            "43": 68.7861052631405,
+            "44": 65.96409899441736
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 66,
+              "rmse_wm2": 64.06564692776115,
+              "mae_wm2": 52.49441383824204,
+              "bias_wm2": -10.423005898793539
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 66,
+              "rmse_wm2": 66.15345563722495,
+              "mae_wm2": 54.64592739488139,
+              "bias_wm2": -8.72704087784796
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 66,
+              "rmse_wm2": 65.81668121207066,
+              "mae_wm2": 54.331131013053835,
+              "bias_wm2": -9.804296655185295
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 64,
+              "rmse_wm2": 67.86110156269741,
+              "mae_wm2": 52.34845655900426,
+              "bias_wm2": -14.045603093924
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 64,
+              "rmse_wm2": 69.36580825544982,
+              "mae_wm2": 55.41765477787703,
+              "bias_wm2": -6.206419493071735
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 64,
+              "rmse_wm2": 69.48670449299787,
+              "mae_wm2": 53.39631262002513,
+              "bias_wm2": -14.87152936635539
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 63,
+              "rmse_wm2": 62.32983124129507,
+              "mae_wm2": 49.85766452077835,
+              "bias_wm2": -6.7301794574374245
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 63,
+              "rmse_wm2": 70.83905189674675,
+              "mae_wm2": 60.10516539452568,
+              "bias_wm2": -4.165394801942129
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 63,
+              "rmse_wm2": 62.58891127818354,
+              "mae_wm2": 48.80022308939979,
+              "bias_wm2": -9.5947443000854
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 0.3729868221759563,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 0.8155243312372349
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 3.035965498869814
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -0.0055004397917173264
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 0.45482252692910663
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -0.04422271654063081
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -0.04950687341080595
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -1.1930797500580042
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 1.2095616379871643
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.8666828156385549
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 0.9076329411311548,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 1.445601183956171
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 3.2125515021511575
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 0.6288793056582591
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 1.073310516272855
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 0.4960175913366669
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 0.16941269248498259
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -0.7904912745126467
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 2.2729297579625296
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.339514805129582
+            }
+          ]
+        }
+      }
+    },
+    "month:202601": {
+      "n_validation_rows": 189,
+      "n_by_station": {
+        "Niushou": 65,
+        "Wangzhai": 60,
+        "Mizhuang": 64
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 67.61830925258646,
+          "seed_station_equal_rmse_wm2": {
+            "42": 66.79061613047135,
+            "43": 71.11804740515096,
+            "44": 64.94626422213703
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 65,
+              "rmse_wm2": 71.54972716506593,
+              "mae_wm2": 57.26570448772265,
+              "bias_wm2": 55.7378358353789
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 65,
+              "rmse_wm2": 68.43503973247833,
+              "mae_wm2": 55.712331799245796,
+              "bias_wm2": 53.3842316828095
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 65,
+              "rmse_wm2": 74.66236972732302,
+              "mae_wm2": 59.184949079270545,
+              "bias_wm2": 58.1086194518667
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 60,
+              "rmse_wm2": 63.316720010739,
+              "mae_wm2": 44.116555241992074,
+              "bias_wm2": 21.371311676253875
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 60,
+              "rmse_wm2": 70.6893837105153,
+              "mae_wm2": 55.01335191875696,
+              "bias_wm2": 33.78193356345097
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 60,
+              "rmse_wm2": 58.68204513918208,
+              "mae_wm2": 38.692448094983895,
+              "bias_wm2": 16.62423161317905
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 64,
+              "rmse_wm2": 65.50540121560915,
+              "mae_wm2": 52.526523033040576,
+              "bias_wm2": 39.934876482817344
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 64,
+              "rmse_wm2": 74.22971877245922,
+              "mae_wm2": 62.73757332644891,
+              "bias_wm2": 52.441378136049025
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 64,
+              "rmse_wm2": 61.494377799906,
+              "mae_wm2": 46.78422109398525,
+              "bias_wm2": 34.657539049047045
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 65.75863438741129,
+          "seed_station_equal_rmse_wm2": {
+            "42": 65.19152501705439,
+            "43": 68.91716385561156,
+            "44": 63.167214289567944
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 65,
+              "rmse_wm2": 71.2278870726361,
+              "mae_wm2": 53.97592978190917,
+              "bias_wm2": 49.53781684809006
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 65,
+              "rmse_wm2": 64.66442903793693,
+              "mae_wm2": 49.58840033583916,
+              "bias_wm2": 41.84524096835118
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 65,
+              "rmse_wm2": 72.2391796409161,
+              "mae_wm2": 54.89143429249525,
+              "bias_wm2": 52.02629358298503
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 60,
+              "rmse_wm2": 61.35317871849105,
+              "mae_wm2": 38.915967337538795,
+              "bias_wm2": 12.872873623917501
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 60,
+              "rmse_wm2": 71.34457007621542,
+              "mae_wm2": 49.343866477409996,
+              "bias_wm2": 18.581445386012394
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 60,
+              "rmse_wm2": 58.62957802390392,
+              "mae_wm2": 36.26686644504468,
+              "bias_wm2": 11.535705090065797
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 64,
+              "rmse_wm2": 62.99350926003604,
+              "mae_wm2": 48.33506576705258,
+              "bias_wm2": 27.029149150359444
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 64,
+              "rmse_wm2": 70.74249245268234,
+              "mae_wm2": 57.023020671564154,
+              "bias_wm2": 33.35732499125879
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 64,
+              "rmse_wm2": 58.63288520388384,
+              "mae_wm2": 42.68423857574817,
+              "bias_wm2": 24.179995839833282
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 66.52821182041788,
+          "seed_station_equal_rmse_wm2": {
+            "42": 65.77145052888339,
+            "43": 69.70783350960494,
+            "44": 64.1053514227653
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 65,
+              "rmse_wm2": 70.22738277050358,
+              "mae_wm2": 55.813500013145116,
+              "bias_wm2": 54.14930722656158
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 65,
+              "rmse_wm2": 66.6229119906229,
+              "mae_wm2": 54.07360974722184,
+              "bias_wm2": 51.38008299504335
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 65,
+              "rmse_wm2": 73.41209414899846,
+              "mae_wm2": 58.018162619952975,
+              "bias_wm2": 56.89494648976968
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 60,
+              "rmse_wm2": 62.464034044883675,
+              "mae_wm2": 43.09963824848334,
+              "bias_wm2": 19.78661949535211
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 60,
+              "rmse_wm2": 69.03052158643794,
+              "mae_wm2": 52.853285885353884,
+              "bias_wm2": 31.107508246600627
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 60,
+              "rmse_wm2": 58.143352164994695,
+              "mae_wm2": 37.56379853412509,
+              "bias_wm2": 14.940957344323397
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 64,
+              "rmse_wm2": 64.62293477126292,
+              "mae_wm2": 51.52526147279423,
+              "bias_wm2": 38.43420509423595
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 64,
+              "rmse_wm2": 73.47006695175396,
+              "mae_wm2": 61.94691024988424,
+              "bias_wm2": 51.48475730686914
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 64,
+              "rmse_wm2": 60.760607954302706,
+              "mae_wm2": 45.826693620416336,
+              "bias_wm2": 33.231378355878405
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -1.859674865175145,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -2.5118919555731125
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -3.4872263197768802
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -2.8614925960221598
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -0.3218400924298379
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -3.7706106945414035
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -2.423190086406919
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -1.963541292247946
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 0.6551863657001178
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.05246711527816217
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -0.7695774330065674,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -1.6294255112268772
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -2.727574499071622
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -2.1277227504188687
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 1.0005043021325122
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -1.9584829526859693
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.172914508082357
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -1.110855326392624
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 2.314048489777477
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": 0.4862258589092221
+            }
+          ]
+        }
+      }
+    },
+    "month:202602": {
+      "n_validation_rows": 179,
+      "n_by_station": {
+        "Niushou": 71,
+        "Wangzhai": 35,
+        "Mizhuang": 73
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 100.06133015453848,
+          "seed_station_equal_rmse_wm2": {
+            "42": 101.55217330165821,
+            "43": 99.50040898881464,
+            "44": 99.13140817314259
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 71,
+              "rmse_wm2": 86.86064047338752,
+              "mae_wm2": 66.03372037945918,
+              "bias_wm2": 17.76440809782542
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 71,
+              "rmse_wm2": 92.16894087952697,
+              "mae_wm2": 71.2799334183965,
+              "bias_wm2": 21.465753273854794
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 71,
+              "rmse_wm2": 91.34506121785273,
+              "mae_wm2": 72.40113376243643,
+              "bias_wm2": 22.242578442510165
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 35,
+              "rmse_wm2": 67.7121440665965,
+              "mae_wm2": 59.1481186787997,
+              "bias_wm2": 46.57535086465733
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 35,
+              "rmse_wm2": 67.79947195468613,
+              "mae_wm2": 59.57697037756443,
+              "bias_wm2": 44.31353233414037
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 35,
+              "rmse_wm2": 63.51193278942129,
+              "mae_wm2": 55.89283361264638,
+              "bias_wm2": 41.118482305322374
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 150.0837353649906,
+              "mae_wm2": 97.94031787184004,
+              "bias_wm2": 96.29192628007229
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 138.53281413223084,
+              "mae_wm2": 81.90871083226106,
+              "bias_wm2": 77.43026102426117
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 142.53723051215374,
+              "mae_wm2": 90.03206121462257,
+              "bias_wm2": 87.94694086266298
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 93.31861098490869,
+          "seed_station_equal_rmse_wm2": {
+            "42": 95.15032984637428,
+            "43": 92.95757558192106,
+            "44": 91.84792752643075
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 71,
+              "rmse_wm2": 94.79657404022709,
+              "mae_wm2": 71.6998573228402,
+              "bias_wm2": 12.037635157907932
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 71,
+              "rmse_wm2": 99.93551104504122,
+              "mae_wm2": 76.61386847254676,
+              "bias_wm2": 14.789933714123679
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 71,
+              "rmse_wm2": 96.51799808648893,
+              "mae_wm2": 76.01330012571015,
+              "bias_wm2": 17.518275990609972
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 35,
+              "rmse_wm2": 69.11176754262864,
+              "mae_wm2": 59.94315499982664,
+              "bias_wm2": 42.09294184552772
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 35,
+              "rmse_wm2": 75.83678856639412,
+              "mae_wm2": 65.31116900018283,
+              "bias_wm2": 37.61132703253201
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 35,
+              "rmse_wm2": 63.725664701109665,
+              "mae_wm2": 56.0231028724994,
+              "bias_wm2": 37.373768203811984
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 121.54264795626712,
+              "mae_wm2": 87.27799423702368,
+              "bias_wm2": 78.70551754401563
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 103.10042713432784,
+              "mae_wm2": 71.4633347622744,
+              "bias_wm2": 56.46275871808398
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 115.30011979169365,
+              "mae_wm2": 79.45516618626984,
+              "bias_wm2": 68.16923678748003
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 100.12379513870751,
+          "seed_station_equal_rmse_wm2": {
+            "42": 101.50886617861484,
+            "43": 99.56441444049646,
+            "44": 99.2981047970112
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 71,
+              "rmse_wm2": 86.85623253391965,
+              "mae_wm2": 65.39268216301858,
+              "bias_wm2": 16.742090930191562
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 71,
+              "rmse_wm2": 91.98942126782927,
+              "mae_wm2": 70.64026813723252,
+              "bias_wm2": 20.468705419608405
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 71,
+              "rmse_wm2": 91.32148783638925,
+              "mae_wm2": 72.05620555175652,
+              "bias_wm2": 21.340409557217022
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 35,
+              "rmse_wm2": 67.27803094978248,
+              "mae_wm2": 58.70763492648091,
+              "bias_wm2": 46.238502202076575
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 35,
+              "rmse_wm2": 67.83727834494532,
+              "mae_wm2": 59.54704850592783,
+              "bias_wm2": 43.39928415311234
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 35,
+              "rmse_wm2": 62.755384746931654,
+              "mae_wm2": 55.21345991577421,
+              "bias_wm2": 40.86080046892166
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 150.39233505214244,
+              "mae_wm2": 97.78451439544354,
+              "bias_wm2": 96.26284904257484
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 138.86654370871483,
+              "mae_wm2": 82.28333154504429,
+              "bias_wm2": 77.89139679625426
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 143.81744180771273,
+              "mae_wm2": 91.00149005355492,
+              "bias_wm2": 89.16121749733
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -6.742719169629781,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -28.54108740872347
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -35.432386997902995
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -27.237110720460095
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 7.935933566839566
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 7.766570165514253
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 5.172936868636199
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 1.399623476032147
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 8.037316611707993
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": 0.21373191168837735
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -6.805184153798816,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -28.849687095875325
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -35.766116574386984
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -28.51732201601908
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 7.940341506307433
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 7.946089777211952
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 5.196510250099678
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 1.833736592846165
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 7.999510221448801
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": 0.9702799541780109
+            }
+          ]
+        }
+      }
+    },
+    "month:202603": {
+      "n_validation_rows": 221,
+      "n_by_station": {
+        "Niushou": 74,
+        "Wangzhai": 74,
+        "Mizhuang": 73
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 71.08175833102109,
+          "seed_station_equal_rmse_wm2": {
+            "42": 72.94658143057144,
+            "43": 71.35958100687549,
+            "44": 68.93911255561635
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 74,
+              "rmse_wm2": 70.30496194364088,
+              "mae_wm2": 49.6391147019694,
+              "bias_wm2": 34.44557161578858
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 74,
+              "rmse_wm2": 73.0197943506562,
+              "mae_wm2": 52.04318578893671,
+              "bias_wm2": 39.30847677095114
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 74,
+              "rmse_wm2": 71.19506261497327,
+              "mae_wm2": 50.34176608990576,
+              "bias_wm2": 31.49831112323178
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 74,
+              "rmse_wm2": 52.25890866110276,
+              "mae_wm2": 39.900262415308404,
+              "bias_wm2": 11.518754232674837
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 74,
+              "rmse_wm2": 48.34415366680422,
+              "mae_wm2": 38.24449719871218,
+              "bias_wm2": 21.94650974406584
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 74,
+              "rmse_wm2": 44.29001769649617,
+              "mae_wm2": 34.64621580643831,
+              "bias_wm2": 14.995097559549519
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 96.27587368697071,
+              "mae_wm2": 69.89690310824408,
+              "bias_wm2": 6.0020310437842594
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 92.71479500316605,
+              "mae_wm2": 70.02962106711244,
+              "bias_wm2": 18.056195476283765
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 91.3322573553796,
+              "mae_wm2": 65.98892473684599,
+              "bias_wm2": 7.901924082677659
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 68.19028851697114,
+          "seed_station_equal_rmse_wm2": {
+            "42": 70.19352945865421,
+            "43": 66.64305013164423,
+            "44": 67.73428596061495
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 74,
+              "rmse_wm2": 72.48541359176511,
+              "mae_wm2": 49.020223262241565,
+              "bias_wm2": 30.407338044832688
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 74,
+              "rmse_wm2": 74.22807426424686,
+              "mae_wm2": 50.73088144923787,
+              "bias_wm2": 34.32893089658103
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 74,
+              "rmse_wm2": 73.08728016085014,
+              "mae_wm2": 50.85359430061401,
+              "bias_wm2": 26.04904027635584
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 74,
+              "rmse_wm2": 50.316358222924336,
+              "mae_wm2": 38.201769201940785,
+              "bias_wm2": 4.8609170770725685
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 74,
+              "rmse_wm2": 44.72480559588352,
+              "mae_wm2": 35.46453545846649,
+              "bias_wm2": 18.808247285718853
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 74,
+              "rmse_wm2": 44.10288760887652,
+              "mae_wm2": 34.11438204680343,
+              "bias_wm2": 10.098018257501158
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 87.77881656127317,
+              "mae_wm2": 60.1559731699016,
+              "bias_wm2": -4.811817747272857
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 80.97627053480232,
+              "mae_wm2": 57.157970252102366,
+              "bias_wm2": 7.624307142545099
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 86.01269011211822,
+              "mae_wm2": 59.18528949806135,
+              "bias_wm2": -3.6971673418397772
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 70.67270530565837,
+          "seed_station_equal_rmse_wm2": {
+            "42": 72.52386185462693,
+            "43": 70.7227123044708,
+            "44": 68.77154175787734
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 74,
+              "rmse_wm2": 69.80730491601416,
+              "mae_wm2": 49.080034392810354,
+              "bias_wm2": 33.65762850551589
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 74,
+              "rmse_wm2": 72.57898221338144,
+              "mae_wm2": 51.318522015032734,
+              "bias_wm2": 38.30120684639425
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 74,
+              "rmse_wm2": 70.74140576062634,
+              "mae_wm2": 49.86714118467392,
+              "bias_wm2": 30.898804177202887
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 74,
+              "rmse_wm2": 51.5640596656016,
+              "mae_wm2": 39.27254493433882,
+              "bias_wm2": 10.782696196154967
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 74,
+              "rmse_wm2": 47.24229597658308,
+              "mae_wm2": 37.11957158853073,
+              "bias_wm2": 19.932527915247388
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 74,
+              "rmse_wm2": 44.31386769586151,
+              "mae_wm2": 34.459744993496585,
+              "bias_wm2": 14.152928134476817
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 73,
+              "rmse_wm2": 96.20022098226504,
+              "mae_wm2": 69.42147616164326,
+              "bias_wm2": 5.107049608883792
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 73,
+              "rmse_wm2": 92.3468587234479,
+              "mae_wm2": 69.32038165935099,
+              "bias_wm2": 17.195584099586696
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 73,
+              "rmse_wm2": 91.2593518171442,
+              "mae_wm2": 65.84180260929342,
+              "bias_wm2": 7.534183803486497
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -2.89146981404996,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -8.497057125697538
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -11.738524468363721
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -5.319567243261375
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 2.180451648124233
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 1.2082799135906583
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 1.8922175458768749
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -1.9425504381784222
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -3.619348070920701
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.18713008761965
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -2.4824167886872286,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -8.421404420991863
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -11.37058818864557
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -5.246661705025986
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 2.6781086757509485
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 1.6490920508654199
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 2.3458744002238063
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -1.2477014426772612
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -2.517490380699563
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.21098008698498916
+            }
+          ]
+        }
+      }
+    },
+    "month:202604": {
+      "n_validation_rows": 254,
+      "n_by_station": {
+        "Niushou": 88,
+        "Wangzhai": 83,
+        "Mizhuang": 83
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 48.13670414220447,
+          "seed_station_equal_rmse_wm2": {
+            "42": 48.82570864423496,
+            "43": 47.92822502611342,
+            "44": 47.656178756265035
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 88,
+              "rmse_wm2": 56.16789351405257,
+              "mae_wm2": 48.529443925415926,
+              "bias_wm2": 35.87311485714533
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 88,
+              "rmse_wm2": 51.03212383388799,
+              "mae_wm2": 43.7573770464144,
+              "bias_wm2": 32.9070484275845
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 88,
+              "rmse_wm2": 59.062289630698125,
+              "mae_wm2": 51.302952730181545,
+              "bias_wm2": 45.07552481408823
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 83,
+              "rmse_wm2": 45.428827484836035,
+              "mae_wm2": 37.04668785775282,
+              "bias_wm2": 23.218649216983692
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 83,
+              "rmse_wm2": 47.071863496714286,
+              "mae_wm2": 38.89631242116532,
+              "bias_wm2": 30.01882689311562
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 83,
+              "rmse_wm2": 47.11184647302167,
+              "mae_wm2": 37.5925228777061,
+              "bias_wm2": 24.299726564661565
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 83,
+              "rmse_wm2": 44.88040493381627,
+              "mae_wm2": 39.632608305617985,
+              "bias_wm2": 37.443854752434305
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 83,
+              "rmse_wm2": 45.68068774773798,
+              "mae_wm2": 39.588814155524034,
+              "bias_wm2": 38.21149858832359
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 83,
+              "rmse_wm2": 36.79440016507532,
+              "mae_wm2": 32.00878438999854,
+              "bias_wm2": 18.68504173030336
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 45.37106404242683,
+          "seed_station_equal_rmse_wm2": {
+            "42": 45.93599443159786,
+            "43": 42.447252859596745,
+            "44": 47.729944836085885
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 88,
+              "rmse_wm2": 53.51979605254834,
+              "mae_wm2": 45.04036655243147,
+              "bias_wm2": 32.86846087500453
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 88,
+              "rmse_wm2": 47.936567996122655,
+              "mae_wm2": 39.52493204074827,
+              "bias_wm2": 26.144957927478984
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 88,
+              "rmse_wm2": 59.25822094466149,
+              "mae_wm2": 51.38473866642876,
+              "bias_wm2": 43.7138123285364
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 83,
+              "rmse_wm2": 45.543900937726875,
+              "mae_wm2": 36.757703229784966,
+              "bias_wm2": 17.85026950164732
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 83,
+              "rmse_wm2": 45.22551411529956,
+              "mae_wm2": 36.10497365712401,
+              "bias_wm2": 23.34415701408702
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 83,
+              "rmse_wm2": 46.66782197216069,
+              "mae_wm2": 36.82004884513746,
+              "bias_wm2": 20.190830789596202
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 83,
+              "rmse_wm2": 38.74428630451837,
+              "mae_wm2": 32.50894455342408,
+              "bias_wm2": 25.215526530900632
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 83,
+              "rmse_wm2": 34.17967646736801,
+              "mae_wm2": 27.657692121813096,
+              "bias_wm2": 22.422475469758712
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 83,
+              "rmse_wm2": 37.263791591435485,
+              "mae_wm2": 30.888701029211642,
+              "bias_wm2": 10.990463473351605
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 47.12934937932031,
+          "seed_station_equal_rmse_wm2": {
+            "42": 48.31823002419268,
+            "43": 46.51656219310187,
+            "44": 46.55325592066638
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 88,
+              "rmse_wm2": 55.02425608451969,
+              "mae_wm2": 47.31665080819618,
+              "bias_wm2": 34.340467697178774
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 88,
+              "rmse_wm2": 50.679512197838534,
+              "mae_wm2": 43.38187280737541,
+              "bias_wm2": 33.35605008121241
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 88,
+              "rmse_wm2": 57.47127745351573,
+              "mae_wm2": 49.954062735831194,
+              "bias_wm2": 42.804755850610405
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 83,
+              "rmse_wm2": 45.025121859018384,
+              "mae_wm2": 36.69804794870945,
+              "bias_wm2": 22.295362794794233
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 83,
+              "rmse_wm2": 44.89474473221696,
+              "mae_wm2": 37.06139936414828,
+              "bias_wm2": 26.102077089698916
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 83,
+              "rmse_wm2": 45.6809816572007,
+              "mae_wm2": 36.06026565938829,
+              "bias_wm2": 20.46650189430599
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 83,
+              "rmse_wm2": 44.90531212903998,
+              "mae_wm2": 39.67578738820122,
+              "bias_wm2": 37.821762271315215
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 83,
+              "rmse_wm2": 43.9754296492501,
+              "mae_wm2": 37.86997408213386,
+              "bias_wm2": 36.21723849838038
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 83,
+              "rmse_wm2": 36.507508651282706,
+              "mae_wm2": 31.91349956752306,
+              "bias_wm2": 16.56831759106682
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -2.7656400997776416,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -6.136118629297904
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -11.501011280369966
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 0.4693914263601684
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -2.6480974615042356
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -3.095555837765332
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 0.1959313139633636
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 0.11507345289084014
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -1.8463493814147256
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.44402450086098355
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -1.7582853368934792,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -6.161025824521609
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -9.795753181882091
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 0.7562829401527793
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -1.5044600319713552
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -2.742944201715879
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 1.786943491145756
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 0.5187790787084907
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 0.33076938308260395
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": 0.9868403149599914
+            }
+          ]
+        }
+      }
+    },
+    "month:202605": {
+      "n_validation_rows": 257,
+      "n_by_station": {
+        "Niushou": 88,
+        "Wangzhai": 87,
+        "Mizhuang": 82
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 65.71597499387643,
+          "seed_station_equal_rmse_wm2": {
+            "42": 67.60399864939735,
+            "43": 64.30410657637539,
+            "44": 65.23981975585656
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 88,
+              "rmse_wm2": 66.66715840625098,
+              "mae_wm2": 52.75101824714379,
+              "bias_wm2": 3.3991717377846893
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 88,
+              "rmse_wm2": 66.3611269482964,
+              "mae_wm2": 51.120175864208825,
+              "bias_wm2": 9.067857673222369
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 88,
+              "rmse_wm2": 71.27791878338473,
+              "mae_wm2": 56.73273308168758,
+              "bias_wm2": 12.065131268718027
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 87,
+              "rmse_wm2": 63.60393768382251,
+              "mae_wm2": 52.8884531026599,
+              "bias_wm2": -4.663361190379351
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 87,
+              "rmse_wm2": 53.63089842610717,
+              "mae_wm2": 44.71196086584837,
+              "bias_wm2": 2.8443099965994385
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 87,
+              "rmse_wm2": 57.88275599570879,
+              "mae_wm2": 48.07875100566053,
+              "bias_wm2": 1.695091422261863
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 82,
+              "rmse_wm2": 72.54089985811856,
+              "mae_wm2": 59.50272273871957,
+              "bias_wm2": 0.4101903743860198
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 82,
+              "rmse_wm2": 72.92029435472263,
+              "mae_wm2": 57.697957126105706,
+              "bias_wm2": 7.587721690898988
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 82,
+              "rmse_wm2": 66.55878448847612,
+              "mae_wm2": 54.78612130516913,
+              "bias_wm2": 10.478950331123864
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 65.52115346065646,
+          "seed_station_equal_rmse_wm2": {
+            "42": 68.77807824221584,
+            "43": 63.27378720028074,
+            "44": 64.51159493947277
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 88,
+              "rmse_wm2": 67.16060543750184,
+              "mae_wm2": 52.57367288185792,
+              "bias_wm2": -3.5480222939090296
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 88,
+              "rmse_wm2": 64.80678401375147,
+              "mae_wm2": 49.69666358151219,
+              "bias_wm2": 4.233256961811673
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 88,
+              "rmse_wm2": 69.91732625393067,
+              "mae_wm2": 56.423923796550795,
+              "bias_wm2": 7.871479077095335
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 87,
+              "rmse_wm2": 62.70761663666919,
+              "mae_wm2": 50.547216091347835,
+              "bias_wm2": -13.281320949395498
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 87,
+              "rmse_wm2": 51.69468085920767,
+              "mae_wm2": 43.95670671983697,
+              "bias_wm2": -2.8797181926924607
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 87,
+              "rmse_wm2": 55.95833720120182,
+              "mae_wm2": 47.261934405770795,
+              "bias_wm2": -3.160224360296096
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 82,
+              "rmse_wm2": 76.46601265247648,
+              "mae_wm2": 64.01310968544425,
+              "bias_wm2": -6.4359921842086605
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 82,
+              "rmse_wm2": 73.3198967278831,
+              "mae_wm2": 60.978956850563605,
+              "bias_wm2": -3.469239932734792
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 82,
+              "rmse_wm2": 67.6591213632858,
+              "mae_wm2": 54.81475852756965,
+              "bias_wm2": 1.335252162886829
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 65.26562728434614,
+          "seed_station_equal_rmse_wm2": {
+            "42": 66.80373183438746,
+            "43": 64.62177120914781,
+            "44": 64.37137880950316
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 88,
+              "rmse_wm2": 65.92251384509092,
+              "mae_wm2": 52.015805829655044,
+              "bias_wm2": 1.8058015433224766
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 88,
+              "rmse_wm2": 66.76019544389442,
+              "mae_wm2": 50.88401808047836,
+              "bias_wm2": 8.987019987946207
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 88,
+              "rmse_wm2": 70.148760669092,
+              "mae_wm2": 56.03734760460529,
+              "bias_wm2": 11.45273114808581
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 87,
+              "rmse_wm2": 62.79749192137907,
+              "mae_wm2": 52.00275430665619,
+              "bias_wm2": -5.35965041113996
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 87,
+              "rmse_wm2": 54.060524834698384,
+              "mae_wm2": 45.63054594020734,
+              "bias_wm2": 0.8422308454568359
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 87,
+              "rmse_wm2": 57.10051564563887,
+              "mae_wm2": 47.493652640403,
+              "bias_wm2": 0.7827985142839367
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 82,
+              "rmse_wm2": 71.6911897366924,
+              "mae_wm2": 58.86203177091552,
+              "bias_wm2": 0.14374391334812817
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 82,
+              "rmse_wm2": 73.04459334885064,
+              "mae_wm2": 57.99256774565069,
+              "bias_wm2": 6.382155781838952
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 82,
+              "rmse_wm2": 65.86486011377858,
+              "mae_wm2": 54.24567571573141,
+              "bias_wm2": 11.00528461104486
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -0.19482153321998336,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 3.925112794357915
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 0.39960237316047653
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 1.1003368748096847
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 0.49344703125086653
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -1.554342934544934
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.3605925294540668
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -0.8963210471533216
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -1.9362175668995008
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.9244187945069697
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 0.25552617631030866,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 4.774822915784085
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 0.27530337903246505
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 1.7942612495072296
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 1.2380915924109246
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -1.9534114301429497
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -0.23143441516133123
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -0.08987528470988337
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -2.365843975490712
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.1421784444370502
+            }
+          ]
+        }
+      }
+    },
+    "month:202606": {
+      "n_validation_rows": 261,
+      "n_by_station": {
+        "Niushou": 90,
+        "Wangzhai": 90,
+        "Mizhuang": 81
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 66.2471760100504,
+          "seed_station_equal_rmse_wm2": {
+            "42": 68.2496436005609,
+            "43": 65.249313574705,
+            "44": 65.24257085488529
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 90,
+              "rmse_wm2": 77.68692223355843,
+              "mae_wm2": 58.22638901737001,
+              "bias_wm2": 18.72596490515603
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 90,
+              "rmse_wm2": 80.83808981031734,
+              "mae_wm2": 60.94765764474869,
+              "bias_wm2": 14.889476313855912
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 90,
+              "rmse_wm2": 78.43514335076638,
+              "mae_wm2": 58.500719021426306,
+              "bias_wm2": 21.871872590647804
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 90,
+              "rmse_wm2": 66.48041311666623,
+              "mae_wm2": 51.202040388186774,
+              "bias_wm2": 13.517764757076899
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 90,
+              "rmse_wm2": 58.878042950905595,
+              "mae_wm2": 43.087973805268604,
+              "bias_wm2": 14.915169335736168
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 90,
+              "rmse_wm2": 60.65865650539772,
+              "mae_wm2": 44.63467772404353,
+              "bias_wm2": 20.66062901152505
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 81,
+              "rmse_wm2": 60.58159545145805,
+              "mae_wm2": 47.88410216054799,
+              "bias_wm2": 16.004862080385656
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 81,
+              "rmse_wm2": 56.03180796289206,
+              "mae_wm2": 42.809722472120214,
+              "bias_wm2": 23.166641852002083
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 81,
+              "rmse_wm2": 56.63391270849174,
+              "mae_wm2": 43.994689936255234,
+              "bias_wm2": 23.5880163738757
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 64.74519909895581,
+          "seed_station_equal_rmse_wm2": {
+            "42": 65.95212041370947,
+            "43": 62.163094618823045,
+            "44": 66.1203822643349
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 90,
+              "rmse_wm2": 75.86426640014278,
+              "mae_wm2": 56.39265554779106,
+              "bias_wm2": 18.387978971997896
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 90,
+              "rmse_wm2": 75.68188449007188,
+              "mae_wm2": 56.68240976068709,
+              "bias_wm2": 13.362444763713412
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 90,
+              "rmse_wm2": 78.95347724026733,
+              "mae_wm2": 58.83089329070515,
+              "bias_wm2": 22.90663358171781
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 90,
+              "rmse_wm2": 63.025240299207574,
+              "mae_wm2": 49.66248835457696,
+              "bias_wm2": 12.075768650902642
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 90,
+              "rmse_wm2": 54.72094757646468,
+              "mae_wm2": 40.53352342512873,
+              "bias_wm2": 12.15352372792032
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 90,
+              "rmse_wm2": 59.73667769758711,
+              "mae_wm2": 43.92143536607424,
+              "bias_wm2": 21.640420458714168
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 81,
+              "rmse_wm2": 58.966854541778034,
+              "mae_wm2": 47.29325964494988,
+              "bias_wm2": 21.465740968415766
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 81,
+              "rmse_wm2": 56.086451789932575,
+              "mae_wm2": 42.33450570224244,
+              "bias_wm2": 27.624020249755294
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 81,
+              "rmse_wm2": 59.670991855150284,
+              "mae_wm2": 44.51064724760291,
+              "bias_wm2": 32.9790720961712
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 65.84195540927604,
+          "seed_station_equal_rmse_wm2": {
+            "42": 67.76417619629784,
+            "43": 64.44124234972377,
+            "44": 65.32044768180651
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 90,
+              "rmse_wm2": 77.05518408954975,
+              "mae_wm2": 57.49900037381384,
+              "bias_wm2": 18.565197420782514
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 90,
+              "rmse_wm2": 80.12877514411932,
+              "mae_wm2": 60.385794308450485,
+              "bias_wm2": 14.80631058216095
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 90,
+              "rmse_wm2": 77.92487302028856,
+              "mae_wm2": 57.975447061989044,
+              "bias_wm2": 21.617222319046657
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 90,
+              "rmse_wm2": 66.1851960461377,
+              "mae_wm2": 51.09395799107022,
+              "bias_wm2": 13.298317501280042
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 90,
+              "rmse_wm2": 57.71835166072229,
+              "mae_wm2": 42.35465047823058,
+              "bias_wm2": 15.073296587334738
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 90,
+              "rmse_wm2": 60.93837487013675,
+              "mae_wm2": 44.82341830134392,
+              "bias_wm2": 20.442831715610293
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 81,
+              "rmse_wm2": 60.05214845320606,
+              "mae_wm2": 47.40754791174406,
+              "bias_wm2": 14.990311920642853
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 81,
+              "rmse_wm2": 55.47660024432971,
+              "mae_wm2": 42.358095595130216,
+              "bias_wm2": 22.60590449453872
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 81,
+              "rmse_wm2": 57.098095154994255,
+              "mae_wm2": 44.22798659772049,
+              "bias_wm2": 23.6084334379361
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -1.5019769110945889,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -1.614740909680016
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 0.054643827040514736
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 3.0370791466585416
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -1.8226558334156522
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -5.156205320245462
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 0.5183338895009513
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -3.455172817458653
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -4.157095374440914
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.9219788078106106
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -1.096756310320238,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -1.0852939114280247
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 0.609851545602865
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 2.5728967001560292
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -1.190917689406973
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.446890654047436
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 1.0286042199787744
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -3.1599557469301303
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -2.99740408425761
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.2016971725496362
+            }
+          ]
+        }
+      }
+    },
+    "solar_elevation:0-15deg": {
+      "n_validation_rows": 485,
+      "n_by_station": {
+        "Niushou": 169,
+        "Wangzhai": 154,
+        "Mizhuang": 162
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 36.15639314559669,
+          "seed_station_equal_rmse_wm2": {
+            "42": 36.03066482414955,
+            "43": 36.72335218003892,
+            "44": 35.715162432601595
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 169,
+              "rmse_wm2": 33.13055598043318,
+              "mae_wm2": 24.66333073262985,
+              "bias_wm2": 17.511438881504464
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 169,
+              "rmse_wm2": 34.30925068834712,
+              "mae_wm2": 25.75953287825253,
+              "bias_wm2": 18.65882371343981
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 169,
+              "rmse_wm2": 33.691363551972685,
+              "mae_wm2": 24.880088339917936,
+              "bias_wm2": 18.02045981548506
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 154,
+              "rmse_wm2": 30.494749705439474,
+              "mae_wm2": 20.986345091616954,
+              "bias_wm2": 9.44448005959585
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 154,
+              "rmse_wm2": 31.624647553514446,
+              "mae_wm2": 22.198485813260852,
+              "bias_wm2": 13.48550932602836
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 154,
+              "rmse_wm2": 30.68045901197313,
+              "mae_wm2": 20.184604465042227,
+              "bias_wm2": 9.295142775570804
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 162,
+              "rmse_wm2": 44.466688786575986,
+              "mae_wm2": 31.991563721065535,
+              "bias_wm2": 23.50161079091974
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 162,
+              "rmse_wm2": 44.23615829825519,
+              "mae_wm2": 31.70111836148081,
+              "bias_wm2": 23.435911331509736
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 162,
+              "rmse_wm2": 42.77366473385896,
+              "mae_wm2": 29.894050779074064,
+              "bias_wm2": 20.02999770972464
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 31.725179232710218,
+          "seed_station_equal_rmse_wm2": {
+            "42": 31.37164052231849,
+            "43": 31.20633147757846,
+            "44": 32.597565698233716
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 169,
+              "rmse_wm2": 29.852984985447346,
+              "mae_wm2": 22.087585342199315,
+              "bias_wm2": 14.230328487992816
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 169,
+              "rmse_wm2": 29.344480074218016,
+              "mae_wm2": 21.93193682340475,
+              "bias_wm2": 13.614388771222893
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 169,
+              "rmse_wm2": 31.435221676038402,
+              "mae_wm2": 23.144453306941415,
+              "bias_wm2": 15.878770872179045
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 154,
+              "rmse_wm2": 27.24195854655214,
+              "mae_wm2": 18.37985896430426,
+              "bias_wm2": 4.5270969197637845
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 154,
+              "rmse_wm2": 27.75773265213713,
+              "mae_wm2": 19.10311367798161,
+              "bias_wm2": 9.399560232054103
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 154,
+              "rmse_wm2": 29.06303032402169,
+              "mae_wm2": 18.657776338326467,
+              "bias_wm2": 5.851297562579056
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 162,
+              "rmse_wm2": 37.01997803495598,
+              "mae_wm2": 26.8540410089456,
+              "bias_wm2": 16.36049701291838
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 162,
+              "rmse_wm2": 36.51678170638022,
+              "mae_wm2": 26.360513758006288,
+              "bias_wm2": 16.429485503584146
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 162,
+              "rmse_wm2": 37.29444509464106,
+              "mae_wm2": 25.76305767295905,
+              "bias_wm2": 14.125726922794625
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 35.64566066107352,
+          "seed_station_equal_rmse_wm2": {
+            "42": 35.58254637520081,
+            "43": 36.097804558546805,
+            "44": 35.25663104947295
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 169,
+              "rmse_wm2": 32.51528796371264,
+              "mae_wm2": 24.212837486621545,
+              "bias_wm2": 16.866254165195503
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 169,
+              "rmse_wm2": 33.54275297500842,
+              "mae_wm2": 25.209114604183203,
+              "bias_wm2": 17.77670781622977
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 169,
+              "rmse_wm2": 33.128183029566,
+              "mae_wm2": 24.49541273159829,
+              "bias_wm2": 17.339930048333645
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 154,
+              "rmse_wm2": 30.111113003586507,
+              "mae_wm2": 20.679216012503808,
+              "bias_wm2": 8.921617333620013
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 154,
+              "rmse_wm2": 30.773377920164613,
+              "mae_wm2": 21.54955126775743,
+              "bias_wm2": 12.331403246318752
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 154,
+              "rmse_wm2": 30.19451490658113,
+              "mae_wm2": 19.73260889153976,
+              "bias_wm2": 8.12024300303552
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 162,
+              "rmse_wm2": 44.1212381583033,
+              "mae_wm2": 31.76871894226398,
+              "bias_wm2": 23.234863245652782
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 162,
+              "rmse_wm2": 43.97728278046738,
+              "mae_wm2": 31.543256716641746,
+              "bias_wm2": 23.098346233229947
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 162,
+              "rmse_wm2": 42.44719521227171,
+              "mae_wm2": 29.630535473334202,
+              "bias_wm2": 19.58075934133412
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -4.431213912886465,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -7.446710751620003
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -7.719376591874969
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -5.479219639217895
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -3.277570994985833
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.964770614129105
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -2.256141875934283
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -3.2527911588873337
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -3.866914901377317
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.617428687951442
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -3.9204814283632996,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -7.101260123347316
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -7.460501074087155
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -5.152750117630646
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -2.6623029782652914
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.198272900790403
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.6929613535276005
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -2.869154457034366
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -3.015645268027484
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.131484582559441
+            }
+          ]
+        }
+      }
+    },
+    "solar_elevation:15-30deg": {
+      "n_validation_rows": 600,
+      "n_by_station": {
+        "Niushou": 209,
+        "Wangzhai": 190,
+        "Mizhuang": 201
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 73.80918998357036,
+          "seed_station_equal_rmse_wm2": {
+            "42": 74.71839394609637,
+            "43": 73.86245463673875,
+            "44": 72.84672136787594
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 209,
+              "rmse_wm2": 74.81616008294127,
+              "mae_wm2": 61.390066778830935,
+              "bias_wm2": 37.71020303616683
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 209,
+              "rmse_wm2": 73.9504748804092,
+              "mae_wm2": 61.61590766222283,
+              "bias_wm2": 36.811665441430925
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 209,
+              "rmse_wm2": 78.86758301719638,
+              "mae_wm2": 66.4517710037779,
+              "bias_wm2": 44.024155413705195
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 190,
+              "rmse_wm2": 68.93468528295827,
+              "mae_wm2": 54.29048841877987,
+              "bias_wm2": 29.214996443296734
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 190,
+              "rmse_wm2": 67.9366988999659,
+              "mae_wm2": 52.52220997559397,
+              "bias_wm2": 29.395866399062307
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 190,
+              "rmse_wm2": 64.09993669363189,
+              "mae_wm2": 47.45143496362787,
+              "bias_wm2": 23.107190458398115
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 201,
+              "rmse_wm2": 80.40433647238959,
+              "mae_wm2": 65.85857439515603,
+              "bias_wm2": 44.03507721127562
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 201,
+              "rmse_wm2": 79.70019012984113,
+              "mae_wm2": 64.357385803811,
+              "bias_wm2": 42.09993860377601
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 201,
+              "rmse_wm2": 75.57264439279955,
+              "mae_wm2": 58.73147329406359,
+              "bias_wm2": 36.54848154504501
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 68.15817461807683,
+          "seed_station_equal_rmse_wm2": {
+            "42": 68.85733259310915,
+            "43": 66.42271866942427,
+            "44": 69.19447259169705
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 209,
+              "rmse_wm2": 72.36965276746335,
+              "mae_wm2": 57.608111479636015,
+              "bias_wm2": 32.82082294162951
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 209,
+              "rmse_wm2": 69.07955659937016,
+              "mae_wm2": 54.553559291876105,
+              "bias_wm2": 27.344806025473126
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 209,
+              "rmse_wm2": 76.97517392702571,
+              "mae_wm2": 64.07274129630275,
+              "bias_wm2": 40.9974419466046
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 190,
+              "rmse_wm2": 64.35246267198819,
+              "mae_wm2": 48.93713872307225,
+              "bias_wm2": 23.275041755877044
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 190,
+              "rmse_wm2": 62.47461296514296,
+              "mae_wm2": 45.75922228662591,
+              "bias_wm2": 20.114783753846822
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 190,
+              "rmse_wm2": 61.87750526360298,
+              "mae_wm2": 45.04225636030498,
+              "bias_wm2": 20.092974286330374
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 201,
+              "rmse_wm2": 69.84988233987588,
+              "mae_wm2": 57.1570806811698,
+              "bias_wm2": 33.63043872159512
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 201,
+              "rmse_wm2": 67.71398644375965,
+              "mae_wm2": 54.11751404330505,
+              "bias_wm2": 29.016659634623363
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 201,
+              "rmse_wm2": 68.73073858446244,
+              "mae_wm2": 53.45691436796046,
+              "bias_wm2": 31.27275995235538
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 72.99221524103963,
+          "seed_station_equal_rmse_wm2": {
+            "42": 73.86058008566825,
+            "43": 73.0175963948234,
+            "44": 72.09846924262727
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 209,
+              "rmse_wm2": 73.98878611584543,
+              "mae_wm2": 60.2990322227113,
+              "bias_wm2": 36.37678378392635
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 209,
+              "rmse_wm2": 73.14633108768183,
+              "mae_wm2": 60.66401271044352,
+              "bias_wm2": 35.54963903335863
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 209,
+              "rmse_wm2": 78.1095299168942,
+              "mae_wm2": 65.6917284938137,
+              "bias_wm2": 42.878531189056105
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 190,
+              "rmse_wm2": 68.01946107142606,
+              "mae_wm2": 53.29177522659302,
+              "bias_wm2": 28.049319292369642
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 190,
+              "rmse_wm2": 66.48649509588645,
+              "mae_wm2": 51.027933246211,
+              "bias_wm2": 27.37177062285574
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 190,
+              "rmse_wm2": 63.16136780696507,
+              "mae_wm2": 46.52219832068995,
+              "bias_wm2": 21.392894137533087
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 201,
+              "rmse_wm2": 79.57349306973325,
+              "mae_wm2": 64.83053836300599,
+              "bias_wm2": 43.00271899427347
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 201,
+              "rmse_wm2": 79.41996300090194,
+              "mae_wm2": 64.06524715850603,
+              "bias_wm2": 41.65986523936637
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 201,
+              "rmse_wm2": 75.02451000402256,
+              "mae_wm2": 57.9642193234382,
+              "bias_wm2": 35.67311017193011
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -5.6510153654935396,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -10.554454132513712
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -11.986203686081481
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -6.841905808337103
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -2.4465073154779162
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.870918281039039
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.8924090901706734
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -4.582222610970078
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -5.4620859348229445
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -2.2224314300289123
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -4.8340406229628305,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -9.72361072985737
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -11.705976557142293
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -6.293771419560116
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -1.6191333483820785
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -4.066774488311665
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -1.1343559898684958
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -3.6669983994378725
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -4.011882130743494
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -1.2838625433620905
+            }
+          ]
+        }
+      }
+    },
+    "solar_elevation:30-45deg": {
+      "n_validation_rows": 640,
+      "n_by_station": {
+        "Niushou": 220,
+        "Wangzhai": 202,
+        "Mizhuang": 218
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 86.14178179621872,
+          "seed_station_equal_rmse_wm2": {
+            "42": 86.46065578405653,
+            "43": 86.03634394484719,
+            "44": 85.9283456597525
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 220,
+              "rmse_wm2": 86.07080326926607,
+              "mae_wm2": 65.88918605284258,
+              "bias_wm2": 20.62095880508423
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 220,
+              "rmse_wm2": 85.18416365296025,
+              "mae_wm2": 64.6100564176386,
+              "bias_wm2": 17.30142660140991
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 220,
+              "rmse_wm2": 87.46993587397434,
+              "mae_wm2": 68.86154532866044,
+              "bias_wm2": 25.084515285491943
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 202,
+              "rmse_wm2": 73.45344594830743,
+              "mae_wm2": 60.156571732889304,
+              "bias_wm2": 16.693708452847925
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 202,
+              "rmse_wm2": 75.08530117331459,
+              "mae_wm2": 62.43005880506912,
+              "bias_wm2": 25.269675184004377
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 202,
+              "rmse_wm2": 74.24992978671499,
+              "mae_wm2": 60.011478117196866,
+              "bias_wm2": 18.07290826457562
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 218,
+              "rmse_wm2": 99.85771813459607,
+              "mae_wm2": 64.66288095876712,
+              "bias_wm2": 26.216738954596565
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 218,
+              "rmse_wm2": 97.83956700826674,
+              "mae_wm2": 65.99389105980549,
+              "bias_wm2": 32.68657204864222
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 218,
+              "rmse_wm2": 96.06517131856818,
+              "mae_wm2": 60.57231120888246,
+              "bias_wm2": 24.30934221810157
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 81.16720679271363,
+          "seed_station_equal_rmse_wm2": {
+            "42": 82.02183818399261,
+            "43": 79.44435916876445,
+            "44": 82.03542302538382
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 220,
+              "rmse_wm2": 87.38599808727905,
+              "mae_wm2": 66.39637622833251,
+              "bias_wm2": 18.15938810868697
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 220,
+              "rmse_wm2": 85.5259503639266,
+              "mae_wm2": 62.764390433918344,
+              "bias_wm2": 10.806461759047075
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 220,
+              "rmse_wm2": 87.54502612329358,
+              "mae_wm2": 68.32509530674328,
+              "bias_wm2": 20.925201840834184
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 202,
+              "rmse_wm2": 71.26263133308801,
+              "mae_wm2": 57.01714991106845,
+              "bias_wm2": 12.964300792996246
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 202,
+              "rmse_wm2": 70.80998041558217,
+              "mae_wm2": 56.931260340284595,
+              "bias_wm2": 15.92295506449029
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 202,
+              "rmse_wm2": 73.27017352402952,
+              "mae_wm2": 58.63321698538147,
+              "bias_wm2": 16.814419713350805
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 218,
+              "rmse_wm2": 87.4168851316108,
+              "mae_wm2": 59.586701366879524,
+              "bias_wm2": 14.993230189752142
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 218,
+              "rmse_wm2": 81.99714672678459,
+              "mae_wm2": 58.75167275350028,
+              "bias_wm2": 16.729970573285303
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 218,
+              "rmse_wm2": 85.29106942882841,
+              "mae_wm2": 57.5301041734328,
+              "bias_wm2": 17.847445829198996
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 85.84374522442768,
+          "seed_station_equal_rmse_wm2": {
+            "42": 86.11795814466315,
+            "43": 85.89125772379724,
+            "44": 85.52201980482266
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 220,
+              "rmse_wm2": 85.7741756369123,
+              "mae_wm2": 65.27958865599199,
+              "bias_wm2": 19.82060542540117
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 220,
+              "rmse_wm2": 85.32369603491472,
+              "mae_wm2": 64.29696552103216,
+              "bias_wm2": 17.087599537589334
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 220,
+              "rmse_wm2": 87.20224383270786,
+              "mae_wm2": 68.50770297483965,
+              "bias_wm2": 24.559235234694047
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 202,
+              "rmse_wm2": 72.87251718093235,
+              "mae_wm2": 59.59510770646652,
+              "bias_wm2": 15.983884428987409
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 202,
+              "rmse_wm2": 74.49375224254912,
+              "mae_wm2": 61.81030212534536,
+              "bias_wm2": 24.484071707961583
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 202,
+              "rmse_wm2": 73.17034981071653,
+              "mae_wm2": 59.04749529904658,
+              "bias_wm2": 16.764538807444055
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 218,
+              "rmse_wm2": 99.70718161614478,
+              "mae_wm2": 63.85083217795836,
+              "bias_wm2": 25.04101387513887
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 218,
+              "rmse_wm2": 97.85632489392788,
+              "mae_wm2": 65.80570129954486,
+              "bias_wm2": 32.16234938595273
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 218,
+              "rmse_wm2": 96.19346577104359,
+              "mae_wm2": 60.10507928340807,
+              "bias_wm2": 23.694665523844026
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -4.974575003505103,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -12.440833002985272
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -15.842420281482148
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -10.774101889739768
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 1.3151948180129835
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 0.34178671096634616
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 0.07509024931924557
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -2.1908146152194234
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -4.275320757732416
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.9797562626854699
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": -4.676538431714046,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": -12.290296484533982
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": -15.859178167143284
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": -10.902396342215184
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": 1.6118224503667449
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": 0.202254329011879
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": 0.34278229058571696
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": -1.609885847844339
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": -3.6837718269669466
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": 0.09982371331298623
+            }
+          ]
+        }
+      }
+    },
+    "solar_elevation:45-90deg": {
+      "n_validation_rows": 706,
+      "n_by_station": {
+        "Niushou": 249,
+        "Wangzhai": 231,
+        "Mizhuang": 226
+      },
+      "arms": {
+        "A": {
+          "mean_station_equal_seed_equal_rmse_wm2": 83.07872297756546,
+          "seed_station_equal_rmse_wm2": {
+            "42": 84.60204251669428,
+            "43": 82.79133079345821,
+            "44": 81.84279562254389
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 249,
+              "rmse_wm2": 88.68918432955938,
+              "mae_wm2": 69.37065237880232,
+              "bias_wm2": 0.690937578438755
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 249,
+              "rmse_wm2": 89.4025258368695,
+              "mae_wm2": 69.26680792383401,
+              "bias_wm2": 1.1012488675404744
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 249,
+              "rmse_wm2": 90.53573920209864,
+              "mae_wm2": 71.65732674043342,
+              "bias_wm2": 8.322488057086746
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 231,
+              "rmse_wm2": 79.97836694350224,
+              "mae_wm2": 60.099600011652164,
+              "bias_wm2": 3.4629057681921758
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 231,
+              "rmse_wm2": 76.53323781695924,
+              "mae_wm2": 57.50284710178128,
+              "bias_wm2": 11.066188515006722
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 231,
+              "rmse_wm2": 75.98817530990664,
+              "mae_wm2": 55.70024622467173,
+              "bias_wm2": 8.569671944622353
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 226,
+              "rmse_wm2": 85.13857627702124,
+              "mae_wm2": 61.48224287117477,
+              "bias_wm2": 16.973350204197708
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 226,
+              "rmse_wm2": 82.43822872654587,
+              "mae_wm2": 58.33136713821276,
+              "bias_wm2": 23.690080980284023
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 226,
+              "rmse_wm2": 79.0044723556264,
+              "mae_wm2": 56.11836235924105,
+              "bias_wm2": 15.690526202716658
+            }
+          ]
+        },
+        "AC": {
+          "mean_station_equal_seed_equal_rmse_wm2": 84.38647689734472,
+          "seed_station_equal_rmse_wm2": {
+            "42": 85.82766001323476,
+            "43": 83.53542604417797,
+            "44": 83.79634463462146
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 249,
+              "rmse_wm2": 86.16759168268258,
+              "mae_wm2": 66.78035071192976,
+              "bias_wm2": -3.1745434803177552
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 249,
+              "rmse_wm2": 85.74104505451346,
+              "mae_wm2": 67.06331836746399,
+              "bias_wm2": -3.0914320428687407
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 249,
+              "rmse_wm2": 89.70858875192681,
+              "mae_wm2": 70.82234604004397,
+              "bias_wm2": 3.7583274534907205
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 231,
+              "rmse_wm2": 80.54631887019715,
+              "mae_wm2": 60.82817010755663,
+              "bias_wm2": -4.138871453025124
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 231,
+              "rmse_wm2": 78.77567428846582,
+              "mae_wm2": 59.69936316353934,
+              "bias_wm2": 0.5753772785137226
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 231,
+              "rmse_wm2": 75.88852428861271,
+              "mae_wm2": 56.40192623055859,
+              "bias_wm2": 3.668112998400932
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 226,
+              "rmse_wm2": 90.76906948682455,
+              "mae_wm2": 66.20230118574294,
+              "bias_wm2": 8.089420563351792
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 226,
+              "rmse_wm2": 86.08955878955462,
+              "mae_wm2": 61.14693603684417,
+              "bias_wm2": 10.480574439057207
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 226,
+              "rmse_wm2": 85.79192086332489,
+              "mae_wm2": 61.450520371968764,
+              "bias_wm2": 7.9241647973524785
+            }
+          ]
+        },
+        "AP": {
+          "mean_station_equal_seed_equal_rmse_wm2": 82.67088452249153,
+          "seed_station_equal_rmse_wm2": {
+            "42": 84.05198411966435,
+            "43": 82.26507822203114,
+            "44": 81.69559122577911
+          },
+          "station_seed_cells": [
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "n": 249,
+              "rmse_wm2": 87.66972411943941,
+              "mae_wm2": 68.349936810842,
+              "bias_wm2": 0.25428920577328845
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "n": 249,
+              "rmse_wm2": 89.0714233561357,
+              "mae_wm2": 68.930178875904,
+              "bias_wm2": 1.1775462445485065
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "n": 249,
+              "rmse_wm2": 90.00010468477349,
+              "mae_wm2": 71.01516581156167,
+              "bias_wm2": 7.449967640949541
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "n": 231,
+              "rmse_wm2": 79.59048777733007,
+              "mae_wm2": 59.58245922270275,
+              "bias_wm2": 2.656155012386702
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "n": 231,
+              "rmse_wm2": 75.84232129599296,
+              "mae_wm2": 56.9116059010163,
+              "bias_wm2": 8.646513538443164
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "n": 231,
+              "rmse_wm2": 75.73331861855957,
+              "mae_wm2": 55.280201519722546,
+              "bias_wm2": 7.014662589861717
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "n": 226,
+              "rmse_wm2": 84.89574046222359,
+              "mae_wm2": 61.386658271857065,
+              "bias_wm2": 16.499684342240865
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "n": 226,
+              "rmse_wm2": 81.88149001396472,
+              "mae_wm2": 57.42381278181498,
+              "bias_wm2": 21.846164281389356
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "n": 226,
+              "rmse_wm2": 79.3533503740043,
+              "mae_wm2": 56.546196946000634,
+              "bias_wm2": 15.171479166081522
+            }
+          ]
+        }
+      },
+      "paired_deltas": {
+        "AC_minus_A": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 1.3077539197792716,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 5.630493209803305
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 3.651330063008743
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 6.787448507698485
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -2.5215926468767975
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -3.661480782356037
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -0.8271504501718283
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 0.5679519266949171
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 2.242436471506579
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": -0.09965102129392278
+            }
+          ]
+        },
+        "AC_minus_AP": {
+          "mean_station_equal_seed_equal_delta_rmse_wm2": 1.7155923748532018,
+          "paired_station_seed_cells": [
+            {
+              "station": "Mizhuang",
+              "seed": 42,
+              "delta_rmse_wm2": 5.873329024600963
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 43,
+              "delta_rmse_wm2": 4.208068775589894
+            },
+            {
+              "station": "Mizhuang",
+              "seed": 44,
+              "delta_rmse_wm2": 6.438570489320597
+            },
+            {
+              "station": "Niushou",
+              "seed": 42,
+              "delta_rmse_wm2": -1.502132436756824
+            },
+            {
+              "station": "Niushou",
+              "seed": 43,
+              "delta_rmse_wm2": -3.3303783016222326
+            },
+            {
+              "station": "Niushou",
+              "seed": 44,
+              "delta_rmse_wm2": -0.29151593284667854
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 42,
+              "delta_rmse_wm2": 0.9558310928670863
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 43,
+              "delta_rmse_wm2": 2.9333529924728623
+            },
+            {
+              "station": "Wangzhai",
+              "seed": 44,
+              "delta_rmse_wm2": 0.15520567005314945
+            }
+          ]
+        }
+      }
+    }
+  }
+}

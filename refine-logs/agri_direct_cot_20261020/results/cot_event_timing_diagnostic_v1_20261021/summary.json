@@ -1,0 +1,666 @@
+{
+  "state": "COMPLETE_COT_EVENT_TIMING_DIAGNOSTIC",
+  "scope": "seen V, sparse CPP-supported offline explanation; no GHI scoring",
+  "complete_center_windows": 354,
+  "fixed_daily_windows": 12,
+  "fixed_daily_windows_by_station": {
+    "sili": 6,
+    "zhujia": 6
+  },
+  "reference_disagreement": {
+    "unique_valid_center_keys": 1340,
+    "thick_class_disagreements": 104,
+    "CPP_thick_R_not": 28,
+    "R_thick_CPP_not": 76
+  },
+  "run_coverage": [
+    {
+      "station": "sili",
+      "reference": "CPP",
+      "single_frame_runs": 60,
+      "two_frame_events": 4
+    },
+    {
+      "station": "sili",
+      "reference": "observed_R",
+      "single_frame_runs": 81,
+      "two_frame_events": 4
+    },
+    {
+      "station": "zhujia",
+      "reference": "CPP",
+      "single_frame_runs": 86,
+      "two_frame_events": 3
+    },
+    {
+      "station": "zhujia",
+      "reference": "observed_R",
+      "single_frame_runs": 99,
+      "two_frame_events": 2
+    }
+  ],
+  "by_reference_station": {
+    "CPP": {
+      "sili": {
+        "unique_events": 4,
+        "evaluable_events": 3,
+        "censored_reference": 1,
+        "no_complete_window": 0,
+        "arms": {
+          "cot_last": {
+            "events": 3,
+            "detected": 2,
+            "missed": 1,
+            "predicted_left_censored": 2,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 2.168679611873813,
+                "mae": 11.449581202856885,
+                "median": 5.579381465911865
+              },
+              "peak_time_error_min": {
+                "n": 0,
+                "mean": null,
+                "mae": null,
+                "median": null
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 1.14626506731535,
+                "mae": 11.009036101556072,
+                "median": 4.931631677318364
+              },
+              "windows": 6,
+              "tp": 15,
+              "fp": 49,
+              "fn": 0,
+              "pod": 1.0,
+              "far": 0.765625,
+              "csi": 0.234375
+            }
+          },
+          "cot_simvp_r": {
+            "events": 3,
+            "detected": 1,
+            "missed": 2,
+            "predicted_left_censored": 1,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 0.6374432384036481,
+                "mae": 12.559196168091148,
+                "median": 5.733356475830078
+              },
+              "peak_time_error_min": {
+                "n": 5,
+                "mean": -51.0,
+                "mae": 51.0,
+                "median": -15.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -0.9731652502280971,
+                "mae": 12.27653847495094,
+                "median": 4.742192100267857
+              },
+              "windows": 6,
+              "tp": 1,
+              "fp": 23,
+              "fn": 14,
+              "pod": 0.06666666666666667,
+              "far": 0.9583333333333334,
+              "csi": 0.02631578947368421
+            }
+          },
+          "cot_p_c": {
+            "events": 3,
+            "detected": 2,
+            "missed": 1,
+            "predicted_left_censored": 2,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -8.91825501124064,
+                "mae": 15.269430955251059,
+                "median": -5.604236602783203
+              },
+              "peak_time_error_min": {
+                "n": 2,
+                "mean": -15.0,
+                "mae": 15.0,
+                "median": -15.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -10.275595347086588,
+                "mae": 16.275803248087566,
+                "median": -7.411850929260254
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 16,
+              "fn": 15,
+              "pod": 0.0,
+              "far": 1.0,
+              "csi": 0.0
+            }
+          },
+          "cot_p_xc": {
+            "events": 3,
+            "detected": 2,
+            "missed": 1,
+            "predicted_left_censored": 2,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -3.255134329199791,
+                "mae": 7.426899845401446,
+                "median": -0.3538352996110916
+              },
+              "peak_time_error_min": {
+                "n": 4,
+                "mean": -15.0,
+                "mae": 15.0,
+                "median": -15.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -4.284474596381187,
+                "mae": 8.425363635023436,
+                "median": -1.4676237106323242
+              },
+              "windows": 6,
+              "tp": 10,
+              "fp": 17,
+              "fn": 5,
+              "pod": 0.6666666666666666,
+              "far": 0.6296296296296297,
+              "csi": 0.3125
+            }
+          }
+        }
+      },
+      "zhujia": {
+        "unique_events": 3,
+        "evaluable_events": 0,
+        "censored_reference": 2,
+        "no_complete_window": 1,
+        "arms": {
+          "cot_last": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -0.3980412135521571,
+                "mae": 1.6987283208097022,
+                "median": 0.0016178935766220093
+              },
+              "peak_time_error_min": {
+                "n": 0,
+                "mean": null,
+                "mae": null,
+                "median": null
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -0.49582576177393395,
+                "mae": 2.335912869156649,
+                "median": 0.5316356592811644
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          },
+          "cot_simvp_r": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 2.458804548252374,
+                "mae": 3.3574005171346166,
+                "median": 0.08140582498162985
+              },
+              "peak_time_error_min": {
+                "n": 4,
+                "mean": -78.75,
+                "mae": 116.25,
+                "median": -105.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 1.7472393736243248,
+                "mae": 3.634740057090918,
+                "median": 0.0964442566037178
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          },
+          "cot_p_c": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 6.953606426715851,
+                "mae": 6.953606426715851,
+                "median": 8.545811176300049
+              },
+              "peak_time_error_min": {
+                "n": 4,
+                "mean": -75.0,
+                "mae": 142.5,
+                "median": -112.5
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 6.508118788401286,
+                "mae": 6.685608704884847,
+                "median": 7.556107997894287
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          },
+          "cot_p_xc": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 5.356226107726495,
+                "mae": 5.360379699617624,
+                "median": 2.0736680291593075
+              },
+              "peak_time_error_min": {
+                "n": 4,
+                "mean": -37.5,
+                "mae": 172.5,
+                "median": -52.5
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 4.955199019362529,
+                "mae": 5.076958068956931,
+                "median": 2.216730810701847
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          }
+        }
+      }
+    },
+    "observed_R": {
+      "sili": {
+        "unique_events": 4,
+        "evaluable_events": 1,
+        "censored_reference": 3,
+        "no_complete_window": 0,
+        "arms": {
+          "cot_last": {
+            "events": 1,
+            "detected": 0,
+            "missed": 1,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -1.6266131955198944,
+                "mae": 5.66539022900785,
+                "median": 1.8404302597045898
+              },
+              "peak_time_error_min": {
+                "n": 0,
+                "mean": null,
+                "mae": null,
+                "median": null
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -1.4317363107887406,
+                "mae": 5.801995595761885,
+                "median": 1.6754374504089355
+              },
+              "windows": 6,
+              "tp": 21,
+              "fp": 43,
+              "fn": 0,
+              "pod": 1.0,
+              "far": 0.671875,
+              "csi": 0.328125
+            }
+          },
+          "cot_simvp_r": {
+            "events": 1,
+            "detected": 0,
+            "missed": 1,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -3.157849886920303,
+                "mae": 7.2624542900982005,
+                "median": 0.8849336537532508
+              },
+              "peak_time_error_min": {
+                "n": 6,
+                "mean": -25.0,
+                "mae": 45.0,
+                "median": 0.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -3.551166628332188,
+                "mae": 7.16582180513069,
+                "median": 0.07070703944191337
+              },
+              "windows": 6,
+              "tp": 5,
+              "fp": 19,
+              "fn": 16,
+              "pod": 0.23809523809523808,
+              "far": 0.7916666666666666,
+              "csi": 0.125
+            }
+          },
+          "cot_p_c": {
+            "events": 1,
+            "detected": 0,
+            "missed": 1,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -12.713548342386881,
+                "mae": 16.566694577534992,
+                "median": -11.801956176757812
+              },
+              "peak_time_error_min": {
+                "n": 3,
+                "mean": -15.0,
+                "mae": 15.0,
+                "median": 0.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -12.853596528371176,
+                "mae": 16.3297225634257,
+                "median": -11.93708610534668
+              },
+              "windows": 6,
+              "tp": 2,
+              "fp": 14,
+              "fn": 19,
+              "pod": 0.09523809523809523,
+              "far": 0.875,
+              "csi": 0.05714285714285714
+            }
+          },
+          "cot_p_xc": {
+            "events": 1,
+            "detected": 0,
+            "missed": 1,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -7.050427136321862,
+                "mae": 8.724163038035234,
+                "median": -5.29753165692091
+              },
+              "peak_time_error_min": {
+                "n": 5,
+                "mean": 39.0,
+                "mae": 39.0,
+                "median": 0.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -6.862475974485278,
+                "mae": 8.532298780356845,
+                "median": -4.9233282301574945
+              },
+              "windows": 6,
+              "tp": 14,
+              "fp": 13,
+              "fn": 7,
+              "pod": 0.6666666666666666,
+              "far": 0.48148148148148145,
+              "csi": 0.4117647058823529
+            }
+          }
+        }
+      },
+      "zhujia": {
+        "unique_events": 2,
+        "evaluable_events": 0,
+        "censored_reference": 2,
+        "no_complete_window": 0,
+        "arms": {
+          "cot_last": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": -0.3747652837385734,
+                "mae": 1.2332079280167818,
+                "median": 0.131067399866879
+              },
+              "peak_time_error_min": {
+                "n": 0,
+                "mean": null,
+                "mae": null,
+                "median": null
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": -0.368148105374227,
+                "mae": 1.7139483263405662,
+                "median": 0.07067142194136977
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          },
+          "cot_simvp_r": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 2.482080482877791,
+                "mae": 3.059330489796897,
+                "median": 0.010378430597484112
+              },
+              "peak_time_error_min": {
+                "n": 6,
+                "mean": -45.0,
+                "mae": 80.0,
+                "median": -45.0
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 1.8749170374746125,
+                "mae": 3.2598395003005862,
+                "median": 0.013430259190499783
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          },
+          "cot_p_c": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 6.976882417996724,
+                "mae": 6.976882417996724,
+                "median": 9.14974308013916
+              },
+              "peak_time_error_min": {
+                "n": 6,
+                "mean": -50.0,
+                "mae": 100.0,
+                "median": -52.5
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 6.635796546936035,
+                "mae": 6.635796546936035,
+                "median": 8.685250282287598
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          },
+          "cot_p_xc": {
+            "events": 0,
+            "detected": 0,
+            "missed": 0,
+            "predicted_left_censored": 0,
+            "arrival_n": 0,
+            "arrival_mae_min": null,
+            "arrival_bias_min": null,
+            "daily_window": {
+              "peak_error": {
+                "n": 6,
+                "mean": 5.379502062996228,
+                "mae": 5.523657913009326,
+                "median": 2.3345929570496082
+              },
+              "peak_time_error_min": {
+                "n": 6,
+                "mean": 5.0,
+                "mae": 120.0,
+                "median": 52.5
+              },
+              "patch3_peak_error": {
+                "n": 6,
+                "mean": 5.0828768375019235,
+                "mae": 5.385548667361339,
+                "median": 2.5575388222932816
+              },
+              "windows": 6,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "pod": null,
+              "far": null,
+              "csi": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "training_started": false,
+  "future_observations_used_by_deployable_inference": false,
+  "source": {
+    "script_sha256": "c2ea83c614b48385c72ad5affb460579cc609bacf955b64418a4c2706aecc7df",
+    "plan_sha256": "212545934f38e7535dc040db7fc4f38039ddf2688b9f7ef285b3af50e0d76681",
+    "previous_summary_sha256": "46892d3345a98dc4798aca5207301ea5a4bf34089acde5142bfc375b4f40eaed",
+    "forecast_manifest_sha256": "cfc3e2b965bfcaec7e1c8c6f818107af1581a31903f3dfbb549b24985f4fc793"
+  }
+}

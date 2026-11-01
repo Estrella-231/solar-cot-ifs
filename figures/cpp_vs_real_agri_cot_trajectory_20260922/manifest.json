@@ -1,0 +1,104 @@
+{
+  "state": "COMPLETE_VALIDATION_CPP_VS_REAL_AGRI_COT_TRAJECTORY_VISUAL",
+  "test_used": false,
+  "selection": "same temporal-median daytime validation trajectory as forecast-COT figure; no COT/GHI/error selection",
+  "candidate_count": 4180,
+  "station": "Zhujia",
+  "station_index": 1,
+  "sequence": 2082,
+  "cpp_pack_rows": [
+    16761,
+    16765,
+    16769,
+    16773
+  ],
+  "leads_minutes": [
+    60,
+    120,
+    180,
+    240
+  ],
+  "init_time_bjt": "2025-08-02T06:00:00+08:00",
+  "target_time_bjt": [
+    "2025-08-02T07:00:00+08:00",
+    "2025-08-02T08:00:00+08:00",
+    "2025-08-02T09:00:00+08:00",
+    "2025-08-02T10:00:00+08:00"
+  ],
+  "frame_metrics": [
+    {
+      "lead_minutes": 60,
+      "valid_pixels": 256,
+      "cpp_mean": 1.39631381171057,
+      "cpp_max": 6.61187469959259,
+      "retrieved_mean": 0.3072298765182495,
+      "retrieved_max": 2.6704869270324707,
+      "cot_mae": 1.1535595946552348,
+      "cot_rmse": 2.0156177801208313,
+      "cot_bias": -1.0890839420826524
+    },
+    {
+      "lead_minutes": 120,
+      "valid_pixels": 256,
+      "cpp_mean": 0.4422019853450365,
+      "cpp_max": 8.04295539855957,
+      "retrieved_mean": 0.6337560415267944,
+      "retrieved_max": 7.331972599029541,
+      "cot_mae": 0.25025287165362897,
+      "cot_rmse": 0.5740163861884127,
+      "cot_bias": 0.1915541120065427
+    },
+    {
+      "lead_minutes": 180,
+      "valid_pixels": 256,
+      "cpp_mean": 0.0,
+      "cpp_max": 0.0,
+      "retrieved_mean": 0.030865611508488655,
+      "retrieved_max": 0.08247459679841995,
+      "cot_mae": 0.030865611115586944,
+      "cot_rmse": 0.03151403234124789,
+      "cot_bias": 0.030865611115586944
+    },
+    {
+      "lead_minutes": 240,
+      "valid_pixels": 256,
+      "cpp_mean": 0.0,
+      "cpp_max": 0.0,
+      "retrieved_mean": 0.03441193699836731,
+      "retrieved_max": 0.07698562741279602,
+      "cot_mae": 0.03441193873732118,
+      "cot_rmse": 0.03500074559479853,
+      "cot_bias": 0.03441193873732118
+    }
+  ],
+  "rgb_contract": {
+    "red": "C02",
+    "green": "C03",
+    "blue": "C01",
+    "gamma": 2.2,
+    "shared_percentile_stretch": [
+      1,
+      99
+    ],
+    "low": [
+      0.044445402920246124,
+      0.06463812291622162,
+      0.06150967627763748
+    ],
+    "high": [
+      0.15422554314136505,
+      0.27509745955467224,
+      0.15820720791816711
+    ]
+  },
+  "cot_contract": "physical CPP COT reference versus expm1(frozen R(observed target AGRI)); CPP is not independent physical truth",
+  "difference_contract": "R(observed target AGRI) minus CPP COT; symmetric display range spans selected valid values without clipping",
+  "inputs": {
+    "r_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+    "cpp_rows_csv": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69"
+  },
+  "output_files": {
+    "cpp_vs_real_agri_cot_trajectory.png": "05b0d616577ba31b9674cbfd818a8174b66e242b429239da52e196b03bc93ba4",
+    "cpp_vs_real_agri_cot_trajectory.pdf": "e8454d288b969912e5a1cc04a36f6377723533a720671b281cb9d6de30935c81"
+  }
+}

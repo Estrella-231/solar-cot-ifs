@@ -1,0 +1,11 @@
+实时资源快照 — 湖南DyDiff完整冻结验证准备
+
+核验时间：2026-10-30 19:50:44 CST（zjnu-hpc）。
+
+slfu未结束PBS任务：0（`qstat -u slfu`为空）。湖南DyDiff训练216594已完成PASS/150轮/66300步。`last.pt`存在，1,053,155,194字节，mtime 2026-10-30 19:22:22 +0800；`training_complete.json`存在，同mtime，test_payloads_read=0。
+
+资源建议：node21 GPU0–3，共4张A100-SXM4-40GB。PBS节点状态free、jobs字段为空、8张卡物理查询均为0MiB/0%。可以为冻结完整验证申请使用。
+
+其他节点：node22为混合占用A800节点；PBS上216223占GPU2、216571占5卡、216840占GPU0；物理显存有多个高占用GPU，不建议。node23上PBS任务216823占GPU0，物理GPU0为1808MiB/100%；GPU1–7采样为0MiB/0%，但该节点仍有作业占用，因此优先使用完全空闲的node21。
+
+本次只读查询PBS用户队列/节点/分配和三节点nvidia-smi，stat权重并读取训练完成JSON。未提交/停止作业，未读取test。

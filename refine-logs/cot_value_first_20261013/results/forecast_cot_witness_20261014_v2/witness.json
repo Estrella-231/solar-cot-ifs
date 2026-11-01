@@ -1,0 +1,60 @@
+{
+  "state": "PASS_ONE_WINDOW_SIMVP_TO_MONTHLY_R_CPP_REPLAY_WITNESS",
+  "split": "val_only",
+  "test_payloads_read": 0,
+  "selection": "first validation window with CPP-supervised support at all 16 leads for both stations; support-only, no forecast errors inspected",
+  "manifest_sha256": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2",
+  "simvp_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+  "simvp_checkpoint_sha256": "f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4",
+  "r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "r_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+  "r_source_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+  "simvp_model_source_sha256": "9273447d357bad92bcf3cd976b65fb4c440187da456fb56d5f36ded349c681eb",
+  "sequence_index": 1660,
+  "sequence_id": "hunan_202506142030",
+  "history_bjt_start": "2025-06-15 04:30:00",
+  "history_end_utc": "2025-06-14 22:15:00",
+  "future_agri_loaded_for": "R-to-CPP offline reference only",
+  "future_agri_passed_to_simvp": false,
+  "future_cpp_passed_to_simvp": false,
+  "input_shapes": {
+    "history": [
+      1,
+      8,
+      13,
+      256,
+      256
+    ],
+    "geometry24": [
+      1,
+      24,
+      3,
+      256,
+      256
+    ]
+  },
+  "forecast_shape": [
+    1,
+    16,
+    13,
+    256,
+    256
+  ],
+  "station_order": [
+    "sili",
+    "zhujia"
+  ],
+  "lead_count": 16,
+  "cpp_common_support_pixels": 7990,
+  "finite": {
+    "simvp_normalized": true,
+    "forecast_physical_agri": true,
+    "forecast_r_log1p_cot": true,
+    "target_r_log1p_cot": true
+  },
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "outputs": [
+    "witness_predictions.npz",
+    "lead_keys.json"
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "state": "PASS_MANIFEST_ALIGNMENT_TEST_BUFFER_CLOSED",
+  "bank_manifest": "solar-cot-ifs\\refine-logs\\hubei_cot_transport_source_20261022\\cot_bank_correctutc_attempt3_rows.csv",
+  "bank_manifest_sha256": "efca7d8dfda0e6055af804257df703cf60e1e5930f71b8d077bc2fbecfde86bb",
+  "agri_manifest": "solar-cot-ifs\\refine-logs\\hubei_cot_transport_source_20261022\\agri_paths_trainval_staged.csv",
+  "agri_manifest_sha256": "8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183",
+  "cpp_manifest": "solar-cot-ifs\\refine-logs\\hubei_cloud_probability_20261020\\cpp_attempt2_local\\rows_correct_utc.csv",
+  "cpp_manifest_sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+  "bank_rows": 22061,
+  "agri_rows": 22061,
+  "bank_agri_key_split_mismatch_count": 0,
+  "cpp_timestamp_keys_missing_from_bank": 0,
+  "cpp_bank_split_mismatch_count": 0,
+  "cpp_counts": {
+    "train_rows": 3178,
+    "train_full_support": 3156,
+    "train_zero_support": 22,
+    "val_rows": 301,
+    "val_full_support": 301
+  },
+  "split_overlap": 0,
+  "by_split": {
+    "train": {
+      "cot_bank_input_frames": 20206,
+      "cpp_full_support_targets": 3156,
+      "initializations_with_8_contiguous_history_frames": 17980,
+      "scorable_init_lead_pairs": 47932,
+      "unique_init_dates_with_scored_pairs": 153,
+      "unique_target_dates_with_scored_pairs": 153,
+      "pairs_by_lead_min": {
+        "15": {
+          "init_target_pairs": 3020,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "30": {
+          "init_target_pairs": 3016,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "45": {
+          "init_target_pairs": 3019,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "60": {
+          "init_target_pairs": 3019,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "75": {
+          "init_target_pairs": 3017,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "90": {
+          "init_target_pairs": 3023,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "105": {
+          "init_target_pairs": 3023,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "120": {
+          "init_target_pairs": 3023,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "135": {
+          "init_target_pairs": 3021,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "150": {
+          "init_target_pairs": 3023,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "165": {
+          "init_target_pairs": 3019,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "180": {
+          "init_target_pairs": 3005,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "195": {
+          "init_target_pairs": 2976,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "210": {
+          "init_target_pairs": 2946,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "225": {
+          "init_target_pairs": 2913,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        },
+        "240": {
+          "init_target_pairs": 2869,
+          "unique_init_dates": 153,
+          "unique_target_dates": 153
+        }
+      }
+    },
+    "val": {
+      "cot_bank_input_frames": 1855,
+      "cpp_full_support_targets": 301,
+      "initializations_with_8_contiguous_history_frames": 1661,
+      "scorable_init_lead_pairs": 4692,
+      "unique_init_dates_with_scored_pairs": 16,
+      "unique_target_dates_with_scored_pairs": 16,
+      "pairs_by_lead_min": {
+        "15": {
+          "init_target_pairs": 298,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "30": {
+          "init_target_pairs": 298,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "45": {
+          "init_target_pairs": 298,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "60": {
+          "init_target_pairs": 297,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "75": {
+          "init_target_pairs": 297,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "90": {
+          "init_target_pairs": 297,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "105": {
+          "init_target_pairs": 297,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "120": {
+          "init_target_pairs": 297,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "135": {
+          "init_target_pairs": 297,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "150": {
+          "init_target_pairs": 295,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "165": {
+          "init_target_pairs": 293,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "180": {
+          "init_target_pairs": 291,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "195": {
+          "init_target_pairs": 289,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "210": {
+          "init_target_pairs": 287,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "225": {
+          "init_target_pairs": 284,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        },
+        "240": {
+          "init_target_pairs": 277,
+          "unique_init_dates": 16,
+          "unique_target_dates": 16
+        }
+      }
+    }
+  },
+  "scope": "Exact timestamp/split support only; CPP is the existing station-local 16x16 retrieval reference. The R bank is frozen-model output on actual AGRI. Train R outputs are in-domain, not OOF. No payload arrays, labels, test, or buffer were read.",
+  "training_decision": "NOT_AUTHORIZED_BY_THIS_AUDIT; validation support and scientific gate still require review."
+}

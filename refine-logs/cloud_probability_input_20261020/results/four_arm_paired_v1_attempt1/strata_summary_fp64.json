@@ -1,0 +1,2195 @@
+{
+  "state": "COMPLETE_VALIDATION_CPP_CLP_STRATA",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "evaluation_scope": "same-time station GHI validation; exploratory, not independent test",
+  "validation_rows": 4226,
+  "CPP_COT_CLP_matched_rows": 1265,
+  "CPP_COT_missing_or_invalid_rows": 2961,
+  "CPP_reference_semantics": "co-produced retrieval reference; stratification only, not independent truth",
+  "CPP_COT_definition": "physical CPP reference COT at station-centre pixel [8,8] of the station 16x16 crop; no patch mean",
+  "CLP_semantics": "CPP co-produced class 0 clear, 1 water cloud, 2 ice cloud; centre pixel, not independent truth or official CLM",
+  "bins": {
+    "CPP_nearzero_0_0.1": [
+      0.0,
+      0.1
+    ],
+    "CPP_thin_0.1_5": [
+      0.1,
+      5.0
+    ],
+    "CPP_moderate_5_30": [
+      5.0,
+      30.0
+    ],
+    "CPP_thick_30_100": [
+      30.0,
+      100.0000001
+    ],
+    "CPP_over_100": [
+      100.0000001,
+      null
+    ]
+  },
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 20261020,
+    "unit": "shared two-day BJT validation blocks across the full validation block list; replicates with zero stratum support for any station/seed are rejected",
+    "interval": "pointwise percentile 95%, no multiplicity adjustment"
+  },
+  "test_payloads_read": 0,
+  "sources": {
+    "CPP_reference_archive": "refine-logs\\cot_value_first_20261013\\validation_predictions_monthly_R_seed42.npz",
+    "CLP_key_archive": "refine-logs\\cot_value_first_20261013\\clp_reference_monthly_R_seed42.npz"
+  },
+  "groups": [
+    {
+      "group": "all_validation",
+      "n": 4226,
+      "station_n": {
+        "sili": 1999,
+        "zhujia": 2227
+      },
+      "bjt_dates": 51,
+      "common_two_day_blocks": 22,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2024-09-04"
+        ],
+        [
+          "2024-10-25",
+          "2024-10-26"
+        ],
+        [
+          "2024-11-16",
+          "2024-11-17"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-11-05",
+          "2025-11-06"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-01-03",
+          "2026-01-04"
+        ],
+        [
+          "2026-02-20",
+          "2026-02-21"
+        ],
+        [
+          "2026-03-01",
+          "2026-03-02"
+        ],
+        [
+          "2026-04-20",
+          "2026-04-21"
+        ],
+        [
+          "2026-05-05",
+          "2026-05-06"
+        ],
+        [
+          "2026-06-24",
+          "2026-06-25"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 89.48542709546139,
+        "M10": 88.26364668531124,
+        "M01": 88.18634679967101,
+        "M11": 87.7950122742789
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 87.250475489101,
+          "M10": 84.78831738887585,
+          "M01": 86.18430952269138,
+          "M11": 84.86279421325804
+        },
+        "zhujia": {
+          "M00": 91.7203787018218,
+          "M10": 91.73897598174663,
+          "M01": 90.18838407665066,
+          "M11": 90.72723033529975
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 89.44822826080232,
+          "M10": 88.10659926929746,
+          "M01": 88.42583371480528,
+          "M11": 87.70620949492357
+        },
+        "43": {
+          "M00": 89.9678822359665,
+          "M10": 88.82527839568866,
+          "M01": 88.86047605908857,
+          "M11": 88.51136505611066
+        },
+        "44": {
+          "M00": 89.04017078961539,
+          "M10": 87.85906239094763,
+          "M01": 87.27273062511922,
+          "M11": 87.16746227180244
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": -0.4686344110323404,
+          "relative_reduction_percent": 0.530948390001577,
+          "date_block_CI_delta_Wm2": [
+            -1.0065261306885809,
+            0.04671302326828376
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.04989010946831683,
+            1.2172124589781719
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.4003897743738918,
+            "43": -0.3139133395779936,
+            "44": -0.6916001191451926
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.07447682438218806,
+            "zhujia": -1.011745646446883
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": -0.3913345253921108,
+          "relative_reduction_percent": 0.4437586311190415,
+          "date_block_CI_delta_Wm2": [
+            -2.2725983888146284,
+            1.2093355527902252
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.276147551226262,
+            2.772648753822043
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.7196242198817089,
+            "43": -0.34911100297790654,
+            "44": -0.10526835331678797
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.3215153094333374,
+            "zhujia": 0.5388462586490874
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": -1.2217804101501457,
+          "relative_reduction_percent": 1.3653400892267888,
+          "date_block_CI_delta_Wm2": [
+            -3.644554532588265,
+            0.7252714826158744
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.738238388652614,
+            4.331112669304069
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.3416289915048623,
+            "43": -1.1426038402778431,
+            "44": -1.1811083986677602
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -2.462158100225153,
+            "zhujia": 0.018597279924833288
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -1.2990802957903753,
+          "relative_reduction_percent": 1.4517227418544258,
+          "date_block_CI_delta_Wm2": [
+            -2.372885187046195,
+            -0.4230931742018032
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            0.45635737605943383,
+            2.755754759809231
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.0223945459970452,
+            "43": -1.1074061768779302,
+            "44": -1.7674401644961648
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.0661659664096277,
+            "zhujia": -1.5319946251711372
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": -1.690414821182486,
+          "relative_reduction_percent": 1.8890392280065702,
+          "date_block_CI_delta_Wm2": [
+            -4.339602504832795,
+            0.4566687263700867
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.48009553787357756,
+            5.099062662515257
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.742018765878754,
+            "43": -1.4565171798558367,
+            "44": -1.8727085178129528
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -2.387681275842965,
+            "zhujia": -0.9931483665220497
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CPP_supported",
+      "n": 1265,
+      "station_n": {
+        "sili": 598,
+        "zhujia": 667
+      },
+      "bjt_dates": 45,
+      "common_two_day_blocks": 19,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2024-09-04"
+        ],
+        [
+          "2024-10-25",
+          "2024-10-26"
+        ],
+        [
+          "2024-11-16",
+          "2024-11-17"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-11-05",
+          "2025-11-06"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-01-03",
+          "2026-01-04"
+        ],
+        [
+          "2026-02-20",
+          "2026-02-21"
+        ],
+        [
+          "2026-03-01",
+          "2026-03-02"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 99.46748821754818,
+        "M10": 100.69354293354355,
+        "M01": 98.96458830546113,
+        "M11": 100.38744442373705
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 98.98572193564512,
+          "M10": 98.63858323080483,
+          "M01": 98.81656806690769,
+          "M11": 99.13255697063784
+        },
+        "zhujia": {
+          "M00": 99.94925449945123,
+          "M10": 102.74850263628228,
+          "M01": 99.11260854401458,
+          "M11": 101.64233187683625
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 99.88915245471128,
+          "M10": 100.63525477826988,
+          "M01": 99.49557367556326,
+          "M11": 100.60807447508338
+        },
+        "43": {
+          "M00": 100.21971403358688,
+          "M10": 100.95189575909939,
+          "M01": 99.55737176029791,
+          "M11": 101.21925078670083
+        },
+        "44": {
+          "M00": 98.29359816434638,
+          "M10": 100.49347826326138,
+          "M01": 97.84081948052224,
+          "M11": 99.3350080094269
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": -0.3060985098065032,
+          "relative_reduction_percent": 0.30399020720576325,
+          "date_block_CI_delta_Wm2": [
+            -1.05160108835599,
+            0.1629072039562361
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.16660543933670052,
+            1.205434856830132
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.027180303186497667,
+            "43": 0.2673550276014396,
+            "44": -1.15847025383448
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.4939737398330095,
+            "zhujia": -1.1061707594460302
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": 1.4228561182759165,
+          "relative_reduction_percent": -1.4377426740605148,
+          "date_block_CI_delta_Wm2": [
+            -1.8087910542773549,
+            3.2790847914106385
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -3.0075744762887564,
+            2.2028172685827667
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 1.1125007995201202,
+            "43": 1.6618790264029144,
+            "44": 1.4941885289046581
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.315988903730144,
+            "zhujia": 2.529723332821675
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": 1.2260547159953745,
+          "relative_reduction_percent": -1.232618555033616,
+          "date_block_CI_delta_Wm2": [
+            -2.904822528010004,
+            3.41930594481149
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -3.130092183811467,
+            3.4869725535430645
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.7461023235586026,
+            "43": 0.732181725512504,
+            "44": 2.1998800989150027
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.3471387048402903,
+            "zhujia": 2.7992481368310536
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -0.5028999120870452,
+          "relative_reduction_percent": 0.5055922503915435,
+          "date_block_CI_delta_Wm2": [
+            -2.27815936284968,
+            0.44996270710283753
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.467432322311942,
+            2.66497915698785
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.3935787791480152,
+            "43": -0.6623422732889708,
+            "44": -0.45277868382413544
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.16915386873742477,
+            "zhujia": -0.8366459554366514
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": 0.9199562061888713,
+          "relative_reduction_percent": -0.9248813081283493,
+          "date_block_CI_delta_Wm2": [
+            -3.7125756967355557,
+            3.272244684207585
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -3.082145748137843,
+            4.503312693060688
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.718922020372105,
+            "43": 0.9995367531139436,
+            "44": 1.0414098450805227
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.14683503499271922,
+            "zhujia": 1.6930773773850234
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CPP_nearzero_0_0.1",
+      "n": 455,
+      "station_n": {
+        "sili": 135,
+        "zhujia": 320
+      },
+      "bjt_dates": 30,
+      "common_two_day_blocks": 11,
+      "common_block_dates": [
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-09-04"
+        ],
+        [
+          "2024-10-25",
+          "2024-10-26"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-02-20",
+          "2026-02-21"
+        ],
+        [
+          "2026-03-01",
+          "2026-03-02"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 95.77447416439851,
+        "M10": 98.91100473898736,
+        "M01": 94.08568232393212,
+        "M11": 98.49620112820475
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 77.20448912323991,
+          "M10": 78.28601279572653,
+          "M01": 75.99952139785897,
+          "M11": 79.58083661137253
+        },
+        "zhujia": {
+          "M00": 114.34445920555714,
+          "M10": 119.5359966822482,
+          "M01": 112.17184325000528,
+          "M11": 117.41156564503696
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 96.03278871844637,
+          "M10": 99.0819273421584,
+          "M01": 94.77510862031562,
+          "M11": 98.93294238002859
+        },
+        "43": {
+          "M00": 97.0669212815755,
+          "M10": 99.75257773845561,
+          "M01": 94.98418546790857,
+          "M11": 99.88336272387451
+        },
+        "44": {
+          "M00": 94.22371249317368,
+          "M10": 97.89850913634808,
+          "M01": 92.49775288357218,
+          "M11": 96.67229828071115
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": -0.41480361078261296,
+          "relative_reduction_percent": 0.4193705360462398,
+          "date_block_CI_delta_Wm2": [
+            -1.5702982682834805,
+            0.4747504286966197
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.4968191153093565,
+            1.8804987778250457
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.14898496212980206,
+            "43": 0.1307849854188987,
+            "44": -1.2262108556369355
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 1.294823815645998,
+            "zhujia": -2.124431037211238
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": 4.410518804272627,
+          "relative_reduction_percent": -4.687768314298279,
+          "date_block_CI_delta_Wm2": [
+            -0.4891452452139536,
+            7.838345712459525
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -7.42512713792247,
+            0.625267806190475
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 4.157833759712972,
+            "43": 4.899177255965938,
+            "44": 4.174545397138971
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 3.5813152135135624,
+            "zhujia": 5.239722395031677
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": 3.1365305745888463,
+          "relative_reduction_percent": -3.2749128637395994,
+          "date_block_CI_delta_Wm2": [
+            -3.6654759334556353,
+            7.452735846920856
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -7.120459077469057,
+            4.297051615083221
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 3.0491386237120253,
+            "43": 2.6856564568801105,
+            "44": 3.6747966431744032
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 1.0815236724866253,
+            "zhujia": 5.191537476691053
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -1.6887918404663935,
+          "relative_reduction_percent": 1.7633005612409354,
+          "date_block_CI_delta_Wm2": [
+            -5.1504730402030185,
+            0.6326166690009474
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.6523974841443515,
+            6.236149431187839
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.2576800981307485,
+            "43": -2.082735813666929,
+            "44": -1.725959609601503
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.2049677253809392,
+            "zhujia": -2.172615955551862
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": 2.7217269638062334,
+          "relative_reduction_percent": -2.8418083080616476,
+          "date_block_CI_delta_Wm2": [
+            -4.593122697606207,
+            7.490255237040741
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -7.14853719062847,
+            5.433732589544122
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 2.900153661582223,
+            "43": 2.816441442299009,
+            "44": 2.4485857875374677
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 2.376347488132623,
+            "zhujia": 3.067106439479815
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CPP_thin_0.1_5",
+      "n": 180,
+      "station_n": {
+        "sili": 70,
+        "zhujia": 110
+      },
+      "bjt_dates": 28,
+      "common_two_day_blocks": 9,
+      "common_block_dates": [
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 121.73045249348206,
+        "M10": 127.60084518498576,
+        "M01": 126.03294081876292,
+        "M11": 129.24531957682692
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 136.65999033804613,
+          "M10": 143.79602544203348,
+          "M01": 142.20564914321838,
+          "M11": 146.17243490619398
+        },
+        "zhujia": {
+          "M00": 106.80091464891802,
+          "M10": 111.405664927938,
+          "M01": 109.86023249430748,
+          "M11": 112.31820424745983
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 123.05409186319788,
+          "M10": 128.1248226132206,
+          "M01": 127.07235473089679,
+          "M11": 129.5254884327608
+        },
+        "43": {
+          "M00": 121.01357557631042,
+          "M10": 126.81612556527585,
+          "M01": 125.89731313860912,
+          "M11": 130.08145107995614
+        },
+        "44": {
+          "M00": 121.12369004093792,
+          "M10": 127.86158737646079,
+          "M01": 125.12915458678285,
+          "M11": 128.12901921776376
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": 1.6444743918411575,
+          "relative_reduction_percent": -1.2887644979601245,
+          "date_block_CI_delta_Wm2": [
+            -0.5730947282843626,
+            3.2068397818319876
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -2.5625689543973427,
+            0.46613221044125597
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 1.400665819540194,
+            "43": 3.265325514680285,
+            "44": 0.26743184130296527
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 2.3764094641605027,
+            "zhujia": 0.9125393195218265
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": 3.2123787580639913,
+          "relative_reduction_percent": -2.5488405945263435,
+          "date_block_CI_delta_Wm2": [
+            -1.9580704825446051,
+            6.8768283814583375
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -5.893348265380258,
+            1.4928884379060179
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 2.4531337018640045,
+            "43": 4.184137941347018,
+            "44": 2.999864630980909
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 3.9667857629756043,
+            "zhujia": 2.45797175315235
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": 5.870392691503696,
+          "relative_reduction_percent": -4.822452041585914,
+          "date_block_CI_delta_Wm2": [
+            0.05154624264342015,
+            9.074000292150455
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -8.112738697646167,
+            -0.0389523136763061
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 5.070730750022719,
+            "43": 5.802549988965438,
+            "44": 6.737897335522874
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 7.1360351039873535,
+            "zhujia": 4.6047502790199815
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": 4.302488325280862,
+          "relative_reduction_percent": -3.534438784338894,
+          "date_block_CI_delta_Wm2": [
+            -0.2654603027810889,
+            7.647709574579548
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -6.40395383994443,
+            0.209557757690565
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 4.018262867698908,
+            "43": 4.883737562298705,
+            "44": 4.00546454584493
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 5.545658805172252,
+            "zhujia": 3.059317845389458
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": 7.514867083344853,
+          "relative_reduction_percent": -6.1733665893891505,
+          "date_block_CI_delta_Wm2": [
+            0.744458308533701,
+            10.89110350177912
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -9.527726913508257,
+            -0.5669092862389232
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 6.471396569562913,
+            "43": 9.067875503645723,
+            "44": 7.005329176825839
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 9.512444568147856,
+            "zhujia": 5.517289598541808
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CPP_moderate_5_30",
+      "n": 461,
+      "station_n": {
+        "sili": 314,
+        "zhujia": 147
+      },
+      "bjt_dates": 36,
+      "common_two_day_blocks": 15,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2024-11-16",
+          "2024-11-17"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-11-05",
+          "2025-11-06"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-01-03",
+          "2026-01-04"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 93.96446812905873,
+        "M10": 92.39329495930036,
+        "M01": 92.96546915178398,
+        "M11": 92.25649600728961
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 105.67680347782249,
+          "M10": 102.87298555270154,
+          "M01": 104.43382804600776,
+          "M11": 102.78404338196962
+        },
+        "zhujia": {
+          "M00": 82.25213278029494,
+          "M10": 81.9136043658992,
+          "M01": 81.49711025756021,
+          "M11": 81.72894863260962
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 94.08588953392047,
+          "M10": 92.29224027268808,
+          "M01": 93.4217574574154,
+          "M11": 92.47946382606926
+        },
+        "43": {
+          "M00": 94.13090292380977,
+          "M10": 92.46245073251362,
+          "M01": 92.91390818942406,
+          "M11": 92.34200988250879
+        },
+        "44": {
+          "M00": 93.67661192944593,
+          "M10": 92.4251938726994,
+          "M01": 92.5607418085125,
+          "M11": 91.94801431329078
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": -0.13679895201074999,
+          "relative_reduction_percent": 0.14806155800700743,
+          "date_block_CI_delta_Wm2": [
+            -1.1688777460263278,
+            0.7264961517533131
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.721021129706254,
+            1.5388527009269017
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.18722355338118746,
+            "43": -0.12044085000482596,
+            "44": -0.47717955940861145
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.08894217073191157,
+            "zhujia": -0.1846557332895884
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": -0.7089731444943652,
+          "relative_reduction_percent": 0.7626198748449604,
+          "date_block_CI_delta_Wm2": [
+            -4.203801912970893,
+            1.9773295931657036
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -2.0392209233165897,
+            5.536416855068804
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.9422936313461321,
+            "43": -0.5718983069152728,
+            "44": -0.6127274952217192
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.6497846640381368,
+            "zhujia": 0.2318383750494064
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": -1.5711731697583673,
+          "relative_reduction_percent": 1.6720928677001454,
+          "date_block_CI_delta_Wm2": [
+            -5.631723942495244,
+            1.6080323062792177
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.6698918969062122,
+            6.907722509742496
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.7936492612323889,
+            "43": -1.6684521912961543,
+            "44": -1.2514180567465303
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -2.8038179251209527,
+            "zhujia": -0.3385284143957392
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -0.9989989772747521,
+          "relative_reduction_percent": 1.0631667450111488,
+          "date_block_CI_delta_Wm2": [
+            -2.7622307479433283,
+            0.6024129147033829
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.6297027833762365,
+            3.330565877846274
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.6641320765050693,
+            "43": -1.2169947343857075,
+            "44": -1.1158701209334225
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.2429754318147275,
+            "zhujia": -0.755022522734734
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": -1.7079721217691173,
+          "relative_reduction_percent": 1.817678698955912,
+          "date_block_CI_delta_Wm2": [
+            -6.382962767777376,
+            1.9548788740912115
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.960898397874218,
+            7.858743054665417
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.6064257078512014,
+            "43": -1.7888930413009803,
+            "44": -1.7285976161551417
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -2.8927600958528643,
+            "zhujia": -0.5231841476853276
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CPP_thick_30_100",
+      "n": 169,
+      "station_n": {
+        "sili": 79,
+        "zhujia": 90
+      },
+      "bjt_dates": 25,
+      "common_two_day_blocks": 6,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2024-11-16",
+          "2024-11-17"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2026-01-03",
+          "2026-01-04"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 52.82419695386656,
+        "M10": 44.4257776697265,
+        "M01": 51.125176794592484,
+        "M11": 43.14112765240554
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 55.17793949955168,
+          "M10": 52.71149770225893,
+          "M01": 52.665026087048055,
+          "M11": 51.36569778764803
+        },
+        "zhujia": {
+          "M00": 50.470454408181446,
+          "M10": 36.14005763719407,
+          "M01": 49.58532750213691,
+          "M11": 34.91655751716305
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 52.70897064371701,
+          "M10": 43.781204052399715,
+          "M01": 50.49149080482534,
+          "M11": 42.27038312497835
+        },
+        "43": {
+          "M00": 52.62567415551774,
+          "M10": 46.90389299424619,
+          "M01": 50.95596273916277,
+          "M11": 45.506078218790606
+        },
+        "44": {
+          "M00": 53.137946062364925,
+          "M10": 42.592235962533586,
+          "M01": 51.92807683978934,
+          "M11": 41.64692161344766
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": -1.2846500173209634,
+          "relative_reduction_percent": 2.8916770503634317,
+          "date_block_CI_delta_Wm2": [
+            -2.1376116153861133,
+            -0.425285733580603
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            0.9759500567111937,
+            4.501320958532846
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.5108209274213635,
+            "43": -1.3978147754555863,
+            "44": -0.9453143490859262
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.3457999146109003,
+            "zhujia": -1.2235001200310194
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": -7.984049142186947,
+          "relative_reduction_percent": 15.616668034742956,
+          "date_block_CI_delta_Wm2": [
+            -12.074166933860477,
+            -4.255998496289393
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            8.495700319892745,
+            23.689655442584172
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -8.221107679846988,
+            "43": -5.449884520372166,
+            "44": -10.281155226341681
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.299328299400024,
+            "zhujia": -14.668769984973864
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": -8.398419284140061,
+          "relative_reduction_percent": 15.898811091202635,
+          "date_block_CI_delta_Wm2": [
+            -12.398778639151024,
+            -4.533218326282032
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            8.57086261124327,
+            24.429032944066076
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -8.927766591317294,
+            "43": -5.721781161271551,
+            "44": -10.54571009983134
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -2.4664417972927453,
+            "zhujia": -14.330396770987377
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -1.6990201592740775,
+          "relative_reduction_percent": 3.2163672279919338,
+          "date_block_CI_delta_Wm2": [
+            -3.556665721099756,
+            0.3104441373850066
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.5664131980773212,
+            7.122030869431291
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -2.21747983889167,
+            "43": -1.6697114163549713,
+            "44": -1.209869222575584
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -2.5129134125036217,
+            "zhujia": -0.8851269060445333
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": -9.683069301461025,
+          "relative_reduction_percent": 18.330745869961124,
+          "date_block_CI_delta_Wm2": [
+            -13.93369421053612,
+            -5.360407776069372
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            10.32236503855614,
+            26.727012248102056
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -10.438587518738657,
+            "43": -7.119595936727137,
+            "44": -11.491024448917265
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -3.8122417119036456,
+            "zhujia": -15.553896891018397
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CLP_clear_0",
+      "n": 402,
+      "station_n": {
+        "sili": 129,
+        "zhujia": 273
+      },
+      "bjt_dates": 29,
+      "common_two_day_blocks": 10,
+      "common_block_dates": [
+        [
+          "2024-09-04"
+        ],
+        [
+          "2024-10-25",
+          "2024-10-26"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-02-20",
+          "2026-02-21"
+        ],
+        [
+          "2026-03-01",
+          "2026-03-02"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 94.18822957293354,
+        "M10": 98.72353296538888,
+        "M01": 92.66046916135564,
+        "M11": 98.12421763301313
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 75.17562495531895,
+          "M10": 77.21645881038438,
+          "M01": 74.138059554366,
+          "M11": 78.46112182254224
+        },
+        "zhujia": {
+          "M00": 113.20083419054811,
+          "M10": 120.23060712039342,
+          "M01": 111.18287876834523,
+          "M11": 117.78731344348398
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 94.096559724684,
+          "M10": 98.80511591680252,
+          "M01": 93.27558908160304,
+          "M11": 98.6658299220214
+        },
+        "43": {
+          "M00": 95.69893949816671,
+          "M10": 99.56087266839069,
+          "M01": 93.89197897930225,
+          "M11": 99.51826086780082
+        },
+        "44": {
+          "M00": 92.76918949594989,
+          "M10": 97.80461031097346,
+          "M01": 90.81383942316154,
+          "M11": 96.18856210921714
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": -0.5993153323757525,
+          "relative_reduction_percent": 0.6070643081481537,
+          "date_block_CI_delta_Wm2": [
+            -1.7885164331804497,
+            0.4618071989226692
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.5104310298953237,
+            1.941570658645917
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.13928599478111892,
+            "43": -0.042611800589867244,
+            "44": -1.616048201756314
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 1.244663012157858,
+            "zhujia": -2.443293676909434
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": 5.463748471657496,
+          "relative_reduction_percent": -5.896525801248771,
+          "date_block_CI_delta_Wm2": [
+            -0.21253471430542525,
+            10.049268118640803
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -9.826146728343273,
+            0.24871146472508587
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 5.3902408404183575,
+            "43": 5.626281888498568,
+            "44": 5.374722686055605
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 4.323062268176244,
+            "zhujia": 6.604434675138748
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": 4.535303392455347,
+          "relative_reduction_percent": -4.8151487855958575,
+          "date_block_CI_delta_Wm2": [
+            -3.0741295881576134,
+            10.293825339506261
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -10.072496347558925,
+            3.7622632445476176
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 4.708556192118522,
+            "43": 3.8619331702239776,
+            "44": 5.035420815023571
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 2.0408338550654292,
+            "zhujia": 7.029772929845308
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -1.5277604115779013,
+          "relative_reduction_percent": 1.6220290141401355,
+          "date_block_CI_delta_Wm2": [
+            -4.95133538747654,
+            0.8297017004028454
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.8970179647475172,
+            5.789697601763833
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.8209706430809547,
+            "43": -1.8069605188644573,
+            "44": -1.9553500727883488
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.037565400952957,
+            "zhujia": -2.017955422202874
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": 3.9359880600795947,
+          "relative_reduction_percent": -4.178853427786121,
+          "date_block_CI_delta_Wm2": [
+            -3.8273957833093357,
+            9.704427625402078
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -9.457393390872404,
+            4.604582114242932
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 4.569270197337403,
+            "43": 3.8193213696341104,
+            "44": 3.4193726132672566
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 3.285496867223287,
+            "zhujia": 4.586479252935874
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CLP_water_1",
+      "n": 597,
+      "station_n": {
+        "sili": 321,
+        "zhujia": 276
+      },
+      "bjt_dates": 40,
+      "common_two_day_blocks": 14,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2024-11-16",
+          "2024-11-17"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-11-05",
+          "2025-11-06"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-01-03",
+          "2026-01-04"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 93.57643871944633,
+        "M10": 90.54971023275498,
+        "M01": 93.0531544830135,
+        "M11": 90.80220846286898
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 101.15776609782938,
+          "M10": 99.78892432787427,
+          "M01": 100.65096196043935,
+          "M11": 100.43664949231419
+        },
+        "zhujia": {
+          "M00": 85.99511134106326,
+          "M10": 81.31049613763568,
+          "M01": 85.45534700558767,
+          "M11": 81.16776743342375
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 94.4460972532923,
+          "M10": 90.93042755837772,
+          "M01": 93.95608028389572,
+          "M11": 91.25830948577374
+        },
+        "43": {
+          "M00": 93.61895835588314,
+          "M10": 90.97945179262197,
+          "M01": 92.8147726722751,
+          "M11": 91.39100273917637
+        },
+        "44": {
+          "M00": 92.66426054916356,
+          "M10": 89.73925134726521,
+          "M01": 92.3886104928697,
+          "M11": 89.7573131636568
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": 0.25249823011399997,
+          "relative_reduction_percent": -0.278850401028299,
+          "date_block_CI_delta_Wm2": [
+            -0.8188300414848637,
+            1.28980716880862
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.3107839260920995,
+            1.0478582963722995
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.32788192739602096,
+            "43": 0.4115509465543994,
+            "44": 0.018061816391593766
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.6477251644399189,
+            "zhujia": -0.14272870421193318
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": -2.250946020144525,
+          "relative_reduction_percent": 2.4189894825708746,
+          "date_block_CI_delta_Wm2": [
+            -5.80037038163168,
+            -0.38804578151721536
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            0.4132899544612161,
+            7.003290746649335
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -2.6977707981219794,
+            "43": -1.4237699330987255,
+            "44": -2.6312973292128987
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.2143124681251578,
+            "zhujia": -4.287579572163921
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": -3.026728486691354,
+          "relative_reduction_percent": 3.234498478581621,
+          "date_block_CI_delta_Wm2": [
+            -5.995144463337435,
+            -1.3028928259741384
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            1.3585686518127935,
+            7.113475817134039
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -3.5156696949145783,
+            "43": -2.6395065632611647,
+            "44": -2.925009201898348
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.368841769955111,
+            "zhujia": -4.684615203427583
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": -0.5232842364328292,
+          "relative_reduction_percent": 0.5592051200000244,
+          "date_block_CI_delta_Wm2": [
+            -1.5863048451374868,
+            0.6332186113689627
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.6922629853087173,
+            1.8432253960132698
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.4900169693965779,
+            "43": -0.8041856836080399,
+            "44": -0.2756500562938555
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.5068041373900343,
+            "zhujia": -0.5397643354755957
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": -2.7742302565773542,
+          "relative_reduction_percent": 2.9646674895321006,
+          "date_block_CI_delta_Wm2": [
+            -5.971009661194656,
+            -1.0346016786888768
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            1.0433089787897347,
+            7.1695410301227005
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -3.1877877675185573,
+            "43": -2.2279556167067653,
+            "44": -2.9069473855067542
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.7211166055151921,
+            "zhujia": -4.827343907639516
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CLP_ice_2",
+      "n": 266,
+      "station_n": {
+        "sili": 148,
+        "zhujia": 118
+      },
+      "bjt_dates": 24,
+      "common_two_day_blocks": 9,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 104.60776537184832,
+        "M10": 107.80933798773181,
+        "M01": 105.92257113803775,
+        "M11": 107.9818125104414
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 111.65697508845916,
+          "M10": 111.8541574907607,
+          "M01": 112.6418048980588,
+          "M11": 111.61633892484355
+        },
+        "zhujia": {
+          "M00": 97.5585556552375,
+          "M10": 103.76451848470292,
+          "M01": 99.20333737801674,
+          "M11": 104.34728609603928
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 104.92980340907744,
+          "M10": 106.93793083071363,
+          "M01": 105.59394405996431,
+          "M11": 107.10601034001715
+        },
+        "43": {
+          "M00": 104.62552233320477,
+          "M10": 107.18402893707953,
+          "M01": 106.58619580548287,
+          "M11": 108.37596517562204
+        },
+        "44": {
+          "M00": 104.26797037326278,
+          "M10": 109.30605419540225,
+          "M01": 105.58757354866611,
+          "M11": 108.46346201568507
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": 0.1724745227095923,
+          "relative_reduction_percent": -0.15998106094410772,
+          "date_block_CI_delta_Wm2": [
+            -1.5568389822634257,
+            1.385905062847458
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.5063701146102915,
+            1.535101094527102
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.16807950930352433,
+            "43": 1.1919362385425103,
+            "44": -0.8425921797171867
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.2378185659171521,
+            "zhujia": 0.5827676113363651
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": 2.0592413724036476,
+          "relative_reduction_percent": -1.9441006296193988,
+          "date_block_CI_delta_Wm2": [
+            -2.243670367008286,
+            4.733415807937292
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -3.908886895749593,
+            2.625721195853122
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 1.512066280052835,
+            "43": 1.7897693701391688,
+            "44": 2.875888467018953
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -1.0254659732152476,
+            "zhujia": 5.143948718022543
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": 3.2015726158834923,
+          "relative_reduction_percent": -3.060549668089066,
+          "date_block_CI_delta_Wm2": [
+            -3.3776975534194027,
+            6.8419315632096565
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -6.508906429306165,
+            3.8463934399913744
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 2.008127421636189,
+            "43": 2.5585066038747613,
+            "44": 5.03808382213947
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.19718240230153583,
+            "zhujia": 6.20596282946542
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": 1.314805766189437,
+          "relative_reduction_percent": -1.2568911700921135,
+          "date_block_CI_delta_Wm2": [
+            -2.65538386551868,
+            4.382424947849063
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -4.857670659700199,
+            2.6562634337975344
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.6641406508868783,
+            "43": 1.9606734722781027,
+            "44": 1.31960317540333
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.9848298095996313,
+            "zhujia": 1.6447817227792427
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": 3.3740471385930846,
+          "relative_reduction_percent": -3.225427028862904,
+          "date_block_CI_delta_Wm2": [
+            -4.726954844321922,
+            7.739930498416375
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -7.731979476701388,
+            5.073749729526184
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 2.1762069309397134,
+            "43": 3.7504428424172715,
+            "44": 4.195491642422283
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.04063616361561628,
+            "zhujia": 6.7887304408017854
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    },
+    {
+      "group": "CLP_cloud_1_or_2",
+      "n": 863,
+      "station_n": {
+        "sili": 469,
+        "zhujia": 394
+      },
+      "bjt_dates": 40,
+      "common_two_day_blocks": 16,
+      "common_block_dates": [
+        [
+          "2024-04-19",
+          "2024-04-20"
+        ],
+        [
+          "2024-05-29",
+          "2024-05-30"
+        ],
+        [
+          "2024-06-11",
+          "2024-06-12"
+        ],
+        [
+          "2024-07-09",
+          "2024-07-10"
+        ],
+        [
+          "2024-08-16",
+          "2024-08-17"
+        ],
+        [
+          "2024-09-04"
+        ],
+        [
+          "2024-11-16",
+          "2024-11-17"
+        ],
+        [
+          "2024-12-24",
+          "2024-12-25"
+        ],
+        [
+          "2025-04-17",
+          "2025-04-18"
+        ],
+        [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        [
+          "2025-06-15",
+          "2025-06-16"
+        ],
+        [
+          "2025-07-08",
+          "2025-07-09"
+        ],
+        [
+          "2025-08-21",
+          "2025-08-22"
+        ],
+        [
+          "2025-11-05",
+          "2025-11-06"
+        ],
+        [
+          "2025-12-02",
+          "2025-12-03"
+        ],
+        [
+          "2026-01-03",
+          "2026-01-04"
+        ]
+      ],
+      "bootstrap_block_count": 26,
+      "bootstrap_valid_draws": 2000,
+      "bootstrap_draws_rejected_for_empty_station_support": 0,
+      "equal_station_equal_seed_RMSE_Wm2": {
+        "M00": 97.1017927264104,
+        "M10": 96.19604381096156,
+        "M01": 97.19213964563691,
+        "M11": 96.42387738603374
+      },
+      "station_RMSE_Wm2": {
+        "sili": {
+          "M00": 104.58806788281105,
+          "M10": 103.75680590196156,
+          "M01": 104.58829694690151,
+          "M11": 104.10046190452526
+        },
+        "zhujia": {
+          "M00": 89.61551757000977,
+          "M10": 88.63528171996154,
+          "M01": 89.7959823443723,
+          "M11": 88.74729286754224
+        }
+      },
+      "seed_equal_station_RMSE_Wm2": {
+        "42": {
+          "M00": 97.78076904378223,
+          "M10": 96.15357005321007,
+          "M01": 97.6736130352144,
+          "M11": 96.42533711666638
+        },
+        "43": {
+          "M00": 97.13466187337161,
+          "M10": 96.25384301114809,
+          "M01": 97.25201965770422,
+          "M11": 96.94524838527086
+        },
+        "44": {
+          "M00": 96.38994726207736,
+          "M10": 96.18071836852647,
+          "M01": 96.65078624399212,
+          "M11": 95.901046656164
+        }
+      },
+      "contrasts": {
+        "M11_minus_M10": {
+          "RMSE_delta_Wm2": 0.22783357507218227,
+          "relative_reduction_percent": -0.23684297819971323,
+          "date_block_CI_delta_Wm2": [
+            -0.8281815070818723,
+            0.9865847103560282
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.015495950489249,
+            0.997352066200925
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": 0.2717670634563092,
+            "43": 0.6914053741227661,
+            "44": -0.2796717123624717
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.343656002563705,
+            "zhujia": 0.11201114758070219
+          }
+        },
+        "M11_minus_M01": {
+          "RMSE_delta_Wm2": -0.7682622596031763,
+          "relative_reduction_percent": 0.790457193765118,
+          "date_block_CI_delta_Wm2": [
+            -4.08070781869228,
+            0.8140590792710545
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.8040437068788769,
+            4.907765166290313
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.2482759185480177,
+            "43": -0.306771272433366,
+            "44": -0.7497395878281168
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.487835042376247,
+            "zhujia": -1.048689476830063
+          }
+        },
+        "M10_minus_M00": {
+          "RMSE_delta_Wm2": -0.9057489154488394,
+          "relative_reduction_percent": 0.9327828972229549,
+          "date_block_CI_delta_Wm2": [
+            -4.612196724840697,
+            0.986089958979582
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -0.9920655087511203,
+            5.409418192830789
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.627198990572154,
+            "43": -0.8808188622235207,
+            "44": -0.20922889355088614
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.8312619808494901,
+            "zhujia": -0.9802358500482313
+          }
+        },
+        "M01_minus_M00": {
+          "RMSE_delta_Wm2": 0.09034691922651916,
+          "relative_reduction_percent": -0.09304351309051166,
+          "date_block_CI_delta_Wm2": [
+            -1.5488296348865478,
+            1.7315105252979337
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.9081271420839918,
+            1.738641959082331
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -0.10715600856782714,
+            "43": 0.11735778433261146,
+            "44": 0.26083898191475896
+          },
+          "station_mean_delta_Wm2": {
+            "sili": 0.00022906409046186127,
+            "zhujia": 0.18046477436253383
+          }
+        },
+        "M11_minus_M00": {
+          "RMSE_delta_Wm2": -0.6779153403766571,
+          "relative_reduction_percent": 0.6981491498171621,
+          "date_block_CI_delta_Wm2": [
+            -5.017114856710231,
+            1.619478057815307
+          ],
+          "date_block_CI_relative_reduction_percent": [
+            -1.638257995664654,
+            5.914803291631826
+          ],
+          "seed_equal_station_delta_Wm2": {
+            "42": -1.3554319271158448,
+            "43": -0.18941348810075453,
+            "44": -0.4889006059133578
+          },
+          "station_mean_delta_Wm2": {
+            "sili": -0.4876059782857851,
+            "zhujia": -0.8682247024675291
+          }
+        }
+      },
+      "interval_scope": "pointwise conditional validation date-block bootstrap; exploratory; no multiplicity adjustment"
+    }
+  ]
+}

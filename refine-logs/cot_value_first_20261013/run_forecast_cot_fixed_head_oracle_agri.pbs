@@ -1,0 +1,26 @@
+#!/bin/bash
+#PBS -N cot_cfixed_diag
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=4:gpus=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/logs/forecast_cot_fixed_head_oracle_agri_20261014_v1.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/cot_value_first_20261013
+R=$ROOT/experiments/monthly_R_station16_20261013_v1
+mkdir -p "$EXP/logs"
+test ! -e "$EXP/results/forecast_cot_fixed_head_oracle_agri_20261014_v1"
+test -f "$R/data/ghi_head_pack_new_r_v1/pack_manifest.json"
+test -f "$EXP/results/forecast_cot_val_bank_20261014_v1/forecast_cot_val_bank.npz"
+test "$(sha256sum "$R/results/ghi_heads_new_r_seed42_v1/sili/AC_best.pt" | awk '{print $1}')" = 1b63fd5f15be5bc2b242b10e0acfc255a2afe393a43fa51cb03712b326bd5968
+test "$(sha256sum "$R/results/ghi_heads_new_r_seed42_v1/zhujia/AC_best.pt" | awk '{print $1}')" = 23ea5745a729b4e258e1fa43ad4dbbc80293cf3c800390450cf9ad14083e043a
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -m py_compile "$EXP/run_forecast_cot_fixed_head_oracle_agri.py"
+python -u "$EXP/run_forecast_cot_fixed_head_oracle_agri.py" --batch-size 512

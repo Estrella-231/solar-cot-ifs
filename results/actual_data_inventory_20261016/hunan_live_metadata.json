@@ -1,0 +1,889 @@
+{
+  "region": "hunan",
+  "root": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1",
+  "checked_utc": "2026-10-16T09:57:03.357929+00:00",
+  "documents": {
+    "data/pack_trainval_v1/pack_status.json": {
+      "sha256": "1b15f3e22a778f6b4d9c1546cc2d8381f14faae6c95b1350a937731efad2928b",
+      "value": {
+        "state": "COMPLETE_MONTHLY_R_STATION16_PACK",
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "test_payloads_read": 0,
+        "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+        "cpp_inventory_sha256": "0a303ec6965be360689f3891e96b5e4085ad3e6550b2db6504a8b2ac35565dd2",
+        "grid_static_sha256": "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62",
+        "cpp_grid_mapping_max_error_deg": 0.0,
+        "candidate_unique_frames": 55733,
+        "selected_cpp_frames": 17600,
+        "cpp_missing_frames": 38133,
+        "packed_examples": 16812,
+        "by_split": {
+          "train": 15414,
+          "val": 1398
+        },
+        "sample_states_by_split": {
+          "train": {
+            "SUPERVISED": 15414,
+            "NO_VALID_CPP_PIXELS": 16768,
+            "INPUT_UNAVAILABLE": 0,
+            "CPP_UNAVAILABLE": 70264,
+            "SOURCE_READ_ERROR": 26
+          },
+          "val": {
+            "SUPERVISED": 1398,
+            "NO_VALID_CPP_PIXELS": 1594,
+            "INPUT_UNAVAILABLE": 0,
+            "CPP_UNAVAILABLE": 6002,
+            "SOURCE_READ_ERROR": 0
+          }
+        },
+        "source_read_error_frames": 13,
+        "mask": "finite COT 0..100 AND CLP in {0,1,2} AND all13 AGRI channels valid AND day_mask>0.5 AND cosSOZ>cos80",
+        "valid_zero_cot_retained": true,
+        "missing_cpp_is_not_clear_sky": true
+      }
+    },
+    "data/pack_trainval_v1/pack_audit.json": {
+      "sha256": "029a998af443e7ee9e6fd85923c877e027b11afed5ae3804692b2652b3b239c9",
+      "value": {
+        "state": "PASS_MONTHLY_R_STATION16_PACK_AUDIT",
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "test_payloads_read": 0,
+        "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+        "cpp_inventory_sha256": "0a303ec6965be360689f3891e96b5e4085ad3e6550b2db6504a8b2ac35565dd2",
+        "pack_status_sha256": "1b15f3e22a778f6b4d9c1546cc2d8381f14faae6c95b1350a937731efad2928b",
+        "arrays": {
+          "x_raw": {
+            "shape": [
+              16812,
+              16,
+              16,
+              16
+            ],
+            "sha256": "06d4606623c1495d63ab015d778b5691d6f0c072e58fad79c6e559c84d450a31"
+          },
+          "cot": {
+            "shape": [
+              16812,
+              1,
+              16,
+              16
+            ],
+            "sha256": "43dab24e9b6c5cf9b9db09f6bce16b3dede60750b312c6e808b192ec265fb63c"
+          },
+          "mask": {
+            "shape": [
+              16812,
+              1,
+              16,
+              16
+            ],
+            "sha256": "2614ca0b589ff3e3367f08f0e8f8ed8067226f80446f4e27f3478d5c675c340f"
+          }
+        },
+        "candidate_frames_by_split": {
+          "train": 51236,
+          "val": 4497
+        },
+        "station_row_count": 111466,
+        "source_read_error_frames": 13,
+        "sample_states_by_split": {
+          "train": {
+            "NO_VALID_CPP_PIXELS": 16768,
+            "SUPERVISED": 15414,
+            "SOURCE_READ_ERROR": 26,
+            "CPP_UNAVAILABLE": 70264
+          },
+          "val": {
+            "NO_VALID_CPP_PIXELS": 1594,
+            "SUPERVISED": 1398,
+            "CPP_UNAVAILABLE": 6002
+          }
+        },
+        "supervised_by_split": {
+          "train": {
+            "supervised_examples": 15414,
+            "valid_pixels": 3921824,
+            "exact_zero_pixels": 1243941,
+            "thick_ge30_pixels": 568087
+          },
+          "val": {
+            "supervised_examples": 1398,
+            "valid_pixels": 356169,
+            "exact_zero_pixels": 118483,
+            "thick_ge30_pixels": 50924
+          }
+        },
+        "cpp_grid_mapping_max_error_deg": 0.0,
+        "valid_zero_cot_retained": true,
+        "missing_cpp_is_not_clear_sky": true,
+        "claim_scope": "CPP-supported daytime retrieval-reference pixels; not independent truth"
+      }
+    },
+    "data/ghi_head_pack_new_r_v1/pack_manifest.json": {
+      "sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+      "value": {
+        "state": "COMPLETE",
+        "rows": 54937,
+        "unique_frames": 29655,
+        "train": 50458,
+        "val": 4479,
+        "stations": {
+          "sili": 26283,
+          "zhujia": 28654
+        },
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "sample_key": "(station,target_time_utc)",
+        "label": "15-minute mean GHI and kt from frozen trainval label join; main_mask only",
+        "AGRI_channels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "AGRI_norm_mean": [
+          0.2091480791568756,
+          0.22361086308956146,
+          0.2568201720714569,
+          0.032579075545072556,
+          0.17763261497020721,
+          0.12395621836185455,
+          238.41941833496094,
+          245.89540100097656,
+          254.08203125,
+          273.15234375,
+          274.3147888183594,
+          272.2543029785156,
+          259.4027404785156
+        ],
+        "AGRI_norm_std": [
+          0.1762118935585022,
+          0.20347559452056885,
+          0.19357138872146606,
+          0.057594943791627884,
+          0.1287347823381424,
+          0.10032995790243149,
+          7.6853461265563965,
+          9.097551345825195,
+          10.728856086730957,
+          18.480453491210938,
+          19.27269172668457,
+          19.018138885498047,
+          13.403448104858398
+        ],
+        "COT_transform": "log1p from frozen new-monthly-R output; train-sample mean/std",
+        "COT_norm_mean": 1.8784252282902711,
+        "COT_norm_std": 1.427114814138804,
+        "geometry": "physical cosSOZ/cosRAA, no spatial pooling",
+        "test_payload_opened": false,
+        "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+        "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+        "label_sha256": "a86c2425ac4e6e8259fcaa4b5b2e083ee427d16e12d4eb1b44aa87751b75988d",
+        "bank_manifest": {
+          "state": "COMPLETE",
+          "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+          "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+          "monthly_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+          "R_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+          "R_validation_audit": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/seed42_v1/validation_audit_fp64.json",
+          "R_validation_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+          "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+          "R_source_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+          "R_input": "13 physical AGRI channels + cosSOZ/cosRAA/day_mask; station-centered 16x16 crop",
+          "R_output": "nonnegative log1p(COT), FP32 inference, no autocast",
+          "layout": "[unique_trainval_target_frame, station(sili,zhujia), 1, 16, 16]",
+          "frames_total": 55733,
+          "train_frames": 51236,
+          "val_frames": 4497,
+          "frames_with_source_errors": 0,
+          "frames_complete": 55733,
+          "mean_input_valid_fraction": [
+            0.9928752779960632,
+            0.9929152131080627
+          ],
+          "test_payload_opened": false,
+          "errors": []
+        },
+        "bank_indices_hash": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+        "support_summary": {
+          "mean_R_input_valid_fraction_by_station": [
+            0.9997717155575847,
+            0.9997557060096322
+          ],
+          "mean_AGRI_valid_fraction_3x3_by_station": [
+            0.9997717155575847,
+            0.9997557060096322
+          ]
+        },
+        "array_sha256": {
+          "agri_raw.npy": "03323acf1f27dcecdbe45f9f397bd70cad25c788c23882fd2ccf6ec01309ed4a",
+          "agri_valid.npy": "2ee89c1007366db4142209dd3875bcb81610ba89f597161aa8109c0171eed842",
+          "geometry.npy": "15a9891915b834ad51462d4d816f55332eec7eba145b889215de1ef341d40e90",
+          "cot_log1p.npy": "4d45515a4e7efab04d2c5d7faa0129fa1e46be7436264c8391aade093481e1da",
+          "rows.csv": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756"
+        }
+      }
+    },
+    "results/new_monthly_R_seed42_cot_bank_v1/bank_manifest.json": {
+      "sha256": "3049472e2b62d2f1df3e7afcd51bb4bcdf2cf4ef7e6735af3d04138ec4c4cc56",
+      "value": {
+        "state": "COMPLETE",
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "candidate_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+        "monthly_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+        "R_norm_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+        "R_validation_audit": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/results/seed42_v1/validation_audit_fp64.json",
+        "R_validation_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+        "R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+        "R_source_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+        "R_input": "13 physical AGRI channels + cosSOZ/cosRAA/day_mask; station-centered 16x16 crop",
+        "R_output": "nonnegative log1p(COT), FP32 inference, no autocast",
+        "layout": "[unique_trainval_target_frame, station(sili,zhujia), 1, 16, 16]",
+        "frames_total": 55733,
+        "train_frames": 51236,
+        "val_frames": 4497,
+        "frames_with_source_errors": 0,
+        "frames_complete": 55733,
+        "mean_input_valid_fraction": [
+          0.9928752779960632,
+          0.9929152131080627
+        ],
+        "test_payload_opened": false,
+        "errors": []
+      }
+    },
+    "results/seed42_v1/run_metadata.json": {
+      "sha256": "9cfda08a93e61cd233fe68cde3bf7918256f29950fac9e9a6472ac8aa7d9ce33",
+      "value": {
+        "model": "monthly_station16_COTUNet_seed42_v1",
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "initialization": "random",
+        "seed": 42,
+        "input_features": [
+          "AGRI_channel_0",
+          "AGRI_channel_1",
+          "AGRI_channel_2",
+          "AGRI_channel_3",
+          "AGRI_channel_4",
+          "AGRI_channel_5",
+          "AGRI_channel_8",
+          "AGRI_channel_9",
+          "AGRI_channel_10",
+          "AGRI_channel_11",
+          "AGRI_channel_12",
+          "AGRI_channel_13",
+          "AGRI_channel_14",
+          "cosSOZ",
+          "cosRAA",
+          "day_mask"
+        ],
+        "crop": "station-centered 16x16 around Sili and Zhujia",
+        "base_channels": 32,
+        "target": "log1p(CPP COT), valid [0,100]",
+        "mask": "finite COT 0..100 AND CLP in {0,1,2} AND all13 AGRI channels valid AND day_mask>0.5 AND cosSOZ>cos80",
+        "loss": "finite-safe masked Huber(log1p(COT), delta=0.1)",
+        "optimizer": "AdamW(lr=1e-3, weight_decay=1e-4)",
+        "epochs_max": 50,
+        "train_examples": 15414,
+        "val_examples": 1398,
+        "normalization_sha256": "a3e68aabd61be43c4f6040c2bd142d1b21ee816e2fe46a9de91e9eaf931328a7",
+        "pack_status_sha256": "1b15f3e22a778f6b4d9c1546cc2d8381f14faae6c95b1350a937731efad2928b",
+        "pack_arrays": {
+          "x_raw.npy": "06d4606623c1495d63ab015d778b5691d6f0c072e58fad79c6e559c84d450a31",
+          "cot.npy": "43dab24e9b6c5cf9b9db09f6bce16b3dede60750b312c6e808b192ec265fb63c",
+          "mask.npy": "2614ca0b589ff3e3367f08f0e8f8ed8067226f80446f4e27f3478d5c675c340f",
+          "rows.csv": "b270713590f6af793b53df73d27e01f3f62ad8d7e60bb9a8eaace5c43fb2ebcb"
+        },
+        "training_script_sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce",
+        "train_rows_sha256": "bd7a3a31d261ac90df506abbbdd1c2816571773cc540aed9f0488fc18e35a03f",
+        "val_rows_sha256": "b90d1a29719cdbfbfa5aa12f7c494f9739e74cc34dff7ce21a69f01fb5b47bba",
+        "test_payloads_read": 0,
+        "gpu": "NVIDIA A800-SXM4-80GB",
+        "pbs_job_id": "213712.tc6000",
+        "batch": 1284
+      }
+    },
+    "results/ghi_heads_new_r_seed42_v1/sili/run_metadata.json": {
+      "sha256": "5f099bdd8af63fbe91bfe1cfc37e51ca846bb6d34c8f41c90a3b972ecea963b3",
+      "value": {
+        "station": "sili",
+        "seed": 42,
+        "epochs": 30,
+        "batch_size": 2000,
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+        "input_normalization": "train-only AGRI statistics; train-only log1p(COT) statistics; geometry remains physical cosSOZ/cosRAA",
+        "loss": "MSE of physical GHI error divided by 1000",
+        "test_payload_opened": false,
+        "parameter_counts": {
+          "A": 22177,
+          "AC": 24489,
+          "AP": 24613
+        }
+      }
+    },
+    "../cot_value_first_20261013/data/ghi_kt_trainval_v1/ghi_kt_join_audit.json": {
+      "sha256": "dc7622588ccabfd2be466f90b88866ee1ce48bdd05932d33856f578736843e24",
+      "value": {
+        "state": "TRAIN_VAL_GHI_KT_LABEL_JOIN_COMPLETE",
+        "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+        "candidate_keys": 111466,
+        "counts": {
+          "train/candidate": 102472,
+          "train/complete_ghi": 93255,
+          "train/day_incomplete_ghi": 4499,
+          "train/main_mask": 50458,
+          "train/positive_midpoint_clear_sky": 56124,
+          "train/station_day_noaa": 54964,
+          "val/candidate": 8994,
+          "val/complete_ghi": 8137,
+          "val/day_incomplete_ghi": 405,
+          "val/main_mask": 4479,
+          "val/positive_midpoint_clear_sky": 4987,
+          "val/station_day_noaa": 4885
+        },
+        "label_window": "(target-15min,target]; GHI mean from target-10/-5/target samples",
+        "clear_sky": "Ineichen pvlib; mean at 5-minute interval midpoints target-12.5/-7.5/-2.5 min",
+        "day_mask_source": "NOAA solar cosine at target station/time > 0, consistent with M0 label production",
+        "kt": "observed 15-min mean GHI / midpoint-sampled 15-min mean clear-sky GHI; unclipped",
+        "test_payload_opened": false,
+        "input_hashes": {
+          "labels": "cd2dc4464de5b78662396c6eb5318cd8f3d1858c4e16bd09f2c62e0d92d1bd02",
+          "clear_sky": "8a30a7045fcbddb997b9535e7f7e0c5225e64bc36923396c48e9412c86cf5e64"
+        },
+        "output": "ghi_kt_train_val.csv",
+        "output_sha256": "a86c2425ac4e6e8259fcaa4b5b2e083ee427d16e12d4eb1b44aa87751b75988d"
+      }
+    }
+  },
+  "tables": {
+    "input/target_candidates_train_val.csv": {
+      "sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+      "columns": [
+        "split",
+        "station",
+        "target_time_utc",
+        "target_time_bjt",
+        "label_record_times_bjt",
+        "agri_frame_relpath",
+        "station_grid_rc",
+        "station_patch_rc",
+        "head_3x3_patch_slice_rc_exclusive",
+        "true_hdf_rc",
+        "ghi_label_state"
+      ],
+      "counts": {
+        "train/sili": 51236,
+        "train/zhujia": 51236,
+        "val/sili": 4497,
+        "val/zhujia": 4497
+      },
+      "time_bounds_as_stored": {
+        "train/sili": [
+          "2024-04-02 00:00:00",
+          "2026-06-30 23:45:00"
+        ],
+        "train/zhujia": [
+          "2024-04-02 00:00:00",
+          "2026-06-30 23:45:00"
+        ],
+        "val/sili": [
+          "2024-04-19 01:45:00",
+          "2026-06-25 23:45:00"
+        ],
+        "val/zhujia": [
+          "2024-04-19 01:45:00",
+          "2026-06-25 23:45:00"
+        ]
+      },
+      "months_as_stored": {
+        "train/2024-04": 3492,
+        "train/2024-05": 4014,
+        "train/2024-06": 3972,
+        "train/2024-07": 4156,
+        "train/2024-08": 3892,
+        "train/2024-09": 3314,
+        "train/2024-10": 3710,
+        "train/2024-11": 4046,
+        "train/2024-12": 4174,
+        "train/2025-01": 4148,
+        "train/2025-02": 3424,
+        "train/2025-03": 3724,
+        "train/2025-04": 3514,
+        "train/2025-05": 4166,
+        "train/2025-06": 4050,
+        "train/2025-07": 4172,
+        "train/2025-08": 4164,
+        "train/2025-09": 1506,
+        "train/2025-10": 2666,
+        "train/2025-11": 3894,
+        "train/2025-12": 4200,
+        "train/2026-01": 4306,
+        "train/2026-02": 3460,
+        "train/2026-03": 4198,
+        "train/2026-04": 4168,
+        "train/2026-05": 3992,
+        "train/2026-06": 3950,
+        "val/2024-04": 320,
+        "val/2024-05": 368,
+        "val/2024-06": 368,
+        "val/2024-07": 320,
+        "val/2024-08": 308,
+        "val/2024-09": 288,
+        "val/2024-10": 336,
+        "val/2024-11": 368,
+        "val/2024-12": 344,
+        "val/2025-01": 366,
+        "val/2025-02": 368,
+        "val/2025-03": 322,
+        "val/2025-04": 322,
+        "val/2025-05": 368,
+        "val/2025-06": 372,
+        "val/2025-07": 372,
+        "val/2025-08": 342,
+        "val/2025-10": 278,
+        "val/2025-11": 330,
+        "val/2025-12": 372,
+        "val/2026-01": 372,
+        "val/2026-02": 346,
+        "val/2026-03": 372,
+        "val/2026-04": 364,
+        "val/2026-05": 336,
+        "val/2026-06": 372
+      },
+      "state_counts": {
+        "train/sili/all": 51236,
+        "train/zhujia/all": 51236,
+        "val/sili/all": 4497,
+        "val/zhujia/all": 4497
+      },
+      "state_time_bounds_as_stored": {
+        "train/sili/all": [
+          "2024-04-02 00:00:00",
+          "2026-06-30 23:45:00"
+        ],
+        "train/zhujia/all": [
+          "2024-04-02 00:00:00",
+          "2026-06-30 23:45:00"
+        ],
+        "val/sili/all": [
+          "2024-04-19 01:45:00",
+          "2026-06-25 23:45:00"
+        ],
+        "val/zhujia/all": [
+          "2024-04-19 01:45:00",
+          "2026-06-25 23:45:00"
+        ]
+      },
+      "source_examples": {
+        "agri_frame_relpath": "2024/202404/20240401/202404011600.npy"
+      }
+    },
+    "data/ghi_head_pack_new_r_v1/rows.csv": {
+      "sha256": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+      "columns": [
+        "split",
+        "station",
+        "target_time_utc",
+        "agri_frame_relpath",
+        "row",
+        "col",
+        "bank_index",
+        "station_index",
+        "ghi",
+        "clear",
+        "kt",
+        "input_valid_fraction",
+        "agri_valid_fraction_3x3"
+      ],
+      "counts": {
+        "train/sili": 24155,
+        "train/zhujia": 26303,
+        "val/sili": 2128,
+        "val/zhujia": 2351
+      },
+      "time_bounds_as_stored": {
+        "train/sili": [
+          "2024-04-01 22:30:00",
+          "2026-06-30 11:15:00"
+        ],
+        "train/zhujia": [
+          "2024-04-01 22:30:00",
+          "2026-06-30 11:15:00"
+        ],
+        "val/sili": [
+          "2024-04-18 22:15:00",
+          "2026-06-25 11:15:00"
+        ],
+        "val/zhujia": [
+          "2024-04-18 22:15:00",
+          "2026-06-25 11:15:00"
+        ]
+      },
+      "months_as_stored": {
+        "train/2024-04": 2020,
+        "train/2024-05": 2369,
+        "train/2024-06": 2138,
+        "train/2024-07": 2302,
+        "train/2024-08": 2210,
+        "train/2024-09": 1496,
+        "train/2024-10": 1839,
+        "train/2024-11": 1505,
+        "train/2024-12": 1394,
+        "train/2025-01": 932,
+        "train/2025-02": 839,
+        "train/2025-03": 1501,
+        "train/2025-04": 2042,
+        "train/2025-05": 2344,
+        "train/2025-06": 2409,
+        "train/2025-07": 2446,
+        "train/2025-08": 2366,
+        "train/2025-09": 853,
+        "train/2025-10": 1227,
+        "train/2025-11": 1778,
+        "train/2025-12": 1881,
+        "train/2026-01": 1903,
+        "train/2026-02": 1641,
+        "train/2026-03": 2136,
+        "train/2026-04": 2265,
+        "train/2026-05": 2262,
+        "train/2026-06": 2360,
+        "val/2024-04": 200,
+        "val/2024-05": 218,
+        "val/2024-06": 220,
+        "val/2024-07": 192,
+        "val/2024-08": 184,
+        "val/2024-09": 139,
+        "val/2024-10": 135,
+        "val/2024-11": 171,
+        "val/2024-12": 164,
+        "val/2025-01": 82,
+        "val/2025-02": 86,
+        "val/2025-03": 73,
+        "val/2025-04": 204,
+        "val/2025-05": 210,
+        "val/2025-06": 220,
+        "val/2025-07": 218,
+        "val/2025-08": 204,
+        "val/2025-10": 66,
+        "val/2025-11": 171,
+        "val/2025-12": 166,
+        "val/2026-01": 165,
+        "val/2026-02": 185,
+        "val/2026-03": 174,
+        "val/2026-04": 204,
+        "val/2026-05": 209,
+        "val/2026-06": 219
+      },
+      "state_counts": {
+        "train/sili/all": 24155,
+        "train/zhujia/all": 26303,
+        "val/sili/all": 2128,
+        "val/zhujia/all": 2351
+      },
+      "state_time_bounds_as_stored": {
+        "train/sili/all": [
+          "2024-04-01 22:30:00",
+          "2026-06-30 11:15:00"
+        ],
+        "train/zhujia/all": [
+          "2024-04-01 22:30:00",
+          "2026-06-30 11:15:00"
+        ],
+        "val/sili/all": [
+          "2024-04-18 22:15:00",
+          "2026-06-25 11:15:00"
+        ],
+        "val/zhujia/all": [
+          "2024-04-18 22:15:00",
+          "2026-06-25 11:15:00"
+        ]
+      },
+      "source_examples": {
+        "agri_frame_relpath": "2024/202404/20240401/202404012230.npy"
+      }
+    },
+    "data/pack_trainval_v1/rows.csv": {
+      "sha256": "b270713590f6af793b53df73d27e01f3f62ad8d7e60bb9a8eaace5c43fb2ebcb",
+      "columns": [
+        "split",
+        "station",
+        "target_time_utc",
+        "bjt",
+        "state",
+        "array_index",
+        "supervised_pixels",
+        "valid_zero_pixels",
+        "thick_ge30_pixels",
+        "agri_path",
+        "cpp_path",
+        "aux_path"
+      ],
+      "counts": {
+        "train/sili": 51236,
+        "train/zhujia": 51236,
+        "val/sili": 4497,
+        "val/zhujia": 4497
+      },
+      "time_bounds_as_stored": {
+        "train/sili": [
+          "202404020000",
+          "202606302345"
+        ],
+        "train/zhujia": [
+          "202404020000",
+          "202606302345"
+        ],
+        "val/sili": [
+          "202404190145",
+          "202606252345"
+        ],
+        "val/zhujia": [
+          "202404190145",
+          "202606252345"
+        ]
+      },
+      "months_as_stored": {
+        "train/2024-04": 3492,
+        "train/2024-05": 4014,
+        "train/2024-06": 3972,
+        "train/2024-07": 4156,
+        "train/2024-08": 3892,
+        "train/2024-09": 3314,
+        "train/2024-10": 3710,
+        "train/2024-11": 4046,
+        "train/2024-12": 4174,
+        "train/2025-01": 4148,
+        "train/2025-02": 3424,
+        "train/2025-03": 3724,
+        "train/2025-04": 3514,
+        "train/2025-05": 4166,
+        "train/2025-06": 4050,
+        "train/2025-07": 4172,
+        "train/2025-08": 4164,
+        "train/2025-09": 1506,
+        "train/2025-10": 2666,
+        "train/2025-11": 3894,
+        "train/2025-12": 4200,
+        "train/2026-01": 4306,
+        "train/2026-02": 3460,
+        "train/2026-03": 4198,
+        "train/2026-04": 4168,
+        "train/2026-05": 3992,
+        "train/2026-06": 3950,
+        "val/2024-04": 320,
+        "val/2024-05": 368,
+        "val/2024-06": 368,
+        "val/2024-07": 320,
+        "val/2024-08": 308,
+        "val/2024-09": 288,
+        "val/2024-10": 336,
+        "val/2024-11": 368,
+        "val/2024-12": 344,
+        "val/2025-01": 366,
+        "val/2025-02": 368,
+        "val/2025-03": 322,
+        "val/2025-04": 322,
+        "val/2025-05": 368,
+        "val/2025-06": 372,
+        "val/2025-07": 372,
+        "val/2025-08": 342,
+        "val/2025-10": 278,
+        "val/2025-11": 330,
+        "val/2025-12": 372,
+        "val/2026-01": 372,
+        "val/2026-02": 346,
+        "val/2026-03": 372,
+        "val/2026-04": 364,
+        "val/2026-05": 336,
+        "val/2026-06": 372
+      },
+      "state_counts": {
+        "train/sili/NO_VALID_CPP_PIXELS": 8365,
+        "train/zhujia/NO_VALID_CPP_PIXELS": 8403,
+        "train/sili/SUPERVISED": 7726,
+        "train/zhujia/SUPERVISED": 7688,
+        "val/sili/NO_VALID_CPP_PIXELS": 796,
+        "val/zhujia/NO_VALID_CPP_PIXELS": 798,
+        "val/sili/SUPERVISED": 700,
+        "val/zhujia/SUPERVISED": 698,
+        "train/sili/SOURCE_READ_ERROR": 13,
+        "train/zhujia/SOURCE_READ_ERROR": 13,
+        "train/sili/CPP_UNAVAILABLE": 35132,
+        "train/zhujia/CPP_UNAVAILABLE": 35132,
+        "val/sili/CPP_UNAVAILABLE": 3001,
+        "val/zhujia/CPP_UNAVAILABLE": 3001
+      },
+      "state_time_bounds_as_stored": {
+        "train/sili/NO_VALID_CPP_PIXELS": [
+          "202404020000",
+          "202602272300"
+        ],
+        "train/zhujia/NO_VALID_CPP_PIXELS": [
+          "202404020000",
+          "202602272300"
+        ],
+        "train/sili/SUPERVISED": [
+          "202404020800",
+          "202602271700"
+        ],
+        "train/zhujia/SUPERVISED": [
+          "202404020800",
+          "202602271700"
+        ],
+        "val/sili/NO_VALID_CPP_PIXELS": [
+          "202404190200",
+          "202603022300"
+        ],
+        "val/zhujia/NO_VALID_CPP_PIXELS": [
+          "202404190200",
+          "202603022300"
+        ],
+        "val/sili/SUPERVISED": [
+          "202404190700",
+          "202603021700"
+        ],
+        "val/zhujia/SUPERVISED": [
+          "202404190700",
+          "202603021700"
+        ],
+        "train/sili/SOURCE_READ_ERROR": [
+          "202508150200",
+          "202511031600"
+        ],
+        "train/zhujia/SOURCE_READ_ERROR": [
+          "202508150200",
+          "202511031600"
+        ],
+        "train/sili/CPP_UNAVAILABLE": [
+          "202404020015",
+          "202606302345"
+        ],
+        "train/zhujia/CPP_UNAVAILABLE": [
+          "202404020015",
+          "202606302345"
+        ],
+        "val/sili/CPP_UNAVAILABLE": [
+          "202404190145",
+          "202606252345"
+        ],
+        "val/zhujia/CPP_UNAVAILABLE": [
+          "202404190145",
+          "202606252345"
+        ]
+      },
+      "source_examples": {
+        "agri_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2024/202404/20240401/202404011600.npy",
+        "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2024/20240401/FY4B_AGRI_20240401160000.nc",
+        "aux_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuNan_AGRI_Preprocessed/aux_256/202404/202404020000_0_aux.npz"
+      }
+    },
+    "results/new_monthly_R_seed42_cot_bank_v1/frame_keys.csv": {
+      "sha256": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+      "columns": [
+        "index",
+        "split",
+        "target_time_utc",
+        "agri_frame_relpath",
+        "sili_grid_rc",
+        "zhujia_grid_rc"
+      ],
+      "counts": {
+        "train/all": 51236,
+        "val/all": 4497
+      },
+      "time_bounds_as_stored": {
+        "train/all": [
+          "2024-04-01 16:00:00",
+          "2026-06-30 15:45:00"
+        ],
+        "val/all": [
+          "2024-04-18 17:45:00",
+          "2026-06-25 15:45:00"
+        ]
+      },
+      "months_as_stored": {
+        "train/2024-04": 1778,
+        "train/2024-05": 2007,
+        "train/2024-06": 1986,
+        "train/2024-07": 2078,
+        "train/2024-08": 1940,
+        "train/2024-09": 1663,
+        "train/2024-10": 1855,
+        "train/2024-11": 2023,
+        "train/2024-12": 2087,
+        "train/2025-01": 2074,
+        "train/2025-02": 1680,
+        "train/2025-03": 1888,
+        "train/2025-04": 1763,
+        "train/2025-05": 2051,
+        "train/2025-06": 2037,
+        "train/2025-07": 2101,
+        "train/2025-08": 2082,
+        "train/2025-09": 726,
+        "train/2025-10": 1359,
+        "train/2025-11": 1921,
+        "train/2025-12": 2131,
+        "train/2026-01": 2153,
+        "train/2026-02": 1699,
+        "train/2026-03": 2129,
+        "train/2026-04": 2054,
+        "train/2026-05": 2027,
+        "train/2026-06": 1944,
+        "val/2024-04": 160,
+        "val/2024-05": 184,
+        "val/2024-06": 184,
+        "val/2024-07": 160,
+        "val/2024-08": 154,
+        "val/2024-09": 144,
+        "val/2024-10": 168,
+        "val/2024-11": 184,
+        "val/2024-12": 172,
+        "val/2025-01": 183,
+        "val/2025-02": 184,
+        "val/2025-03": 161,
+        "val/2025-04": 161,
+        "val/2025-05": 184,
+        "val/2025-06": 186,
+        "val/2025-07": 186,
+        "val/2025-08": 171,
+        "val/2025-10": 139,
+        "val/2025-11": 165,
+        "val/2025-12": 186,
+        "val/2026-01": 186,
+        "val/2026-02": 200,
+        "val/2026-03": 159,
+        "val/2026-04": 182,
+        "val/2026-05": 168,
+        "val/2026-06": 186
+      },
+      "state_counts": {
+        "train/all/all": 51236,
+        "val/all/all": 4497
+      },
+      "state_time_bounds_as_stored": {
+        "train/all/all": [
+          "2024-04-01 16:00:00",
+          "2026-06-30 15:45:00"
+        ],
+        "val/all/all": [
+          "2024-04-18 17:45:00",
+          "2026-06-25 15:45:00"
+        ]
+      },
+      "source_examples": {
+        "agri_frame_relpath": "2024/202404/20240401/202404011600.npy"
+      }
+    }
+  },
+  "test_arrays_opened": 0
+}

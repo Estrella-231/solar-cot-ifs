@@ -1,0 +1,26 @@
+{
+  "reviewed_on": "2026-11-02",
+  "default_for_unlisted_history": "HISTORY_UNREVIEWED_NOT_ACTIVE_NOT_FAILED",
+  "active_ghi_selection": "configs/hunan_active_ghi_heads.json",
+  "active_route": "docs/GHI_HEAD_ROUTE_20261102.md",
+  "assets": [
+    {"id":"hunan_dydiff_epoch150_ema","status":"ACTIVE_SELECTED","role":"forecast_agri","source":"docs/GHI_HEAD_ROUTE_20261102.md"},
+    {"id":"hunan_corrected_r","status":"ACTIVE_SELECTED","role":"frozen_retrieval","source":"docs/GHI_HEAD_ROUTE_20261102.md"},
+    {"id":"hunan_observed_three_frame_heads","status":"ACTIVE_SELECTED","role":"frozen_ghi_heads","source":"configs/hunan_active_ghi_heads.json"},
+    {"id":"hunan_simvp","status":"ACTIVE_BASELINE","source":"refine-logs/hunan_dydiff_20261028/full_validation_20261029/RESULTS.md"},
+    {"id":"hunan_frozen_heads_66086","status":"ACTIVE_SELECTED_RESULT","evaluation":"validation","source":"refine-logs/fulltrain_forecast_cot_20261101/observed_trained_heads_evaluation_v1/RESULTS.md","no_cot_rmse":122.5883027975,"cot_rmse":120.5018345156,"gain_percent":1.7020125365},
+    {"id":"hubei_correct_geometry_three_frame","status":"ACTIVE_REGIONAL_RESULT","evaluation":"same_time_validation","source":"refine-logs/hubei_same_time_geometry_20261102/RESULTS.md","no_cot_rmse":74.405617,"cot_rmse":68.629188},
+    {"id":"hunan_frozen_heads_63480","status":"VALID_HISTORICAL_REFERENCE","source":"refine-logs/hunan_dydiff_20261028/hunan_full_validation_20261030/recovered/evaluation_attempt1"},
+    {"id":"forecast_trained_heads_66086","status":"COMPARISON_COMPLETED_NOT_SELECTED","source":"refine-logs/fulltrain_forecast_cot_20261101/RESULTS.md","gain_percent":0.604966},
+    {"id":"direct_future_cot_development","status":"NEGATIVE_COMPLETED","source":"refine-logs/agri_direct_cot_20261020/EXPERIMENT_TRACKER.md"},
+    {"id":"hubei_10_54_old_geometry","status":"SUPERSEDED_CONFIGURATION","source":"paper/revision_records/20261101_verified_results/AUDIT_1054_GEOMETRY.md"},
+    {"id":"old_cpp_eight_hour_mismatch_r","status":"INVALID_FOR_CURRENT_CLAIMS","reason":"CPP supervision timestamp mismatch; preserve evidence"},
+    {"id":"hunan_old_3_02","status":"INVALID_FOR_CURRENT_CLAIMS","reason":"Included confirmed invalid Sili station-day; use separately sourced rescoring"},
+    {"id":"pbs214946","status":"FAILED_RUNTIME","reason":"node-local disk reserve protection"},
+    {"id":"pbs217013","status":"INTENTIONALLY_STOPPED_FOR_MIGRATION","continued_by":"217015"},
+    {"id":"pbs217109","status":"FAILED_RUNTIME_BEFORE_TRAINING","continued_by":"217110"},
+    {"id":"independent_test","status":"PENDING_CLOSED"},
+    {"id":"short_term_ifs_increment","status":"PENDING_NOT_ESTABLISHED"},
+    {"id":"paper_main","status":"CURRENT_DRAFT_WITH_EXPLICIT_PLACEHOLDERS","source":"paper/VERSION_INDEX.md"}
+  ]
+}

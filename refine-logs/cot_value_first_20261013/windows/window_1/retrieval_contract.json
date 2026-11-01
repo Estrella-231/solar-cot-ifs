@@ -1,0 +1,82 @@
+{
+  "schema": "cot_value_first_window1_retrieval_contract_v1",
+  "state": "TRAIN_VAL_LABELS_READY_OLD_R_COT_BANK_CONFIRMED_CPP_REGENERATION_READY",
+  "as_of_bjt": "2026-10-13",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "formal_R": {
+    "status": "OLD_R_LIVE_VERIFIED_NEW_MONTHLY_R_NOT_TRAINED",
+    "reason": "The official frozen Hunan R and its already-produced historical COT sidecars are present on zjnu-hpc. They belong to the older 8-to-16 SimVP cohort. The new monthly R/COT training contract has not yet been trained; the monthly experiment tree contains M1 smoke/profile artifacts only. The old R remains usable for historical diagnostics and for exact old-contract reuse, but is not relabeled as a new-monthly trained R.",
+    "old_R_reference": {
+      "name": "cot_repaired_seed42_v1",
+      "checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+      "old_validation_samples": 6536,
+      "source": "runs/cot_repaired_seed42_v1/run_metadata.json; live checkpoint verified",
+      "scope": "official frozen Hunan R trained under the 2026-09-07 cohort; valid historical asset, not a new-monthly R training result"
+    },
+    "new_R_rebuild": "Only if the new monthly COT reference-training contract requires it; reuse existing raw AGRI/CPP production and the portable CPP pipeline. Do not describe old checkpoint as monthly-trained.",
+    "monthly_experiment_root": "experiments/direct_cot_monthly_20261005_v1/",
+    "monthly_experiment_status": "M1 smoke/profile present; no formal best.pt or training_complete.json found in the searched tree"
+  },
+  "existing_cot_sidecars": {
+    "status": "LIVE_VERIFIED_COMPLETE",
+    "root": "data/history_cot_trajectory_real_agri_rpair_20260923/original_R/",
+    "train_sequences": 27675,
+    "validation_sequences": 4258,
+    "layout": "[sequence, station, historic_frame, 1, 16, 16] log1p(COT)",
+    "R_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+    "source_S_manifest_sha256": "9b6f5ff452a377a202db3d7dc305cebd74230cb084b6accf21df745b4b47dcf8",
+    "scope_note": "Each sequence contains its eight observed history frames from the old S manifest. It is not a direct per-target-frame bank keyed to the unique monthly candidate table; reuse requires explicit timestamp-key mapping or recomputation for target frames."
+  },
+  "cpp_reference": {
+    "status": "EXISTING_OUTPUTS_PARTIAL; RAW_INPUTS_AVAILABLE_FOR_REGENERATION",
+    "label_product": "FY4B CPP COT plus CLP; COT numeric range 0..100",
+    "training_supervision_mask": "finite COT in [0,100] AND finite CLP in {0,1,2} AND all 13 AGRI channels valid AND day_mask>0.5 AND cosSOZ>cos(80deg)",
+    "valid_zero_cot": "retained when the joint mask passes; zero is not converted to missing",
+    "quality_limit": "The inspected four CPP samples had COT, CER, CTH, CLP but no independent QA variable. Sparse product support and conservative file-read exclusions remain. CPP is a retrieval reference, not independent truth.",
+    "support_by_forecast_target_occurrences": {
+      "train": {"total": 565120, "cpp_present": 176508, "coverage": 0.3123, "unique_target_times_present": 14346, "unique_target_times_total": 45700},
+      "val": {"total": 50240, "cpp_present": 16356, "coverage": 0.3256, "unique_target_times_present": 1330, "unique_target_times_total": 4025}
+    },
+    "known_month_gaps": "CPP support is zero in train 2026-03 through 2026-06 and val 2026-04 through 2026-06; val 2026-02 and 2026-03 supported pixels were all COT<0.1 in the audited support.",
+    "known_exclusions": "131 conservative failures/exclusions in the full audit; includes HDF read errors and known problematic files. They are not clear-sky labels.",
+    "new_monthly_candidate_file_support": {
+      "audit": "results/trainval_data_20261013/cpp_support_v1/cpp_support_audit.json",
+      "train_candidate_frames": 51236,
+      "train_existing_cpp_present": 16104,
+      "train_existing_cpp_absent": 35132,
+      "val_candidate_frames": 4497,
+      "val_existing_cpp_present": 1496,
+      "val_existing_cpp_absent": 3001,
+      "metadata_only": true,
+      "cpp_payload_opened": false
+    },
+    "raw_source_evidence": {
+      "node": "FD-107",
+      "fy4b_agri_root": "/home/Data_Pool/data/FY/FY4B/AGRI/4KM",
+      "observed_hdf_directories": ["2026/20260301", "2026/20260630"],
+      "candidate_time_match": "metadata-only exact all-candidate HDF filename audit script exited successfully on FD-107; JSON receipt not yet retrieved because SSH has been intermittent",
+      "portable_bundle_sha256": "dc7959b7bc7ef467239a261072f8789d416df9e9a7bf19c8d16403e3d113eb7b"
+    },
+    "test_payload_opened": false
+  },
+  "evidence": [
+    {"path": "experiments/direct_cot_monthly_20261005_v1/m0_cpp_support/M0_AUDIT_20261005.md", "sha256": "53a520a7f82189941542437436d8141ddecaf89fdc807047baccdfcdd3544fc"},
+    {"path": "experiments/direct_cot_monthly_20261005_v1/m0_cpp_support/cpp_temporal_support_by_split_season_month.csv", "sha256": "4ce95ffaa1566a8757e622eb1440a01b2b01ce27b47868de1b1cdaeb7ad773e9"},
+    {"path": "experiments/direct_cot_monthly_20261005_v1/m0_cpp_support/cpp_file_support_inventory.csv", "sha256": "cf3530e9d059197a42acfd81e415d2c5c3705340a26a76df9f79a84597546086"},
+    {"path": "experiments/direct_cot_monthly_20261005_v1/m0_cpp_support/cpp_val_station_supervision_summary.json", "sha256": "87c84e6028185c94a46eafbfd2c62f2ef0a1a1a2679d0bf3894aaadec0544bc8c"},
+    {"path": "scripts/pack_regional_agri_cpp_bank_20260926.py", "sha256": "036df61675579377a5a738740de36af33bd842b7ff77611e9052d9f4f4de389d"},
+    {"path": "scripts/audit_direct_cot_region_supervision_20261006.py", "sha256": "1cc949df9652974e5bd90fcc82bb6ae620977c61bce3a6293d406f2c5d18d819"},
+    {"path": "scripts/train_cot_repaired.py", "sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05"},
+    {"path": "experiments/direct_cot_monthly_20261005_v1/m1_smoke/run_output/status.json", "sha256": "60eef6e2aade33276567b834c335cde194dd71d849fa47bc2304406a0c5570ca"},
+    {"path": "results/trainval_data_20261013/cpp_support_v1/cpp_support_audit.json", "sha256": "dc3b164a9fdc91adcf9bf3c828b2e6596374da8555a6c14efd97623a5a244bf7"},
+    {"path": "results/trainval_data_20261013/cpp_support_v1/cpp_file_support_by_frame.csv", "sha256": "0a303ec6965be360689f3891e96b5e4085ad3e6550b2db6504a8b2ac35565dd2"}
+  ],
+  "gates": {
+    "T01_total_asset_inventory": "PARTIAL_WITH_LIVE_ASSET_VERIFICATION; official old R, old history-COT sidecar, source manifests, CPP model product files, and monthly SimVP assets are confirmed; old/new cohort boundaries remain explicit",
+    "T03_candidate_data_contract": "PASS; train/val GHI, clear-sky and kt table built from authoritative workbooks for 111466 candidates; main mask train=50458, val=4479",
+    "cpp_support_for_new_R": "EXISTING_CPP_OUTPUTS_PARTIAL; raw FY4B HDF source tree is present for 2026; exact candidate-to-HDF metadata audit completed remotely but receipt retrieval is pending; portable auxiliary bundle verification remains to finish",
+    "new_monthly_R_checkpoint": "NOT_TRAINED; monthly tree has M1 smoke/profile only",
+    "formal_AC_or_COT_bank": "NOT_STARTED_FOR_UNIQUE_MONTHLY_TARGETS; historical trajectory sidecar is complete but bound to old sequence contract",
+    "test_payload_access": "PROHIBITED_PENDING_FREEZE"
+  }
+}

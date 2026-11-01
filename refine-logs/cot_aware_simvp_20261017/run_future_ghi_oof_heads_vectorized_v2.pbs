@@ -1,0 +1,161 @@
+#!/bin/bash
+#PBS -N fghi_heads_v2
+#PBS -q gpu
+# One GPU for the seed-42 structural gate, then one process per GPU for the
+# independent seed-43/44 runs. Do not use DataParallel for this small head.
+#PBS -l nodes=node22:ppn=8:gpus=2
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+RROOT=$PROJECT/experiments/monthly_R_station16_20261013_v1
+BASE=$EXP/results/future_simvp_r_bank_v1
+OOF_BANKS=$EXP/results/future_ghi_oof_banks_v1
+MANIFESTS=$EXP/results/future_ghi_oof_manifests_v1
+MERGED=$EXP/results/future_simvp_r_bank_oof_v1
+CROSS_REPORT=$EXP/results/future_ghi_crosswalk.json
+CROSS_KEYS=$EXP/results/future_ghi_crosswalk_keys.npz
+LABEL_PACK=$RROOT/data/ghi_head_pack_new_r_v1
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+RUN=$EXP/results/future_ghi_oof_cot_source_heads_v2
+SEED42_AUDIT=$EXP/results/future_ghi_oof_seed42_audit_v2.json
+FINAL_AUDIT=$EXP/results/future_ghi_oof_source_validation_audit_v2.json
+SHRINK_RUN=$EXP/results/future_ghi_oof_cot_shrink_v2
+SHRINK_AUDIT=$EXP/results/future_ghi_oof_cot_shrink_validation_audit_v2.json
+SHRINK_GATE_LOG=$EXP/logs/future_ghi_oof_ac50_gate_${PBS_JOBID}.log
+SEED43_RUN=$EXP/results/future_ghi_oof_cot_source_seed43_v2
+SEED44_RUN=$EXP/results/future_ghi_oof_cot_source_seed44_v2
+SHRINK_SEED43_RUN=$EXP/results/future_ghi_oof_cot_shrink_seed43_v2
+SHRINK_SEED44_RUN=$EXP/results/future_ghi_oof_cot_shrink_seed44_v2
+LOG=$EXP/logs/future_ghi_oof_heads_${PBS_JOBID}.log
+mkdir -p "$EXP/logs" "$EXP/results"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$EXP"
+sha256sum -c FUTURE_GHI_VECTOR_PACK_SHA256SUMS
+sha256sum -c FUTURE_GHI_OOF_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_oof_heads_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+python -m py_compile "$EXP/build_future_ghi_head_pack.py" "$EXP/train_future_ghi_heads.py" "$EXP/audit_future_ghi_a_ac.py" "$EXP/merge_future_ghi_oof_bank.py" "$EXP/merge_future_ghi_head_seed_runs.py"
+python "$EXP/test_future_ghi_oof_provenance.py"
+python "$EXP/test_audit_future_ghi_a_ac.py"
+python "$EXP/test_merge_future_ghi_oof_bank.py"
+python "$EXP/test_merge_future_ghi_head_seed_runs.py"
+python - <<'PY' "$EXP" "$OOF_BANKS" "$MANIFESTS" "$MERGED" "$RUN" "$PACK" "$SEED42_AUDIT" "$FINAL_AUDIT"
+import json,sys
+from pathlib import Path
+exp,banks,manifests,merged,run,pack,seed42,final=map(Path,sys.argv[1:])
+if any(x.exists() for x in (run,seed42,final)):
+    raise SystemExit('REFUSE: OOF head stage output already exists; preserve it and version new outputs')
+audit=json.loads((manifests/'manifest_build_audit.json').read_text())
+assert audit['oof_bank_coverage']==audit['bank_train_sequences']==30436
+assert all(x['train_heldout_frame_intersection']==0 for x in audit['folds'])
+for fold in range(5):
+    d=banks/f'fold_{fold}'
+    m=json.loads((d/'bank_manifest.json').read_text())
+    assert m['state']=='COMPLETE_FUTURE_GHI_OOF_FOLD_FORECASTS'
+    assert m['future_observed_agri_read'] is False and m['cpp_read'] is False
+    assert m['buffer_payload_opened'] is False and m['validation_test_payload_opened'] is False
+print('FIVE_FOLD_OOF_BANK_PREFLIGHT_PASS')
+PY
+
+python - <<'PY' "$PACK/pack_manifest.json"
+import json,sys
+x=json.load(open(sys.argv[1])); assert x['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK'
+assert x['train_forecast_oof'] is True and x['forecast_bank_oof_fold_count']==5
+assert x['test_payload_opened'] is False and x['buffer_payload_opened'] is False
+assert x['future_observed_agri_used_as_input'] is False and x['cpp_used_as_input'] is False
+print('OOF_GHI_PACK_PROVENANCE_PASS',x['rows'])
+PY
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | sed '/^$/d' | wc -l)" -ne 2 ]; then
+  echo "REFUSE: expected exactly two node22 GPUs, got $GPU_TEXT"; exit 32
+fi
+GPU0=$(printf '%s\n' "$GPU_TEXT" | sed -n '1p')
+GPU1=$(printf '%s\n' "$GPU_TEXT" | sed -n '2p')
+nvidia-smi -i "$GPU0,$GPU1" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+# Seed 42 is a structural and pairing gate. The three-seed screen is fixed in
+# advance; validation scores do not tune inputs, weights, or architecture.
+export CUDA_VISIBLE_DEVICES="$GPU0"
+python -u "$EXP/train_future_ghi_heads.py" --pack "$PACK" --output "$RUN" --seeds 42 --epochs 30 --batch-size 1792 --station both
+python -u "$EXP/audit_future_ghi_a_ac.py" --run-root "$RUN" --output "$SEED42_AUDIT" --seeds 42 --bootstrap 2000 --require-oof
+for d in "$SEED43_RUN" "$SEED44_RUN"; do
+  if [ -e "$d" ]; then echo "REFUSE: seed-isolated output already exists: $d"; exit 33; fi
+done
+CUDA_VISIBLE_DEVICES="$GPU0" python -u "$EXP/train_future_ghi_heads.py" --pack "$PACK" --output "$SEED43_RUN" --seeds 43 --epochs 30 --batch-size 1792 --station both > "$EXP/logs/future_ghi_head_seed43_${PBS_JOBID}.log" 2>&1 &
+PID43=$!
+CUDA_VISIBLE_DEVICES="$GPU1" python -u "$EXP/train_future_ghi_heads.py" --pack "$PACK" --output "$SEED44_RUN" --seeds 44 --epochs 30 --batch-size 1792 --station both > "$EXP/logs/future_ghi_head_seed44_${PBS_JOBID}.log" 2>&1 &
+PID44=$!
+set +e
+wait "$PID43"; RC43=$?
+wait "$PID44"; RC44=$?
+set -e
+if [ "$RC43" -ne 0 ] || [ "$RC44" -ne 0 ]; then
+  echo "REFUSE: parallel seed workers failed (seed43=$RC43 seed44=$RC44)"; exit 34
+fi
+python "$EXP/merge_future_ghi_head_seed_runs.py" --base "$RUN" --child "$SEED43_RUN" "$SEED44_RUN" \
+  --complete-state COMPLETE_FUTURE_GHI_COT_SOURCE_SCREENING_PILOT --required-arms A,AH,AC
+python -u "$EXP/audit_future_ghi_a_ac.py" --run-root "$RUN" --output "$FINAL_AUDIT" --seeds 42 43 44 --bootstrap 2000 --require-oof
+python -u "$EXP/audit_future_ghi_cot_strata.py" --pack "$PACK" --run-root "$RUN" \
+  --output "$EXP/results/future_ghi_oof_cot_strata_audit_v2.json" --seeds 42 43 44
+
+# Conditional single-factor noise follow-up: reuse the exact OOF pack only if
+# the prespecified AC-AH gate fails. A passing baseline stops this branch.
+cd "$PROJECT"
+sha256sum -c "$EXP/FUTURE_GHI_OOF_SHRINK_SHA256SUMS"
+cd "$EXP"
+python -m py_compile "$EXP/train_future_ghi_heads_cot_shrink.py" "$EXP/audit_future_ghi_cot_shrink.py" \
+  "$EXP/gate_future_ghi_oof_cot_shrink.py"
+python "$EXP/test_future_ghi_cot_shrink.py"
+python "$EXP/test_audit_future_ghi_cot_shrink.py"
+python "$EXP/test_gate_future_ghi_oof_cot_shrink.py"
+set +e
+python "$EXP/gate_future_ghi_oof_cot_shrink.py" \
+  --pack-manifest "$PACK/pack_manifest.json" --run-manifest "$RUN/run_manifest.json" \
+  --audit "$FINAL_AUDIT" --run-output "$SHRINK_RUN" --audit-output "$SHRINK_AUDIT" \
+  > "$SHRINK_GATE_LOG" 2>&1
+GATE_RC=$?
+set -e
+if [ "$GATE_RC" -eq 0 ]; then
+  cat "$SHRINK_GATE_LOG"
+  python -u "$EXP/train_future_ghi_heads_cot_shrink.py" --pack "$PACK" --output "$SHRINK_RUN" \
+    --seeds 42 --epochs 30 --batch-size 1792 --station both
+  for d in "$SHRINK_SEED43_RUN" "$SHRINK_SEED44_RUN"; do
+    if [ -e "$d" ]; then echo "REFUSE: shrink seed-isolated output already exists: $d"; exit 35; fi
+  done
+  CUDA_VISIBLE_DEVICES="$GPU0" python -u "$EXP/train_future_ghi_heads_cot_shrink.py" --pack "$PACK" --output "$SHRINK_SEED43_RUN" \
+    --seeds 43 --epochs 30 --batch-size 1792 --station both > "$EXP/logs/future_ghi_shrink_seed43_${PBS_JOBID}.log" 2>&1 &
+  SHRINK_PID43=$!
+  CUDA_VISIBLE_DEVICES="$GPU1" python -u "$EXP/train_future_ghi_heads_cot_shrink.py" --pack "$PACK" --output "$SHRINK_SEED44_RUN" \
+    --seeds 44 --epochs 30 --batch-size 1792 --station both > "$EXP/logs/future_ghi_shrink_seed44_${PBS_JOBID}.log" 2>&1 &
+  SHRINK_PID44=$!
+  set +e
+  wait "$SHRINK_PID43"; SHRINK_RC43=$?
+  wait "$SHRINK_PID44"; SHRINK_RC44=$?
+  set -e
+  if [ "$SHRINK_RC43" -ne 0 ] || [ "$SHRINK_RC44" -ne 0 ]; then
+    echo "REFUSE: parallel AC50 seed workers failed (seed43=$SHRINK_RC43 seed44=$SHRINK_RC44)"; exit 36
+  fi
+  python "$EXP/merge_future_ghi_head_seed_runs.py" --base "$SHRINK_RUN" \
+    --child "$SHRINK_SEED43_RUN" "$SHRINK_SEED44_RUN" \
+    --complete-state COMPLETE_FUTURE_GHI_COT_SHRINKAGE_SCREENING_PILOT \
+    --required-arms A,AH,AC,AC50
+  python -u "$EXP/audit_future_ghi_cot_shrink.py" --run-root "$SHRINK_RUN" \
+    --output "$SHRINK_AUDIT" --seeds 42 43 44 --bootstrap 2000
+elif grep -Fq 'ValueError: AC-AH OOF gate passed; proceed to independent confirmation, do not run AC50' "$SHRINK_GATE_LOG"; then
+  cat "$SHRINK_GATE_LOG"
+  echo "OOF_AC50_SKIPPED_PRIMARY_GATE_PASSED"
+else
+  cat "$SHRINK_GATE_LOG"
+  exit "$GATE_RC"
+fi
+echo "FUTURE_GHI_OOF_SCREEN_WITH_CONDITIONAL_AC50_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

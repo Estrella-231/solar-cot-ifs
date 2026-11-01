@@ -1,0 +1,53 @@
+{
+  "schema": "cot_value_first_asset_inventory_v1",
+  "created_at_bjt": "2026-10-13",
+  "state": "PARTIAL_LIVE_EXISTING_ASSETS_CONFIRMED_MONTHLY_REUSE_PENDING",
+  "scope": "Local production records plus 2026-10-13 live zjnu-hpc file metadata; no test payload accessed",
+  "job_211902": {
+    "exact_local_job_receipt_found": false,
+    "local_search_result": "No local submission/job receipt directly links PBS id 211902 to a saved experiment. Do not assign this job id to a nearby experiment based on chronology alone.",
+    "nearest_local_historical_record": {
+      "experiment": "station_window_selection_20261003_v1",
+      "summary_state": "COMPLETE_WINDOW_PILOT",
+      "runs_completed": 60,
+      "scope": "real target-time AGRI inversion diagnostic; frozen regional R; two stations; same old train/val split; three paired seeds",
+      "protocol_scope_excerpt": "real target-time AGRI, frozen regional R, two stations, old train/val split; train 4096 and val 1024 target times per station; 5 window sizes x A/AC x 3 seeds x 2 stations = 60 runs; no test.",
+      "exact_job_mapping": "UNVERIFIED; protocol and summary identify the experiment but do not identify PBS 211902."
+    }
+  },
+  "job_212019": {
+    "exact_local_submission_receipt_found": true,
+    "job_id": "212019.tc6000",
+    "scope": "old-contract forecast-only validation pilot",
+    "requested_gpus_before": 1,
+    "historical_completion_reported": true,
+    "run_count_reported": 36,
+    "contract": "old contract forecast-only validation pilot; frozen SimVP predicted AGRI plus regional R COT; not new monthly contract, no oracle/test.",
+    "remote_current_state": "not live verified in this run"
+  },
+  "monthly_contract_assets": {
+    "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+    "manifest_hash": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2",
+    "local_launch_last_verified": "2026-10-02T19:45:58.482819",
+    "preparation_processed_frames": 3000,
+    "train_frames_expected": 51236,
+    "training_started_at_last_local_receipt": false,
+    "local_new_contract_checkpoint_found": false,
+    "remote_current_checkpoint_state": "2026-10-13 live-confirmed best.pt exists at SolarCOTIFS_20260907/experiments/hunan_monthly_block_20261002/runs/simvp_seed42_v1/training/best.pt (131910246 bytes); Oct-2 training_started=false is only a historical preparation snapshot"
+  },
+  "R_S_H_provenance": {
+    "historical_R_swap": "fixed GHI head R replacement report documents old/new frozen R on old validation cohort; differences near zero and date-bootstrap CIs cross zero; this is not fair matched retraining or new monthly-contract evidence.",
+    "new_monthly_R_S_H": "New monthly SimVP best.pt, old-split regional R best.pt, paired-bank index, existing GHI label/head pack and history-COT arrays are live-confirmed on zjnu-hpc. Reuse needs monthly key coverage and R training-date compatibility; absence of local copies is not evidence of unproduced data. A new monthly R/H completion is not established by this metadata check."
+  },
+  "evidence_sha256": {
+    "211902_candidate_protocol": "ac61ce9691937ec120866234fceae5a4fc29ac2e38f9789794895e6d77ef17f2",
+    "211902_candidate_summary": "31a092e7eb9dec1c2dc26e1dc7cdec728b079227e33a9305c9a26f0a05595afb",
+    "212019_submission": "fda13e15f1ca2480b2d1cce921d1bfe70c98fd3a86c04c1b03aef3d72069b8f8",
+    "212019_status": "119e182e0b812e7ad68cd45324c1a27ef28fca94c5321c5e9b76db438e3e6cca",
+    "212019_summary": "c07cb5d3e770fdca167c43d46f20d833736369a38a40154359499d0530ebb874",
+    "monthly_launch": "c7815479b60ed6e47fd486bea3ba3820f2d6520de86b6397c17edfa84fd571b8",
+    "monthly_independent_audit": "f65f395c668e8e88f6d898242a89159f9f86ea056e607a6fbef7766b8973f066",
+    "fixed_R_swap_report": "4c6f2713026490611cc50e2620199a0db464e9610419eb089f0d6c0df213ffee"
+  },
+  "test_payload_read": false
+}

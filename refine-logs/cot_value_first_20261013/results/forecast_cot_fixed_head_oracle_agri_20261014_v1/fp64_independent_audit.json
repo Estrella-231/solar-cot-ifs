@@ -1,0 +1,51 @@
+{
+  "state": "INDEPENDENT_FP64_RECOMPUTE_PASS",
+  "scope": "validation-only fixed-head offline diagnostic; actual target AGRI/geometry fixed; COT source swapped from same-time frozen-R to SimVP forecast AGRI passed through frozen R",
+  "not_deployable_GHI_forecast_score": true,
+  "test_payload_opened": false,
+  "cpp_mask_used_for_sample_filter": false,
+  "n_forecast_instances": 7005,
+  "n_unique_target_dates": 8,
+  "dates": [
+    "2024-12-24",
+    "2024-12-25",
+    "2025-01-04",
+    "2025-08-21",
+    "2026-01-04",
+    "2026-02-20",
+    "2026-02-21",
+    "2026-03-01"
+  ],
+  "station_equal_mean_RMSE_same_time_R_COT": 75.28535384370235,
+  "station_equal_mean_RMSE_forecast_COT_oracle_AGRI": 80.42778691541292,
+  "station_equal_delta_RMSE": 5.14243307171057,
+  "station_equal_delta_RMSE_date_block_bootstrap_95ci": [
+    -3.9753283512619575,
+    11.907651278977275
+  ],
+  "bootstrap_replicates": 5000,
+  "bootstrap_unit": "BJT target-date blocks (UTC target_time + 8 h), paired; overlapping forecast instances retained within each date",
+  "by_station": {
+    "sili": {
+      "n": 3314,
+      "unique_target_times": 249,
+      "unique_dates": 7,
+      "RMSE_same_time_R_COT": 71.16366977133441,
+      "RMSE_forecast_COT_oracle_AGRI": 75.89402200040229,
+      "delta_RMSE": 4.730352229067876,
+      "MAE_same_time_R_COT": 48.97825670561094,
+      "MAE_forecast_COT_oracle_AGRI": 52.83385544168519
+    },
+    "zhujia": {
+      "n": 3691,
+      "unique_target_times": 280,
+      "unique_dates": 8,
+      "RMSE_same_time_R_COT": 79.40703791607028,
+      "RMSE_forecast_COT_oracle_AGRI": 84.96155183042356,
+      "delta_RMSE": 5.554513914353279,
+      "MAE_same_time_R_COT": 56.27932676763107,
+      "MAE_forecast_COT_oracle_AGRI": 62.43824897403417
+    }
+  },
+  "positive_delta_means": "forecast COT substitution is worse than same-time R-COT under the same frozen head and oracle target AGRI"
+}

@@ -1,0 +1,279 @@
+{
+  "state": "COMPLETE_DIRECT_COT_RESIDUAL_VALIDATION_SCORE",
+  "claim_scope": "outer-validation development evidence; no independent-test claim",
+  "candidate_run_manifest_sha256": "4a2226c343367f698cf5d5afe92427f9f09303dc67156e90548ac48e38d952c3",
+  "pack_manifest_sha256": "bd6c393b6d6bc2ba73452cf8abcbc835c5a0ae78f1d0a5d1f773f1a3f9910a1f",
+  "day_assignment_sha256": "688bbbe5eea3ef12aea4f14bc8dfea4dcf63e7a584b09ca8d5345f8d1e0e972f",
+  "bootstrap": {
+    "repetitions": 5000,
+    "seed": 20261020,
+    "block_count": 26,
+    "resampling_unit": "frozen monthly consecutive two-day validation blocks with replacement; multiplicity retained"
+  },
+  "contrasts": {
+    "all_16_leads": {
+      "residual_minus_none": {
+        "station_equal_seed_equal_point_delta_rmse_wm2": 3.147971001237091,
+        "paired_date_block_bootstrap_ci95_wm2": [
+          0.6628139985678217,
+          6.022195368083836
+        ],
+        "per_station": {
+          "sili": {
+            "seed_rmse_deltas_wm2": [
+              2.5299461893676494,
+              4.807002307687782,
+              2.700712519633555
+            ],
+            "point_rmse_delta_wm2": 3.3458870055629952
+          },
+          "zhujia": {
+            "seed_rmse_deltas_wm2": [
+              -0.3047256401549987,
+              5.857167653160531,
+              3.2977229777280286
+            ],
+            "point_rmse_delta_wm2": 2.9500549969111867
+          }
+        },
+        "per_seed_region_equal": {
+          "42": 1.1126102746063253,
+          "43": 5.332084980424156,
+          "44": 2.999217748680792
+        },
+        "seeds_improved": 0,
+        "seeds_total": 3,
+        "leave_one_block_out_all_negative": false,
+        "leave_one_block_out_min_max_wm2": [
+          2.3705524876177435,
+          3.600514700680776
+        ]
+      },
+      "residual_minus_simvp_r": {
+        "station_equal_seed_equal_point_delta_rmse_wm2": 1.8141957102540403,
+        "paired_date_block_bootstrap_ci95_wm2": [
+          -0.8442243158955796,
+          5.302950854972285
+        ],
+        "per_station": {
+          "sili": {
+            "seed_rmse_deltas_wm2": [
+              2.293516316292056,
+              4.18971148517619,
+              0.8363748133159845
+            ],
+            "point_rmse_delta_wm2": 2.43986753826141
+          },
+          "zhujia": {
+            "seed_rmse_deltas_wm2": [
+              -3.0077221459167447,
+              -1.9912609511819142,
+              8.56455474383867
+            ],
+            "point_rmse_delta_wm2": 1.1885238822466704
+          }
+        },
+        "per_seed_region_equal": {
+          "42": -0.35710291481234435,
+          "43": 1.0992252669971379,
+          "44": 4.700464778577327
+        },
+        "seeds_improved": 1,
+        "seeds_total": 3,
+        "leave_one_block_out_all_negative": false,
+        "leave_one_block_out_min_max_wm2": [
+          0.8222850932511724,
+          2.2167017239093525
+        ]
+      },
+      "residual_minus_p_xc": {
+        "station_equal_seed_equal_point_delta_rmse_wm2": 1.7784449627711656,
+        "paired_date_block_bootstrap_ci95_wm2": [
+          -0.9745286265645519,
+          5.238656871857838
+        ],
+        "per_station": {
+          "sili": {
+            "seed_rmse_deltas_wm2": [
+              4.039651345108894,
+              6.314648848291256,
+              2.0733348797325846
+            ],
+            "point_rmse_delta_wm2": 4.142545024377578
+          },
+          "zhujia": {
+            "seed_rmse_deltas_wm2": [
+              -5.990033682236032,
+              -0.7586652739243789,
+              4.99173365965467
+            ],
+            "point_rmse_delta_wm2": -0.5856550988352467
+          }
+        },
+        "per_seed_region_equal": {
+          "42": -0.975191168563569,
+          "43": 2.7779917871834385,
+          "44": 3.5325342696936275
+        },
+        "seeds_improved": 1,
+        "seeds_total": 3,
+        "leave_one_block_out_all_negative": false,
+        "leave_one_block_out_min_max_wm2": [
+          0.9855787763782852,
+          2.401163480933031
+        ]
+      }
+    },
+    "lead_15_60": {
+      "residual_minus_none": {
+        "station_equal_seed_equal_point_delta_rmse_wm2": 1.2576252052506192,
+        "paired_date_block_bootstrap_ci95_wm2": [
+          -1.1702461422544221,
+          4.264423737342199
+        ],
+        "per_station": {
+          "sili": {
+            "seed_rmse_deltas_wm2": [
+              1.7978358810964323,
+              5.15180040193178,
+              3.0411873026855005
+            ],
+            "point_rmse_delta_wm2": 3.3302745285712376
+          },
+          "zhujia": {
+            "seed_rmse_deltas_wm2": [
+              -2.2867489330175204,
+              0.28823588527279753,
+              -0.4465593064652751
+            ],
+            "point_rmse_delta_wm2": -0.8150241180699993
+          }
+        },
+        "per_seed_region_equal": {
+          "42": -0.244456525960544,
+          "43": 2.7200181436022888,
+          "44": 1.2973139981101127
+        },
+        "seeds_improved": 1,
+        "seeds_total": 3,
+        "leave_one_block_out_all_negative": false,
+        "leave_one_block_out_min_max_wm2": [
+          0.49153338993783535,
+          1.7369959061826705
+        ]
+      },
+      "residual_minus_simvp_r": {
+        "station_equal_seed_equal_point_delta_rmse_wm2": 0.3823623497033992,
+        "paired_date_block_bootstrap_ci95_wm2": [
+          -3.100489030984107,
+          4.46450955675399
+        ],
+        "per_station": {
+          "sili": {
+            "seed_rmse_deltas_wm2": [
+              1.4356638962811843,
+              3.5259449813185597,
+              2.1598614745385447
+            ],
+            "point_rmse_delta_wm2": 2.373823450712763
+          },
+          "zhujia": {
+            "seed_rmse_deltas_wm2": [
+              -3.756011518806247,
+              -4.571002162092043,
+              3.4997174269803963
+            ],
+            "point_rmse_delta_wm2": -1.6090987513059645
+          }
+        },
+        "per_seed_region_equal": {
+          "42": -1.1601738112625313,
+          "43": -0.5225285903867416,
+          "44": 2.8297894507594705
+        },
+        "seeds_improved": 2,
+        "seeds_total": 3,
+        "leave_one_block_out_all_negative": false,
+        "leave_one_block_out_min_max_wm2": [
+          -0.4748814965807237,
+          1.513023378526654
+        ]
+      },
+      "residual_minus_p_xc": {
+        "station_equal_seed_equal_point_delta_rmse_wm2": 0.8433312391701193,
+        "paired_date_block_bootstrap_ci95_wm2": [
+          -2.3729982997798285,
+          4.730287847185272
+        ],
+        "per_station": {
+          "sili": {
+            "seed_rmse_deltas_wm2": [
+              3.8396833773591084,
+              5.452577356946307,
+              4.48394690596912
+            ],
+            "point_rmse_delta_wm2": 4.592069213424845
+          },
+          "zhujia": {
+            "seed_rmse_deltas_wm2": [
+              -6.371871700320625,
+              -3.050486547303535,
+              0.7061380423703412
+            ],
+            "point_rmse_delta_wm2": -2.9054067350846062
+          }
+        },
+        "per_seed_region_equal": {
+          "42": -1.2660941614807584,
+          "43": 1.2010454048213859,
+          "44": 2.5950424741697304
+        },
+        "seeds_improved": 1,
+        "seeds_total": 3,
+        "leave_one_block_out_all_negative": false,
+        "leave_one_block_out_min_max_wm2": [
+          0.15753922016241972,
+          1.6619316164055224
+        ]
+      }
+    }
+  },
+  "p95_absolute_error_delta_vs_base_wm2": {
+    "residual_minus_none": 4.212752812837238,
+    "residual_minus_simvp_r": 2.8617605709627583
+  },
+  "predeclared_gates": {
+    "residual_minus_none": {
+      "full_region_delta_negative_ci_upper_below_zero": false,
+      "short_region_delta_negative_ci_upper_below_zero": false,
+      "both_station_full_point_non_degrading": false,
+      "both_station_short_point_non_degrading": false,
+      "at_least_two_of_three_seed_directions_improve_full": false,
+      "at_least_two_of_three_seed_directions_improve_short": false,
+      "leave_one_block_out_all_negative_full": false,
+      "leave_one_block_out_all_negative_short": false,
+      "p95_absolute_error_guard_pass": true,
+      "all_predeclared_gates_pass": false
+    },
+    "residual_minus_simvp_r": {
+      "full_region_delta_negative_ci_upper_below_zero": false,
+      "short_region_delta_negative_ci_upper_below_zero": false,
+      "both_station_full_point_non_degrading": false,
+      "both_station_short_point_non_degrading": false,
+      "at_least_two_of_three_seed_directions_improve_full": false,
+      "at_least_two_of_three_seed_directions_improve_short": true,
+      "leave_one_block_out_all_negative_full": false,
+      "leave_one_block_out_all_negative_short": false,
+      "p95_absolute_error_guard_pass": true,
+      "all_predeclared_gates_pass": false
+    }
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false,
+  "keys_sha256": {
+    "sili": "1a3b7bd64c871b122955765b4ae22b139eacca3a09f43d2318df8fdd8d856b76",
+    "zhujia": "632a10c7d5823a23e41663422b90daa943c8317aea0061333a11727de35a073c"
+  }
+}

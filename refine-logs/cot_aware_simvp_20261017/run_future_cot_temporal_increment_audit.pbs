@@ -1,0 +1,66 @@
+#!/bin/bash
+#PBS -N fgcot_temp_audit
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ACTUAL_R=$PROJECT/experiments/monthly_R_station16_20261013_v1/data/ghi_head_pack_new_r_v1
+BANK=$EXP/results/future_simvp_r_bank_oof_v1/index.csv
+FOLDS=$EXP/results/future_ghi_oof_manifests_v1
+CENTER=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+OUT=$EXP/results/future_cot_oof_temporal_increment_v1
+AUDIT=$OUT/temporal_increment_calibration.json
+LOG=$EXP/logs/future_cot_temporal_increment_audit_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_future_cot_temporal_pycache
+python -m py_compile audit_future_cot_temporal_increment.py train_future_ghi_temporal_increment_cot.py test_future_ghi_spatial_contrast.py audit_future_ghi_spatial_contrast.py
+python test_future_ghi_spatial_contrast.py
+python - "$PACK/pack_manifest.json" "$ACTUAL_R/pack_manifest.json" "$CENTER" <<'PY'
+import json,hashlib,sys
+
+def sha(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''):h.update(b)
+ return h.hexdigest()
+f=json.load(open(sys.argv[1]));r=json.load(open(sys.argv[2]));c=json.load(open(sys.argv[3]))
+assert f['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK' and f['train_forecast_oof'] is True and f['forecast_bank_oof_fold_count']==5
+assert f['test_payload_opened'] is False and f['buffer_payload_opened'] is False and f['future_observed_agri_used_as_input'] is False and f['cpp_used_as_input'] is False
+assert r['state']=='COMPLETE' and r['split_id']==f['split_id'] and r['test_payload_opened'] is False
+assert c['state']=='COMPLETE_CROSSFIT_TRAIN_ONLY_OOF_FUTURE_COT_RELIABILITY_CALIBRATION' and c['forecast_pack_manifest_sha256']==sha(sys.argv[1])
+assert c['test_payload_opened'] is False and c['buffer_payload_opened'] is False
+print('TEMPORAL_INCREMENT_CAUSAL_PREFLIGHT_PASS')
+PY
+test ! -e "$OUT"
+python -u audit_future_cot_temporal_increment.py --forecast-pack "$PACK" --actual-r-pack "$ACTUAL_R" \
+  --bank-index "$BANK" --fold-root "$FOLDS" --center-calibration "$CENTER" --output "$OUT" --bootstrap 2000
+python - "$AUDIT" <<'PY'
+import json,sys
+p=sys.argv[1];d=json.load(open(p))
+assert d['state']=='COMPLETE_CROSSFIT_TRAIN_ONLY_COT_TEMPORAL_INCREMENT_AUDIT'
+assert d['train_rows_total']==714914 and d['train_rows_with_exact_adjacent_actual_R']>0 and d['target_bjt_date_blocks']>=20
+assert d['cpp_used'] is False and d['validation_labels_used_for_fit'] is False
+assert d['test_payload_opened'] is False and d['buffer_payload_opened'] is False and d['future_observed_agri_used_as_inference_input'] is False
+assert len(d['metrics_by_station_lead_fold'])==160
+ci=d['date_block_bootstrap_equal_station_equal_lead_center_delta_ci95'];st=d['station_center_rmse_log1p']
+passed=(ci[1]<0 and all(st[s]['ACRELTEMP_center_rmse_log1p']<=st[s]['ACREL_center_rmse_log1p'] for s in ('sili','zhujia')))
+d['predeclared_cot_pre_gate']='PASS' if passed else 'NO_GO'
+d['predeclared_cot_pre_gate_rule']='equal-station/equal-lead fold-excluded center log1p-COT RMSE delta CI upper bound below zero and neither station pooled center RMSE worsens'
+open(p,'w').write(json.dumps(d,indent=2)+'\n')
+print('TEMPORAL_COT_PRE_GATE',d['predeclared_cot_pre_gate'],'delta=',d['equal_station_equal_lead_center_rmse_log1p']['delta_candidate_minus_ACREL'],'ci=',ci,'station=',st)
+PY
+if ! grep -q '"predeclared_cot_pre_gate": "PASS"' "$AUDIT"; then
+  echo "TEMPORAL_COT_PRE_GATE_NO_GO; GPU GHI training not launched"
+  exit 0
+fi
+echo "TEMPORAL_COT_PRE_GATE_PASS; three-seed GHI training may now be submitted as a separate 3-GPU PBS allocation"

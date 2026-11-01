@@ -1,0 +1,99 @@
+{
+  "state": "COMPLETE_CORRECT_UTC_CPP_TRAIN_VAL_SIDEcar_TEST_CLOSED",
+  "created_utc": "2026-10-20T05:46:25.206061+00:00",
+  "manifest": "/home/Data_Pool/zjnu/solar_cot_hubei_20261020/input/smoke_manifest_trainval.csv",
+  "manifest_sha256": "fc4d1cfad584242c4eb081f2893af90b479d2623926aca4b06627957d1e991fd",
+  "grid_static": "/home/Data_Pool/zjnu/solar_cot_hubei_20261020/input/grid_static_hubei_witness.npz",
+  "grid_detail": {
+    "grid_sha256": "9709cc3db993a0532beb5cfae005da3ae44a59c064167ec6f2341b56856d2305",
+    "patch_origin_in_grid_static": [
+      2,
+      134
+    ],
+    "patch_size": 16,
+    "station_witnesses": {
+      "Niushou": {
+        "grid_local": [
+          8,
+          6
+        ],
+        "raw_grid_index": [
+          557,
+          1535
+        ],
+        "lat": 32.08000183105469,
+        "lon": 112.04000091552734
+      },
+      "Wangzhai": {
+        "grid_local": [
+          9,
+          8
+        ],
+        "raw_grid_index": [
+          558,
+          1537
+        ],
+        "lat": 32.040000915527344,
+        "lon": 112.12000274658203
+      },
+      "Mizhuang": {
+        "grid_local": [
+          7,
+          10
+        ],
+        "raw_grid_index": [
+          556,
+          1538
+        ],
+        "lat": 32.119998931884766,
+        "lon": 112.19999694824219
+      }
+    },
+    "agri_static_angle_exact_checks": [
+      "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202508/202508010600_1_2.8_11.4_13.6.npz",
+      "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202509/202509101430_1_80.2_136.4_100.6.npz",
+      "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202602/202602271800_1_2.2_7.2_7.2.npz",
+      "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202508/202508220615_1_13.4_14.8_17.2.npz",
+      "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202509/202509271100_1_133.0_143.0_0.0.npz",
+      "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/data16_label/202603/202603021800_1_22.4_27.6_19.2.npz"
+    ]
+  },
+  "cpp_root": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP",
+  "rows": 6,
+  "source_rows_extracted": 6,
+  "counts_by_split": {
+    "train": 3,
+    "val": 3
+  },
+  "all_CPP_keys": true,
+  "test_buffer_rows_read": 0,
+  "test_buffer_payloads_read": 0,
+  "time_rule": "CPP UTC timestamp = AGRI/manifest BJT timestamp - 8 hours",
+  "spatial_rule": "nearest existing CPP LAT/LON axis values; no interpolation; unique 16x16 mapping; <=1e-4 degree",
+  "max_coordinate_error_deg": {
+    "lat": 0.0,
+    "lon": 0.0
+  },
+  "valid_cot_pixels_by_split": {
+    "train": 768,
+    "val": 768
+  },
+  "valid_clp_pixels_by_split": {
+    "train": 768,
+    "val": 768
+  },
+  "cloudy_clp_pixels_by_split": {
+    "train": 301,
+    "val": 264
+  },
+  "sidecar_sha256": "647923204319c1c17d76b07e3ba832ba4aa7be95cb03c327782a7c41b710c091",
+  "arrays": {
+    "cot": "ed6962c106e1195a3d3f31fae362dc4edf0871d9c943ce42d75fd10358fffc83",
+    "cot_valid_mask": "4fd49f9bdb750657b15e232707d8a60711b26d00a9875aa77faf67a6480fa8ea",
+    "clp": "e7555054445946cfc41fb87a6d9217613ac45c088d847d659629b30f51f4dbf5",
+    "clp_valid_mask": "4fd49f9bdb750657b15e232707d8a60711b26d00a9875aa77faf67a6480fa8ea"
+  },
+  "failures": [],
+  "latest_cpp_utc": "2026-03-02T10:00:00",
+  "interpretation": "CPP CLP/COT are reference supervision, not independent truth; this sidecar is train/validation only"
+}

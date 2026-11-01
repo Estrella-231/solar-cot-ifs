@@ -1,0 +1,87 @@
+#!/bin/bash
+#PBS -N fghi_f3_ddp
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8:gpus=2
+#PBS -l walltime=36:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+FOLD=3
+SEED=45
+SPLIT=$EXP/results/future_ghi_oof_manifests_v1/fold_3
+SOURCE=$PROJECT/experiments/hunan_monthly_block_20261002/code
+ROOT=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+RUN=$EXP/results/future_ghi_oof_training_v1/fold_3_ddp2g_v1
+CACHE=/tmp/slfu_future_ghi_oof_fold3_215030_tc6000
+LOG=$EXP/logs/future_ghi_oof_fold3_ddp2g_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$PROJECT"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8"
+
+cd "$EXP"
+python -m py_compile train_monthly_simvp_oof_ddp_20261020.py test_future_ghi_oof_ddp_semantics.py test_ddp_syncbn_gpu_20261020.py
+python test_future_ghi_oof_ddp_semantics.py
+python test_build_future_ghi_oof_manifests.py
+python test_train_monthly_simvp_oof_20261019.py
+
+python - <<'PY' "$SPLIT" "$RUN"
+import json,sys
+from pathlib import Path
+s,r=Path(sys.argv[1]),Path(sys.argv[2])
+a=json.loads((s/'manifest_audit.json').read_text())
+n=s/'hunan_train_norm.json'
+assert a['fold']==3 and a['frame_disjoint_splits'] and a['train_val_frame_intersection']==0
+assert a['sequence_counts']['test']==0 and a['validation_test_used'] is False
+assert n.is_file(), 'fold-3 train-only normalization missing'
+norm=json.loads(n.read_text())
+assert norm['validation_test_used'] is False
+assert not r.exists(), 'refusing to overwrite or alias the quarantined batch-8 fold-3 attempt'
+print('OOF_FOLD_DDP2_PREFLIGHT_PASS',a['sequence_counts'])
+PY
+
+FREE_KIB=$(df -Pk /tmp | awk 'NR==2{print $4}')
+MIN_KIB=$((260*1024*1024))
+if (( FREE_KIB < MIN_KIB )); then echo "REFUSE: node23 /tmp below 260 GiB"; exit 31; fi
+GPU_ASSIGNMENT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node23-gpu/[0-9]+' | sort -Vu)
+if [ "$(printf '%s\n' "$GPU_ASSIGNMENT" | sed '/^$/d' | wc -l)" -ne 2 ]; then
+  echo "REFUSE: expected exactly two node23 GPUs, got: $GPU_ASSIGNMENT"; exit 32
+fi
+GPU_TEXT=$(printf '%s\n' "$GPU_ASSIGNMENT" | sed 's#node23-gpu/##' | paste -sd, -)
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID FOLD=$FOLD SEED=$SEED GPU_ASSIGNMENT=$GPU_ASSIGNMENT CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES NODE=$(hostname)"
+df -h /tmp
+nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -d "$CACHE" || { echo "REFUSE: expected reusable verified fold-3 node-local cache missing"; exit 33; }
+echo "DDP_CACHE_REUSE=$CACHE"
+
+COMMON=(--root "$ROOT" --source "$SOURCE" --cache "$CACHE" --manifests "$SPLIT" --output "$RUN")
+torchrun --standalone --nproc_per_node=2 train_monthly_simvp_oof_ddp_20261020.py --mode profile "${COMMON[@]}" --workers 3 --fold "$FOLD" --seed "$SEED"
+python - <<'PY' "$RUN/ddp_profile.json"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='TWO_GPU_GLOBAL_BATCH20_PROFILE' and x['world_size']==2 and x['global_batch']==20
+assert x['per_rank_batch']==10 and x['sync_batchnorm']
+assert x['max_rank_peak_allocated_gib'] < 34.0, x
+assert x['global_samples_per_second'] >= 20.0, x
+print('DDP_PROFILE_GATE_PASS',x['global_samples_per_second'],x['max_rank_peak_allocated_gib'])
+PY
+
+torchrun --standalone --nproc_per_node=2 test_ddp_syncbn_gpu_20261020.py
+torchrun --standalone --nproc_per_node=2 train_monthly_simvp_oof_ddp_20261020.py --mode train "${COMMON[@]}" --workers 3 --fold "$FOLD" --seed "$SEED"
+python - <<'PY' "$RUN/training/training_complete.json"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='COMPLETE_OOF_SIMVP_FIXED_EPOCH_TRAINING'
+assert x['selected_checkpoint']=='epoch_012.pt' and x['epochs']==12
+assert x['global_batch']==20 and x['world_size']==2
+assert x['heldout_payload_read'] is False and x['test_payloads_read']==0
+print('OOF_FOLD_FIXED_EPOCH_DDP2_COMPLETE_PASS',x)
+PY

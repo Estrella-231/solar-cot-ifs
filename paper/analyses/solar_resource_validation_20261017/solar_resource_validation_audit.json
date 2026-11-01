@@ -1,0 +1,117 @@
+{
+  "state": "PASS_VALIDATION_ONLY_PAIRED_SOLAR_RESOURCE_AUDIT",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "test_payload_opened": false,
+  "training_started": false,
+  "arms": [
+    "A",
+    "AC",
+    "AP"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "primary_analysis": "solar altitude >= 45 degrees, both Hunan stations, common BJT validation dates",
+  "high_sun_summary": [
+    {
+      "arm": "A",
+      "station_seed_equal_rmse_wm2": 154.1108355133462,
+      "station_seed_equal_mae_wm2": 116.64684919862434,
+      "station_seed_equal_bias_wm2": -22.064966546686904,
+      "sample_count": 4581,
+      "date_station_seed_count": 201
+    },
+    {
+      "arm": "AC",
+      "station_seed_equal_rmse_wm2": 148.64533648836178,
+      "station_seed_equal_mae_wm2": 111.30180512761255,
+      "station_seed_equal_bias_wm2": -17.76706473242935,
+      "sample_count": 4581,
+      "date_station_seed_count": 201
+    },
+    {
+      "arm": "AP",
+      "station_seed_equal_rmse_wm2": 153.8542349197838,
+      "station_seed_equal_mae_wm2": 116.43483345678578,
+      "station_seed_equal_bias_wm2": -21.86826532517836,
+      "sample_count": 4581,
+      "date_station_seed_count": 201
+    }
+  ],
+  "high_sun_station_equal_rmse_delta_AC_minus_A_wm2_mean_seed": -5.465499024984429,
+  "high_sun_date_block_bootstrap_95ci_wm2": [
+    -8.989689659797516,
+    -2.1519848360677587
+  ],
+  "high_sun_n_common_dates": 35,
+  "daily_irradiation_definition": "0.25*sum(15-minute interval-mean GHI)/1000 over all target intervals with solar elevation > 0; no interpolation",
+  "daily_irradiation_n_complete_dates_both_stations": 30,
+  "daily_irradiation_summary": [
+    {
+      "arm": "A",
+      "n_common_complete_dates": 30,
+      "station_equal_daily_MAE_kwh_m2": 0.5491201784736253,
+      "station_equal_daily_bias_kwh_m2": -0.01641807393488032
+    },
+    {
+      "arm": "AC",
+      "n_common_complete_dates": 30,
+      "station_equal_daily_MAE_kwh_m2": 0.5031890392446662,
+      "station_equal_daily_bias_kwh_m2": -0.056050861946282664
+    },
+    {
+      "arm": "AP",
+      "n_common_complete_dates": 30,
+      "station_equal_daily_MAE_kwh_m2": 0.5479201938104896,
+      "station_equal_daily_bias_kwh_m2": -0.017130180311123018
+    }
+  ],
+  "daily_irradiation_delta_AC_minus_A_station_equal_mae_kwh_m2": -0.04593113922895906,
+  "daily_irradiation_delta_date_block_bootstrap_95ci_kwh_m2": [
+    -0.08606482290056575,
+    -0.006707129789215654
+  ],
+  "daily_coverage": {
+    "sili": 37,
+    "zhujia": 31
+  },
+  "bootstrap": {
+    "resampling_unit": "BJT date",
+    "replicates": 2000,
+    "seed": 20261017
+  },
+  "source_sha256": {
+    "rows.csv": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+    "geometry.npy": "15a9891915b834ad51462d4d816f55332eec7eba145b889215de1ef341d40e90",
+    "pack_manifest.json": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+    "three_seed_validation_audit.json": "e9de68fc4085659b14950c1e780d5005655e14bc3c8fc63c4becf886c8120c90"
+  },
+  "prediction_sha256": {
+    "seed42/sili/A": "3c2ecc4f0127b26a169ac5ea5f76f780059ea8d360b098fa1cb59a4f7549cd50",
+    "seed42/sili/AC": "b687c91ddeeca2f8d0fa2f8f38884f086e7d9c7fb53d1bdda3c7d545d29bfc41",
+    "seed42/sili/AP": "86bfe3a52e58940f845de38e164361840982cf2b167db03f92afd2cb858a67cc",
+    "seed42/zhujia/A": "44982b3f492640c559dde5875f1c45b1414f38cb182c4c04f0aee5713f658519",
+    "seed42/zhujia/AC": "4cfb1bb61161bd1b487365543e8538e9d8fb863f145f49a23b20074d140125ba",
+    "seed42/zhujia/AP": "6e8aad3fd741d187973a2432167084512e5b0378ffd289d4ac2bbbee032bc076",
+    "seed43/sili/A": "857847a8d11af7b4a9d334f797d4cb7269bacc9ff802d6aa40aba803844eae5e",
+    "seed43/sili/AC": "faa4224683d2b898e9ee1c1a0eb765b0ced505b7190aca7da441d337dba228ef",
+    "seed43/sili/AP": "09677bf36ee17217ac7961464fb54dd1972d58ff90d0f3635b84e854c7f78ebe",
+    "seed43/zhujia/A": "7a76259c28eb13584274c4a0fa643a4d7d2378d7fa55189d167356b792be9916",
+    "seed43/zhujia/AC": "371f4b4c5855c585c54ef6c0c27bbcd3e8f4311fa9625aedb2ec4190e877cc65",
+    "seed43/zhujia/AP": "a51daa81dde66798ece82115f10933add29059132fe0506479fcf21093fd66c2",
+    "seed44/sili/A": "3e8698a5e3667cebc6edf59f25bb7d87025760b53b682b3c38b7384c362d68e6",
+    "seed44/sili/AC": "cfb79aaf0dc0746b2d4bf04722e469a691e1146e50a97e6e3b443ce6be2630d9",
+    "seed44/sili/AP": "16016d7d67e8d87b35304631c73a9ea07fd4d5d1c060985960ad8c2fc11c0322",
+    "seed44/zhujia/A": "2ae49f478248a5db027f8c96472c6b499befe4a4626131dc78553421ba84b398",
+    "seed44/zhujia/AC": "c339714e8fdb7d3a6b7e4763c8156b386b246a5ce44ac86e80b2d67d56a2adf8",
+    "seed44/zhujia/AP": "e569fe0e1bccf03d0c652f79d620a40982ae5a3fcaa680b06aec1adb4c716788"
+  },
+  "notes": [
+    "Regions/stations are not pooled; this audit is Hunan only.",
+    "High-sun stratification is defined by the station-centre physical cos(SOZ) in the frozen GHI input pack.",
+    "Daily-energy results apply only to the common complete-day subset and do not imply photovoltaic generation gain.",
+    "Validation-selected checkpoints mean intervals are conditional validation uncertainty, not independent test evidence."
+  ]
+}

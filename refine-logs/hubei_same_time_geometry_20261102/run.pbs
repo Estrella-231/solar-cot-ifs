@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -N hb_sync_pair
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=2
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/hubei_same_time_geometry_20261102/run.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/hubei_same_time_geometry_20261102
+ASSIGNED=$(qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node21-gpu/[0-9]+' | cut -d/ -f2 | sort -un | paste -sd, -)
+test -n "$ASSIGNED"
+export CUDA_VISIBLE_DEVICES="$ASSIGNED"
+python - <<'PY'
+import os,subprocess
+g=os.environ['CUDA_VISIBLE_DEVICES'].split(',');assert len(g)==2
+for i in g:
+ p=subprocess.check_output(['nvidia-smi','-i',i,'--query-compute-apps=pid','--format=csv,noheader'],text=True).strip()
+ assert not p,('assigned GPU already occupied',i,p)
+print('ALLOCATED',g,flush=True)
+PY
+python -u "$BASE/pipeline.py" run

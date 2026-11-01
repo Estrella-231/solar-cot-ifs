@@ -1,0 +1,466 @@
+{
+  "source": "/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed/data/2025/YYYYMM/YYYYMMDD/YYYYMMDDHHMM.npy",
+  "scope": "12 selected real-AGRI validation frames, each matched by station and UTC time; only each station 16x16 patch was compared; test not accessed",
+  "source_channel_contract": "20 channels: C01-C15, SAA(index 15), SAZ(index 16), SOA(index 17), SOZ(index 18), day_mask(index 19); channel 13 in the 0-based source list is C13",
+  "packed_contract": "13 imagery channels from source indices 0..5 and 8..14, then cos(deg2rad(SOZ)), cos(deg2rad(SOA-SAA)), and day_mask=(source day_mask>0.5)",
+  "training_normalization": {
+    "cosSOZ_mean": 0.639830426520923,
+    "cosSOZ_std": 0.24325066074089569,
+    "cosRAA_mean": 0.2931932003417837,
+    "cosRAA_std": 0.4621130709048413,
+    "day_mask_mean": 0.0,
+    "day_mask_std": 1.0
+  },
+  "max_abs_error_over_12_frames": {
+    "13_raw_imagery_channels": 0.0,
+    "cosSOZ": 0.0,
+    "cosRAA": 0.0,
+    "day_mask_mismatch_pixels": 0
+  },
+  "frames": [
+    {
+      "case_id": 1,
+      "station_id": "zhujia",
+      "case_timestamp_utc": "2025-07-06T08:15:00Z",
+      "timestamp_utc": "2025-07-06T08:00:00Z",
+      "timestamp_bjt": "2025-07-06T16:00:00+08:00",
+      "delta_minutes": -15,
+      "global_row_index": 15505,
+      "validation_position": 3527,
+      "pixel_row": 0,
+      "pixel_col": 9,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        46.890052795410156,
+        47.45681381225586
+      ],
+      "source_SOA_degrees_range": [
+        274.0402526855469,
+        274.8533935546875
+      ],
+      "source_SAA_degrees_range": [
+        194.1014404296875,
+        195.49462890625
+      ],
+      "source_C13_BT_K_range": [
+        242.5,
+        302.44000244140625
+      ],
+      "original_file_sha256": "c07b123956d6d042c4482b1da8d42c51f967d7bc746ee10db9446b182aadf082",
+      "original_file": "202507060800.npy"
+    },
+    {
+      "case_id": 1,
+      "station_id": "zhujia",
+      "case_timestamp_utc": "2025-07-06T08:15:00Z",
+      "timestamp_utc": "2025-07-06T08:15:00Z",
+      "timestamp_bjt": "2025-07-06T16:15:00+08:00",
+      "delta_minutes": 0,
+      "global_row_index": 15506,
+      "validation_position": 3528,
+      "pixel_row": 0,
+      "pixel_col": 9,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        50.13016128540039,
+        50.71216583251953
+      ],
+      "source_SOA_degrees_range": [
+        275.664306640625,
+        276.40838623046875
+      ],
+      "source_SAA_degrees_range": [
+        194.1014404296875,
+        195.49462890625
+      ],
+      "source_C13_BT_K_range": [
+        240.52999877929688,
+        302.3299865722656
+      ],
+      "original_file_sha256": "3692d9e36d6d2a24b3cbd5ce24813adcff726c1a04888d960c80767162dd57a8",
+      "original_file": "202507060815.npy"
+    },
+    {
+      "case_id": 1,
+      "station_id": "zhujia",
+      "case_timestamp_utc": "2025-07-06T08:15:00Z",
+      "timestamp_utc": "2025-07-06T08:30:00Z",
+      "timestamp_bjt": "2025-07-06T16:30:00+08:00",
+      "delta_minutes": 15,
+      "global_row_index": 15507,
+      "validation_position": 3529,
+      "pixel_row": 0,
+      "pixel_col": 9,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        53.3613166809082,
+        53.9577522277832
+      ],
+      "source_SOA_degrees_range": [
+        277.24346923828125,
+        277.9265441894531
+      ],
+      "source_SAA_degrees_range": [
+        194.1014404296875,
+        195.49462890625
+      ],
+      "source_C13_BT_K_range": [
+        240.5800018310547,
+        302.1700134277344
+      ],
+      "original_file_sha256": "1249721c260c89606d157da63254edf92da86708d5e23debf2fbbd0cb1a82045",
+      "original_file": "202507060830.npy"
+    },
+    {
+      "case_id": 2,
+      "station_id": "sili",
+      "case_timestamp_utc": "2025-07-14T05:15:00Z",
+      "timestamp_utc": "2025-07-14T05:00:00Z",
+      "timestamp_bjt": "2025-07-14T13:00:00+08:00",
+      "delta_minutes": -15,
+      "global_row_index": 6654,
+      "validation_position": 643,
+      "pixel_row": 0,
+      "pixel_col": 9,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        7.588660717010498,
+        8.361845970153809
+      ],
+      "source_SOA_degrees_range": [
+        235.55014038085938,
+        241.47091674804688
+      ],
+      "source_SAA_degrees_range": [
+        195.56236267089844,
+        197.208251953125
+      ],
+      "source_C13_BT_K_range": [
+        215.16000366210938,
+        294.8800048828125
+      ],
+      "original_file_sha256": "a50916b87b49d087d9278707b16b7bb516bb51019acbc53e30bc3d6a249825c8",
+      "original_file": "202507140500.npy"
+    },
+    {
+      "case_id": 2,
+      "station_id": "sili",
+      "case_timestamp_utc": "2025-07-14T05:15:00Z",
+      "timestamp_utc": "2025-07-14T05:15:00Z",
+      "timestamp_bjt": "2025-07-14T13:15:00+08:00",
+      "delta_minutes": 0,
+      "global_row_index": 6655,
+      "validation_position": 644,
+      "pixel_row": 0,
+      "pixel_col": 9,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        10.651813507080078,
+        11.369779586791992
+      ],
+      "source_SOA_degrees_range": [
+        246.98855590820312,
+        251.1207275390625
+      ],
+      "source_SAA_degrees_range": [
+        195.56236267089844,
+        197.208251953125
+      ],
+      "source_C13_BT_K_range": [
+        210.7100067138672,
+        295.0799865722656
+      ],
+      "original_file_sha256": "0f4437800e1d403de9d120caa187630c284d3e18c5ab9664dd31453c31ecae17",
+      "original_file": "202507140515.npy"
+    },
+    {
+      "case_id": 2,
+      "station_id": "sili",
+      "case_timestamp_utc": "2025-07-14T05:15:00Z",
+      "timestamp_utc": "2025-07-14T05:30:00Z",
+      "timestamp_bjt": "2025-07-14T13:30:00+08:00",
+      "delta_minutes": 15,
+      "global_row_index": 6656,
+      "validation_position": 645,
+      "pixel_row": 0,
+      "pixel_col": 9,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        13.886944770812988,
+        14.56068229675293
+      ],
+      "source_SOA_degrees_range": [
+        253.75790405273438,
+        256.8496398925781
+      ],
+      "source_SAA_degrees_range": [
+        195.56236267089844,
+        197.208251953125
+      ],
+      "source_C13_BT_K_range": [
+        208.27000427246094,
+        295.19000244140625
+      ],
+      "original_file_sha256": "1beea96df3da735873732dade431726c8fbd92c07f0cef35acf0ec33cc1a97a6",
+      "original_file": "202507140530.npy"
+    },
+    {
+      "case_id": 3,
+      "station_id": "zhujia",
+      "case_timestamp_utc": "2025-07-06T06:30:00Z",
+      "timestamp_utc": "2025-07-06T06:15:00Z",
+      "timestamp_bjt": "2025-07-06T14:15:00+08:00",
+      "delta_minutes": -15,
+      "global_row_index": 15498,
+      "validation_position": 3520,
+      "pixel_row": 8,
+      "pixel_col": 11,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        24.106924057006836,
+        24.72760772705078
+      ],
+      "source_SOA_degrees_range": [
+        258.7864990234375,
+        260.5885925292969
+      ],
+      "source_SAA_degrees_range": [
+        194.1014404296875,
+        195.49462890625
+      ],
+      "source_C13_BT_K_range": [
+        234.94000244140625,
+        303.20001220703125
+      ],
+      "original_file_sha256": "06f17c0454cbb3e5188f76bc046a2ebc0244ad75c131d37c7a16596f39fb1a62",
+      "original_file": "202507060615.npy"
+    },
+    {
+      "case_id": 3,
+      "station_id": "zhujia",
+      "case_timestamp_utc": "2025-07-06T06:30:00Z",
+      "timestamp_utc": "2025-07-06T06:30:00Z",
+      "timestamp_bjt": "2025-07-06T14:30:00+08:00",
+      "delta_minutes": 0,
+      "global_row_index": 15499,
+      "validation_position": 3521,
+      "pixel_row": 8,
+      "pixel_col": 11,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        27.34242820739746,
+        27.93736457824707
+      ],
+      "source_SOA_degrees_range": [
+        261.7870178222656,
+        263.34814453125
+      ],
+      "source_SAA_degrees_range": [
+        194.1014404296875,
+        195.49462890625
+      ],
+      "source_C13_BT_K_range": [
+        233.92999267578125,
+        302.8999938964844
+      ],
+      "original_file_sha256": "6cea274c446e7fd3b30c5b788acb2c6b987160cc8b59fe3e839670aa5b5a2cb2",
+      "original_file": "202507060630.npy"
+    },
+    {
+      "case_id": 3,
+      "station_id": "zhujia",
+      "case_timestamp_utc": "2025-07-06T06:30:00Z",
+      "timestamp_utc": "2025-07-06T06:45:00Z",
+      "timestamp_bjt": "2025-07-06T14:45:00+08:00",
+      "delta_minutes": 15,
+      "global_row_index": 15500,
+      "validation_position": 3522,
+      "pixel_row": 8,
+      "pixel_col": 11,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        30.596569061279297,
+        31.168167114257812
+      ],
+      "source_SOA_degrees_range": [
+        264.3601379394531,
+        265.7311096191406
+      ],
+      "source_SAA_degrees_range": [
+        194.1014404296875,
+        195.49462890625
+      ],
+      "source_C13_BT_K_range": [
+        235.82000732421875,
+        303.010009765625
+      ],
+      "original_file_sha256": "54609f5a3c1b500b645d9214f28f4eae45d63110982c16d1c66e4e2be11b698a",
+      "original_file": "202507060645.npy"
+    },
+    {
+      "case_id": 4,
+      "station_id": "sili",
+      "case_timestamp_utc": "2025-07-07T05:15:00Z",
+      "timestamp_utc": "2025-07-07T05:00:00Z",
+      "timestamp_bjt": "2025-07-07T13:00:00+08:00",
+      "delta_minutes": -15,
+      "global_row_index": 6326,
+      "validation_position": 315,
+      "pixel_row": 0,
+      "pixel_col": 6,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        7.1256842613220215,
+        7.871428966522217
+      ],
+      "source_SOA_degrees_range": [
+        241.2497100830078,
+        247.39141845703125
+      ],
+      "source_SAA_degrees_range": [
+        195.56236267089844,
+        197.208251953125
+      ],
+      "source_C13_BT_K_range": [
+        222.6199951171875,
+        298.32000732421875
+      ],
+      "original_file_sha256": "b7d42ecc5f7ff6c44697c4ad49e3c3d6566ce046dd8bd211e8a89673cc06c4ec",
+      "original_file": "202507070500.npy"
+    },
+    {
+      "case_id": 4,
+      "station_id": "sili",
+      "case_timestamp_utc": "2025-07-07T05:15:00Z",
+      "timestamp_utc": "2025-07-07T05:15:00Z",
+      "timestamp_bjt": "2025-07-07T13:15:00+08:00",
+      "delta_minutes": 0,
+      "global_row_index": 6327,
+      "validation_position": 316,
+      "pixel_row": 0,
+      "pixel_col": 6,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        10.309540748596191,
+        10.996371269226074
+      ],
+      "source_SOA_degrees_range": [
+        251.4830780029297,
+        255.61590576171875
+      ],
+      "source_SAA_degrees_range": [
+        195.56236267089844,
+        197.208251953125
+      ],
+      "source_C13_BT_K_range": [
+        211.8800048828125,
+        298.6199951171875
+      ],
+      "original_file_sha256": "f11bb78dba8f7b6ab72ba037af4ea27840973fc35db8867222daff9f0522b8f5",
+      "original_file": "202507070515.npy"
+    },
+    {
+      "case_id": 4,
+      "station_id": "sili",
+      "case_timestamp_utc": "2025-07-07T05:15:00Z",
+      "timestamp_utc": "2025-07-07T05:30:00Z",
+      "timestamp_bjt": "2025-07-07T13:30:00+08:00",
+      "delta_minutes": 15,
+      "global_row_index": 6328,
+      "validation_position": 317,
+      "pixel_row": 0,
+      "pixel_col": 6,
+      "13_raw_imagery_channels_max_abs_error": 0.0,
+      "cosSOZ_max_abs_error": 0.0,
+      "cosRAA_max_abs_error": 0.0,
+      "day_mask_mismatch_pixels": 0,
+      "input_day_mask_unique": [
+        1.0
+      ],
+      "source_SOZ_degrees_range": [
+        13.606876373291016,
+        14.251585006713867
+      ],
+      "source_SOA_degrees_range": [
+        257.3521423339844,
+        260.4077453613281
+      ],
+      "source_SAA_degrees_range": [
+        195.56236267089844,
+        197.208251953125
+      ],
+      "source_C13_BT_K_range": [
+        211.16000366210938,
+        298.20001220703125
+      ],
+      "original_file_sha256": "a7d75ea0d764a68a09f3e3769f4d5d97852fe4c0affe6e2022df772149314219",
+      "original_file": "202507070530.npy"
+    }
+  ]
+}

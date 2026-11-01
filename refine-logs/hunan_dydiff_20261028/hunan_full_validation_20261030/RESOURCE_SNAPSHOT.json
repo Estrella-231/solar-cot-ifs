@@ -1,0 +1,96 @@
+{
+  "observed_server_time_cst": "2026-10-30 19:50:44 CST",
+  "account": "slfu",
+  "unfinished_pbs_jobs": 0,
+  "user_queue": "qstat -u slfu returned no entries",
+  "training_run": {
+    "job": "216594.tc6000",
+    "completion_status": "PASS",
+    "epochs": 150,
+    "global_step": 66300,
+    "last_pt_exists": true,
+    "last_pt_bytes": 1053155194,
+    "last_pt_mtime": "2026-10-30 19:22:22 +0800",
+    "training_complete_exists": true,
+    "training_complete_mtime": "2026-10-30 19:22:22 +0800",
+    "test_payloads_read": 0
+  },
+  "nodes": {
+    "node21": {
+      "pbs_state": "free",
+      "pbs_assigned_jobs": [],
+      "pbs_gpus": 8,
+      "gpu_type": "NVIDIA A100-SXM4-40GB",
+      "physical_gpu_samples": [
+        {
+          "index": 0,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 1,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 2,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 3,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 4,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 5,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 6,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        },
+        {
+          "index": 7,
+          "utilization_pct": 0,
+          "memory_used_mib": 0
+        }
+      ]
+    },
+    "node22": {
+      "pbs_state": "free (node resource status)",
+      "gpu_type": "NVIDIA A800-SXM4-80GB",
+      "allocated_jobs": [
+        "216223.tc6000 GPU2",
+        "216571.tc6000 five GPUs",
+        "216840.tc6000 GPU0"
+      ],
+      "physical_summary": "GPU1/4/5/6/7 heavily occupied; GPU0/2 show nonzero memory and utilization; GPU3 only 2MiB/0% at sample, not recommended because node is mixed-used."
+    },
+    "node23": {
+      "pbs_state": "free (node resource status)",
+      "gpu_type": "NVIDIA A100-SXM4-40GB",
+      "allocated_job": "216823.tc6000 GPU0",
+      "physical_summary": "GPU0 has 1808MiB and 100%; GPUs1-7 read 0MiB/0%, but node is in use; not preferred over fully free node21."
+    }
+  },
+  "recommended": {
+    "node": "node21",
+    "gpu_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "count": 4,
+    "reason": "All eight node21 GPUs reported 0MiB/0%; pbsnodes showed node21 free with jobs empty. Four A100s are sufficient for evaluation."
+  },
+  "actions": "Read only: qstat/pbsnodes, nvidia-smi queries, checkpoint stat, completion JSON. No submission/termination, no test data read."
+}

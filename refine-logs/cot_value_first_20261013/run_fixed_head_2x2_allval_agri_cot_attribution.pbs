@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -N allval_ac_2x2
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cot_value_first_20261013/logs/fixed_head_2x2_allval_20261014_v1.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/cot_value_first_20261013
+BANK=$EXP/results/forecast_agri3x3_allval_20261014_v1/forecast_cot_val_bank.npz
+OUT=$EXP/results/fixed_head_2x2_allval_agri_cot_attribution_20261014_v1
+test -f "$BANK"
+test ! -e "$OUT"
+python -m py_compile "$EXP/run_fixed_head_2x2_allval_agri_cot_attribution.py"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -nu | head -1)
+test -n "$GPU"
+export CUDA_VISIBLE_DEVICES="$GPU"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/run_fixed_head_2x2_allval_agri_cot_attribution.py" --batch-size 512
+echo ALLVAL_AC_2X2_COMPLETE

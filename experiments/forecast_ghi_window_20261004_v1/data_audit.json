@@ -1,0 +1,103 @@
+{
+  "train_rows": 11052,
+  "val_rows": 3256,
+  "train_sequences": 512,
+  "val_sequences": 128,
+  "sources": {
+    "train": {
+      "image_local": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/train/image_local.npy",
+        "sha256": "7b2b7e014824f2ac06e4cb45f6ba40c99bc0ea6a11b91c948145f6c4c88d1da2",
+        "shape": [
+          512,
+          2,
+          16,
+          16,
+          64,
+          64
+        ]
+      },
+      "cot_local_history": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/train/cot_local_history.npy",
+        "sha256": "471ca82075c39389bb1ca66224b534cc714fe3f0d513f0cbdbee0a094bc94f38",
+        "shape": [
+          512,
+          2,
+          8,
+          1,
+          64,
+          64
+        ]
+      },
+      "cot_local_forecast": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/train/cot_local_forecast.npy",
+        "sha256": "cd549e9a9c6bb8d64cee4d693a3c03f1e5b6ab31e01cbe50af5fe51650f0b8c9",
+        "shape": [
+          512,
+          2,
+          16,
+          1,
+          64,
+          64
+        ]
+      }
+    },
+    "val": {
+      "image_local": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/val/image_local.npy",
+        "sha256": "ad34ac9146b3f58ea17bd239c53920de93280efbf94dba6a838de3538e255658",
+        "shape": [
+          128,
+          2,
+          16,
+          16,
+          64,
+          64
+        ]
+      },
+      "cot_local_history": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/val/cot_local_history.npy",
+        "sha256": "f7813399fc3bfc0f628a6b47f0673e1845c1ce25d4fd49e8584d6148d5341192",
+        "shape": [
+          128,
+          2,
+          8,
+          1,
+          64,
+          64
+        ]
+      },
+      "cot_local_forecast": {
+        "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/val/cot_local_forecast.npy",
+        "sha256": "1ab8c2b306e101f1f6a8459dcdd7189f528a808e5405f7e048d65e7e15ce02bf",
+        "shape": [
+          128,
+          2,
+          16,
+          1,
+          64,
+          64
+        ]
+      }
+    }
+  },
+  "cot_mean": 2.1828147570292153,
+  "cot_std": 1.432412849696352,
+  "source_contract_sha256": "9069423f65dac2cd3b4b30cfabdf4369a43839fd1bfd924a19ccd20dae906286",
+  "script_sha256": "e796a27f20b62d74d0fde2672b41b8d688db3821106a2a4e26c3e64cc9eca175",
+  "key_hashes": {
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/train/head_row_ids.npy": "3a6ab8aafd007db63f380af04afe93bbe3aa37a0e36d85308f99db68dd2c4f7e",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/train/sequence_indices.npy": "cb3b4670e88a30bdd5b02f016ef93b5c7b8d2293ce03f48d17944adf04ee52d5",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/val/head_row_ids.npy": "8b57edc2afaa4b80ae947cb02f242563dfd1ed70780dd4eb3311c12157bf2a81",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/regional_ghi_pilot_bank_20260927_v1/val/sequence_indices.npy": "b19f24eded10d73a63e32cad69d55c0c1e2f89bb8b16ab3497ce1888af06b4de",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/head_pack_trainval_20260908_v1/sequence.npy": "d107c1265a11b5bbe78c8ba6adb4adb00a10e6f61e9c9d89548abbd5636304ba",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/head_pack_trainval_20260908_v1/station.npy": "d45847ca89035bb2e009886163a327aa6b74af3702ac8f20a7f439f2ac90c011",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/head_pack_trainval_20260908_v1/lead.npy": "4bfc0b4212d4a9133b4e92165ec3b23d9cf3c09d46a2fcaffbb254f77345ac43",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/head_pack_trainval_20260908_v1/ghi.npy": "b819c940a12755af96440dfc2fe4f8df16bdfeb494f8fbd562c68bc50050f0da",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/head_pack_trainval_20260908_v1/clear.npy": "67a722a2253cbe6468489c91c4df175ea6029e9f1355279e4108accc010f9e59",
+    "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/head_pack_trainval_20260908_v1/split.npy": "4a9574e2b7f7378250cf2557d1f1e0a32edf4ba85fbf05b743eb9bf3439aa154"
+  },
+  "cot_norm": "common train full64 log1p values",
+  "test_used": false,
+  "oracle_read": false
+}

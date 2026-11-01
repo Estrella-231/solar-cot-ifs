@@ -1,0 +1,38 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "downstream_contract_transition_and_limited_evidence",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_id": "/root/pipeline_integrity_review",
+  "date": "2026-10-03",
+  "generated_at": "2026-10-03T14:59:08.189219",
+  "test_payloads_read": false,
+  "checks": {
+    "gt_provenance": "WARN",
+    "score_normalization": "PASS",
+    "result_existence": "WARN",
+    "dead_metric_code": "PASS",
+    "scope": "WARN",
+    "eval_type": "mixed real observations, CPP retrieval reference, isolated oracle"
+  },
+  "audited_input_hashes": {
+    "scripts/train_monthly_simvp_20261002.py": "9a34309b6af4d7debd2f7343c9266e9225df098e96fe699ab31b07c5d9188992",
+    "scripts/build_monthly_block_split_20261002.py": "f1402b63a05cff47eaee0508fa393923d05043d2ee87387c1b2b839b4f94cad9",
+    "scripts/train_regional_cot_ghi_pilot_20260927.py": "f12b70155a977ff1e7df8a26c03fef717a572e4a5dd1cb7f917dc691c0d5f595",
+    "scripts/build_regional_cot_ghi_pilot_20260927.py": "a5671d3cda999b85612e69ec688fe6808d997b01abe9daf30a8792b89342fcad",
+    "scripts/train_regional_r_full_20260926.py": "4d45cb3192bcda91db2d572be1e40280e1d2f219b7f7ad4ef8b4a4716cc4c7a2",
+    "scripts/pack_regional_agri_cpp_bank_20260926.py": "036df61675579377a5a738740de36af33bd842b7ff77611e9052d9f4f4de389d",
+    "scripts/join_forecast_labels.py": "2b8e420e671d260d7d6157347ba2644020ea4b6e42564053e872ff80be8796bd",
+    "audits/handoff_20261003/simvp_training_complete.json": "0888227ce250bad8ee633b2c86b4573c42c334e2e52ca7b366ea80c3f095ef3f",
+    "audits/handoff_20261003/simvp_epoch10.json": "20a59f8a836321b3daef38a7867f73aac44df68de3d065d73fe9c23fb15abec0",
+    "audits/handoff_20261003/simvp_run_metadata.json": "ea567213e6578d49dffe7acf8e1a8daba2b3ff7d8ce2277b28ab52e050306134",
+    "audits/head_loss_mass_20260908_v1/loss_decomposition.json": "85cd0de75f5b26fc5601d972178f48279ebb5bd01537971ebb8120db1d212b84"
+  },
+  "claim_limit": "new S validation only; no demonstrated new-contract COT or GHI gain",
+  "trace_path": "EXPERIMENT_AUDIT.md"
+}

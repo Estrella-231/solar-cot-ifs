@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N cot_case_context
+#PBS -q normal
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES=""
+cd "$EXP"
+exec > >(tee -a "logs/visible_neighbor_context_${PBS_JOBID}.log") 2>&1
+/public/home/slfu/miniconda3/envs/swc/bin/python extract_visible_neighbor_context.py \
+  --base "$EXP" --data-root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+  --days "$ROOT/experiments/hunan_monthly_block_20261002/manifests_v1/day_assignment.csv" \
+  --inference-index "$EXP/results/direct_cot_hv_inference_v1/V/index.csv" \
+  --output "$EXP/results/visible_neighbor_context_v1_20261021"

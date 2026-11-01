@@ -1,0 +1,109 @@
+#!/bin/bash
+#PBS -N fghi_dp0_full
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=8:gpus=2
+#PBS -l walltime=36:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+SOURCE=$EXP/droppath0_source_20261020
+ROOT=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+MANIFESTS=$PROJECT/experiments/hunan_monthly_block_20261002/manifests_v1
+CACHE=/tmp/slfu_future_ghi_oof_droppath0_v1_shared
+RUN=$EXP/results/future_ghi_oof_droppath0_v3_prewarmed/fulltrain_seed42
+PROFILE=$RUN/profile
+LOG=$EXP/logs/future_ghi_droppath0_fulltrain_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+
+cd "$PROJECT"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8"
+
+cd "$EXP"
+python -m py_compile train_monthly_simvp_fulltrain_ddp_droppath0_20261020.py \
+  train_monthly_simvp_oof_ddp_20261020_rankrng.py monthly_validation_selection.py \
+  build_droppath0_fulltrain_validation_forecast_bank.py droppath0_validation_manifest.py \
+  merge_future_ghi_candidate_oof_validation_bank.py \
+  test_train_monthly_simvp_fulltrain_ddp_droppath0_20261020.py \
+  test_merge_future_ghi_candidate_oof_validation_bank.py test_droppath0_validation_manifest.py
+python -m unittest test_train_monthly_simvp_fulltrain_ddp_droppath0_20261020 \
+  test_merge_future_ghi_candidate_oof_validation_bank test_droppath0_validation_manifest
+
+python - <<'PY' "$MANIFESTS" "$SOURCE" "$RUN"
+import hashlib,json,sys
+from pathlib import Path
+m,s,r=map(Path,sys.argv[1:])
+csv=m/'hunan_8to16.csv'; frames=m/'train_frames.txt'
+n=json.loads((m/'hunan_train_norm.json').read_text())
+a=json.loads((m/'manifest_audit.json').read_text())
+sha=lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert a.get('frame_disjoint_splits') is True
+train_frames=set((m/'train_frames.txt').read_text().splitlines())
+val_frames=set((m/'val_frames.txt').read_text().splitlines())
+assert train_frames and val_frames
+assert not (train_frames & val_frames), 'train/validation frame lists overlap'
+assert n.get('validation_test_used') is False
+assert n.get('manifest_sha256') == sha(csv)
+assert n.get('train_frames_sha256') == sha(frames)
+assert n.get('train_unique_frames') == len(set(frames.read_text().splitlines()))
+assert not r.exists(), f'refusing to overwrite {r}'
+assert 'drop_path_prob=0.0' in (s/'triad_models.py').read_text()
+assert 'drop_path_prob=.1' not in (s/'triad_models.py').read_text()
+print('DROPPATH0_FULLTRAIN_MANIFEST_PREFLIGHT_PASS',{
+ 'manifest_sha256':sha(csv),'train_frames_sha256':sha(frames),
+ 'train_unique_frames':n['train_unique_frames'],'train_sequences':a['sequence_counts']['train'],
+ 'validation_sequences':a['sequence_counts']['val'],'test_payload_opened':False})
+PY
+
+FREE_KIB=$(df -Pk /tmp | awk 'NR==2{print $4}')
+MIN_KIB=$((260*1024*1024))
+if (( FREE_KIB < MIN_KIB )); then echo "REFUSE: node23 /tmp below 260 GiB"; exit 31; fi
+GPU_ASSIGNMENT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node23-gpu/[0-9]+' | sort -Vu)
+if [ "$(printf '%s\n' "$GPU_ASSIGNMENT" | sed '/^$/d' | wc -l)" -ne 2 ]; then
+  echo "REFUSE: expected exactly two node23 GPUs, got: $GPU_ASSIGNMENT"; exit 32
+fi
+GPU_TEXT=$(printf '%s\n' "$GPU_ASSIGNMENT" | sed 's#node23-gpu/##' | paste -sd, -)
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ASSIGNMENT=$GPU_ASSIGNMENT CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES NODE=$(hostname)"
+df -h /tmp
+nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+COMMON_ARGS=(--root "$ROOT" --source "$SOURCE" --cache "$CACHE" --manifests "$MANIFESTS" --workers 3 --seed 42)
+JOB_NUM=${PBS_JOBID%%.*}
+BASE_PORT=$((20000 + JOB_NUM % 20000))
+run_ddp() {
+  local port="$1"; shift
+  torchrun --nnodes=1 --nproc_per_node=2 --rdzv_backend=c10d \
+    --rdzv_endpoint="127.0.0.1:${port}" --rdzv_id="${PBS_JOBID}-${port}" "$@"
+}
+
+run_ddp $((BASE_PORT+1)) train_monthly_simvp_fulltrain_ddp_droppath0_20261020.py \
+  --mode profile "${COMMON_ARGS[@]}" --output "$PROFILE"
+python - <<'PY' "$PROFILE/ddp_profile.json"
+import json,sys
+x=json.loads(open(sys.argv[1]).read())
+assert x['state']=='TWO_GPU_GLOBAL_BATCH20_PROFILE' and x['world_size']==2 and x['global_batch']==20
+assert x['per_rank_batch']==10 and x['sync_batchnorm']
+assert x['steps_measured']>=20 and x['warmup_steps_excluded']==3
+assert x['projected_12_epoch_hours_p90']<28.0, x
+assert x['max_rank_peak_allocated_gib']<34.0, x
+print('DROPPATH0_FULLTRAIN_PROFILE_GATE_PASS',x['global_samples_per_second'],
+      x['projected_12_epoch_hours_p90'],x['max_rank_peak_allocated_gib'])
+PY
+run_ddp $((BASE_PORT+2)) train_monthly_simvp_fulltrain_ddp_droppath0_20261020.py \
+  --mode train "${COMMON_ARGS[@]}" --output "$RUN"
+python - <<'PY' "$RUN/training/training_complete.json"
+import json,sys
+x=json.loads(open(sys.argv[1]).read())
+assert x['state']=='COMPLETE_DROPPATH0_FULLTRAIN_VALIDATION_SELECTED'
+assert x['epochs']==12 and x['world_size']==2 and x['global_batch']==20
+assert x['test_payloads_read']==0 and x['buffer_payload_opened'] is False
+assert x['future_observed_agri_inference_input'] is False and x['cpp_read'] is False
+print('DROPPATH0_FULLTRAIN_COMPLETE_PASS',x)
+PY

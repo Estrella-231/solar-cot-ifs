@@ -1,0 +1,37 @@
+{
+  "state": "KEY_ALIGNMENT_PASS",
+  "test_payload_opened": false,
+  "scope": "all 271 saved validation forecast windows, retaining repeated station/target times across distinct init/lead forecast instances; CPP mask is descriptive only and does not filter rows",
+  "forecast_windows": 271,
+  "forecast_cot_shape": [
+    271,
+    2,
+    16,
+    16,
+    16
+  ],
+  "matched_instances": 7005,
+  "by_station": {
+    "sili": {
+      "forecast_instances": 3314,
+      "unique_station_target_rows": 249,
+      "unique_sequence_ids": 239,
+      "min_cpp_support_fraction": 0.0,
+      "median_cpp_support_fraction": 0.0
+    },
+    "zhujia": {
+      "forecast_instances": 3691,
+      "unique_station_target_rows": 280,
+      "unique_sequence_ids": 271,
+      "min_cpp_support_fraction": 0.0,
+      "median_cpp_support_fraction": 0.0
+    }
+  },
+  "pack_val_rows": 4479,
+  "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "pack_rows_sha256": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+  "forecast_bank_sha256": "fd7a431148ebf301140614bdafa8f05e09e99bc5c83a34bb0c456d6cf88b27ac",
+  "forecast_bank_unique_target_keys": 4479,
+  "next_step": "Run frozen seed42 AC head inference with actual target AGRI/geometry held fixed; compare same-time R COT vs forecast SimVP->R COT. This is a COT-only offline counterfactual, not deployable forecast skill.",
+  "upstream_bank_selection": "All 271 windows come from the prebuilt CPP-supported validation bank. This GHI attribution did not apply CPP-pixel masks or further filter rows; it is not a full-natural-distribution validation cohort."
+}

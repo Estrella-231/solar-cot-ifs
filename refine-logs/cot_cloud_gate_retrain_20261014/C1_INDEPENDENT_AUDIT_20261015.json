@@ -1,0 +1,531 @@
+{
+  "state": "PASS_INDEPENDENT_FP64_AND_DATE_BOOTSTRAP",
+  "split": "exploratory validation already viewed in B1; not an independent test",
+  "samples": 1398,
+  "valid_pixels": 356169,
+  "bjt_target_dates": 46,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261015,
+  "threshold_frozen_from_train_oof": 0.2935079336166382,
+  "test_payloads_read": 0,
+  "point_metrics": {
+    "raw": {
+      "by_station": {
+        "sili": {
+          "valid_pixels": 178019,
+          "COT_RMSE": 9.673508942031253,
+          "SSE": 16658443.953507211,
+          "cloud": {
+            "TP": 128408,
+            "FP": 14783,
+            "FN": 2696,
+            "TN": 32132,
+            "POD": 0.9794361728093727,
+            "FAR": 0.10323972875390212,
+            "CSI": 0.880188090782592
+          },
+          "thick": {
+            "TP": 16410,
+            "FP": 11525,
+            "FN": 9801,
+            "TN": 140283,
+            "POD": 0.6260730227766969,
+            "FAR": 0.41256488276355824,
+            "CSI": 0.4348632605469578
+          }
+        },
+        "zhujia": {
+          "valid_pixels": 178150,
+          "COT_RMSE": 8.432662284047074,
+          "SSE": 12668209.65800814,
+          "cloud": {
+            "TP": 91377,
+            "FP": 15990,
+            "FN": 15205,
+            "TN": 55578,
+            "POD": 0.8573398885365259,
+            "FAR": 0.14892844169996367,
+            "CSI": 0.7454965244917273
+          },
+          "thick": {
+            "TP": 18089,
+            "FP": 6001,
+            "FN": 6624,
+            "TN": 147436,
+            "POD": 0.7319629344879214,
+            "FAR": 0.24910751349107513,
+            "CSI": 0.5889496646480432
+          }
+        }
+      },
+      "station_equal_mean": {
+        "COT_RMSE": 9.053085613039164,
+        "cloud_FAR": 0.1260840852269329
+      }
+    },
+    "old_B1_0p5": {
+      "by_station": {
+        "sili": {
+          "valid_pixels": 178019,
+          "COT_RMSE": 9.688078694300765,
+          "SSE": 16708661.962586617,
+          "cloud": {
+            "TP": 125874,
+            "FP": 11862,
+            "FN": 5230,
+            "TN": 35053,
+            "POD": 0.9601080058579449,
+            "FAR": 0.08612127548353371,
+            "CSI": 0.8804470993103255
+          },
+          "thick": {
+            "TP": 16410,
+            "FP": 11525,
+            "FN": 9801,
+            "TN": 140283,
+            "POD": 0.6260730227766969,
+            "FAR": 0.41256488276355824,
+            "CSI": 0.4348632605469578
+          }
+        },
+        "zhujia": {
+          "valid_pixels": 178150,
+          "COT_RMSE": 8.431011635194105,
+          "SSE": 12663250.673893467,
+          "cloud": {
+            "TP": 90343,
+            "FP": 12386,
+            "FN": 16239,
+            "TN": 59182,
+            "POD": 0.8476384380101706,
+            "FAR": 0.12056965413855873,
+            "CSI": 0.7593890794163136
+          },
+          "thick": {
+            "TP": 18089,
+            "FP": 6001,
+            "FN": 6624,
+            "TN": 147436,
+            "POD": 0.7319629344879214,
+            "FAR": 0.24910751349107513,
+            "CSI": 0.5889496646480432
+          }
+        }
+      },
+      "station_equal_mean": {
+        "COT_RMSE": 9.059545164747435,
+        "cloud_FAR": 0.10334546481104623
+      }
+    },
+    "full_last_0p5": {
+      "by_station": {
+        "sili": {
+          "valid_pixels": 178019,
+          "COT_RMSE": 9.687530545071787,
+          "SSE": 16706771.271695577,
+          "cloud": {
+            "TP": 126027,
+            "FP": 11928,
+            "FN": 5077,
+            "TN": 34987,
+            "POD": 0.9612750183060776,
+            "FAR": 0.08646297705773622,
+            "CSI": 0.8811105207226355
+          },
+          "thick": {
+            "TP": 16410,
+            "FP": 11525,
+            "FN": 9801,
+            "TN": 140283,
+            "POD": 0.6260730227766969,
+            "FAR": 0.41256488276355824,
+            "CSI": 0.4348632605469578
+          }
+        },
+        "zhujia": {
+          "valid_pixels": 178150,
+          "COT_RMSE": 8.430967470959185,
+          "SSE": 12663118.00622866,
+          "cloud": {
+            "TP": 90427,
+            "FP": 12468,
+            "FN": 16155,
+            "TN": 59100,
+            "POD": 0.8484265635848455,
+            "FAR": 0.12117206861363526,
+            "CSI": 0.7595716085678287
+          },
+          "thick": {
+            "TP": 18089,
+            "FP": 6001,
+            "FN": 6624,
+            "TN": 147436,
+            "POD": 0.7319629344879214,
+            "FAR": 0.24910751349107513,
+            "CSI": 0.5889496646480432
+          }
+        }
+      },
+      "station_equal_mean": {
+        "COT_RMSE": 9.059249008015486,
+        "cloud_FAR": 0.10381752283568574
+      }
+    },
+    "full_last_conservative": {
+      "by_station": {
+        "sili": {
+          "valid_pixels": 178019,
+          "COT_RMSE": 9.67540638642303,
+          "SSE": 16664979.652439632,
+          "cloud": {
+            "TP": 127599,
+            "FP": 13057,
+            "FN": 3505,
+            "TN": 33858,
+            "POD": 0.9732654991457164,
+            "FAR": 0.09282931407120919,
+            "CSI": 0.8851145594162083
+          },
+          "thick": {
+            "TP": 16410,
+            "FP": 11525,
+            "FN": 9801,
+            "TN": 140283,
+            "POD": 0.6260730227766969,
+            "FAR": 0.41256488276355824,
+            "CSI": 0.4348632605469578
+          }
+        },
+        "zhujia": {
+          "valid_pixels": 178150,
+          "COT_RMSE": 8.430750908579045,
+          "SSE": 12662467.471218513,
+          "cloud": {
+            "TP": 91111,
+            "FP": 14100,
+            "FN": 15471,
+            "TN": 57468,
+            "POD": 0.8548441575500554,
+            "FAR": 0.1340164051287413,
+            "CSI": 0.754967600802108
+          },
+          "thick": {
+            "TP": 18089,
+            "FP": 6001,
+            "FN": 6624,
+            "TN": 147436,
+            "POD": 0.7319629344879214,
+            "FAR": 0.24910751349107513,
+            "CSI": 0.5889496646480432
+          }
+        }
+      },
+      "station_equal_mean": {
+        "COT_RMSE": 9.053078647501037,
+        "cloud_FAR": 0.11342285959997525
+      }
+    }
+  },
+  "date_cluster_bootstrap_95pct_CI_for_deltas": {
+    "old_B1_0p5": {
+      "sili": {
+        "delta_COT_RMSE": [
+          0.0034261556082965327,
+          0.029529655610572966
+        ],
+        "delta_cloud_POD": [
+          -0.03138270811324824,
+          -0.009639654359388539
+        ],
+        "delta_cloud_FAR": [
+          -0.03201739708205062,
+          -0.0070787606317827675
+        ],
+        "delta_thick_POD": [
+          0.0,
+          0.0
+        ],
+        "delta_thick_CSI": [
+          0.0,
+          0.0
+        ]
+      },
+      "zhujia": {
+        "delta_COT_RMSE": [
+          -0.0063205960673144105,
+          0.0017133236480677983
+        ],
+        "delta_cloud_POD": [
+          -0.01439284277926318,
+          -0.004982387428181429
+        ],
+        "delta_cloud_FAR": [
+          -0.04245053012918187,
+          -0.015297415111165447
+        ],
+        "delta_thick_POD": [
+          0.0,
+          0.0
+        ],
+        "delta_thick_CSI": [
+          0.0,
+          0.0
+        ]
+      },
+      "station_equal_mean": {
+        "delta_COT_RMSE": [
+          0.000543663343193357,
+          0.0138264971712283
+        ]
+      }
+    },
+    "full_last_0p5": {
+      "sili": {
+        "delta_COT_RMSE": [
+          0.003312496363692441,
+          0.028460399241171917
+        ],
+        "delta_cloud_POD": [
+          -0.029448260714954252,
+          -0.009063035021320187
+        ],
+        "delta_cloud_FAR": [
+          -0.0313636616341575,
+          -0.006909715670228466
+        ],
+        "delta_thick_POD": [
+          0.0,
+          0.0
+        ],
+        "delta_thick_CSI": [
+          0.0,
+          0.0
+        ]
+      },
+      "zhujia": {
+        "delta_COT_RMSE": [
+          -0.006276946360003799,
+          0.0016343421749764882
+        ],
+        "delta_cloud_POD": [
+          -0.013147377511094516,
+          -0.004621683330009076
+        ],
+        "delta_cloud_FAR": [
+          -0.04155891358020765,
+          -0.014790634904778355
+        ],
+        "delta_thick_POD": [
+          0.0,
+          0.0
+        ],
+        "delta_thick_CSI": [
+          0.0,
+          0.0
+        ]
+      },
+      "station_equal_mean": {
+        "delta_COT_RMSE": [
+          0.0004025913358945311,
+          0.013310714430753287
+        ]
+      }
+    },
+    "full_last_conservative": {
+      "sili": {
+        "delta_COT_RMSE": [
+          -3.244232786663303e-05,
+          0.004521921648429858
+        ],
+        "delta_cloud_POD": [
+          -0.011155109389528958,
+          -0.0025742756138988072
+        ],
+        "delta_cloud_FAR": [
+          -0.020517426643316506,
+          -0.003645513385597959
+        ],
+        "delta_thick_POD": [
+          0.0,
+          0.0
+        ],
+        "delta_thick_CSI": [
+          0.0,
+          0.0
+        ]
+      },
+      "zhujia": {
+        "delta_COT_RMSE": [
+          -0.005405890916386191,
+          -0.0002635253086650471
+        ],
+        "delta_cloud_POD": [
+          -0.003843618460516396,
+          -0.001173957006050755
+        ],
+        "delta_cloud_FAR": [
+          -0.024062763860973942,
+          -0.006899977204649059
+        ],
+        "delta_thick_POD": [
+          0.0,
+          0.0
+        ],
+        "delta_thick_CSI": [
+          0.0,
+          0.0
+        ]
+      },
+      "station_equal_mean": {
+        "delta_COT_RMSE": [
+          -0.0019991365631793602,
+          0.0015328441187076648
+        ]
+      }
+    }
+  },
+  "independent_recompute_max_abs_diffs_vs_training_json": {
+    "old_B1_0p5": {
+      "sili": {
+        "cot_rmse_abs_difference": 0.0,
+        "cloud_pod_abs_difference": 0.0,
+        "cloud_far_abs_difference": 0.0,
+        "thick_pod_abs_difference": 0.0,
+        "thick_csi_abs_difference": 0.0
+      },
+      "zhujia": {
+        "cot_rmse_abs_difference": 0.0,
+        "cloud_pod_abs_difference": 0.0,
+        "cloud_far_abs_difference": 0.0,
+        "thick_pod_abs_difference": 0.0,
+        "thick_csi_abs_difference": 0.0
+      }
+    },
+    "full_last_0p5": {
+      "sili": {
+        "cot_rmse_abs_difference": 0.0,
+        "cloud_pod_abs_difference": 0.0,
+        "cloud_far_abs_difference": 0.0,
+        "thick_pod_abs_difference": 0.0,
+        "thick_csi_abs_difference": 0.0
+      },
+      "zhujia": {
+        "cot_rmse_abs_difference": 0.0,
+        "cloud_pod_abs_difference": 0.0,
+        "cloud_far_abs_difference": 0.0,
+        "thick_pod_abs_difference": 0.0,
+        "thick_csi_abs_difference": 0.0
+      }
+    },
+    "full_last_conservative": {
+      "sili": {
+        "cot_rmse_abs_difference": 0.0,
+        "cloud_pod_abs_difference": 0.0,
+        "cloud_far_abs_difference": 0.0,
+        "thick_pod_abs_difference": 0.0,
+        "thick_csi_abs_difference": 0.0
+      },
+      "zhujia": {
+        "cot_rmse_abs_difference": 0.0,
+        "cloud_pod_abs_difference": 0.0,
+        "cloud_far_abs_difference": 0.0,
+        "thick_pod_abs_difference": 0.0,
+        "thick_csi_abs_difference": 0.0
+      }
+    }
+  },
+  "conservative_gate_point_guards": {
+    "sili": {
+      "cloud_FAR_improved": true,
+      "cloud_POD_drop_le_1pp": true,
+      "thick_POD_drop_le_1pp": true,
+      "thick_CSI_drop_le_0p01": true,
+      "all_protection_guards_pass": true
+    },
+    "zhujia": {
+      "cloud_FAR_improved": true,
+      "cloud_POD_drop_le_1pp": true,
+      "thick_POD_drop_le_1pp": true,
+      "thick_CSI_drop_le_0p01": true,
+      "all_protection_guards_pass": true
+    }
+  },
+  "conservative_gate_station_equal_delta_COT_RMSE": -6.965538126735282e-06,
+  "conservative_gate_station_equal_delta_COT_RMSE_95pct_CI": [
+    -0.0019991365631793602,
+    0.0015328441187076648
+  ],
+  "conservative_gate_RMSE_CI_excludes_zero": false,
+  "training_output_sha256_checks": {
+    "source_audit.json": {
+      "expected": "382576991cbadcbff4d5b6a478a45f1dd06b748534a937d20ec62db7741822c3",
+      "actual": "382576991cbadcbff4d5b6a478a45f1dd06b748534a937d20ec62db7741822c3",
+      "match": true
+    },
+    "fold1_last.pt": {
+      "expected": "4ea77fa4c95d4d9a9a00dc0dbb1b924c83f4b1e52b8c2bdbc54f9c0daf151d78",
+      "actual": "4ea77fa4c95d4d9a9a00dc0dbb1b924c83f4b1e52b8c2bdbc54f9c0daf151d78",
+      "match": true
+    },
+    "full_train_last.pt": {
+      "expected": "bc5f359efd96e5bbfbc2359d6c09e1bf5efdf1b51fb2fe09d5b1e7bfec2bae75",
+      "actual": "bc5f359efd96e5bbfbc2359d6c09e1bf5efdf1b51fb2fe09d5b1e7bfec2bae75",
+      "match": true
+    },
+    "train_oof_predictions.npz": {
+      "expected": "de7a59df5e39dbbc2c2ddcf081e348c00240ec7e7653c95aea514d7a1c38c2aa",
+      "actual": "de7a59df5e39dbbc2c2ddcf081e348c00240ec7e7653c95aea514d7a1c38c2aa",
+      "match": true
+    },
+    "fold_audit.json": {
+      "expected": "be1d13ccbc267bbc3d7e801652cbc398da6616b7930b702cf66cf59be40a14e8",
+      "actual": "be1d13ccbc267bbc3d7e801652cbc398da6616b7930b702cf66cf59be40a14e8",
+      "match": true
+    },
+    "profile.json": {
+      "expected": "075510a6a41470abd0c38ebbc0e1ed2614c780d142fe2090c98b2fb2bffb4166",
+      "actual": "075510a6a41470abd0c38ebbc0e1ed2614c780d142fe2090c98b2fb2bffb4166",
+      "match": true
+    },
+    "fold0_epochs.jsonl": {
+      "expected": "4c771a9ee29718e54e3748d580c32c2f5859017cef636a71bed6b3bd2ff808f4",
+      "actual": "4c771a9ee29718e54e3748d580c32c2f5859017cef636a71bed6b3bd2ff808f4",
+      "match": true
+    },
+    "fold0_last.pt": {
+      "expected": "d258835a8ac919ade8133cb6fe6b297facf4f1df3963eb1ad3cc7b61232016c5",
+      "actual": "d258835a8ac919ade8133cb6fe6b297facf4f1df3963eb1ad3cc7b61232016c5",
+      "match": true
+    },
+    "fold1_epochs.jsonl": {
+      "expected": "e4a759cbe820abf5daf477101a2f2075d13db983c1b27d30a34804e63e4d7520",
+      "actual": "e4a759cbe820abf5daf477101a2f2075d13db983c1b27d30a34804e63e4d7520",
+      "match": true
+    },
+    "fold2_epochs.jsonl": {
+      "expected": "7421bf8cd3ec3832ae6785a501e70964f8ad84753d0cc5432b4a6c99e0320eda",
+      "actual": "7421bf8cd3ec3832ae6785a501e70964f8ad84753d0cc5432b4a6c99e0320eda",
+      "match": true
+    },
+    "fold2_last.pt": {
+      "expected": "74aeb7fab74253e0abea9d139f76bb596ccecb544dd5ea657274b2223515165a",
+      "actual": "74aeb7fab74253e0abea9d139f76bb596ccecb544dd5ea657274b2223515165a",
+      "match": true
+    },
+    "threshold_frozen.json": {
+      "expected": "02ee8a09850148af99876edd11a356e75e6c9cf54efae722a3460b7252970ce4",
+      "actual": "02ee8a09850148af99876edd11a356e75e6c9cf54efae722a3460b7252970ce4",
+      "match": true
+    },
+    "full_train_epochs.jsonl": {
+      "expected": "bcddd7e74626e727858a2c7c6db88b8cae42c620a402ed7540823afe148066ff",
+      "actual": "bcddd7e74626e727858a2c7c6db88b8cae42c620a402ed7540823afe148066ff",
+      "match": true
+    },
+    "validation_predictions.npz": {
+      "expected": "2a07170202d3f24d6112f9a7a02d268e63229889a0a13e5973d9f2b51a63eaef",
+      "actual": "2a07170202d3f24d6112f9a7a02d268e63229889a0a13e5973d9f2b51a63eaef",
+      "match": true
+    }
+  }
+}

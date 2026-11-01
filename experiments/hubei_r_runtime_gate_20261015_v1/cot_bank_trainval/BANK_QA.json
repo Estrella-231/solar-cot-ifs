@@ -1,0 +1,43 @@
+{
+  "state": "HUBEI_COT_CPP_SUBSET_KEYS_PASSED_VAL_NUMERIC_REPLAY_RECORDED_TEST_CLOSED",
+  "test_payloads_read": 0,
+  "rows_by_split": {
+    "train": 3178,
+    "val": 301
+  },
+  "bank_scope": "CPP-supported supervision subset only; not full AGRI train/validation coverage",
+  "prediction_shape": [
+    3479,
+    1,
+    16,
+    16
+  ],
+  "train_predictions_are_oof": false,
+  "checkpoint_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+  "prediction_sha256": "d5c6cdf40bfe013c3c7dd456ad007c0004b51845ff3ca67e6d6b97c5fd692fc8",
+  "rows_sha256": "58964034fa2d4f9bb175f634037e7db6ef99bbefd3e260a06cbd315719d5c026",
+  "validation_rows_replayed": 259,
+  "max_abs_difference_vs_saved_validation_predictions": 0.06987380981445312,
+  "mean_abs_difference_vs_saved_validation_predictions": 5.202331325366489e-06,
+  "p95_abs_difference_vs_saved_validation_predictions": 0.0,
+  "saved_val_metrics": {
+    "rmse_cot": 13.356940140254641,
+    "mae_cot": 9.464546050332016,
+    "bias_cot": -1.3033148559573993,
+    "r2_cot": 0.43579256676720113
+  },
+  "bank_val_metrics": {
+    "rmse_cot": 13.356933415173588,
+    "mae_cot": 9.46454265830704,
+    "bias_cot": -1.3033181941688314,
+    "r2_cot": 0.435793134912259
+  },
+  "metric_delta_bank_minus_saved": {
+    "rmse_cot": -6.725081053815529e-06,
+    "mae_cot": -3.3920249755681198e-06,
+    "bias_cot": -3.338211432168947e-06,
+    "r2_cot": 5.681450578887137e-07
+  },
+  "numeric_note": "Bank and training validation used different batch partitioning under fp16 autocast; report numerical replay differences rather than requiring bitwise equality.",
+  "reference_scope": "CPP retrieval consistency only; not independent physical truth or GHI skill"
+}

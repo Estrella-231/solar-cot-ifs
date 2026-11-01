@@ -1,0 +1,48 @@
+#!/bin/bash
+#PBS -N fgcot_phase_audit
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ORACLE=$EXP/results/future_cot_oracle_head_pack_v2
+BANKIDX=$EXP/results/future_simvp_r_bank_oof_v1/index.csv
+BANK=$EXP/results/future_simvp_r_bank_oof_v1
+FOLDS=$EXP/results/future_ghi_oof_manifests_v1
+CAL=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+OUT=$EXP/results/future_cot_lead_phase_v1/lead_phase_audit.json
+LOG=$EXP/logs/future_cot_lead_phase_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+python -m py_compile audit_future_cot_lead_phase.py train_future_ghi_heads_cot_reliability.py
+python - "$PACK/pack_manifest.json" "$ORACLE/pack_manifest.json" "$CAL" "$EXP/results/future_ghi_oof_cot_window_average_validation_audit_v1.json" <<'PY'
+import json,hashlib,sys
+def sha(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''):h.update(b)
+ return h.hexdigest()
+p=json.load(open(sys.argv[1]));r=json.load(open(sys.argv[2]));c=json.load(open(sys.argv[3]));w=json.load(open(sys.argv[4]))
+assert p['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK' and p['train_forecast_oof'] is True and p['forecast_bank_oof_fold_count']==5
+assert all(p.get(k) is False for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_input'))
+assert r['state']=='COMPLETE_ORACLE_FUTURE_COT_GHI_PACK' and r['split_id']==p['split_id'] and r['deployable'] is False and r['test_payloads_read']==0 and r['buffer_payload_opened'] is False
+assert c['forecast_pack_manifest_sha256']==sha(sys.argv[1]) and c['test_payload_opened'] is False and c['buffer_payload_opened'] is False
+assert w['state']=='COMPLETE_PAIRED_FUTURE_GHI_COT_ABLATION_VALIDATION_AUDIT' and w['test_payload_opened'] is False and w['buffer_payload_opened'] is False
+print('LEAD_PHASE_SOURCE_PREFLIGHT_PASS')
+PY
+test ! -e "$OUT"
+python -u audit_future_cot_lead_phase.py --forecast-pack "$PACK" --oracle-pack "$ORACLE" --bank-index "$BANKIDX" --forecast-bank "$BANK" --fold-root "$FOLDS" --center-calibration "$CAL" --output "$OUT" --bootstrap 2000
+python - "$OUT" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]));assert d['state']=='COMPLETE_NESTED_TRAIN_ONLY_FUTURE_COT_LEAD_PHASE_AUDIT';assert d['test_payload_opened'] is False and d['buffer_payload_opened'] is False and d['future_observed_agri_used_as_inference_input'] is False and d['validation_labels_used_for_fit'] is False
+print('LEAD_PHASE_AUDIT_COMPLETE',d['gate'],d['selected_shift_full_train_minutes'],d['nested_center_delta_date_block_ci95_log1p'])
+PY
+echo "FUTURE_COT_LEAD_PHASE_AUDIT_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

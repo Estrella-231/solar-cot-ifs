@@ -1,0 +1,30 @@
+{
+  "state": "FIGURES_RENDERED",
+  "source_summary": "refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\strata_summary_fp64.json",
+  "outputs": [
+    "paired_delta_by_cpp_cot.png",
+    "paired_delta_by_cpp_cot.pdf",
+    "paired_delta_by_clp_class.png",
+    "paired_delta_by_clp_class.pdf"
+  ],
+  "software": {
+    "matplotlib": "3.10.8",
+    "numpy": "2.3.5"
+  },
+  "rendering": {
+    "raster_dpi": 300,
+    "background": "opaque white",
+    "format": [
+      "PNG",
+      "PDF"
+    ]
+  },
+  "statistic": "equal-station/equal-seed candidate-minus-baseline RMSE; paired two-day BJT date-block bootstrap CI",
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 20261020,
+    "unit": "shared two-day BJT validation blocks across the full validation block list; replicates with zero stratum support for any station/seed are rejected",
+    "interval": "pointwise percentile 95%, no multiplicity adjustment"
+  },
+  "test_payloads_read": 0
+}

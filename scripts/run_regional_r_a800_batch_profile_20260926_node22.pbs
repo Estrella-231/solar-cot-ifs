@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -N cotreg_a800prof
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/a800_batch_profile_20260926.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/regional_station_cot_20260925
+CACHE=$EXP/agri_cpp_pair_bank_v1
+OUT=$EXP/profile_a800_batch_sweep_20260926
+REUSED=/tmp/regional_cot_train_210746_tc6000/pair_cache
+LOCAL=${TMPDIR:-/tmp}/regional_cot_a800_profile_${PBS_JOBID//[^A-Za-z0-9]/_}
+test ! -e "$OUT"
+python -m py_compile "$EXP/scripts/profile_regional_r_paircache_20260926.py"
+if [ -f "$REUSED/index.json" ]; then
+  PROFILE_CACHE=$REUSED
+else
+  mkdir -p "$LOCAL"
+  BYTES=$(du -sb "$CACHE" | awk '{print $1}')
+  AVAILABLE=$(df -PB1 "$LOCAL" | awk 'NR==2 {print $4}')
+  test "$AVAILABLE" -gt "$((BYTES + BYTES / 10))"
+  cp -a "$CACHE" "$LOCAL/pair_cache"
+  PROFILE_CACHE=$LOCAL/pair_cache
+fi
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+python -u "$EXP/scripts/profile_regional_r_paircache_20260926.py" \
+  --cache "$PROFILE_CACHE" \
+  --r-code "$SOLAR/scripts/train_cot_repaired.py" \
+  --output "$OUT" --workers 2 --batches 32,64,128,256,384,512

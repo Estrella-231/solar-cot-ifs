@@ -1,0 +1,27 @@
+{
+  "verdict": "PASS",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "xhigh",
+  "review_independence": "same-family",
+  "checks": {
+    "markdown_headings_included": true,
+    "status_table_included": true,
+    "status_total_is_56": true,
+    "claim_table_has_56_unique_rows": true,
+    "claim_ids_cover_C01_through_C56": true,
+    "material_findings_all_included": true,
+    "scope_limitations_all_included": true,
+    "json_sidecar_semantically_matches": true,
+    "styling_readable_and_responsive": true
+  },
+  "issues": [
+    {
+      "severity": "minor",
+      "description": "The page title appears twice: once in the hero header and once as the rendered Markdown H1."
+    },
+    {
+      "severity": "minor",
+      "description": "The four-column claim table has no dedicated narrow-screen scroll wrapper, so mobile viewing may be dense despite the responsive page layout."
+    }
+  ]
+}

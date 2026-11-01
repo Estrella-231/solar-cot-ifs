@@ -1,0 +1,26 @@
+#!/bin/bash
+#PBS -N hb_cot_R_seed42
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_r_runtime_gate_20261015_v1/logs/formal_train.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/hubei_r_runtime_gate_20261015_v1
+PACK=$EXP/r_pack_trainval
+OUT=$EXP/runs/hubei_R_station16_fixedv2_v1_seed42
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test ! -e "$OUT"
+python -u "$EXP/audit_hubei_r_pack.py" --pack "$PACK" --output "$EXP/r_pack_trainval/PACK_QA.json"
+python -u "$EXP/train_hubei_cot_fixedv2.py" \
+  --pack "$PACK" --model-source "$ROOT/scripts/train_cot_repaired.py" \
+  --output "$OUT" --seed 42 --batch 192 --epochs 50 --patience 8
+test "$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["state"])' "$OUT/status.json")" = COMPLETE_VALIDATION_ONLY_TEST_CLOSED
+echo HUBEI_R_FORMAL_TRAIN_COMPLETE_TEST_CLOSED

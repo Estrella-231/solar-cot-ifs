@@ -1,0 +1,406 @@
+{
+  "source_hashes": {
+    "ghi_rows.csv": "2c21bd0f37b62d29eb696932fe505509bb0739055ddcd59852c7708ddb64d0a1",
+    "ghi_predictions.npz": "7ec0e813a4d2be92fe6c83ac0f3684029b74ff4d22f7f9a48dae8d7d805cad0b"
+  },
+  "audit": "Independent saved-array arithmetic; no experiment file imported or executed; test payloads not read",
+  "rows": 63480,
+  "npz_array_count": 62,
+  "npz_shapes": {
+    "(63480,)": 62
+  },
+  "truth_csv_max_abs_diff": 0.0,
+  "clear_csv_max_abs_diff": 3.051234375561762e-05,
+  "key_and_coordinate_audit": {
+    "duplicate_canonical_station_init_target": 0,
+    "duplicate_station_window_lead": 0,
+    "unique_station_target": 4171,
+    "target_multiplicity_histogram": {
+      "1": 19,
+      "2": 30,
+      "3": 20,
+      "4": 22,
+      "5": 22,
+      "6": 33,
+      "7": 32,
+      "8": 22,
+      "9": 22,
+      "10": 22,
+      "11": 28,
+      "12": 39,
+      "13": 56,
+      "14": 78,
+      "15": 85,
+      "16": 3641
+    },
+    "max_target_multiplicity": 16,
+    "different_truth_for_identical_station_target": 0,
+    "different_clear_for_identical_station_target": 0,
+    "wrong_bjt_date": 0,
+    "wrong_lead": 0,
+    "lead_values": [
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      105,
+      120,
+      135,
+      150,
+      165,
+      180,
+      195,
+      210,
+      225,
+      240
+    ]
+  },
+  "coverage": {
+    "by_station": {
+      "sili": 30516,
+      "zhujia": 32964
+    },
+    "target_dates": 51,
+    "unique_windows": 2728,
+    "invalid_sili_20240905": 0,
+    "suspect_daylight_long_zero": 246,
+    "clear_minmax": [
+      1.5167255401611328,
+      955.4906616210938
+    ],
+    "clear_le_0": 0,
+    "clear_le_20": 1464,
+    "truth_zero": 585,
+    "truth_minmax": [
+      0.0,
+      1191.33333333
+    ],
+    "target_bjt_hour_histogram": {
+      "6": 1503,
+      "7": 3817,
+      "8": 5465,
+      "9": 5350,
+      "10": 5397,
+      "11": 5432,
+      "12": 5427,
+      "13": 5480,
+      "14": 5523,
+      "15": 5524,
+      "16": 5450,
+      "17": 5066,
+      "18": 3334,
+      "19": 712
+    }
+  },
+  "scopes": {
+    "full": {
+      "rows": 63480,
+      "days": 51,
+      "groups": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "n": 30516,
+          "before": 132.5180826873518,
+          "after": 129.44746402443246,
+          "delta": -3.070618662919344,
+          "date_ci": [
+            -4.535903502764806,
+            -1.6693995675832352
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "n": 30516,
+          "before": 132.19035958899477,
+          "after": 129.32822628926212,
+          "delta": -2.8621332997326476,
+          "date_ci": [
+            -4.474179337135704,
+            -1.360936072130011
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "n": 30516,
+          "before": 131.53786325263462,
+          "after": 128.90645510634712,
+          "delta": -2.631408146287498,
+          "date_ci": [
+            -4.314583813027532,
+            -1.0224382736417494
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "n": 32964,
+          "before": 123.93753196127143,
+          "after": 122.17426844563755,
+          "delta": -1.7632635156338807,
+          "date_ci": [
+            -4.430088037723653,
+            0.5967715979331332
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "n": 32964,
+          "before": 121.54315455567138,
+          "after": 120.74117247166913,
+          "delta": -0.8019820840022476,
+          "date_ci": [
+            -3.26799362271652,
+            1.4594035927967994
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "n": 32964,
+          "before": 122.80006559847311,
+          "after": 121.44318422812495,
+          "delta": -1.3568813703481624,
+          "date_ci": [
+            -4.40742284527378,
+            1.4902330962762054
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        }
+      ],
+      "before": 127.42117627406617,
+      "after": 125.3401284275789,
+      "delta": -2.081047846487266,
+      "reduction_pct": 1.6332040774848964,
+      "date_ci": [
+        -3.7144653491487394,
+        -0.5613495387681963
+      ],
+      "bootstrap_positive_fraction": 0.0036,
+      "all_group_delta_negative": true,
+      "all_predicted_slots45_240": {
+        "n": 55673,
+        "before": 130.88048087236507,
+        "after": 128.77122251443518,
+        "delta": -2.109258357929889,
+        "reduction_pct": 1.611591234896854
+      }
+    },
+    "no_overlap": {
+      "rows": 54280,
+      "days": 43,
+      "groups": [
+        {
+          "station": "sili",
+          "seed": 42,
+          "n": 25659,
+          "before": 134.64872167364825,
+          "after": 131.07259135759864,
+          "delta": -3.576130316049614,
+          "date_ci": [
+            -5.155392990403763,
+            -2.0251043893591905
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "sili",
+          "seed": 43,
+          "n": 25659,
+          "before": 134.4364709986847,
+          "after": 131.20714657183782,
+          "delta": -3.229324426846887,
+          "date_ci": [
+            -5.075222395530788,
+            -1.474273877275886
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "sili",
+          "seed": 44,
+          "n": 25659,
+          "before": 133.64623548389287,
+          "after": 130.52427604851897,
+          "delta": -3.1219594353738955,
+          "date_ci": [
+            -4.910736405255495,
+            -1.3081112913090753
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "zhujia",
+          "seed": 42,
+          "n": 28621,
+          "before": 116.75708139929246,
+          "after": 114.1609374323915,
+          "delta": -2.5961439669009536,
+          "date_ci": [
+            -5.590790919511396,
+            0.25173540700862695
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "zhujia",
+          "seed": 43,
+          "n": 28621,
+          "before": 115.1794127550819,
+          "after": 113.79394744785273,
+          "delta": -1.3854653072291683,
+          "date_ci": [
+            -4.101844473055348,
+            1.4165033336243855
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        },
+        {
+          "station": "zhujia",
+          "seed": 44,
+          "n": 28621,
+          "before": 116.18541766787371,
+          "after": 114.04975007887491,
+          "delta": -2.1356675889987997,
+          "date_ci": [
+            -5.475887475617159,
+            1.5284120350735984
+          ],
+          "bootstrap_zero_denominator_replicates": 0
+        }
+      ],
+      "before": 125.14222332974565,
+      "after": 122.4681081561791,
+      "delta": -2.6741151735665483,
+      "reduction_pct": 2.1368608471341783,
+      "date_ci": [
+        -4.430037650826787,
+        -0.8904906782917434
+      ],
+      "bootstrap_positive_fraction": 0.0012,
+      "all_group_delta_negative": true,
+      "all_predicted_slots45_240": {
+        "n": 47604,
+        "before": 128.61649893250348,
+        "after": 125.89725183163888,
+        "delta": -2.7192471008645924,
+        "reduction_pct": 2.114228830230889
+      }
+    }
+  },
+  "prediction_mask_audit": {
+    "sili": {
+      "42_M00": {
+        "finite_own_station": 30516,
+        "rows_own_station": 30516,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "42_M10": {
+        "finite_own_station": 30516,
+        "rows_own_station": 30516,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "43_M00": {
+        "finite_own_station": 30516,
+        "rows_own_station": 30516,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "43_M10": {
+        "finite_own_station": 30516,
+        "rows_own_station": 30516,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "44_M00": {
+        "finite_own_station": 30516,
+        "rows_own_station": 30516,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "44_M10": {
+        "finite_own_station": 30516,
+        "rows_own_station": 30516,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      }
+    },
+    "zhujia": {
+      "42_M00": {
+        "finite_own_station": 32964,
+        "rows_own_station": 32964,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "42_M10": {
+        "finite_own_station": 32964,
+        "rows_own_station": 32964,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "43_M00": {
+        "finite_own_station": 32964,
+        "rows_own_station": 32964,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "43_M10": {
+        "finite_own_station": 32964,
+        "rows_own_station": 32964,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "44_M00": {
+        "finite_own_station": 32964,
+        "rows_own_station": 32964,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      },
+      "44_M10": {
+        "finite_own_station": 32964,
+        "rows_own_station": 32964,
+        "finite_other_station": 0,
+        "dtype": "float64"
+      }
+    }
+  },
+  "subset_local_files": [
+    "ghi_scores_fp64.json"
+  ],
+  "published_score_deltas": {
+    "full": {
+      "rmse_before": 0.0,
+      "rmse_after": 0.0,
+      "ci_abs_max": 1.4654943925052066e-14
+    },
+    "no_overlap": {
+      "rmse_before": 0.0,
+      "rmse_after": 0.0,
+      "ci_abs_max": 1.4210854715202004e-14
+    }
+  },
+  "completion_station_counts": {
+    "recorded": {
+      "sili": 7652,
+      "zhujia": 8268
+    },
+    "actual": {
+      "sili": 30516,
+      "zhujia": 32964
+    },
+    "recorded_sum": 15920,
+    "ghi_rows": 63480
+  }
+}

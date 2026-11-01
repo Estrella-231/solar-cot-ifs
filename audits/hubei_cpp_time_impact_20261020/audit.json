@@ -1,0 +1,340 @@
+{
+  "state": "PASS_HUBEI_R_CPP_TIME_LINEAGE_AND_SAVED_VALIDATION_SCORE_AUDIT",
+  "checks": {
+    "old_full_R_manifest_3479_rows_all_offset_plus8h": true,
+    "old_20261017_source_rebuild_still_uses_misaligned_R": true,
+    "old_AL_features_from_misaligned_R": true,
+    "old_forecast_full_R_and_all_five_fold_Rs_misaligned": true,
+    "corrected_CPP_to_new_R_to_new_COT_bank_to_all_three_GHI_seeds_hash_chain_pass": true,
+    "corrected_R_target_and_mask_differ_from_old_R": true,
+    "all_81_saved_prediction_files_recomputed_and_paired": true
+  },
+  "old_R_sha256": "1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83",
+  "corrected_R_sha256": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9",
+  "old_manifest": {
+    "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\r_path_audit_20261015_v1\\r_paths_trainval.csv",
+    "exists": true,
+    "sha256": "3bae20a9607b941e544199b9f2900414b266ad11456e82d9bf51e7bd78c972f8",
+    "rows": 3479,
+    "splits": {
+      "train": 3178,
+      "val": 301
+    },
+    "source_offset_from_correct_utc_hours": {
+      "8.0": 3479
+    },
+    "unparsed_rows": 0,
+    "unparsed_examples": [],
+    "samples": [
+      {
+        "time_bjt": "202508010600",
+        "cpp_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/cpp_16_fixed_v2/2025/20250801/FY4B_AGRI_20250801060000.npy",
+        "expected_cpp_utc": "2025-07-31T22:00:00",
+        "source_offset_hours": 8.0
+      },
+      {
+        "time_bjt": "202508010615",
+        "cpp_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/cpp_16_fixed_v2/2025/20250801/FY4B_AGRI_20250801061500.npy",
+        "expected_cpp_utc": "2025-07-31T22:15:00",
+        "source_offset_hours": 8.0
+      },
+      {
+        "time_bjt": "202508010630",
+        "cpp_path": "/home/Data_Pool_3/chenyi/Auxiliary_data/HuBei_AGRI_Preprocessed/cpp_16_fixed_v2/2025/20250801/FY4B_AGRI_20250801063000.npy",
+        "expected_cpp_utc": "2025-07-31T22:30:00",
+        "source_offset_hours": 8.0
+      }
+    ]
+  },
+  "old_forecast_folds": {
+    "0": {
+      "rows": 2848,
+      "offset_hours": 8,
+      "checkpoint_sha256": "34a440f27e49a3e8faa5bb74d9fa76921868d9ee5af6c1520b48c71d15322c7c"
+    },
+    "1": {
+      "rows": 2848,
+      "offset_hours": 8,
+      "checkpoint_sha256": "8f31270c44d1c73779a29915c83f289a04cb6aab1d10932a9a61caa32e03e179"
+    },
+    "2": {
+      "rows": 2835,
+      "offset_hours": 8,
+      "checkpoint_sha256": "b6b7628513dc3d914ee16b5e575a1fb39ec1bfc14dec00028a3bf5d2b8bc81e7"
+    },
+    "3": {
+      "rows": 2852,
+      "offset_hours": 8,
+      "checkpoint_sha256": "9e24e12e8fc2b501361340272389d7d1f4af012b9f4a2418cf8c8812ffa856b6"
+    },
+    "4": {
+      "rows": 2834,
+      "offset_hours": 8,
+      "checkpoint_sha256": "9221ce9ae4b3e5eed8295692eb156d4b15ee8179eed91d966693ef365bf83945"
+    }
+  },
+  "corrected_CPP_ledger": {
+    "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cpp_attempt2/rows_correct_utc.csv",
+    "exists": true,
+    "sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+    "rows": 3479,
+    "splits": {
+      "train": 3178,
+      "val": 301
+    },
+    "source_offset_from_correct_utc_hours": {
+      "0.0": 3479
+    },
+    "unparsed_rows": 0,
+    "unparsed_examples": [],
+    "samples": [
+      {
+        "time_bjt": "202508010600",
+        "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731220000.nc",
+        "expected_cpp_utc": "2025-07-31T22:00:00",
+        "source_offset_hours": 0.0
+      },
+      {
+        "time_bjt": "202508010615",
+        "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731221500.nc",
+        "expected_cpp_utc": "2025-07-31T22:15:00",
+        "source_offset_hours": 0.0
+      },
+      {
+        "time_bjt": "202508010630",
+        "cpp_path": "/home/Data_Pool_3/data/Global_CPP/FY/FY4B/Result/CPP/2025/20250731/FY4B_AGRI_20250731223000.nc",
+        "expected_cpp_utc": "2025-07-31T22:30:00",
+        "source_offset_hours": 0.0
+      }
+    ]
+  },
+  "historical_old_CPP_actual_BJT_source_date_audit": {
+    "source_date_split_counts": {
+      "input_train__CPP_source_train": 3109,
+      "input_train__CPP_source_buffer": 69,
+      "input_val__CPP_source_val": 267,
+      "input_val__CPP_source_buffer": 34
+    },
+    "buffer_source_counts": {
+      "train_buffer_source_rows": 69,
+      "train_buffer_source_supervision_eligible_rows": 38,
+      "train_buffer_source_valid_CPP_pixels": 9728,
+      "val_buffer_source_rows": 34,
+      "val_buffer_source_supervision_eligible_rows": 13,
+      "val_buffer_source_valid_CPP_pixels": 3328
+    },
+    "day_assignment_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+    "supervision_ledger_sha256": "2bcad3a537b207c7707b2390af03c1338665ac07ffec675413015e29c00f29d8",
+    "meaning": "Historical CPP source-date contact derived from old ledgers; no new buffer/test payloads opened."
+  },
+  "summaries": {
+    "old_same_time_normreload": {
+      "equal_station_seed_rmse": {
+        "A": 74.33330054084233,
+        "AC": 70.99308242019711,
+        "AP": 73.83922213660561
+      },
+      "station_rmse": {
+        "Niushou": {
+          "A": 76.64718284667954,
+          "AC": 75.00150875397533,
+          "AP": 76.14300720636476
+        },
+        "Wangzhai": {
+          "A": 66.0697202772875,
+          "AC": 64.2747077110774,
+          "AP": 65.27166341421461
+        },
+        "Mizhuang": {
+          "A": 80.28299849855996,
+          "AC": 73.7030307955386,
+          "AP": 80.10299578923745
+        }
+      },
+      "validation_rows_by_station": {
+        "Niushou": 856,
+        "Wangzhai": 784,
+        "Mizhuang": 816
+      },
+      "n_unique_validation_keys": 2456,
+      "n_saved_prediction_files": 27,
+      "checkpoint_files_rehashed": 27
+    },
+    "old_forecast_normreload": {
+      "equal_station_seed_rmse": {
+        "FA": 77.1502302184936,
+        "FAC": 78.15526937930134
+      },
+      "station_rmse": {
+        "Niushou": {
+          "FA": 76.48908128147926,
+          "FAC": 77.27225331978468
+        },
+        "Wangzhai": {
+          "FA": 72.10790212190447,
+          "FAC": 73.84852768194325
+        },
+        "Mizhuang": {
+          "FA": 82.85370725209707,
+          "FAC": 83.34502713617611
+        }
+      },
+      "validation_rows_by_station": {
+        "Niushou": 2316,
+        "Wangzhai": 2112,
+        "Mizhuang": 2295
+      },
+      "n_unique_validation_keys": 6723,
+      "n_saved_prediction_files": 18,
+      "checkpoint_files_rehashed": 18
+    },
+    "corrected_same_time_fourarm": {
+      "equal_station_seed_rmse": {
+        "A": 77.2850177342771,
+        "AC": 69.14226750250755,
+        "AM": 74.05251952446977,
+        "ACM": 68.81476277791694
+      },
+      "station_rmse": {
+        "Niushou": {
+          "A": 76.85066516832892,
+          "AC": 63.97801970126185,
+          "AM": 72.92400739708889,
+          "ACM": 63.976029951441035
+        },
+        "Wangzhai": {
+          "A": 70.53859668323993,
+          "AC": 63.13656194039456,
+          "AM": 65.43688913391013,
+          "ACM": 61.90969607593454
+        },
+        "Mizhuang": {
+          "A": 84.46579135126245,
+          "AC": 80.31222086586628,
+          "AM": 83.79666204241026,
+          "ACM": 80.55856230637525
+        }
+      },
+      "validation_rows_by_station": {
+        "Niushou": 766,
+        "Wangzhai": 694,
+        "Mizhuang": 735
+      },
+      "n_unique_validation_keys": 2195,
+      "n_saved_prediction_files": 36,
+      "checkpoint_files_rehashed": 36
+    }
+  },
+  "existing_corrected_same_time_date_block_intervals": [
+    {
+      "ref": "A",
+      "candidate": "AC",
+      "n_blocks": 10,
+      "n_boot": 20000,
+      "delta_rmse_point": -8.1427502318,
+      "gain_percent_point": 10.5360009876,
+      "delta_rmse_ci95": [
+        -14.9992861234,
+        -3.3611105132
+      ],
+      "gain_percent_ci95": [
+        4.3956121604,
+        18.9100366322
+      ],
+      "stratum": "all_validation",
+      "unique_station_time_n": 2195
+    },
+    {
+      "ref": "A",
+      "candidate": "AM",
+      "n_blocks": 10,
+      "n_boot": 20000,
+      "delta_rmse_point": -3.2324982098,
+      "gain_percent_point": 4.1825677273,
+      "delta_rmse_ci95": [
+        -4.8105775156,
+        -1.9030675108
+      ],
+      "gain_percent_ci95": [
+        2.4005908729,
+        6.7116526136
+      ],
+      "stratum": "all_validation",
+      "unique_station_time_n": 2195
+    },
+    {
+      "ref": "A",
+      "candidate": "ACM",
+      "n_blocks": 10,
+      "n_boot": 20000,
+      "delta_rmse_point": -8.4702549564,
+      "gain_percent_point": 10.9597632305,
+      "delta_rmse_ci95": [
+        -14.4426093368,
+        -4.2661737569
+      ],
+      "gain_percent_ci95": [
+        5.3758059852,
+        18.6558349063
+      ],
+      "stratum": "all_validation",
+      "unique_station_time_n": 2195
+    },
+    {
+      "ref": "AC",
+      "candidate": "ACM",
+      "n_blocks": 10,
+      "n_boot": 20000,
+      "delta_rmse_point": -0.3275047246,
+      "gain_percent_point": 0.4736678973,
+      "delta_rmse_ci95": [
+        -1.653964205,
+        0.8335032976
+      ],
+      "gain_percent_ci95": [
+        -1.2339111503,
+        2.6177641424
+      ],
+      "stratum": "all_validation",
+      "unique_station_time_n": 2195
+    },
+    {
+      "ref": "AM",
+      "candidate": "ACM",
+      "n_blocks": 10,
+      "n_boot": 20000,
+      "delta_rmse_point": -5.2377567466,
+      "gain_percent_point": 7.0730297635,
+      "delta_rmse_ci95": [
+        -10.4567491554,
+        -1.6707917118
+      ],
+      "gain_percent_ci95": [
+        2.2226844925,
+        13.9943478997
+      ],
+      "stratum": "all_validation",
+      "unique_station_time_n": 2195
+    }
+  ],
+  "score_prediction_files": 81,
+  "test_buffer_payloads_opened": 0,
+  "training_jobs_submitted": 0,
+  "scope_limit": "Named local and live ZJNU/FD-201 train/validation assets; no raw CPP re-extraction or new model forward pass.",
+  "important_limitations": [
+    "Old GHI numbers remain reproducible historical outputs; misaligned-R comparisons cannot establish valid COT physics or general COT forecast value.",
+    "The corrected four-arm experiment differs in sample support and A-head capacity from the old three-arm experiment; their gain difference is not an isolated UTC-fix effect.",
+    "No corrected-UTC full/fivefold-R future-GHI rerun was identified in the inspected experiment families.",
+    "Several corrected R/bank descriptive reference strings still say fixed_v2; actual correct-UTC target/mask and weight hashes were checked instead of trusting these strings.",
+    "The historical 22,061-frame old bank is retained locally; it was not found at its old ZJNU mirror path. The rebuilt 24,705-frame old bank was checked live.",
+    "Saved validation checkpoints were chosen using validation; these are not independent-test conclusions.",
+    "Historical old wrong-time CPP includes physical buffer-date sources despite input-key-based test/buffer=0 flags; these flags cannot certify correct physical CPP date isolation."
+  ],
+  "evidence_sha256": {
+    "audits\\hubei_cpp_time_impact_20261020\\evidence\\zjnu_snapshot.json": "869e9fe08207c8c96f968879ac40098fa7a41e8f2bbf3fab8f1fa8463f7e547a",
+    "audits\\hubei_cpp_time_impact_20261020\\evidence\\fd201_snapshot.json": "e4c5ce45588f9070e067ec78ddee0943e4705a13ba442cbcc2eb79c9c6b2b611",
+    "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\cot_pack_source_rebuild_20261017_v2\\pack_report.json": "e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515",
+    "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\forecast_ghi_label_binding_20261017\\pack_report.json": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+    "refine-logs\\hubei_cloud_probability_20261020\\results_remote_attempt2\\ghi_fourarm_pack_attempt5\\pack_report.json": "7fe4de5ac4fb60b0873ce81416a52e2862c15b8138f955ffeaeb70b4ce523d61"
+  }
+}

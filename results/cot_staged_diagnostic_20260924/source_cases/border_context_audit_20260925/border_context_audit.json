@@ -1,0 +1,751 @@
+{
+  "scope": "saved real-AGRI validation predictions only; no training or test",
+  "reference": "CPP COT in physical units; near-zero <0.1; false-cloud P>=0.5",
+  "cohort_rows": 6536,
+  "nearzero_pixels": 648648,
+  "by_distance_and_context": [
+    {
+      "distance": "outer",
+      "cloud_context": "all",
+      "false_cloud": {
+        "n": 153582,
+        "events": 12753,
+        "rate": 0.08303707465718639
+      },
+      "severe_cot_ge10": {
+        "n": 153582,
+        "events": 246,
+        "rate": 0.0016017502051021604
+      }
+    },
+    {
+      "distance": "outer",
+      "cloud_context": "adjacent_cloud",
+      "false_cloud": {
+        "n": 21987,
+        "events": 8321,
+        "rate": 0.3784509028062037
+      },
+      "severe_cot_ge10": {
+        "n": 21987,
+        "events": 198,
+        "rate": 0.009005321326238231
+      }
+    },
+    {
+      "distance": "outer",
+      "cloud_context": "no_adjacent_cloud",
+      "false_cloud": {
+        "n": 131595,
+        "events": 4432,
+        "rate": 0.033679091150879595
+      },
+      "severe_cot_ge10": {
+        "n": 131595,
+        "events": 48,
+        "rate": 0.00036475549982902086
+      }
+    },
+    {
+      "distance": "ring1",
+      "cloud_context": "all",
+      "false_cloud": {
+        "n": 129817,
+        "events": 8106,
+        "rate": 0.06244174491784589
+      },
+      "severe_cot_ge10": {
+        "n": 129817,
+        "events": 168,
+        "rate": 0.0012941294283491376
+      }
+    },
+    {
+      "distance": "ring1",
+      "cloud_context": "adjacent_cloud",
+      "false_cloud": {
+        "n": 21960,
+        "events": 6147,
+        "rate": 0.27991803278688526
+      },
+      "severe_cot_ge10": {
+        "n": 21960,
+        "events": 155,
+        "rate": 0.007058287795992714
+      }
+    },
+    {
+      "distance": "ring1",
+      "cloud_context": "no_adjacent_cloud",
+      "false_cloud": {
+        "n": 107857,
+        "events": 1959,
+        "rate": 0.018162937964156245
+      },
+      "severe_cot_ge10": {
+        "n": 107857,
+        "events": 13,
+        "rate": 0.00012052996096683571
+      }
+    },
+    {
+      "distance": "ring2_3",
+      "cloud_context": "all",
+      "false_cloud": {
+        "n": 200527,
+        "events": 10221,
+        "rate": 0.05097069222598453
+      },
+      "severe_cot_ge10": {
+        "n": 200527,
+        "events": 186,
+        "rate": 0.0009275558902292459
+      }
+    },
+    {
+      "distance": "ring2_3",
+      "cloud_context": "adjacent_cloud",
+      "false_cloud": {
+        "n": 34214,
+        "events": 7949,
+        "rate": 0.23233179400245513
+      },
+      "severe_cot_ge10": {
+        "n": 34214,
+        "events": 171,
+        "rate": 0.004997954053896066
+      }
+    },
+    {
+      "distance": "ring2_3",
+      "cloud_context": "no_adjacent_cloud",
+      "false_cloud": {
+        "n": 166313,
+        "events": 2272,
+        "rate": 0.013660988617847071
+      },
+      "severe_cot_ge10": {
+        "n": 166313,
+        "events": 15,
+        "rate": 9.01913861213495e-05
+      }
+    },
+    {
+      "distance": "inner4plus",
+      "cloud_context": "all",
+      "false_cloud": {
+        "n": 164722,
+        "events": 7308,
+        "rate": 0.04436565850341788
+      },
+      "severe_cot_ge10": {
+        "n": 164722,
+        "events": 98,
+        "rate": 0.0005949417806971746
+      }
+    },
+    {
+      "distance": "inner4plus",
+      "cloud_context": "adjacent_cloud",
+      "false_cloud": {
+        "n": 29652,
+        "events": 6006,
+        "rate": 0.20254957507082152
+      },
+      "severe_cot_ge10": {
+        "n": 29652,
+        "events": 87,
+        "rate": 0.002934034803723189
+      }
+    },
+    {
+      "distance": "inner4plus",
+      "cloud_context": "no_adjacent_cloud",
+      "false_cloud": {
+        "n": 135070,
+        "events": 1302,
+        "rate": 0.009639446213074701
+      },
+      "severe_cot_ge10": {
+        "n": 135070,
+        "events": 11,
+        "rate": 8.143925372029318e-05
+      }
+    }
+  ],
+  "matched_context_standardized": {
+    "false_cloud": {
+      "outer": 0.09133262478656014,
+      "inner": 0.05020000829479521
+    },
+    "severe_cot_ge10": {
+      "outer_severe": 0.0018177751551654452,
+      "inner_severe": 0.000879325865592032
+    },
+    "shared_strata": 20,
+    "shared_nearzero_pixels": 648648,
+    "context": "standardized for station, broad cosSOZ bins, and immediate CPP cloud adjacency; descriptive, not causal"
+  },
+  "strata": [
+    {
+      "station": "sili",
+      "sun_bin": [
+        -1,
+        0.2
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 816,
+        "events": 57,
+        "rate": 0.06985294117647059
+      },
+      "inner": {
+        "n": 2278,
+        "events": 56,
+        "rate": 0.024582967515364356
+      },
+      "outer_severe": {
+        "n": 816,
+        "events": 0,
+        "rate": 0.0
+      },
+      "inner_severe": {
+        "n": 2278,
+        "events": 1,
+        "rate": 0.0004389815627743635
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        -1,
+        0.2
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 165,
+        "events": 102,
+        "rate": 0.6181818181818182
+      },
+      "inner": {
+        "n": 685,
+        "events": 261,
+        "rate": 0.381021897810219
+      },
+      "outer_severe": {
+        "n": 165,
+        "events": 3,
+        "rate": 0.01818181818181818
+      },
+      "inner_severe": {
+        "n": 685,
+        "events": 5,
+        "rate": 0.0072992700729927005
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.2,
+        0.4
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 6848,
+        "events": 590,
+        "rate": 0.08615654205607477
+      },
+      "inner": {
+        "n": 20303,
+        "events": 988,
+        "rate": 0.04866275919814806
+      },
+      "outer_severe": {
+        "n": 6848,
+        "events": 7,
+        "rate": 0.0010221962616822429
+      },
+      "inner_severe": {
+        "n": 20303,
+        "events": 13,
+        "rate": 0.0006402994631335271
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.2,
+        0.4
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 1413,
+        "events": 728,
+        "rate": 0.5152158527954707
+      },
+      "inner": {
+        "n": 5827,
+        "events": 2095,
+        "rate": 0.35953320748240947
+      },
+      "outer_severe": {
+        "n": 1413,
+        "events": 25,
+        "rate": 0.017692852087756547
+      },
+      "inner_severe": {
+        "n": 5827,
+        "events": 80,
+        "rate": 0.013729191693839024
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.4,
+        0.6
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 7512,
+        "events": 405,
+        "rate": 0.05391373801916933
+      },
+      "inner": {
+        "n": 22228,
+        "events": 626,
+        "rate": 0.028162677703797014
+      },
+      "outer_severe": {
+        "n": 7512,
+        "events": 0,
+        "rate": 0.0
+      },
+      "inner_severe": {
+        "n": 22228,
+        "events": 0,
+        "rate": 0.0
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.4,
+        0.6
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 1616,
+        "events": 777,
+        "rate": 0.4808168316831683
+      },
+      "inner": {
+        "n": 6878,
+        "events": 1899,
+        "rate": 0.2760977028205874
+      },
+      "outer_severe": {
+        "n": 1616,
+        "events": 10,
+        "rate": 0.006188118811881188
+      },
+      "inner_severe": {
+        "n": 6878,
+        "events": 28,
+        "rate": 0.004070950857807502
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.6,
+        0.8
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 9794,
+        "events": 553,
+        "rate": 0.05646314069838677
+      },
+      "inner": {
+        "n": 28548,
+        "events": 662,
+        "rate": 0.023189014992293682
+      },
+      "outer_severe": {
+        "n": 9794,
+        "events": 2,
+        "rate": 0.00020420665713702266
+      },
+      "inner_severe": {
+        "n": 28548,
+        "events": 0,
+        "rate": 0.0
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.6,
+        0.8
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 2493,
+        "events": 1162,
+        "rate": 0.46610509426393903
+      },
+      "inner": {
+        "n": 10157,
+        "events": 2317,
+        "rate": 0.228118538938663
+      },
+      "outer_severe": {
+        "n": 2493,
+        "events": 23,
+        "rate": 0.009225832330525471
+      },
+      "inner_severe": {
+        "n": 10157,
+        "events": 25,
+        "rate": 0.002461356699812937
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.8,
+        1.01
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 15484,
+        "events": 1311,
+        "rate": 0.08466804443296305
+      },
+      "inner": {
+        "n": 43650,
+        "events": 1415,
+        "rate": 0.03241695303550974
+      },
+      "outer_severe": {
+        "n": 15484,
+        "events": 3,
+        "rate": 0.00019374838543012143
+      },
+      "inner_severe": {
+        "n": 43650,
+        "events": 4,
+        "rate": 9.163802978235968e-05
+      }
+    },
+    {
+      "station": "sili",
+      "sun_bin": [
+        0.8,
+        1.01
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 5798,
+        "events": 2800,
+        "rate": 0.48292514660227664
+      },
+      "inner": {
+        "n": 23966,
+        "events": 6511,
+        "rate": 0.27167654176750394
+      },
+      "outer_severe": {
+        "n": 5798,
+        "events": 66,
+        "rate": 0.011383235598482234
+      },
+      "inner_severe": {
+        "n": 23966,
+        "events": 117,
+        "rate": 0.0048819160477342905
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        -1,
+        0.2
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 1945,
+        "events": 15,
+        "rate": 0.007712082262210797
+      },
+      "inner": {
+        "n": 6035,
+        "events": 11,
+        "rate": 0.0018227009113504556
+      },
+      "outer_severe": {
+        "n": 1945,
+        "events": 0,
+        "rate": 0.0
+      },
+      "inner_severe": {
+        "n": 6035,
+        "events": 0,
+        "rate": 0.0
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        -1,
+        0.2
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 165,
+        "events": 51,
+        "rate": 0.3090909090909091
+      },
+      "inner": {
+        "n": 589,
+        "events": 99,
+        "rate": 0.16808149405772496
+      },
+      "outer_severe": {
+        "n": 165,
+        "events": 0,
+        "rate": 0.0
+      },
+      "inner_severe": {
+        "n": 589,
+        "events": 0,
+        "rate": 0.0
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.2,
+        0.4
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 14870,
+        "events": 240,
+        "rate": 0.01613987895090787
+      },
+      "inner": {
+        "n": 47930,
+        "events": 276,
+        "rate": 0.005758397663258919
+      },
+      "outer_severe": {
+        "n": 14870,
+        "events": 1,
+        "rate": 6.724949562878279e-05
+      },
+      "inner_severe": {
+        "n": 47930,
+        "events": 0,
+        "rate": 0.0
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.2,
+        0.4
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 1076,
+        "events": 343,
+        "rate": 0.3187732342007435
+      },
+      "inner": {
+        "n": 4514,
+        "events": 754,
+        "rate": 0.16703588834736377
+      },
+      "outer_severe": {
+        "n": 1076,
+        "events": 2,
+        "rate": 0.0018587360594795538
+      },
+      "inner_severe": {
+        "n": 4514,
+        "events": 5,
+        "rate": 0.0011076650420912715
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.4,
+        0.6
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 16476,
+        "events": 345,
+        "rate": 0.020939548434085943
+      },
+      "inner": {
+        "n": 52411,
+        "events": 428,
+        "rate": 0.008166224647497663
+      },
+      "outer_severe": {
+        "n": 16476,
+        "events": 10,
+        "rate": 0.0006069434328720563
+      },
+      "inner_severe": {
+        "n": 52411,
+        "events": 2,
+        "rate": 3.8159928259334875e-05
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.4,
+        0.6
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 1394,
+        "events": 523,
+        "rate": 0.3751793400286944
+      },
+      "inner": {
+        "n": 5633,
+        "events": 1313,
+        "rate": 0.23309071542694834
+      },
+      "outer_severe": {
+        "n": 1394,
+        "events": 12,
+        "rate": 0.00860832137733142
+      },
+      "inner_severe": {
+        "n": 5633,
+        "events": 15,
+        "rate": 0.002662879460323096
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.6,
+        0.8
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 20634,
+        "events": 407,
+        "rate": 0.01972472618009111
+      },
+      "inner": {
+        "n": 66093,
+        "events": 498,
+        "rate": 0.007534837274749217
+      },
+      "outer_severe": {
+        "n": 20634,
+        "events": 18,
+        "rate": 0.0008723466123873219
+      },
+      "inner_severe": {
+        "n": 66093,
+        "events": 6,
+        "rate": 9.078117198493032e-05
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.6,
+        0.8
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 2192,
+        "events": 602,
+        "rate": 0.27463503649635035
+      },
+      "inner": {
+        "n": 7833,
+        "events": 1616,
+        "rate": 0.20630665134686582
+      },
+      "outer_severe": {
+        "n": 2192,
+        "events": 32,
+        "rate": 0.014598540145985401
+      },
+      "inner_severe": {
+        "n": 7833,
+        "events": 69,
+        "rate": 0.008808885484488702
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.8,
+        1.01
+      ],
+      "adjacent_cloud": false,
+      "outer": {
+        "n": 37216,
+        "events": 509,
+        "rate": 0.013676913155631987
+      },
+      "inner": {
+        "n": 119764,
+        "events": 573,
+        "rate": 0.004784409338365452
+      },
+      "outer_severe": {
+        "n": 37216,
+        "events": 7,
+        "rate": 0.00018809114359415305
+      },
+      "inner_severe": {
+        "n": 119764,
+        "events": 13,
+        "rate": 0.00010854680872382352
+      }
+    },
+    {
+      "station": "zhujia",
+      "sun_bin": [
+        0.8,
+        1.01
+      ],
+      "adjacent_cloud": true,
+      "outer": {
+        "n": 5675,
+        "events": 1233,
+        "rate": 0.21726872246696036
+      },
+      "inner": {
+        "n": 19744,
+        "events": 3237,
+        "rate": 0.16394854132901135
+      },
+      "outer_severe": {
+        "n": 5675,
+        "events": 25,
+        "rate": 0.004405286343612335
+      },
+      "inner_severe": {
+        "n": 19744,
+        "events": 69,
+        "rate": 0.0034947325769854134
+      }
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "state": "FOLD1_OOF_COT_SPATIAL_TEXTURE_DESCRIPTIVE_SCREEN",
+  "interpretation_limit": "3x3 station neighborhood in a single heldout training-date fold; not COT skill or GHI gain",
+  "inputs": {
+    "script_sha256": "0feab5b05dc3fab6c718fc0b9b1ff62523a81487414cae3547841a0964f730b3",
+    "forecast_manifest_sha256": "9544e786eb8ef7f56fd1e12747c21a47345f45e7f391cb5fc4484a5232be929b",
+    "history_manifest_sha256": "1587597aeabba677d5c5e60dbe4e13fbbaacae029a3b1eb1d473526f4cd7f055",
+    "forecast_rows": 6430,
+    "unique_bjt_init_dates": 222,
+    "same_key_train_intersection": 6430,
+    "shared_frozen_r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+    "future_observed_agri_read": false,
+    "cpp_read": false,
+    "ghi_read": false,
+    "test_or_buffer_payload_read": false
+  },
+  "metric": "mean absolute 4-neighbor edge difference over 12 edges in each 3x3 map; both physical-COT and log1p-COT scales",
+  "stations": {
+    "sili": {
+      "history_last_frame_edge_tv_physical_cot": {
+        "n": 6430,
+        "mean": 1.0713756471994946,
+        "median": 0.6189125180244446,
+        "p95": 3.874891149997695
+      },
+      "forecast_first_lead_edge_tv_physical_cot": {
+        "n": 6430,
+        "mean": 0.6139590960214942,
+        "median": 0.4291534125804901,
+        "p95": 1.9690154671669005
+      },
+      "forecast_mean_over_16_leads_edge_tv_physical_cot": {
+        "n": 6430,
+        "mean": 0.3981376124846837,
+        "median": 0.35075119137763977,
+        "p95": 0.9650171905755991
+      },
+      "ratio_of_means_first_to_history": 0.5730568766593933,
+      "ratio_of_means_forecast16_to_history": 0.37161344289779663,
+      "date_block_ci_first_physical": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.5694831013679504,
+        "bootstrap_95pct_ci": [
+          0.53963533192873,
+          0.6012770310044289
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      },
+      "date_block_ci_forecast16_physical": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.35818567872047424,
+        "bootstrap_95pct_ci": [
+          0.32949638515710833,
+          0.39018983021378517
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      },
+      "fraction_history_maps_edge_tv_below_0_1": 0.1864696734059098,
+      "history_last_frame_edge_tv_log1p_cot": {
+        "n": 6430,
+        "mean": 0.052984201758170264,
+        "median": 0.030367384664714336,
+        "p95": 0.1930684767663478
+      },
+      "forecast_first_lead_edge_tv_log1p_cot": {
+        "n": 6430,
+        "mean": 0.03798645934556947,
+        "median": 0.018550893291831017,
+        "p95": 0.15325219333171802
+      },
+      "forecast_mean_over_16_leads_edge_tv_log1p_cot": {
+        "n": 6430,
+        "mean": 0.02655141769988393,
+        "median": 0.018103103153407574,
+        "p95": 0.07675971165299404
+      },
+      "date_block_ci_first_log1p": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.7237833738327026,
+        "bootstrap_95pct_ci": [
+          0.680050028860569,
+          0.7754734322428704
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      },
+      "date_block_ci_forecast16_log1p": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.512086033821106,
+        "bootstrap_95pct_ci": [
+          0.47703451067209246,
+          0.551879633963108
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      }
+    },
+    "zhujia": {
+      "history_last_frame_edge_tv_physical_cot": {
+        "n": 6430,
+        "mean": 0.8804748958952746,
+        "median": 0.5275982618331909,
+        "p95": 3.0856779098510727
+      },
+      "forecast_first_lead_edge_tv_physical_cot": {
+        "n": 6430,
+        "mean": 0.5223145899482989,
+        "median": 0.3729289323091507,
+        "p95": 1.6881462335586546
+      },
+      "forecast_mean_over_16_leads_edge_tv_physical_cot": {
+        "n": 6430,
+        "mean": 0.35574374699710837,
+        "median": 0.30576910078525543,
+        "p95": 0.9215026736259457
+      },
+      "ratio_of_means_first_to_history": 0.5932191610336304,
+      "ratio_of_means_forecast16_to_history": 0.40403619408607483,
+      "date_block_ci_first_physical": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.5821482539176941,
+        "bootstrap_95pct_ci": [
+          0.5509608581662178,
+          0.6147760301828384
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      },
+      "date_block_ci_forecast16_physical": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.3803999722003937,
+        "bootstrap_95pct_ci": [
+          0.3482158355414867,
+          0.41586108058691024
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      },
+      "fraction_history_maps_edge_tv_below_0_1": 0.2583203732503888,
+      "history_last_frame_edge_tv_log1p_cot": {
+        "n": 6430,
+        "mean": 0.04888534145337904,
+        "median": 0.02535321284085512,
+        "p95": 0.1816299811005591
+      },
+      "forecast_first_lead_edge_tv_log1p_cot": {
+        "n": 6430,
+        "mean": 0.03438822633960829,
+        "median": 0.015273451805114746,
+        "p95": 0.14050180613994578
+      },
+      "forecast_mean_over_16_leads_edge_tv_log1p_cot": {
+        "n": 6430,
+        "mean": 0.02516136620752984,
+        "median": 0.01663255225867033,
+        "p95": 0.07542488388717171
+      },
+      "date_block_ci_first_log1p": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.7048912048339844,
+        "bootstrap_95pct_ci": [
+          0.6682265788316727,
+          0.7431607753038406
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      },
+      "date_block_ci_forecast16_log1p": {
+        "n_bjt_dates": 222,
+        "equal_date_ratio_of_means": 0.5052062273025513,
+        "bootstrap_95pct_ci": [
+          0.47097441703081133,
+          0.5434403538703918
+        ],
+        "bootstrap_unit": "BJT init date",
+        "bootstrap_replicates": 10000,
+        "seed": 42
+      }
+    }
+  }
+}

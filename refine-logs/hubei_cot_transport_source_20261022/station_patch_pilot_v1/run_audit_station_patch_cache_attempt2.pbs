@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -N hb_cot_patch_audit2
+#PBS -q normal
+#PBS -l nodes=node1:ppn=4,mem=12gb,walltime=00:45:00
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt2/cache_audit.log
+#PBS -e /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt2/cache_audit.err
+
+set -euo pipefail
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/cache_attempt2
+SRC=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+
+test -f "$BASE/audit_station_patch_cache.py"
+test -f "$BASE/cache/cache_report.json"
+test ! -e "$BASE/cache_audit"
+"$PY" -m py_compile "$BASE/audit_station_patch_cache.py"
+"$PY" "$BASE/audit_station_patch_cache.py" \
+  --cache "$BASE/cache" \
+  --source-bank-rows "$SRC/cot_bank_correctutc_attempt3/rows.csv" \
+  --out "$BASE/cache_audit"

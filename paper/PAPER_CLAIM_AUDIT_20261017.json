@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-18",
+  "scope": "bilingual validation-only manuscript state after AL feature-control update; no test payload reads; no new training",
+  "compile": "latexmk succeeded on 2026-10-18; 20-page PDF exported; pages 1 and 11 rendered and visually checked; zero undefined-reference/citation warnings",
+  "synchronized_sources": [
+    "main.tex",
+    "main_zh.md"
+  ],
+  "changes": [
+    "restored the source-closed Hubei retriever-feature AL control to the bilingual manuscript and narrowed COT-specific claims",
+    "removed unsupported qualitative moderate CPP agreement claim",
+    "aligned Figure Plan Table 3 and Figure 7 descriptions with the controls and forecast-COT figure actually reported",
+    "corrected bilingual batch sizes and bootstrap resample counts by region and task",
+    "added source-key-audited CPP retrieval-quality Figure 3, synchronized results text/caption, and documented the BJT date-support mapping",
+    "replaced stale forecast-GHI conclusion values with current normreload three-seed results in both languages",
+    "recorded the 10,000-resample forecast-GHI bootstrap precision revision",
+    "bound the forecast pack directly to raw 15-minute labels and recorded passing cold-start normalization reload receipts"
+  ],
+  "fresh_experiment_audit": {
+    "verdict": "FAIL_NO_GO_FOR_TEST_UNSEAL",
+    "scope": "validation evidence and reproducibility are broadly credible; paper/provenance freeze remains incomplete",
+    "paper_claim_audit_rerun_after_this_edit": "same_time_artifact_links_independently_reviewed_2026-10-18; full_paper_claim_and_test_freeze_audit_pending",
+    "independent_test_payloads_read": 0
+  },
+  "fresh_same_time_validation_review_20261018": {
+    "verdict": "PASS_VALIDATION_ARTIFACT_BINDING_WARN_POSTRUN_SOURCE_HASH_LIMITATION",
+    "review_independence": "same-family provisional",
+    "regenerated_receipt": "../refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_three_seed_regen_20261018/independent_three_seed_validation_audit.json",
+    "regenerated_receipt_sha256": "df0374c16ace142b5acb11b5d0f9b92b9138483ac1d6638bd06e3b1a6383ea6f",
+    "analysis_script_sha256": "719eeb731ac3a628c594423a9708031ec8b604019b05b105f4b24448fb5537fd",
+    "coldstart_receipt_sha256": "eb72f580dabc3c523f7651cb1f70b936a296dc516046ebc35ce3ac42d1f65cde",
+    "coldstart_execution_provenance": "../refine-logs/hubei_cot_independent_20261014/audit_receipts/coldstart_normreload_20261017_v3/COLDSTART_EXECUTION_PROVENANCE_20261018.json",
+    "coldstart_execution_provenance_sha256": "f004411d081464d3896f795c1e12fd1f6a1a4c7e6287f07f96d072d450fce3d6",
+    "reviewed_bundles": 27,
+    "bundle_or_metadata_hash_mismatches": 0,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0,
+    "test_freeze_implication": "does_not_unseal_test; independent test-freeze audit remains FAIL/NO-GO",
+    "post_review_note": "Fresh read-only reviewer confirmed current receipt, analyzer, cold-start receipt, provenance capsule, bundles, metadata, checkpoints and run_metadata hashes. Remaining warning: auditor source hash was captured post-run, not embedded in the original execution receipt; complete paper claim audit and separate test-freeze review remain pending."
+  },
+  "figure_status": {
+    "fig1": "present: five-station locator and first-to-last date-support timeline; endpoint dates do not imply continuous daily coverage",
+    "fig2": "present: method workflow only",
+    "fig3": "present: validation arrays, common valid masks, audited BJT target-date mapping, date-cluster intervals; CPP is retrieval reference",
+    "fig4": "updated to current Hubei normreload station and regional values; paired intervals are validation-only; v3 cold-start parity audit passed with zero prediction delta",
+    "fig5": "present: Hunan station-centre CPP COT strata",
+    "fig6": "present: one preselected Sili case plus bounded four-case summary; JJA only, no causal claim",
+    "fig7": "present: forecast COT only, validation CPP support, no forecast GHI claim"
+  },
+  "test_payloads_read": 0,
+  "new_training_started": false,
+  "paper_ready_for_submission": false,
+  "hubei_al_validation_control": {
+    "state": "validation_only_source_closed_coldstart_normreload_pass_test_closed",
+    "arms": ["A", "AC", "AP", "AL"],
+    "rmse_station_equal_wm2": {"A": 74.333, "AC": 70.993, "AP": 73.839, "AL": 71.090},
+    "common_support_target_times": 486,
+    "common_support_dates": 21,
+    "common_support_rmse_wm2": {"AC": 72.867, "AL": 72.785},
+    "ac_minus_al_wm2": 0.082,
+    "ac_minus_al_two_day_block_95_ci_wm2": [-1.490, 1.713],
+    "interpretation": "interval crosses zero; validation does not isolate explicit-COT increment over frozen-retriever local features",
+    "coldstart_receipt": "../refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_coldstart_20261017/AL_COLDSTART_NORMRELOAD_AUDIT_20261017.json",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+    "forecast_ghi_validation": {
+    "state": "validation_only_test_closed",
+    "arms": ["FA", "FAC"],
+    "rmse_station_equal_wm2": {"FA": 77.150230, "FAC": 78.155269},
+    "fac_minus_fa_wm2": 1.005039,
+    "paired_date_block_95_ci_wm2": [-0.721941, 3.779833],
+    "seeds_fac_lower_rmse": 1,
+    "cold_start_normreload_audit": {
+      "status": "passed",
+      "receipt_directory": "../refine-logs/hubei_cot_independent_20261014/audit_receipts/coldstart_normreload_20261017_v3",
+      "forecast_checkpoint_bundle_pairs": 18,
+      "maximum_absolute_prediction_delta_wm2": 0.0,
+      "test_payloads_read": 0,
+      "buffer_payloads_read": 0
+    },
+    "raw_label_to_daylight_and_forecast_pack_binding": {
+      "status": "passed",
+      "receipt": "../refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_label_binding_20261017/forecast_ghi_label_binding_audit_v3.json",
+      "forecast_pack_rows": 70171,
+      "raw_to_daylight_rows_checked": 30013,
+      "maximum_absolute_raw_to_daylight_ghi_delta_wm2": 0.0,
+      "maximum_absolute_pack_ghi_delta_wm2": 0.0000284831,
+      "test_values_read": 0,
+      "buffer_values_read": 0
+    },
+    "test_payloads_read": 0
+  },
+  "hubei_same_time_validation": {
+    "state": "normreload_validation_only_test_closed",
+    "current_result_receipt": "../refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_three_seed_regen_20261018/independent_three_seed_validation_audit.json",
+    "current_result_receipt_sha256": "df0374c16ace142b5acb11b5d0f9b92b9138483ac1d6638bd06e3b1a6383ea6f",
+    "analysis_script_sha256": "719eeb731ac3a628c594423a9708031ec8b604019b05b105f4b24448fb5537fd",
+    "coldstart_receipt_sha256": "eb72f580dabc3c523f7651cb1f70b936a296dc516046ebc35ce3ac42d1f65cde",
+    "arms": ["A", "AC", "AP"],
+    "rmse_station_equal_wm2": {"A": 74.333, "AC": 70.993, "AP": 73.839},
+    "ac_minus_a_wm2": -3.340,
+    "ac_minus_a_paired_date_block_95_ci_wm2": [-5.800, -1.118],
+    "ac_minus_ap_wm2": -2.846,
+    "ac_minus_ap_paired_date_block_95_ci_wm2": [-5.147, -0.717],
+    "station_seed_comparisons_ac_lower_than_both_controls": 8,
+    "station_seed_comparisons_total": 9,
+    "test_payloads_read": 0
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "purpose": "Post-hoc statistical and daylight sensitivity; leaves primary results untouched",
+  "frozen_mapping_source": "solar-cot-ifs\\refine-logs\\cloud_probability_input_20261020\\results\\four_arm_paired_v1_attempt1\\date_blocks.csv",
+  "frozen_mapping_sha256": "7cbbc841eff1d7e0cbdf6c34a18a6861b4ed31ad8f3fc7f77824170295ce59e7",
+  "frozen_mapping_equals_previously_inferred_blocks": true,
+  "full_frozen_block_count": 26,
+  "draw_method": "numpy default_rng(seed).integers(0,26,size=(5000,26)), matching score_four_arm.py lines 162-175; shared draws all station/seed/arm; empty frozen blocks retained for subsets",
+  "seed": 20261020,
+  "replicates": 5000,
+  "clear_quantiles": {
+    "0": 1.5167255401611328,
+    "0.01": 9.971654891967773,
+    "0.025": 23.1719970703125,
+    "0.05": 45.978330612182745,
+    "0.1": 97.68930053710938,
+    "0.25": 287.2696838378906,
+    "0.5": 566.6737060546875,
+    "0.75": 776.9862670898438,
+    "0.9": 909.7854614257812,
+    "0.95": 938.1904907226562,
+    "0.99": 951.782470703125,
+    "1": 955.4906616210938
+  },
+  "scopes": {
+    "full": {
+      "all": {
+        "rows": 63480,
+        "target_dates": 51,
+        "nonempty_frozen_blocks": 26,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "n": 30516,
+            "before": 132.5180826873518,
+            "after": 129.44746402443246,
+            "delta": -3.070618662919344,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "n": 30516,
+            "before": 132.19035958899477,
+            "after": 129.32822628926212,
+            "delta": -2.8621332997326476,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "n": 30516,
+            "before": 131.53786325263462,
+            "after": 128.90645510634712,
+            "delta": -2.631408146287498,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "n": 32964,
+            "before": 123.93753196127143,
+            "after": 122.17426844563755,
+            "delta": -1.7632635156338807,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "n": 32964,
+            "before": 121.54315455567138,
+            "after": 120.74117247166913,
+            "delta": -0.8019820840022476,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "n": 32964,
+            "before": 122.80006559847311,
+            "after": 121.44318422812495,
+            "delta": -1.3568813703481624,
+            "bootstrap_zero_denominator": 0
+          }
+        ],
+        "before": 127.42117627406617,
+        "after": 125.3401284275789,
+        "delta": -2.081047846487266,
+        "reduction_pct": 1.6332040774848964,
+        "frozen_block_delta_CI": [
+          -3.870198909900398,
+          -0.405658216706531
+        ],
+        "CI_excludes_zero": true,
+        "all_six_delta_negative": true,
+        "station_CI": {
+          "sili": [
+            -4.617587460589663,
+            -1.130581680932965
+          ],
+          "zhujia": [
+            -4.197371500976167,
+            1.3250114656269159
+          ]
+        }
+      },
+      "clear_ge_50": {
+        "rows": 59932,
+        "target_dates": 51,
+        "nonempty_frozen_blocks": 26,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "n": 28805,
+            "before": 136.34401416582594,
+            "after": 133.1830005867808,
+            "delta": -3.1610135790451466,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "n": 28805,
+            "before": 136.00611294989943,
+            "after": 133.0605462956747,
+            "delta": -2.9455666542247343,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "n": 28805,
+            "before": 135.3331657833073,
+            "after": 132.62467768245358,
+            "delta": -2.708488100853714,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "n": 31127,
+            "before": 127.46098793033757,
+            "after": 125.6436128889261,
+            "delta": -1.8173750414114664,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "n": 31127,
+            "before": 124.99546684699057,
+            "after": 124.16562606184843,
+            "delta": -0.8298407851421388,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "n": 31127,
+            "before": 126.28905254468462,
+            "after": 124.88860720190736,
+            "delta": -1.4004453427772603,
+            "bootstrap_zero_denominator": 0
+          }
+        ],
+        "before": 131.07146670350758,
+        "after": 128.92767845293181,
+        "delta": -2.143788250575767,
+        "reduction_pct": 1.6355872902720767,
+        "frozen_block_delta_CI": [
+          -3.991636564513005,
+          -0.41883197498448277
+        ],
+        "CI_excludes_zero": true,
+        "all_six_delta_negative": true,
+        "station_CI": {
+          "sili": [
+            -4.755027066542594,
+            -1.1635084029761138
+          ],
+          "zhujia": [
+            -4.321077788963327,
+            1.3604989627241528
+          ]
+        }
+      },
+      "clear_ge_100": {
+        "rows": 57015,
+        "target_dates": 51,
+        "nonempty_frozen_blocks": 26,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "n": 27414,
+            "before": 139.64675087673476,
+            "after": 136.41796482690782,
+            "delta": -3.2287860498269367,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "n": 27414,
+            "before": 139.29637946418185,
+            "after": 136.29036672116936,
+            "delta": -3.0060127430124908,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "n": 27414,
+            "before": 138.60289534494987,
+            "after": 135.84070968888184,
+            "delta": -2.762185656068027,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "n": 29601,
+            "before": 130.57863989142766,
+            "after": 128.7354508402697,
+            "delta": -1.8431890511579638,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "n": 29601,
+            "before": 128.05036256589918,
+            "after": 127.2174113636261,
+            "delta": -0.8329512022730796,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "n": 29601,
+            "before": 129.37809532373137,
+            "after": 127.95812221062359,
+            "delta": -1.4199731131077868,
+            "bootstrap_zero_denominator": 0
+          }
+        ],
+        "before": 134.2588539111541,
+        "after": 132.07667094191308,
+        "delta": -2.182182969241012,
+        "reduction_pct": 1.6253549808231444,
+        "frozen_block_delta_CI": [
+          -4.071183822624895,
+          -0.4143685180330231
+        ],
+        "CI_excludes_zero": true,
+        "all_six_delta_negative": true,
+        "station_CI": {
+          "sili": [
+            -4.8738836166581425,
+            -1.180063684865046
+          ],
+          "zhujia": [
+            -4.411111384532461,
+            1.4070052342455632
+          ]
+        }
+      }
+    },
+    "no_overlap": {
+      "all": {
+        "rows": 54280,
+        "target_dates": 43,
+        "nonempty_frozen_blocks": 23,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "n": 25659,
+            "before": 134.64872167364825,
+            "after": 131.07259135759864,
+            "delta": -3.576130316049614,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "n": 25659,
+            "before": 134.4364709986847,
+            "after": 131.20714657183782,
+            "delta": -3.229324426846887,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "n": 25659,
+            "before": 133.64623548389287,
+            "after": 130.52427604851897,
+            "delta": -3.1219594353738955,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "n": 28621,
+            "before": 116.75708139929246,
+            "after": 114.1609374323915,
+            "delta": -2.5961439669009536,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "n": 28621,
+            "before": 115.1794127550819,
+            "after": 113.79394744785273,
+            "delta": -1.3854653072291683,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "n": 28621,
+            "before": 116.18541766787371,
+            "after": 114.04975007887491,
+            "delta": -2.1356675889987997,
+            "bootstrap_zero_denominator": 0
+          }
+        ],
+        "before": 125.14222332974565,
+        "after": 122.4681081561791,
+        "delta": -2.6741151735665483,
+        "reduction_pct": 2.1368608471341783,
+        "frozen_block_delta_CI": [
+          -4.76449582138301,
+          -0.728160654490101
+        ],
+        "CI_excludes_zero": true,
+        "all_six_delta_negative": true,
+        "station_CI": {
+          "sili": [
+            -5.282641432847537,
+            -1.3449132083508804
+          ],
+          "zhujia": [
+            -5.5435186994324965,
+            1.2005344228597992
+          ]
+        }
+      },
+      "clear_ge_50": {
+        "rows": 51270,
+        "target_dates": 43,
+        "nonempty_frozen_blocks": 23,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "n": 24244,
+            "before": 138.469372948802,
+            "after": 134.79160275043097,
+            "delta": -3.677770198371036,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "n": 24244,
+            "before": 138.24979653444362,
+            "after": 134.93082525855178,
+            "delta": -3.3189712758918404,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "n": 24244,
+            "before": 137.4353981094797,
+            "after": 134.22629214154432,
+            "delta": -3.209105967935386,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "n": 27026,
+            "before": 120.06420592881169,
+            "after": 117.3897264888118,
+            "delta": -2.6744794399998852,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "n": 27026,
+            "before": 118.43973979657622,
+            "after": 117.00964589958983,
+            "delta": -1.430093896986392,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "n": 27026,
+            "before": 119.47511320373648,
+            "after": 117.27331172929442,
+            "delta": -2.201801474442064,
+            "bootstrap_zero_denominator": 0
+          }
+        ],
+        "before": 128.68893775364162,
+        "after": 125.93690071137053,
+        "delta": -2.7520370422710982,
+        "reduction_pct": 2.1385187338631377,
+        "frozen_block_delta_CI": [
+          -4.900376092848425,
+          -0.7497498983154329
+        ],
+        "CI_excludes_zero": true,
+        "all_six_delta_negative": true,
+        "station_CI": {
+          "sili": [
+            -5.444335495300896,
+            -1.3772554828974515
+          ],
+          "zhujia": [
+            -5.727648245718478,
+            1.2332637475395483
+          ]
+        }
+      },
+      "clear_ge_100": {
+        "rows": 48763,
+        "target_dates": 43,
+        "nonempty_frozen_blocks": 23,
+        "groups": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "n": 23073,
+            "before": 141.83324047486335,
+            "after": 138.07448735241505,
+            "delta": -3.7587531224482973,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "n": 23073,
+            "before": 141.60047277184867,
+            "after": 138.21589019357577,
+            "delta": -3.384582578272898,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "n": 23073,
+            "before": 140.7628916865536,
+            "after": 137.49166317578263,
+            "delta": -3.2712285107709533,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "n": 25690,
+            "before": 123.00328081441515,
+            "after": 120.2841124670555,
+            "delta": -2.7191683473596555,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "n": 25690,
+            "before": 121.33860000645792,
+            "after": 119.89329556453512,
+            "delta": -1.4453044419228007,
+            "bootstrap_zero_denominator": 0
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "n": 25690,
+            "before": 122.40216767286144,
+            "after": 120.16273104196688,
+            "delta": -2.2394366308945592,
+            "bootstrap_zero_denominator": 0
+          }
+        ],
+        "before": 131.82344223783335,
+        "after": 129.02036329922183,
+        "delta": -2.8030789386115202,
+        "reduction_pct": 2.1263888205515515,
+        "frozen_block_delta_CI": [
+          -5.013031416358436,
+          -0.751913554708979
+        ],
+        "CI_excludes_zero": true,
+        "all_six_delta_negative": true,
+        "station_CI": {
+          "sili": [
+            -5.576349121761081,
+            -1.387885436645225
+          ],
+          "zhujia": [
+            -5.834555005790308,
+            1.2783178696360733
+          ]
+        }
+      }
+    }
+  }
+}

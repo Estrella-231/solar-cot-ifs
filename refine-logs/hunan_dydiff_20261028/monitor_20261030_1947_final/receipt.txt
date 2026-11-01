@@ -1,0 +1,10 @@
+湖南DyDiff训练完成态只读收据
+观察：服务器2026-10-30 19:47:07 CST；客户端工具时钟2026-10-30 12:06:02 UTC（20:06:02 CST），两端相差约19分钟。
+
+PBS 216594.tc6000：当前qstat无作业；tracejob历史记录显示2026-10-30 19:22:45收到obit、Exit_status=0、resources_used.walltime=49:02:13。训练目录progress.json为state=complete/global_step=66300；training_complete.json为PASS、150 epochs、66300 steps、test_payloads_read=0。
+
+最终epoch150全量验证（3140序列）：normalized RMSE=0.4332109082，normalized MAE=0.2276047394；matched persistence RMSE=0.7918376841；MSE skill=0.7020667215。训练选择的最佳全val轮次为epoch145：normalized RMSE=0.4330495719、MAE=0.2273480072，skill=0.7022953972。
+
+last.pt stat：1053155194 bytes，mtime 2026-10-30 19:22:22 +0800；best.pt同为1053155194 bytes，mtime 17:45:14 +0800。未加载权重。launch log异常关键词检查未发现Traceback/OOM/CUDA error/NaN/Inf；error字符串只命中正常HUNAN_FORMAL_8GPU_START标记。
+
+未读取test载荷，未启动任务。此次仅读qstat及历史、progress/完成/验证JSON、文件stat和日志关键词。

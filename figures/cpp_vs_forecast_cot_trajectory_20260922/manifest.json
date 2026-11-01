@@ -1,0 +1,65 @@
+{
+  "state": "COMPLETE_VALIDATION_CPP_VS_FORECAST_COT_TRAJECTORY_VISUAL",
+  "test_used": false,
+  "selection": "temporal median among daytime validation station-sequences with all predeclared +60,+120,+180,+240 min CPP-reference targets; no AGRI, COT, GHI, or model-error selection",
+  "candidate_count": 4180,
+  "station": "Zhujia",
+  "station_index": 1,
+  "sequence": 2082,
+  "base_pack_rows": [
+    587060,
+    587064,
+    587068,
+    587072
+  ],
+  "cpp_pack_rows": [
+    16761,
+    16765,
+    16769,
+    16773
+  ],
+  "leads_minutes": [
+    60,
+    120,
+    180,
+    240
+  ],
+  "init_time_bjt": "2025-08-02T06:00:00+08:00",
+  "target_time_bjt": [
+    "2025-08-02T07:00:00+08:00",
+    "2025-08-02T08:00:00+08:00",
+    "2025-08-02T09:00:00+08:00",
+    "2025-08-02T10:00:00+08:00"
+  ],
+  "rgb_contract": {
+    "red": "C02",
+    "green": "C03",
+    "blue": "C01",
+    "gamma": 2.2,
+    "shared_percentile_stretch": [
+      1,
+      99
+    ],
+    "low": [
+      0.03769330680370331,
+      0.06890419125556946,
+      0.04935092478990555
+    ],
+    "high": [
+      0.11626607298851012,
+      0.26684972643852234,
+      0.12834472954273224
+    ]
+  },
+  "cot_contract": "physical CPP COT reference versus expm1(frozen R(SimVP forecast AGRI)); CPP is not independent physical truth",
+  "difference_contract": "forecast COT minus CPP COT; symmetric display range spans the selected valid values without clipping",
+  "inputs": {
+    "base_rows_csv": "01587fda1acc500845e3b2fc5d1e0cc2f8028330f9b543b27b6e9d01fb8ddcd0",
+    "cpp_rows_csv": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69",
+    "forecast_cot_sidecar": "d40d5c2402271508fc2b981bdc08b8c36733780a130079c5cbd1d89395e80aa8"
+  },
+  "output_files": {
+    "cpp_vs_forecast_cot_trajectory.png": "d9587dea7e86f1fa620247990dd97156c365c45493db4da5a39088ae217c1eeb",
+    "cpp_vs_forecast_cot_trajectory.pdf": "4e3b490328c7c49722d8b55d411099a5ad53e9b1a6a6a570608ad9d6885a8c6c"
+  }
+}

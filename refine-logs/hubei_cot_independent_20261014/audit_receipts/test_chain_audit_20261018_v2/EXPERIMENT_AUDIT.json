@@ -1,0 +1,53 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-18",
+  "project": "Hubei independent COT forecast test-chain release",
+  "auditor": "fresh Codex subagent gpt-6.1-sol",
+  "reviewer_model": "gpt-6.1-sol",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "review_scope": "read-only code and metadata audit; no real test or buffer payload opened",
+  "overall_verdict": "FAIL",
+  "integrity_status": "fail",
+  "live_test_release": "NO-GO",
+  "checks": {
+    "ground_truth_provenance": {
+      "status": "fail",
+      "details": "Separate truth bundles are required, but source workbook, label-builder, interval contract and source-contact provenance are not bound into the truth manifest."
+    },
+    "model_lineage_and_inference_receipt": {
+      "status": "fail",
+      "details": "Model-manifest digest is format-checked only; actual checkpoints, normalization, trainer, frozen S/R and inference receipt are not verified."
+    },
+    "one_use_ledger": {
+      "status": "warn",
+      "details": "Atomic O_EXCL ledger is claimed before payload reads, but ledger path follows caller-supplied split path, so a split copy can create another ledger."
+    },
+    "synthetic_fail_closed_contract": {
+      "status": "pass_scoped",
+      "details": "Synthetic-only gate, truth-prediction separation, file hashes, exact time keys, three stations, three seeds, three arms and common-support checks are present."
+    },
+    "frozen_metrics": {
+      "status": "warn",
+      "details": "Core metrics and date bootstrap exist; two-day-block sensitivity and planned subgroup reporting are missing, and bootstrap settings are not bound by the receipt."
+    },
+    "paper_claim_scope": {
+      "status": "pass_scoped",
+      "details": "Manuscript reports the FA/FAC/FAP values as validation-only and states no independent test result is available."
+    },
+    "historical_audit_currency": {
+      "status": "warn",
+      "details": "The earlier same-day audit contains findings superseded by current code; its evaluator digest entry in the tracker was malformed and has been corrected."
+    }
+  },
+  "next_actions": [
+    "Implement a release-gated source-traceable independent truth builder and synthetic end-to-end witness.",
+    "Bind actual checkpoints, normalizations, trainer and frozen S/R sources by path and SHA; produce inference receipt.",
+    "Anchor the one-use ledger to a single canonical release identity and bind dependency hashes.",
+    "Implement the predeclared two-day-block sensitivity and freeze bootstrap configuration in the release receipt.",
+    "Request a fresh independent audit before any real test/buffer payload access."
+  ],
+  "real_test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "trace_path": null
+}

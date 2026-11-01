@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -N fghi_pack_vec
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+MERGED=$EXP/results/future_simvp_r_bank_oof_v1
+CROSS_REPORT=$EXP/results/future_ghi_crosswalk.json
+CROSS_KEYS=$EXP/results/future_ghi_crosswalk_keys.npz
+LABEL_PACK=$PROJECT/experiments/monthly_R_station16_20261013_v1/data/ghi_head_pack_new_r_v1
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+LOG=$EXP/logs/future_ghi_pack_vec_${PBS_JOBID}.log
+mkdir -p "$EXP/logs" "$EXP/results"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+sha256sum -c FUTURE_GHI_VECTOR_PACK_SHA256SUMS
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_pack_vec_pycache
+
+test ! -e "$PACK" || { echo "REFUSE: versioned output already exists: $PACK"; exit 31; }
+python -m py_compile build_future_ghi_head_pack.py build_future_ghi_head_pack_vectorized.py
+python test_future_ghi_context.py
+python build_future_ghi_head_pack_vectorized.py \
+  --forecast-bank "$MERGED" --crosswalk "$CROSS_REPORT" --keys "$CROSS_KEYS" \
+  --ghi-pack "$LABEL_PACK" --output "$PACK" --chunk-rows 4096
+python - <<'PY' "$PACK/pack_manifest.json"
+import json,sys
+x=json.load(open(sys.argv[1]))
+assert x['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK'
+assert x['train_forecast_oof'] is True and x['forecast_bank_oof_fold_count']==5
+assert x['rows']=={'train':714914,'val':66590},x['rows']
+assert x['test_payload_opened'] is False and x['buffer_payload_opened'] is False
+assert x['future_observed_agri_used_as_input'] is False and x['cpp_used_as_input'] is False
+print('VECTORIZED_OOF_GHI_PACK_COMPLETE',x['rows'],x['producer_sha256'])
+PY

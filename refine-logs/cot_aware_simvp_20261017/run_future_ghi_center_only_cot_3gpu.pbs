@@ -1,0 +1,62 @@
+#!/bin/bash
+#PBS -N fghi_cot_ctr3
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=16:gpus=3
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+CAL=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+RUN=$EXP/results/future_ghi_oof_cot_center_only_v1
+BASE=$EXP/results/future_ghi_oof_cot_reliability_v1
+AUDIT=$EXP/results/future_ghi_oof_cot_center_only_validation_audit_v1.json
+LOG=$EXP/logs/future_ghi_cot_center_only_3gpu_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+sha256sum -c FUTURE_COT_CENTER_ONLY_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_future_cot_center_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+python -m py_compile train_future_ghi_center_only_cot.py audit_future_ghi_spatial_contrast.py train_future_ghi_heads_cot_reliability.py
+python test_future_ghi_spatial_contrast.py
+python - "$PACK/pack_manifest.json" "$CAL" <<'PY'
+import json,hashlib,sys
+def sha(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''):h.update(b)
+ return h.hexdigest()
+m=json.load(open(sys.argv[1]));c=json.load(open(sys.argv[2]))
+assert m['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK' and m['train_forecast_oof'] is True and m['forecast_bank_oof_fold_count']==5
+assert m['test_payload_opened'] is False and m['buffer_payload_opened'] is False
+assert c['forecast_pack_manifest_sha256']==sha(sys.argv[1]) and c['test_payload_opened'] is False and c['buffer_payload_opened'] is False
+print('CENTER_ONLY_OOF_CAUSAL_PREFLIGHT_PASS')
+PY
+test ! -e "$RUN"
+test ! -e "$AUDIT"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 3 ] || [ -z "$GPU_TEXT" ]; then echo "REFUSE: expected three distinct node22 GPUs, got $GPU_TEXT";exit 32;fi
+GPU0=$(printf '%s\n' "$GPU_TEXT"|sed -n '1p');GPU1=$(printf '%s\n' "$GPU_TEXT"|sed -n '2p');GPU2=$(printf '%s\n' "$GPU_TEXT"|sed -n '3p')
+nvidia-smi -i "$GPU0,$GPU1,$GPU2" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+CUDA_VISIBLE_DEVICES="$GPU0" python -u train_future_ghi_center_only_cot.py --pack "$PACK" --center-calibration "$CAL" --output-root "$RUN" --seed 42 --epochs 30 --batch-size 1792 > "$EXP/logs/future_ghi_center_only_seed42_${PBS_JOBID}.log" 2>&1 & P42=$!
+CUDA_VISIBLE_DEVICES="$GPU1" python -u train_future_ghi_center_only_cot.py --pack "$PACK" --center-calibration "$CAL" --output-root "$RUN" --seed 43 --epochs 30 --batch-size 1792 > "$EXP/logs/future_ghi_center_only_seed43_${PBS_JOBID}.log" 2>&1 & P43=$!
+CUDA_VISIBLE_DEVICES="$GPU2" python -u train_future_ghi_center_only_cot.py --pack "$PACK" --center-calibration "$CAL" --output-root "$RUN" --seed 44 --epochs 30 --batch-size 1792 > "$EXP/logs/future_ghi_center_only_seed44_${PBS_JOBID}.log" 2>&1 & P44=$!
+set +e
+wait "$P42";R42=$?;wait "$P43";R43=$?;wait "$P44";R44=$?
+set -e
+if [ "$R42" -ne 0 ] || [ "$R43" -ne 0 ] || [ "$R44" -ne 0 ];then echo "SEED_FAILURE $R42 $R43 $R44";exit 41;fi
+python -u audit_future_ghi_spatial_contrast.py --candidate-root "$RUN" --baseline-root "$BASE" --output "$AUDIT" --candidate-arm ACRELCENTER --bootstrap 2000
+python - "$RUN" "$AUDIT" <<'PY'
+import json,sys
+for s in (42,43,44):
+ m=json.load(open(f'{sys.argv[1]}/seed{s}_manifest.json'));assert m['state']=='COMPLETE_FUTURE_GHI_COT_ABLATION_SEED_RUN' and m['test_payload_opened'] is False and m['buffer_payload_opened'] is False
+a=json.load(open(sys.argv[2]));assert a['state']=='COMPLETE_PAIRED_FUTURE_GHI_COT_ABLATION_VALIDATION_AUDIT' and a['candidate_arm']=='ACRELCENTER' and a['test_payload_opened'] is False
+print('CENTER_ONLY_3SEED_PAIRED_AUDIT_COMPLETE',a['pairwise_delta_rmse_wm2'],a['date_block_bootstrap_95pct_ci_wm2'])
+PY
+echo "FUTURE_GHI_CENTER_ONLY_COT_MULTIGPU_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

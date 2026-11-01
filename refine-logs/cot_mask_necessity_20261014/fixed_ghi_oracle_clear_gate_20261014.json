@@ -1,0 +1,98 @@
+{
+  "state": "PASS_FIXED_GHI_HEAD_ORACLE_CLEAR_MASK_DIAGNOSTIC",
+  "purpose": "non-deployable CPP-reference clear-sky gate intervention on frozen AC checkpoints",
+  "n_common_samples": 1291,
+  "COT_reference_samples_without_GHI_label": 107,
+  "sites": {
+    "sili": 615,
+    "zhujia": 676
+  },
+  "bjt_target_dates": 46,
+  "R_crop_vs_packed_COT_max_abs_log1p_difference": 0.0033693313598632812,
+  "seeds": {
+    "42": {
+      "sili": {
+        "n": 615,
+        "saved_reproduction_max_abs_wm2": 0.17966461181640625,
+        "A_rmse": 148.33352913230058,
+        "AC_rmse": 146.76476429239804,
+        "AC_oracle_clear_gate_rmse": 151.20102718701565,
+        "AC_to_gated_prediction_mean_abs_change": 8.263315431858466,
+        "AC_to_gated_ghi_rmse_delta": 4.436262894617613
+      },
+      "zhujia": {
+        "n": 676,
+        "saved_reproduction_max_abs_wm2": 0.215606689453125,
+        "A_rmse": 123.93328236462771,
+        "AC_rmse": 121.59785634387471,
+        "AC_oracle_clear_gate_rmse": 131.3951972101383,
+        "AC_to_gated_prediction_mean_abs_change": 11.62177399982362,
+        "AC_to_gated_ghi_rmse_delta": 9.797340866263582
+      }
+    },
+    "43": {
+      "sili": {
+        "n": 615,
+        "saved_reproduction_max_abs_wm2": 0.064788818359375,
+        "A_rmse": 150.08680551201033,
+        "AC_rmse": 148.7324576686905,
+        "AC_oracle_clear_gate_rmse": 160.9257066281471,
+        "AC_to_gated_prediction_mean_abs_change": 13.736237808165512,
+        "AC_to_gated_ghi_rmse_delta": 12.19324895945661
+      },
+      "zhujia": {
+        "n": 676,
+        "saved_reproduction_max_abs_wm2": 0.340087890625,
+        "A_rmse": 130.92769992937238,
+        "AC_rmse": 122.1547284880794,
+        "AC_oracle_clear_gate_rmse": 134.80615094217904,
+        "AC_to_gated_prediction_mean_abs_change": 12.154903273610675,
+        "AC_to_gated_ghi_rmse_delta": 12.651422454099645
+      }
+    },
+    "44": {
+      "sili": {
+        "n": 615,
+        "saved_reproduction_max_abs_wm2": 0.21673583984375,
+        "A_rmse": 147.11646995886989,
+        "AC_rmse": 145.5835415126511,
+        "AC_oracle_clear_gate_rmse": 153.68903717865913,
+        "AC_to_gated_prediction_mean_abs_change": 11.614412337202367,
+        "AC_to_gated_ghi_rmse_delta": 8.10549566600804
+      },
+      "zhujia": {
+        "n": 676,
+        "saved_reproduction_max_abs_wm2": 0.15557861328125,
+        "A_rmse": 127.75765639128483,
+        "AC_rmse": 126.43270479257374,
+        "AC_oracle_clear_gate_rmse": 135.72441706700218,
+        "AC_to_gated_prediction_mean_abs_change": 12.459127239927032,
+        "AC_to_gated_ghi_rmse_delta": 9.291712274428434
+      }
+    }
+  },
+  "station_equal_three_seed_mean_AC_to_gate_RMSE_delta_wm2": 9.412580519145655,
+  "paired_BJT_date_bootstrap_95CI_station_equal_seed_mean_wm2": [
+    2.196062737177115,
+    21.306527331221716
+  ],
+  "station_equal_three_seed_mean_gated_AC_minus_A_rmse_wm2": 6.597682154112616,
+  "paired_BJT_date_bootstrap_95CI_gated_AC_minus_A_wm2": [
+    -0.9413192066990754,
+    17.416902447471678
+  ],
+  "bootstrap_replicates": 2000,
+  "test_payload_opened": false,
+  "sources": {
+    "pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+    "rows_sha256": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+    "prediction_sha256": "08c9cc92df549f12412873e9b8e50f308f35f79451693fa10b229a3346c15785",
+    "clp_sha256": "ff11cea370fa9618d51492922deb81f8f21473ee16743c31b875475d417f2314"
+  },
+  "limitations": [
+    "Reference CLP mask is unavailable at inference; this is an oracle upper-bound diagnostic, not a deployable system",
+    "Only 1,398 validation keys with CPP reference are evaluated, not all 4,479 GHI validation rows",
+    "Fixed AC heads were trained on original R-COT; changing COT at validation is an input intervention, not retraining",
+    "CPP CLP and COT share a retrieval product lineage"
+  ]
+}

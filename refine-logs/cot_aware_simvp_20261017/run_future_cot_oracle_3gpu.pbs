@@ -1,0 +1,82 @@
+#!/bin/bash
+#PBS -N fghi_cot_oracle3
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=3
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+FORECAST_PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ACTUAL_R_BANK=$PROJECT/experiments/monthly_R_station16_20261013_v1/results/new_monthly_R_seed42_cot_bank_v1
+ACTUAL_R_GHI_PACK=$PROJECT/experiments/monthly_R_station16_20261013_v1/data/ghi_head_pack_new_r_v1
+ORACLE_PACK=$EXP/results/future_cot_oracle_head_pack_v2
+RUN_ROOT=$EXP/results/future_cot_oracle_ghi_v2
+AUDIT=$EXP/results/future_cot_oracle_validation_audit_v2.json
+mkdir -p "$EXP/logs" "$EXP/results"
+JOB_LOG=$EXP/logs/future_cot_oracle_3gpu_${PBS_JOBID}.log
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$PROJECT"
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_oracle_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+cd "$PROJECT"
+sha256sum -c "$EXP/FUTURE_COT_ORACLE_SHA256SUMS"
+python -m py_compile "$EXP/build_future_cot_oracle_pack.py" "$EXP/train_future_ghi_heads_oracle.py" "$EXP/audit_future_cot_oracle.py"
+python -m unittest discover -s "$EXP" -p 'test_build_future_cot_oracle_pack.py' -v
+PYTHONPATH="$EXP" python -c 'import train_future_ghi_heads_oracle as m; assert m.IntervalHead is not None; print("ORACLE_TRAINER_IMPORT_PASS")'
+test -d "$FORECAST_PACK" && test -d "$ACTUAL_R_BANK" && test -d "$ACTUAL_R_GHI_PACK"
+test ! -e "$ORACLE_PACK" && test ! -e "$RUN_ROOT" && test ! -e "$AUDIT"
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 3 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected three distinct allocated node22 GPUs, got $GPU_TEXT"; exit 32
+fi
+GPU0=$(printf '%s\n' "$GPU_TEXT" | sed -n '1p')
+GPU1=$(printf '%s\n' "$GPU_TEXT" | sed -n '2p')
+GPU2=$(printf '%s\n' "$GPU_TEXT" | sed -n '3p')
+nvidia-smi -i "$GPU0,$GPU1,$GPU2" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+python "$EXP/build_future_cot_oracle_pack.py" --forecast-pack "$FORECAST_PACK" \
+  --actual-r-bank "$ACTUAL_R_BANK" --actual-r-ghi-pack "$ACTUAL_R_GHI_PACK" \
+  --output "$ORACLE_PACK" --chunk-rows 8192
+python - "$ORACLE_PACK/pack_manifest.json" <<'PY'
+import json,sys
+m=json.load(open(sys.argv[1]))
+assert m.get('state')=='COMPLETE_ORACLE_FUTURE_COT_GHI_PACK'
+assert m.get('oracle_only') is True and m.get('deployable') is False
+assert m.get('train_forecast_oof') is True and m.get('forecast_bank_oof_fold_count')==5
+assert m.get('future_observed_agri_used_as_input') is True
+assert m.get('future_cpp_used_as_input') is False
+assert m.get('test_payload_opened') is False and m.get('buffer_payload_opened') is False
+assert m['rows']=={'train':714914,'val':66590}
+print('ORACLE_PACK_PROVENANCE_GATE_PASS')
+PY
+mkdir "$RUN_ROOT"
+
+CUDA_VISIBLE_DEVICES="$GPU0" python -u "$EXP/train_future_ghi_heads_oracle.py" \
+  --pack "$ORACLE_PACK" --output "$RUN_ROOT/seed42" --seed 42 --epochs 30 --batch-size 1792 \
+  > "$EXP/logs/future_cot_oracle_seed42_${PBS_JOBID}.log" 2>&1 & PID42=$!
+CUDA_VISIBLE_DEVICES="$GPU1" python -u "$EXP/train_future_ghi_heads_oracle.py" \
+  --pack "$ORACLE_PACK" --output "$RUN_ROOT/seed43" --seed 43 --epochs 30 --batch-size 1792 \
+  > "$EXP/logs/future_cot_oracle_seed43_${PBS_JOBID}.log" 2>&1 & PID43=$!
+CUDA_VISIBLE_DEVICES="$GPU2" python -u "$EXP/train_future_ghi_heads_oracle.py" \
+  --pack "$ORACLE_PACK" --output "$RUN_ROOT/seed44" --seed 44 --epochs 30 --batch-size 1792 \
+  > "$EXP/logs/future_cot_oracle_seed44_${PBS_JOBID}.log" 2>&1 & PID44=$!
+set +e
+wait "$PID42"; RC42=$?
+wait "$PID43"; RC43=$?
+wait "$PID44"; RC44=$?
+set -e
+if [ "$RC42" -ne 0 ] || [ "$RC43" -ne 0 ] || [ "$RC44" -ne 0 ]; then
+  echo "SEED_FAILURE seed42=$RC42 seed43=$RC43 seed44=$RC44"; exit 41
+fi
+python -u "$EXP/audit_future_cot_oracle.py" --run-root "$RUN_ROOT" --pack "$ORACLE_PACK" \
+  --seeds 42 43 44 --bootstrap 2000 --output "$AUDIT"
+echo "FUTURE_COT_ORACLE_3GPU_COMPLETE oracle_only=1 test_payload_opened=0 buffer_payload_opened=0"

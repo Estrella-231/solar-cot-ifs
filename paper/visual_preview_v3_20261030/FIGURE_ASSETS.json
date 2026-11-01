@@ -1,0 +1,77 @@
+{
+  "figures": {
+    "fig:regions": {
+      "source": "figures/paper_visual_preview_v3_20261030/data_scope/figure.pdf",
+      "name": "fig01_regions",
+      "kind": "labelled_empty_template",
+      "png_source": "figures/paper_visual_preview_v3_20261030/data_scope/figure.png"
+    },
+    "fig:architecture": {
+      "source": "figures/paper_visual_preview_v3_20261030/generated/architecture_final.png",
+      "name": "fig02_architecture",
+      "kind": "ai_assisted_method_schematic"
+    },
+    "fig:framework": {
+      "source": "figures/paper_visual_preview_v3_20261030/generated/causal_workflow_final.png",
+      "name": "fig03_workflow",
+      "kind": "ai_assisted_method_schematic"
+    },
+    "fig:retrieval": {
+      "source": "figures/paper_visual_preview_v3_20261030/generated/cot_quality_placeholder.png",
+      "name": "fig04_retrieval",
+      "kind": "labelled_empty_template"
+    },
+    "fig:gain": {
+      "source": "figures/paper_visual_preview_v3_20261030/generated/synchronous_gain_placeholder.png",
+      "name": "fig05_gain",
+      "kind": "labelled_empty_template"
+    },
+    "fig:thickness": {
+      "source": "figures/paper_visual_preview_v3_20261030/generated/strata_placeholder.png",
+      "name": "fig06_strata",
+      "kind": "labelled_empty_template"
+    },
+    "fig:events": {
+      "source": "figures/paper_visual_preview_v3_20261030/real_case/fig_cloud_source_mechanism.pdf",
+      "name": "fig07_real_event",
+      "kind": "saved_development_observations_and_predictions",
+      "png_source": "figures/paper_visual_preview_v3_20261030/real_case/fig_cloud_source_mechanism.png"
+    },
+    "fig:forecast": {
+      "source": "figures/reference_redraw_v2_20261030/forecast/forecast_ghi_v2.pdf",
+      "png_source": "figures/reference_redraw_v2_20261030/forecast/forecast_ghi_v2.png",
+      "name": "fig08_forecast",
+      "kind": "paired_development_validation"
+    },
+    "fig:replacement": {
+      "source": "figures/paper_visual_preview_v3_20261030/source_replacement/source_replacement.pdf",
+      "name": "fig09_replacement",
+      "kind": "saved_offline_source_replacement",
+      "png_source": "figures/paper_visual_preview_v3_20261030/source_replacement/source_replacement.png"
+    },
+    "fig:probe": {
+      "source": "figures/paper_visual_preview_v3_20261030/probe/cot_conditional_information.pdf",
+      "name": "figS1_probe",
+      "kind": "saved_exploratory_development_probe",
+      "png_source": "figures/paper_visual_preview_v3_20261030/probe/cot_conditional_information.png"
+    },
+    "fig:three_station_event": {
+      "source": "figures/paper_visual_preview_v3_20261030/real_case/fig_three_station_source_response.pdf",
+      "name": "figS2_three_station_event",
+      "kind": "saved_development_observations_and_predictions",
+      "png_source": "figures/paper_visual_preview_v3_20261030/real_case/fig_three_station_source_response.png"
+    }
+  },
+  "captions_en": {
+    "fig:events": "Cloud imagery, retrieved optical thickness and irradiance response for Niushou on 6 August 2025, initialized at 12:00 BJT. (a) Columns show +15, +120 and +240 min. Rows show observed AGRI, observed-image R-COT, SimVP-predicted AGRI and forecast-image R-COT, respectively. Composites use C03/C02/C01 and the same square-root display mapping over reflectance 0--1. Native 16$\\times$16 pixels are retained; the cross and dashed box mark the station and its 3$\\times$3 GHI input. (b) Station-pixel COT. (c) Observed target-ending 15-min GHI, the AGRI-plus-historical-COT baseline and a fixed residual mapping supplied with either forecast-image or observed-image COT. Predicted curves average three frozen-baseline source variants for display; missing labels remain gaps. The event was selected by calendar eligibility without inspecting errors. Future observations are offline diagnostic inputs, and R-COT is a retrieval proxy; values above its training reference range of 100 are retained. This development-date out-of-fold event does not establish independent forecast benefit.",
+    "fig:three_station_event": "Station-pixel COT (a--c) and GHI (d--f) at Niushou, Wangzhai and Mizhuang in the same calendar-selected event. Purple dashed curves use observed future AGRI-derived COT offline; orange solid curves use SimVP-derived COT. The same reference-trained residual mapping is used for the two GHI source evaluations. Gray is the existing AGRI-plus-historical-COT baseline, not a no-COT control. The stations have 13, 14 and 11 scored GHI intervals, respectively; missing intervals remain gaps. Within-row scales are shared. All source, aggregation and interpretation conventions follow the main event figure.",
+    "fig:replacement": "Sensitivity of a fixed irradiance mapping to image and COT sources. (a) Equal-station, equal-seed GHI RMSE on 8,111 common replacement rows from 12 development target dates (three stations, three seeds). All branches retain historical COT; “no future COT” removes only the additional future-COT correction input. (b) Replacing forecast AGRI with observed target-time AGRI in that control. (c) Adding source-matched future COT relative to the control with the same AGRI source. Intervals are 95\\% paired target-date block bootstrap intervals (5,000 draws); the horizontal scales in (b) and (c) differ. Observed future AGRI and its retrieved COT are offline diagnostic inputs. These comparisons do not constitute independent evaluation or deployable forecast improvements.",
+    "fig:probe": "COT information under forecast and observed-image inputs. (a) GHI RMSE and paired differences from the frozen forecast baseline, which already uses historical COT. Context is a fixed linear residual probe using predicted AGRI, geometry, historical COT, lead and baseline output; the two augmented probes additionally receive future COT. (b) Reuse of the fitted probes under cross-substitution of the COT source. Entries are RMSE; parentheses give differences from the frozen baseline. The dashed inference column requires future observations. (c) Differences from the context probe by forecast horizon; 0--1 h includes +15 to +60 min. All panels use 32,838 common records from 50 development dates with date-block out-of-fold fitting. Scores average the station-specific RMSEs for three stations and three frozen-baseline sources equally. Whiskers are paired 95\\% percentile intervals from 5,000 target-date-cluster bootstrap resamples. Observed-image COT is a frozen retrieval from actual future AGRI, used offline; it is neither independent cloud truth nor a deployable input. Negative differences indicate lower error."
+  },
+  "captions_zh": {
+    "fig:events": "2025年8月6日牛首站云图、反演光学厚度与辐照度响应，初始化为北京时间12:00。(a) 三列依次为+15、+120和+240 min；四行依次为真实AGRI、真实图反演R-COT、SimVP预测AGRI及预测图反演R-COT。合成图使用C03/C02/C01，统一采用反射率0–1上的平方根显示变换。保留原生16×16像元；十字和虚线框分别标记站点及其3×3 GHI输入。(b) 站点像元COT。(c) 以目标时刻为右端点的15分钟平均GHI观测、AGRI加历史COT基线，以及同一固定残差映射分别输入预测图COT和真实图COT的输出。预测曲线为三份冻结基线来源的展示均值，缺失标签保留断线。事件按日历有效性选择，未参考误差。未来观测只作离线诊断，R-COT是反演代理；超过训练参考范围100的输出予以保留。该开发日期折外案例不构成独立预报收益证据。",
+    "fig:three_station_event": "同一日历规则事件中牛首、王寨、米庄的站点像元COT（a–c）及GHI（d–f）。紫色虚线使用实际未来AGRI反演的COT，仅作离线诊断；橙色实线使用SimVP图像反演COT。两种GHI来源评估使用同一真实图COT训练的残差映射。灰色为已有AGRI加历史COT基线，并非无COT对照。三站分别有13、14、11个可评分GHI区间，缺项保持断线；每排共享坐标范围。来源、汇总与解释约定同主事件图。",
+    "fig:replacement": "固定辐照度映射对云图与COT来源的敏感性。(a) 12个开发目标日期、8,111条共同可替换样本，三个站点各三个种子的GHI RMSE分别计算后等权汇总。各分支均保留历史COT，“无未来COT”仅去除额外的未来COT修正输入。(b) 在该控制组中以真实目标时刻AGRI替换预测AGRI。(c) 相对相同AGRI来源的控制，加入来源匹配的未来COT。区间为5,000次目标日期块配对bootstrap的95%区间；(b)(c)横轴范围不同。未来真实AGRI及其反演COT仅供离线诊断，结果不构成独立评价或可部署预报收益。",
+    "fig:probe": "预测图与真实图输入下的COT信息。 (a) GHI RMSE及相对冻结预报基线的配对差值；该基线已使用历史COT。上下文组为固定线性残差探针，输入预测AGRI、几何、历史COT、时效和基线输出；另外两组加入未来COT。(b) 复用已拟合探针并交叉替换COT来源；单元格为RMSE，括号为相对冻结基线的差值，虚线框推理列需要未来观测。(c) 各预报时效区间相对上下文探针的差值，0–1 h包含+15至+60 min。所有面板使用50个开发日期的32,838条共同记录，按日期块做折外拟合。先对三站与三份冻结基线来源分别计算RMSE，再等权平均。误差线为5,000次目标日期簇bootstrap的配对95%百分位区间。真实图COT是冻结反演器处理实际未来AGRI得到的代理，只作离线诊断，既非独立云真值，也非可部署输入。负差值表示误差较低。"
+  }
+}

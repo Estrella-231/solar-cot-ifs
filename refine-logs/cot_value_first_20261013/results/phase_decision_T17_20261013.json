@@ -1,0 +1,53 @@
+{
+  "task": "T17",
+  "date_bjt": "2026-10-13",
+  "state": "PASS_ADVANCE_TO_B3_WITH_BOUNDED_CLAIM",
+  "evidence": {
+    "validation_only": true,
+    "test_payload_opened": false,
+    "T14": {
+      "cohort": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+      "seeds": [42, 43, 44],
+      "station_equal_rmse_wm2": {"A": 123.980, "AC": 120.240, "AP": 123.822},
+      "paired_delta_wm2": {"AC_minus_A": -3.740, "AC_minus_AP": -3.582},
+      "AC_minus_A_date_cluster_95ci_wm2": [-6.180, -1.597],
+      "AC_minus_AP_date_cluster_95ci_wm2": [-5.977, -1.479],
+      "same_direction_all_seeds": true
+    },
+    "T15": {
+      "neighbor_permutation_mean_rmse_change_wm2": 0.027,
+      "neighbor_permutation_mean_abs_prediction_change_wm2": 0.383,
+      "same_station_month_mismatch_mean_rmse_change_wm2": 37.126,
+      "interpretation": "Validation predictions depend on sample-aligned COT magnitude, but show little sensitivity to exact arrangement of the eight neighbors in this 3x3 head. This is a sensitivity diagnostic, not causal proof."
+    },
+    "T16": {
+      "complete_cases": 4,
+      "planned_cases": 16,
+      "covered_season": "JJA only",
+      "reason": "No complete 17-frame CPP reference sequence was available in validation for DJF, MAM, or SON; no cross-season substitutions were made.",
+      "case_results_are_descriptive_only": true
+    }
+  },
+  "decision": {
+    "advance": "B3 fixed-method physical COT extrapolation evaluation",
+    "do_not_claim": [
+      "independent-test generalization",
+      "operational forecast-chain GHI gain",
+      "that the current 3x3 GHI head learned COT spatial texture",
+      "that COT physical semantics alone caused the validation gain"
+    ],
+    "conditional_control": "T18 R-AL is activated by the observed AC gain and unresolved R receptive-field/CPP-supervision confounding. Freeze its feature layer, projection size, data keys, head budget, seeds, and scoring before training.",
+    "GHI_forecast_heads": "Remain gated. First report COT extrapolation skill, coverage, thick-cloud errors, and arrival-time behavior in physical COT units."
+  },
+  "next_actions": [
+    "Audit and freeze the monthly SimVP checkpoint, normalization, and train/validation forecast source for T19.",
+    "Prepare the minimal frozen-R hidden-feature bank needed for T18 without changing the completed A/AC/AP contract.",
+    "Build and audit the 16-lead forecast-COT bank, then compute station-pixel, 3x3, and region metrics separately."
+  ],
+  "source_artifacts": [
+    "experiments/monthly_R_station16_20261013_v1/results/GHI_HEAD_THREE_SEED_RESULTS_20261013.md",
+    "experiments/monthly_R_station16_20261013_v1/results/COT_INPUT_DEPENDENCE_VALIDATION_20261013.md",
+    "experiments/monthly_R_station16_20261013_v1/results/t16_cpp_case_figures_v2/T16_FIGURE_DESCRIPTION.md",
+    "refine-logs/cot_value_first_20261013/EXPERIMENT_PLAN.md"
+  ]
+}

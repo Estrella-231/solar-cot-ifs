@@ -1,0 +1,52 @@
+{
+  "state": "PASS_FOUR_ARM_ALIGNED_INPUTS",
+  "train_val_only": true,
+  "test_payloads_read": 0,
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "pack_rows": 51929,
+  "train_rows": 47666,
+  "raw_validation_rows": 4263,
+  "clean_validation_rows": 4226,
+  "excluded_validation_rows": 37,
+  "excluded_station_days": [
+    {
+      "station": "sili",
+      "bjt_date": "2024-09-05"
+    }
+  ],
+  "exclusion_policy_sha256": "5effcb6c87ca0a530c8d1c0b960e2450fca4a0804425dc715145cc6df4a0f957",
+  "history_offsets_minutes": [
+    -30,
+    -15,
+    0
+  ],
+  "p_cloud_center_crop": "station-specific p_cloud[...,7:10,7:10], exact (station,UTC frame time) keys",
+  "p_cloud_centering": "p_cloud - 0.5; continuous classifier score, not cloud fraction or calibrated radiative transmission",
+  "classifier_geometry": "frozen legacy classifier scores produced using archived old aux cosSOZ/cosRAA/day_mask; no geometry mutation",
+  "GHI_R_geometry": "corrected NOAA nominal-UTC geometry in fixed data_attempt2 pack",
+  "COT_source": "frozen corrected-geometry R cot_corrected_log1p.npy; already log1p(COT), normalized only",
+  "COT_scaler": {
+    "mean": 1.8354828989218208,
+    "std": 1.3974485910139944,
+    "source": "paired_three_arm_v1 shared train-only old+corrected-R scaler"
+  },
+  "classifier_assignment_counts_over_three_frames": {
+    "fold0": 37998,
+    "fold1": 39843,
+    "fold2": 39252,
+    "full_train_unlabeled_date": 25905,
+    "full_train": 12789
+  },
+  "GHI_rows_sha256": "b76fb1b827375c29d90703ed6dc1220ff92a6d239800d4f8764b989d5b7214b3",
+  "GHI_manifest_sha256": "223a6b748622135e27fd5320a4be0921b4b31551be6f05868b14eb59d2c8ed9a",
+  "R_manifest_sha256": "fd1a621827567fa1fcf8b26a412e01b7a64f3adc93a87b12f0c0920af3ca857b",
+  "p_manifest_sha256": "87ad909a2e33902dccf7273a1976536029659e7161dfbaaf5918ced179d0daf8",
+  "p_cloud_sha256": "ed892bd4738a3079899e54fbcdc753bfd4fe2192beea82969d972fa65098c40f",
+  "R_corrected_COT_sha256": "12126446c2567cb5f143c045e31c060a888ce8bb89685995cf03d333eebad50e",
+  "p_keys_sha256": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+  "classifier_assignment_sha256": "5697cd612bbb401b4b847238b7ec03587ae446c97d0fe1a2e50fd4e4a1e24309",
+  "AGRI_normalization": "fixed train-fitted normalization from GHI pack manifest",
+  "geometry_channels": 2,
+  "input_layout": "[N,T=3,C=17,H=3,W=3], slots=AGRI13+geometry2+COT1+p_cloud1",
+  "exact_key_join": "PASS; history time, station grid pixel and split checked for every frame"
+}

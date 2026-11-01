@@ -1,0 +1,5 @@
+# Retry 03 note
+
+PBS jobs `215545.tc6000` and `215547.tc6000` stopped before inference because text-form `qstat -f` wrapped the six-GPU allocation. Retry02 fixed allocation parsing with the XML-form `qstat -fx`; job `215548.tc6000` then passed the six-GPU check but stopped in a metadata preflight because two reconstructed seed-44 receipts omit the optional `official_monthly_validation_payloads_read` field. Inspection showed that all six receipts have the exact train-date-only split description, `test_payloads_read=0`, and `buffer_payloads_read=0`; the field is zero where present and absent only in those reconstructed seed-44 receipts.
+
+This third isolated directory changes only the metadata assertion to accept an absent optional field when the split receipt explicitly states that official monthly validation, test, and buffer were not read. A login-node CPU preflight of the same six checkpoint receipts, cache metadata, and checkpoint hashes must pass before submission. The frozen checkpoints, validation sample set, inference code, scorer, and six-GPU request remain unchanged. Earlier attempts and receipts remain preserved.

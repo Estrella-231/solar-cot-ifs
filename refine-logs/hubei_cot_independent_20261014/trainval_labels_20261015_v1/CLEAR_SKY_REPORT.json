@@ -1,0 +1,78 @@
+{
+  "status": "TRAIN_VAL_DAYLIGHT_INEICHEN_SUPPORT_COMPLETE",
+  "input_label_sha256": "6e28520c778b75de24b37cd3692dd6d4482ab2567423b5e18ed3200fdc199a72",
+  "output_sha256": "326e16c16741ea4dd7696b81bcd11d800737f08274fd265fbf4373d2c411538c",
+  "test_values_read": 0,
+  "pvlib_version": "0.15.1",
+  "clear_sky_model": "Ineichen",
+  "altitude_assumed_m": 0.0,
+  "station_coordinates": {
+    "Niushou": {
+      "latitude": 32.08,
+      "longitude": 112.04
+    },
+    "Wangzhai": {
+      "latitude": 32.04,
+      "longitude": 112.12
+    },
+    "Mizhuang": {
+      "latitude": 32.12,
+      "longitude": 112.2
+    }
+  },
+  "interval_integration": "mean of three 5min midpoints: target-12.5/-7.5/-2.5min",
+  "main_mask": "complete GHI15 label AND NOAA solar cosine >0 AND interval-mean Ineichen clear-sky GHI >0",
+  "sensitivity_mask": "main mask AND interval-mean clear-sky GHI >=100 W/m2",
+  "counts_by_station_split": {
+    "Niushou": {
+      "train": {
+        "slots": 23093,
+        "day_sza_lt90": 11676,
+        "positive_clear_sky": 11927,
+        "valid_main_mask": 9332,
+        "clear_ge_100_mask": 8056
+      },
+      "val": {
+        "slots": 2045,
+        "day_sza_lt90": 1038,
+        "positive_clear_sky": 1061,
+        "valid_main_mask": 856,
+        "clear_ge_100_mask": 732
+      }
+    },
+    "Wangzhai": {
+      "train": {
+        "slots": 23093,
+        "day_sza_lt90": 11679,
+        "positive_clear_sky": 11931,
+        "valid_main_mask": 9178,
+        "clear_ge_100_mask": 7918
+      },
+      "val": {
+        "slots": 2045,
+        "day_sza_lt90": 1037,
+        "positive_clear_sky": 1061,
+        "valid_main_mask": 784,
+        "clear_ge_100_mask": 679
+      }
+    },
+    "Mizhuang": {
+      "train": {
+        "slots": 23093,
+        "day_sza_lt90": 11680,
+        "positive_clear_sky": 11931,
+        "valid_main_mask": 9047,
+        "clear_ge_100_mask": 7777
+      },
+      "val": {
+        "slots": 2045,
+        "day_sza_lt90": 1038,
+        "positive_clear_sky": 1061,
+        "valid_main_mask": 816,
+        "clear_ge_100_mask": 706
+      }
+    }
+  },
+  "normalization": "not fit",
+  "unit": "provisional legacy W/m2 convention; source instrument metadata unresolved"
+}

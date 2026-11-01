@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#111"/></marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill:#111; }
+      .title { font-size:30px; font-weight:700; }
+      .subtitle { font-size:16px; fill:#333; }
+      .head { font-size:20px; font-weight:700; }
+      .body { font-size:16px; }
+      .small { font-size:14px; fill:#333; }
+      .box { fill:#fff; stroke:#111; stroke-width:2; rx:9; }
+      .arrow { fill:none; stroke:#111; stroke-width:2; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="900" fill="#fff"/>
+  <text x="600" y="48" text-anchor="middle" class="title">湖南 SimVP—COT—GHI 处理流程</text>
+  <text x="600" y="78" text-anchor="middle" class="subtitle">四里、竺家使用同一处理逻辑，各站样本与模型分别构建</text>
+
+  <!-- AGRI features split into retrieval and GHI input branches -->
+  <rect x="40" y="110" width="300" height="78" class="box"/>
+  <text x="190" y="142" text-anchor="middle" class="head">历史 AGRI 云图</text>
+  <text x="190" y="169" text-anchor="middle" class="body">过去 8 帧 × 16 通道 × 256×256</text>
+  <rect x="450" y="110" width="300" height="78" class="box"/>
+  <text x="600" y="142" text-anchor="middle" class="head">SimVP 外推</text>
+  <text x="600" y="169" text-anchor="middle" class="body">预测未来 16 帧 AGRI</text>
+  <rect x="820" y="110" width="340" height="78" class="box"/>
+  <text x="990" y="142" text-anchor="middle" class="head">未来 AGRI 预测图</text>
+  <text x="990" y="169" text-anchor="middle" class="body">13 通道，+15 至 +240 分钟</text>
+  <path d="M340 149 H442" class="arrow"/>
+  <path d="M750 149 H812" class="arrow"/>
+  <path d="M990 188 V218 H300 V242" class="arrow"/>
+  <path d="M990 188 V218 H900 V242" class="arrow"/>
+
+  <rect x="90" y="250" width="420" height="86" class="box"/>
+  <text x="300" y="283" text-anchor="middle" class="head">站点邻域裁剪</text>
+  <text x="300" y="311" text-anchor="middle" class="body">按各站位置裁成 16×16 AGRI</text>
+  <rect x="690" y="250" width="420" height="86" class="box"/>
+  <text x="900" y="283" text-anchor="middle" class="head">GHI 输入特征</text>
+  <text x="900" y="311" text-anchor="middle" class="body">站点中心 3×3 AGRI + 太阳几何</text>
+
+  <path d="M300 336 V369" class="arrow"/>
+  <rect x="90" y="375" width="420" height="118" class="box"/>
+  <text x="300" y="408" text-anchor="middle" class="head">COT 反演器 R</text>
+  <text x="300" y="437" text-anchor="middle" class="body">输入：13 通道 AGRI + cosSOZ、cosRAA、day_mask</text>
+  <text x="300" y="466" text-anchor="middle" class="small">CPP COT 与云类用于训练监督；无效值不当作晴空</text>
+  <path d="M300 493 V526" class="arrow"/>
+  <rect x="90" y="532" width="420" height="82" class="box"/>
+  <text x="300" y="565" text-anchor="middle" class="head">反演 COT 场</text>
+  <text x="300" y="592" text-anchor="middle" class="body">站点邻域 16×16；与 AGRI 时间、位置对齐</text>
+  <path d="M510 573 H600 V652" class="arrow"/>
+  <path d="M900 336 H1150 V650 H1015 V652" class="arrow"/>
+
+  <!-- Ground observations and labels -->
+  <rect x="690" y="375" width="420" height="118" class="box"/>
+  <text x="900" y="408" text-anchor="middle" class="head">地面辐照度观测</text>
+  <text x="900" y="437" text-anchor="middle" class="body">5 分钟记录 → (T−15 min, T] 三条记录均值</text>
+  <text x="900" y="466" text-anchor="middle" class="small">不完整窗口不补值；实测 GHI 只作标签与评价</text>
+  <path d="M900 493 V526" class="arrow"/>
+  <rect x="690" y="532" width="420" height="82" class="box"/>
+  <text x="900" y="565" text-anchor="middle" class="head">15 分钟目标标签</text>
+  <text x="900" y="592" text-anchor="middle" class="body">pvlib 晴空值 → kt 标签，并可回算 GHI</text>
+  <path d="M900 614 V652" class="arrow"/>
+
+  <!-- Final aligned sample -->
+  <rect x="185" y="660" width="830" height="138" class="box"/>
+  <text x="600" y="697" text-anchor="middle" class="head">按站点、初始化时刻、目标时刻配对，构建 GHI 样本</text>
+  <text x="600" y="730" text-anchor="middle" class="body">外推链：未来 AGRI 3×3 + 太阳几何；AC 组再加入同位置预测 COT 3×3 → GHI 预测头</text>
+  <text x="600" y="762" text-anchor="middle" class="small">现有 A/AC/AP 同期对照使用真实 AGRI；应用于未来时才由 SimVP 预测 AGRI 接入后续链路</text>
+
+  <text x="600" y="844" text-anchor="middle" class="small">空间范围：SimVP 输入/输出为 256×256 区域场；当前 R 在裁出的 16×16 站点邻域上反演 COT。</text>
+</svg>

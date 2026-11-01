@@ -1,0 +1,58 @@
+{
+  "state": "COMPLETE_VALIDATION_SSIM_TRAIN_SCALE_ONLY",
+  "split": "train_reference_scale_and_validation_score_only",
+  "test_payloads_read": 0,
+  "scale": {
+    "source": "CPP reference COT values with valid mask in monthly_R_station16_20261013_v1/data/pack_trainval_v1; train rows only",
+    "train_supervised_examples": 15414,
+    "train_valid_reference_pixels": 3921824,
+    "train_reference_q999_physical_COT": 74.03969116210959,
+    "L_log1p_q999": 4.318017189045971,
+    "quantile_method": "numpy linear",
+    "train_cot_sha256": "43dab24e9b6c5cf9b9db09f6bce16b3dede60750b312c6e808b192ec265fb63c",
+    "train_mask_sha256": "2614ca0b589ff3e3367f08f0e8f8ed8067226f80446f4e27f3478d5c675c340f"
+  },
+  "validation": {
+    "bank_sha256": "fd7a431148ebf301140614bdafa8f05e09e99bc5c83a34bb0c456d6cf88b27ac",
+    "n_windows": 271,
+    "target_key_shape": [
+      271,
+      16
+    ],
+    "n_common_cpp_valid_pixels": 550400,
+    "window": 11,
+    "gaussian_sigma": 1.5,
+    "K1": 0.01,
+    "K2": 0.03,
+    "covariance": "population",
+    "data_range": 1.0,
+    "validity": "score only centers whose complete 11x11 support is valid; no fill",
+    "supported_window_count": {
+      "S_to_R": 77400,
+      "persistence_R": 77400
+    },
+    "nominal_11x11_window_count": 312192,
+    "supported_window_fraction_of_nominal": {
+      "S_to_R": 0.24792435424354242,
+      "persistence_R": 0.24792435424354242
+    },
+    "mean_window_then_equal_station_lead_macro_ssim": {
+      "S_to_R": 0.23555696745995056,
+      "persistence_R": 0.24684217972450925
+    },
+    "validation_reference_above_train_q999_pixels": 626,
+    "prediction_clip_counts_in_common_pixels": {
+      "below_zero": {
+        "S_to_R": 0,
+        "persistence_R": 0
+      },
+      "above_train_q999": {
+        "S_to_R": 0,
+        "persistence_R": 13377
+      }
+    },
+    "n_records": 4300,
+    "n_records_with_ssim": 4300
+  },
+  "caveat": "Only eight CPP-supported BJT target dates; CPP is a retrieval reference, not independent COT truth. SSIM is a secondary log1p-COT structure metric and does not establish deployment skill."
+}

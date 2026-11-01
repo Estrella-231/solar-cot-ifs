@@ -1,0 +1,115 @@
+{
+  "status": "HUBEI_SIMVP_FOLD3_CHECKPOINT_RELOAD_VALIDATION_AUDIT_PASSED_TEST_CLOSED",
+  "fold_id": 3,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "test_or_buffer_rows": 0,
+  "train_index_rows_metadata_only": 3277,
+  "validation_sequences_inferred": 407,
+  "unique_validation_key_coverage": 407,
+  "checkpoint_sha256": "50f184270207695b1d69c7f2db47c33e1571395320304d4862560ff0e4430577",
+  "normalization_sha256": "f8ff7379b4695b246150565e71651d05267e65be1d08c69f6fd6788082f2b1f2",
+  "index_sha256": "645fdd03bba09d49616f91f91cdd4b00a824eafed0249447c7f14dfbb62e91ee",
+  "stage_manifest_sha256": null,
+  "channel_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "patch_origin_crop_256": [
+    103,
+    118
+  ],
+  "patch_size": 16,
+  "shard_count": 1,
+  "shard_ids": [
+    0
+  ],
+  "full_field_validation_metrics": {
+    "normalized_mse": 0.24090354065219494,
+    "normalized_mae": 0.3084038777659291,
+    "element_count": 5548015616,
+    "sequence_count": 407,
+    "scope": "all 13 predicted AGRI channels, all 16 leads and full 256x256 field in frozen normalized space"
+  },
+  "shards": [
+    {
+      "shard_index": 0,
+      "sequence_count": 407,
+      "local_stage_manifest_sha256": null,
+      "channel_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "lead_minutes": [
+        15,
+        30,
+        45,
+        60,
+        75,
+        90,
+        105,
+        120,
+        135,
+        150,
+        165,
+        180,
+        195,
+        210,
+        225,
+        240
+      ],
+      "patch_origin_crop_256": [
+        103,
+        118
+      ],
+      "patch_size": 16,
+      "test_payloads_read": 0,
+      "buffer_payloads_read": 0,
+      "test_or_buffer_rows": 0,
+      "prediction_sha256": "5fd0c04f94fa263a6307dc96f067ff6082d4ecb3f5db30b34f81a015d93653c5",
+      "truth_sha256": "52c8d73b251f2c05308f2cbf793d3a46b329360ca067842b785698cbb8f003cb",
+      "geometry_sha256": "c4d98bc5eb3a2db5d9a973a80a3d628a38ab910e7260dfa5ce4aa3952eb15033",
+      "bank_report_sha256": "53022c9dd6ea4436ce16c0dbbd26e20d7eb9ed8d60cd296420071fe938f77fe9"
+    }
+  ]
+}

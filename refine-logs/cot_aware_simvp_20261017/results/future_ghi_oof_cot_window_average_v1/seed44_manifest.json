@@ -1,0 +1,53 @@
+{
+  "state": "COMPLETE_FUTURE_GHI_COT_ABLATION_SEED_RUN",
+  "seed": 44,
+  "arm": "ACRELWIN",
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "epochs": 30,
+  "batch_size": 1792,
+  "train_forecast_oof": true,
+  "forecast_bank_oof_fold_count": 5,
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "transform": "target future COT slot replaced by trapezoidal mean physical COT over (T-15min,T] from previous/current ACREL frames; log1p converted and original train normalization retained",
+  "calibration_sha256": "d1a0d104fc84c2223be5397a11d4e3730025475384880c8206c9f5420499645b",
+  "pack_manifest_sha256": "cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233",
+  "runs": [
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "n_train": 343079,
+      "n_val": 32159,
+      "best_val_rmse_wm2": 144.6865163169044,
+      "mae_wm2": 87.87549932855019,
+      "bias_wm2": 2.199584834553553,
+      "updates": 5760,
+      "elapsed_seconds": 43.205646098125726,
+      "checkpoint_sha256": "4907689387300b164314bfe4266ef36ed68f90cae39fb1cb3a14a175097ac192",
+      "predictions_sha256": "e840cf4184833fbd9a5848f86ce3c7ad4192de2944dfe374b3bc2f29bad0af8a",
+      "test_payload_opened": false
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "n_train": 371835,
+      "n_val": 34431,
+      "best_val_rmse_wm2": 116.2109958049457,
+      "mae_wm2": 79.21461972592557,
+      "bias_wm2": 9.059860907641896,
+      "updates": 6240,
+      "elapsed_seconds": 30.40783628122881,
+      "checkpoint_sha256": "75c0a29e68714bf2caa2c966c9fefcbfe3d9b090e12adfc921e27f5ff0f61104",
+      "predictions_sha256": "a195af372184bc49c0b66f205b63247b89104aa31c50005cd9b4c2505ad40faf",
+      "test_payload_opened": false
+    }
+  ],
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_inference_input": false,
+  "cpp_used_as_input": false
+}

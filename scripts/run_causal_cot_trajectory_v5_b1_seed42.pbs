@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -N hn_cot_v5_b1
+#PBS -q gpu
+#PBS -l nodes=node21:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/causal_cot_trajectory_v5_b1_seed42_20260919.log
+
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+FORECAST="$ROOT/data/forecast_cot_trajectory_trainval_20260918_v1"
+HISTORY="$ROOT/data/history_cot_trajectory_trainval_20260918_v1"
+INPUT="$ROOT/data/solarresnet_v5_input_trainval_20260918_v1"
+OUT="$ROOT/runs/causal_cot_trajectory_solarresnet_v5_b1_seed42_20260919"
+test -f "$FORECAST/audit.json"
+test -f "$HISTORY/audit.json"
+test -f "$INPUT/audit.json"
+test ! -e "$OUT"
+cd "$ROOT"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total --format=csv
+python -u scripts/train_causal_cot_trajectory_solarresnet_v5.py --root "$ROOT" --forecast-dir "$FORECAST" --history-dir "$HISTORY" --out "$OUT" --epochs 10 --batch 0 --seed 42 --allow-unverified-cpp
+echo CAUSAL_COT_TRAJECTORY_SOLARRESNET_V5_B1_SEED42_COMPLETE

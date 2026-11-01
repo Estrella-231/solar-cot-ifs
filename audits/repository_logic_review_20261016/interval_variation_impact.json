@@ -1,0 +1,89 @@
+{
+  "scope": "Observed three-frame AGRI synchronous validation; original frozen R; not forecast",
+  "criterion": "Range of three source 5-minute GHI interval values >100 W/m2",
+  "limitation": "Rapid variation is a proxy, not proof of CPP-clear/interval-cloud mismatch or a causal error fraction",
+  "source_sha256": "077830fb3a99a20891dbefd1b91af69dbc8765b22e6082c270ba6895286c6820",
+  "test_payloads_read": 0,
+  "groups": {
+    "all": {
+      "n": 4263,
+      "rapid_n": 673,
+      "rapid_pct": 15.787004456955195,
+      "rapid_dates": 44,
+      "scores": {
+        "A": {
+          "rapid_SSE_share_pct": 24.41938675679508,
+          "rapid_pooled_RMSE": 135.29316438043898,
+          "other_pooled_RMSE": 103.05616840100888,
+          "all_pooled_RMSE": 108.78232676110053
+        },
+        "AC": {
+          "rapid_SSE_share_pct": 24.14414914694953,
+          "rapid_pooled_RMSE": 134.2067628232647,
+          "other_pooled_RMSE": 102.99669715427896,
+          "all_pooled_RMSE": 108.52213122651742
+        }
+      }
+    },
+    "sili": {
+      "n": 2036,
+      "rapid_n": 388,
+      "rapid_pct": 19.05697445972495,
+      "rapid_dates": 37,
+      "scores": {
+        "A": {
+          "rapid_SSE_share_pct": 25.551114563200255,
+          "rapid_pooled_RMSE": 143.84215018505532,
+          "other_pooled_RMSE": 119.13725818782761,
+          "all_pooled_RMSE": 124.22477469104501
+        },
+        "AC": {
+          "rapid_SSE_share_pct": 25.55204071107449,
+          "rapid_pooled_RMSE": 143.47245894830937,
+          "other_pooled_RMSE": 118.82816873850182,
+          "all_pooled_RMSE": 123.90325688348699
+        }
+      }
+    },
+    "zhujia": {
+      "n": 2227,
+      "rapid_n": 285,
+      "rapid_pct": 12.79748540637629,
+      "rapid_dates": 35,
+      "scores": {
+        "A": {
+          "rapid_SSE_share_pct": 22.550620761897232,
+          "rapid_pooled_RMSE": 122.70081775113331,
+          "other_pooled_RMSE": 87.11140014932487,
+          "all_pooled_RMSE": 92.43374050050757
+        },
+        "AC": {
+          "rapid_SSE_share_pct": 21.82179147375303,
+          "rapid_pooled_RMSE": 120.45211479558756,
+          "other_pooled_RMSE": 87.33933944972524,
+          "all_pooled_RMSE": 92.24260306783655
+        }
+      }
+    },
+    "exclude_suspect_zero_sensitivity": {
+      "n": 4213,
+      "rapid_n": 673,
+      "rapid_pct": 15.97436506052694,
+      "rapid_dates": 44,
+      "scores": {
+        "A": {
+          "rapid_SSE_share_pct": 36.89558840350462,
+          "rapid_pooled_RMSE": 135.29316438043898,
+          "other_pooled_RMSE": 77.14795103254038,
+          "all_pooled_RMSE": 89.02263333711072
+        },
+        "AC": {
+          "rapid_SSE_share_pct": 36.70205468259872,
+          "rapid_pooled_RMSE": 134.2067628232647,
+          "other_pooled_RMSE": 76.84753112208041,
+          "all_pooled_RMSE": 88.54030517215239
+        }
+      }
+    }
+  }
+}

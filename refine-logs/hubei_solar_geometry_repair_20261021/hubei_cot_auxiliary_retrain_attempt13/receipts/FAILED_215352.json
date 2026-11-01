@@ -1,0 +1,13 @@
+{
+  "state": "FAILED_BEFORE_DATA_PREFLIGHT_AND_TRAINING",
+  "job_id": "215352.tc6000",
+  "exit_status": 1,
+  "pbs_allocation": "node22-gpu/1",
+  "nvidia_smi_index": 1,
+  "failure": "sitecustomize.py was at attempt root but not on interpreter startup path after conda activation, so timm 0.9.16 compatibility aliases were unavailable",
+  "stage_reached": "import smoke; before data preflight/profile/training",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "log": "../attempt13_retry2.log",
+  "repair": "install shim in attempt-local python_vendor, export PYTHONPATH after conda activation, and explicitly import sitecustomize in import smoke"
+}

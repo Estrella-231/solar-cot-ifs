@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "selected_batch": 8,
+  "trials": [
+    {
+      "batch": 4,
+      "peak_gib": 12.260511875152588,
+      "seconds_per_step": 0.19749940667922297,
+      "samples_per_second": 20.253225400807253,
+      "within_85pct_memory": true,
+      "loss": 2.018207550048828
+    },
+    {
+      "batch": 8,
+      "peak_gib": 24.369886875152588,
+      "seconds_per_step": 0.3711268085365494,
+      "samples_per_second": 21.555974443199357,
+      "within_85pct_memory": true,
+      "loss": 1.4678444862365723
+    },
+    {
+      "batch": 12,
+      "status": "OOM"
+    }
+  ],
+  "selection": "largest batch within 5% of peak compute throughput, <=85% GPU memory",
+  "reload_output_max_delta": 0.0,
+  "test_payloads_read": 0,
+  "device": "NVIDIA A100-SXM4-40GB",
+  "manifest_sha256": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2"
+}

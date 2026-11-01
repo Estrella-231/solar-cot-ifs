@@ -1,0 +1,307 @@
+{
+  "state": "COMPLETE_NEW_HUBEI_OBSERVATION_SOURCE_QC_NOT_RELEASED",
+  "source_sha256": "6fc4659bf382c21f5db87e27b17762acb8588929e4580502b7a3283c4e5ee300",
+  "source_original_path": "C:\\Users\\29728\\xwechat_files\\wxid_s79spdfmjaq912_2146\\msg\\file\\2026-10\\采集点天气数据_2026-07-15_2026-08-18.xlsx",
+  "source_copy_sha256": "6fc4659bf382c21f5db87e27b17762acb8588929e4580502b7a3283c4e5ee300",
+  "frozen_days_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "frozen_old_date_min": "2025-08-01",
+  "frozen_old_date_max": "2026-07-14",
+  "stations": [
+    {
+      "station": "wangzhai",
+      "sheet": "王寨供电所",
+      "rows": 46002,
+      "days": 35,
+      "first_timestamp": "2026-07-15 00:06:04",
+      "last_timestamp": "2026-08-18 17:33:10",
+      "unique_timestamps": 46002,
+      "extra_duplicate_rows": 0,
+      "conflicting_duplicate_timestamps": 0,
+      "source_order_decreases": 0,
+      "median_interval_seconds": 60.0,
+      "most_common_interval_seconds": 60.0,
+      "gaps_gt120_seconds": 302,
+      "max_gap_seconds": 21251.0,
+      "nonzero_timestamp_seconds_rows": 46002,
+      "GHI_missing": 0,
+      "GHI_negative": 0,
+      "GHI_gt1500_flag_only": 0,
+      "GHI_max": 1306.0,
+      "DHI_nonzero": 0,
+      "DNI_nonzero": 0,
+      "overlap_frozen_date_count": 0
+    },
+    {
+      "station": "mizhuang",
+      "sheet": "米庄供电所",
+      "rows": 33960,
+      "days": 26,
+      "first_timestamp": "2026-07-15 00:00:40",
+      "last_timestamp": "2026-08-09 17:55:43",
+      "unique_timestamps": 33960,
+      "extra_duplicate_rows": 0,
+      "conflicting_duplicate_timestamps": 0,
+      "source_order_decreases": 0,
+      "median_interval_seconds": 60.0,
+      "most_common_interval_seconds": 60.0,
+      "gaps_gt120_seconds": 231,
+      "max_gap_seconds": 17056.0,
+      "nonzero_timestamp_seconds_rows": 33960,
+      "GHI_missing": 0,
+      "GHI_negative": 0,
+      "GHI_gt1500_flag_only": 0,
+      "GHI_max": 1285.0,
+      "DHI_nonzero": 0,
+      "DNI_nonzero": 0,
+      "overlap_frozen_date_count": 0
+    },
+    {
+      "station": "niushou",
+      "sheet": "牛首供电所",
+      "rows": 46743,
+      "days": 35,
+      "first_timestamp": "2026-07-15 00:00:47",
+      "last_timestamp": "2026-08-18 17:32:31",
+      "unique_timestamps": 46743,
+      "extra_duplicate_rows": 0,
+      "conflicting_duplicate_timestamps": 0,
+      "source_order_decreases": 0,
+      "median_interval_seconds": 60.0,
+      "most_common_interval_seconds": 60.0,
+      "gaps_gt120_seconds": 441,
+      "max_gap_seconds": 8318.0,
+      "nonzero_timestamp_seconds_rows": 45874,
+      "GHI_missing": 0,
+      "GHI_negative": 0,
+      "GHI_gt1500_flag_only": 0,
+      "GHI_max": 1331.0,
+      "DHI_nonzero": 0,
+      "DNI_nonzero": 0,
+      "overlap_frozen_date_count": 0
+    }
+  ],
+  "sheet_schema": {
+    "王寨供电所": {
+      "headers_by_column": {
+        "A": "环境湿度",
+        "B": "露点温度",
+        "C": "环境湿度",
+        "D": "风向瞬时值",
+        "E": "风速瞬时值",
+        "F": "总辐射1瞬时值",
+        "G": "散辐射瞬时值",
+        "H": "直辐射瞬时值",
+        "I": "光合辐射瞬时值",
+        "J": "紫外辐射瞬时值",
+        "K": "总辐射1日累计",
+        "L": "散辐射日累计",
+        "M": "直辐射日累计",
+        "N": "光合辐射日累计",
+        "O": "紫外辐射日累计",
+        "P": "采集点",
+        "Q": "时间"
+      },
+      "duplicate_header_names": {
+        "环境湿度": 2
+      },
+      "formula_count": 0,
+      "fields": {
+        "GHI_F": {
+          "valid": 46002,
+          "missing_nonfinite": 0,
+          "zero": 19733,
+          "positive": 26269,
+          "negative": 0,
+          "min": 0.0,
+          "max": 1306.0,
+          "median": 32.0
+        },
+        "DHI_G": {
+          "valid": 46002,
+          "missing_nonfinite": 0,
+          "zero": 46002,
+          "positive": 0,
+          "negative": 0,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0
+        },
+        "DNI_H": {
+          "valid": 46002,
+          "missing_nonfinite": 0,
+          "zero": 46002,
+          "positive": 0,
+          "negative": 0,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0
+        },
+        "daily_cumulative_K": {
+          "valid": 46002,
+          "missing_nonfinite": 0,
+          "zero": 11,
+          "positive": 45991,
+          "negative": 0,
+          "min": 0.0,
+          "max": 26.66,
+          "median": 11.18
+        }
+      }
+    },
+    "米庄供电所": {
+      "headers_by_column": {
+        "A": "环境湿度",
+        "B": "露点温度",
+        "C": "环境湿度",
+        "D": "风向瞬时值",
+        "E": "风速瞬时值",
+        "F": "总辐射1瞬时值",
+        "G": "散辐射瞬时值",
+        "H": "直辐射瞬时值",
+        "I": "光合辐射瞬时值",
+        "J": "紫外辐射瞬时值",
+        "K": "总辐射1日累计",
+        "L": "散辐射日累计",
+        "M": "直辐射日累计",
+        "N": "光合辐射日累计",
+        "O": "紫外辐射日累计",
+        "P": "采集点",
+        "Q": "时间"
+      },
+      "duplicate_header_names": {
+        "环境湿度": 2
+      },
+      "formula_count": 0,
+      "fields": {
+        "GHI_F": {
+          "valid": 33960,
+          "missing_nonfinite": 0,
+          "zero": 14116,
+          "positive": 19844,
+          "negative": 0,
+          "min": 0.0,
+          "max": 1285.0,
+          "median": 45.0
+        },
+        "DHI_G": {
+          "valid": 33960,
+          "missing_nonfinite": 0,
+          "zero": 33960,
+          "positive": 0,
+          "negative": 0,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0
+        },
+        "DNI_H": {
+          "valid": 33960,
+          "missing_nonfinite": 0,
+          "zero": 33960,
+          "positive": 0,
+          "negative": 0,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0
+        },
+        "daily_cumulative_K": {
+          "valid": 33960,
+          "missing_nonfinite": 0,
+          "zero": 7828,
+          "positive": 26132,
+          "negative": 0,
+          "min": 0.0,
+          "max": 25.3,
+          "median": 7.49
+        }
+      }
+    },
+    "牛首供电所": {
+      "headers_by_column": {
+        "A": "环境湿度",
+        "B": "露点温度",
+        "C": "环境湿度",
+        "D": "风向瞬时值",
+        "E": "风速瞬时值",
+        "F": "总辐射1瞬时值",
+        "G": "散辐射瞬时值",
+        "H": "直辐射瞬时值",
+        "I": "光合辐射瞬时值",
+        "J": "紫外辐射瞬时值",
+        "K": "总辐射1日累计",
+        "L": "散辐射日累计",
+        "M": "直辐射日累计",
+        "N": "光合辐射日累计",
+        "O": "紫外辐射日累计",
+        "P": "采集点",
+        "Q": "时间"
+      },
+      "duplicate_header_names": {
+        "环境湿度": 2
+      },
+      "formula_count": 0,
+      "fields": {
+        "GHI_F": {
+          "valid": 46743,
+          "missing_nonfinite": 0,
+          "zero": 20511,
+          "positive": 26232,
+          "negative": 0,
+          "min": 0.0,
+          "max": 1331.0,
+          "median": 26.0
+        },
+        "DHI_G": {
+          "valid": 46743,
+          "missing_nonfinite": 0,
+          "zero": 46743,
+          "positive": 0,
+          "negative": 0,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0
+        },
+        "DNI_H": {
+          "valid": 46743,
+          "missing_nonfinite": 0,
+          "zero": 46743,
+          "positive": 0,
+          "negative": 0,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0
+        },
+        "daily_cumulative_K": {
+          "valid": 46743,
+          "missing_nonfinite": 0,
+          "zero": 11071,
+          "positive": 35672,
+          "negative": 0,
+          "min": 0.0,
+          "max": 25.1,
+          "median": 5.25
+        }
+      }
+    }
+  },
+  "date_count_union": 35,
+  "time_timezone_confirmed": false,
+  "radiation_units_confirmed": false,
+  "sampling_vs_receipt_time_confirmed": false,
+  "formal_15minute_labels_built": false,
+  "models_loaded": false,
+  "training_started": false,
+  "prediction_scores_computed": false,
+  "old_test_payload_opened": false,
+  "old_buffer_payload_opened": false,
+  "historical_noncontact_audit_complete": false,
+  "script_sha256": "4a51b98c4e698d9bd990da456433780bba5b9d693919129c7142038fc7f6b1f1",
+  "artifacts": {
+    "daily_quality.csv": "db22eb6a787a1249f727111c3216351b180d57b79fe003ada4b4b160f49c5f18",
+    "duplicate_timestamps.csv": "2ebe41362c25d4e568cb320e7002360c1b7b2945813db74d0064f79d3bb73872",
+    "sheet_provenance.csv": "3296f483a99704a36a8dc8b551b8336d3ff1e569aed0da091b6e61a7cec5a0a1",
+    "source_records_audit_only.csv": "2d4a942963ea59f87ae1631904672c18ecdc0114dac7f1e4841940603123d1b7",
+    "station_summary.csv": "f6e3e5b29cf5ee4ca760b13c35576bb71fa91d49173c912e0ad379b317fa945b",
+    "time_gaps_gt120s.csv": "f8c1825a6a4e5f399085aeca491bb3d7ea24f812c9bffb0b36e3c9b9ac3ec959",
+    "新观测质量核查.xlsx": "07900c7d68d93d64d4b2a2232d784c9598e5ffcb5f2ba5eacc773c97e9ccd44a"
+  }
+}

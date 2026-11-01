@@ -1,0 +1,76 @@
+#!/bin/bash
+#PBS -N hb_oof_fold
+#PBS -q gpu
+#PBS -l nodes=1:ppn=12:gpus=3
+#PBS -l walltime=36:00:00
+#PBS -j oe
+set -euo pipefail
+
+# Submit once per fold with HUBEI_OOF_FOLD=2,3,4. The requested PBS node may
+# be overridden at qsub time (e.g. nodes=node21:ppn=12:gpus=3) to spread folds.
+: "${HUBEI_OOF_FOLD:?set HUBEI_OOF_FOLD to one of 2,3,4 using qsub -v}"
+case "$HUBEI_OOF_FOLD" in 2|3|4) ;; *) echo "INVALID_FOLD=$HUBEI_OOF_FOLD" >&2; exit 2 ;; esac
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017
+CONTROL="$ROOT/control"
+RUNROOT="$ROOT/oof_training"
+REPO=/public/home/slfu/ttzhou/swc/irradiance_forecast/baseline_cot_20260601_20260714_20260723/code/SimVPv2
+TRAINER="$CONTROL/run_hubei_simvp_frozen.py"
+PY=/public/home/slfu/miniconda3/envs/swc/bin
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+exec > "$ROOT/fold${HUBEI_OOF_FOLD}_${PBS_JOBID//./_}.pbs.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+
+test -f "$ROOT/stage_verification_receipt.json"
+test -f "$CONTROL/pbs_fold_input_receipt.json"
+test -f "$TRAINER" && test -f "$REPO/tools/train.py"
+FOLD="$HUBEI_OOF_FOLD" "$PY/python" - <<'PY'
+import json, os
+root = "/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017"
+fold = int(os.environ["FOLD"])
+stage = json.load(open(os.path.join(root, "stage_verification_receipt.json")))
+inputs = json.load(open(os.path.join(root, "control/pbs_fold_input_receipt.json")))
+assert stage["status"] == "PBS_TRAINVAL_STAGE_SHA256_AND_INDEX_REBASE_PASSED_TEST_CLOSED"
+assert stage["test_sequences"] == 0 and stage["test_or_buffer_payloads_staged"] == 0
+assert inputs["status"] == "PBS_FOLD_INPUTS_REBASED_TEST_CLOSED"
+assert fold in {x["fold"] for x in inputs["folds"]}
+print(f"HUBEI_OOF_PBS_PREFLIGHT_PASS test_closed=1 fold={fold}")
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+GPU_COUNT=$(awk -F, '{print NF}' <<< "$GPU_IDS")
+test "$GPU_COUNT" -eq 3
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+NODE=$(hostname)
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.total,memory.used --format=csv
+
+FOLD_DIR="$CONTROL/fold_${HUBEI_OOF_FOLD}"
+CONFIG="$FOLD_DIR/hbagri_simvp_oof_fold${HUBEI_OOF_FOLD}_seed42_20261016_pbs.py"
+NORM="$FOLD_DIR/simvp_train_only_norm.npz"
+INDEX="$FOLD_DIR/simvp_trainval_index_pbs.csv"
+RUN="$RUNROOT/runs/S_oof_fold${HUBEI_OOF_FOLD}_seed42_20261016_pbs${PBS_JOBID//./_}"
+test -f "$CONFIG" && test -f "$NORM" && test -f "$INDEX"
+test ! -e "$RUN"
+mkdir -p "$RUN/cwd"
+{
+  echo "pbs_job_id=$PBS_JOBID"
+  echo "host=$NODE"
+  echo "fold=$HUBEI_OOF_FOLD"
+  echo "visible_physical_gpu_ids=$GPU_IDS"
+  echo "torchrun_local_world_size=3"
+  echo "index_sha256=$(sha256sum "$INDEX" | awk '{print $1}')"
+  echo "norm_sha256=$(sha256sum "$NORM" | awk '{print $1}')"
+  echo "config_sha256=$(sha256sum "$CONFIG" | awk '{print $1}')"
+  echo "trainer_sha256=$(sha256sum "$TRAINER" | awk '{print $1}')"
+} > "$RUN/launch_manifest.txt"
+export SIMVP_REPO="$REPO" HUBEI_SIMVP_CONFIG="$CONFIG" HUBEI_SIMVP_NORM="$NORM"
+export HUBEI_SIMVP_RUN_CWD="$RUN/cwd" CUDA_VISIBLE_DEVICES="$GPU_IDS"
+cd "$RUN/cwd"
+"$PY/torchrun" --standalone --nnodes=1 --nproc_per_node=3 \
+  "$TRAINER" --dist --gpus 0 1 2 --res_dir "$RUNROOT/runs" \
+  --ex_name "S_oof_fold${HUBEI_OOF_FOLD}_seed42_20261016_pbs${PBS_JOBID//./_}"

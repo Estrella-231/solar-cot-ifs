@@ -1,0 +1,44 @@
+{
+  "state": "PILOT_RUNNING",
+  "test_used": false,
+  "seed": 42,
+  "source_script_sha256": "08b2ea86033cdc7a9c630130c20d22d6700f84417ee391f0622184fbe00a117b",
+  "frozen_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+  "pack_hashes": {
+    "x_raw.npy": "d2a8088476ccbe8971a770dbe0d20d3b5379e89dfb1a4bc227c6082ef75f345d",
+    "target.npy": "e7e330fd7245212ff09b58f0cbb841a60020e583f4e4121e90b76958d595ba33",
+    "mask.npy": "c134bc31d54cbbab89523a9825bf32cefc226d89b75d85bf6c588295b63547c4",
+    "rows.csv": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69",
+    "norm.json": "affb70cf0d645402adf6cef89311eb34599074d1856f447fcfd2cb2f3e6b1328",
+    "test_references.csv": "31397b92fc8bbfd42bf80c62796b08f7206a288d311c8f77483f827a83da0e9f",
+    "pack_config.json": "0315e81dadf012edcb75ccfbda7eb7393e68309e8ff3b9ffe349f687598bbda8"
+  },
+  "train_rows": 11978,
+  "validation_rows": 6536,
+  "train_valid_pixels": 3047708,
+  "train_cloud_fraction": 0.7184753263764114,
+  "nonfinite_input_values_imputed": 0,
+  "class_threshold_cpp_cot": 0.1,
+  "threshold_definition": "CPP COT<0.1 is near-zero; COT>=0.1 is cloud class, not a meteorological clear-sky label",
+  "stages": [
+    "freeze original R feature extractor and train classifier on train labels only",
+    "freeze selected classifier and feature extractor; train separate low/cloud regressors on matching train classes"
+  ],
+  "inference": "hard class decision at fixed p_cloud>=0.5 selects low or cloud regression head",
+  "regressor_scale": "log1p(COT); low output constrained [0,log1p(0.1)]; cloud output constrained [log1p(0.1),infinity)",
+  "classifier_epochs": 24,
+  "regressor_epochs": 24,
+  "batch": 256,
+  "classifier_optimizer": "AdamW lr=0.001 weight_decay=1e-4; masked natural-frequency BCE",
+  "regressor_optimizer": "AdamW lr=0.0001 weight_decay=1e-4; equal-class masked Huber delta=0.1",
+  "selection": "classifier: lowest validation Brier; regressors: same balanced four-stratum normalized RMSE for final hard-gated prediction",
+  "retention_limits": {
+    "clear_cot_lt0p1_rmse": 0.7711762542248346,
+    "cot_rmse": 4.246164397624913,
+    "high_cot_ge30_rmse": 11.949837608746112,
+    "station_5x5_rmse": 3.943565921165888
+  },
+  "input_domain": "observed real AGRI train/validation only; no forecast AGRI",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "pbs_job_id": "210466.tc6000"
+}

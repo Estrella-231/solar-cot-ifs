@@ -1,0 +1,74 @@
+#!/bin/bash
+#PBS -N simvp_sup_abc
+#PBS -q gpu
+#PBS -l nodes=node23:ppn=24:gpus=3
+#PBS -l walltime=12:00:00
+#PBS -j oe
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hunan_monthly_block_20261002
+EXP=$PROJECT/experiments/hunan_simvp_supervision_20261003_v2
+CODE=$EXP/code
+SOURCE=$BASE/code
+OUT=$EXP/results_v2
+CACHE=/tmp/slfu_simvp_supervision_f6703ed5
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+
+if [ -e "$OUT/launch.lock" ]; then
+  echo "REFUSE: output already has a launch.lock"
+  exit 21
+fi
+mkdir -p "$OUT" "$CACHE"
+touch "$OUT/launch.lock"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+sha256sum -c "$EXP/deployment.sha256"
+python -m py_compile "$CODE/simvp_supervision_losses_20261003.py" "$CODE/train_simvp_supervision_20261003.py"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node23-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+mapfile -t GPUS <<< "$GPU_TEXT"
+if [ "${#GPUS[@]}" -ne 3 ]; then
+  echo "REFUSE: expected exactly 3 GPUs assigned on node23, got ${#GPUS[@]}: $GPU_TEXT"
+  exit 22
+fi
+echo "PBS_JOBID=$PBS_JOBID GPU_IDS=${GPUS[*]} NODE=$(hostname)"
+nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+CKPT=$CACHE/epoch10_best.pt
+if [ ! -f "$CKPT" ]; then
+  cp "$BASE/runs/simvp_seed42_v1/training/best.pt" "$CKPT.tmp"
+  mv "$CKPT.tmp" "$CKPT"
+fi
+echo "checkpoint_sha256=$(sha256sum "$CKPT" | cut -d' ' -f1)"
+test "$(sha256sum "$CKPT" | cut -d' ' -f1)" = f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4
+
+ARGS=(--root "$DATA" --cache "$CACHE/frames" \
+  --source "$SOURCE" --manifests "$BASE/manifests_v1" --checkpoint "$CKPT" --output "$OUT" --workers 4)
+export CUDA_VISIBLE_DEVICES="${GPUS[0]}"
+python -u "$CODE/train_simvp_supervision_20261003.py" --mode preflight "${ARGS[@]}"
+
+ARMS=(A B C)
+PIDS=()
+for i in 0 1 2; do
+  (
+    export CUDA_VISIBLE_DEVICES="${GPUS[$i]}"
+    python -u "$CODE/train_simvp_supervision_20261003.py" --mode arm --arm "${ARMS[$i]}" "${ARGS[@]}" \
+      > "$OUT/arm_${ARMS[$i]}_stdout.log" 2>&1
+  ) &
+  PIDS+=("$!")
+done
+set +e
+STATUS=0
+for PID in "${PIDS[@]}"; do
+  wait "$PID" || STATUS=1
+done
+set -e
+if [ "$STATUS" -ne 0 ]; then
+  echo "ONE_OR_MORE_ARMS_FAILED"
+  exit 23
+fi
+echo "ALL_ARMS_COMPLETE test_payloads_read=0"

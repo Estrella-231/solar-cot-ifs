@@ -1,0 +1,52 @@
+{
+  "state": "READY_WITH_EXPLICIT_SOURCE_TIME_QUARANTINE",
+  "rows": 54461,
+  "counts": {
+    "train/sili": 23936,
+    "train/zhujia": 26062,
+    "val/sili": 2124,
+    "val/zhujia": 2339
+  },
+  "context_missing": 476,
+  "scan_errors": 5,
+  "unique_scan_files": 30864,
+  "weight_min": [
+    0.015622135602473919,
+    0.6092223543768873,
+    0.25435275809084057
+  ],
+  "weight_max": [
+    0.049568084257357946,
+    0.699209495568041,
+    0.3751544191201558
+  ],
+  "analytic_witness": {
+    "constant_signal_error": 0.0,
+    "linear_signal_error": 5.684341886080802e-14
+  },
+  "test_payloads_read": 0,
+  "mode": "metadata_only_observed_same_time_offline",
+  "limit_per_station_split": 0,
+  "prior_builder_state": "INCOMPLETE_SCAN_METADATA",
+  "quarantined_source_times": [
+    "2024-05-24 04:15:00",
+    "2025-08-06 02:15:00",
+    "2025-10-16 04:45:00",
+    "2025-11-22 06:00:00",
+    "2026-05-14 09:30:00"
+  ],
+  "exclusion_counts": {
+    "missing_same_split_context": 458,
+    "unreadable_scan_metadata": 18,
+    "source_error": 5
+  },
+  "candidate_qc1_counts": {
+    "train/sili": 23597,
+    "train/zhujia": 25550,
+    "val/sili": 2088,
+    "val/zhujia": 2323
+  },
+  "source_time_exception_audit": "time_exceptions_raw.json",
+  "unhandled_source_errors": 0,
+  "training_pack_ready": false
+}

@@ -1,0 +1,26 @@
+{
+  "source_csv": "fig7_forecast_cot_metrics_20261017.csv",
+  "source_csv_sha256": "bd692262025e854d7fe9d4de592a8681ab93f1e7c50a934eda68cf0fa651ec08",
+  "support": "CPP-valid pixels only; common station x target-time x pixel masks; local 3x3 neighbourhood",
+  "aggregation": "pooled valid-pixel COT RMSE and CSI by station and +15 to +240 min lead",
+  "methods": [
+    "original_simvp",
+    "mse_finetune",
+    "temporal_delta",
+    "spatial_gradient",
+    "persistence_r"
+  ],
+  "uncertainty_displayed": false,
+  "uncertainty_note": "The sparse CPP reference supports date-block intervals only for the pre-specified aggregate comparisons; per-lead lines are point estimates.",
+  "split": "validation only; 3140 windows; 0 test payload reads",
+  "formats": [
+    "PDF",
+    "PNG",
+    "SVG"
+  ],
+  "dimensions_mm": [
+    180,
+    132
+  ],
+  "matplotlib": "3.10.8"
+}

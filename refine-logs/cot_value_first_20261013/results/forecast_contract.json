@@ -1,0 +1,62 @@
+{
+  "task": "T19",
+  "state": "SOURCE_AUDITED_INFERENCE_PENDING",
+  "scope": "new monthly Hunan train/validation only; no test payload",
+  "source": {
+    "model": "SimVPBackbone, Hunan monthly seed 42",
+    "remote_run_directory": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hunan_monthly_block_20261002/runs/simvp_seed42_v1/training",
+    "checkpoint": "best.pt",
+    "checkpoint_sha256_live_verified": "f255da84cd57f058cdbbcc09204123366055e7b0e94310a79708295e11c50ec4",
+    "checkpoint_file_size_bytes": 131910246,
+    "completion_record": {
+      "epochs": 12,
+      "steps": 52980,
+      "best_equal_season_validation_pixel_rmse": 0.36881495124450603,
+      "test_payloads_read": 0
+    },
+    "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+    "split_manifest_sha256": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2",
+    "normalization_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+    "code_sha256": {
+      "training": "9a34309b6af4d7debd2f7343c9266e9225df098e96fe699ab31b07c5d9188992",
+      "simvp": "2e0d280f7962a77f0c9b7e4cc817fed21d142c1436a12eb858e3234485313d16",
+      "data": "f4b4aab55101bde575f474d5daa4a184466c16399b401c2ac67bf666c5f28b91",
+      "geometry_adapter": "9273447d357bad92bcf3cd976b65fb4c440187da456fb56d5f36ded349c681eb",
+      "sequence_adapter": "8915b988d9db1b52d01a0c6cab9a7ee16bbde70835ebf6f6bf11732a9ee11502"
+    },
+    "training_contract": {
+      "initialization": "random",
+      "epochs": 12,
+      "batch": 8,
+      "history_frames": 8,
+      "forecast_frames": 16,
+      "input_agri_channels": 13,
+      "geometry_contract": "history_8_then_target_16_v2",
+      "old_checkpoint_loaded": false
+    }
+  },
+  "forecast_contract": {
+    "init_time": "last observed history frame",
+    "target_leads_minutes": [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240],
+    "geometry_order": "indices 0..7 correspond to 8 history frames; indices 8..23 correspond one-to-one to future leads +15..+240 min",
+    "validation_windows": 3140,
+    "train_windows": 35320,
+    "output": "16 predicted normalized AGRI frames, 13 channels; invert train-only normalization before applying the frozen monthly R model",
+    "required_reference": "R applied to observed future AGRI on the same validation window/lead and common CPP-valid support; this is a retrieval reference, not independent cloud-thickness truth",
+    "required_baselines": ["COT persistence from init-time R(history AGRI)", "existing causal transport baseline, if exact code/source and support can be recovered"],
+    "metrics": ["physical COT RMSE/MAE/bias per lead", "station pixel", "3x3 neighborhood", "regional field separately", "coverage/common support", "COT>=30 miss/false-alarm", "peak amplitude and arrival-time diagnostics"]
+  },
+  "live_resource_observation": {
+    "host": "tc6000",
+    "pbs_query_time_bjt": "2026-10-13 (during this audit)",
+    "unfinished_slfu_job_observed": "213850.tc6000, R",
+    "action": "read-only audit only; no job submitted"
+  },
+  "remaining_T19_gates": [
+    "Implement/reuse an inference writer that emits one row per (split, init_time, lead, target_time), with forecast output and target-time geometry aligned exactly.",
+    "Verify forecast output inversion to physical AGRI and R input normalization against a one-batch reference-frame replay.",
+    "Freeze validation scoring support from CPP quality/day/AGRI validity without using future observed AGRI as a model input.",
+    "Identify and hash the existing causal transport baseline or mark that baseline unavailable; do not invent a replacement under its name."
+  ],
+  "test_payload_opened": false
+}

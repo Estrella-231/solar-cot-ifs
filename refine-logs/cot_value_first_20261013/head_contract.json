@@ -1,0 +1,69 @@
+{
+  "schema": "cot_value_first_local_ghi_head_contract_v1",
+  "state": "NEW_MONTHLY_R_BANK_COMPLETE_GHI_PACK_BUILDING",
+  "scope": "same-time real-AGRI to station GHI retrieval; two Hunan stations",
+  "target": {
+    "quantity": "15-minute interval mean kt = mean(GHI)/mean(clear_sky_GHI)",
+    "interval": "(target_time-15min,target_time]",
+    "GHI_records": "target_time-10min, -5min, target_time (5-minute interval-ending records)",
+    "clear_sky": "Ineichen at corresponding interval midpoints; mean over same three intervals",
+    "loss": "MSE((pred_kt * interval_mean_clear_sky_GHI - observed_GHI)/1000)",
+    "readout": "softplus kt"
+  },
+  "input": {
+    "agri": "13 Hunan AGRI channels, station-centered 3x3 at real target time",
+    "geometry": [
+      "cosSOZ",
+      "cosRAA"
+    ],
+    "geometry_shape": "[B,2,3,3]",
+    "day_mask": "sample eligibility only (station SZA<90deg), not an image channel",
+    "cot": "AC only: co-registered physical COT 3x3 from the accepted R on the same real AGRI frame",
+    "agri_shape": "[B,13,3,3]",
+    "cot_shape": "[B,1,3,3]",
+    "normalization": "AGRI and COT train-only statistics, one COT log1p transform; no per-image centering or spatial averaging"
+  },
+  "architecture": {
+    "shared_spatial_encoder": "Conv2d(15,32,1)+SiLU+Conv2d(32,32,1)+SiLU; preserves all 9 positions",
+    "aux_encoder": "AC: Conv2d(1,4,1)+SiLU on COT; AP: Conv2d(32,4,1)+SiLU on AGRI/geometry features",
+    "readout": "fixed row-major flatten of spatial feature planes; Linear(width*9,64)+SiLU+Linear(64,32)+SiLU+Linear(32,1)+Softplus",
+    "pooling": "none"
+  },
+  "arms": {
+    "R-A": {
+      "inputs": "AGRI+geometry",
+      "parameters": 22177
+    },
+    "R-AC": {
+      "inputs": "AGRI+geometry+COT",
+      "parameters": 24489
+    },
+    "R-AP": {
+      "inputs": "AGRI+geometry+AGRI-derived auxiliary spatial features",
+      "parameters": 24613
+    }
+  },
+  "parameter_match": "R-AC vs R-AP = 0.51% difference",
+  "training": {
+    "optimizer": "AdamW",
+    "initial_lr": 0.001,
+    "weight_decay": 0.0001,
+    "schedule": "cosine to 1e-5",
+    "gradient_clip_norm": 5,
+    "epochs": 30,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "sample_budget": "same station, target keys, order and updates across paired arms; no arm-specific early stop"
+  },
+  "preexisting_cpu_witness": "windows/window_2/head_witness_v0.json; synthetic CPU prototype passed shape, finite output, COT dependency/gradient and parameter match",
+  "limitations": [
+    "The new monthly R was trained from random initialization on the new monthly train/validation split and passed independent FP64 rescoring against CPP-supported validation labels; it is not independently verified physical truth.",
+    "The new-R COT bank is complete for 55,733 unique train/validation frames with zero source errors; its checkpoint and candidate hashes are recorded in bank_manifest.json.",
+    "The matched GHI-head pack will join samples by (station,target_time_utc), use the main train/validation mask, preserve 3x3 spatial positions, and fit AGRI/COT normalization on train samples only.",
+    "The matched pack is being materialized by PBS 213781.tc6000. No GHI head training has started; a single-card profile will determine the common batch before the matched seed42 pilot."
+  ],
+  "test_used": false
+}

@@ -1,0 +1,309 @@
+{
+  "state": "HUBEI_AL_NORMRELOAD_CROSSRUN_KEYED_RECHECK_PASS_TEST_CLOSED",
+  "scope": "fixed validation only; same-time station GHI estimate, not forecast skill or independent test",
+  "provenance": {
+    "pack_report_sha256": "e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515",
+    "split_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+    "feature_report_sha256": "317e6a47714608af74bc219a27e023212f398aaba045975eb06077f089c1cc40",
+    "baseline_coldstart_audit_sha256": "eb72f580dabc3c523f7651cb1f70b936a296dc516046ebc35ce3ac42d1f65cde"
+  },
+  "n_keyed_bundles_checked": 36,
+  "n_validation_rows_by_station": {
+    "Niushou": 856,
+    "Wangzhai": 784,
+    "Mizhuang": 816
+  },
+  "test_payloads_read": 0,
+  "metrics_station_equal_seed_equal": {
+    "A": {
+      "rmse_wm2": 74.33330054084233,
+      "mae_wm2": 53.60935997514412,
+      "bias_wm2": 19.647065207192863,
+      "r2": 0.9339807236990626
+    },
+    "AC": {
+      "rmse_wm2": 70.99308242019711,
+      "mae_wm2": 50.91423034970433,
+      "bias_wm2": 12.881900188385458,
+      "r2": 0.9400074987895439
+    },
+    "AP": {
+      "rmse_wm2": 73.83922213660561,
+      "mae_wm2": 53.04042233509203,
+      "bias_wm2": 18.660145862901594,
+      "r2": 0.9347854752287142
+    },
+    "AL": {
+      "rmse_wm2": 71.08974315789392,
+      "mae_wm2": 50.98694326584712,
+      "bias_wm2": 12.828057430722316,
+      "r2": 0.93988786805302
+    }
+  },
+  "rmse_deltas_wm2": {
+    "AC_minus_A": -3.3402181206452184,
+    "AC_minus_AP": -2.8461397164085014,
+    "AL_minus_A": -3.24355738294841,
+    "AL_minus_AP": -2.749478978711693,
+    "AC_minus_AL": -0.0966607376968085
+  },
+  "claim_boundary": [
+    "All results use validation data involved in model selection.",
+    "AL adds frozen R dec1 features and is a feature-capacity control, not physical COT.",
+    "No future forecast skill claim follows from this same-time experiment."
+  ],
+  "checked_bundles": [
+    {
+      "seed": 42,
+      "station": "Niushou",
+      "arm": "A",
+      "n": 856,
+      "bundle_sha256": "21132a80ac1ba53174ca4a60a256ce415a6e7118b927bd865bbe059e4107ca26"
+    },
+    {
+      "seed": 42,
+      "station": "Niushou",
+      "arm": "AC",
+      "n": 856,
+      "bundle_sha256": "a715b484e74962256b42192418d3dd9a9621b7c62c642208084f33f6b55b4c54"
+    },
+    {
+      "seed": 42,
+      "station": "Niushou",
+      "arm": "AP",
+      "n": 856,
+      "bundle_sha256": "481dd7d0a45d4c6a6e908b537dff80d84c3e80546723455ed3a23273f2ce00e3"
+    },
+    {
+      "seed": 42,
+      "station": "Niushou",
+      "arm": "AL",
+      "n": 856,
+      "bundle_sha256": "1ee7ca33fd990bf05ca7d57c321b33eca39046af3b9fbe5f237163efb9812ebc"
+    },
+    {
+      "seed": 42,
+      "station": "Wangzhai",
+      "arm": "A",
+      "n": 784,
+      "bundle_sha256": "1a8576ad736fe74adbcdeb7638ac739f0043623c8e844993a0b9ad6de676ae31"
+    },
+    {
+      "seed": 42,
+      "station": "Wangzhai",
+      "arm": "AC",
+      "n": 784,
+      "bundle_sha256": "19d240ebc4bfe79e46c053377e112f57ec7762b4f7edca257a6c14aaf90bf35d"
+    },
+    {
+      "seed": 42,
+      "station": "Wangzhai",
+      "arm": "AP",
+      "n": 784,
+      "bundle_sha256": "11171236bfdd25240539fb27346994e66b54a7cae670034649249f7249cfda45"
+    },
+    {
+      "seed": 42,
+      "station": "Wangzhai",
+      "arm": "AL",
+      "n": 784,
+      "bundle_sha256": "1a30a3d8bb19ed54b0a587bfea5de6b189441fca70105cc71ebe38dd9a546a50"
+    },
+    {
+      "seed": 42,
+      "station": "Mizhuang",
+      "arm": "A",
+      "n": 816,
+      "bundle_sha256": "ef080925aa962179059526522ff0afa95a676f77e7e915c321190515cae9b245"
+    },
+    {
+      "seed": 42,
+      "station": "Mizhuang",
+      "arm": "AC",
+      "n": 816,
+      "bundle_sha256": "cffae2a6c0ffcdc34c6015dfc51578f84aefc83b404a042a0092ab39fde2819e"
+    },
+    {
+      "seed": 42,
+      "station": "Mizhuang",
+      "arm": "AP",
+      "n": 816,
+      "bundle_sha256": "aa5dcfb62c8ee9ac6c660fac80a6f540be029aee1b817cd791f1e4115a7d73a9"
+    },
+    {
+      "seed": 42,
+      "station": "Mizhuang",
+      "arm": "AL",
+      "n": 816,
+      "bundle_sha256": "b358fcb184585c516ff64e8d575d536708e4644b15c84bcab7a27ae5c9294aa1"
+    },
+    {
+      "seed": 43,
+      "station": "Niushou",
+      "arm": "A",
+      "n": 856,
+      "bundle_sha256": "a2bafc1cb24dfbbfd24e18a9416e5dcb030ad80ae8068fd280784de9c21eefcd"
+    },
+    {
+      "seed": 43,
+      "station": "Niushou",
+      "arm": "AC",
+      "n": 856,
+      "bundle_sha256": "7b0525d73647984df8eb742d1b75f8aab5e0d73ffbc7b50d032d0a78a147580a"
+    },
+    {
+      "seed": 43,
+      "station": "Niushou",
+      "arm": "AP",
+      "n": 856,
+      "bundle_sha256": "d95ca19ac270cce24ffbec1ee3ca88e9fb3d0cac2a811e7a49dedd0943bc64da"
+    },
+    {
+      "seed": 43,
+      "station": "Niushou",
+      "arm": "AL",
+      "n": 856,
+      "bundle_sha256": "837886c1207ee163291c02740f574d878017c11f016582df993ad8602e09d4a0"
+    },
+    {
+      "seed": 43,
+      "station": "Wangzhai",
+      "arm": "A",
+      "n": 784,
+      "bundle_sha256": "c131523992934d6cc786ee21e464d09290e14eda7ee3f21d13e21a1ee0e88df5"
+    },
+    {
+      "seed": 43,
+      "station": "Wangzhai",
+      "arm": "AC",
+      "n": 784,
+      "bundle_sha256": "bf209427ac7c86a3fd2f9513ffa86e2ab51231071b05d9c5345090772816d98f"
+    },
+    {
+      "seed": 43,
+      "station": "Wangzhai",
+      "arm": "AP",
+      "n": 784,
+      "bundle_sha256": "246aab12f5c34b737d4cc0657983f3eb3ae67caaa6cf0f8452229cb9e2f1c25a"
+    },
+    {
+      "seed": 43,
+      "station": "Wangzhai",
+      "arm": "AL",
+      "n": 784,
+      "bundle_sha256": "e38c1291fe2be133330d40c09445239a969fc44e97daf47b0378bdcfa75b6ece"
+    },
+    {
+      "seed": 43,
+      "station": "Mizhuang",
+      "arm": "A",
+      "n": 816,
+      "bundle_sha256": "eae7adc871035485e4ff21ac18d68ffd342d7cbdcc3579eb1723ac4175c94545"
+    },
+    {
+      "seed": 43,
+      "station": "Mizhuang",
+      "arm": "AC",
+      "n": 816,
+      "bundle_sha256": "214b615c3954e7be5235af8b10345a65c22a15fb5b12e82280744abedc711c82"
+    },
+    {
+      "seed": 43,
+      "station": "Mizhuang",
+      "arm": "AP",
+      "n": 816,
+      "bundle_sha256": "bfcf632bd05565369772ad30838d70bb064a2f8cf7f66841a556aef491ce7ae1"
+    },
+    {
+      "seed": 43,
+      "station": "Mizhuang",
+      "arm": "AL",
+      "n": 816,
+      "bundle_sha256": "4829810f3bea71f750998d1c7ecc5736a9e59aa8c563d9f6ddfc70966d44b8f3"
+    },
+    {
+      "seed": 44,
+      "station": "Niushou",
+      "arm": "A",
+      "n": 856,
+      "bundle_sha256": "3a9b29b2534e810b233290fcbd5ab5b5b143a4c763b6757ffaa66b6c1a60034b"
+    },
+    {
+      "seed": 44,
+      "station": "Niushou",
+      "arm": "AC",
+      "n": 856,
+      "bundle_sha256": "c9eeae867a15ccdedd73f0b93b5711969de7739d04ec5f12fc60fe588cbb7120"
+    },
+    {
+      "seed": 44,
+      "station": "Niushou",
+      "arm": "AP",
+      "n": 856,
+      "bundle_sha256": "48c2db9f6cb7889c1c56a8c90436d5ef343af7a895253b1653906c851ce69a19"
+    },
+    {
+      "seed": 44,
+      "station": "Niushou",
+      "arm": "AL",
+      "n": 856,
+      "bundle_sha256": "7d289eef16030fbebad4f2aa9d9cd5fc1f58711276be229e85dd2cfaae70edc3"
+    },
+    {
+      "seed": 44,
+      "station": "Wangzhai",
+      "arm": "A",
+      "n": 784,
+      "bundle_sha256": "b77c69267805635bd45dba7165ae25607f2ac75ab926188dac5e59c9293d4982"
+    },
+    {
+      "seed": 44,
+      "station": "Wangzhai",
+      "arm": "AC",
+      "n": 784,
+      "bundle_sha256": "8798b12fdf66fe175ac0e7d86d7761f1654c2bb034d2e7481c23457e1dc30995"
+    },
+    {
+      "seed": 44,
+      "station": "Wangzhai",
+      "arm": "AP",
+      "n": 784,
+      "bundle_sha256": "00b1693d03be3bf2058e3459c322449b7871fb4a81a7dc45dc35842ca01bb693"
+    },
+    {
+      "seed": 44,
+      "station": "Wangzhai",
+      "arm": "AL",
+      "n": 784,
+      "bundle_sha256": "d4f10925723e1597d81335344ac31c1d9a77ecf2783c3e5689d057a174b69fde"
+    },
+    {
+      "seed": 44,
+      "station": "Mizhuang",
+      "arm": "A",
+      "n": 816,
+      "bundle_sha256": "fb9064c1ea28bd1f999ef8a65bbac6c7366a0e68135e59e4e48958bf3b00e2f5"
+    },
+    {
+      "seed": 44,
+      "station": "Mizhuang",
+      "arm": "AC",
+      "n": 816,
+      "bundle_sha256": "0d12a6a0732753820e96db073b94f83d2e04139f3cf8756ef1e983a2d13b0192"
+    },
+    {
+      "seed": 44,
+      "station": "Mizhuang",
+      "arm": "AP",
+      "n": 816,
+      "bundle_sha256": "a480bccf21e04222dc047a49eb5aea5416bd060ea6c0d00618dacce0ed18ae51"
+    },
+    {
+      "seed": 44,
+      "station": "Mizhuang",
+      "arm": "AL",
+      "n": 816,
+      "bundle_sha256": "ca13a404b4df2d9f120be6abf83310af7d47cd93fe11fec54b331ffb3c975091"
+    }
+  ]
+}

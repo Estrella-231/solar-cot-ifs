@@ -1,0 +1,189 @@
+{
+  "state": "COMPLETE_DIRECT_COT_INTERVAL_SUPPORT_H_CV_SCORE",
+  "evidence_tier": "repeatedly used outer-training H internal CV; exploratory, not confirmation",
+  "run_manifest_sha256": "4193685798022fc40fdb228441d9e757cf185e156873a3cc2916b78c3f5e7625",
+  "comparisons": {
+    "interval3_minus_endpoint3": [
+      "interval3",
+      "endpoint3"
+    ],
+    "interval3_minus_none": [
+      "interval3",
+      "none"
+    ],
+    "endpoint3_minus_none": [
+      "endpoint3",
+      "none"
+    ]
+  },
+  "results": {
+    "interval3_minus_endpoint3": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.06235366556804441,
+        "ci95_low": -0.10700370639732396,
+        "ci95_high": 0.23276517597966942,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 0.0348171314948568,
+        "leave_one_block_max": 0.09175492218792176,
+        "leave_one_block_all_negative": false
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": -0.008641393593677549,
+        "ci95_low": -0.23031071751813575,
+        "ci95_high": 0.21513704978013695,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": -0.05211987672130173,
+        "leave_one_block_max": 0.042066823720067724,
+        "leave_one_block_all_negative": false
+      },
+      "station_seed_equal_all_leads": {
+        "sili": {
+          "candidate_minus_reference": {
+            "seed_deltas": [
+              0.12868376911373502,
+              -0.19122167897066333,
+              -0.056038012959874095
+            ],
+            "mean": -0.0395253076056008
+          }
+        },
+        "zhujia": {
+          "candidate_minus_reference": {
+            "seed_deltas": [
+              0.21951915809842149,
+              0.14053831171568731,
+              0.1326404464109885
+            ],
+            "mean": 0.1642326387416991
+          }
+        }
+      },
+      "seed_equal_region_all_leads": [
+        0.17410146360607825,
+        -0.02534168362748801,
+        0.0383012167255572
+      ]
+    },
+    "interval3_minus_none": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.44383010282374374,
+        "ci95_low": -1.7908699553794176,
+        "ci95_high": 2.7286140073066294,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": -0.013398671050822486,
+        "leave_one_block_max": 0.8758477799313056,
+        "leave_one_block_all_negative": false
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": -1.4837736619866604,
+        "ci95_low": -3.3730640605119953,
+        "ci95_high": 0.30783816455891055,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": -1.8818767256089803,
+        "leave_one_block_max": -1.1429424845700946,
+        "leave_one_block_all_negative": true
+      },
+      "station_seed_equal_all_leads": {
+        "sili": {
+          "candidate_minus_reference": {
+            "seed_deltas": [
+              -0.4118386359372721,
+              1.6249253231674459,
+              -0.6851435852751138
+            ],
+            "mean": 0.17598103398502
+          }
+        },
+        "zhujia": {
+          "candidate_minus_reference": {
+            "seed_deltas": [
+              1.5338823462793698,
+              0.12082635644165407,
+              0.4803288122664071
+            ],
+            "mean": 0.711679171662477
+          }
+        }
+      },
+      "seed_equal_region_all_leads": [
+        0.5610218551710489,
+        0.87287583980455,
+        -0.10240738650435333
+      ]
+    },
+    "endpoint3_minus_none": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.38147643725569935,
+        "ci95_low": -1.772598438100059,
+        "ci95_high": 2.6391488528714264,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": -0.05751583168754356,
+        "leave_one_block_max": 0.8410306484364488,
+        "leave_one_block_all_negative": false
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": -1.4751322683929828,
+        "ci95_low": -3.334293564148951,
+        "ci95_high": 0.3493190536483967,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": -1.8782797127710325,
+        "leave_one_block_max": -1.1171267280774373,
+        "leave_one_block_all_negative": true
+      },
+      "station_seed_equal_all_leads": {
+        "sili": {
+          "candidate_minus_reference": {
+            "seed_deltas": [
+              -0.5405224050510071,
+              1.8161470021381092,
+              -0.6291055723152397
+            ],
+            "mean": 0.2155063415906208
+          }
+        },
+        "zhujia": {
+          "candidate_minus_reference": {
+            "seed_deltas": [
+              1.3143631881809483,
+              -0.019711955274033244,
+              0.3476883658554186
+            ],
+            "mean": 0.5474465329207779
+          }
+        }
+      },
+      "seed_equal_region_all_leads": [
+        0.3869203915649706,
+        0.898217523432038,
+        -0.14070860322991052
+      ]
+    },
+    "predeclared_gate": {
+      "pass": false,
+      "conditions": {
+        "primary_all_leads_ci_below_zero": false,
+        "primary_short_ci_below_zero": false,
+        "interval3_beats_none_all_leads_ci": false,
+        "interval3_beats_none_short_ci": false,
+        "both_stations_nonworse": false,
+        "at_least_2_of_3_seeds_improve": false,
+        "leave_one_block_stable_primary_all_and_short": false
+      }
+    }
+  },
+  "station_rows": {
+    "sili": 72345,
+    "zhujia": 79417
+  },
+  "bootstrap_unit": "fixed calendar two-day BJT blocks",
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false
+}

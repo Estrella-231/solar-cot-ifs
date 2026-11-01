@@ -1,0 +1,43 @@
+{
+  "state": "COMPLETE_OFFLINE_COUNTERFACTUAL",
+  "claim_scope": "fixed seed42 AC head; actual target-time AGRI and geometry held fixed; only COT input swapped from same-time frozen-R output to SimVP-forecast-AGRI passed through the same frozen R",
+  "not_deployable_forecast_score": true,
+  "test_payload_opened": false,
+  "cpp_support_used_as_filter": false,
+  "overlapping_forecast_instances_retained": true,
+  "n_forecast_instances": 7005,
+  "unique_target_keys": 529,
+  "unique_forecast_windows": 271,
+  "by_station": {
+    "sili": {
+      "n_forecast_instances": 3314,
+      "unique_target_rows": 249,
+      "unique_dates": 9,
+      "rmse_same_time_R_COT": 71.16366977133441,
+      "rmse_forecast_COT_oracle_AGRI": 75.89402200040229,
+      "delta_rmse_forecast_minus_same_time_COT": 4.730352229067876,
+      "mean_abs_GHI_shift": 15.949802974817638
+    },
+    "zhujia": {
+      "n_forecast_instances": 3691,
+      "unique_target_rows": 280,
+      "unique_dates": 11,
+      "rmse_same_time_R_COT": 79.40703791607028,
+      "rmse_forecast_COT_oracle_AGRI": 84.96155183042356,
+      "delta_rmse_forecast_minus_same_time_COT": 5.554513914353279,
+      "mean_abs_GHI_shift": 22.970421021186198
+    }
+  },
+  "source_hashes": {
+    "pack_manifest": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+    "rows": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+    "forecast_bank": "fd7a431148ebf301140614bdafa8f05e09e99bc5c83a34bb0c456d6cf88b27ac",
+    "AC_head": {
+      "sili": "1b63fd5f15be5bc2b242b10e0acfc255a2afe393a43fa51cb03712b326bd5968",
+      "zhujia": "23ea5745a729b4e258e1fa43ad4dbbc80293cf3c800390450cf9ad14083e043a"
+    },
+    "head_code": "eab8a098541b3eab47b1972e0413a82b82746039b768e3479fa1c4f75732730b"
+  },
+  "interpretation": "Difference estimates the effect of forecast-COT substitution under oracle target AGRI. It cannot show operational end-to-end GHI forecast skill; it does not substitute forecast AGRI.",
+  "upstream_bank_selection": "All 271 windows come from the prebuilt CPP-supported validation bank. This GHI attribution did not apply CPP-pixel masks or further filter rows; it is not a full-natural-distribution validation cohort."
+}

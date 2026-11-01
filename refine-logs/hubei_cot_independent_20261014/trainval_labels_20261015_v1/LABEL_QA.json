@@ -1,0 +1,132 @@
+{
+  "status": "TRAIN_VAL_LABEL_AUDIT_PASSED_TEST_CLOSED",
+  "test_values_read": 0,
+  "label_sha256": "729771d288df1092cd26660bb641e958125ba4684c6d7c0e7bbc6b64ccdb2f2c",
+  "time_support_sha256": "7583169836fd958830fe262a0718c328c57d79c7b4df1194870ee1a1162598b7",
+  "split_assignment_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "row_count": 75414,
+  "rows_by_station": {
+    "Niushou": 25138,
+    "Wangzhai": 25138,
+    "Mizhuang": 25138
+  },
+  "mask_matches_time_only_support_for_every_key": true,
+  "no_test_or_buffer_keys": true,
+  "counts_by_station_split_mask": {
+    "Mizhuang": {
+      "train": {
+        "0": 5211,
+        "1": 17882
+      },
+      "val": {
+        "0": 421,
+        "1": 1624
+      }
+    },
+    "Niushou": {
+      "train": {
+        "0": 4621,
+        "1": 18472
+      },
+      "val": {
+        "0": 393,
+        "1": 1652
+      }
+    },
+    "Wangzhai": {
+      "train": {
+        "0": 4852,
+        "1": 18241
+      },
+      "val": {
+        "0": 505,
+        "1": 1540
+      }
+    }
+  },
+  "invalid_reason_counts_by_station_split": {
+    "Mizhuang": {
+      "train": {
+        "missing_minute_bin": 5211
+      },
+      "val": {
+        "missing_minute_bin": 421
+      }
+    },
+    "Niushou": {
+      "train": {
+        "missing_minute_bin": 4621
+      },
+      "val": {
+        "missing_minute_bin": 393
+      }
+    },
+    "Wangzhai": {
+      "train": {
+        "missing_minute_bin": 4852
+      },
+      "val": {
+        "missing_minute_bin": 505
+      }
+    }
+  },
+  "valid_value_distribution": {
+    "Mizhuang/train": {
+      "n": 17882,
+      "min": 0.0,
+      "p50": 2.7,
+      "p95": 766.2600000000001,
+      "p99": 879.8793333333333,
+      "max": 984.9333333333333,
+      "zero_n": 8242
+    },
+    "Mizhuang/val": {
+      "n": 1624,
+      "min": 0.0,
+      "p50": 1.1,
+      "p95": 756.1533333333332,
+      "p99": 918.0573333333333,
+      "max": 968.9333333333333,
+      "zero_n": 748
+    },
+    "Niushou/train": {
+      "n": 18472,
+      "min": 0.0,
+      "p50": 0.26666666666666666,
+      "p95": 734.7866666666669,
+      "p99": 836.1246666666668,
+      "max": 990.7333333333333,
+      "zero_n": 9170
+    },
+    "Niushou/val": {
+      "n": 1652,
+      "min": 0.0,
+      "p50": 1.2666666666666666,
+      "p95": 774.4399999999999,
+      "p99": 851.5753333333334,
+      "max": 921.3333333333334,
+      "zero_n": 806
+    },
+    "Wangzhai/train": {
+      "n": 18241,
+      "min": 0.0,
+      "p50": 1.4,
+      "p95": 787.1333333333333,
+      "p99": 930.8133333333321,
+      "max": 1127.2,
+      "zero_n": 8905
+    },
+    "Wangzhai/val": {
+      "n": 1540,
+      "min": 0.0,
+      "p50": 2.333333333333333,
+      "p95": 825.4733333333332,
+      "p99": 972.1919999999999,
+      "max": 1055.5333333333333,
+      "zero_n": 748
+    }
+  },
+  "unit": "provisional legacy W/m2 convention; instrument metadata unresolved",
+  "daylight_mask": "not applied",
+  "normalization": "not fit"
+}

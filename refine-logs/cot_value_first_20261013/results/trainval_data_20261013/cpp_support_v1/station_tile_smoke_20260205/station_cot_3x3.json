@@ -1,0 +1,58 @@
+{
+  "state": "STATION_CPP_COT_TILE_INFERENCE_COMPLETE",
+  "split": "train",
+  "run_time_utc": "2026-02-05 17:15:00",
+  "agri_manifest_frame_time_contract": "UTC; BJT is UTC+8",
+  "stations_hdf_rc": {
+    "sili": [
+      694,
+      1554
+    ],
+    "zhujia": [
+      612,
+      1549
+    ]
+  },
+  "tile_indices_inferred": [
+    527,
+    528,
+    590,
+    591,
+    653,
+    654
+  ],
+  "tile_count": 6,
+  "cot_checkpoint": "/tmp/slfu_cot_cpp_20261013_try1/extract/FY4B_CPP_V2_Portable/Model/COT/FY4B_COT_best.pth",
+  "cot_checkpoint_sha256": "6990c2817e4639a724bf5cd94045c3e063256f6c4322539b4a1ff14fd8905b63",
+  "input_shape": [
+    16,
+    4051,
+    4051
+  ],
+  "official_overlap_fusion": true,
+  "observation_invalid_pixels_retained_as_nan": true,
+  "output_npz": "/tmp/slfu_cot_cpp_20261013_try1/cpp_station_tiles_20260205_1715/station_cot_3x3.npz",
+  "test_payload_opened": false,
+  "patches": {
+    "sili_cot_3x3": {
+      "shape": [
+        3,
+        3
+      ],
+      "finite_count": 9,
+      "min": 5.857859134674072,
+      "max": 6.366652488708496,
+      "mean": 6.0876054763793945
+    },
+    "zhujia_cot_3x3": {
+      "shape": [
+        3,
+        3
+      ],
+      "finite_count": 9,
+      "min": 4.62027645111084,
+      "max": 4.817878246307373,
+      "mean": 4.738651752471924
+    }
+  }
+}

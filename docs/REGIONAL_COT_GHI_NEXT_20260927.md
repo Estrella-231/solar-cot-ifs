@@ -1,3 +1,5 @@
+> Current status (2026-11-02): this is a retained historical planning/tracking document. Use [the repository index](../docs/REPOSITORY_INDEX.md) and [current model route](../docs/GHI_HEAD_ROUTE_20261102.md); old pending jobs and mandatory isolation steps below are not current instructions.
+
 # 区域 COT 到单站 GHI：2026-09-27 执行交接
 
 目标保持湖南四里、竺家两个单站的 +15…+240 min、15 min 区间 GHI/kt。先区分反演误差、未来云轨迹误差、COT 对 GHI 的实际价值，再决定是否训练 E_region。此文件为工程记录，不是论文结论；test 未读取。
@@ -74,3 +76,49 @@ PBS 210854于14:56:28完成，PBS tracejob记录Exit_status=0，总运行51分06
 GHI forecast相对zero：四里RMSE降低7.087、竺家升高5.946 W/m²；oracle分别降低12.093、升高3.326。站点相消和验证波动均真实存在，原因仍待诊断。oracle是实际未来AGRI经同一R反演，不是真实CPP，也不是可部署输入。三组均独立训练，差异同时包含学习响应；不能把oracle减forecast直接当成纯上游误差。
 
 建议顺序：先复用现有bank完成逐站/逐时效/真实云事件与训练收敛诊断；制定共同稳定训练设置并修正更新预算记录；再做公平扩大样本和种子验证。只在未来COT质量确为瓶颈、可靠COT在稳定头中有价值时推进E_region。R_region已有探索性改善，但极厚云和CPP来源仍有限制。IFS、独立test和论文主结论尚未放行。本轮仅核查和记录，未提交新训练。
+
+2026-09-27 四里厚云/非零运动核查完成：现有128条验证候选中124条有站点参考；63个CPP>=30记录中预测COT<10有9个，oracle为0；漏报集中3条序列。满足非零运动、有厚云且至少8有效时效仅1条。真实/预测RGB同通道共同拉伸显示预测空间结构平滑及厚云增强缺失。完整源数据、方法限制及下一步见results/regional_station_cot_20260927/sili_thick_motion/README.md。本轮不训练，不打开test。
+
+## 2026-09-27 四里输运扩样本与厚度演变试验门禁
+
+将固定BJT月份分层验证样本从128扩至512，选样未用CPP可用性、COT大小或GHI大小；冻结SimVP/R生成512条预测轨迹，test_used=false。PBS 210952完成，node22 GPU7 A800 80GB，推理用时约22.1分钟，峰值分配15.7GiB。纯输运评估由CPU完成，所有方法按lead使用相同CPP有效像元及所有平移方法的共同域支持；+240分钟共同域覆盖率约62%。
+
+四里486/512条序列有CPP站点像元，55条至少有一个CPP COT≥30的时刻，共205个重叠序列时效记录。最新两帧相位位移取整为整数时79.3%显示零；保留亚像元后仅32.0%小于0.1像元/15min。七帧中位估计的近零率约32–34%。相位相关峰值均值0.00129，未校准为置信度，不能据此认定估计的位移真实。
+
+在205个厚云站点记录（CPP≥30）中，预测COT<10的数目：SimVP→R 67，持久性56，32×32局地七帧输运48。输运相对SimVP将36条从<10移至≥10，同时17条反向恶化，净减少19条；对应12条挽回序列和8条新增漏报序列，但输入窗口重叠，不能当作独立事件。厚云时效站点RMSE：SimVP→R 28.33、32×32输运25.21；CPP峰值时刻平均绝对误差24.74和22.50 COT。全64×64图在+240分钟RMSE分别为11.54、12.18，站点像元RMSE为10.61、11.22，说明厚云条件的站点收益没有转化成总体图像误差改善。
+
+云掩膜COT≥30的16时效平均IoU：32×32输运0.0317、持久性0.0286、SimVP→R 0.0238；有预测/参考厚云对象的平均质心差约23.31像元（输运）和25.56像元（SimVP）。绝对重叠仍低，近时效及+240分钟也非每项指标都更好；因此只把它视为弱的相对位置改善信号。CPP仍是卫星反演参考产品，不是独立云物理真值。
+
+据此启动小规模“输运+厚度演变”门控试验：模型以历史R-COT、历史C13的32×32七帧亚像元位移、冻结SimVP→R的未来COT为输入，先平移历史COT，再学习厚度/演变残差；训练标签为CPP COT，推理时不读未来CPP或未来AGRI。512 train/512 val固定分层样本，最多40 epoch并按验证厚云误差早停；比较SimVP→R、持久性、纯输运和学习后输出，同时检查厚云漏报、COT RMSE/IoU、晴空误报。只作为验证pilot，不开test、不声称GHI改善。
+
+脚本 `build_sili_cot_dynamics_bank_20260927.py`、`train_sili_transport_thickness_pilot_20260927.py`、`smoke_sili_transport_thickness_pilot_20260927.py`、`run_sili_cot_dynamics_pilot_20260927.pbs` 已执行。PBS `210963.tc6000` 于2026-09-27 22:46启动，node22 GPU7（NVIDIA A800-SXM4-80GB）；训练银行512/512 train与512/512 val均完成，模型9轮后按厚云RMSE早停，best epoch=1，日志写入完整标记并生成checkpoint。2026-09-28复核时作业已不在活动队列，scheduler历史接口不再提供Exit_status；完整脚本标记、`training_complete.json`、best权重与epoch曲线均齐全，判定正常结束。当前活动队列仅210935运行。test未使用。验证显示全场COT RMSE/MAE和晴空误报率改善，但厚云RMSE及COT≥30 IoU差于纯输运/持久性；不据此宣称外推或GHI提升。完整数值和限制见 `docs/SILI_TRANSPORT_THICKNESS_PILOT_RESULTS_20260928.md` 与 `results/regional_station_cot_20260927/sili_transport_thickness_pilot/`。
+
+## 2026-09-28 四里输运+厚度验证诊断完成
+
+修复并完成只读的64×64同掩膜验证审计（PBS 210984；此前两次尝试因审计脚本切片错误失败，未接受其产物）。最新验证中，24,355,048个CPP有效像元时效记录里，21,153,251个处于所有方法共用的输运有效支持域。学习残差在全场RMSE为9.056，低于step-0纯输运9.520；但CPP COT≥30条件RMSE为28.279，高于纯输运26.504，COT≥30 IoU也更低（0.1664 对0.2411）。站点上204个厚云时效同样退化：RMSE 28.82 对25.16，按初始化日配对bootstrap的95%差值区间为[+1.38,+5.55]。收益主要来自低COT参考像元；没有据此声称GHI改善或真实云物理精度提升。
+
+已生成按统一支持域遮罩的代表性云增长/消散/持续厚云/近零案例图，以及16时效、厚度分层曲线：`results/regional_station_cot_20260927/sili_patch_case_audit_20260928_v3/`。图和指标中的CPP均为卫星反演参考产品。
+
+## 2026-09-28 低COT额外惩罚单因素消融完成
+
+PBS `211063.tc6000` 已以 `Exit_status=0` 完成。固定seed42，两臂各512条训练与512条验证、8轮/512次更新；唯一差别为是否使用CPP COT<5处的额外false-COT惩罚。去掉惩罚后，训练模型的最低厚云RMSE由控制臂28.279降至26.856，厚云漏报数由371,192降至328,427；但总体RMSE由9.056升至9.353，近零参考误报率由3.11%升至3.69%。两者仍未胜过step-0输运厚云RMSE 26.504，因此两个训练臂按预先约定均选择step 0。此为单seed pooled validation诊断，不含显著性区间；作业未保存未选epoch权重或逐像元预测，不能补算未选学习模型的站点/逐时效配对bootstrap。详见 `docs/SILI_LOW_COT_PENALTY_ABLATION_RESULTS_20260928.md`。CPP仍是卫星反演参考，test与GHI-head训练保持关闭。
+
+## 2026-09-28 完整历史 COT 信息筛查与神经 pilot
+
+为判断厚云误差是否主要来自当前残差头只读最近两帧 COT，在固定512 train/512 val bank上完成低成本线性条件信息探针。相同输入包括冻结 SimVP→R 未来COT、最后COT、末两帧差值、局地运动和lead；full8额外加入更早六帧。使用同一 CPP-valid ∩ transport-support掩膜，固定16×16局地网格和站点像元。
+
+验证网格厚云 COT≥30 RMSE 为 recent2 28.991、full8 28.948；站点像元为29.788、29.656，差异很小。全COT RMSE差 −0.007，厚云IoU反而从0.1502到0.1490，站点厚云仅204条记录。该线性探针未给出历史轨迹具有明显增量的证据，但不能排除非线性神经表示能够利用轨迹。CPP仍只是卫星反演参考，样本窗口和像元不独立。
+
+PBS 211080.tc6000（normal CPU）已完成，summary、逐样本预测与可视化归档于`results/regional_station_cot_20260927/sili_history_information_probe_20260928_v2/`；分析记录见`docs/SILI_HISTORY_INFORMATION_PROBE_RESULTS_20260928.md`。账户中另有完整历史神经网络 pilot PBS 211083.tc6000（node22、单A800）运行，不重复提交。该pilot的最终 step0/short-history/full-history 配对结果和初始化日bootstrap尚待完成；test与GHI头保持关闭。
+
+## 2026-09-28 容量匹配全历史 vs 重复末帧 COT 对照完成
+
+针对先前两帧/全历史pilot参数量不同、控制臂并非重复末帧的问题，另立同参数量15通道头和完全相同的零残差初始化，唯一改变为八槽输入“真实历史八帧”或“最近COT重复八次”；两臂都保留同一末两帧差值及SimVP→R、纯输运、运动和lead输入。最终PBS `211099.tc6000` 在node22单A800正常结束（日志有 `SILI_FULL_VS_REPEAT_LAST_COMPLETE`），batch512、每臂256次更新，最大PyTorch allocated 39.74 GiB；初始化数值见证两臂误差均为0。
+
+同一CPP-valid∩transport-support域有21,153,251个64×64 patch pixel-leads，72个初始化日bootstrap。两臂均按预定厚云RMSE准则选择step-0纯输运：patch COT≥30 RMSE 26.504、站点25.163。最佳学习快照中，repeat-last对应patch/站点厚云RMSE 27.209/27.606，full-history为27.143/27.609；full−repeat配对95%区间分别为patch[−0.161,+0.029]、站点[−0.316,+0.293]。Full−transport站点差为+2.447，区间[+0.573,+3.977]。历史八帧没有稳定增益，学习修正降低低COT假云率却仍加重厚云RMSE，因此不训练GHI头、不打开test。完整结论、指标口径、限制与来源见 `docs/SILI_FULL_COT_HISTORY_PILOT_RESULTS_20260928.md`；原训练快照和逐时效曲线归档于 `results/regional_station_cot_20260927/sili_full_vs_repeat_last_history_20260928_v5/`。
+
+## 2026-09-28 历史帧是否真正进入模型：只读反事实审计
+
+PBS `211169.tc6000` 已以Exit_status=0完成同一full-history最佳学习checkpoint的512条验证序列只读前向。真实较早六帧与末帧平均相差4.515 COT，但把八个历史输入槽改为重复末帧后，公共域预测平均只变化0.326 COT，CPP厚云域变化0.982 COT；真实旧历史让厚云预测平均低0.590 COT，patch厚云RMSE为27.143，对照替换输入27.083，全域RMSE则9.603对9.669。因此旧帧确实被使用，只是当前学习头的小幅修正更偏向全域和近晴空，未改善厚云选模目标。训练损失继续下降时厚云验证误差上升，进一步支持目标取舍解释。完整统计、权重范数与限制见`docs/SILI_HISTORY_USE_COUNTERFACTUAL_20260928.md`。
+
+同一审计还发现v5训练JSON的`simvp`诊断列错误地把首张未来图广播成16时效；corrected SimVP→R patch全域/厚云RMSE为9.665/27.700，站点为8.604/28.363。三个主候选的learned/transport比较不受影响，原JSON保留，训练原版脚本和修正后的侧车另名归档。CPP/AGRI标签对齐和输运支持域与训练损失掩膜的差异仍待单独核验；test/GHI训练继续关闭。

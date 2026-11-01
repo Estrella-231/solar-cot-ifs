@@ -1,0 +1,31 @@
+{
+  "state": "PASS_FULLVAL_STATION_PIXEL_EVENT_DECOMPOSITION",
+  "split": "val_only",
+  "test_payload_opened": false,
+  "fixed_event_rule": "CPP station pixel (8,8) COT >=30 for >=2 consecutive, frame-valid 15-min targets; invalid target breaks event",
+  "forecast_selection": "for each unique physical event, use the available validation initialization with the largest start lead while covering the full event",
+  "event_count": 7,
+  "events_by_station": {
+    "sili": 4,
+    "zhujia": 3
+  },
+  "unique_target_timestamps_by_station": {
+    "sili": 4025,
+    "zhujia": 4025
+  },
+  "stale_allval_bank_cpp_join_max_absdiff_quarantined": 68.19982147216797,
+  "cpp_common_mask_pixels_all_sequences": 5224460,
+  "source_sha256": {
+    "sequence_pack_manifest": "e7bf863f3603a55b634d508de198505503c8d3a9d24b1e7faee881942fe352b0",
+    "forecast_bank": "e1cafb8232b1a1aa83bf57a83dbf98a6342fa4a6b7c68eda7451fab920b257d4",
+    "P_R_prediction": "fb6f758b9c58e39e0ceea86810b8ab440cc71f329d6031d03c752e650ae94265",
+    "P_Hybrid_prediction": "0ecfb94905b198aa32c44f97baac498363abf43f87c381b5fd842e753d1ed3e9",
+    "P_Hybrid_amp_prediction": "deecf646de44881d138a758ae4abdaf254a176b308ee295759dab46878a7994c",
+    "prediction_keys": "d59c4633a1387c0cd3dec4bf95388d9ccd4605e7c96f1023fe8b540c4b382fef",
+    "forecast_profile": "534c226e60368336f881ed14c41c857a28164762d2aaa507387c255f284d3edd",
+    "R_bank": "4994c809bdc58fc9f08664072f282b7dd5cc9bdcb69e9a791cddd9a8225963a1",
+    "R_bank_manifest": "3049472e2b62d2f1df3e7afcd51bb4bcdf2cf4ef7e6735af3d04138ec4c4cc56",
+    "frame_valid_mask": "b04a8a62c2ac266ddcb7d7ef1f949a607f3f82c6045dcf1cacd80e929df23a6e"
+  },
+  "interpretation_limit": "selected unique CPP-referenced station-pixel thick events, one longest-lead forecast per event; event counts are not independent confidence intervals; CPP is retrieval reference; observed-future-AGRI->R is hindsight only"
+}

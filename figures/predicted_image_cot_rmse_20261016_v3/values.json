@@ -1,0 +1,46 @@
+{
+  "source_csv": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\results\\paired_forecast_oracle_cot_rmse_20261003_v2\\paired_cot_rmse.csv",
+  "source_report": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\results\\paired_forecast_oracle_cot_rmse_20261003_v2\\REPORT.md",
+  "scope": "old validation paired audit; Sili station pixel; shared CPP reference and valid mask",
+  "records": [
+    {
+      "lead_hour": 1,
+      "lead_minutes": 60,
+      "station_pixel_valid_n": 80,
+      "forecast_agri_to_R_cot_rmse": 6.126989444335482,
+      "observed_future_agri_to_R_cot_rmse_offline": 2.590906597140449,
+      "cloud_fno_paper_fig2_cot_rmse_different_protocol": 6.75
+    },
+    {
+      "lead_hour": 2,
+      "lead_minutes": 120,
+      "station_pixel_valid_n": 65,
+      "forecast_agri_to_R_cot_rmse": 9.464862556863322,
+      "observed_future_agri_to_R_cot_rmse_offline": 2.846283978015682,
+      "cloud_fno_paper_fig2_cot_rmse_different_protocol": 8.09
+    },
+    {
+      "lead_hour": 3,
+      "lead_minutes": 180,
+      "station_pixel_valid_n": 61,
+      "forecast_agri_to_R_cot_rmse": 11.34134751736469,
+      "observed_future_agri_to_R_cot_rmse_offline": 1.968904652073026,
+      "cloud_fno_paper_fig2_cot_rmse_different_protocol": 8.93
+    },
+    {
+      "lead_hour": 4,
+      "lead_minutes": 240,
+      "station_pixel_valid_n": 54,
+      "forecast_agri_to_R_cot_rmse": 9.824257561187475,
+      "observed_future_agri_to_R_cot_rmse_offline": 2.1406741433101533,
+      "cloud_fno_paper_fig2_cot_rmse_different_protocol": 9.61
+    }
+  ],
+  "limitations": [
+    "valid station sample count varies by lead",
+    "future observed AGRI retrieval is offline only",
+    "CPP is a retrieval reference, not independent physical truth",
+    "Cloud-FNO values are from a different dataset and protocol",
+    "no confidence intervals are shown; this plot reproduces point estimates only"
+  ]
+}

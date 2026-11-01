@@ -1,0 +1,107 @@
+{
+  "state": "HUBEI_FORECAST_FAP_SEED_VALIDATION_INDEPENDENT_RECHECK_TEST_CLOSED",
+  "scope": "single-seed validation only; not independent test or confirmatory multi-seed evidence",
+  "seed": 44,
+  "stations": [
+    "Niushou",
+    "Wangzhai",
+    "Mizhuang"
+  ],
+  "epochs": 30,
+  "batch_size": 1536,
+  "input_mode": "forecast",
+  "pack_sha256": "9421c0d5e19094454e5b94b98de797ac90248d3e5b56fdef6dacda339df359dd",
+  "trainer_sha256": "fd15bf6f939cb81d09bd05e6fc889f88e53e8a9e40366d417fa195848caf5999",
+  "run_metadata_sha256": "ed7e4f002cd27816eb2a79bf083fcda4c00117a6e4f6531442e5fcb39dec5d02",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "equal_station_mean_rmse_wm2": {
+    "FA": 78.17602000831808,
+    "FAC": 78.12879086342055,
+    "FAP": 79.2440435228989
+  },
+  "equal_station_differences_wm2": {
+    "FAP_minus_FA": 1.0680235145808297,
+    "FAP_minus_FAC": 1.115252659478358
+  },
+  "per_station": {
+    "Niushou": {
+      "n": 2316,
+      "keys_sha256": "525a44ee1af421a057978869ce088a744dd720e38a774f140ffd49d563524602",
+      "FAP": {
+        "rmse_wm2": 78.33856480169644,
+        "mae_wm2": 50.96266703307066,
+        "bias_wm2": 3.113594945569222,
+        "prediction_sha256": "775591feb67992e7049641c472044a32b0e7c8b9c0a996eeef69bfc7d8e7fa2d"
+      },
+      "FA": {
+        "rmse_wm2": 79.04766159871687,
+        "mae_wm2": 52.103944915809244,
+        "bias_wm2": 2.195095031331607,
+        "prediction_sha256": "645972e42ee09d67e3e70bcd19ceff9e3412bc2f596bad7de3f1e7574a227895"
+      },
+      "FAC": {
+        "rmse_wm2": 78.41287507098986,
+        "mae_wm2": 51.69567471205873,
+        "bias_wm2": 0.48018285969436325,
+        "prediction_sha256": "174f58e7923ae1ac3d4ad9be53f54edcc4e6e6a36fd28dd0daa26c288f5da9b4"
+      },
+      "paired_rmse_differences_wm2": {
+        "FAP_minus_FA": -0.709096797020436,
+        "FAP_minus_FAC": -0.0743102692934201
+      }
+    },
+    "Wangzhai": {
+      "n": 2112,
+      "keys_sha256": "da9aeafff6f5c623ecaedcd6cbd06c0a553b5d68f378104456dcc8c1d34cacb6",
+      "FAP": {
+        "rmse_wm2": 74.23658867280307,
+        "mae_wm2": 46.32549485909862,
+        "bias_wm2": 12.38723448460664,
+        "prediction_sha256": "c167fb52a1a1d2a18f8c48b0accd16d30e4efe0d8b537fac3db6d947f2658acd"
+      },
+      "FA": {
+        "rmse_wm2": 72.19916036155489,
+        "mae_wm2": 44.82180583649085,
+        "bias_wm2": 10.70401332736153,
+        "prediction_sha256": "6846ff11b67d9f512f206d3e77f355ab63a684b15c33d358e3ddbf697671250e"
+      },
+      "FAC": {
+        "rmse_wm2": 73.02791762307267,
+        "mae_wm2": 46.04095371913078,
+        "bias_wm2": 8.551658724712924,
+        "prediction_sha256": "f643c5347b2e94d0079acd78062fadca39c90f116c8ab7402c01c8b491e6b6e9"
+      },
+      "paired_rmse_differences_wm2": {
+        "FAP_minus_FA": 2.0374283112481777,
+        "FAP_minus_FAC": 1.2086710497303983
+      }
+    },
+    "Mizhuang": {
+      "n": 2295,
+      "keys_sha256": "1228529919d11e5240037799094e22c2cf250353858d3ae91cb6443bc4a51c48",
+      "FAP": {
+        "rmse_wm2": 85.1569770941972,
+        "mae_wm2": 53.506023696999925,
+        "bias_wm2": 16.281006687457523,
+        "prediction_sha256": "5df3ad4724764c2655f7bb5235a724768aacaf31f44dcdcc485a4da87d34ba72"
+      },
+      "FA": {
+        "rmse_wm2": 83.28123806468248,
+        "mae_wm2": 51.21649584929035,
+        "bias_wm2": 18.862559609049384,
+        "prediction_sha256": "436684da1c21bf787ffb462967abf987864984845676c9797bc1c8bad8631426"
+      },
+      "FAC": {
+        "rmse_wm2": 82.94557989619912,
+        "mae_wm2": 51.730458587371544,
+        "bias_wm2": 15.092440086951346,
+        "prediction_sha256": "c19298937f61e198fafeac48b7d692da478ee73cb9c7bb331eeff653abefb590"
+      },
+      "paired_rmse_differences_wm2": {
+        "FAP_minus_FA": 1.875739029514719,
+        "FAP_minus_FAC": 2.2113971979980818
+      }
+    }
+  }
+}

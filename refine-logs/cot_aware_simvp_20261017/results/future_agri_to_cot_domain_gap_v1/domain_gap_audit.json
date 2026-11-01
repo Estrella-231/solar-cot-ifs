@@ -1,0 +1,3878 @@
+{
+  "state": "COMPLETE_VALIDATION_FORECAST_AGRI_TO_FROZEN_R_DOMAIN_DIAGNOSTIC",
+  "question": "whether errors in predicted AGRI at the station neighborhood co-vary with downstream frozen-R future-COT error",
+  "scope": "validation-only descriptive audit; no fitting, thresholds, GHI labels, or model selection",
+  "rows": 66590,
+  "unique_observed_validation_frames_opened": 2396,
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "lead_bands": [
+    {
+      "label": "15-60",
+      "min": 15,
+      "max": 60
+    },
+    {
+      "label": "75-150",
+      "min": 75,
+      "max": 150
+    },
+    {
+      "label": "165-240",
+      "min": 165,
+      "max": 240
+    }
+  ],
+  "station_metrics": {
+    "sili": {
+      "rows": 32159,
+      "mean_patch_agri_channel_standardized_rmse": 0.3375308835794402,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.4811589076117447,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.3057760425298173,
+      "pearson_agri_rmse_vs_signed_center_cot_error": -0.1300431096846108
+    },
+    "zhujia": {
+      "rows": 34431,
+      "mean_patch_agri_channel_standardized_rmse": 0.2832206332319337,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.38412771483503005,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.44340432115669,
+      "pearson_agri_rmse_vs_signed_center_cot_error": -0.2523092800701455
+    }
+  },
+  "lead_band_metrics": [
+    {
+      "station": "sili",
+      "lead_band_minutes": "15-60",
+      "rows": 7973,
+      "mean_agri_standardized_rmse": 0.23253096425971925,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.29356269480651914,
+      "mean_signed_center_calibrated_cot_error_log1p": -0.02779212169032406,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.1836175270655712
+    },
+    {
+      "station": "sili",
+      "lead_band_minutes": "75-150",
+      "rows": 12175,
+      "mean_agri_standardized_rmse": 0.33155670059665987,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.4685453098424896,
+      "mean_signed_center_calibrated_cot_error_log1p": -0.04499472108342564,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.2566082057815875
+    },
+    {
+      "station": "sili",
+      "lead_band_minutes": "165-240",
+      "rows": 12011,
+      "mean_agri_standardized_rmse": 0.41328644386180513,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.618472633158056,
+      "mean_signed_center_calibrated_cot_error_log1p": -0.08230138648043622,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.28669768348151436
+    },
+    {
+      "station": "zhujia",
+      "lead_band_minutes": "15-60",
+      "rows": 8594,
+      "mean_agri_standardized_rmse": 0.1967608147954575,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.239095797748837,
+      "mean_signed_center_calibrated_cot_error_log1p": -0.015461009310474777,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.3617111848944007
+    },
+    {
+      "station": "zhujia",
+      "lead_band_minutes": "75-150",
+      "rows": 13066,
+      "mean_agri_standardized_rmse": 0.2748724168910844,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.3769695239616867,
+      "mean_signed_center_calibrated_cot_error_log1p": -0.048547276191227506,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.4406891889491654
+    },
+    {
+      "station": "zhujia",
+      "lead_band_minutes": "165-240",
+      "rows": 12771,
+      "mean_agri_standardized_rmse": 0.3499431666555195,
+      "mean_abs_center_calibrated_cot_error_log1p": 0.4890477068004085,
+      "mean_signed_center_calibrated_cot_error_log1p": -0.060848130408370234,
+      "pearson_agri_rmse_vs_abs_center_cot_error": 0.4148806727878758
+    }
+  ],
+  "pearson_channel_standardized_agri_error_vs_abs_center_calibrated_cot_error": {
+    "0": 0.40435008610457,
+    "1": 0.4284279329323674,
+    "2": 0.3933168868420746,
+    "3": 0.15920980980523633,
+    "4": 0.3176494177841956,
+    "5": 0.377350457561366,
+    "6": 0.14983350558885758,
+    "7": 0.1563961137454186,
+    "8": 0.1789792449852823,
+    "9": 0.35980116443907156,
+    "10": 0.34926499611784545,
+    "11": 0.32835895925890585,
+    "12": 0.25811632281295316
+  },
+  "channel_metrics": [
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 0,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.24809984279427538,
+      "normalized_bias": -0.000619667558786779,
+      "forecast_to_observed_std_ratio": 0.9586739091485258
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 1,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.277811568886261,
+      "normalized_bias": 0.004666432373476315,
+      "forecast_to_observed_std_ratio": 0.9591608840601946
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 2,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.24234512362507987,
+      "normalized_bias": -0.006857170374688552,
+      "forecast_to_observed_std_ratio": 0.9587819327170533
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 3,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.36764701742547456,
+      "normalized_bias": -0.01713447410977302,
+      "forecast_to_observed_std_ratio": 0.9126827381193565
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 4,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.2707190441586598,
+      "normalized_bias": -0.04038751006657741,
+      "forecast_to_observed_std_ratio": 0.9404096869267055
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 5,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.27347106738741894,
+      "normalized_bias": -0.01385607292021651,
+      "forecast_to_observed_std_ratio": 0.9401593082933674
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 6,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.15598597883615672,
+      "normalized_bias": 0.004751977771270337,
+      "forecast_to_observed_std_ratio": 0.9796511916353852
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 7,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.1608198315366294,
+      "normalized_bias": 0.0017570863152686093,
+      "forecast_to_observed_std_ratio": 0.9861358655430277
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 8,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.1773788911635431,
+      "normalized_bias": 0.00012353841926662884,
+      "forecast_to_observed_std_ratio": 0.9796776070714097
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 9,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.19744116350665186,
+      "normalized_bias": -0.011911205650978574,
+      "forecast_to_observed_std_ratio": 0.9662097179403284
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 10,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.18159928653296947,
+      "normalized_bias": -0.006322958018594934,
+      "forecast_to_observed_std_ratio": 0.9765579839334192
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 11,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.18273082299102225,
+      "normalized_bias": 0.003654365836344058,
+      "forecast_to_observed_std_ratio": 0.9765032162892009
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 15,
+      "channel_index_0based": 12,
+      "valid_pixels": 17748,
+      "normalized_rmse": 0.1784062706212825,
+      "normalized_bias": -0.011587752443289866,
+      "forecast_to_observed_std_ratio": 0.97917157136681
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 0,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.284651920926132,
+      "normalized_bias": 0.005748612440941785,
+      "forecast_to_observed_std_ratio": 0.951672441045987
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 1,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.31721933568089555,
+      "normalized_bias": 0.01002004136674836,
+      "forecast_to_observed_std_ratio": 0.9506701425916415
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 2,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.2725107615954303,
+      "normalized_bias": 0.0010378205583764966,
+      "forecast_to_observed_std_ratio": 0.9525131826784389
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 3,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.44000376204893366,
+      "normalized_bias": -0.023923121300160333,
+      "forecast_to_observed_std_ratio": 0.8923544606129008
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 4,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.3000966901093981,
+      "normalized_bias": -0.03377417091379249,
+      "forecast_to_observed_std_ratio": 0.9330955181730745
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 5,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.30497001982318606,
+      "normalized_bias": -0.01093658791821986,
+      "forecast_to_observed_std_ratio": 0.9284923970818328
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 6,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.19092845741456244,
+      "normalized_bias": 0.0035054713446835426,
+      "forecast_to_observed_std_ratio": 0.9719322181784177
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 7,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.19651702049871,
+      "normalized_bias": 0.003608152602890221,
+      "forecast_to_observed_std_ratio": 0.9763864121760519
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 8,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.21764082767730328,
+      "normalized_bias": 0.002932088980483202,
+      "forecast_to_observed_std_ratio": 0.9648136852542337
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 9,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.2453695318438495,
+      "normalized_bias": -0.010427158232857399,
+      "forecast_to_observed_std_ratio": 0.9495280487981441
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 10,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.230819530168601,
+      "normalized_bias": -0.004744180840000819,
+      "forecast_to_observed_std_ratio": 0.9604579455359465
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 11,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.22965979945761988,
+      "normalized_bias": 0.004287457704454696,
+      "forecast_to_observed_std_ratio": 0.9605240911615744
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 30,
+      "channel_index_0based": 12,
+      "valid_pixels": 17883,
+      "normalized_rmse": 0.21996145175761356,
+      "normalized_bias": -0.009889520228930153,
+      "forecast_to_observed_std_ratio": 0.9648363532559282
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 0,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.3166570204198693,
+      "normalized_bias": 0.006170898895818745,
+      "forecast_to_observed_std_ratio": 0.9477872994961729
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 1,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.3497672210867833,
+      "normalized_bias": 0.009350688613971527,
+      "forecast_to_observed_std_ratio": 0.9461142040801729
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 2,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.29803363801812943,
+      "normalized_bias": 0.0036363971650821537,
+      "forecast_to_observed_std_ratio": 0.9473921388029265
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 3,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.5148823550633466,
+      "normalized_bias": -0.02123634238363909,
+      "forecast_to_observed_std_ratio": 0.877457112957034
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 4,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.3241775753915826,
+      "normalized_bias": -0.03255817709084227,
+      "forecast_to_observed_std_ratio": 0.9250547796992965
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 5,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.33014405643392025,
+      "normalized_bias": -0.010387444076705252,
+      "forecast_to_observed_std_ratio": 0.9224598249248468
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 6,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.2295476470687604,
+      "normalized_bias": 0.008988434696371185,
+      "forecast_to_observed_std_ratio": 0.9648171275272006
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 7,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.24095183682193805,
+      "normalized_bias": 0.009468438867438037,
+      "forecast_to_observed_std_ratio": 0.9669894672412934
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 8,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.2650101244561739,
+      "normalized_bias": 0.005083911860351676,
+      "forecast_to_observed_std_ratio": 0.9542281241201009
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 9,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.289939535954409,
+      "normalized_bias": -0.012100638777283554,
+      "forecast_to_observed_std_ratio": 0.9380462373744066
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 10,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.277122070969588,
+      "normalized_bias": -0.007550677918974798,
+      "forecast_to_observed_std_ratio": 0.9484305607541662
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 11,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.27605632541875025,
+      "normalized_bias": 0.001943046792288262,
+      "forecast_to_observed_std_ratio": 0.9489408476639091
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 45,
+      "channel_index_0based": 12,
+      "valid_pixels": 18018,
+      "normalized_rmse": 0.2670560654738418,
+      "normalized_bias": -0.010815749743829137,
+      "forecast_to_observed_std_ratio": 0.9527002591784022
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 0,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.3396580376752261,
+      "normalized_bias": 0.011953055312357757,
+      "forecast_to_observed_std_ratio": 0.946877981717304
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 1,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.37406795638686363,
+      "normalized_bias": 0.01327964016552865,
+      "forecast_to_observed_std_ratio": 0.9442490239809856
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 2,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.3171518244016717,
+      "normalized_bias": 0.010139536949507305,
+      "forecast_to_observed_std_ratio": 0.9453809014974275
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 3,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.5846016542581769,
+      "normalized_bias": -0.0193093765848474,
+      "forecast_to_observed_std_ratio": 0.8678748481758942
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 4,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.3413736816134765,
+      "normalized_bias": -0.03381193090834398,
+      "forecast_to_observed_std_ratio": 0.914928567788214
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 5,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.35005753210091095,
+      "normalized_bias": -0.01442497797735085,
+      "forecast_to_observed_std_ratio": 0.9114439436366745
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 6,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.26773043691964077,
+      "normalized_bias": 0.0074994266556572655,
+      "forecast_to_observed_std_ratio": 0.9518972758320455
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 7,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.2804307840661962,
+      "normalized_bias": 0.008933588932557017,
+      "forecast_to_observed_std_ratio": 0.9533211613812497
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 8,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.30394292940441653,
+      "normalized_bias": 0.005541730922499285,
+      "forecast_to_observed_std_ratio": 0.9392281583550146
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 9,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.324249065581489,
+      "normalized_bias": -0.009090495897916372,
+      "forecast_to_observed_std_ratio": 0.9249173152039126
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 10,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.3110197924096803,
+      "normalized_bias": -0.004988737008822101,
+      "forecast_to_observed_std_ratio": 0.9364846008319145
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 11,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.3092273518360344,
+      "normalized_bias": 0.0031541893724137573,
+      "forecast_to_observed_std_ratio": 0.9362976854564519
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 60,
+      "channel_index_0based": 12,
+      "valid_pixels": 18108,
+      "normalized_rmse": 0.30263990744590513,
+      "normalized_bias": -0.009692318494672994,
+      "forecast_to_observed_std_ratio": 0.9385623994293677
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 0,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.36209363539815703,
+      "normalized_bias": 0.012108319872170389,
+      "forecast_to_observed_std_ratio": 0.946359768517306
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 1,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.39762824887146553,
+      "normalized_bias": 0.012860382855097144,
+      "forecast_to_observed_std_ratio": 0.9434557395363344
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 2,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.3360388493782403,
+      "normalized_bias": 0.011581809950554823,
+      "forecast_to_observed_std_ratio": 0.9457557894428326
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 3,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.6416588898622428,
+      "normalized_bias": -0.026926163578827815,
+      "forecast_to_observed_std_ratio": 0.8462911448465908
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 4,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.356207098033341,
+      "normalized_bias": -0.03339571549188213,
+      "forecast_to_observed_std_ratio": 0.9124100515614155
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 5,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.369022436225466,
+      "normalized_bias": -0.013696325593466898,
+      "forecast_to_observed_std_ratio": 0.9112945902157988
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 6,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.3057288685286567,
+      "normalized_bias": 0.010403563632227372,
+      "forecast_to_observed_std_ratio": 0.9453074016151018
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 7,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.32430765597241,
+      "normalized_bias": 0.01094563127533205,
+      "forecast_to_observed_std_ratio": 0.9439541059601919
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 8,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.35265924013937966,
+      "normalized_bias": 0.007302882786668075,
+      "forecast_to_observed_std_ratio": 0.9264363656546171
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 9,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.36996887445837057,
+      "normalized_bias": -0.009437024178580812,
+      "forecast_to_observed_std_ratio": 0.9131413687350775
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 10,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.35694150000074115,
+      "normalized_bias": -0.005495122432042317,
+      "forecast_to_observed_std_ratio": 0.9238729854586675
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 11,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.35533988770219305,
+      "normalized_bias": 0.002120028486843636,
+      "forecast_to_observed_std_ratio": 0.924042063955264
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 75,
+      "channel_index_0based": 12,
+      "valid_pixels": 18171,
+      "normalized_rmse": 0.3499960866963592,
+      "normalized_bias": -0.01029190674443812,
+      "forecast_to_observed_std_ratio": 0.9249196950811162
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 0,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.38189680723252944,
+      "normalized_bias": 0.015780379839650624,
+      "forecast_to_observed_std_ratio": 0.9493717329788374
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 1,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.41896851305111765,
+      "normalized_bias": 0.015187781807711985,
+      "forecast_to_observed_std_ratio": 0.9449542597051203
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 2,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.35178508957694343,
+      "normalized_bias": 0.016289466377934037,
+      "forecast_to_observed_std_ratio": 0.9488378716246899
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 3,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.7103137577082671,
+      "normalized_bias": -0.03305914918121193,
+      "forecast_to_observed_std_ratio": 0.8351846763991666
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 4,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.3695722247561005,
+      "normalized_bias": -0.024877646598419026,
+      "forecast_to_observed_std_ratio": 0.912499338082205
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 5,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.38724547570402407,
+      "normalized_bias": -0.00824092234752982,
+      "forecast_to_observed_std_ratio": 0.908884190019932
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 6,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.34309325801147333,
+      "normalized_bias": 0.011100554420133787,
+      "forecast_to_observed_std_ratio": 0.9399823681625779
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 7,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.3659065680523971,
+      "normalized_bias": 0.014833526826886118,
+      "forecast_to_observed_std_ratio": 0.9376006816751284
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 8,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.3975985795142034,
+      "normalized_bias": 0.013896263888750194,
+      "forecast_to_observed_std_ratio": 0.9191463092842266
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 9,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.41200258129961237,
+      "normalized_bias": 0.0014558695116408085,
+      "forecast_to_observed_std_ratio": 0.905167465678364
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 10,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.3973806728358276,
+      "normalized_bias": 0.00540009223287584,
+      "forecast_to_observed_std_ratio": 0.9177053580101594
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 11,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.39505409345203624,
+      "normalized_bias": 0.012255213283697053,
+      "forecast_to_observed_std_ratio": 0.9174969484931662
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 90,
+      "channel_index_0based": 12,
+      "valid_pixels": 18207,
+      "normalized_rmse": 0.39158979890612405,
+      "normalized_bias": -0.00012649612119650707,
+      "forecast_to_observed_std_ratio": 0.9191302051675024
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 0,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.4003050000978998,
+      "normalized_bias": 0.013063323389560686,
+      "forecast_to_observed_std_ratio": 0.9489556352034642
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 1,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.43629863554968656,
+      "normalized_bias": 0.011549573702296478,
+      "forecast_to_observed_std_ratio": 0.9447731414293766
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 2,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.3646720977726201,
+      "normalized_bias": 0.016931961667235044,
+      "forecast_to_observed_std_ratio": 0.9474868505133799
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 3,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.7373816980216957,
+      "normalized_bias": -0.0312937053861336,
+      "forecast_to_observed_std_ratio": 0.8164357732622498
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 4,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.38173781523333133,
+      "normalized_bias": -0.027624165582511743,
+      "forecast_to_observed_std_ratio": 0.9118480732201861
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 5,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.39952655067663967,
+      "normalized_bias": -0.012258364402222869,
+      "forecast_to_observed_std_ratio": 0.9087049298790982
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 6,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.34903117051000593,
+      "normalized_bias": 0.013634276225814342,
+      "forecast_to_observed_std_ratio": 0.9285884550930222
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 7,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.37534588957600296,
+      "normalized_bias": 0.018284014892323494,
+      "forecast_to_observed_std_ratio": 0.9259307739737657
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 8,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.410471060008615,
+      "normalized_bias": 0.017416155511188396,
+      "forecast_to_observed_std_ratio": 0.9092521059921639
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 9,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.42892290594998567,
+      "normalized_bias": 0.007945546011004083,
+      "forecast_to_observed_std_ratio": 0.899187005150569
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 10,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.41374805624559785,
+      "normalized_bias": 0.011093861502794945,
+      "forecast_to_observed_std_ratio": 0.9116307591194819
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 11,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.4107520688619399,
+      "normalized_bias": 0.016923258216169853,
+      "forecast_to_observed_std_ratio": 0.9105592054012129
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 105,
+      "channel_index_0based": 12,
+      "valid_pixels": 18243,
+      "normalized_rmse": 0.40736416552793125,
+      "normalized_bias": 0.003771568289112316,
+      "forecast_to_observed_std_ratio": 0.9104154197579479
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 0,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.41636471324953805,
+      "normalized_bias": 0.019704554923928336,
+      "forecast_to_observed_std_ratio": 0.9443797875670662
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 1,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.4522277584727717,
+      "normalized_bias": 0.01704207552419906,
+      "forecast_to_observed_std_ratio": 0.9386614630902995
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 2,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.37882687929022935,
+      "normalized_bias": 0.02265035725884186,
+      "forecast_to_observed_std_ratio": 0.9431978495610815
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 3,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.7680845245365836,
+      "normalized_bias": -0.02940638733215131,
+      "forecast_to_observed_std_ratio": 0.8290432353271303
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 4,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.3943052648744781,
+      "normalized_bias": -0.02612279662657149,
+      "forecast_to_observed_std_ratio": 0.9055695151899432
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 5,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.41579526777901515,
+      "normalized_bias": -0.009204053437861015,
+      "forecast_to_observed_std_ratio": 0.9026231863414245
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 6,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.36465162588430095,
+      "normalized_bias": 0.003297443140316904,
+      "forecast_to_observed_std_ratio": 0.9417414309447636
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 7,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.39270224934429254,
+      "normalized_bias": 0.010049495629633778,
+      "forecast_to_observed_std_ratio": 0.9385943538353856
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 8,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.4294383808499468,
+      "normalized_bias": 0.014986349828510295,
+      "forecast_to_observed_std_ratio": 0.9185055031676886
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 9,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.44651962880619445,
+      "normalized_bias": 0.001449116992967104,
+      "forecast_to_observed_std_ratio": 0.9096349492695704
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 10,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.43327824593660325,
+      "normalized_bias": 0.0053828924649380345,
+      "forecast_to_observed_std_ratio": 0.9223736072332899
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 11,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.4305315805376521,
+      "normalized_bias": 0.0112981677773528,
+      "forecast_to_observed_std_ratio": 0.9215668026093199
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 120,
+      "channel_index_0based": 12,
+      "valid_pixels": 18288,
+      "normalized_rmse": 0.4294333542035225,
+      "normalized_bias": -0.001207139864085865,
+      "forecast_to_observed_std_ratio": 0.923817475446005
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 0,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.44532715345962937,
+      "normalized_bias": 0.027420858363963883,
+      "forecast_to_observed_std_ratio": 0.9716106279611937
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 1,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.47929808002474616,
+      "normalized_bias": 0.028642193868142457,
+      "forecast_to_observed_std_ratio": 0.967571001699971
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 2,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.3969171005476089,
+      "normalized_bias": 0.027578353935151845,
+      "forecast_to_observed_std_ratio": 0.9680626267416677
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 3,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.8172784410455762,
+      "normalized_bias": -0.036137937593084854,
+      "forecast_to_observed_std_ratio": 0.845691571023076
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 4,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.40363297021944655,
+      "normalized_bias": -0.01383031662729862,
+      "forecast_to_observed_std_ratio": 0.9277374559941709
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 5,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.42648631266709636,
+      "normalized_bias": 0.007318167999370361,
+      "forecast_to_observed_std_ratio": 0.9240686305776192
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 6,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.3844738793424232,
+      "normalized_bias": -0.0019047274070470032,
+      "forecast_to_observed_std_ratio": 0.9592516917283574
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 7,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.41434512639065085,
+      "normalized_bias": 0.0037513616959604073,
+      "forecast_to_observed_std_ratio": 0.9605216703199746
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 8,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4535334462798241,
+      "normalized_bias": 0.01002181893487132,
+      "forecast_to_observed_std_ratio": 0.9449664742357196
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 9,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.46977761929347017,
+      "normalized_bias": -0.004568712496493168,
+      "forecast_to_observed_std_ratio": 0.9316684974764812
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 10,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4570165684506319,
+      "normalized_bias": 0.0014642739047678083,
+      "forecast_to_observed_std_ratio": 0.9430642747988283
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 11,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4534587907437746,
+      "normalized_bias": 0.010544334140033465,
+      "forecast_to_observed_std_ratio": 0.944733903297996
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 135,
+      "channel_index_0based": 12,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.45446275962980365,
+      "normalized_bias": -0.007494221187933576,
+      "forecast_to_observed_std_ratio": 0.9426011254138337
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 0,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4617217670715115,
+      "normalized_bias": 0.028249170152417808,
+      "forecast_to_observed_std_ratio": 0.968516714691577
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 1,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4952367482828949,
+      "normalized_bias": 0.029473863485800667,
+      "forecast_to_observed_std_ratio": 0.9637830884740753
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 2,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.40778148868967135,
+      "normalized_bias": 0.031417653410703114,
+      "forecast_to_observed_std_ratio": 0.9655197932262326
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 3,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.8614130470685548,
+      "normalized_bias": -0.03438969095118072,
+      "forecast_to_observed_std_ratio": 0.8458708178007996
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 4,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4192328052332793,
+      "normalized_bias": -0.010925838382123944,
+      "forecast_to_observed_std_ratio": 0.9232072962597502
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 5,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4437572554612944,
+      "normalized_bias": 0.008694985825071527,
+      "forecast_to_observed_std_ratio": 0.9178391009520384
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 6,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4055897519939516,
+      "normalized_bias": -0.008241186250257966,
+      "forecast_to_observed_std_ratio": 0.9624806587700294
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 7,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.43704734740462314,
+      "normalized_bias": 0.0016233697923826746,
+      "forecast_to_observed_std_ratio": 0.9643991085520339
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 8,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4777237136931581,
+      "normalized_bias": 0.010956304213119893,
+      "forecast_to_observed_std_ratio": 0.9467891064633914
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 9,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4941544632351433,
+      "normalized_bias": -0.004536253516250803,
+      "forecast_to_observed_std_ratio": 0.9341939199562534
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 10,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.48108104713481264,
+      "normalized_bias": 0.002910878310920445,
+      "forecast_to_observed_std_ratio": 0.9455840155429672
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 11,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.4759907830837834,
+      "normalized_bias": 0.011574869800769955,
+      "forecast_to_observed_std_ratio": 0.9477186571414428
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 150,
+      "channel_index_0based": 12,
+      "valid_pixels": 18333,
+      "normalized_rmse": 0.47927241341268406,
+      "normalized_bias": -0.006702074147674673,
+      "forecast_to_observed_std_ratio": 0.9451583934843809
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 0,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.4849184254142346,
+      "normalized_bias": 0.028614902641114538,
+      "forecast_to_observed_std_ratio": 0.9689552370270459
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 1,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.5181074124675594,
+      "normalized_bias": 0.028544721200264564,
+      "forecast_to_observed_std_ratio": 0.9634496874946161
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 2,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.4240085625793103,
+      "normalized_bias": 0.03318794615759114,
+      "forecast_to_observed_std_ratio": 0.9635884399180628
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 3,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.9018873457345951,
+      "normalized_bias": -0.030586702178685525,
+      "forecast_to_observed_std_ratio": 0.8395376639239127
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 4,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.437226591849807,
+      "normalized_bias": -0.011075909896860437,
+      "forecast_to_observed_std_ratio": 0.9183271107370149
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 5,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.4654582306307688,
+      "normalized_bias": 0.008698615463247402,
+      "forecast_to_observed_std_ratio": 0.9165683472663138
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 6,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.42207201634281644,
+      "normalized_bias": -0.002163444121559336,
+      "forecast_to_observed_std_ratio": 0.9647309629532616
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 7,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.4572686807067606,
+      "normalized_bias": 0.009545651406244202,
+      "forecast_to_observed_std_ratio": 0.964495860869123
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 8,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.4993247486164956,
+      "normalized_bias": 0.016696826460042686,
+      "forecast_to_observed_std_ratio": 0.9448080999219987
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 9,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.5182786347416044,
+      "normalized_bias": -0.00375287721252779,
+      "forecast_to_observed_std_ratio": 0.9301342638914183
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 10,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.5051169699001857,
+      "normalized_bias": 0.002992751422625831,
+      "forecast_to_observed_std_ratio": 0.9407580159261146
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 11,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.5000700786644044,
+      "normalized_bias": 0.012498644406928145,
+      "forecast_to_observed_std_ratio": 0.9436497271560363
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 165,
+      "channel_index_0based": 12,
+      "valid_pixels": 18315,
+      "normalized_rmse": 0.5044213812768341,
+      "normalized_bias": -0.004943586698206068,
+      "forecast_to_observed_std_ratio": 0.9416272320855401
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 0,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.5044486189974172,
+      "normalized_bias": 0.034053423129456785,
+      "forecast_to_observed_std_ratio": 0.9776819415784643
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 1,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.5365704761877027,
+      "normalized_bias": 0.03190134372608244,
+      "forecast_to_observed_std_ratio": 0.9712334331828919
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 2,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.43828724120432777,
+      "normalized_bias": 0.03842724884496257,
+      "forecast_to_observed_std_ratio": 0.970162455476289
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 3,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.9326915887288341,
+      "normalized_bias": -0.03142078768285276,
+      "forecast_to_observed_std_ratio": 0.8448242705975824
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 4,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.4426797247028337,
+      "normalized_bias": -0.012762568351118489,
+      "forecast_to_observed_std_ratio": 0.9136277112339249
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 5,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.4741308461736229,
+      "normalized_bias": 0.0046501727327478825,
+      "forecast_to_observed_std_ratio": 0.9120421540763534
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 6,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.4353177707517241,
+      "normalized_bias": -0.00031290183181099875,
+      "forecast_to_observed_std_ratio": 0.957055144741038
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 7,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.47220418313767054,
+      "normalized_bias": 0.010663834189539844,
+      "forecast_to_observed_std_ratio": 0.9569355429357042
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 8,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.5164303820622643,
+      "normalized_bias": 0.017836232232841406,
+      "forecast_to_observed_std_ratio": 0.9382689708937074
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 9,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.538912174528647,
+      "normalized_bias": 0.0006485347598197491,
+      "forecast_to_observed_std_ratio": 0.9273488547088522
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 10,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.5263388795546861,
+      "normalized_bias": 0.007434393661045329,
+      "forecast_to_observed_std_ratio": 0.9378266963853269
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 11,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.5202186526361695,
+      "normalized_bias": 0.01693449168605711,
+      "forecast_to_observed_std_ratio": 0.9396203164335145
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 180,
+      "channel_index_0based": 12,
+      "valid_pixels": 18252,
+      "normalized_rmse": 0.5248785140328962,
+      "normalized_bias": -0.0013816852802822177,
+      "forecast_to_observed_std_ratio": 0.9342813117687202
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 0,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.5212437343689702,
+      "normalized_bias": 0.03604921653983212,
+      "forecast_to_observed_std_ratio": 0.9758899237855213
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 1,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.5525223838915884,
+      "normalized_bias": 0.03350286377028827,
+      "forecast_to_observed_std_ratio": 0.9695439135052495
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 2,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.4521933597283119,
+      "normalized_bias": 0.04167353617470775,
+      "forecast_to_observed_std_ratio": 0.969862294422361
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 3,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.9496549917904274,
+      "normalized_bias": -0.035212349590479225,
+      "forecast_to_observed_std_ratio": 0.8262353373558805
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 4,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.4601951531850995,
+      "normalized_bias": -0.014476815707541621,
+      "forecast_to_observed_std_ratio": 0.910507640415689
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 5,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.4934217657994561,
+      "normalized_bias": 0.00304813640343705,
+      "forecast_to_observed_std_ratio": 0.910900326269108
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 6,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.4497821926623346,
+      "normalized_bias": 0.004703081603013385,
+      "forecast_to_observed_std_ratio": 0.9521443139750599
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 7,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.48845695692891966,
+      "normalized_bias": 0.015035383057892772,
+      "forecast_to_observed_std_ratio": 0.9484143853401946
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 8,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.5340394089551279,
+      "normalized_bias": 0.02141891414189521,
+      "forecast_to_observed_std_ratio": 0.9256716832085907
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 9,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.5594227284337475,
+      "normalized_bias": 0.001193627508583305,
+      "forecast_to_observed_std_ratio": 0.9178250048269264
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 10,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.5460661008404172,
+      "normalized_bias": 0.008200865287003124,
+      "forecast_to_observed_std_ratio": 0.9272079640621161
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 11,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.5400372821357207,
+      "normalized_bias": 0.01721169220238627,
+      "forecast_to_observed_std_ratio": 0.9287857435514257
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 195,
+      "channel_index_0based": 12,
+      "valid_pixels": 18126,
+      "normalized_rmse": 0.545356716778883,
+      "normalized_bias": -2.349599243661946e-05,
+      "forecast_to_observed_std_ratio": 0.92199063092601
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 0,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5352842395443231,
+      "normalized_bias": 0.03549813795991962,
+      "forecast_to_observed_std_ratio": 0.9773505941794591
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 1,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5666348688447225,
+      "normalized_bias": 0.03219407797313534,
+      "forecast_to_observed_std_ratio": 0.9700288753625024
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 2,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.46349492342390214,
+      "normalized_bias": 0.04226509525546705,
+      "forecast_to_observed_std_ratio": 0.9707076405703627
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 3,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.9779333480328557,
+      "normalized_bias": -0.04350118809654897,
+      "forecast_to_observed_std_ratio": 0.811201466671584
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 4,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.47476402168320864,
+      "normalized_bias": -0.008709727058336569,
+      "forecast_to_observed_std_ratio": 0.9085190260904228
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 5,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5125051095250507,
+      "normalized_bias": 0.007057055981054182,
+      "forecast_to_observed_std_ratio": 0.9100254786609332
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 6,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.46300108360501,
+      "normalized_bias": 0.0038521226656253226,
+      "forecast_to_observed_std_ratio": 0.9478086296056938
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 7,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.50210207688828,
+      "normalized_bias": 0.017356187373274275,
+      "forecast_to_observed_std_ratio": 0.9429854836457646
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 8,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5502488498460038,
+      "normalized_bias": 0.026844100533752843,
+      "forecast_to_observed_std_ratio": 0.9201125549513279
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 9,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5773379741771536,
+      "normalized_bias": 0.008372197534671534,
+      "forecast_to_observed_std_ratio": 0.9126765627914493
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 10,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5641516107801838,
+      "normalized_bias": 0.015062989455008382,
+      "forecast_to_observed_std_ratio": 0.924377913587164
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 11,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5579816610720472,
+      "normalized_bias": 0.024414849848907776,
+      "forecast_to_observed_std_ratio": 0.9260117607145112
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 210,
+      "channel_index_0based": 12,
+      "valid_pixels": 17973,
+      "normalized_rmse": 0.5630007798381705,
+      "normalized_bias": 0.007217586897337309,
+      "forecast_to_observed_std_ratio": 0.9191919129859276
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 0,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5503164126856087,
+      "normalized_bias": 0.029524807923037796,
+      "forecast_to_observed_std_ratio": 0.9774869861130342
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 1,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5815064868094854,
+      "normalized_bias": 0.026016929456307365,
+      "forecast_to_observed_std_ratio": 0.9712343708883368
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 2,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.47439920441498845,
+      "normalized_bias": 0.03990895263716044,
+      "forecast_to_observed_std_ratio": 0.9708457121899838
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 3,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.9942773639969367,
+      "normalized_bias": -0.0457814461245921,
+      "forecast_to_observed_std_ratio": 0.8000515884841751
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 4,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.4892350499758031,
+      "normalized_bias": -0.015292028742019691,
+      "forecast_to_observed_std_ratio": 0.9093363701259238
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 5,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5304022243193638,
+      "normalized_bias": -2.78530959483905e-05,
+      "forecast_to_observed_std_ratio": 0.9137521884626513
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 6,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.4672177636981454,
+      "normalized_bias": 0.004266225364191087,
+      "forecast_to_observed_std_ratio": 0.9425344292305929
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 7,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5079532947498978,
+      "normalized_bias": 0.01980997335459403,
+      "forecast_to_observed_std_ratio": 0.9355365773776526
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 8,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5593381445857764,
+      "normalized_bias": 0.030733139356542385,
+      "forecast_to_observed_std_ratio": 0.9119699744907265
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 9,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5920284681157796,
+      "normalized_bias": 0.01326250611400001,
+      "forecast_to_observed_std_ratio": 0.9081594332745458
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 10,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.577968663114394,
+      "normalized_bias": 0.01996467535125562,
+      "forecast_to_observed_std_ratio": 0.9192126079659007
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 11,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5709738182503943,
+      "normalized_bias": 0.028789603727534363,
+      "forecast_to_observed_std_ratio": 0.9200480802014619
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 225,
+      "channel_index_0based": 12,
+      "valid_pixels": 17802,
+      "normalized_rmse": 0.5742502098287341,
+      "normalized_bias": 0.009608224163839272,
+      "forecast_to_observed_std_ratio": 0.9107231636148694
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 0,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5639989979994476,
+      "normalized_bias": 0.04048840817714134,
+      "forecast_to_observed_std_ratio": 0.9741871580079122
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 1,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5961061650204258,
+      "normalized_bias": 0.035454071738710964,
+      "forecast_to_observed_std_ratio": 0.9664766174910904
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 2,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.48767949854972154,
+      "normalized_bias": 0.0524129245717297,
+      "forecast_to_observed_std_ratio": 0.9689506481199721
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 3,
+      "valid_pixels": 17631,
+      "normalized_rmse": 1.0370413633252493,
+      "normalized_bias": -0.05453738849113178,
+      "forecast_to_observed_std_ratio": 0.7901834234888877
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 4,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5015485709585495,
+      "normalized_bias": -0.00952697129259367,
+      "forecast_to_observed_std_ratio": 0.904810279882913
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 5,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5457826033705225,
+      "normalized_bias": 0.0030739439746784985,
+      "forecast_to_observed_std_ratio": 0.9086585951836887
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 6,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.4785514172746745,
+      "normalized_bias": 0.005683747761104771,
+      "forecast_to_observed_std_ratio": 0.9347623175495108
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 7,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5210341359104943,
+      "normalized_bias": 0.023852989354717004,
+      "forecast_to_observed_std_ratio": 0.926505089277693
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 8,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5769310656766177,
+      "normalized_bias": 0.035646935683303245,
+      "forecast_to_observed_std_ratio": 0.9003549504161185
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 9,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.6129771195453168,
+      "normalized_bias": 0.010386723096549935,
+      "forecast_to_observed_std_ratio": 0.8991575648427547
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 10,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5985916963763438,
+      "normalized_bias": 0.017447861808392626,
+      "forecast_to_observed_std_ratio": 0.9118579651625851
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 11,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5920674654548138,
+      "normalized_bias": 0.02658240972318526,
+      "forecast_to_observed_std_ratio": 0.9115423434627739
+    },
+    {
+      "station": "sili",
+      "lead_minutes": 240,
+      "channel_index_0based": 12,
+      "valid_pixels": 17631,
+      "normalized_rmse": 0.5972136592689408,
+      "normalized_bias": 0.010810432332080604,
+      "forecast_to_observed_std_ratio": 0.9017796790766048
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 0,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.1828472063916221,
+      "normalized_bias": -0.017462538650333762,
+      "forecast_to_observed_std_ratio": 0.9623677993335769
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 1,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.1994997973700161,
+      "normalized_bias": -0.01752944480775797,
+      "forecast_to_observed_std_ratio": 0.965157481001814
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 2,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.198713123842241,
+      "normalized_bias": -0.01330169689863597,
+      "forecast_to_observed_std_ratio": 0.9602425233673694
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 3,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.3462200780150452,
+      "normalized_bias": 0.011062375130286713,
+      "forecast_to_observed_std_ratio": 0.9290760746304669
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 4,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.2068135086021331,
+      "normalized_bias": -0.001313467592500028,
+      "forecast_to_observed_std_ratio": 0.9525635147395156
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 5,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.23206279562570814,
+      "normalized_bias": -0.002739663285580671,
+      "forecast_to_observed_std_ratio": 0.9529586130567993
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 6,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.144895004581486,
+      "normalized_bias": 0.01193040580616283,
+      "forecast_to_observed_std_ratio": 0.9940950202331449
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 7,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.15468899385671822,
+      "normalized_bias": 0.012402917749156172,
+      "forecast_to_observed_std_ratio": 0.9826947286486369
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 8,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.18291538440550198,
+      "normalized_bias": 0.012766015264374302,
+      "forecast_to_observed_std_ratio": 0.9787442385376448
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 9,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.19712041971775707,
+      "normalized_bias": -0.0033337957164244047,
+      "forecast_to_observed_std_ratio": 0.9683339765264852
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 10,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.1875115239732547,
+      "normalized_bias": -0.007882474959997091,
+      "forecast_to_observed_std_ratio": 0.9712866171198394
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 11,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.19338872990455838,
+      "normalized_bias": 0.0036186593792756827,
+      "forecast_to_observed_std_ratio": 0.9687349553971117
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 15,
+      "channel_index_0based": 12,
+      "valid_pixels": 19134,
+      "normalized_rmse": 0.18094856003741067,
+      "normalized_bias": 0.021698030095565556,
+      "forecast_to_observed_std_ratio": 0.9837835175281375
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 0,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.21104995564622167,
+      "normalized_bias": -0.017367740614348048,
+      "forecast_to_observed_std_ratio": 0.9590095749069701
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 1,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.23142933060125798,
+      "normalized_bias": -0.018407172999419942,
+      "forecast_to_observed_std_ratio": 0.9607633474465056
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 2,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.21955231135605563,
+      "normalized_bias": -0.008242836805410653,
+      "forecast_to_observed_std_ratio": 0.9562802433878365
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 3,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.39769351637908296,
+      "normalized_bias": 0.008185705679886619,
+      "forecast_to_observed_std_ratio": 0.9148387822881089
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 4,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.23524551703132648,
+      "normalized_bias": 0.0030315068333077178,
+      "forecast_to_observed_std_ratio": 0.9468898543890609
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 5,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.26481422418868317,
+      "normalized_bias": -0.000936284343780471,
+      "forecast_to_observed_std_ratio": 0.9449048529508012
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 6,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.16331471830009922,
+      "normalized_bias": 0.009484265167938542,
+      "forecast_to_observed_std_ratio": 0.9899324758177808
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 7,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.17802397010869164,
+      "normalized_bias": 0.010980690452205262,
+      "forecast_to_observed_std_ratio": 0.9775771608315338
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 8,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.21658228299141538,
+      "normalized_bias": 0.010272282279819609,
+      "forecast_to_observed_std_ratio": 0.971821745657387
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 9,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.24788538176911645,
+      "normalized_bias": -0.005095905859828832,
+      "forecast_to_observed_std_ratio": 0.9622555622180683
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 10,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.239562121570683,
+      "normalized_bias": -0.009129787121595848,
+      "forecast_to_observed_std_ratio": 0.965896790636612
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 11,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.24342779858542377,
+      "normalized_bias": 0.001075851307630984,
+      "forecast_to_observed_std_ratio": 0.9633597799231051
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 30,
+      "channel_index_0based": 12,
+      "valid_pixels": 19287,
+      "normalized_rmse": 0.22386510141514587,
+      "normalized_bias": 0.017803434559156204,
+      "forecast_to_observed_std_ratio": 0.976890414837053
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 0,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.23167098719751195,
+      "normalized_bias": -0.015765178773293944,
+      "forecast_to_observed_std_ratio": 0.9580930698692823
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 1,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2537151590319188,
+      "normalized_bias": -0.016914097931845715,
+      "forecast_to_observed_std_ratio": 0.9609965186427316
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 2,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.23484863726900174,
+      "normalized_bias": -0.005159778497923451,
+      "forecast_to_observed_std_ratio": 0.9571059771917544
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 3,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.4518977373166715,
+      "normalized_bias": 0.01579430277519678,
+      "forecast_to_observed_std_ratio": 0.9117182464281034
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 4,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2567585021445877,
+      "normalized_bias": 0.00295400373796633,
+      "forecast_to_observed_std_ratio": 0.9445756791711257
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 5,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2917912002253975,
+      "normalized_bias": -0.0010349659909798725,
+      "forecast_to_observed_std_ratio": 0.9421514630294038
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 6,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.18063836832671287,
+      "normalized_bias": 0.008678179030028219,
+      "forecast_to_observed_std_ratio": 0.9890909743574777
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 7,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2001364161120304,
+      "normalized_bias": 0.011988564368369196,
+      "forecast_to_observed_std_ratio": 0.9764248788523311
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 8,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2484955700771107,
+      "normalized_bias": 0.010442533362572516,
+      "forecast_to_observed_std_ratio": 0.9694133352023182
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 9,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2943969722751561,
+      "normalized_bias": -0.008206906573088405,
+      "forecast_to_observed_std_ratio": 0.9557098495837041
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 10,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2861899002834682,
+      "normalized_bias": -0.013065583315377837,
+      "forecast_to_observed_std_ratio": 0.9591306420805011
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 11,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.2884149177367486,
+      "normalized_bias": -0.002408759331115968,
+      "forecast_to_observed_std_ratio": 0.9578853233221151
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 45,
+      "channel_index_0based": 12,
+      "valid_pixels": 19413,
+      "normalized_rmse": 0.26695553210834433,
+      "normalized_bias": 0.015318231557901279,
+      "forecast_to_observed_std_ratio": 0.9732931649164243
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 0,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.24530734866024467,
+      "normalized_bias": -0.019763805271001127,
+      "forecast_to_observed_std_ratio": 0.9532060092317183
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 1,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.269022933703862,
+      "normalized_bias": -0.02126825651100774,
+      "forecast_to_observed_std_ratio": 0.957531707717586
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 2,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.24680609393819317,
+      "normalized_bias": -0.0054884779435712735,
+      "forecast_to_observed_std_ratio": 0.9538041920486973
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 3,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.48898598673332466,
+      "normalized_bias": 0.010736866227108227,
+      "forecast_to_observed_std_ratio": 0.9006999090351502
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 4,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.2741895185775687,
+      "normalized_bias": 0.006520685419585575,
+      "forecast_to_observed_std_ratio": 0.9458115724282413
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 5,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.31310559925842857,
+      "normalized_bias": 0.000980490014266029,
+      "forecast_to_observed_std_ratio": 0.9416894742681403
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 6,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.19884460932460798,
+      "normalized_bias": 0.011458673449834674,
+      "forecast_to_observed_std_ratio": 0.9784345696145528
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 7,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.2216641229002982,
+      "normalized_bias": 0.015231714498719738,
+      "forecast_to_observed_std_ratio": 0.9663655545572841
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 8,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.2715682702657578,
+      "normalized_bias": 0.014573303623720193,
+      "forecast_to_observed_std_ratio": 0.9599138253796806
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 9,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.32503449954196695,
+      "normalized_bias": -0.0013840848050078365,
+      "forecast_to_observed_std_ratio": 0.9467952570358608
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 10,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.316503121656455,
+      "normalized_bias": -0.00596248262771545,
+      "forecast_to_observed_std_ratio": 0.9508890132393478
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 11,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.31851721011221484,
+      "normalized_bias": 0.003506094213358218,
+      "forecast_to_observed_std_ratio": 0.9485376842172156
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 60,
+      "channel_index_0based": 12,
+      "valid_pixels": 19512,
+      "normalized_rmse": 0.29613275264215766,
+      "normalized_bias": 0.020043889802839176,
+      "forecast_to_observed_std_ratio": 0.9630595958003196
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 0,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.2595311813719888,
+      "normalized_bias": -0.019099853363523957,
+      "forecast_to_observed_std_ratio": 0.9484668537196725
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 1,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.2827671590109496,
+      "normalized_bias": -0.02095167280956096,
+      "forecast_to_observed_std_ratio": 0.9530733560798506
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 2,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.25596576048507397,
+      "normalized_bias": -0.004441595385277018,
+      "forecast_to_observed_std_ratio": 0.9521758394193695
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 3,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.5372735636725955,
+      "normalized_bias": 0.0034780981608863713,
+      "forecast_to_observed_std_ratio": 0.8830054714716338
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 4,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.28742502209294646,
+      "normalized_bias": 0.006368823945148933,
+      "forecast_to_observed_std_ratio": 0.9470282464323395
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 5,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.3292882311108313,
+      "normalized_bias": 0.00028486411934630103,
+      "forecast_to_observed_std_ratio": 0.9420840796749412
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 6,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.22172283308189591,
+      "normalized_bias": 0.014859718005951051,
+      "forecast_to_observed_std_ratio": 0.9732408451776797
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 7,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.24706417944018627,
+      "normalized_bias": 0.018716378428860696,
+      "forecast_to_observed_std_ratio": 0.9599748427272219
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 8,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.2998512395709946,
+      "normalized_bias": 0.01799483747791352,
+      "forecast_to_observed_std_ratio": 0.9518482228960594
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 9,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.35186737477728064,
+      "normalized_bias": -0.00036742339378876296,
+      "forecast_to_observed_std_ratio": 0.9386223404845798
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 10,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.34427152746093415,
+      "normalized_bias": -0.005329828162370978,
+      "forecast_to_observed_std_ratio": 0.9424944282078533
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 11,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.34578540548398706,
+      "normalized_bias": 0.0037804372609663343,
+      "forecast_to_observed_std_ratio": 0.9398075601736978
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 75,
+      "channel_index_0based": 12,
+      "valid_pixels": 19575,
+      "normalized_rmse": 0.3233397995230287,
+      "normalized_bias": 0.02192771346453991,
+      "forecast_to_observed_std_ratio": 0.9547485205450315
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 0,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.2738848874972764,
+      "normalized_bias": -0.01681589998069564,
+      "forecast_to_observed_std_ratio": 0.9507348560615776
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 1,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.297442902129982,
+      "normalized_bias": -0.019293844021764758,
+      "forecast_to_observed_std_ratio": 0.9558735325344884
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 2,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.2671942016785016,
+      "normalized_bias": -6.092285440174368e-05,
+      "forecast_to_observed_std_ratio": 0.9564832559778133
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 3,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.5824845890989031,
+      "normalized_bias": 0.0010979456786049438,
+      "forecast_to_observed_std_ratio": 0.8752037443017797
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 4,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.2992085008474559,
+      "normalized_bias": 0.016613232892163862,
+      "forecast_to_observed_std_ratio": 0.9516826159007677
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 5,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.34206452925096165,
+      "normalized_bias": 0.010365406362569558,
+      "forecast_to_observed_std_ratio": 0.9464173367509925
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 6,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.23812292003066676,
+      "normalized_bias": 0.014655581623732,
+      "forecast_to_observed_std_ratio": 0.96991655316092
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 7,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.2653656710461747,
+      "normalized_bias": 0.01919724633016739,
+      "forecast_to_observed_std_ratio": 0.95652541846272
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 8,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.32021664572788666,
+      "normalized_bias": 0.01893763902117343,
+      "forecast_to_observed_std_ratio": 0.948074980389274
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 9,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.37211229021786774,
+      "normalized_bias": 0.001948006103362158,
+      "forecast_to_observed_std_ratio": 0.9322357229369999
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 10,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.3645219032219715,
+      "normalized_bias": -0.0030766132056698394,
+      "forecast_to_observed_std_ratio": 0.9377728091345878
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 11,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.3667910879568137,
+      "normalized_bias": 0.005511500423627844,
+      "forecast_to_observed_std_ratio": 0.934352673664646
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 90,
+      "channel_index_0based": 12,
+      "valid_pixels": 19584,
+      "normalized_rmse": 0.3446635414831898,
+      "normalized_bias": 0.02345576800638707,
+      "forecast_to_observed_std_ratio": 0.9501632771148519
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 0,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.28780920698933155,
+      "normalized_bias": -0.018953604298727906,
+      "forecast_to_observed_std_ratio": 0.9453731864839573
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 1,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.3096206451970088,
+      "normalized_bias": -0.020724021932020345,
+      "forecast_to_observed_std_ratio": 0.9520778627818344
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 2,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.2776717348354807,
+      "normalized_bias": 0.004980829105482939,
+      "forecast_to_observed_std_ratio": 0.9515086640740232
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 3,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.6119132045237463,
+      "normalized_bias": 0.0016108045662743837,
+      "forecast_to_observed_std_ratio": 0.8703128007866001
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 4,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.3102842316852986,
+      "normalized_bias": 0.02234968749833681,
+      "forecast_to_observed_std_ratio": 0.9523192574918785
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 5,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.3536400912906034,
+      "normalized_bias": 0.013057475845040136,
+      "forecast_to_observed_std_ratio": 0.9476972505469331
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 6,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.2505815321646337,
+      "normalized_bias": 0.016172468418507644,
+      "forecast_to_observed_std_ratio": 0.9640792597161457
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 7,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.2783356722672274,
+      "normalized_bias": 0.02243904229630045,
+      "forecast_to_observed_std_ratio": 0.9501769001446806
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 8,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.3359066246930609,
+      "normalized_bias": 0.02317383693859324,
+      "forecast_to_observed_std_ratio": 0.9404499660652537
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 9,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.38853982399644854,
+      "normalized_bias": 0.009138322902381164,
+      "forecast_to_observed_std_ratio": 0.9250952149028611
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 10,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.380816496512555,
+      "normalized_bias": 0.0035913202926567975,
+      "forecast_to_observed_std_ratio": 0.9303899598066105
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 11,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.3826389782432007,
+      "normalized_bias": 0.010496116796693232,
+      "forecast_to_observed_std_ratio": 0.9268037946769742
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 105,
+      "channel_index_0based": 12,
+      "valid_pixels": 19593,
+      "normalized_rmse": 0.36103935455348174,
+      "normalized_bias": 0.026658826216516166,
+      "forecast_to_observed_std_ratio": 0.9407513342207245
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 0,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.3020701687304456,
+      "normalized_bias": -0.01883447699049464,
+      "forecast_to_observed_std_ratio": 0.9471988256713103
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 1,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.32471165474435176,
+      "normalized_bias": -0.0221362095528491,
+      "forecast_to_observed_std_ratio": 0.9528617305432114
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 2,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.2880790526521755,
+      "normalized_bias": 0.003189768770351206,
+      "forecast_to_observed_std_ratio": 0.9547840951166502
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 3,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.6498505422946647,
+      "normalized_bias": -0.003924367948058244,
+      "forecast_to_observed_std_ratio": 0.8700432988351129
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 4,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.3183293916940838,
+      "normalized_bias": 0.01747230140996693,
+      "forecast_to_observed_std_ratio": 0.9531127092132505
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 5,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.3649852887626163,
+      "normalized_bias": 0.009733936774541268,
+      "forecast_to_observed_std_ratio": 0.9450948779682495
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 6,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.27059676767756485,
+      "normalized_bias": 0.006034184317737299,
+      "forecast_to_observed_std_ratio": 0.9711927574983007
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 7,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.2987897915753981,
+      "normalized_bias": 0.013981933025215887,
+      "forecast_to_observed_std_ratio": 0.9546094923121571
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 8,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.3570089688025596,
+      "normalized_bias": 0.019243337852526757,
+      "forecast_to_observed_std_ratio": 0.9412118560436632
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 9,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.40918175569125786,
+      "normalized_bias": 0.006317885409018957,
+      "forecast_to_observed_std_ratio": 0.9258465054109661
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 10,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.4006102662836404,
+      "normalized_bias": 0.0012397071381623644,
+      "forecast_to_observed_std_ratio": 0.932481968274733
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 11,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.40171975558018524,
+      "normalized_bias": 0.008566970462068,
+      "forecast_to_observed_std_ratio": 0.9287973513353589
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 120,
+      "channel_index_0based": 12,
+      "valid_pixels": 19611,
+      "normalized_rmse": 0.3817972436850988,
+      "normalized_bias": 0.023784108720875538,
+      "forecast_to_observed_std_ratio": 0.9439379553391702
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 0,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.315324267946989,
+      "normalized_bias": -0.023007880744043176,
+      "forecast_to_observed_std_ratio": 0.958558209016475
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 1,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.3381648251922782,
+      "normalized_bias": -0.02170283507834588,
+      "forecast_to_observed_std_ratio": 0.9668991588368449
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 2,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.29938912223676156,
+      "normalized_bias": -0.0009241720132380304,
+      "forecast_to_observed_std_ratio": 0.9676844367394062
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 3,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.6787335804510547,
+      "normalized_bias": -0.005039609609548036,
+      "forecast_to_observed_std_ratio": 0.9065963958767981
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 4,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.33016280705535306,
+      "normalized_bias": 0.026265727137884047,
+      "forecast_to_observed_std_ratio": 0.9697710571620238
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 5,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.3795196916683454,
+      "normalized_bias": 0.022151325987154646,
+      "forecast_to_observed_std_ratio": 0.9613233882790381
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 6,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.29527500956544134,
+      "normalized_bias": 0.011730070208166753,
+      "forecast_to_observed_std_ratio": 0.9943464618562675
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 7,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.32114467815138126,
+      "normalized_bias": 0.01610685490452638,
+      "forecast_to_observed_std_ratio": 0.9812190232503811
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 8,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.38067391290023833,
+      "normalized_bias": 0.022736046009684305,
+      "forecast_to_observed_std_ratio": 0.9663450848074657
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 9,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.4342182366201278,
+      "normalized_bias": 0.007540317638655246,
+      "forecast_to_observed_std_ratio": 0.9455725940043649
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 10,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.4256703361976799,
+      "normalized_bias": 0.005428098064467467,
+      "forecast_to_observed_std_ratio": 0.9513445497624624
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 11,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.42611280749673985,
+      "normalized_bias": 0.013957824348118486,
+      "forecast_to_observed_std_ratio": 0.9506712954037331
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 135,
+      "channel_index_0based": 12,
+      "valid_pixels": 19629,
+      "normalized_rmse": 0.4068890783107541,
+      "normalized_bias": 0.02745119763834825,
+      "forecast_to_observed_std_ratio": 0.9660614347451573
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 0,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.32886243722228947,
+      "normalized_bias": -0.02355243305065487,
+      "forecast_to_observed_std_ratio": 0.9600891523816174
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 1,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.3518754942563356,
+      "normalized_bias": -0.02278529435967493,
+      "forecast_to_observed_std_ratio": 0.9678271640783692
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 2,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.3093398792432649,
+      "normalized_bias": 0.003983311426179598,
+      "forecast_to_observed_std_ratio": 0.968457982803793
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 3,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.7065911588395143,
+      "normalized_bias": -0.011552907678143574,
+      "forecast_to_observed_std_ratio": 0.8956161921331055
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 4,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.3395121085070278,
+      "normalized_bias": 0.03177951887913086,
+      "forecast_to_observed_std_ratio": 0.9665121524388525
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 5,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.38976052777437376,
+      "normalized_bias": 0.025262206437887434,
+      "forecast_to_observed_std_ratio": 0.9556562684186628
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 6,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.30844111937402907,
+      "normalized_bias": 0.010534387677641057,
+      "forecast_to_observed_std_ratio": 0.9916127689472232
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 7,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.3378638414589222,
+      "normalized_bias": 0.01698636306638366,
+      "forecast_to_observed_std_ratio": 0.9752803362446336
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 8,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.39916973151457674,
+      "normalized_bias": 0.025035809300941163,
+      "forecast_to_observed_std_ratio": 0.9569636526803469
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 9,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.45458096225562705,
+      "normalized_bias": 0.01132074006905458,
+      "forecast_to_observed_std_ratio": 0.9424663287481924
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 10,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.4459436604874335,
+      "normalized_bias": 0.010479886358748115,
+      "forecast_to_observed_std_ratio": 0.9488638004705814
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 11,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.44608956541123423,
+      "normalized_bias": 0.017598100085837644,
+      "forecast_to_observed_std_ratio": 0.9478018206756883
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 150,
+      "channel_index_0based": 12,
+      "valid_pixels": 19602,
+      "normalized_rmse": 0.42796112990463414,
+      "normalized_bias": 0.029266047982262754,
+      "forecast_to_observed_std_ratio": 0.9588386609597389
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 0,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.3477372156554624,
+      "normalized_bias": -0.018018526390396285,
+      "forecast_to_observed_std_ratio": 0.9615915406913504
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 1,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.3698212342494209,
+      "normalized_bias": -0.01765234321478256,
+      "forecast_to_observed_std_ratio": 0.9697749201449697
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 2,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.3231024353792083,
+      "normalized_bias": 0.010916300584422093,
+      "forecast_to_observed_std_ratio": 0.9711676117623945
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 3,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.7418608370149392,
+      "normalized_bias": -0.0028107559791933283,
+      "forecast_to_observed_std_ratio": 0.9052407226341589
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 4,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.3516134524308508,
+      "normalized_bias": 0.036769598824341845,
+      "forecast_to_observed_std_ratio": 0.967388799263649
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 5,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.4033507959972622,
+      "normalized_bias": 0.03066003625235297,
+      "forecast_to_observed_std_ratio": 0.9576902854586605
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 6,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.32096625456372174,
+      "normalized_bias": 0.006394345468279831,
+      "forecast_to_observed_std_ratio": 0.9935832832629838
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 7,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.3508416260347294,
+      "normalized_bias": 0.015038607536065772,
+      "forecast_to_observed_std_ratio": 0.9775520601287601
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 8,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.4149276089061912,
+      "normalized_bias": 0.02134854317324754,
+      "forecast_to_observed_std_ratio": 0.958014689464311
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 9,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.4722528215185293,
+      "normalized_bias": 0.0026850978917896096,
+      "forecast_to_observed_std_ratio": 0.9386331113564947
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 10,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.4629964751702677,
+      "normalized_bias": 0.001217708494328871,
+      "forecast_to_observed_std_ratio": 0.944109576239978
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 11,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.4626472373835419,
+      "normalized_bias": 0.009105521828746936,
+      "forecast_to_observed_std_ratio": 0.9439960727452065
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 165,
+      "channel_index_0based": 12,
+      "valid_pixels": 19548,
+      "normalized_rmse": 0.44514026926195716,
+      "normalized_bias": 0.021932349870428663,
+      "forecast_to_observed_std_ratio": 0.957658779009851
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 0,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.36011330688143367,
+      "normalized_bias": -0.021112600213200206,
+      "forecast_to_observed_std_ratio": 0.9582946466412541
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 1,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.38221948364764824,
+      "normalized_bias": -0.020289423419188476,
+      "forecast_to_observed_std_ratio": 0.9684128307295549
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 2,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.3324371640795557,
+      "normalized_bias": 0.01270080950480089,
+      "forecast_to_observed_std_ratio": 0.968469489410706
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 3,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.7780210878656162,
+      "normalized_bias": -0.005246981049830797,
+      "forecast_to_observed_std_ratio": 0.9076591802291133
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 4,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.3628507227028194,
+      "normalized_bias": 0.04127372232328536,
+      "forecast_to_observed_std_ratio": 0.9644085179817415
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 5,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.4138293921797651,
+      "normalized_bias": 0.03344747806538623,
+      "forecast_to_observed_std_ratio": 0.9549427380252846
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 6,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.33349316234515564,
+      "normalized_bias": 0.004911308025088359,
+      "forecast_to_observed_std_ratio": 0.9862255864245361
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 7,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.36594638821579056,
+      "normalized_bias": 0.013117068392423416,
+      "forecast_to_observed_std_ratio": 0.971267944894684
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 8,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.43111621278560536,
+      "normalized_bias": 0.02020494827156291,
+      "forecast_to_observed_std_ratio": 0.9532641599319854
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 9,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.4891561625227619,
+      "normalized_bias": 0.006351259373248459,
+      "forecast_to_observed_std_ratio": 0.9353040228806617
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 10,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.4806216308018276,
+      "normalized_bias": 0.005343289190743726,
+      "forecast_to_observed_std_ratio": 0.9409364601037815
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 11,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.4799792725119039,
+      "normalized_bias": 0.011944475003609402,
+      "forecast_to_observed_std_ratio": 0.9396568726298651
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 180,
+      "channel_index_0based": 12,
+      "valid_pixels": 19431,
+      "normalized_rmse": 0.4630088713507222,
+      "normalized_bias": 0.021903321801485662,
+      "forecast_to_observed_std_ratio": 0.9517998674961219
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 0,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.3764475679676273,
+      "normalized_bias": -0.016073265915344567,
+      "forecast_to_observed_std_ratio": 0.9528539071486469
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 1,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.39870573518184815,
+      "normalized_bias": -0.015065082152772183,
+      "forecast_to_observed_std_ratio": 0.9628575400305918
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 2,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.34462373095644155,
+      "normalized_bias": 0.017541150777859504,
+      "forecast_to_observed_std_ratio": 0.9646909301048349
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 3,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.8060351879384479,
+      "normalized_bias": -0.004804923322840403,
+      "forecast_to_observed_std_ratio": 0.9036960803680457
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 4,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.3740981540675292,
+      "normalized_bias": 0.04099957182689361,
+      "forecast_to_observed_std_ratio": 0.9611399355429365
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 5,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.4274501058747902,
+      "normalized_bias": 0.033801613461395943,
+      "forecast_to_observed_std_ratio": 0.9517140868329497
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 6,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.3432934978890339,
+      "normalized_bias": 0.006461652192536788,
+      "forecast_to_observed_std_ratio": 0.9824570376721835
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 7,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.37822505577988014,
+      "normalized_bias": 0.013231945506134395,
+      "forecast_to_observed_std_ratio": 0.9664715110971326
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 8,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.4463008454166441,
+      "normalized_bias": 0.01840447249225501,
+      "forecast_to_observed_std_ratio": 0.9468483994272886
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 9,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.5058341535879453,
+      "normalized_bias": -2.3171547403311667e-05,
+      "forecast_to_observed_std_ratio": 0.9300165818902489
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 10,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.4973592260469949,
+      "normalized_bias": -0.0014249441269652606,
+      "forecast_to_observed_std_ratio": 0.9347743022608583
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 11,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.4965978094328442,
+      "normalized_bias": 0.005095538798491743,
+      "forecast_to_observed_std_ratio": 0.932220022207463
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 195,
+      "channel_index_0based": 12,
+      "valid_pixels": 19269,
+      "normalized_rmse": 0.47968208280813723,
+      "normalized_bias": 0.01757514627517444,
+      "forecast_to_observed_std_ratio": 0.9449926924296687
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 0,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.3910081561313561,
+      "normalized_bias": -0.015961696084113353,
+      "forecast_to_observed_std_ratio": 0.9531877953223891
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 1,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.41349781326825474,
+      "normalized_bias": -0.015424272006257567,
+      "forecast_to_observed_std_ratio": 0.9635890290103902
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 2,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.35772624010069226,
+      "normalized_bias": 0.01872101115232832,
+      "forecast_to_observed_std_ratio": 0.9657629899060097
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 3,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.8340900817801146,
+      "normalized_bias": -0.004005621319906286,
+      "forecast_to_observed_std_ratio": 0.9117160902972932
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 4,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.38572635907626435,
+      "normalized_bias": 0.047488895335329684,
+      "forecast_to_observed_std_ratio": 0.9616111930354921
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 5,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.43879794150100104,
+      "normalized_bias": 0.040611273565124235,
+      "forecast_to_observed_std_ratio": 0.9548367935343902
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 6,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.35637187791835384,
+      "normalized_bias": 0.002778241115197004,
+      "forecast_to_observed_std_ratio": 0.9862593813573017
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 7,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.39218286113362866,
+      "normalized_bias": 0.01047229670808459,
+      "forecast_to_observed_std_ratio": 0.9687941051812288
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 8,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.4635167930224394,
+      "normalized_bias": 0.0168665221340289,
+      "forecast_to_observed_std_ratio": 0.947203233017241
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 9,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.5223973144557575,
+      "normalized_bias": -0.0004837643367014548,
+      "forecast_to_observed_std_ratio": 0.9260148904916922
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 10,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.5145921558712964,
+      "normalized_bias": -0.0020843272511019495,
+      "forecast_to_observed_std_ratio": 0.9319067499922613
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 11,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.5138705872043637,
+      "normalized_bias": 0.0040964998138982986,
+      "forecast_to_observed_std_ratio": 0.9290899997294915
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 210,
+      "channel_index_0based": 12,
+      "valid_pixels": 19089,
+      "normalized_rmse": 0.4984529458176781,
+      "normalized_bias": 0.01628871680438968,
+      "forecast_to_observed_std_ratio": 0.9433128227021627
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 0,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.4083314986446453,
+      "normalized_bias": -0.013954620532291134,
+      "forecast_to_observed_std_ratio": 0.954299165436269
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 1,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.43043321505355936,
+      "normalized_bias": -0.012416569471707104,
+      "forecast_to_observed_std_ratio": 0.9654746708395773
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 2,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.37266733955796105,
+      "normalized_bias": 0.026068769456344024,
+      "forecast_to_observed_std_ratio": 0.966785027145269
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 3,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.8658466844001091,
+      "normalized_bias": -0.0017330173973640459,
+      "forecast_to_observed_std_ratio": 0.920275420639459
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 4,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.40273663777041546,
+      "normalized_bias": 0.05635976008422695,
+      "forecast_to_observed_std_ratio": 0.9670836888899568
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 5,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.45429466072983415,
+      "normalized_bias": 0.047830024733069416,
+      "forecast_to_observed_std_ratio": 0.961882056675569
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 6,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.36590172889761036,
+      "normalized_bias": 0.0003150163775805358,
+      "forecast_to_observed_std_ratio": 0.9822449457166169
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 7,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.4038453694048425,
+      "normalized_bias": 0.012406804378098662,
+      "forecast_to_observed_std_ratio": 0.9642323349568704
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 8,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.47857369851975756,
+      "normalized_bias": 0.02175995141064154,
+      "forecast_to_observed_std_ratio": 0.940288907964633
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 9,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.5383095284293956,
+      "normalized_bias": 0.004670235624932017,
+      "forecast_to_observed_std_ratio": 0.918086564654762
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 10,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.5312096445719132,
+      "normalized_bias": 0.0025099706571142864,
+      "forecast_to_observed_std_ratio": 0.9233699051540556
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 11,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.5303724085494045,
+      "normalized_bias": 0.007991446369104847,
+      "forecast_to_observed_std_ratio": 0.920120796380696
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 225,
+      "channel_index_0based": 12,
+      "valid_pixels": 18900,
+      "normalized_rmse": 0.5151611755097325,
+      "normalized_bias": 0.018310861600678834,
+      "forecast_to_observed_std_ratio": 0.9329560945742487
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 0,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.42541685826036996,
+      "normalized_bias": -0.007838181526661766,
+      "forecast_to_observed_std_ratio": 0.9575518479899434
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 1,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.44760785441653894,
+      "normalized_bias": -0.00745344842632061,
+      "forecast_to_observed_std_ratio": 0.967243527909205
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 2,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.3849408797178539,
+      "normalized_bias": 0.035107440666538155,
+      "forecast_to_observed_std_ratio": 0.9705951806160191
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 3,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.8790244716784462,
+      "normalized_bias": -0.007525531500509453,
+      "forecast_to_observed_std_ratio": 0.9048662387805931
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 4,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.41254033804314744,
+      "normalized_bias": 0.05731002293752836,
+      "forecast_to_observed_std_ratio": 0.9660978161651909
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 5,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.46439975012867524,
+      "normalized_bias": 0.0473763456033337,
+      "forecast_to_observed_std_ratio": 0.9554258606908175
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 6,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.381107201956305,
+      "normalized_bias": -0.008560742177393919,
+      "forecast_to_observed_std_ratio": 0.9868204005696876
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 7,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.416193830003925,
+      "normalized_bias": 0.004298497896666759,
+      "forecast_to_observed_std_ratio": 0.964599249970697
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 8,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.4883767494831445,
+      "normalized_bias": 0.015226800902169105,
+      "forecast_to_observed_std_ratio": 0.9352663023705896
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 9,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.552261394932907,
+      "normalized_bias": -0.001154804015379862,
+      "forecast_to_observed_std_ratio": 0.9157874572774996
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 10,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.545677447266825,
+      "normalized_bias": -0.003134931981745006,
+      "forecast_to_observed_std_ratio": 0.9220219442682193
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 11,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.5442325184027683,
+      "normalized_bias": 0.001824892657428921,
+      "forecast_to_observed_std_ratio": 0.9174415886646452
+    },
+    {
+      "station": "zhujia",
+      "lead_minutes": 240,
+      "channel_index_0based": 12,
+      "valid_pixels": 18702,
+      "normalized_rmse": 0.5283059436347814,
+      "normalized_bias": 0.011333467897915797,
+      "forecast_to_observed_std_ratio": 0.9300076574713416
+    }
+  ],
+  "forecast_pack_manifest_sha256": "cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233",
+  "forecast_agri_val_sha256": "57dc8c547660944dbcec679606b74c1f7c1e77a8f45763afd151b01b80f704d0",
+  "forecast_cot_val_sha256": "afa8c033ed0301e45e8ad4d49976aff7c2a732449e851941f388d1f42d56e1d9",
+  "oracle_pack_manifest_sha256": "92ba5f761ec566c4af63422cf6e2d66d48da4015b7bfe918948bef8cd274a4ca",
+  "oracle_cot_val_sha256": "405ee0a14fd4a774da9933ccd7cf3c44c06c2db0411d1b68bb7c9640aca9f2c5",
+  "actual_r_bank_manifest_sha256": "3049472e2b62d2f1df3e7afcd51bb4bcdf2cf4ef7e6735af3d04138ec4c4cc56",
+  "actual_r_frame_keys_sha256": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+  "train_only_agri_norm_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+  "calibration_sha256": "d1a0d104fc84c2223be5397a11d4e3730025475384880c8206c9f5420499645b",
+  "observed_future_agri_used_as_diagnostic_reference": true,
+  "observed_future_agri_used_as_inference_input": false,
+  "cpp_used": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "validation_used_for_fitting_or_threshold_selection": false,
+  "r_is_retrieval_reference_not_independent_cloud_truth": true,
+  "smoke_limit_frames": 0
+}

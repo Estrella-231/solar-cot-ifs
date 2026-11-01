@@ -1,0 +1,107 @@
+#!/bin/bash
+#PBS -N hb_al_norm
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+WORK="$ROOT/source_rebuild_20261017_v2"
+PACK="$WORK/pack"
+SCRIPTS="$ROOT/scripts"
+AL="$ROOT/al_normreload_20261017"
+FEATURES="$AL/features_r_dec1_trainval_rebuildv2"
+PROFILE="$AL/profile_al_rebuildv2.json"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+mkdir -p "$AL/logs"
+exec > "$AL/logs/train_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPTS:${PYTHONPATH:-}"
+BATCH_FILE="$AL/.selected_batch_${PBS_JOBID//./_}"
+
+test -s "$PROFILE"
+test -s "$FEATURES/AL_FEATURE_REPORT.json"
+test -s "$AL/audit_al_results.py"
+test -s "$AL/audit_three_station_common_time_sensitivity.py"
+test ! -e "$AL/pack"
+test ! -e "$AL/AL_FEATURE_REPORT.json"
+"$PY" - "$PACK" "$FEATURES" "$PROFILE" "$BATCH_FILE" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+pack,features,profile,batch_file=map(Path,sys.argv[1:])
+p=json.loads((pack/'pack_report.json').read_text()); f=json.loads((features/'AL_FEATURE_REPORT.json').read_text())
+q=json.loads(profile.read_text())
+sha=lambda x: hashlib.sha256(x.read_bytes()).hexdigest()
+assert sha(pack/'pack_report.json')=='e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515'
+assert p['samples']==29351 and p['test_and_buffer_values_read']==0
+assert f['pack_report_sha256']==sha(pack/'pack_report.json') and f['test_payloads_read']==0
+assert f['ghi_labels_read'] is False and f['cpp_payloads_read']==0
+assert q['state']=='HUBEI_GHI_HEAD_AL_SINGLE_GPU_PROFILE_COMPLETE' and q['test_payloads_read']==0
+measurements=q['measurements']; eligible=[m for m in measurements if m['updates_per_epoch']>=12]
+assert eligible
+peak=max(m['examples_per_second'] for m in eligible)
+selected=max(m['batch'] for m in eligible if m['examples_per_second']>=0.97*peak)
+print('AL_TRAIN_PREFLIGHT_PASS batch=%d pack_sha=%s profile_peak=%.1f'%(selected,sha(pack/'pack_report.json'),peak),flush=True)
+batch_file.write_text(str(selected))
+PY
+BATCH=$(cat "$BATCH_FILE")
+rm -f "$BATCH_FILE"
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\nAL_BATCH=%s\n' "$PBS_JOBID" "$GPU_IDS" "$BATCH"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+
+ln -s "$PACK" "$AL/pack"
+ln -s "$FEATURES/AL_FEATURE_REPORT.json" "$AL/AL_FEATURE_REPORT.json"
+SPLIT_LINK="$ROOT/frozen_split_20261015_v1"
+if test -e "$SPLIT_LINK"; then
+  "$PY" - "$SPLIT_LINK/day_assignment.csv" <<'PY'
+import hashlib,sys
+from pathlib import Path
+p=Path(sys.argv[1]); assert hashlib.sha256(p.read_bytes()).hexdigest()=='6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6'
+PY
+else
+  ln -s "$WORK/input" "$SPLIT_LINK"
+fi
+
+for SEED in 42 43 44; do
+  OUT="$AL/runs_maskfix_v2/seed${SEED}"
+  test ! -e "$OUT"
+  mkdir -p "$AL/baseline_runs/seed${SEED}"
+  for STATION in Niushou Wangzhai Mizhuang; do
+    BASE="$WORK/training/same_time_seed${SEED}_normreload_v1/$STATION"
+    test -s "$BASE/A_val_prediction_ghi_wm2.npy"
+    test -s "$BASE/AC_val_prediction_ghi_wm2.npy"
+    test -s "$BASE/AP_val_prediction_ghi_wm2.npy"
+    test ! -e "$AL/baseline_runs/seed${SEED}/$STATION"
+    ln -s "$BASE" "$AL/baseline_runs/seed${SEED}/$STATION"
+  done
+  CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPTS/train_hubei_ghi_head_al_20261017.py" \
+    --pack "$PACK" --r-feature-bank "$FEATURES" --output "$OUT" \
+    --seed "$SEED" --epochs 30 --batch-size "$BATCH" \
+    | tee "$AL/logs/train_seed${SEED}_${PBS_JOBID//./_}.log"
+  "$PY" - "$OUT/run_metadata.json" <<'PY'
+import json,sys
+from pathlib import Path
+d=json.loads(Path(sys.argv[1]).read_text())
+assert d['state']=='HUBEI_GHI_HEAD_AL_SEED_COMPLETE' and d['test_payloads_read']==0
+assert d['arm']=='AL' and d['parameter_count']<d['AP_parameter_count']*1.05
+print('AL_SEED_COMPLETE_TEST_CLOSED seed=%d'%d['seed'],flush=True)
+PY
+done
+
+"$PY" "$AL/audit_al_results.py" | tee "$AL/logs/independent_audit_${PBS_JOBID//./_}.log"
+test -s "$AL/AL_RESULT_AUDIT_20261017.json"
+"$PY" "$AL/audit_three_station_common_time_sensitivity.py" \
+  | tee "$AL/logs/common_time_${PBS_JOBID//./_}.log"
+test -s "$AL/THREE_STATION_COMMON_TIME_SENSITIVITY_20261017.json"
+echo HUBEI_AL_NORMRELOAD_TRAIN_AND_VALIDATION_AUDIT_COMPLETE_TEST_CLOSED

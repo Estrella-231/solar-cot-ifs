@@ -1,0 +1,37 @@
+{
+  "source": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\cot_value_first_20261013\\results\\forecast_cot_val_bank_20261014_v1\\forecast_cot_val_bank.npz",
+  "source_sha256": "fd7a431148ebf301140614bdafa8f05e09e99bc5c83a34bb0c456d6cf88b27ac",
+  "model_chain": "historical AGRI -> SimVP forecast AGRI -> frozen R -> physical COT",
+  "target": "CPP reference at matching station/target time/pixel; existing CPP-valid mask",
+  "physical_transform": "one FP64 expm1 of forecast_log1p_cot",
+  "bin_width_cot": 1,
+  "axis_limits": [
+    0,
+    80
+  ],
+  "density_scale": "LogNorm count; shared across panels; zero-count bins white",
+  "samples": "all saved common-support pixel-lead pairs; no downsampling or clipping",
+  "test_read": 0,
+  "window_count": 271,
+  "cpp_supported_target_dates": 8,
+  "statistics": [
+    {
+      "station": "sili",
+      "n_pixel_lead_records": 276736,
+      "rmse": 29.131844915024473,
+      "mae": 25.154748113284473,
+      "bias": -14.496064491579936,
+      "pearson_r": -0.20356588227475586,
+      "r2_sse_sst": -1.0834086027154846
+    },
+    {
+      "station": "zhujia",
+      "n_pixel_lead_records": 273664,
+      "rmse": 23.043068978614663,
+      "mae": 18.191109194985327,
+      "bias": -12.947794491716952,
+      "pearson_r": 0.09106160340534349,
+      "r2_sse_sst": -1.1017919040359834
+    }
+  ]
+}

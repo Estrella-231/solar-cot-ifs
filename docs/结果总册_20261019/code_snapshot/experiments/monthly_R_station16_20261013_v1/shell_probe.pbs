@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -N cot_shell_probe
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=1:gpus=1
+#PBS -l walltime=00:01:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/monthly_R_station16_20261013_v1/logs/shell_probe.log
+printf 'PROBE_START %s\n' "$PBS_JOBID"
+date
+sleep 20
+printf 'PROBE_AFTER_SLEEP %s\n' "$PBS_JOBID"

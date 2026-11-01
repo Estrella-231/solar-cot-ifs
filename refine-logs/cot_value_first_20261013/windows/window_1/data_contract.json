@@ -1,0 +1,125 @@
+{
+  "schema": "cot_value_first_window1_data_contract_v1",
+  "state": "GHI_KT_TRAIN_VAL_READY_COT_MONTHLY_INPUT_AUDIT_PENDING",
+  "created_at_bjt": "2026-10-13",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "split_manifest_sha256": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2",
+  "day_assignment_sha256": "688bbbe5eea3ef12aea4f14bc8dfea4dcf63e7a584b09ca8d5345f8d1e0e972f",
+  "target_unit": "one unique observed AGRI nominal target timestamp per station; no overlapping init windows multiply samples",
+  "target_time": "AGRI nominal UTC filename; BJT=UTC+08:00; contemporaneous target with init_time=null; no test payload or targets emitted",
+  "stations": {
+    "sili": {
+      "name_zh": "四里",
+      "lat": 25.9478611111,
+      "lon": 112.347916667,
+      "grid_rc": [
+        163,
+        148
+      ],
+      "patch_rc": [
+        8,
+        8
+      ],
+      "true_hdf_rc": [
+        694,
+        1554
+      ],
+      "patch_bounds_rc_exclusive": [
+        155,
+        171,
+        140,
+        156
+      ]
+    },
+    "zhujia": {
+      "name_zh": "竺家",
+      "lat": 29.566666667,
+      "lon": 112.45,
+      "grid_rc": [
+        73,
+        150
+      ],
+      "patch_rc": [
+        8,
+        8
+      ],
+      "true_hdf_rc": [
+        612,
+        1549
+      ],
+      "patch_bounds_rc_exclusive": [
+        65,
+        81,
+        142,
+        158
+      ]
+    }
+  },
+  "model_geometry_inputs": {
+    "planes": [
+      "cosSOZ",
+      "cosRAA"
+    ],
+    "spatial_alignment": "per-pixel target-time geometry, cropped on the same 3x3 grid as AGRI/COT",
+    "day_mask": "eligibility only; not an input plane; station target is eligible when solar zenith <90deg",
+    "scaling": "retain bounded cosine values; do not fit per-window or per-image normalization",
+    "status": "candidate aligned with window2 prototype; archived validation formula/crop witness passes; current monthly AGRI/COT per-pixel geometry witness remains pending"
+  },
+  "ghi_label": {
+    "window": "(target_time-15min,target_time]",
+    "source_records_bjt": [
+      "target-10min",
+      "target-5min",
+      "target"
+    ],
+    "observed_ghi": "arithmetic mean of the three interval-ending 5-minute measurements; require all three present, finite, nonnegative",
+    "clear_sky": "Ineichen evaluated at the three 5-minute interval midpoints target-12.5/-7.5/-2.5min; use their mean",
+    "kt": "mean(GHI)/mean(clear_sky_GHI), unclipped; GHI is label/evaluation only",
+    "main_mask": "complete valid GHI and clear-sky interval labels AND deterministic target station day flag (SZA<90deg) AND interval mean clear-sky GHI>0",
+    "observed_train_val_labels": "produced from the same authoritative Sili/Zhujia workbooks used by Hunan M0, selected by this manifest's train/val keys",
+    "clear_sky_sampling_audit": "Ineichen mean at interval midpoints target-12.5/-7.5/-2.5min; pvlib 0.9.1",
+    "realized_support": {
+      "candidate_keys": 111466,
+      "complete_ghi_labels": 101392,
+      "noaa_daylight_candidates": 59849,
+      "daylight_with_incomplete_three_point_ghi": 4904,
+      "main_mask_train": 50458,
+      "main_mask_val": 4479,
+      "main_mask_by_station_split": {
+        "train_sili": 24155,
+        "train_zhujia": 26303,
+        "val_sili": 2128,
+        "val_zhujia": 2351
+      }
+    },
+    "sensitivity_mask": "same records, day flag, and interval mean clear-sky GHI>=100 W m-2"
+  },
+  "cot": {
+    "source": "frozen R applied to the complete native AGRI input view at the same target time, then crop station-centered 3x3; no R input-view change",
+    "transform": "log1p once; one normalization fit on train-only values; no per-image centering",
+    "cpp_reference_mask": "finite COT in [0,100] AND CLP in {0,1,2} AND all 13 AGRI channels valid AND day_mask>0.5 AND cosSOZ>cos(80deg); zero COT retained if reference-valid",
+    "cpp_reference_does_not_filter_GHI_cohort": true
+  },
+  "candidate_counts_before_station_GHI_validity": {
+    "train_unique_agri_times": 51236,
+    "val_unique_agri_times": 4497,
+    "train_station_target_keys": 102472,
+    "val_station_target_keys": 8994,
+    "sequences_by_split": {
+      "train": 35320,
+      "val": 3140,
+      "test": 3202
+    }
+  },
+  "target_manifest": "target_candidates_train_val.csv",
+  "target_manifest_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "station_grid_receipt_sha256": "1577561507c381284be9beeb3354d69f9a338f2850d175e570e7b7dac2fa630d",
+  "test_used": false,
+  "realized_train_val_label_output": "/home/Data_Pool_3/zjnu/cot_value_first_20261013/ghi_kt_trainval_v1/ghi_kt_train_val.csv",
+  "limitations": [
+    "A subset of candidate daylight labels has genuinely incomplete raw five-minute observations; rows remain masked rather than interpolated. This rate is consistent with the pre-existing M0 workbook audit.",
+    "The selected clear-sky midpoint values correspond to the centers of the canonical target-10/-5/0 five-minute measurement intervals; W0 static code audit confirms this time alignment. No endpoint-sampling comparison is required to freeze the contract.",
+    "The old saved GHI cohort remains an independent overlap check only; the final monthly-contract label table is rebuilt from its authoritative raw workbook by the new candidate keys.",
+    "Station coordinates are the authoritative project schema; the grid receipt does not independently survey station geolocation."
+  ]
+}

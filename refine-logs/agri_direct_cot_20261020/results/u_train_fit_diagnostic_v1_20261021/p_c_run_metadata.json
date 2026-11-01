@@ -1,0 +1,33 @@
+{
+  "candidate": "P-C",
+  "initialization_seed": 42,
+  "initial_state_sha256": "fb25ba921b378c4a62eef032278909492758a09296366fcd973a2dfa8370781e",
+  "architecture": "three-scale 16x16/8x8/4x4 causal-time encoder; temporal 8-to-16 projections; spatial skip decoder; GN+SiLU",
+  "input_contract": "history [B,8,31,16,16], future geometry [B,16,3,16,16]; C zeros normalized AGRI-value slots only; XC retains them",
+  "u_sequence_manifest_sha256": "f97b1c62bca3ec687334403ba7854d113a87422d0a4ad78a28190caa3c0bb026",
+  "u_cache_manifest_sha256": "aa72304ca23910172ea2588fb8c2c15f7f67268f496cef30fae227376ec2d1d0",
+  "train_windows": 52344,
+  "effective_batch": 128,
+  "epochs": 12,
+  "updates_per_epoch": 409,
+  "planned_updates": 4908,
+  "optimizer": "AdamW lr=1e-4 wd=1e-4 cosine to 1e-6; grad clip 1.0",
+  "loss": "masked Huber(delta=0.1) in log1p physical COT; teacher cache stores log1p(COT), converted to physical COT before loss; mask uses future U AGRI QA and computable geometry only",
+  "teacher_value_space": "U-only frozen R_U output is log1p(COT); history feature consumes this value directly and target is expm1(log1p(COT))",
+  "precision": "CUDA BF16 autocast after finite loss/profile check",
+  "history_cot_log1p_normalization": {
+    "mean": 1.947379699641438,
+    "std": 1.4922209450170518,
+    "valid_u_pixels": 9572192,
+    "fit_partition": "U",
+    "source_value_space": "frozen R_U output log1p(COT)"
+  },
+  "p_code_sha256": "152451e366da51d45ba93a682b1ef6fd5d9d1a0522d678b619fa38e520a0e93d",
+  "r_u_checkpoint_sha256": "f3aa05346bb835efe941b0a462cd1001dc3af6bc9f68c2de4d351970136ab52c",
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "h_payloads_read": 0,
+  "outer_validation_payloads_read": 0,
+  "pbs_job_id": "215298.tc6000",
+  "gpu": "NVIDIA A800-SXM4-80GB"
+}

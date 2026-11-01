@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -N cotreg_r512
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/r256_full_exploratory_seed42_batch512_node22.pbs.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast
+SOLAR=$ROOT/SolarCOTIFS_20260907
+EXP=$SOLAR/experiments/regional_station_cot_20260925
+CACHE=$EXP/agri_cpp_pair_bank_v1
+OUT=$EXP/r256_full_exploratory_seed42_batch512_node22
+REUSED=/tmp/regional_cot_train_210746_tc6000/pair_cache
+LOCAL=${TMPDIR:-/tmp}/regional_cot_train512_${PBS_JOBID//[^A-Za-z0-9]/_}
+test ! -e "$OUT"
+python -m py_compile "$EXP/scripts/train_regional_r_full_20260926.py"
+if [ -f "$REUSED/index.json" ]; then
+  TRAIN_CACHE=$REUSED
+else
+  mkdir -p "$LOCAL"
+  BYTES=$(du -sb "$CACHE" | awk '{print $1}')
+  AVAILABLE=$(df -PB1 "$LOCAL" | awk 'NR==2 {print $4}')
+  test "$AVAILABLE" -gt "$((BYTES + BYTES / 10))"
+  cp -a "$CACHE" "$LOCAL/pair_cache"
+  TRAIN_CACHE=$LOCAL/pair_cache
+fi
+date -Is
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.total --format=csv
+python -u "$EXP/scripts/train_regional_r_full_20260926.py" \
+  --cache "$TRAIN_CACHE" \
+  --r-code "$SOLAR/scripts/train_cot_repaired.py" \
+  --output "$OUT" --batch 512 --epochs 680 --patience 122 --workers 2 --seed 42

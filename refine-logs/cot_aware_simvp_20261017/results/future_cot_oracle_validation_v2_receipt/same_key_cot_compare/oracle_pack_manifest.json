@@ -1,0 +1,122 @@
+{
+  "state": "COMPLETE_ORACLE_FUTURE_COT_GHI_PACK",
+  "oracle_only": true,
+  "deployable": false,
+  "scope": "validation information-ceiling diagnostic; observed future AGRI is used only to create frozen-R COT oracle features",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "sample_key": "(station,init_time_utc,target_time_utc,lead)",
+  "rows": {
+    "train": 714914,
+    "val": 66590
+  },
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "lead_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "context_rule": "three causal frames [target-30,target-15,target]; history slots are init-15 and init, so +15 uses both history slots then forecast lead +15",
+  "input_sources": {
+    "history_agri": "observed AGRI before init only",
+    "history_cot": "frozen R on observed history AGRI only",
+    "future_agri": "frozen SimVP prediction only",
+    "future_cot": "frozen R applied to observed AGRI at each future context time; oracle-only information ceiling",
+    "geometry": "deterministic target-frame cosSOZ/cosRAA",
+    "observed_history_cot": "unchanged from causal forecast pack"
+  },
+  "future_agri_forecast_source": "five-fold date-block OOF SimVP predictions for train; fixed full-train SimVP predictions for validation",
+  "train_forecast_oof": true,
+  "forecast_bank_oof_fold_count": 5,
+  "future_observed_agri_used_as_input": true,
+  "future_cpp_used_as_input": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "independent_test_read": false,
+  "history_context_source_unchanged": true,
+  "GHI_labels_and_sample_keys_unchanged": true,
+  "COT_log1p_mean": 1.8934030882318076,
+  "COT_log1p_std": 1.4310645276644045,
+  "AGRI_mean": [
+    0.2127627821582737,
+    0.2287031925052866,
+    0.263304840903351,
+    0.032497559327828475,
+    0.1805623041648093,
+    0.12547157251740254,
+    238.5728256195044,
+    246.0594447428413,
+    254.2171018689162,
+    272.93200547583285,
+    274.10450697438046,
+    272.14011005544916,
+    259.49769615689206
+  ],
+  "AGRI_std": [
+    0.17068391455481485,
+    0.1968697284187056,
+    0.18768050974091355,
+    0.050417609267554404,
+    0.12198581773635425,
+    0.09391734028759273,
+    7.248584565814783,
+    8.536117065536567,
+    9.921544136280277,
+    17.080055256270526,
+    17.85745918655674,
+    17.59944625493965,
+    12.441660889309901
+  ],
+  "forecast_pack_manifest_sha256": "cb928f631ad4d53edac3d62ce9a9eb1be0469ab3c0d5563fe75c22a8a8963233",
+  "actual_R_bank_manifest_sha256": "3049472e2b62d2f1df3e7afcd51bb4bcdf2cf4ef7e6735af3d04138ec4c4cc56",
+  "actual_R_compact_pack_manifest_sha256": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4",
+  "actual_R_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+  "actual_R_cot_array_sha256": "4994c809bdc58fc9f08664072f282b7dd5cc9bdcb69e9a791cddd9a8225963a1",
+  "actual_R_frame_keys_sha256": "75fbd1c17cd0a1ddd7c645ea78b3718e045b7fdafbc2ffdf970a34679e623727",
+  "actual_R_compact_cot_array_sha256": "4d45515a4e7efab04d2c5d7faa0129fa1e46be7436264c8391aade093481e1da",
+  "actual_R_compact_rows_sha256": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+  "split_reports": {
+    "train": {
+      "rows": 714914,
+      "future_context_slots_replaced": 2012294,
+      "cot_log1p_sha256": "7e2d5313a4c00e4d296d529f67a401d2ab09e942a86e5f4cfef5adbd5759d4db",
+      "shared_source_sha256": {
+        "agri_raw.npy": "2e148ed2fa7aab82db66c4f0e9fce6fddd6ad530d68bc2b00235f57e2420eae1",
+        "geometry.npy": "1356b2b917fd37670e00b33684e20b33ff42667a8c2294b6b19adc3ede0553e8",
+        "ghi.npy": "deeb66d5171db1d9b00fc0db71cc813f2ff71debd0afb0b3ff75df9b72c2ca70",
+        "clear.npy": "ed7940de231418d6ff6a2a061eb85b3f95f7a38ac0ec0eb0b54ca3397eded90f",
+        "keys.csv": "db8c3612817af490f95e7277454d094954eef657d1b2c42ee32db1bba280ddb5"
+      }
+    },
+    "val": {
+      "rows": 66590,
+      "future_context_slots_replaced": 187444,
+      "cot_log1p_sha256": "405ee0a14fd4a774da9933ccd7cf3c44c06c2db0411d1b68bb7c9640aca9f2c5",
+      "shared_source_sha256": {
+        "agri_raw.npy": "57dc8c547660944dbcec679606b74c1f7c1e77a8f45763afd151b01b80f704d0",
+        "geometry.npy": "c1c47d8ba55b1d640e42d8856fb88018658fbdd3ae0693b55901ab24d4d6a0f4",
+        "ghi.npy": "ed549954d6c666a916681c04abcc57fe8b8d3e15654e109067f4b7fef4795cbf",
+        "clear.npy": "df94f371a1172cedc6f4d914931cb0a0e4342a8eccb42b0c634941d40427e290",
+        "keys.csv": "7a3a3f67cd2a3264a783052a3fb7736a52781a51971c6b2f4bf22506bba4084f"
+      }
+    }
+  },
+  "test_payloads_read": 0,
+  "cpp_inputs_read": 0,
+  "builder_sha256": "f688e4f7f5a8679f289e726af7ee0520de5e1aa36b6b62d7ccf2508b89aebe8d"
+}

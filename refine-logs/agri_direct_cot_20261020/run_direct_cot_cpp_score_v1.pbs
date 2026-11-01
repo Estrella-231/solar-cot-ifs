@@ -1,0 +1,45 @@
+#!/bin/bash
+#PBS -N direct_COT_CPP_score
+#PBS -q normal
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=04:00:00
+#PBS -j oe
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+INFER=$EXP/results/direct_cot_hv_inference_v1
+SUPPORT=$EXP/data/sequence_support_v1
+CPP=$ROOT/experiments/monthly_R_station16_20261013_v1/data/pack_trainval_v1
+DAYS=$ROOT/experiments/hunan_monthly_block_20261002/manifests_v1/day_assignment.csv
+OUT=$EXP/results/direct_cot_cpp_validation_score_v1
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+LOG=$EXP/logs/direct_cot_cpp_score_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=8 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+QSTAT_TEXT=$($PBS_QSTAT -u slfu)
+printf '%s\n' "$QSTAT_TEXT"
+UNFINISHED=$(printf '%s\n' "$QSTAT_TEXT" | awk '$1 ~ /^[0-9]+\./ && $10 !~ /^[CF]/ {n++} END {print n+0}')
+test "$UNFINISHED" -le 3
+test -s "$INFER/inference_manifest.json" && test -s "$SUPPORT/v_sequences.csv"
+test -s "$CPP/pack_audit.json" && test -s "$DAYS"
+test ! -e "$OUT"
+python -m py_compile "$EXP/score_direct_cot_cpp_v1.py"
+test "$(sha256sum "$EXP/score_direct_cot_cpp_v1.py" | cut -d' ' -f1)" = "f66df8958dded525e5b83008bd1a8f13edf2810005a3258adb9cbf7f9c6d7b5c"
+python -u "$EXP/score_direct_cot_cpp_v1.py" \
+  --inference "$INFER" --support "$SUPPORT" --cpp-pack "$CPP" \
+  --day-assignment "$DAYS" --output "$OUT"
+python - "$OUT/cot_cpp_reference_metrics.json" <<'PY'
+import json,sys
+m=json.load(open(sys.argv[1]))
+assert m['state']=='COMPLETE_DIRECT_COT_CPP_REFERENCE_VALIDATION_SCORE'
+assert m['cpp_reference']['cpp_is_independent_truth'] is False
+for k in ('test_payload_opened','buffer_payload_opened','future_observed_agri_used_as_input','cpp_used_as_inference_input'):
+ assert m[k] is False,(k,m[k])
+print('DIRECT_COT_CPP_REFERENCE_VALIDATION_SCORE_COMPLETE',m['matched_forecast_keys'],m['matched_bjt_blocks'])
+PY

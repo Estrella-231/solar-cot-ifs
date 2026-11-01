@@ -1,4 +1,8 @@
+> Current status (2026-11-02): this is a retained historical planning/tracking document. Use [the repository index](../docs/REPOSITORY_INDEX.md) and [current model route](../docs/GHI_HEAD_ROUTE_20261102.md); old pending jobs and mandatory isolation steps below are not current instructions.
+
 # COT空间表示对照：来源门禁与实施准备
+
+2026-09-17更新：本文件保留为历史准备记录；具体网络、实验矩阵和预算由 `../refine-logs/EXPERIMENT_PLAN.md` 取代。下述CPP生产链及IFS因果门禁继续有效。
 
 用户已授权按来源追溯→空间表示最小对照→独立IFS审计推进。原四维统计配置的多种子稳定性未通过；不得覆盖该负结果。本文为实施准备，不宣称新实验已训练或已产生收益。
 

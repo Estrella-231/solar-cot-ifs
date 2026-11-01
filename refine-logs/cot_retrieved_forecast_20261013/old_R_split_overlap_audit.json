@@ -1,0 +1,34 @@
+{
+  "status": "OLD_R_NOT_SAFE_FOR_NEW_MONTHLY_TEST",
+  "audit_time_bjt": "2026-10-13 12:10",
+  "method": "compare unique BJT date and split columns from the old R rows.csv with the frozen monthly day_assignment.csv; no image or COT payloads opened",
+  "test_payload_access": false,
+  "sources": {
+    "old_R_rows_remote_path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/data/cot_repaired_pack_20260907_v1/rows.csv",
+    "old_R_rows_sha256": "7741fda8e5a232c23598b9824811bf67ca5ba48d50b392f1c99a21b298177c69",
+    "old_R_run_metadata_sha256": "ab89061d31f7d73032b1837632b6249c6be1dc899e2b2a1371e40c83627ae2b4",
+    "old_R_checkpoint_sha256": "0cbdb932f49945259d5f1704316edaf6481be7cfdb54692236f829988925799c",
+    "monthly_split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+    "monthly_day_assignment_sha256": "688bbbe5eea3ef12aea4f14bc8dfea4dcf63e7a584b09ca8d5345f8d1e0e972f"
+  },
+  "unique_days": {
+    "old_R_train": 453,
+    "old_R_validation": 74,
+    "new_train": 588,
+    "new_validation": 52,
+    "new_test": 52
+  },
+  "overlap_days": {
+    "new_train_with_old_R_train": 332,
+    "new_train_with_old_R_validation": 56,
+    "new_train_union": 388,
+    "new_validation_with_old_R_train": 30,
+    "new_validation_with_old_R_validation": 4,
+    "new_validation_union": 34,
+    "new_test_with_old_R_train": 30,
+    "new_test_with_old_R_validation": 4,
+    "new_test_union": 34
+  },
+  "decision": "Do not use the old R to generate formal new-test COT teacher targets. Train or verify a date-safe R under the new monthly contract before producing the final train/validation COT bank and evaluating the COT forecaster.",
+  "limitation": "date overlap is a metadata leakage check; it does not audit CPP quality, actual R prediction errors, or array support"
+}

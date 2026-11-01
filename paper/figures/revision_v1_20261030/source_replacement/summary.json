@@ -1,0 +1,90 @@
+{
+  "scope": "common pre-existing replacement support; development-only offline diagnosis",
+  "dates": [
+    "20250816",
+    "20250914",
+    "20251014",
+    "20251116",
+    "20251218",
+    "20260116",
+    "20260216",
+    "20260316",
+    "20260416",
+    "20260513",
+    "20260618",
+    "20260713"
+  ],
+  "n_dates": 12,
+  "n_rows": 8111,
+  "by_station_n": {
+    "Niushou": 2860,
+    "Wangzhai": 2554,
+    "Mizhuang": 2697
+  },
+  "rmse": {
+    "forecast_G1": 103.79050859531166,
+    "forecast_no_COT": 103.46891981291839,
+    "forecast_forecast_COT": 103.49368783014997,
+    "forecast_observed_COT_OFFLINE": 103.7669815709682,
+    "observed_G1_OFFLINE": 89.44328542855231,
+    "observed_no_COT_OFFLINE": 89.44123746626721,
+    "observed_forecast_COT_OFFLINE": 89.55205927034325,
+    "observed_observed_COT_OFFLINE": 89.58113697151742
+  },
+  "comparisons": {
+    "replace_AGRI_no_future_COT": {
+      "delta": -14.027682346651176,
+      "ci95": [
+        -21.91145041482705,
+        -6.05267457248018
+      ]
+    },
+    "forecast_COT_increment": {
+      "delta": 0.02476801723157962,
+      "ci95": [
+        -0.46912660792643807,
+        0.4608145819946386
+      ]
+    },
+    "observed_COT_increment_OFFLINE": {
+      "delta": 0.139899505250213,
+      "ci95": [
+        -0.4383740917741129,
+        0.5743762156340836
+      ]
+    }
+  },
+  "MSE_decomposition": {
+    "D_AGRI": {
+      "point": 2778.111642363492,
+      "ci95": [
+        937.9924578604171,
+        5228.939511879491
+      ]
+    },
+    "D_COT": {
+      "point": -5.397266856627539,
+      "ci95": [
+        -48.92096514369782,
+        33.53842277991756
+      ]
+    },
+    "interaction": {
+      "point": -51.612440241464355,
+      "ci95": [
+        -109.19342228116216,
+        -7.784800586392008
+      ]
+    },
+    "total": {
+      "point": 2721.1019352654002,
+      "ci95": [
+        920.3540025383567,
+        5105.199709092437
+      ]
+    }
+  },
+  "aggregation": "equal mean of per-station per-seed RMSE; MSE decomposition averages per-station per-seed MSE",
+  "bootstrap": "5000 paired target-date block draws, seed 20261023",
+  "source_score_max_abs_difference": 1.4210854715202004e-14
+}

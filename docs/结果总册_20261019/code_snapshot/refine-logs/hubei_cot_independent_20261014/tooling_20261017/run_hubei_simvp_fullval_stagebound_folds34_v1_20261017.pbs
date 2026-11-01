@@ -1,0 +1,97 @@
+#!/bin/bash
+#PBS -N hb_vstage
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017
+CONTROL="$ROOT/control"
+RUNROOT="$ROOT/oof_training"
+STAGE="$ROOT"
+REPO="$CONTROL/simvp_code_fd201_syncval_20261017"
+METHOD="$REPO/openstl/methods/simvp.py"
+EXPECTED_METHOD_SHA256=2978846a553c13529caceb201888bfc52984abe19677ed36a6e478cef393bb78
+EXPECTED_STAGE_SHA256=73e0f91955a7e8c07d69a1e6d79c900275ff000f350a826fb2fa04e79e47571a
+PY=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_cot_independent_20261017/.venv_simvp/bin/python
+INFER="$CONTROL/tooling_20261017/infer_hubei_simvp_trainval_patches_20261016_v2_20261017.py"
+AUDIT="$CONTROL/tooling_oof_merge_20261017_v6/audit_hubei_simvp_oof_fold_val_shards_20261017.py"
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+JOBTAG="${PBS_JOBID//./_}"
+OUTROOT="$RUNROOT/fullval_stagebound_folds34_${JOBTAG}"
+exec > "$ROOT/fullval_stagebound_folds34_${JOBTAG}.pbs.log" 2>&1
+trap 'rc=$?; printf "SCRIPT_ERROR rc=%s line=%s command=%q\n" "$rc" "$LINENO" "$BASH_COMMAND" >&2' ERR
+
+echo "started_utc=$(date -u -Is) pbs_job=$PBS_JOBID"
+test -x "$PY" && test -f "$INFER" && test -f "$AUDIT" && test -d "$REPO/openstl"
+test -f "$METHOD" && test -f "$STAGE/stage_manifest.csv"
+test "$(sha256sum "$METHOD" | awk '{print $1}')" = "$EXPECTED_METHOD_SHA256"
+test "$(sha256sum "$STAGE/stage_manifest.csv" | awk '{print $1}')" = "$EXPECTED_STAGE_SHA256"
+test -d "$STAGE/data" && test -d "$STAGE/aux"
+test ! -e "$OUTROOT"
+
+GPU_IDS=$(tr -d '[:space:]' <<< "$($QSTAT -f "$PBS_JOBID")" | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+test "$(awk -F, '{print NF}' <<< "$GPU_IDS")" -eq 1
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+BASE=/public/home/slfu/miniconda3/envs/swc
+export LD_LIBRARY_PATH="$BASE/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}" CUDA_VISIBLE_DEVICES="$GPU_IDS"
+mkdir "$OUTROOT"
+printf 'pbs_job=%s\ngpu_ids=%s\nstage_manifest_sha256=%s\ninference_script_sha256=%s\naudit_script_sha256=%s\ntest_payloads_read=0\nbuffer_payloads_read=0\n' \
+  "$PBS_JOBID" "$GPU_IDS" "$EXPECTED_STAGE_SHA256" \
+  "$(sha256sum "$INFER" | awk '{print $1}')" "$(sha256sum "$AUDIT" | awk '{print $1}')" \
+  > "$OUTROOT/launch_manifest.txt"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv >> "$OUTROOT/launch_manifest.txt"
+
+for FOLD in 3 4; do
+  case "$FOLD" in
+    3)
+      TRAIN_JOBID=214526.tc6000; TRAIN_JOBTAG=214526_tc6000
+      INDEX="$CONTROL/fold_3/simvp_trainval_index_pbs.csv"
+      NORM="$CONTROL/fold_3/simvp_train_only_norm.npz"
+      CHECKPOINT="$RUNROOT/runs/S_oof_fold3_seed42_20261016_pbs${TRAIN_JOBTAG}/checkpoints/best.ckpt"
+      EXPECTED_INDEX=645fdd03bba09d49616f91f91cdd4b00a824eafed0249447c7f14dfbb62e91ee
+      EXPECTED_NORM=f8ff7379b4695b246150565e71651d05267e65be1d08c69f6fd6788082f2b1f2
+      EXPECTED_CHECKPOINT=50f184270207695b1d69c7f2db47c33e1571395320304d4862560ff0e4430577
+      ;;
+    4)
+      TRAIN_JOBID=214527.tc6000; TRAIN_JOBTAG=214527_tc6000
+      INDEX="$CONTROL/fold_4/simvp_trainval_index_pbs.csv"
+      NORM="$CONTROL/fold_4/simvp_train_only_norm.npz"
+      CHECKPOINT="$RUNROOT/runs/S_oof_fold4_seed42_20261016_pbs${TRAIN_JOBTAG}/checkpoints/best.ckpt"
+      EXPECTED_INDEX=93a04d191eebbb19da465ac4cb285181d78c6a674d556d563fdf533b930b0035
+      EXPECTED_NORM=128a92c62bbe14c242837b62d730294be26aa92a276cd334d67a67747b6b60b5
+      EXPECTED_CHECKPOINT=5637925fd0d4bc092c6f5f8996b20cf356f8bcf0b4cb358768e8856aec3f03a3
+      ;;
+  esac
+  TRAIN_EXIT="$CONTROL/training_exit_receipts/${TRAIN_JOBID//./_}_v2.json"
+  test -f "$INDEX" && test -f "$NORM" && test -f "$CHECKPOINT" && test -f "$TRAIN_EXIT"
+  test "$(sha256sum "$INDEX" | awk '{print $1}')" = "$EXPECTED_INDEX"
+  test "$(sha256sum "$NORM" | awk '{print $1}')" = "$EXPECTED_NORM"
+  test "$(sha256sum "$CHECKPOINT" | awk '{print $1}')" = "$EXPECTED_CHECKPOINT"
+  "$PY" - "$TRAIN_EXIT" "$TRAIN_JOBID" <<'PY'
+import json, re, sys
+from pathlib import Path
+r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+assert r.get("status") == "PBS_TRAINING_EXIT_CONFIRMED"
+assert r.get("job_id") == sys.argv[2] and r.get("exit_status") == 0
+assert re.search(r"Exit_status=0(?:\s|$)", r.get("exit_record_line", ""))
+print("TRAINING_EXIT_RECEIPT_PASS job=" + sys.argv[2])
+PY
+  VAL_COUNT=$(awk -F, 'NR>1 && $1=="val" {n++} END {print n+0}' "$INDEX")
+  test "$VAL_COUNT" -eq 407
+  OUT="$OUTROOT/fold${FOLD}"
+  mkdir "$OUT"
+  printf 'fold=%s\ntrain_job_id=%s\nindex_sha256=%s\nnorm_sha256=%s\ncheckpoint_sha256=%s\nstage_manifest_sha256=%s\nvalidation_sequences=%s\ntest_payloads_read=0\nbuffer_payloads_read=0\n' \
+    "$FOLD" "$TRAIN_JOBID" "$EXPECTED_INDEX" "$EXPECTED_NORM" "$EXPECTED_CHECKPOINT" "$EXPECTED_STAGE_SHA256" "$VAL_COUNT" \
+    > "$OUT/launch_manifest.txt"
+  "$PY" "$INFER" --repo "$REPO" --index "$INDEX" --norm "$NORM" \
+    --checkpoint "$CHECKPOINT" --output "$OUT/bank" --stage-root "$STAGE" \
+    --batch-size 4 --workers 2 --device cuda:0 --splits val
+  "$PY" "$AUDIT" --index "$INDEX" --fold "$FOLD" --shard-dir "$OUT/bank" \
+    --output "$OUT/FOLD${FOLD}_VALIDATION_RELOAD_AUDIT_STAGEBOUND.json"
+  echo "fold${FOLD}_audit_sha256=$(sha256sum "$OUT/FOLD${FOLD}_VALIDATION_RELOAD_AUDIT_STAGEBOUND.json" | awk '{print $1}')" >> "$OUT/launch_manifest.txt"
+done
+
+echo "finished_utc=$(date -u -Is) status=FOLD3_FOLD4_STAGEBOUND_AUDITS_COMPLETE"

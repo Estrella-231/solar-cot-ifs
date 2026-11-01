@@ -1,0 +1,96 @@
+#!/bin/bash
+#PBS -N direct_cot_P_U
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/agri_direct_cot_20261020/logs/direct_cot_p_u.pbs.out
+set -euo pipefail
+trap 'rc=$?; echo "PBS_SCRIPT_ERROR rc=$rc line=$LINENO command=$BASH_COMMAND"; exit "$rc"' ERR
+PS4='+ ${BASH_SOURCE}:${LINENO}: '
+set -x
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/refine-logs/agri_direct_cot_20261020
+OOF=$ROOT/refine-logs/cot_aware_simvp_20261017
+SOURCE=$ROOT/experiments/hunan_monthly_block_20261002/code
+DATA=/public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed
+SUPPORT=$EXP/data/sequence_support_v1
+RPACK=$EXP/data/r_u_pack_v2
+RRUN=$EXP/results/r_u_train_v1
+SIMVPNORM=$OOF/results/future_ghi_oof_manifests_v1/fold_1/hunan_train_norm.json
+GRID=$EXP/data/grid_static.npz
+GEOMETRY=$EXP/solar_geometry_corrected.py
+PATCH_SMOKE=$EXP/results/patch_reader_smoke.json
+OUT=$EXP/results/predictor_u_v1
+CACHE=/dev/shm/slfu_direct_cot_p_u_${PBS_JOBID//[^A-Za-z0-9]/_}
+LOG=$EXP/logs/direct_cot_p_u_${PBS_JOBID}.log
+PBS_QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+echo "STAGE=bootstrap PBS_JOBID=${PBS_JOBID:-unset} NODE=$(hostname) PWD=$(pwd)"
+cd "$EXP"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+echo "STAGE=environment CONDA_PREFIX=${CONDA_PREFIX:-unset} PYTHON=$(command -v python)"
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+
+test -d "$SUPPORT" && test -d "$RPACK" && test -d "$RRUN"
+test -s "$GRID" && test -s "$SIMVPNORM"
+test ! -e "$OUT"
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["test_or_buffer_numeric_payloads_opened"])' "$SUPPORT/support_audit.json")" = "PASS_24_FRAME_SUPPORT_DISJOINT_U_H_V 0"
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["last_epoch"])' "$RRUN/status.json")" = "COMPLETE_R_U_FIXED_EPOCH_50 50"
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["test_payloads_read"],x["buffer_payloads_read"])' "$RRUN/reload_witness.json")" = "PASS_R_U_CHECKPOINT_RELOAD_INTERFACE 0 0"
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["test_payloads_read"],x["buffer_payloads_read"])' "$PATCH_SMOKE")" = "PASS_U_RAW_PATCH_QA_CORRECTED_GEOMETRY_RU_CPU_SMOKE 0 0"
+test "$(sha256sum "$EXP/train_future_cot_u.py" | cut -d' ' -f1)" = "7a89cc1341291f0a3e9978f89d997d5b19eebb6b9e9eef459ba99a9be942518c"
+python -m py_compile "$EXP/train_future_cot_u.py" "$EXP/test_train_future_cot_unit_contract.py"
+python "$EXP/test_train_future_cot_unit_contract.py"
+test "$(sha256sum "$EXP/smoke_u_patch_reader.py" | cut -d' ' -f1)" = "60de0b34e3269400cd58674ec8f9d1aa0b33f1c7659b5365d0848475be2d1c24"
+test "$(sha256sum "$GEOMETRY" | cut -d' ' -f1)" = "04779daf8cf1f7ca06b5119b603dfe51234fb9913149f617b3d37deeda4376a5"
+test "$(sha256sum "$GRID" | cut -d' ' -f1)" = "54a38fcd217a74e0def533217580b48132ef25fee40ed9ed51063e4efdd42c62"
+test "$(sha256sum "$EXP/data/sequence_support_v1/support_audit.json" | cut -d' ' -f1)" = "40607fadff276c6e030dca2e745703ce9875ceef628d3ed8390a600d63cb0497"
+TMPFS_AVAIL=$(df -PB1 /dev/shm | awk 'NR==2 {print $4}')
+MEM_AVAILABLE=$(awk '/^MemAvailable:/ {print $2 * 1024}' /proc/meminfo)
+test "$TMPFS_AVAIL" -ge 85899345920
+test "$MEM_AVAILABLE" -ge 137438953472
+echo "STAGE=tmpfs_gate_pass available_bytes=$TMPFS_AVAIL min_free_bytes=85899345920"
+echo "STAGE=memory_gate_pass available_bytes=$MEM_AVAILABLE min_available_bytes=137438953472"
+GPU_TEXT=$($PBS_QSTAT -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test -n "$GPU_TEXT" && test "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU_TEXT"
+echo "STAGE=gpu_gate_pass gpu_id=$GPU_TEXT"
+echo "PBS_JOBID=$PBS_JOBID GPU_ID=$GPU_TEXT NODE=$(hostname) TMPFS_AVAILABLE_BYTES=$TMPFS_AVAIL MEM_AVAILABLE_BYTES=$MEM_AVAILABLE"
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+mkdir -p "$CACHE"
+
+python -u "$EXP/train_future_cot_u.py" --mode cache \
+  --support "$SUPPORT" --r-pack "$RPACK" --r-run "$RRUN" --simvp-norm "$SIMVPNORM" \
+  --source "$SOURCE" --data-root "$DATA" --grid-static "$GRID" --geometry-source "$GEOMETRY" \
+  --cache "$CACHE/teacher_cache" \
+  --output "$CACHE/cache_mode_unused" --frame-batch 256
+
+python -u "$EXP/train_future_cot_u.py" --mode train \
+  --support "$SUPPORT" --r-pack "$RPACK" --r-run "$RRUN" --simvp-norm "$SIMVPNORM" \
+  --source "$SOURCE" --data-root "$DATA" --grid-static "$GRID" --geometry-source "$GEOMETRY" \
+  --cache "$CACHE/teacher_cache" \
+  --output "$OUT" --workers 4
+
+test "$(python -c 'import json,sys; x=json.load(open(sys.argv[1])); print(x["state"],x["test_payloads_read"],x["buffer_payloads_read"],x["h_payloads_read"],x["outer_validation_payloads_read"])' "$OUT/paired_training_complete.json")" = "COMPLETE_P_C_AND_P_XC_FIXED_EPOCH_12 0 0 0 0"
+test ! -e "$OUT/u_teacher_cache"
+cp -a "$CACHE/teacher_cache" "$OUT/u_teacher_cache"
+python - "$OUT/u_teacher_cache" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+p=Path(sys.argv[1]); m=json.loads((p/'cache_manifest.json').read_text())
+for name,want in m['artifacts_sha256'].items():
+ h=hashlib.sha256()
+ with (p/name).open('rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+ assert h.hexdigest()==want,(name,h.hexdigest(),want)
+print('U_TEACHER_CACHE_ARCHIVE_HASHES_PASS')
+PY
+nvidia-smi -i "$GPU_TEXT" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+echo DIRECT_COT_P_C_AND_P_XC_COMPLETE test_payloads_opened=0 buffer_payloads_opened=0
+rm -rf -- "$CACHE"

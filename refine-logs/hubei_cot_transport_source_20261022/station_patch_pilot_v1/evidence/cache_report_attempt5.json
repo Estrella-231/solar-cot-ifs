@@ -1,0 +1,120 @@
+{
+  "state": "COMPLETE_HUBEI_STATION_PATCH_COT_GEOMETRY_CACHE_TRAINVAL_ONLY",
+  "scope": "Shared Hubei 16x16 patch containing Niushou, Wangzhai, Mizhuang; not a 256x256 regional forecast.",
+  "split": {
+    "train": 20206,
+    "val": 1855,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  },
+  "input_sources": {
+    "agri_manifest_sha256": "8b1f95c2a2cf1d66cabd11539b975fe3dccd486146bf3bec17fb18e537f72183",
+    "r_bank_report": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3/BANK_REPORT.json",
+    "r_checkpoint_sha256": "8ad4dbd1328325b778308ca4f8a6398dc476043ad41230ed094b9ae4855877c9",
+    "r_prediction_sha256": "da9a3b61914b6ec293088459cecbb611bf40ce2b07e376554959aa4484760ace",
+    "r_rows_sha256": "efca7d8dfda0e6055af804257df703cf60e1e5930f71b8d077bc2fbecfde86bb",
+    "cpp_rows_sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+    "cpp_npz_sha256": "b27c1f9599591745c8bad85293c86b54ec3780a6b443760290542e1dca8982f0",
+    "r_train_predictions_are_oof": false
+  },
+  "transform": {
+    "history_input": "log1p(R_AGRI_COT)/log(101); history valid iff day_mask>0.5, cosSOZ>cos(80deg), finite and within R target range [0,100]",
+    "out_of_range_R_predictions": "marked invalid, not clipped; count in r_values_gt100",
+    "future_geometry": "cosSOZ, cosRAA, day_mask read by exact key from deterministic geometry fields only; AGRI image patch not accessed",
+    "target": "CPP COT retrieval reference in physical units, supervised only where CPP valid mask, finite COT in [0,100], day_mask>0.5, and cosSOZ>cos(80deg)",
+    "cpp_role": "retrieval reference, not independent cloud truth"
+  },
+  "stations": {
+    "names": [
+      "Niushou",
+      "Wangzhai",
+      "Mizhuang"
+    ],
+    "local_centers_row_col": [
+      [
+        8,
+        6
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        7,
+        10
+      ]
+    ]
+  },
+  "counts": {
+    "train_R_values_gt100": 6970,
+    "train_history_valid_pixels": 2180092,
+    "train_daytime_pixels": 2187018,
+    "train_cpp_reference_frames": 3178,
+    "train_cpp_supervised_pixels": 699085,
+    "train_cpp_zero_or_invalid_pixels": 114483,
+    "val_R_values_gt100": 340,
+    "val_history_valid_pixels": 202212,
+    "val_daytime_pixels": 202552,
+    "val_cpp_reference_frames": 301,
+    "val_cpp_supervised_pixels": 66630,
+    "val_cpp_zero_or_invalid_pixels": 10426
+  },
+  "forecast_pairs": {
+    "train": {
+      "pairs": 41933,
+      "unique_target_dates": 152,
+      "pairs_by_lead_minutes": {
+        "15": 2624,
+        "30": 2620,
+        "45": 2622,
+        "60": 2620,
+        "75": 2619,
+        "90": 2626,
+        "105": 2626,
+        "120": 2625,
+        "135": 2622,
+        "150": 2624,
+        "165": 2626,
+        "180": 2625,
+        "195": 2625,
+        "210": 2624,
+        "225": 2616,
+        "240": 2589
+      }
+    },
+    "val": {
+      "pairs": 4116,
+      "unique_target_dates": 16,
+      "pairs_by_lead_minutes": {
+        "15": 260,
+        "30": 260,
+        "45": 260,
+        "60": 259,
+        "75": 259,
+        "90": 259,
+        "105": 259,
+        "120": 258,
+        "135": 258,
+        "150": 258,
+        "165": 258,
+        "180": 258,
+        "195": 256,
+        "210": 254,
+        "225": 252,
+        "240": 248
+      }
+    }
+  },
+  "files": {
+    "geometry.npy": "ae89d5c8c25495edac62615a85ec45a5af627044cefd9f99ea0dc9632f145116",
+    "history_cot_log.npy": "8ad783d3495c1f184c3a711007f490e57eca99bc8de14a27c063111838cd76e2",
+    "history_valid.npy": "8972d9eacd66220727d931db2d4704b564009e83e20a6e0e90ee44a9de3002b0",
+    "cpp_cot.npy": "5282bf2671f8bb4a060cf33a959ad38c73767576fc7d74e247a749b308ea9aef",
+    "cpp_valid.npy": "873908c4efac930604afd57f84f77b59f3265009bcec57ec7541b05e75c97148",
+    "bank_rows.csv": "f5e77b9ea7c2922c56306187e7a278605097821adf5811e7859d09438b2beaf9",
+    "forecast_pairs.csv": "1d1f8df9568bbca12b17495f4fd8c37515cad20776f37cf9dde3f445fa3cebe8"
+  },
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "training_authorized_by_this_cache": false
+}

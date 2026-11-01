@@ -1,0 +1,102 @@
+#!/bin/bash
+#PBS -N hb_cot_patch_g1s6
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=32:gpus=4
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/gpu_training_attempt6/training.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022
+CODE=$BASE/cache_attempt5
+ATTEMPT=$BASE/gpu_training_attempt6
+SHARED_CACHE=$BASE/cache_attempt5/cache
+ROWS=$PROJECT/experiments/hubei_cloud_probability_20261020/cot_bank_correctutc_attempt3/rows.csv
+CACHE=$SHARED_CACHE
+AUDIT=$BASE/cache_attempt5/cache_audit/cache_audit.json
+PROFILE=$ATTEMPT/profile_v6
+RUN=$ATTEMPT/train_seed42_v6
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+mkdir -p "$ATTEMPT" "$PROFILE"
+exec > >(tee -a "$ATTEMPT/training_${PBS_JOBID}.log") 2>&1
+echo "G1S_GPU_JOB_START job=$PBS_JOBID host=$(hostname)"
+set -x
+
+test -f "$CODE/train_station_patch_cot_forecaster.py"
+test -f "$CODE/test_ddp_contract.py"
+test -f "$SHARED_CACHE/cache_report.json"
+test -f "$AUDIT"
+"$PY" - <<'PY' "$AUDIT"
+import json, sys
+x=json.load(open(sys.argv[1]))
+assert x.get('state') == 'PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED', x
+assert x.get('test_payloads_read') == 0 and x.get('buffer_payloads_read') == 0, x
+assert x['forecast_pairs']['val']['unique_target_dates'] >= 12, x
+assert min(x['forecast_pairs']['val']['pairs_by_lead_minutes'].values()) >= 200, x
+print('CACHE_AUDIT_GATE_PASS', x['forecast_pairs']['val'])
+PY
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$CODE:$PROJECT/scripts${PYTHONPATH:+:$PYTHONPATH}"
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+test "$(printf '%s\n' "$GPU_TEXT" | sed '/^$/d' | wc -l)" -eq 4
+export CUDA_VISIBLE_DEVICES=$(printf '%s\n' "$GPU_TEXT" | paste -sd, -)
+echo "ASSIGNED_NODE22_GPU_IDS=$GPU_TEXT CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$CUDA_VISIBLE_DEVICES" --query-compute-apps=pid --format=csv,noheader)"
+
+cd "$CODE"
+if test -f "$RUN/training_complete.json"; then
+  echo "TRAINING_ALREADY_COMPLETE; preserve existing result"
+  exit 0
+fi
+
+# Copy the already-audited immutable cache quickly to node-local scratch.
+# CPU/Gloo and full cache audits are completed before entering the GPU queue.
+LOCAL_ROOT="/tmp/g1s_cot_${PBS_JOBID}"
+LOCAL_CACHE=$LOCAL_ROOT/cache
+mkdir -p "$LOCAL_CACHE" "$LOCAL_ROOT/cache_audit"
+cp -a "$SHARED_CACHE"/. "$LOCAL_CACHE"/
+cp "$AUDIT" "$LOCAL_ROOT/cache_audit/cache_audit.json"
+CACHE=$LOCAL_CACHE
+echo "CACHE_LOCAL_COPY_COMPLETE cache=$CACHE"
+if ! test -f "$PROFILE/selected_workers.json"; then
+  for workers in 4 2 1; do
+    profile_json="$PROFILE/profile_${workers}gpu.json"
+    if test -f "$profile_json"; then
+      echo "PROFILE_ALREADY_COMPLETE workers=$workers; preserve"
+      continue
+    fi
+    "$PY" -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node="$workers" \
+      train_station_patch_cot_forecaster.py --mode profile --cache "$CACHE" --output "$PROFILE" \
+      --global-batch 32 --seed 42 --width 96 --profile-warmup 5 --profile-steps 30 \
+      --loader-workers 0
+  done
+  "$PY" select_profile_workers.py --profiles "$PROFILE" \
+    --output "$PROFILE/selected_workers.json" --global-batch 32 --tolerance 0.05
+fi
+
+WORKERS=$("$PY" -c 'import json,sys; print(json.load(open(sys.argv[1]))["selected_workers"])' \
+  "$PROFILE/selected_workers.json")
+if test -f "$RUN/last.pt"; then
+  echo "RESUME_COMPLETE_EPOCH_CHECKPOINT=$RUN/last.pt workers=$WORKERS"
+  "$PY" -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node="$WORKERS" \
+    train_station_patch_cot_forecaster.py --mode train --cache "$CACHE" --output "$RUN" \
+    --global-batch 32 --seed 42 --width 96 --lr 1e-4 --min-lr 1e-6 \
+    --weight-decay 1e-4 --max-epochs 60 --patience 8 --min-delta 1e-3 \
+    --loader-workers 0 --resume "$RUN/last.pt"
+else
+  "$PY" -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node="$WORKERS" \
+    train_station_patch_cot_forecaster.py --mode train --cache "$CACHE" --output "$RUN" \
+    --global-batch 32 --seed 42 --width 96 --lr 1e-4 --min-lr 1e-6 \
+    --weight-decay 1e-4 --max-epochs 60 --patience 8 --min-delta 1e-3 \
+    --loader-workers 0
+fi
+
+test -f "$RUN/training_complete.json"
+echo "G1S_COT_FORECAST_TRAINING_COMPLETE job=$PBS_JOBID workers=$WORKERS global_batch=32"

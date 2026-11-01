@@ -1,0 +1,120 @@
+{
+  "Hunan": {
+    "n": 356169,
+    "rmse": 9.074092379589063,
+    "mae": 4.646311979476951,
+    "bias": 0.2790200773034811
+  },
+  "Hubei": {
+    "n": 66304,
+    "rmse": 13.356940140254641,
+    "mae": 9.464546050332016,
+    "bias": -1.3033148559573993
+  },
+  "metadata": {
+    "reference": "FY-4B CPP retrieval, not independent truth",
+    "common_mask_only": true,
+    "Hunan_support": "two station-centred 16×16 patches",
+    "Hubei_support": "shared 16×16 three-station patch",
+    "Hunan_unique_BJT_dates": 46,
+    "Hubei_unique_BJT_dates": 16,
+    "bootstrap_unit": "BJT target date from audited CPP support manifest; paired pixels retained within date; station means equally weighted within Hunan",
+    "bootstrap_draws": 2000,
+    "seed": 20261017,
+    "test_payloads_read": 0,
+    "sources_sha256": {
+      "hunan_prediction_and_cpp": "08c9cc92df549f12412873e9b8e50f308f35f79451693fa10b229a3346c15785",
+      "hunan_reference_keys": "ff11cea370fa9618d51492922deb81f8f21473ee16743c31b875475d417f2314",
+      "hunan_bjt_time_mapping": "0a303ec6965be360689f3891e96b5e4085ad3e6550b2db6504a8b2ac35565dd2",
+      "hubei_prediction": "d2c92a42ac1c08bd1a247ee79215919e71cedad4f5f2f8ab31dc502a40368107",
+      "hubei_cpp_reference": "ccc0c9b5d62b9fabd470379a22ad5aab1704fa7fb77b730a4c8c7b4caa5de673",
+      "hubei_mask": "bc2d7a6665048a494ba844c090aeaa4fce2d27d8689925b8e2b42bb25d20286d",
+      "hubei_keys": "8bb5fe1bef369fb9b11575c1f2e9f013075819caa568adddab2e731b67ae7b25",
+      "hubei_audit": "d08b2819c65dd8191b04637be08a6f6707b1c7670af8ea3877e197614ece504f"
+    },
+    "strata_Hunan": [
+      {
+        "bin": "<0.1",
+        "lower": 0.0,
+        "upper": 0.1,
+        "n_pixels": 128247,
+        "n_dates": 37,
+        "bias": 3.959574096561683,
+        "ci_low": 0.8707137438875925,
+        "ci_high": 8.325607539544599
+      },
+      {
+        "bin": "0.1–5",
+        "lower": 0.1,
+        "upper": 5.0,
+        "n_pixels": 50154,
+        "n_dates": 37,
+        "bias": -0.4529024527120269,
+        "ci_low": -0.6456616008394079,
+        "ci_high": -0.21746649068630416
+      },
+      {
+        "bin": "5–30",
+        "lower": 5.0,
+        "upper": 30.0,
+        "n_pixels": 126844,
+        "n_dates": 42,
+        "bias": 0.7784558320604449,
+        "ci_low": -0.22156617244841537,
+        "ci_high": 1.827778911167654
+      },
+      {
+        "bin": "≥30",
+        "lower": 30.0,
+        "upper": 100.0,
+        "n_pixels": 50924,
+        "n_dates": 34,
+        "bias": -8.719180492917795,
+        "ci_low": -11.533424438064069,
+        "ci_high": -5.5883897220986425
+      }
+    ],
+    "strata_Hubei": [
+      {
+        "bin": "<0.1",
+        "lower": 0.0,
+        "upper": 0.1,
+        "n_pixels": 23254,
+        "n_dates": 10,
+        "bias": 5.765693152342309,
+        "ci_low": 1.1654678292857068,
+        "ci_high": 12.618381339751446
+      },
+      {
+        "bin": "0.1–5",
+        "lower": 0.1,
+        "upper": 5.0,
+        "n_pixels": 7623,
+        "n_dates": 6,
+        "bias": 3.8793830780196843,
+        "ci_low": -1.7190524549627433,
+        "ci_high": 7.098170899416822
+      },
+      {
+        "bin": "5–30",
+        "lower": 5.0,
+        "upper": 30.0,
+        "n_pixels": 19558,
+        "n_dates": 11,
+        "bias": -1.3375801571031232,
+        "ci_low": -11.167028512928443,
+        "ci_high": 3.8154909325640594
+      },
+      {
+        "bin": "≥30",
+        "lower": 30.0,
+        "upper": 100.0,
+        "n_pixels": 15869,
+        "n_dates": 12,
+        "bias": -14.109431045755159,
+        "ci_low": -19.487400134095072,
+        "ci_high": -9.022177299740257
+      }
+    ]
+  }
+}

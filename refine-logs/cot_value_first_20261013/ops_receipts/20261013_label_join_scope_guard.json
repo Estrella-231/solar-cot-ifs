@@ -1,0 +1,18 @@
+{
+  "schema": "cot_ops_receipt_label_join_scope_guard_v1",
+  "created_at_bjt": "2026-10-13",
+  "finding": "The join utility previously loaded all canonical label rows before filtering to new train/validation candidates. A full legacy manifest could include labels at dates assigned to the new test split.",
+  "change": "The utility now requires a scope receipt bound to the candidate hash, asserts the new split id and explicit train/validation-only extraction claims before hashing/opening the canonical label CSV, and rejects any label key outside the candidate set.",
+  "script": "refine-logs/cot_value_first_20261013/windows/window_1/join_unique_station_labels.py",
+  "script_sha256": "2282b971093e547dc37a734f20ee6d79ade82d4df0ab02768e0f924641f2c2ee",
+  "validation": {
+    "ast_syntax": "PASS",
+    "synthetic_train_val_only_join": "PASS",
+    "real_label_rows_read": false,
+    "new_test_payload_read": false,
+    "test_fixtures_used": "none; synthetic one-row train fixture only",
+    "invalid_scope_rejected_before_label_file_access": "PASS",
+    "explicit_new_test_labels_included_true_rejected_before_label_file_access": "PASS"
+  },
+  "status_effect": "T03 remains PARTIAL until a scope-receipted train/validation-only label slice is produced and joined; main data contract unchanged."
+}

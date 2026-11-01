@@ -1,0 +1,92 @@
+#!/bin/bash
+#PBS -N hb_r_cloud_bank
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/logs/banks_attempt1.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/experiments/hubei_cloud_probability_20261020
+CODE=$EXP/code_attempt1
+RPACK=$EXP/R_pack_correctutc_attempt2
+CPP=$EXP/cpp_attempt2/cpp_supervision_trainval.npz
+MANIFEST=$EXP/agri_stage_attempt1/agri_paths_trainval_staged.csv
+MANIFEST_REPORT=$EXP/agri_stage_attempt1/staged_manifest_report.json
+STAGED_AGRI=$EXP/agri_trainval_staged
+AGRI_STAGE_REPORT=$EXP/agri_stage_attempt1/stage_report.json
+AGRI_MANIFEST_REPORT=$EXP/agri_stage_attempt1/staged_manifest_report.json
+AGRI_ARCHIVE=$EXP/agri_stage_attempt1/hubei_agri_trainval.tar
+AGRI_AUDIT=$EXP/agri_stage_attempt1/staged_agri_audit_attempt2.json
+R_RUN=$EXP/R_correctutc_attempt1
+CLF_RUN=$EXP/classifier_correctutc_attempt1
+COT_BANK=$EXP/cot_bank_correctutc_attempt1
+PC_BANK=$EXP/pcloud_bank_correctutc_attempt1
+
+for path in "$R_RUN" "$CLF_RUN" "$COT_BANK" "$PC_BANK"; do
+  if [ -e "$path" ]; then echo "REFUSE_EXISTING_OUTPUT=$path"; exit 31; fi
+done
+test -f "$MANIFEST"
+test -f "$MANIFEST_REPORT"
+test -f "$AGRI_STAGE_REPORT"
+test -f "$AGRI_MANIFEST_REPORT"
+test -f "$AGRI_ARCHIVE"
+test -f "$CPP"
+test -f "$RPACK/independent_audit.json"
+test -f "$RPACK/SHA256.json"
+
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+GPU_COUNT=$(printf '%s\n' "$GPU_TEXT" | wc -l)
+if [ -z "$GPU_TEXT" ] || [ "$GPU_COUNT" -ne 1 ]; then
+  echo "REFUSE: expected exactly one assigned node22 GPU; got '$GPU_TEXT'"
+  exit 32
+fi
+GPU_ID=$GPU_TEXT
+export CUDA_VISIBLE_DEVICES="$GPU_ID"
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+echo "PBS_JOBID=$PBS_JOBID NODE=$(hostname) GPU_ID=$GPU_ID"
+nvidia-smi -i "$GPU_ID" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+test -z "$(nvidia-smi -i "$GPU_ID" --query-compute-apps=pid --format=csv,noheader)"
+
+cd "$EXP"
+(cd "$CODE" && sha256sum -c SHA256SUMS)
+python -m py_compile "$CODE/train_hubei_cloud_classifier_oof.py" \
+  "$CODE/infer_hubei_cloud_bank_full_agri.py" \
+  "$CODE/train_hubei_cot_correctutc_v1.py" \
+  "$CODE/train_cot_repaired.py" \
+  "$CODE/infer_hubei_cot_full_agri_trainval.py" \
+  "$CODE/audit_staged_hubei_agri.py"
+
+python -u "$CODE/audit_staged_hubei_agri.py" \
+  --manifest "$MANIFEST" --manifest-report "$AGRI_MANIFEST_REPORT" \
+  --stage-report "$AGRI_STAGE_REPORT" --archive "$AGRI_ARCHIVE" \
+  --output "$AGRI_AUDIT"
+
+# Hubei-only random-init classifier: date-held-out train OOF plus fixed full-train model.
+python -u "$CODE/train_hubei_cloud_classifier_oof.py" \
+  --pack "$RPACK" --cpp-sidecar "$CPP" --output "$CLF_RUN" \
+  --seed 42 --folds 5 --epochs 30 --batch 512
+
+python -u "$CODE/infer_hubei_cloud_bank_full_agri.py" \
+  --manifest "$MANIFEST" --classifier-run "$CLF_RUN" \
+  --oof-bank "$CLF_RUN/cloud_probability_trainval.npz" \
+  --output "$PC_BANK" --batch 256
+
+# Fresh Hubei R using correctly paired UTC CPP/COT supervision; independent of Hunan.
+python -u "$CODE/train_hubei_cot_correctutc_v1.py" \
+  --pack "$RPACK" --model-source "$CODE/train_cot_repaired.py" \
+  --output "$R_RUN" --seed 42 --batch 192 --epochs 50 --patience 8 \
+  --allow-variable-support
+
+python -u "$CODE/infer_hubei_cot_full_agri_trainval.py" \
+  --manifest "$MANIFEST" --manifest-report "$MANIFEST_REPORT" \
+  --norm "$RPACK/norm.json" --run "$R_RUN" \
+  --model-source "$CODE/train_cot_repaired.py" \
+  --output "$COT_BANK" --batch 256
+
+echo "HUBEI_CORRECTUTC_CLOUD_AND_COT_BANKS_COMPLETE test_payloads_read=0 buffer_payloads_read=0"

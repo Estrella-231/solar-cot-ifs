@@ -1,0 +1,9 @@
+216841 冻结全验证启动收据
+
+观察时间：服务器2026-10-30 20:00:25 CST。PBS 216841.tc6000 状态R，slfu唯一未结束任务，node21 GPU0–3、24CPU。
+
+Smoke：forecast_smoke1 PASS，16窗，4卡约15.20秒；evaluation_smoke1 PASS，16窗/432 GHI行/512 COT行，约55.44秒。两者 test_payloads_read=0。launch日志打印 HUNAN_PIPELINE_SMOKE_PASS。
+
+主阶段已确认启动：forecast_attempt1目录出现完成样本文件，generate_216841.tc6000.log持续记录`hunan_forecast_window_complete`。截至20:00:25，122/3140窗完成，各rank 31/30/30/31。rank最新累计运行约62.7–64.2秒，对应四卡聚合吞吐约1.90窗/秒；预计主生成剩余约3018窗/26.5分钟。该ETA只估主forecast生成，不含后续四分片评估与合并。
+
+GPU样本约20:00：GPU0/3显存约4653MiB，GPU1/2约4797MiB；四卡利用率均100%。抽查日志未见异常，smoke均PASS。checkpoint采用epoch150 EMA；训练PASS。未读test数据，未修改作业状态。

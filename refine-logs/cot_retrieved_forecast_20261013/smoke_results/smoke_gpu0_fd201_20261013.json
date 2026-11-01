@@ -1,0 +1,38 @@
+{
+  "status": "PASS_SYNTHETIC_ENGINEERING_SMOKE",
+  "scope": "single synthetic batch; not COT accuracy or validation",
+  "torch": "2.4.1+cu121",
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 4090",
+  "input_shape": [
+    1,
+    8,
+    1,
+    32,
+    32
+  ],
+  "geometry_shape": [
+    1,
+    24,
+    3,
+    32,
+    32
+  ],
+  "output_shape": [
+    1,
+    16,
+    1,
+    32,
+    32
+  ],
+  "loss": 0.06528633087873459,
+  "gradient_absolute_sum": 157.65528480312787,
+  "history_masked_nan_count": 32,
+  "target_masked_nan_count": 1661,
+  "prediction_finite": true,
+  "checkpoint_reload_max_abs": 2.384185791015625e-07,
+  "elapsed_seconds_forward_backward_update_reload": 3.063916020008037,
+  "peak_allocated_bytes": 55774720,
+  "source_sha256": "dd442dbdac8db1da2f83420796e3b2d98f8bf62a26506d504a5d4feb2074779a",
+  "checkpoint": "smoke.pt"
+}

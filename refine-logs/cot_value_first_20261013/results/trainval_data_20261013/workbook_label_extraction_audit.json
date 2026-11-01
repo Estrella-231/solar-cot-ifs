@@ -1,0 +1,50 @@
+{
+  "state": "TRAIN_VAL_LABELS_EXTRACTED_FROM_EXISTING_WORKBOOKS",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "candidate_keys": 111466,
+  "candidate_manifest_sha256": "b85c2841e33cc92eda848acb183f926d49564b6c131d6418730e6b53978e2807",
+  "builder_sha256": "031b5c0f8cb8d52e2317453772f9d6eda7252614d9fc858ebcc5837a8f0e2f58",
+  "counts": {
+    "train/complete_ghi": 93255,
+    "train/day_complete_ghi": 50465,
+    "train/day_incomplete_ghi": 4499,
+    "train/incomplete_ghi_source": 9217,
+    "train/station_day_sza_lt90": 54964,
+    "val/complete_ghi": 8137,
+    "val/day_complete_ghi": 4480,
+    "val/day_incomplete_ghi": 405,
+    "val/incomplete_ghi_source": 857,
+    "val/station_day_sza_lt90": 4885
+  },
+  "source_workbooks": {
+    "sili": {
+      "source_file": "四里光伏.xlsx",
+      "sheet": "结果集",
+      "daily_rows_scanned": 801,
+      "source_date_min": "2024-01-01",
+      "source_date_max": "2026-06-30",
+      "requested_dates": 667,
+      "requested_5min_timestamps": 167199,
+      "path": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations/四里光伏.xlsx",
+      "sha256": "c13c6a066cc7ca3ee0d902bb8a9d6c8ea1cc1618659e86eafa4971bbe9a879f4"
+    },
+    "zhujia": {
+      "source_file": "竺家光伏.xlsx",
+      "sheet": "结果集",
+      "daily_rows_scanned": 875,
+      "source_date_min": "2024-01-01",
+      "source_date_max": "2026-06-30",
+      "requested_dates": 667,
+      "requested_5min_timestamps": 167199,
+      "path": "/home/Data_Pool_3/chenyi/GHI/data/hunan/raw/stations/竺家光伏.xlsx",
+      "sha256": "38e4b708a009a69d16bc49ff80ea330a88a6b32e1d69ff6ee53dc49ee13783a0"
+    }
+  },
+  "label_window": "(target-15min,target]; values at target-10/-5/target",
+  "only_candidate_train_val_keys_requested": true,
+  "noncandidate_label_cells_decoded": false,
+  "day_mask": "NOAA solar cosine at target station/time > 0; same formula as M0 production",
+  "source_payload_scope": "train/val candidate dates and exact requested five-minute cells only",
+  "output": "unique_target_labels_train_val.csv",
+  "output_sha256": "cd2dc4464de5b78662396c6eb5318cd8f3d1858c4e16bd09f2c62e0d92d1bd02"
+}

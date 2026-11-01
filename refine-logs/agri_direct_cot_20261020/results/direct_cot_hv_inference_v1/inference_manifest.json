@@ -1,0 +1,57 @@
+{
+  "state": "COMPLETE_CAUSAL_DIRECT_COT_HV_INFERENCE",
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "sequence_counts": {
+    "H": 7181,
+    "V": 3140
+  },
+  "arms": [
+    "simvp_r",
+    "p_c",
+    "p_xc",
+    "last"
+  ],
+  "prediction_shape": "per sequence, station, +15..+240 min; AGRI 3x3 and COT 16x16",
+  "inference_inputs": "8 observed AGRI history frames; history R_U COT; known deterministic geometry; no target labels",
+  "future_observed_agri_read": false,
+  "cpp_read": false,
+  "ghi_labels_read": false,
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "split_support_audit_sha256": "40607fadff276c6e030dca2e745703ce9875ceef628d3ed8390a600d63cb0497",
+  "normalization_fit_partition": "U",
+  "contract": {
+    "support_audit_sha256": "40607fadff276c6e030dca2e745703ce9875ceef628d3ed8390a600d63cb0497",
+    "h_support_sha256": "5f2ab9818ac830063186d4ec79ae4014f00c8a84c1ef65b55d0d27b54dd11f36",
+    "v_support_sha256": "86d43458c61ed05abf85868dc571c4da2e2fd52c65821dfaf40a3d8895270183",
+    "simvp_checkpoint_sha256": "13e120c5cbe2e937ceba6334ffee160c4df6d193c0256eb3ca339094b4c02616",
+    "simvp_norm_sha256": "eefe2ed3090898f268d87fb3c137c4955d5f7f3f5a95bd944f5a2a6adddcdb3c",
+    "r_checkpoint_sha256": "f3aa05346bb835efe941b0a462cd1001dc3af6bc9f68c2de4d351970136ab52c",
+    "r_norm_sha256": "e2577b729e39100fc6079494b775c1c3fb328540a1ad98d4bb13e1a2b1e070ec",
+    "r_pack_audit_sha256": "f7acc9a6c0925d0e92079df808dd00cdc8ada9b2ae111e7dcb00d94eee3ef266",
+    "geometry_source_sha256": "04779daf8cf1f7ca06b5119b603dfe51234fb9913149f617b3d37deeda4376a5",
+    "p_c_checkpoint_sha256": "7258ea13ea210347f94a49174ec2e6ac88a241463ec74220aa9d30a2c7ba1b37",
+    "p_xc_checkpoint_sha256": "4b926f3a94d2228505d9acce0a7d36adbd90cbd8ef221d9db02045b35fea50df",
+    "predictor_source_sha256": "d475a17dd93ef4d285601fca700d5970fb281b2d430859c523734986441ca8ca",
+    "test_and_buffer_payloads_opened": false
+  },
+  "contract_sha256": "29622735e5273b2aea184c25b7a41d8c79fae846daaf42937ce242f1ae2e984d",
+  "artifact_sha256": {
+    "H/agri_raw.npy": "f5a05697320016a9adc804a2cd447213d9400bac103d6035c6726f5e7ced6fa8",
+    "H/cot_last.npy": "c133b63ebdca209f71c7b8049c0eb8ba60cfcfaf66df3703be95c20d4556efc8",
+    "H/cot_p_c.npy": "28dd42ef74de2f58a3f4ea586a1acaaf7cfe2e96dce0a534384e73a56cf843dc",
+    "H/cot_p_xc.npy": "61b16d0b53897058aa71c4ac1b98052d7bcfffaac639743fa764bc632b1f3271",
+    "H/cot_simvp_r.npy": "7504374604db2133a82ccab2073e7c6a675e0a09bf7f9db1b7ea5203b6f6e043",
+    "H/geometry_raw.npy": "3ba1b0373375274cf47b2f4d2b5338275406ea70610ee806a141687ba5039542",
+    "V/agri_raw.npy": "5adc3b97d5d0e7cb26caaa8163c3e8c7529099f00f8d8fcbde2f79aac86bde0e",
+    "V/cot_last.npy": "8b91618b2e295c9228294199d6756c72d9b9534113ee24f9430a3460a748c6fb",
+    "V/cot_p_c.npy": "d84c03674f297de1a00611907b12517096c9b091842a1def640012621428607b",
+    "V/cot_p_xc.npy": "30a9b55f1cdd77a34c43cd3ca9c13af556af85d8ae96a8baf6b42d3cbd329e87",
+    "V/cot_simvp_r.npy": "410a04bfc321228016b7fcc9a0f61517d3b670f0fe0686c6f5430896a9046a4c",
+    "V/geometry_raw.npy": "981ebd7b41894cb7af77e4f8fcd95a9c6a5ab37cf25ce126cca0f1a3f08c0e7c"
+  },
+  "pbs_job_id": "215308.tc6000"
+}

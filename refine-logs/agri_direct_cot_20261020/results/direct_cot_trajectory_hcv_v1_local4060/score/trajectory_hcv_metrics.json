@@ -1,0 +1,228 @@
+{
+  "state": "COMPLETE_COT_TRAJECTORY_H_CV_SCORE",
+  "evidence_tier": "outer-training H-only internal date-block CV; not outer validation/test",
+  "run_manifest_sha256": "5077c8fff9a2d7abf1db5c6368b87bed1efb429383ed4afd2a5e8e77ad399877",
+  "results": {
+    "trajectory_minus_target": {
+      "all_leads": {
+        "delta_rmse_wm2": 1.8883396858810926,
+        "ci95_low": -0.029818885550319616,
+        "ci95_high": 4.45462808065142,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 0.8170017072793456,
+        "leave_one_block_max": 2.205303583831826,
+        "leave_one_block_all_negative": false
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": 1.5434828879510292,
+        "ci95_low": -0.7873874841188345,
+        "ci95_high": 4.737956390937815,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 0.12632448194908838,
+        "leave_one_block_max": 1.9206001461661135,
+        "leave_one_block_all_negative": false
+      }
+    },
+    "trajectory_minus_none": {
+      "all_leads": {
+        "delta_rmse_wm2": 2.768452685441796,
+        "ci95_low": -0.7340964237074333,
+        "ci95_high": 6.694708516330798,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 1.422996778836198,
+        "leave_one_block_max": 3.4652060491899683,
+        "leave_one_block_all_negative": false
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": 1.9625720281513093,
+        "ci95_low": -1.6633461590872523,
+        "ci95_high": 6.17215658183199,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 0.18378671949593203,
+        "leave_one_block_max": 2.7424895590729554,
+        "leave_one_block_all_negative": false
+      }
+    },
+    "target_minus_none": {
+      "all_leads": {
+        "delta_rmse_wm2": 0.8801129995607037,
+        "ci95_low": -1.4711701197761373,
+        "ci95_high": 3.280151848228266,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 0.34994750727986457,
+        "leave_one_block_max": 1.4971823984514998,
+        "leave_one_block_all_negative": false
+      },
+      "plus15_60": {
+        "delta_rmse_wm2": 0.41908914020028004,
+        "ci95_low": -1.7000041748497232,
+        "ci95_high": 2.4824917212298487,
+        "blocks": 112,
+        "bootstrap_reps": 5000,
+        "leave_one_block_min": 0.05746223754684365,
+        "leave_one_block_max": 0.9976978791368319,
+        "leave_one_block_all_negative": false
+      }
+    },
+    "station_seed_equal_all_leads": {
+      "sili": {
+        "trajectory_minus_target": {
+          "seed_deltas": [
+            1.231273413438771,
+            1.7631725237309581,
+            2.1521627802160594
+          ],
+          "mean": 1.7155362391285962
+        },
+        "trajectory_minus_none": {
+          "seed_deltas": [
+            -0.1414366579272155,
+            4.430275834326153,
+            -1.3673833438220981
+          ],
+          "mean": 0.9738186108589465
+        },
+        "target_minus_none": {
+          "seed_deltas": [
+            -1.3727100713659866,
+            2.667103310595195,
+            -3.5195461240381576
+          ],
+          "mean": -0.7417176282696497
+        }
+      },
+      "zhujia": {
+        "trajectory_minus_target": {
+          "seed_deltas": [
+            1.5827994436357926,
+            -2.8618125516855173,
+            7.462442505950435
+          ],
+          "mean": 2.06114313263357
+        },
+        "trajectory_minus_none": {
+          "seed_deltas": [
+            3.0303199687774054,
+            4.0017404263397225,
+            6.6571998849567535
+          ],
+          "mean": 4.563086760024627
+        },
+        "target_minus_none": {
+          "seed_deltas": [
+            1.4475205251416128,
+            6.86355297802524,
+            -0.8052426209936812
+          ],
+          "mean": 2.501943627391057
+        }
+      }
+    },
+    "seed_equal_region_all_leads": {
+      "trajectory_minus_target": [
+        1.4070364285372818,
+        -0.5493200139772796,
+        4.807302643083247
+      ],
+      "trajectory_minus_none": [
+        1.444441655425095,
+        4.216008130332938,
+        2.6449082705673277
+      ],
+      "target_minus_none": [
+        0.037405226887813114,
+        4.765328144310217,
+        -2.1623943725159194
+      ]
+    },
+    "leadwise_descriptive_trajectory_minus_target": [
+      {
+        "lead_minutes": 15,
+        "delta_rmse_wm2": 1.7358686656216615
+      },
+      {
+        "lead_minutes": 30,
+        "delta_rmse_wm2": 1.4560376153233061
+      },
+      {
+        "lead_minutes": 45,
+        "delta_rmse_wm2": 1.3538260447994286
+      },
+      {
+        "lead_minutes": 60,
+        "delta_rmse_wm2": 1.623797520981147
+      },
+      {
+        "lead_minutes": 75,
+        "delta_rmse_wm2": 1.937820430028836
+      },
+      {
+        "lead_minutes": 90,
+        "delta_rmse_wm2": 1.6756983015174807
+      },
+      {
+        "lead_minutes": 105,
+        "delta_rmse_wm2": 1.918926452875174
+      },
+      {
+        "lead_minutes": 120,
+        "delta_rmse_wm2": 1.7024351059367195
+      },
+      {
+        "lead_minutes": 135,
+        "delta_rmse_wm2": 1.7492294682117706
+      },
+      {
+        "lead_minutes": 150,
+        "delta_rmse_wm2": 2.0086176512690628
+      },
+      {
+        "lead_minutes": 165,
+        "delta_rmse_wm2": 1.870817462444028
+      },
+      {
+        "lead_minutes": 180,
+        "delta_rmse_wm2": 2.3377473836762115
+      },
+      {
+        "lead_minutes": 195,
+        "delta_rmse_wm2": 2.0464314360155336
+      },
+      {
+        "lead_minutes": 210,
+        "delta_rmse_wm2": 1.8932811632865831
+      },
+      {
+        "lead_minutes": 225,
+        "delta_rmse_wm2": 2.5807935768437744
+      },
+      {
+        "lead_minutes": 240,
+        "delta_rmse_wm2": 2.0913969747396046
+      }
+    ],
+    "predeclared_gate": {
+      "pass": false,
+      "conditions": {
+        "all_lead_point_and_ci_pass": false,
+        "short_point_and_ci_pass": false,
+        "both_stations_nonworse": false,
+        "at_least_2_of_3_seed_deltas_negative": false,
+        "leave_one_block_stable_all_and_short": false
+      }
+    }
+  },
+  "station_rows": {
+    "sili": 72345,
+    "zhujia": 79417
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false
+}

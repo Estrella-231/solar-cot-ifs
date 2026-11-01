@@ -1,0 +1,100 @@
+#!/bin/bash
+#PBS -N hb_cotpack
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+WORK="$ROOT/source_rebuild_20261017_v1"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+ASSET="$ROOT/assets/frozen_R_20261016"
+MANIFEST="$ROOT/manifests/agri_paths_trainval.csv"
+exec > "$WORK/job_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+
+test ! -e "$WORK/r_bank"
+test ! -e "$WORK/station_features"
+test ! -e "$WORK/pack"
+test -f "$WORK/labels/ghi15_train_val_daylight_clear.csv"
+test -f "$WORK/input/day_assignment.csv"
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+used=$(nvidia-smi --id="${GPU_ARRAY[0]}" --query-gpu=memory.used --format=csv,noheader,nounits)
+test "$used" -lt 500
+printf 'PBS_JOBID=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$GPU_IDS"
+
+SCRIPT="$WORK/scripts"
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPT/infer_hubei_cot_full_agri_trainval.py" \
+  --manifest "$MANIFEST" \
+  --manifest-report "$ROOT/stage_report_20261017.json" \
+  --norm "$ASSET/norm.json" --run "$ASSET" \
+  --model-source "$ASSET/train_cot_repaired.py" \
+  --output "$WORK/r_bank" --batch 256 \
+  | tee "$WORK/r_bank_inference.log"
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPT/build_hubei_station3x3_features_trainval.py" \
+  --rows "$WORK/r_bank/rows.csv" --manifest "$MANIFEST" \
+  --prediction "$WORK/r_bank/cot_pred_trainval_full.npy" \
+  --bank-report "$WORK/r_bank/BANK_REPORT.json" \
+  --split-sha256 6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6 \
+  --output "$WORK/station_features" | tee "$WORK/station_feature_build.log"
+
+"$PY" "$SCRIPT/build_hubei_ghi_heads_pack.py" \
+  --split "$WORK/input/day_assignment.csv" \
+  --labels "$WORK/labels/ghi15_train_val_daylight_clear.csv" \
+  --feature-rows "$WORK/station_features/rows.csv" \
+  --features "$WORK/station_features/station_features.npy" \
+  --feature-report "$WORK/station_features/FEATURE_REPORT.json" \
+  --r-bank-report "$WORK/r_bank/BANK_REPORT.json" \
+  --r-prediction "$WORK/r_bank/cot_pred_trainval_full.npy" \
+  --r-rows "$WORK/r_bank/rows.csv" \
+  --output "$WORK/pack" | tee "$WORK/pack_build.log"
+
+"$PY" - "$WORK/pack" "$ROOT/pack" "$WORK/rebuild_comparison.json" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+import numpy as np
+
+new, old, output = map(Path, sys.argv[1:])
+names = ("agri_raw.npy", "geometry.npy", "cot.npy", "ghi_wm2.npy", "clear_sky_wm2.npy")
+result = {"state": "HUBEI_SAME_TIME_PACK_SOURCE_REBUILD_COMPARISON", "arrays": {}}
+all_exact = True
+for name in names:
+    a = np.load(new / name, mmap_mode="r", allow_pickle=False)
+    b = np.load(old / name, mmap_mode="r", allow_pickle=False)
+    if a.shape != b.shape:
+        all_exact = False
+        result["arrays"][name] = {"shape_equal": False, "new_shape": list(a.shape), "old_shape": list(b.shape)}
+        continue
+    delta = np.asarray(a, dtype=np.float64) - np.asarray(b, dtype=np.float64)
+    equal = bool(np.array_equal(a, b))
+    all_exact &= equal
+    result["arrays"][name] = {
+        "shape_equal": True, "exact_equal": equal,
+        "new_sha256": hashlib.sha256((new / name).read_bytes()).hexdigest(),
+        "old_sha256": hashlib.sha256((old / name).read_bytes()).hexdigest(),
+        "max_abs_difference": float(np.max(np.abs(delta))) if delta.size else 0.0,
+        "n_different_values": int(np.count_nonzero(delta)),
+    }
+new_rows = (new / "rows.csv").read_bytes()
+old_rows = (old / "rows.csv").read_bytes()
+result["rows_exact_equal"] = new_rows == old_rows
+result["new_rows_sha256"] = hashlib.sha256(new_rows).hexdigest()
+result["old_rows_sha256"] = hashlib.sha256(old_rows).hexdigest()
+result["all_arrays_and_rows_exact_equal"] = bool(all_exact and result["rows_exact_equal"])
+result["note"] = "A mismatch is recorded, not silently replaced; existing pack and trained outputs remain untouched."
+output.write_text(json.dumps(result, indent=2) + "\n")
+print(json.dumps(result, indent=2))
+PY
+
+echo HUBEI_SAME_TIME_COT_SOURCE_REBUILD_COMPLETE

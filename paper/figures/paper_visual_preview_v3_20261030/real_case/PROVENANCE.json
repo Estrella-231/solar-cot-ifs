@@ -1,0 +1,89 @@
+{
+  "selection": {
+    "init": "202508061200",
+    "rule": "Earliest C_fit date with scored rows at all three stations and all17 satellite/R frames; initialization closest to 12:00 BJT, earlier tie; no errors used",
+    "strict_first_attempt": "No common initialization had all16 GHI labels in all3 stations; no data fabricated. Preserve partial GHI labels as gaps.",
+    "common_satellite_complete_initializations": 828,
+    "target_leads": [
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      105,
+      120,
+      135,
+      150,
+      165,
+      180,
+      195,
+      210,
+      225,
+      240
+    ],
+    "usage": "OOF explanatory case, not frequency estimate or independent test"
+  },
+  "physical_sizes_mm": {
+    "main": [
+      177,
+      175
+    ],
+    "supplement": [
+      177,
+      116
+    ]
+  },
+  "source_sha256": {
+    "paper\\figures\\redesign_20261030\\real_case\\plot_real_case.py": "650b353fe36e6102d9431c6f0327d5c7cfbb45c88de25915323379bdd2ff7ab7",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\CASE_MATERIAL.npz": "54cea43c5b266d0eec115582ed32bc808725ca04c88049239ff34a3ec0904a85",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\CASE_SCOPE.json": "9dcf05688bbf03cdd41a5544da080d7d70f332e82a1d32a8d2b0087a28c62750",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\RESULT_REPORT.md": "6ec67fadebc015e6531dba7fc11eb0fa4dcb6fe9b11017c26fed0e8afbf0cf9c",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Niushou\\seed42_OOF.npz": "5e397f878c1bf3069a004099b74582959405fefa145cd6a402a70efc281c7bf1",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Niushou\\seed43_OOF.npz": "f8aff86f10b90b0301e0b288489a58f37173cad5da145c1c410ecae66473e9b4",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Niushou\\seed44_OOF.npz": "9e0bc4f8941980b934683a148fccc016b9948b71f8d1d7c0a8aaa7ad50e3256c",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Wangzhai\\seed42_OOF.npz": "cd1a71d85db339e2b6b4cb531e7cb01a379d55a193e6325b37455cf2a6e617be",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Wangzhai\\seed43_OOF.npz": "230b7ca2cd6047429412c714b46a8ab6c1123593da85f08e642c33d5cb23bc96",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Wangzhai\\seed44_OOF.npz": "ba1f3d3c81700efb10bb5a5574cd6c5640fe23969c1730667b0863f0e61412b0",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Mizhuang\\seed42_OOF.npz": "3ad9f9a2865dd056d1fbf6d7bb9d2c4f8388f3cbe31ef8904582955d9a78cf66",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Mizhuang\\seed43_OOF.npz": "56ff094095b336c6a35a2fd2d37a0dd13851eedd653e13f025ab4d4abbe191ee",
+    "refine-logs\\hubei_cot_conditional_information_20261023\\cross_source_attempt1\\Mizhuang\\seed44_OOF.npz": "1d4fd07d8df9e60e6f5936ae2621abebc50587011e1d6c975b3b1787e2ca08f3"
+  },
+  "snapshot_indices": [
+    1,
+    8,
+    16
+  ],
+  "station": "Niushou",
+  "station_row_col_zero_based": [
+    8,
+    6
+  ],
+  "RGB": "C03/C02/C01; sqrt(clip(reflectance,0,1)); shared transform, no per-image adjustment",
+  "RGB_outside_0_1_fraction": {
+    "observed_AGRI": 0.0,
+    "forecast_AGRI": 0.0
+  },
+  "COT": "R proxy, not independent CPP truth; shared linear 0..140; finite outputs above training range retained",
+  "image_rendering": "Native16x16, nearest, no smoothing, no geographic scale inferred",
+  "GHI": "Right-ending15-min means; three baseline-source curve means for display, not ensemble scores; gaps retained",
+  "scope": "Development-date OOF explanatory source substitution. Future observations only offline.",
+  "test_read": false,
+  "training_performed": false,
+  "software": {
+    "python": "3.9.23",
+    "numpy": "1.26.4",
+    "matplotlib": "3.9.4"
+  },
+  "script_sha256": "ebd45cd2fb865c96d193335038a404c007cc48907ddde7610e769fef40d385ec",
+  "outputs": {
+    "fig_cloud_source_mechanism.pdf": "3c0d6e3474e757085791e901f357d70b2c9f0ee1e18f8f9635f9ed9dd0e2a34f",
+    "fig_cloud_source_mechanism.png": "a5544632582c3c0f029b62da1ed019822bee5e26f06197c35e1784cff33c4135",
+    "fig_cloud_source_mechanism.svg": "465fb21664c0d243d7243b27371e9804a2bdca6fec8721a84f78401c679ef348",
+    "fig_cloud_source_mechanism_print_preview.png": "0131b2fd4b8e91233c3b40ebd1990f71a8fd1e9e707bd66a7c011f74f82c2365",
+    "fig_three_station_source_response.pdf": "a6daab052ee9a50be0adba7f15403ae06b14a0beddd0c2803e339920fe02d3fa",
+    "fig_three_station_source_response.png": "bc1d9d94a295d863aa39b4d771d7acd3f5ee4363f83f6cbbef5d7d051355a938",
+    "fig_three_station_source_response.svg": "a0771994456583bcd83bd208b4475a74709262da15731bb8038b05ba9f5e6b07",
+    "fig_three_station_source_response_print_preview.png": "2af1628d87bdb10746f6b91328aec6ab705f70a9585e71f01c026c5e39857621"
+  }
+}

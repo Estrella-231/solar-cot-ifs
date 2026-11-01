@@ -1,0 +1,172 @@
+{
+  "state": "COMPLETE_FIXED_WEIGHT_VALIDATION_RESCORE",
+  "date": "2026-10-20",
+  "sources": [
+    {
+      "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\results\\paired_gate_ghi_seed42_20261015_attempt1\\sili\\paired_validation_predictions.npz",
+      "sha256": "dec14bdaa6ad447a35ed2847fe1c176a87d08fd01fa37c651f331aee1f0e5550"
+    },
+    {
+      "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\results\\paired_gate_ghi_seed42_20261015_attempt1\\zhujia\\paired_validation_predictions.npz",
+      "sha256": "984360fe511a681a3e2d8be4cb15c7c9bf913a1cd65258e307debdc71f6b79c0"
+    }
+  ],
+  "quality_policy": {
+    "path": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\docs\\GHI_STATION_DAY_EXCLUSIONS_20261019.json",
+    "sha256": "5effcb6c87ca0a530c8d1c0b960e2450fca4a0804425dc715145cc6df4a0f957"
+  },
+  "stations": {
+    "sili": {
+      "original_n": 2128,
+      "removed": 39,
+      "kept": 2089,
+      "dates": 43,
+      "original": {
+        "raw": {
+          "n": 2128,
+          "rmse": 132.63908151356142,
+          "mae": 73.45443741578818,
+          "bias": -0.36404469042285664
+        },
+        "gate": {
+          "n": 2128,
+          "rmse": 132.71563181025184,
+          "mae": 73.52651239859318,
+          "bias": -0.26631056378854073
+        },
+        "gate_minus_raw_rmse": 0.07655029669041369
+      },
+      "clean": {
+        "raw": {
+          "n": 2089,
+          "rmse": 99.43708842061262,
+          "mae": 63.72696129444185,
+          "bias": -11.469654273780785
+        },
+        "gate": {
+          "n": 2089,
+          "rmse": 99.52911764153872,
+          "mae": 63.798186253685316,
+          "bias": -11.372291134513977
+        },
+        "gate_minus_raw_rmse": 0.09202922092609356
+      }
+    },
+    "zhujia": {
+      "original_n": 2351,
+      "removed": 0,
+      "kept": 2351,
+      "dates": 50,
+      "original": {
+        "raw": {
+          "n": 2351,
+          "rmse": 106.32509728470937,
+          "mae": 72.90687306165988,
+          "bias": -0.6264031345327887
+        },
+        "gate": {
+          "n": 2351,
+          "rmse": 106.90176985010719,
+          "mae": 73.43055423755577,
+          "bias": -0.07601599933730642
+        },
+        "gate_minus_raw_rmse": 0.5766725653978142
+      },
+      "clean": {
+        "raw": {
+          "n": 2351,
+          "rmse": 106.32509728470937,
+          "mae": 72.90687306165988,
+          "bias": -0.6264031345327887
+        },
+        "gate": {
+          "n": 2351,
+          "rmse": 106.90176985010719,
+          "mae": 73.43055423755577,
+          "bias": -0.07601599933730642
+        },
+        "gate_minus_raw_rmse": 0.5766725653978142
+      }
+    }
+  },
+  "equal_station": {
+    "original": {
+      "raw": 119.48208939913539,
+      "gate": 119.8087008301795,
+      "gate_minus_raw_rmse": 0.32661143104411394
+    },
+    "clean": {
+      "raw": 102.881092852661,
+      "gate": 103.21544374582295,
+      "gate_minus_raw_rmse": 0.3343508931619539
+    }
+  },
+  "validation_only": true,
+  "test_payloads_read": 0,
+  "retrained": false,
+  "reselected": false,
+  "seed": 42,
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 20261020,
+    "days": [
+      "2024-04-19",
+      "2024-04-20",
+      "2024-05-29",
+      "2024-05-30",
+      "2024-06-11",
+      "2024-06-12",
+      "2024-07-09",
+      "2024-07-10",
+      "2024-08-16",
+      "2024-08-17",
+      "2024-09-04",
+      "2024-10-25",
+      "2024-10-26",
+      "2024-11-16",
+      "2024-11-17",
+      "2024-12-24",
+      "2024-12-25",
+      "2025-01-04",
+      "2025-01-05",
+      "2025-02-09",
+      "2025-02-10",
+      "2025-03-13",
+      "2025-03-14",
+      "2025-04-17",
+      "2025-04-18",
+      "2025-05-03",
+      "2025-05-04",
+      "2025-06-15",
+      "2025-06-16",
+      "2025-07-08",
+      "2025-07-09",
+      "2025-08-21",
+      "2025-08-22",
+      "2025-10-06",
+      "2025-10-07",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-12-02",
+      "2025-12-03",
+      "2026-01-03",
+      "2026-01-04",
+      "2026-02-20",
+      "2026-02-21",
+      "2026-03-01",
+      "2026-03-02",
+      "2026-04-20",
+      "2026-04-21",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-06-24",
+      "2026-06-25"
+    ],
+    "method": "shared BJT target-date union, paired methods, equal station RMSE",
+    "ci95_gate_minus_raw": [
+      -0.062224349976637144,
+      0.8040400322700135
+    ]
+  },
+  "caveat": "Old checkpoints selected with the original validation set. New CI uses shared dates, unlike the old station-independent date bootstrap."
+}

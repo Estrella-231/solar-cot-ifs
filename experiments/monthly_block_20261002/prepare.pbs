@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N hn_monthly_norm
+#PBS -q normal
+#PBS -l nodes=node23:ppn=8
+#PBS -l walltime=12:00:00
+#PBS -j oe
+set -euo pipefail
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hunan_monthly_block_20261002
+cd "$ROOT"
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+"$PY" -m py_compile code/*.py
+sha256sum -c deployment.sha256
+"$PY" -u code/train_monthly_simvp_20261002.py --mode normalize \
+ --root /public/home/slfu/ttzhou/Auxiliary_data/HuNan_AGRI_Preprocessed \
+ --source "$ROOT/code" --cache /tmp/slfu_hunan_monthly_f6703ed5e42f1ae0 \
+ --manifests "$ROOT/manifests_v1" --output "$ROOT/runs/simvp_seed42_v1" --workers 6

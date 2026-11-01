@@ -1,0 +1,99 @@
+#!/bin/bash
+#PBS -N hb_val_syncscore
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+set -euo pipefail
+
+FOLD="${FOLD:?submit with FOLD=3 or FOLD=4}"
+TRAIN_JOBID="${TRAIN_JOBID:?pass the completed S training PBS job id, e.g. 214526.tc6000}"
+TRAIN_JOBTAG="${TRAIN_JOBTAG:?pass the underscore-form run tag, e.g. 214526_tc6000}"
+case "$FOLD" in 3|4) ;; *) echo "invalid fold: $FOLD" >&2; exit 2 ;; esac
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_independent_trainval_stage_20261017
+CONTROL="$ROOT/control"
+RUNROOT="$ROOT/oof_training"
+REPO="$CONTROL/simvp_code_fd201_syncval_20261017"
+METHOD="$REPO/openstl/methods/simvp.py"
+EXPECTED_METHOD_SHA256=2978846a553c13529caceb201888bfc52984abe19677ed36a6e478cef393bb78
+PY=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_cot_independent_20261017/.venv_simvp/bin/python
+INFER="$CONTROL/tooling_20261017/infer_hubei_simvp_trainval_patches_20261016.py"
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+INDEX="$CONTROL/fold_${FOLD}/simvp_trainval_index_pbs.csv"
+NORM="$CONTROL/fold_${FOLD}/simvp_train_only_norm.npz"
+TRAIN_RUN="$RUNROOT/runs/S_oof_fold${FOLD}_seed42_20261016_pbs${TRAIN_JOBTAG}"
+TRAIN_LAUNCH="$RUNROOT/S_oof_fold${FOLD}_seed42_20261016_pbs${TRAIN_JOBTAG}"
+CHECKPOINT="$TRAIN_RUN/checkpoints/best.ckpt"
+OUT="$RUNROOT/S_oof_fold${FOLD}_fullval_rescore_${PBS_JOBID//./_}"
+JOBTAG="${PBS_JOBID//./_}"
+exec > "$ROOT/fold${FOLD}_fullval_${JOBTAG}.pbs.log" 2>&1
+
+test -x "$PY" && test -f "$INFER" && test -d "$REPO/openstl"
+test -f "$METHOD" && test -f "$INDEX" && test -f "$NORM" && test -f "$CHECKPOINT"
+test -f "$TRAIN_LAUNCH/launch_manifest.txt"
+find "$TRAIN_RUN" -maxdepth 1 -type f -name 'train_*.log' -print -quit | grep -q .
+test ! -e "$OUT"
+test "$(sha256sum "$METHOD" | awk '{print $1}')" = "$EXPECTED_METHOD_SHA256"
+grep -Fqx "simvp_validation_method_sha256=$EXPECTED_METHOD_SHA256" "$TRAIN_LAUNCH/launch_manifest.txt"
+
+# Only run this audit after the associated training PBS job exited successfully.
+TRAIN_INFO=$("$QSTAT" -xf "$TRAIN_JOBID")
+grep -Eq 'job_state = C' <<< "$TRAIN_INFO"
+grep -Eq 'Exit_status = 0' <<< "$TRAIN_INFO"
+
+VAL_COUNT=$(awk -F, 'NR>1 && $1=="val" {n++} END {print n+0}' "$INDEX")
+test "$VAL_COUNT" -eq 407
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+test "$(awk -F, '{print NF}' <<< "$GPU_IDS")" -eq 1
+
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+BASE=/public/home/slfu/miniconda3/envs/swc
+export LD_LIBRARY_PATH="$BASE/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH:-}"
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}" CUDA_VISIBLE_DEVICES="$GPU_IDS"
+nvidia-smi --id="$GPU_IDS" --query-gpu=index,name,memory.total,memory.used --format=csv
+
+"$PY" "$INFER" \
+  --repo "$REPO" --index "$INDEX" --norm "$NORM" --checkpoint "$CHECKPOINT" \
+  --output "$OUT" --batch-size 4 --workers 2 --device cuda:0 --splits val
+
+"$PY" - "$OUT" "$INDEX" "$NORM" "$CHECKPOINT" <<'PY'
+import csv, json, math, sys
+import hashlib
+from pathlib import Path
+import numpy as np
+
+def sha256(path):
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+out, index, norm, ckpt = map(Path, sys.argv[1:])
+report = json.loads((out / "BANK_REPORT.json").read_text())
+assert report["state"] == "SIMVP_R_PATCH_TRAINVAL_FORECAST_BANK"
+assert report["test_payloads_read"] == 0
+assert report["inferred_splits"] == ["val"]
+assert report["sequences_by_split"] == {"val": 407}
+assert report["sequences_written_by_split"] == {"train": 0, "val": 407}
+assert report["index_sha256"] == sha256(index)
+assert report["normalization_sha256"] == sha256(norm)
+assert report["checkpoint_sha256"] == sha256(ckpt)
+metrics = report["full_field_validation_metrics"]["val"]
+assert metrics["sequence_count"] == 407 and metrics["element_count"] > 0
+assert math.isfinite(metrics["normalized_mse"]) and math.isfinite(metrics["normalized_mae"])
+assert "all 13 AGRI channels and 16 leads" in metrics["metric_scope"]
+pred = np.load(out / "val/pred_agri_patch.npy", mmap_mode="r", allow_pickle=False)
+truth = np.load(out / "val/true_agri_patch.npy", mmap_mode="r", allow_pickle=False)
+geom = np.load(out / "val/future_geometry_patch.npy", mmap_mode="r", allow_pickle=False)
+assert pred.shape == truth.shape == (407, 16, 13, 16, 16)
+assert geom.shape == (407, 16, 3, 16, 16)
+assert np.isfinite(pred).all() and np.isfinite(truth).all() and np.isfinite(geom).all()
+with (out / "val/keys.csv").open(newline="", encoding="utf-8") as f:
+    keys = list(csv.DictReader(f))
+assert len(keys) == 407 and all(r["split"] == "val" for r in keys)
+print("SYNCVAL_FULLVAL_RESCORE_QA_PASS sequences=407 test_payloads_read=0")
+print("full_field_normalized_mse={:.9g} normalized_mae={:.9g}".format(
+    metrics["normalized_mse"], metrics["normalized_mae"]))
+PY

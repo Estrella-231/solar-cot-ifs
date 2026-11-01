@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -N hb_r_runtime_gate
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=8:gpus=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_r_runtime_gate_20261015_v1/logs/runtime_witness.log
+set -euo pipefail
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/hubei_r_runtime_gate_20261015_v1
+PACK=$EXP/r_pack_trainval
+GPU=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu)
+test -n "$GPU"
+test "$(echo "$GPU" | wc -l)" -eq 1
+export CUDA_VISIBLE_DEVICES="$GPU"
+test -f "$PACK/pack_status.json"
+test ! -e "$EXP/runtime_witness.json"
+nvidia-smi --id="$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+python -u "$EXP/witness_hubei_r_runtime.py" \
+  --pack "$PACK" \
+  --model-source "$ROOT/scripts/train_cot_repaired.py" \
+  --output "$EXP/runtime_witness.json" \
+  --batch 8
+echo HUBEI_R_RUNTIME_WITNESS_COMPLETE

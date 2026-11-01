@@ -1,0 +1,380 @@
+[
+  {
+    "path": "paper\\main.tex",
+    "line": 26,
+    "excerpt": "Cloud optical thickness (COT) describes cloud attenuation, but its value for irradiance estimation is uncertain when the underlying multispectral imagery is already available. We assess COT-assisted global horizontal irradiance (GHI) estimation at five stations in Hunan and Hubei, with separate regional training. A cloud-product-supervised retriever supplies local COT fields to",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\main.tex",
+    "line": 231,
+    "excerpt": "In the separately trained Hubei validation cohort, three-seed, station-equal RMSE was 74.333 W m$^{-2}$ for AGRI, 70.993 W m$^{-2}$ for AGRI + COT, and 73.839 W m$^{-2}$ for the additional-capacity control. The AGRI + COT minus AGRI point difference was $-3.340$ W m$^{-2}$ (10,000 paired date-block resamples; 95\\% interval $[-5.800,-1.118]$); the difference from the capacity co",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\main.tex",
+    "line": 280,
+    "excerpt": "The COT advantage in synchronous estimation did not carry over to the matched Hubei forecasting comparison. Across three stations, three random initializations, and 22 target dates, GHI RMSE was 77.150 W m$^{-2}$ for forecast AGRI alone, 78.155 for forecast AGRI with COT, and 78.980 for the additional image-feature control. The COT-minus-imagery difference was $+1.005$ W m$^{-2",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\main_zh.md",
+    "line": 5,
+    "excerpt": "云光学厚度（COT）描述云对辐射的衰减，但在多光谱图像已经可用时，显式COT能否进一步改善辐照度估计仍需检验。本文在湖南和湖北五个站点开展区域独立训练，评价COT辅助全球水平辐照度（GHI）估计。通过云产品监督训练的反演器生成局地COT场，与AGRI图像及太阳几何共同输入紧凑估计网络。三次随机初始化结果显示，加入COT后，湖南站点平均验证RMSE从123.980降至120.240 W m⁻²，湖北从74.333降至70.993 W m⁻²，分别降低3.02%和4.49%。在CPP参考产品定义的湖南厚云子组中，降幅为22.45%；在30个观测完整的湖南日期上，日辐照量平均绝对误差从0.5491降至0.5032 kWh m⁻²。然而，COT未优于匹配的反演特征，也未改善更强的AGRI残差模型。另在短临预报比较中，加入预测图像反演的COT后，GHI RMS",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\main_zh.md",
+    "line": 232,
+    "excerpt": "单独训练的湖北验证组中，三种子、三站等权RMSE为AGRI 74.333 W m⁻²、AGRI + COT 70.993 W m⁻²、增加容量对照73.839 W m⁻²。AGRI + COT相对AGRI的点差为−3.340 W m⁻²（10,000次配对日期块重采样；95%区间[−5.800, −1.118]），相对增加容量对照为−2.846 W m⁻²（[−5.147, −0.717]）。在九个站点×种子点估计中，AGRI + COT有八个低于AGRI及增加容量对照。10,000次连续两日块敏感性区间分别为[−6.139, −0.729]和[−5.504, −0.349] W m⁻²。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\main_zh.md",
+    "line": 281,
+    "excerpt": "同期估计中的COT收益没有在湖北匹配预报比较中延续。在三个站点、三次随机初始化和22个目标日期上，仅用预测AGRI的GHI RMSE为77.150 W m⁻²，加入COT后为78.155，增加辅助图像特征后为78.980。COT相对仅用图像的差值为+1.005 W m⁻²（配对日期块95%区间[−0.722, +3.780]）。辅助图像特征相对仅用图像、相对COT的差值分别为+1.830（[−0.517, +4.778]）和+0.825（[−2.657, +4.402]）W m⁻²。各项比较均未显示明确改善，区间也不确立模型等效。连续两日块分析给出的COT比较区间相近，为[−0.681, +3.813] W m⁻²。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_CLAIM_AUDIT.md",
+    "line": 75,
+    "excerpt": "| C24 | 25, 228, 293, 302 | `rounding_ok` | Hubei A/AC/AP `74.333/70.993/73.839`, deltas, `4.49%`, and 8/9 paired wins reproduce. |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_CLAIM_AUDIT.md",
+    "line": 105,
+    "excerpt": "| C54 | 25, 183, 285, 297, 302 | `rounding_ok` | Hubei FA/FAC scope, `77.150/78.155`, `+1.005`, `1.30%`, one favorable seed, and both CIs match. |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_CLAIM_AUDIT_20261017.md",
+    "line": 45,
+    "excerpt": "- Matched forecast-input GHI validation is reported: three-seed FA/FAC station-equal RMSE 77.150/78.155 W m⁻², FAC−FA +1.005, paired date-block 95% CI [−0.722,+3.780]. It is validation-only and does not show a COT gain. Only one of three seed-level station-equal comparisons favoured FAC. Forecast-COT scores do not establish physical COT accuracy; fixed-head replacement remains ",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_CLAIM_AUDIT_20261017.md",
+    "line": 95,
+    "excerpt": "- On complete three-station/three-seed validation support, RMSE (W m$^{-2}$) was A 74.333, AC 70.993, AP 73.839, AL 71.090. On the shared 486 station-target rows over 21 dates, AC/AL were 72.867/72.785; AC minus AL was +0.082 W m$^{-2}$, with consecutive two-day-block 95% interval [−1.490,+1.713]. The interval crosses zero. Thus the Hubei validation does not isolate an explicit",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_PLAN.md",
+    "line": 69,
+    "excerpt": "以下为写作定位，不替代最新实验记录。湖南同期验证已有三种子、两站等权RMSE：AGRI baseline约123.980、AGRI + COT约120.240 W m⁻²，降低3.02%；湖北三站重载归一化验证为74.333与70.993 W m⁻²，降低4.49%，AC−A配对日期块95%区间为[−5.800,−1.118]。两者均为区域内validation，不可合并为跨区平均或未来预报收益；湖北仅有三处相邻站点。湖南CPP参考厚云子组降低22.45%，仅对应173条、25个日期，不能推广为所有厚云表现。湖北同期容量对照RMSE为73.839 W m⁻²，AC−AP差值−2.846 W m⁻²（95%区间[−5.147,−0.717]），但该控制不隔离R监督和空间感受野差异；较强有符号残差对照中，AGRI + COT相对AGRI的差值为+2.14",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_PLAN.md",
+    "line": 75,
+    "excerpt": "3. **匹配预测输入训练的GHI预报对照已完成，未分辨出增益。** FA、FAC、FAP已在相同站点—初始化—目标键、实测标签及共同支持上以三种子训练评价；RMSE分别为77.150、78.155、78.980 W m⁻²。FAC−FA、FAP−FA和FAP−FAC的单日目标日期块95%区间均跨0。现有validation结果不支持预测COT或新增AGRI派生分支带来可分辨GHI增益；也不能据此主张等效或显著变差。固定头替换仍只作为输入敏感性诊断，不能替代该对照。独立test仍关闭。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\PAPER_PLAN.md",
+    "line": 82,
+    "excerpt": "新增AL控制的跨运行键值复核与原始输入冷启动归一化重载均通过，test/buffer未读取。完整三站×三种子验证RMSE为A=74.333、AC=70.993、AP=73.839、AL=71.090 W m⁻²；在486个共同站点—目标时刻、21个日期上AC/AL分别为72.867/72.785 W m⁻²，差值+0.082，连续两日块95%区间[−1.490,+1.713]跨零。主文保留AL控制结果，并将湖北结论限定为“COT特异性增量未分辨”；不能只凭AC优于A/AP声称COT特异性。复核收据见`../refine-logs/hubei_cot_independent_20261014/audit_receipts/al_normreload_coldstart_20261017/AL_COLDSTART_NORMRELOAD_AUDIT_202",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\RENEWABLE_ENERGY_READINESS_20261016.md",
+    "line": 17,
+    "excerpt": "| 湖北三站同期估计，三种子 | 无 COT 74.361，加入 COT 71.428，容量对照 73.894 W/m²；COT 相对原基线降低约 3.94% | 已完成第二地区重复验证，已写入中英文主文；不与湖南合并 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\revise_prose_20261018.py",
+    "line": 17,
+    "excerpt": "abstract = r'''Cloud optical thickness (COT) describes cloud attenuation, but its value for irradiance estimation is uncertain when the underlying multispectral imagery is already available. We assess COT-assisted global horizontal irradiance (GHI) estimation at five stations in Hunan and Hubei, with separate regional training. A cloud-product-supervised retriever supplies loca",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\revise_prose_20261018.py",
+    "line": 21,
+    "excerpt": "云光学厚度（COT）描述云对辐射的衰减，但在多光谱图像已经可用时，显式COT能否进一步改善辐照度估计仍需检验。本文在湖南和湖北五个站点开展区域独立训练，评价COT辅助全球水平辐照度（GHI）估计。通过云产品监督训练的反演器生成局地COT场，与AGRI图像及太阳几何共同输入紧凑估计网络。三次随机初始化结果显示，加入COT后，湖南站点平均验证RMSE从123.980降至120.240 W m⁻²，湖北从74.333降至70.993 W m⁻²，分别降低3.02%和4.49%。在CPP参考产品定义的湖南厚云子组中，降幅为22.45%；在30个观测完整的湖南日期上，日辐照量平均绝对误差从0.5491降至0.5032 kWh m⁻²。然而，COT未优于匹配的反演特征，也未改善更强的AGRI残差模型。另在短临预报比较中，加入预测图像反演的COT后，GHI RMS",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\revise_prose_20261018.py",
+    "line": 40,
+    "excerpt": "The COT advantage in synchronous estimation did not carry over to the matched Hubei forecasting comparison. Across three stations, three random initializations, and 22 target dates, GHI RMSE was 77.150 W m$^{-2}$ for forecast AGRI alone, 78.155 for forecast AGRI with COT, and 78.980 for the additional image-feature control. The COT-minus-imagery difference was $+1.005$ W m$^{-2",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "paper\\revise_prose_20261018.py",
+    "line": 48,
+    "excerpt": "同期估计中的COT收益没有在湖北匹配预报比较中延续。在三个站点、三次随机初始化和22个目标日期上，仅用预测AGRI的GHI RMSE为77.150 W m⁻²，加入COT后为78.155，增加辅助图像特征后为78.980。COT相对仅用图像的差值为+1.005 W m⁻²（配对日期块95%区间[−0.722, +3.780]）。辅助图像特征相对仅用图像、相对COT的差值分别为+1.830（[−0.517, +4.778]）和+0.825（[−2.657, +4.402]）W m⁻²。各项比较均未显示明确改善，区间也不确立模型等效。连续两日块分析给出的COT比较区间相近，为[−0.681, +3.813] W m⁻²。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\build_result_book.py",
+    "line": 122,
+    "excerpt": " '预测AGRI基线77.150、加入预测COT78.155 W/m²；差异区间跨零，未显示预报净增益。',scope='湖北三站；22验证日期；最新归一化重载',figs=['refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_three_seed_normreload_20261017/figures/*.png'])",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 183,
+    "excerpt": "三站等权均值 & 74.33 & 70.99 & 73.84 \\\\",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 319,
+    "excerpt": "AGRI基线 & 74.333 & 53.609 & 19.647 & 0.9340 \\\\",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 320,
+    "excerpt": "AGRI+COT & 70.993 & 50.914 & 12.882 & 0.9400 \\\\",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 1032,
+    "excerpt": "\\vspace{2mm}{\\normalsize\\textbf{本页意义：}预测AGRI基线77.150、加入预测COT78.155 W/\\allowbreak{}m²；差异区间跨零，未显示预报净增益。}\\par",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 1045,
+    "excerpt": "\\vspace{2mm}{\\normalsize\\textbf{本页意义：}预测AGRI基线77.150、加入预测COT78.155 W/\\allowbreak{}m²；差异区间跨零，未显示预报净增益。}\\par",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 1470,
+    "excerpt": "预测AGRI & 77.150230 & 同一validation选模期评价 \\\\",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main.tex",
+    "line": 1471,
+    "excerpt": "预测AGRI＋预测COT & 78.155269 & 同一validation选模期评价 \\\\",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 196,
+    "excerpt": "| 三站等权均值 | 74.33 | 70.99 | 73.84 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 360,
+    "excerpt": "| A | 74.333 | 53.609 | 19.647 | 0.9340 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 361,
+    "excerpt": "| AC | 70.993 | 50.914 | 12.882 | 0.9400 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 1220,
+    "excerpt": "本页意义：预测AGRI基线77.150、加入预测COT78.155 W/m²；差异区间跨零，未显示预报净增益。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 1234,
+    "excerpt": "本页意义：预测AGRI基线77.150、加入预测COT78.155 W/m²；差异区间跨零，未显示预报净增益。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 1714,
+    "excerpt": "| 预测AGRI | 77.150230 | 同一validation选模期评价 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\main_zh.md",
+    "line": 1715,
+    "excerpt": "| 预测AGRI＋预测COT | 78.155269 | 同一validation选模期评价 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\sources\\E02\\SAME_TIME_THREE_SEED_VALIDATION_20261017.md",
+    "line": 18,
+    "excerpt": "| 三站等权均值 | 74.33 | 70.99 | 73.84 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\sources\\E02\\SAME_TIME_THREE_SEED_VALIDATION_20261017.md",
+    "line": 36,
+    "excerpt": "AP 只控制网络容量，不控制 R 的 CPP 监督、COT 输入的空间/感受野差异等因素，故不能单凭该比较将收益归因于 COT 的唯一物理语义。更重要的是，独立的 forecast-GHI 归一化重载验证中 FA/FAC 总 RMSE 为77.150/78.155 W/m²，FAC−FA 为+1.005 W/m²，日期块区间跨0；当前结果不支持预测COT改善未来预报。同期反演结果不能替代预报结论。测试集继续关闭，直至来源、冻结范围及评价实现全部闭合并通过独立 test-freeze 复审。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\sources\\E07\\AL_RESULT_AUDIT_20261017.md",
+    "line": 7,
+    "excerpt": "| A | 74.333 | 53.609 | 19.647 | 0.9340 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\sources\\E07\\AL_RESULT_AUDIT_20261017.md",
+    "line": 8,
+    "excerpt": "| AC | 70.993 | 50.914 | 12.882 | 0.9400 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\结果总册_20261019\\sources\\E31\\FORECAST_GHI_NORMRELOAD_THREE_SEED_VALIDATION_20261017.md",
+    "line": 13,
+    "excerpt": "三站等权、seed等权 RMSE：FA **77.150**，FAC **78.155 W/m²**；FAC−FA = **+1.005 W/m²**，即FAC高1.30%。单日日期簇bootstrap 10,000次95%区间为 **[−0.722, +3.780] W/m²**；连续两日块敏感性为 **[−0.681, +3.813] W/m²**，均跨0。FAC只在1/3个seed级汇总中RMSE较低。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\组会原始材料_20261016\\09_整体增益图\\plot_group_overall_cot_gain_20261016.py",
+    "line": 14,
+    "excerpt": "rows=[dict(region='湖南（2站）',A=123.980,AC=120.240,AP=123.822,reduction_pct=3.02,improvement=3.740,low=1.597,high=6.180,nval=4479),dict(region='湖北（3站）',A=74.361,AC=71.428,AP=73.894,reduction_pct=3.94,improvement=2.932,low=.939,high=5.070,nval=2456)]",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\组会原始材料_20261016\\09_整体增益图\\plot_group_overall_cot_gain_20261016.py",
+    "line": 39,
+    "excerpt": "推荐图注：在湖南两站和湖北三站分别独立训练的基础同期GHI头中，加入冻结反演器输出的局地COT后，站点与三种子等权验证RMSE分别由123.980降至120.240 W/m²、由74.361降至71.428 W/m²，对应约3.02%和3.94%的下降。左图柱状轴从零开始；右图为配对RMSE降低量及95%日期块bootstrap区间，不是单个模型RMSE的误差条。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "docs\\组会原始材料_20261016\\09_整体增益图\\图注与口径.md",
+    "line": 3,
+    "excerpt": "推荐图注：在湖南两站和湖北三站分别独立训练的基础同期GHI头中，加入冻结反演器输出的局地COT后，站点与三种子等权验证RMSE分别由123.980降至120.240 W/m²、由74.361降至71.428 W/m²，对应约3.02%和3.94%的下降。左图柱状轴从零开始；右图为配对RMSE降低量及95%日期块bootstrap区间，不是单个模型RMSE的误差条。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "scripts\\build_group_meeting_20261016.py",
+    "line": 28,
+    "excerpt": "add('问题1：同样的云图，显式COT能否帮助GHI估计？','<div class=\"flow\">真实AGRI → 冻结反演器R → 局地COT<br>AGRI + 太阳几何 [ + COT ] → 同期15分钟GHI</div>'+table(['区域 / 独立训练','无COT','加COT','RMSE降幅'],[['湖南两站 / 三种子','123.980','120.240','3.02%'],['湖北三站 / 三种子','74.361','71.428','约3.94%']])+'<p>两省基础头都显示增益；湖北容量匹配对照为73.894，加COT仍较低。</p><p class=\"small\">单位W/m²；站点、种子等权。ΔRMSE日期块95%区间：湖南[−6.180,−1.597]；湖北[−5.070,−0.939]。区域之间不",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "scripts\\extract_hubei_r_dec1_features_20261017.py",
+    "line": 23,
+    "excerpt": "EXPECTED_CHECKPOINT = \"1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83\"",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "scripts\\plot_group_overall_cot_gain_20261016.py",
+    "line": 10,
+    "excerpt": "regions=['湖南','湖北']; a=[123.980,74.361]; ac=[120.240,71.428]",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\EXPERIMENT_PLAN.md",
+    "line": 3,
+    "excerpt": "日期：2026-10-14；版本 v1。**最新执行状态（2026-10-18；详见`PROGRESS_20261017_COT_SOURCE_REBUILD.md`）：** 湖北同期A/AC/AP/AL及forecast FA/FAC三种子训练已完成；复载、逐样本指标复算和验证集来源核对完成。同期三站等权RMSE A/AC/AP/AL=74.33/70.99/73.84/71.09 W/m²；AC−A=−3.34，AC−AP=−2.85，AC−AL=−0.10 W/m²，均为validation证据，且不能独立归因于COT物理语义。forecast validation FA/FAC=77.15/78.16 W/m²，FAC−FA=+1.01，日期块95%区间[−0.72,+3.78]跨0，未显示预测COT增益。五折S/R forecast-OOF",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\findings.md",
+    "line": 7,
+    "excerpt": "预设湖北验证队列中，冻结反演器产生的局地 COT 表示加入紧凑 AGRI＋太阳几何头后，三站、三种子等权 RMSE 从 74.361 降至 71.428 W/m²（相对 A 降 2.932 W/m²，3.94%）；容量匹配的 AGRI 对照 AP 为 73.894 W/m²，AC 低 2.465 W/m²（3.34%）。点差在九个站点×种子单元方向一致。共享单日bootstrap的95%区间分别为[−5.070,−0.939]和[−4.599,−0.452] W/m²。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\findings.md",
+    "line": 25,
+    "excerpt": "AL定义为A输入加冻结R dec1的局地16通道隐藏特征，参数量与AP/AC相差均小于0.3%。从共同pack中的相同站点、目标时刻、真值和掩膜独立FP64复算，三站、三种子等权RMSE为AL 71.089、AC 71.428、AP 73.894、A 74.361 W/m²。AL−A为−3.271 W/m²（共享连续两日块95% CI [−5.614,−0.889]）；AL−AP为−2.804（[−5.107,−0.457]）；AC−AL为+0.339（[−0.244,0.990]）。单日与两日块bootstrap均2,000次，seed=20261013；完整复算见`al_20261017/AL_RESULT_AUDIT_20261017.md`及同目录JSON/脚本。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\findings.md",
+    "line": 33,
+    "excerpt": "站点等权、种子等权RMSE为FA 77.150、FAC 78.155、FAP 78.980 W/m²。按目标日期聚类的10,000次配对bootstrap中，FAC−FA为+1.005 W/m²（95% CI [−0.722,+3.780]），FAP−FA为+1.830（[−0.517,+4.778]），FAP−FAC为+0.825（[−2.657,+4.402]）；均跨0。FAP仅有单日目标日期区间，本结果不引用FAC的连续两日区间。可表述为“当前验证中未能分辨预测COT或新增AGRI派生分支的GHI增益”；不能称等效、显著变差或独立测试结果。验证集选模使区间属于条件性validation推断，独立test保持关闭。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\FORECAST_GHI_NORMRELOAD_THREE_SEED_VALIDATION_20261017.md",
+    "line": 13,
+    "excerpt": "三站等权、seed等权 RMSE：FA **77.150**，FAC **78.155 W/m²**；FAC−FA = **+1.005 W/m²**，即FAC高1.30%。单日日期簇bootstrap 10,000次95%区间为 **[−0.722, +3.780] W/m²**；连续两日块敏感性为 **[−0.681, +3.813] W/m²**，均跨0。FAC只在1/3个seed级汇总中RMSE较低。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\FORECAST_RESULT_STATUS_RECHECK_20261020.md",
+    "line": 14,
+    "excerpt": "| 站点等权、种子等权 | 77.150 | 78.155 | +1.005 | +1.30% |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\FORECAST_RESULT_STATUS_RECHECK_20261020.md",
+    "line": 20,
+    "excerpt": "`../hubei_cloud_probability_20261020/AUDIT_GEOMETRY_CPP_ALIGNMENT_20261020.md` 查明旧湖北R监督的CPP路径按BJT同数字串连接UTC文件，错8小时；新实验已另建正确UTC监督并独立训练R。旧预报包 `audit_receipts/forecast_ghi_label_binding_20261017/pack_report.json` 的验证R为旧checkpoint `1e6c58b97ede89dbeb23789df867076f0413c14c4d23d158be0c2d0e897f7d83`，并记录五折旧R的训练输入来源。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\FORECAST_RESULT_STATUS_RECHECK_20261020.md",
+    "line": 22,
+    "excerpt": "上述77.150/78.155来自10月17—18日旧预报链路，不能标成10月20日正确UTC新R的预报结果。新R的77.285→69.142 W/m²（10.54%）是 `../hubei_cloud_probability_20261020/results_fourarm_attempt2/RESULTS.md` 中真实目标AGRI输入的单帧同期反演验证。其四臂没有经过SimVP外推。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\SAME_TIME_THREE_SEED_VALIDATION_20261017.md",
+    "line": 18,
+    "excerpt": "| 三站等权均值 | 74.33 | 70.99 | 73.84 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\SAME_TIME_THREE_SEED_VALIDATION_20261017.md",
+    "line": 36,
+    "excerpt": "AP 只控制网络容量，不控制 R 的 CPP 监督、COT 输入的空间/感受野差异等因素，故不能单凭该比较将收益归因于 COT 的唯一物理语义。更重要的是，独立的 forecast-GHI 归一化重载验证中 FA/FAC 总 RMSE 为77.150/78.155 W/m²，FAC−FA 为+1.005 W/m²，日期块区间跨0；当前结果不支持预测COT改善未来预报。同期反演结果不能替代预报结论。测试集继续关闭，直至来源、冻结范围及评价实现全部闭合并通过独立 test-freeze 复审。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\al_20261017\\AL_RESULT_AUDIT_20261017.md",
+    "line": 7,
+    "excerpt": "| A | 74.361 | 54.084 | 20.929 | 0.9341 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\al_20261017\\AL_RESULT_AUDIT_20261017.md",
+    "line": 8,
+    "excerpt": "| AC | 71.428 | 51.549 | 14.373 | 0.9394 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\al_normreload_20261017\\AL_RESULT_AUDIT_20261017.md",
+    "line": 7,
+    "excerpt": "| A | 74.333 | 53.609 | 19.647 | 0.9340 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\al_normreload_20261017\\AL_RESULT_AUDIT_20261017.md",
+    "line": 8,
+    "excerpt": "| AC | 70.993 | 50.914 | 12.882 | 0.9400 |",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\same_time_three_seed_regen_20261018\\EXPERIMENT_AUDIT.md",
+    "line": 14,
+    "excerpt": "- 指标从保存的预测与真值重算为原始RMSE/MAE，没有使用预测自身统计量作归一化分母。复核重现三站等权RMSE：A/AC/AP = 74.3333/70.9931/73.8392 W/m²；AC−A = −3.3402，AC−AP = −2.8461 W/m²。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\same_time_three_seed_regen_20261018\\review_trace_20261018.md",
+    "line": 14,
+    "excerpt": "- Scoring: PASS with bounded scope warning. Raw `pred−truth` RMSE/MAE; no self-normalization. Independent recomputation reproduced A/AC/AP RMSE `74.33330054/70.99308242/73.83922214 W/m²`, `AC−A=-3.34021812`, `AC−AP=-2.84613972`. Bootstrap intervals also reproduced.",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\test_chain_audit_20261018_v2\\EXPERIMENT_AUDIT.md",
+    "line": 37,
+    "excerpt": "正文中FA/FAC/FAP结果被限定为validation，RMSE为77.150/78.155/78.980 W/m²，三组区间跨零且明确无独立test（`paper/main.tex:183,297-302`; `paper/main_zh.md:181`）。验证收据声明test/buffer读取为0（`audit_receipts/forecast_fap_three_seed_20261018/forecast_fap_three_seed_validation_recheck.json:2-25`）。当前来源清单声明未解码真实test辐照度值（`source_inventory.json:774-784`）。这些记录限制了论文陈述，但不能独立证明全部历史访问链。",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\test_freeze_audit_20261017\\EXPERIMENT_AUDIT.md",
+    "line": 21,
+    "excerpt": "当前同刻正式重建包为 `e8c5…`，A/AC/AP 验证 RMSE 为 74.361233 / 71.429292 / 73.894113 W/m²；正文的 AC 71.428 来自旧包 `7990846…`。两代结果不可混用。论文还保留了“湖北区间不可用”“forecast-GHI 尚未评价”等过时陈述。证据：`audit_receipts/same_time_three_seeds_recheck/independent_three_seed_validation_audit.json:20-69`、`audit_receipts/cot_pack_source_rebuild_20261017_v2/pack_report.json`、`paper/main.tex:25,227,233,273,294-298`、`paper/main_zh",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  },
+  {
+    "path": "refine-logs\\hubei_cot_independent_20261014\\audit_receipts\\test_freeze_audit_20261017\\REVIEWER_TRACE.md",
+    "line": 9,
+    "excerpt": "- C claims/lineage: FAIL. Current same-time pack is `e8c5…` with A/AC/AP 74.361233/71.429292/73.894113; manuscript AC 71.428 derives from old `7990846…`. Paper text incorrectly says the Hubei interval and forecast-GHI evaluation are unavailable.",
+    "status": "reference_needs_provenance_notice_or_revision; not a new independent result"
+  }
+]

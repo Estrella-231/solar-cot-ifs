@@ -1,0 +1,4946 @@
+{
+  "state": "COMPLETE_PAIRED_FUTURE_GHI_COT_ABLATION_VALIDATION_AUDIT",
+  "candidate_arm": "ACRELWIN",
+  "screening": "five-fold OOF train forecasts; validation only; independent test not accessed",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "target_bjt_date_blocks": 52,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261020,
+  "metric": "equal-station mean of seed-averaged station RMSE; negative delta favors ACRELWIN",
+  "equal_station_mean_seed_rmse_wm2": {
+    "A": 130.93232682465623,
+    "AH": 131.06530189952645,
+    "AC": 130.07110371101942,
+    "ACREL": 129.80965827796933,
+    "ACRELWIN": 129.83664660746595
+  },
+  "pairwise_delta_rmse_wm2": {
+    "ACRELWIN_minus_AH": -1.2286552920604947,
+    "ACRELWIN_minus_A": -1.095680217190278,
+    "ACRELWIN_minus_ACREL": 0.02698832949661778,
+    "ACRELWIN_minus_AC": -0.23445710355346705
+  },
+  "date_block_bootstrap_95pct_ci_wm2": {
+    "ACRELWIN_minus_AH": [
+      -1.3291230109446692,
+      0.036283829219593985
+    ],
+    "ACRELWIN_minus_A": [
+      -1.3440816844901944,
+      0.16469524463434015
+    ],
+    "ACRELWIN_minus_ACREL": [
+      -0.0277747309320772,
+      0.05150972842895976
+    ],
+    "ACRELWIN_minus_AC": [
+      -0.407748263762415,
+      0.15949492033758997
+    ]
+  },
+  "per_station_mean_seed_rmse_wm2": {
+    "sili": {
+      "A": 146.16624108630415,
+      "AH": 146.13509932870843,
+      "AC": 144.2310276732484,
+      "ACREL": 143.84036636434925,
+      "ACRELWIN": 143.86558183701584
+    },
+    "zhujia": {
+      "A": 115.69841256300833,
+      "AH": 115.99550447034449,
+      "AC": 115.91117974879045,
+      "ACREL": 115.77895019158943,
+      "ACRELWIN": 115.80771137791608
+    }
+  },
+  "lead_band_metrics": [
+    {
+      "station": "sili",
+      "lead_band": "+15_to_+60",
+      "A": 119.2066020168918,
+      "AH": 119.45849861359119,
+      "AC": 118.96647994698718,
+      "ACREL": 118.25345625041346,
+      "ACRELWIN": 118.33346102561353,
+      "ACRELWIN_minus_AH": -1.1250375879776584,
+      "ACRELWIN_minus_ACREL": 0.08000477520006655
+    },
+    {
+      "station": "sili",
+      "lead_band": "+75_to_+120",
+      "A": 137.6702368898866,
+      "AH": 137.53908181871302,
+      "AC": 136.1048295158807,
+      "ACREL": 135.853103501679,
+      "ACRELWIN": 135.88234397624058,
+      "ACRELWIN_minus_AH": -1.6567378424724382,
+      "ACRELWIN_minus_ACREL": 0.029240474561589735
+    },
+    {
+      "station": "sili",
+      "lead_band": "+135_to_+240",
+      "A": 161.62748098064014,
+      "AH": 161.53616502131973,
+      "AC": 158.88709216694738,
+      "ACREL": 158.5512861632112,
+      "ACRELWIN": 158.55500567568143,
+      "ACRELWIN_minus_AH": -2.9811593456383036,
+      "ACRELWIN_minus_ACREL": 0.0037195124702407156
+    },
+    {
+      "station": "zhujia",
+      "lead_band": "+15_to_+60",
+      "A": 105.78205895236358,
+      "AH": 106.21667982756286,
+      "AC": 106.56178929571199,
+      "ACREL": 106.35267090853596,
+      "ACRELWIN": 106.52904286159655,
+      "ACRELWIN_minus_AH": 0.3123630340336945,
+      "ACRELWIN_minus_ACREL": 0.1763719530605954
+    },
+    {
+      "station": "zhujia",
+      "lead_band": "+75_to_+120",
+      "A": 112.51325117820426,
+      "AH": 112.74019988852375,
+      "AC": 112.46216500683691,
+      "ACREL": 112.48521776126195,
+      "ACRELWIN": 112.46882913178554,
+      "ACRELWIN_minus_AH": -0.2713707567382073,
+      "ACRELWIN_minus_ACREL": -0.016388629476409733
+    },
+    {
+      "station": "zhujia",
+      "lead_band": "+135_to_+240",
+      "A": 121.88695521810229,
+      "AH": 122.15780168069527,
+      "AC": 121.97989163787891,
+      "ACREL": 121.80859688688156,
+      "ACRELWIN": 121.79354978709391,
+      "ACRELWIN_minus_AH": -0.364251893601363,
+      "ACRELWIN_minus_ACREL": -0.015047099787651064
+    }
+  ],
+  "per_seed_station_lead_metrics": [
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.96067843877591,
+      "mae_wm2": 68.88052705580644,
+      "bias_wm2": -5.9563658378351745
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 117.09072739226504,
+      "mae_wm2": 71.80718977828451,
+      "bias_wm2": -5.344104666362143
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 122.43542290907247,
+      "mae_wm2": 76.23812230263918,
+      "bias_wm2": -4.939881747494352
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 126.59332115556197,
+      "mae_wm2": 79.00500865398934,
+      "bias_wm2": -3.9398881707293274
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 131.1155690495163,
+      "mae_wm2": 81.99765038152114,
+      "bias_wm2": -2.87281011643183
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.46027490994356,
+      "mae_wm2": 84.86079222152932,
+      "bias_wm2": -1.6905782440796095
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 139.5799922444309,
+      "mae_wm2": 87.86280992371606,
+      "bias_wm2": -0.09048721846478801
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 143.05895669951926,
+      "mae_wm2": 90.45626416927931,
+      "bias_wm2": 0.6360214065734479
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 145.9984196295985,
+      "mae_wm2": 92.14811772055077,
+      "bias_wm2": 0.43342668603072776
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 148.93063057718234,
+      "mae_wm2": 94.00652654451166,
+      "bias_wm2": -1.9030006034920992
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 153.0206742125321,
+      "mae_wm2": 96.98245658956729,
+      "bias_wm2": -4.315292038010661
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 156.7655192387993,
+      "mae_wm2": 99.85118582203035,
+      "bias_wm2": -4.10393359171562
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 160.8708072281645,
+      "mae_wm2": 103.1044191049232,
+      "bias_wm2": -3.3087729753929556
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 164.44898977863002,
+      "mae_wm2": 105.93745146531703,
+      "bias_wm2": -2.8757799211095034
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 167.73079866492245,
+      "mae_wm2": 108.76931454605574,
+      "bias_wm2": -1.7301924251538445
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 171.03933642232272,
+      "mae_wm2": 111.56783599062285,
+      "bias_wm2": -0.5893904993295414
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.81939320131178,
+      "mae_wm2": 63.35873976763322,
+      "bias_wm2": -14.394842628074429
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.57825193952391,
+      "mae_wm2": 66.74949446898877,
+      "bias_wm2": -14.946420169162609
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 121.72578340049343,
+      "mae_wm2": 71.3436545737508,
+      "bias_wm2": -14.396698952078491
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 126.06479503285266,
+      "mae_wm2": 74.40782067629368,
+      "bias_wm2": -13.392755382430027
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 131.07032347470212,
+      "mae_wm2": 77.9743421019769,
+      "bias_wm2": -11.708932483129145
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.86355639975739,
+      "mae_wm2": 81.48184808177234,
+      "bias_wm2": -10.040370937060167
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 140.16178771612473,
+      "mae_wm2": 84.32748951305885,
+      "bias_wm2": -7.998920520647708
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 144.3100173336544,
+      "mae_wm2": 87.16874124685879,
+      "bias_wm2": -7.086307645846261
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 147.3988795017149,
+      "mae_wm2": 89.40436438412105,
+      "bias_wm2": -6.642763136871372
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 151.2844057830056,
+      "mae_wm2": 92.22945743795749,
+      "bias_wm2": -9.168797400073501
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 156.05636308169642,
+      "mae_wm2": 96.02408521734391,
+      "bias_wm2": -12.596600867646014
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 160.46904789686835,
+      "mae_wm2": 99.26812137745199,
+      "bias_wm2": -12.643107295970394
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 165.2458024378463,
+      "mae_wm2": 102.92375010765804,
+      "bias_wm2": -12.077296161775298
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 169.9198079921974,
+      "mae_wm2": 106.60568075392999,
+      "bias_wm2": -12.330790087377114
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 173.6327846804197,
+      "mae_wm2": 109.6940428938527,
+      "bias_wm2": -11.053264924829731
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 177.15363427000162,
+      "mae_wm2": 112.54183111411272,
+      "bias_wm2": -9.916962021645544
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.1198276636927,
+      "mae_wm2": 63.20835645196597,
+      "bias_wm2": -1.0958505507861385
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.38491530945012,
+      "mae_wm2": 67.29913191979345,
+      "bias_wm2": -1.192376211591196
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 120.97215939725429,
+      "mae_wm2": 71.82608150790387,
+      "bias_wm2": -0.942264894330865
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 125.75515739732876,
+      "mae_wm2": 75.2244935754327,
+      "bias_wm2": -0.11899062357652272
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 130.37519495030585,
+      "mae_wm2": 78.21947083528981,
+      "bias_wm2": 1.6755700991028868
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.52543400375473,
+      "mae_wm2": 81.76565069068046,
+      "bias_wm2": 3.319105738520668
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 139.98083425363336,
+      "mae_wm2": 84.6779093171626,
+      "bias_wm2": 5.285502949019182
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 144.36769745538464,
+      "mae_wm2": 87.81570229593333,
+      "bias_wm2": 6.490970638921774
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 147.82717623771924,
+      "mae_wm2": 90.44719376544286,
+      "bias_wm2": 6.877173847160164
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 151.32495378623062,
+      "mae_wm2": 93.12148689009149,
+      "bias_wm2": 4.711079530357947
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 156.12750812640002,
+      "mae_wm2": 96.66113653808061,
+      "bias_wm2": 2.164485186148885
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 160.53485905108604,
+      "mae_wm2": 99.71516115922108,
+      "bias_wm2": 2.3646881847279397
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 165.20843415689623,
+      "mae_wm2": 103.16603871571579,
+      "bias_wm2": 3.187300760328389
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 170.33935914542224,
+      "mae_wm2": 106.81348104473683,
+      "bias_wm2": 3.0316280077776323
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 174.86213132059686,
+      "mae_wm2": 109.89935612791508,
+      "bias_wm2": 3.8530864213479186
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 179.00160930148337,
+      "mae_wm2": 112.77644137532792,
+      "bias_wm2": 4.828652861444575
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.2907033839511,
+      "mae_wm2": 67.57895872216434,
+      "bias_wm2": -8.426258623125774
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.7082126857095,
+      "mae_wm2": 70.53375777749642,
+      "bias_wm2": -9.664454911921467
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 122.73208519193284,
+      "mae_wm2": 76.52643675153868,
+      "bias_wm2": -5.792447295913556
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 126.87592630574156,
+      "mae_wm2": 79.2761993019561,
+      "bias_wm2": -4.803533439491155
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 131.4259171736475,
+      "mae_wm2": 82.2816465914193,
+      "bias_wm2": -3.7413042645556587
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.77123297361905,
+      "mae_wm2": 85.17540155884555,
+      "bias_wm2": -2.5741921981157403
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 139.8821879877194,
+      "mae_wm2": 88.18459294633809,
+      "bias_wm2": -1.017863606933717
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 143.32983474964632,
+      "mae_wm2": 90.7390111212041,
+      "bias_wm2": -0.31726411999351345
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 146.306108322112,
+      "mae_wm2": 92.45368581867433,
+      "bias_wm2": -0.6168213304520689
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 149.24135070316865,
+      "mae_wm2": 94.26785189913994,
+      "bias_wm2": -2.916775924662918
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 153.3004556533526,
+      "mae_wm2": 97.24430341059653,
+      "bias_wm2": -5.314966991914861
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 157.04653932181105,
+      "mae_wm2": 100.09837027969415,
+      "bias_wm2": -5.120447982387973
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 161.16488756626495,
+      "mae_wm2": 103.35288703034706,
+      "bias_wm2": -4.3645153700790695
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 164.7166050230794,
+      "mae_wm2": 106.1930233529672,
+      "bias_wm2": -3.9601970930163444
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 168.0003955821561,
+      "mae_wm2": 109.07266131062346,
+      "bias_wm2": -2.8562070286386634
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 171.29959056252645,
+      "mae_wm2": 111.84104151459383,
+      "bias_wm2": -1.7326655290235067
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 112.10719366138598,
+      "mae_wm2": 62.23956878046505,
+      "bias_wm2": -10.274859085249611
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.3031185311876,
+      "mae_wm2": 65.99188303548786,
+      "bias_wm2": -11.7214347021146
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 122.21367719799855,
+      "mae_wm2": 72.23483961596729,
+      "bias_wm2": -12.496373475722063
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 126.23506466848605,
+      "mae_wm2": 75.12120810480356,
+      "bias_wm2": -11.6392222235773
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 131.00322603240895,
+      "mae_wm2": 78.45503942777242,
+      "bias_wm2": -10.002278465105206
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.7170718894486,
+      "mae_wm2": 81.85278490798581,
+      "bias_wm2": -8.422136719807682
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 139.97849557523654,
+      "mae_wm2": 84.70885565916144,
+      "bias_wm2": -6.339730207620024
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 144.10812530850544,
+      "mae_wm2": 87.43690186365536,
+      "bias_wm2": -5.561544051421682
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 147.13025019773764,
+      "mae_wm2": 89.53023621219367,
+      "bias_wm2": -5.215913610349198
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 150.931791920309,
+      "mae_wm2": 92.381330204834,
+      "bias_wm2": -7.702177469354884
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 155.63676472809487,
+      "mae_wm2": 96.15782928567415,
+      "bias_wm2": -11.298908427378453
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 159.99829878781117,
+      "mae_wm2": 99.34788634864815,
+      "bias_wm2": -11.351281781254485
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 164.79911207465807,
+      "mae_wm2": 103.04218572538458,
+      "bias_wm2": -10.791656221170394
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 169.24871096714375,
+      "mae_wm2": 106.63271637824347,
+      "bias_wm2": -11.103053749918809
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 172.94971766026708,
+      "mae_wm2": 109.6963806289021,
+      "bias_wm2": -9.716580670012721
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 176.39983760862862,
+      "mae_wm2": 112.42421058581381,
+      "bias_wm2": -8.565910591404624
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 113.19971890421427,
+      "mae_wm2": 63.36458660397902,
+      "bias_wm2": -16.120482825687226
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 117.21328974593465,
+      "mae_wm2": 66.58932762120114,
+      "bias_wm2": -15.727952616293853
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 121.09084183882236,
+      "mae_wm2": 70.10224115340358,
+      "bias_wm2": -12.0905930379417
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 125.61845739309722,
+      "mae_wm2": 73.4510293270755,
+      "bias_wm2": -11.304133171541965
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 130.27029249282813,
+      "mae_wm2": 76.67036727668422,
+      "bias_wm2": -9.837064571879951
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.0437375621883,
+      "mae_wm2": 80.22652676263178,
+      "bias_wm2": -8.595046131148468
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 139.24776599310823,
+      "mae_wm2": 83.24420647132396,
+      "bias_wm2": -6.646246978258339
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 143.5674176272503,
+      "mae_wm2": 86.24528745612237,
+      "bias_wm2": -6.007340472935145
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 147.08952575733247,
+      "mae_wm2": 89.03115265085398,
+      "bias_wm2": -6.277058420377129
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 150.9352658655963,
+      "mae_wm2": 92.1636642038996,
+      "bias_wm2": -8.517047575441492
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 156.00628934363795,
+      "mae_wm2": 96.06023606736501,
+      "bias_wm2": -11.270468507840903
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 160.80010597339964,
+      "mae_wm2": 99.35702283762429,
+      "bias_wm2": -10.9988428797719
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 165.83321571572705,
+      "mae_wm2": 102.93917324058131,
+      "bias_wm2": -9.931280939430044
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 170.72645631300384,
+      "mae_wm2": 106.55560980827232,
+      "bias_wm2": -9.969886207187185
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 174.67195835472987,
+      "mae_wm2": 109.58282469041802,
+      "bias_wm2": -8.747175751779979
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 178.7416259989352,
+      "mae_wm2": 112.31168430973223,
+      "bias_wm2": -7.745562918554987
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.98939689189963,
+      "mae_wm2": 68.22166044821955,
+      "bias_wm2": -7.569409588241965
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.10591575483271,
+      "mae_wm2": 70.51011313498925,
+      "bias_wm2": -6.941125611950818
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 120.96132122251632,
+      "mae_wm2": 74.22186498051411,
+      "bias_wm2": -6.1929649795329516
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 124.89166568045044,
+      "mae_wm2": 76.96452002785024,
+      "bias_wm2": -5.669931387601558
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 129.16656810399917,
+      "mae_wm2": 79.86217244828002,
+      "bias_wm2": -4.436264492007505
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 133.49590713162928,
+      "mae_wm2": 82.80817960557621,
+      "bias_wm2": -3.589523548365572
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 137.16855517139982,
+      "mae_wm2": 85.45393257973605,
+      "bias_wm2": -2.3520098129836104
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 140.60809959906885,
+      "mae_wm2": 87.89655029153553,
+      "bias_wm2": -1.5074962458659247
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 143.4912510940787,
+      "mae_wm2": 89.83957917159954,
+      "bias_wm2": -1.0582482835854161
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 146.42065344011058,
+      "mae_wm2": 91.93219043674428,
+      "bias_wm2": -3.097803723261564
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 150.57603434027084,
+      "mae_wm2": 95.08888467558687,
+      "bias_wm2": -5.155505431373425
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 154.50207020841182,
+      "mae_wm2": 98.02972909040663,
+      "bias_wm2": -4.878896499091951
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 158.97557892569696,
+      "mae_wm2": 101.50790922751824,
+      "bias_wm2": -4.0062023074724795
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 163.0523460009315,
+      "mae_wm2": 104.76137740286507,
+      "bias_wm2": -3.7090253420815222
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 166.59175388827637,
+      "mae_wm2": 107.97159612305036,
+      "bias_wm2": -2.69104415277739
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 170.14008934528132,
+      "mae_wm2": 110.73921223563237,
+      "bias_wm2": -1.4947813816755204
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 112.90570568411252,
+      "mae_wm2": 67.80598957402704,
+      "bias_wm2": -5.008037554531105
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 117.27921129173902,
+      "mae_wm2": 70.43611710095792,
+      "bias_wm2": -4.7717407340002875
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 122.66215641320814,
+      "mae_wm2": 74.30843045776959,
+      "bias_wm2": -4.5565899227370315
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 126.56027674791912,
+      "mae_wm2": 76.87053663480008,
+      "bias_wm2": -4.133346128421713
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 131.0838595787497,
+      "mae_wm2": 79.9628105931337,
+      "bias_wm2": -3.1872248453873477
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 135.42875302589326,
+      "mae_wm2": 83.02839682848314,
+      "bias_wm2": -2.4753845551024973
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 139.2439583080837,
+      "mae_wm2": 85.61085853491986,
+      "bias_wm2": -1.4696956968643566
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 142.74072538750775,
+      "mae_wm2": 88.04900351146628,
+      "bias_wm2": -0.6584350442095298
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 145.63378110578583,
+      "mae_wm2": 90.13970622727496,
+      "bias_wm2": -0.31129710711436775
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 148.5530225492044,
+      "mae_wm2": 92.22459789232616,
+      "bias_wm2": -2.299941969213897
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 153.10876010369014,
+      "mae_wm2": 95.6035858427263,
+      "bias_wm2": -4.420292791875055
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 157.04297212683343,
+      "mae_wm2": 98.5585344836686,
+      "bias_wm2": -3.9957412755097534
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 161.61358653507375,
+      "mae_wm2": 101.96164791232805,
+      "bias_wm2": -3.31223352190556
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 165.700576280654,
+      "mae_wm2": 105.18067101075123,
+      "bias_wm2": -3.0228725915972205
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 169.5357687085673,
+      "mae_wm2": 108.35056330493397,
+      "bias_wm2": -1.9895645131226827
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 173.0716765972002,
+      "mae_wm2": 111.06485740254585,
+      "bias_wm2": -0.8590986256823662
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 112.94747487520445,
+      "mae_wm2": 65.90145496006353,
+      "bias_wm2": -0.9363778081296139
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.04402569388603,
+      "mae_wm2": 67.65180284354417,
+      "bias_wm2": -0.878670151624529
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 119.8443031521604,
+      "mae_wm2": 71.61264699542815,
+      "bias_wm2": -0.8636937744433688
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 123.84589481709709,
+      "mae_wm2": 74.35800993158912,
+      "bias_wm2": -0.1791044575308026
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 128.77087275933974,
+      "mae_wm2": 77.38492555975184,
+      "bias_wm2": 1.9921815546374915
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 133.7268499691625,
+      "mae_wm2": 80.70514699071234,
+      "bias_wm2": 3.15645035561012
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 138.1353102553128,
+      "mae_wm2": 83.52462629694008,
+      "bias_wm2": 5.180350534381495
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 142.62661095378363,
+      "mae_wm2": 86.30883654152255,
+      "bias_wm2": 6.401697165118803
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 146.0582289386381,
+      "mae_wm2": 89.10447821707199,
+      "bias_wm2": 6.370472047381426
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 149.33847732922885,
+      "mae_wm2": 91.59404101418356,
+      "bias_wm2": 3.8945920326842858
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 153.6010568063891,
+      "mae_wm2": 95.0845624890417,
+      "bias_wm2": 0.4559306810942438
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 157.91737064766895,
+      "mae_wm2": 98.52378941150587,
+      "bias_wm2": 0.1620450159843789
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 162.54284668678983,
+      "mae_wm2": 101.92774909392664,
+      "bias_wm2": 0.8736689987373413
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 167.21704134013996,
+      "mae_wm2": 105.42804583433646,
+      "bias_wm2": 0.37354031135400984
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 170.68604240419677,
+      "mae_wm2": 108.22109174976934,
+      "bias_wm2": 1.4569224797202214
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 174.36679658735198,
+      "mae_wm2": 110.47534364224737,
+      "bias_wm2": 3.061425877956499
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 110.90138649122338,
+      "mae_wm2": 66.36751343262004,
+      "bias_wm2": -10.394721903018093
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 115.34536584189875,
+      "mae_wm2": 68.8302938241969,
+      "bias_wm2": -9.565502246430956
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 120.46793872180798,
+      "mae_wm2": 72.90177270041707,
+      "bias_wm2": -8.630848132295862
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 124.50670140652284,
+      "mae_wm2": 75.85633726280652,
+      "bias_wm2": -7.636492775882914
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 128.8898635265846,
+      "mae_wm2": 79.08179667019647,
+      "bias_wm2": -5.987258323172242
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 133.2795979783002,
+      "mae_wm2": 82.24228396740229,
+      "bias_wm2": -4.633522668299397
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 136.94699916784597,
+      "mae_wm2": 85.03224233429088,
+      "bias_wm2": -2.782017505767351
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 140.40970812331184,
+      "mae_wm2": 87.59065085213008,
+      "bias_wm2": -1.5863596816911063
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 143.24468643286806,
+      "mae_wm2": 89.66653788496502,
+      "bias_wm2": -0.2819422062580894
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 146.1071040335402,
+      "mae_wm2": 91.80063321116398,
+      "bias_wm2": -1.6446466229646315
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 150.09646867730913,
+      "mae_wm2": 95.06138803156038,
+      "bias_wm2": -2.915252046699812
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 153.94097964370903,
+      "mae_wm2": 98.06903830954498,
+      "bias_wm2": -2.23421109159448
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 158.2486918359701,
+      "mae_wm2": 101.58103813586094,
+      "bias_wm2": -0.9364603942359077
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 162.14233067300583,
+      "mae_wm2": 104.83087094600643,
+      "bias_wm2": -0.2414162069013805
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 165.59152497489086,
+      "mae_wm2": 108.04456535872956,
+      "bias_wm2": 1.2214296503298028
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 168.98957820220568,
+      "mae_wm2": 110.82494047924882,
+      "bias_wm2": 2.9660121736646134
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.60682227400994,
+      "mae_wm2": 63.75098105063462,
+      "bias_wm2": -1.4448584616739304
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 115.99213733819242,
+      "mae_wm2": 66.72226022769952,
+      "bias_wm2": -1.208030949809248
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 121.49471262671575,
+      "mae_wm2": 70.87396327079531,
+      "bias_wm2": -1.032398626668835
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 125.61507299997395,
+      "mae_wm2": 73.94897962160974,
+      "bias_wm2": -0.08366191854097714
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 130.296580462738,
+      "mae_wm2": 77.44616701483366,
+      "bias_wm2": 1.4411199209897416
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 134.90114433320898,
+      "mae_wm2": 80.83839460496353,
+      "bias_wm2": 2.65665971504633
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 138.79382334455343,
+      "mae_wm2": 83.67008264973623,
+      "bias_wm2": 4.365524716925298
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 142.55199766997703,
+      "mae_wm2": 86.38667463931978,
+      "bias_wm2": 5.58438570001034
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 145.5371431993253,
+      "mae_wm2": 88.43258663640044,
+      "bias_wm2": 6.845302737166888
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 148.39729992636865,
+      "mae_wm2": 90.76148465456616,
+      "bias_wm2": 5.496571167530631
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 152.7677634561944,
+      "mae_wm2": 94.43339287169836,
+      "bias_wm2": 4.2731616823219225
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 156.83276716606588,
+      "mae_wm2": 97.53805616187942,
+      "bias_wm2": 5.147620197890245
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 161.50379306758393,
+      "mae_wm2": 101.1626898966898,
+      "bias_wm2": 6.408823696122104
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 165.67382324313678,
+      "mae_wm2": 104.50588906175048,
+      "bias_wm2": 7.141135616143806
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 169.55466191980196,
+      "mae_wm2": 107.8286720722828,
+      "bias_wm2": 8.862566416478113
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 173.3201104756125,
+      "mae_wm2": 110.6578297385495,
+      "bias_wm2": 10.760638461142447
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 112.84439746236906,
+      "mae_wm2": 64.45727816971778,
+      "bias_wm2": -3.46358796592227
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 115.79134653471384,
+      "mae_wm2": 66.38227056008678,
+      "bias_wm2": -3.6332925423133755
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 119.32761146654316,
+      "mae_wm2": 70.1296280005474,
+      "bias_wm2": -3.64610389133705
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 123.51671869519627,
+      "mae_wm2": 73.25155592973944,
+      "bias_wm2": -2.5392673165430426
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 128.53007407021727,
+      "mae_wm2": 76.61916729315473,
+      "bias_wm2": -0.04142994469863378
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 133.6803282437776,
+      "mae_wm2": 80.17150089335362,
+      "bias_wm2": 1.439576947050792
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 138.18866526744173,
+      "mae_wm2": 83.22203957706269,
+      "bias_wm2": 3.921090888534997
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 142.65550006509244,
+      "mae_wm2": 86.3008405458935,
+      "bias_wm2": 5.45813947100782
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 146.04021487930814,
+      "mae_wm2": 89.18412477802833,
+      "bias_wm2": 6.384753028507439
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 149.1598901849012,
+      "mae_wm2": 91.80294161078724,
+      "bias_wm2": 4.693098689594726
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 153.31671614965242,
+      "mae_wm2": 95.49104334450435,
+      "bias_wm2": 2.1058670280597283
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 157.62421137944762,
+      "mae_wm2": 98.88251053984894,
+      "bias_wm2": 2.2901248341605984
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 162.16879179638346,
+      "mae_wm2": 102.38212385084022,
+      "bias_wm2": 3.426635186859132
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 166.87210465792475,
+      "mae_wm2": 106.11927640338858,
+      "bias_wm2": 3.2959994346781727
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 170.40915582193796,
+      "mae_wm2": 109.07226172770247,
+      "bias_wm2": 4.904233128283478
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 174.2127332211197,
+      "mae_wm2": 111.51739862819407,
+      "bias_wm2": 7.116370913638335
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 110.90087417194526,
+      "mae_wm2": 66.38963158259735,
+      "bias_wm2": -10.584288805387432
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 115.44265159708313,
+      "mae_wm2": 68.93506148813192,
+      "bias_wm2": -9.337965999792768
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 120.45106059197995,
+      "mae_wm2": 72.86024724877764,
+      "bias_wm2": -8.433725974062002
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 124.54170441239593,
+      "mae_wm2": 75.8676323135275,
+      "bias_wm2": -7.486008863965513
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 128.93294103101712,
+      "mae_wm2": 79.09398505559281,
+      "bias_wm2": -5.813431989229478
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 133.2936603117339,
+      "mae_wm2": 82.26633902790309,
+      "bias_wm2": -4.403489125413303
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 136.98504244199484,
+      "mae_wm2": 85.01756326969371,
+      "bias_wm2": -2.730733013151779
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 140.49874364901245,
+      "mae_wm2": 87.70287083962084,
+      "bias_wm2": -1.1744610875602206
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 143.21603584878045,
+      "mae_wm2": 89.55341885299961,
+      "bias_wm2": -0.31374991906387956
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 146.12475522884037,
+      "mae_wm2": 91.7715109212372,
+      "bias_wm2": -1.4216260633287578
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 150.05130630482026,
+      "mae_wm2": 94.99146660399478,
+      "bias_wm2": -2.719579855074305
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 153.93505829270427,
+      "mae_wm2": 98.0076183811532,
+      "bias_wm2": -1.978174448560007
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 158.25578157404223,
+      "mae_wm2": 101.54227523904828,
+      "bias_wm2": -0.7577617278400409
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 162.15513011818925,
+      "mae_wm2": 104.79761237878539,
+      "bias_wm2": -0.006544860350286367
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 165.63914925749094,
+      "mae_wm2": 107.98971716792987,
+      "bias_wm2": 1.322924734173174
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 169.05891353572326,
+      "mae_wm2": 110.86440771588424,
+      "bias_wm2": 3.3354219402055656
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 111.57800275588352,
+      "mae_wm2": 63.774364788805485,
+      "bias_wm2": -1.689374865232932
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.04408698948048,
+      "mae_wm2": 66.82146934834174,
+      "bias_wm2": -1.1113751318947158
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 121.4618325618215,
+      "mae_wm2": 70.80832898990899,
+      "bias_wm2": -1.0107067509791403
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 125.62943075750309,
+      "mae_wm2": 73.94307541790239,
+      "bias_wm2": -0.09731432007033555
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 130.32357793244793,
+      "mae_wm2": 77.45706162920011,
+      "bias_wm2": 1.4620533788065653
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 134.9048366843246,
+      "mae_wm2": 80.87349373039069,
+      "bias_wm2": 2.7238734216531206
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 138.83008887028785,
+      "mae_wm2": 83.6690522286107,
+      "bias_wm2": 4.255242529847606
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 142.64097287827082,
+      "mae_wm2": 86.49970293355591,
+      "bias_wm2": 5.79754404942251
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 145.50592531520735,
+      "mae_wm2": 88.31804953997428,
+      "bias_wm2": 6.648248235733083
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 148.44550893753754,
+      "mae_wm2": 90.78902245730023,
+      "bias_wm2": 5.556897113128841
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 152.73202106112964,
+      "mae_wm2": 94.38075586488151,
+      "bias_wm2": 4.270721017346255
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 156.86754936477834,
+      "mae_wm2": 97.56855109450947,
+      "bias_wm2": 5.207025378698064
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 161.5407772594557,
+      "mae_wm2": 101.16290952043386,
+      "bias_wm2": 6.377234288827202
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 165.69726569335563,
+      "mae_wm2": 104.48820235280779,
+      "bias_wm2": 7.167672135962316
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 169.64038092261396,
+      "mae_wm2": 107.82000081138075,
+      "bias_wm2": 8.73969911895464
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 173.39117825892805,
+      "mae_wm2": 110.68879223591803,
+      "bias_wm2": 10.902771138309179
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 15,
+      "n": 1972,
+      "rmse_wm2": 113.0398347197555,
+      "mae_wm2": 64.53338649056667,
+      "bias_wm2": -3.4636714307998258
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 30,
+      "n": 1987,
+      "rmse_wm2": 116.09992668771949,
+      "mae_wm2": 66.53053919483224,
+      "bias_wm2": -3.4867916494054354
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 45,
+      "n": 2002,
+      "rmse_wm2": 119.53221114854465,
+      "mae_wm2": 70.33381995525399,
+      "bias_wm2": -3.5129440066677224
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 60,
+      "n": 2012,
+      "rmse_wm2": 123.65439005517155,
+      "mae_wm2": 73.42350783856472,
+      "bias_wm2": -2.447352087963114
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 75,
+      "n": 2019,
+      "rmse_wm2": 128.55736693702244,
+      "mae_wm2": 76.73201392833606,
+      "bias_wm2": 0.12852103635343698
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 90,
+      "n": 2023,
+      "rmse_wm2": 133.6983369612633,
+      "mae_wm2": 80.321568648885,
+      "bias_wm2": 1.6607511201634966
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 105,
+      "n": 2027,
+      "rmse_wm2": 138.14119090486327,
+      "mae_wm2": 83.24633118540038,
+      "bias_wm2": 4.0318595699241415
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 120,
+      "n": 2032,
+      "rmse_wm2": 142.66505307972588,
+      "mae_wm2": 86.39325780763922,
+      "bias_wm2": 5.872705659592203
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 135,
+      "n": 2037,
+      "rmse_wm2": 145.84708884193725,
+      "mae_wm2": 88.97553298029786,
+      "bias_wm2": 6.486130821245614
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 150,
+      "n": 2037,
+      "rmse_wm2": 149.10160690913537,
+      "mae_wm2": 91.80958334632554,
+      "bias_wm2": 5.048417629070976
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 165,
+      "n": 2035,
+      "rmse_wm2": 153.25510422146417,
+      "mae_wm2": 95.52022264334747,
+      "bias_wm2": 2.315705650022636
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 180,
+      "n": 2028,
+      "rmse_wm2": 157.594315162808,
+      "mae_wm2": 98.98677183169414,
+      "bias_wm2": 2.602752855315488
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 195,
+      "n": 2014,
+      "rmse_wm2": 162.13020852584884,
+      "mae_wm2": 102.45595497030867,
+      "bias_wm2": 3.6673415666811118
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 210,
+      "n": 1997,
+      "rmse_wm2": 166.89622544506977,
+      "mae_wm2": 106.2005075462835,
+      "bias_wm2": 3.576985633099833
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 225,
+      "n": 1978,
+      "rmse_wm2": 170.4715534650534,
+      "mae_wm2": 109.12827728355859,
+      "bias_wm2": 5.115825932415767
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 240,
+      "n": 1959,
+      "rmse_wm2": 174.24483975997092,
+      "mae_wm2": 111.59741077669388,
+      "bias_wm2": 7.4486270689346314
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 106.96719555857027,
+      "mae_wm2": 69.55435367711185,
+      "bias_wm2": -6.961625778144907
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 107.66539703002229,
+      "mae_wm2": 70.45958552047696,
+      "bias_wm2": -5.345465255201232
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 109.62712517567716,
+      "mae_wm2": 73.24185924682865,
+      "bias_wm2": -6.265284605600094
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 110.11417618761622,
+      "mae_wm2": 73.44010567949482,
+      "bias_wm2": -5.722323687488704
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 111.86668307000329,
+      "mae_wm2": 74.5982871865288,
+      "bias_wm2": -4.403923573203903
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 113.39284807591221,
+      "mae_wm2": 75.49780535833443,
+      "bias_wm2": -3.642812091032203
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 114.70536939694033,
+      "mae_wm2": 76.62262318217623,
+      "bias_wm2": -1.924076704524938
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 116.11052950781242,
+      "mae_wm2": 77.92115572792483,
+      "bias_wm2": -2.051615651523473
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.55388445127872,
+      "mae_wm2": 78.12256319571479,
+      "bias_wm2": -1.0106858323846861
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 117.66376563482638,
+      "mae_wm2": 79.05637599834014,
+      "bias_wm2": -0.655802593163754
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.39281128118184,
+      "mae_wm2": 79.99724970833157,
+      "bias_wm2": -2.2633830733942935
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 121.20669397614996,
+      "mae_wm2": 81.98708468887271,
+      "bias_wm2": -2.2220709604639985
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 123.87512653342064,
+      "mae_wm2": 84.09886823022123,
+      "bias_wm2": -1.745417998079852
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 126.73171777949348,
+      "mae_wm2": 86.32909477402691,
+      "bias_wm2": -2.138117005111145
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 129.3948282107615,
+      "mae_wm2": 88.67740577306407,
+      "bias_wm2": -1.2564477685259356
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "A",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 133.34393472966832,
+      "mae_wm2": 91.86564488477723,
+      "bias_wm2": -1.5259392081670906
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 99.397306004434,
+      "mae_wm2": 67.48745310714382,
+      "bias_wm2": 2.9092374097801623
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 101.25297884169933,
+      "mae_wm2": 69.69961787206276,
+      "bias_wm2": 4.509534573413974
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 105.02197210890048,
+      "mae_wm2": 73.64226460429502,
+      "bias_wm2": 4.385123731973093
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 106.09051447716318,
+      "mae_wm2": 74.24784943275264,
+      "bias_wm2": 5.10025617975713
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 108.16627192920137,
+      "mae_wm2": 75.4748074784006,
+      "bias_wm2": 6.0880953495656565
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 109.80033813443039,
+      "mae_wm2": 76.36807806111574,
+      "bias_wm2": 6.800410711776802
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 111.429933389037,
+      "mae_wm2": 77.6098990205675,
+      "bias_wm2": 7.883273355220477
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 113.42756653275352,
+      "mae_wm2": 79.02187397419921,
+      "bias_wm2": 7.786660540649584
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 114.4833223141446,
+      "mae_wm2": 79.62537195569496,
+      "bias_wm2": 9.1070504470734
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.05189137960352,
+      "mae_wm2": 80.02242130302865,
+      "bias_wm2": 8.948693023982646
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 116.67135462942264,
+      "mae_wm2": 81.12549320808422,
+      "bias_wm2": 7.20823654413332
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 119.20547844901333,
+      "mae_wm2": 83.03703324987686,
+      "bias_wm2": 7.535008849210747
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 121.78171283600655,
+      "mae_wm2": 85.12839863063925,
+      "bias_wm2": 7.640462395724374
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 124.14900966518049,
+      "mae_wm2": 86.93217332233313,
+      "bias_wm2": 7.28584928850922
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.04535964934001,
+      "mae_wm2": 89.264850454361,
+      "bias_wm2": 7.552974466197803
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "A",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 130.60738761254342,
+      "mae_wm2": 92.02129687648491,
+      "bias_wm2": 7.390120549231886
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 101.79933548104742,
+      "mae_wm2": 68.07601666724038,
+      "bias_wm2": -0.6167335843721995
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 103.79203388875864,
+      "mae_wm2": 70.5090213388653,
+      "bias_wm2": 2.1192357883238193
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 108.14723640885862,
+      "mae_wm2": 75.16351046447707,
+      "bias_wm2": 2.5465056951761333
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.96560187782251,
+      "mae_wm2": 75.85227270748334,
+      "bias_wm2": 3.1230070755037085
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 110.57041684290057,
+      "mae_wm2": 76.97498542791578,
+      "bias_wm2": 4.450350907837849
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 111.9207240053826,
+      "mae_wm2": 77.71735138575829,
+      "bias_wm2": 5.351476665353937
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.50686653843783,
+      "mae_wm2": 78.7312318914968,
+      "bias_wm2": 6.744575628135676
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.08473126647819,
+      "mae_wm2": 79.96782160739858,
+      "bias_wm2": 6.5259452421686595
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 115.40228650865978,
+      "mae_wm2": 80.14825304226608,
+      "bias_wm2": 7.934385296528942
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.79941382233127,
+      "mae_wm2": 80.66058211753182,
+      "bias_wm2": 8.091160167630884
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 117.12406932360788,
+      "mae_wm2": 81.90259343630544,
+      "bias_wm2": 6.9487167967565515
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 119.27182958313006,
+      "mae_wm2": 83.60376984213345,
+      "bias_wm2": 7.0674314763079495
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 121.62649391045771,
+      "mae_wm2": 85.48248368387094,
+      "bias_wm2": 7.644955047362186
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 123.78353532360171,
+      "mae_wm2": 87.31623111006193,
+      "bias_wm2": 7.620451376704095
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 126.19211641516327,
+      "mae_wm2": 89.39417813764123,
+      "bias_wm2": 8.33587419729095
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "A",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 129.30180101853261,
+      "mae_wm2": 91.93280962688709,
+      "bias_wm2": 8.097349998089886
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 107.17420798174031,
+      "mae_wm2": 68.99865663668825,
+      "bias_wm2": -4.915023728079192
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 108.70348652359256,
+      "mae_wm2": 70.66210430306432,
+      "bias_wm2": -6.860865098361978
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 110.40393953689446,
+      "mae_wm2": 73.73439466773932,
+      "bias_wm2": -6.907203220246667
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 110.75601688744668,
+      "mae_wm2": 73.9056257545566,
+      "bias_wm2": -6.2461484146074815
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 112.45729916573269,
+      "mae_wm2": 75.00074363677071,
+      "bias_wm2": -4.958378255554356
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 113.92252965187734,
+      "mae_wm2": 75.93797784887671,
+      "bias_wm2": -4.265958487340574
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 115.20703237032849,
+      "mae_wm2": 77.07544182140542,
+      "bias_wm2": -2.561449565564442
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 116.78161726966033,
+      "mae_wm2": 78.48748798702984,
+      "bias_wm2": -2.6948740825842608
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 117.11702616875542,
+      "mae_wm2": 78.54264090977318,
+      "bias_wm2": -1.704462276869398
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 118.00668042736248,
+      "mae_wm2": 79.37939753659134,
+      "bias_wm2": -1.3951538478080854
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.72050970585991,
+      "mae_wm2": 80.23608718185898,
+      "bias_wm2": -2.980892806750275
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 121.48965814608717,
+      "mae_wm2": 82.26319440112327,
+      "bias_wm2": -2.9468028610925403
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 124.12247244043687,
+      "mae_wm2": 84.36309565748127,
+      "bias_wm2": -2.4342595673497516
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 127.03196110231917,
+      "mae_wm2": 86.64685570088477,
+      "bias_wm2": -2.9008194684038737
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 129.67304695444824,
+      "mae_wm2": 89.0270564436754,
+      "bias_wm2": -1.9787565332179933
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AH",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 133.63396730362453,
+      "mae_wm2": 92.23813205672631,
+      "bias_wm2": -2.2593867026702044
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 99.89771924587599,
+      "mae_wm2": 66.76309130671292,
+      "bias_wm2": 2.4850791913680026
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 101.61835766523711,
+      "mae_wm2": 68.66400304809802,
+      "bias_wm2": 3.26974130735543
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 105.68167332285692,
+      "mae_wm2": 74.19584453076762,
+      "bias_wm2": 5.327130166435081
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 106.66642132618588,
+      "mae_wm2": 74.81053893831071,
+      "bias_wm2": 6.047233911179846
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 108.70055633207917,
+      "mae_wm2": 75.99806390760081,
+      "bias_wm2": 6.989765567191205
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 110.26711259764686,
+      "mae_wm2": 76.81327767413843,
+      "bias_wm2": 7.615015630158482
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 111.92339477457787,
+      "mae_wm2": 78.05295897804031,
+      "bias_wm2": 8.695517805824794
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 114.00435172483112,
+      "mae_wm2": 79.51430326169711,
+      "bias_wm2": 8.636400358845874
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 115.15115272896229,
+      "mae_wm2": 80.1714152932931,
+      "bias_wm2": 9.85750936221691
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.67071332102498,
+      "mae_wm2": 80.58214314634218,
+      "bias_wm2": 9.59520608861241
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 117.28584446450424,
+      "mae_wm2": 81.6490247305787,
+      "bias_wm2": 7.910458098301616
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 119.76116424709639,
+      "mae_wm2": 83.50820700579379,
+      "bias_wm2": 8.21404799041156
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.26604902556694,
+      "mae_wm2": 85.56572210898052,
+      "bias_wm2": 8.360667359714089
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 124.61116876529694,
+      "mae_wm2": 87.3716681374694,
+      "bias_wm2": 7.97080054579544
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.4832348883022,
+      "mae_wm2": 89.68596868526778,
+      "bias_wm2": 8.248925364331587
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AH",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 131.0120121066248,
+      "mae_wm2": 92.45254081069334,
+      "bias_wm2": 8.080483099782173
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 103.3867690764036,
+      "mae_wm2": 68.66803617024813,
+      "bias_wm2": -2.1291834150573177
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 103.86437814179328,
+      "mae_wm2": 69.51952972804027,
+      "bias_wm2": 0.2751006694341755
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 107.60883958778739,
+      "mae_wm2": 74.0686900018479,
+      "bias_wm2": 5.49569966564054
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.3757917997336,
+      "mae_wm2": 74.78055280550717,
+      "bias_wm2": 6.091383242811363
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 110.08741862071501,
+      "mae_wm2": 75.90117194514725,
+      "bias_wm2": 7.3429100713074265
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 111.44130219060851,
+      "mae_wm2": 76.59926203739887,
+      "bias_wm2": 8.205088337615294
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.14494425634825,
+      "mae_wm2": 77.74870685908543,
+      "bias_wm2": 9.555219824612049
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 114.76127810130423,
+      "mae_wm2": 79.02377627954016,
+      "bias_wm2": 9.354002650768427
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 115.29503641969264,
+      "mae_wm2": 79.34321174821822,
+      "bias_wm2": 10.882214472963778
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.66547984060973,
+      "mae_wm2": 79.9518263716606,
+      "bias_wm2": 10.96670364325279
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 116.80495252333952,
+      "mae_wm2": 81.14581428110873,
+      "bias_wm2": 9.802315391823475
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 119.12196435092103,
+      "mae_wm2": 82.89239069862711,
+      "bias_wm2": 9.963726327082432
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 121.54540853429032,
+      "mae_wm2": 84.82765388497704,
+      "bias_wm2": 10.494484963607325
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 123.81637767985617,
+      "mae_wm2": 86.75500472644474,
+      "bias_wm2": 10.48383509121045
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 126.35398228372499,
+      "mae_wm2": 88.88112779571046,
+      "bias_wm2": 11.171755950896518
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AH",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 129.5327721489498,
+      "mae_wm2": 91.52417143654749,
+      "bias_wm2": 10.93142792726919
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 105.78179849768257,
+      "mae_wm2": 70.0894795006969,
+      "bias_wm2": -0.6702352036074601
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 105.43118786609584,
+      "mae_wm2": 70.64555065954671,
+      "bias_wm2": 0.6421641130764889
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 107.98915373479188,
+      "mae_wm2": 73.90005941901478,
+      "bias_wm2": 0.15065370850112572
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.56742335805652,
+      "mae_wm2": 74.24249919578519,
+      "bias_wm2": 1.1137140255119864
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 110.18305593095559,
+      "mae_wm2": 75.39922738669115,
+      "bias_wm2": 2.9428477260671206
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 112.22317981923001,
+      "mae_wm2": 76.62247038476559,
+      "bias_wm2": 3.7497071692818658
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.84596151761374,
+      "mae_wm2": 77.88629037164549,
+      "bias_wm2": 5.30842081203359
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.6781018133167,
+      "mae_wm2": 79.28420992518406,
+      "bias_wm2": 5.17663031208302
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.68628885914814,
+      "mae_wm2": 79.73257724699378,
+      "bias_wm2": 6.088567230395633
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 117.60173718584494,
+      "mae_wm2": 80.3286912215912,
+      "bias_wm2": 6.374243318675122
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.7923729547062,
+      "mae_wm2": 81.42154729531921,
+      "bias_wm2": 4.9214808713650315
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 121.06857741091966,
+      "mae_wm2": 83.2461217359413,
+      "bias_wm2": 4.737014222007453
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.64736991582447,
+      "mae_wm2": 84.84842903438701,
+      "bias_wm2": 5.520795086814956
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 125.01402139020708,
+      "mae_wm2": 86.70437405053514,
+      "bias_wm2": 5.193007075755151
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.5246898210419,
+      "mae_wm2": 89.03992857038118,
+      "bias_wm2": 5.969957918006611
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "AC",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 130.87045560842225,
+      "mae_wm2": 91.79664979788812,
+      "bias_wm2": 5.525578797875103
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 106.086477559991,
+      "mae_wm2": 68.12863085477017,
+      "bias_wm2": 0.7304499506597132
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 105.33039950465968,
+      "mae_wm2": 68.54194966288641,
+      "bias_wm2": 2.2894245994962024
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 106.8268267826618,
+      "mae_wm2": 70.85379209661777,
+      "bias_wm2": 1.5422120272632733
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 107.71682785232683,
+      "mae_wm2": 71.56667273087594,
+      "bias_wm2": 2.0576428567016216
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 109.27389500292294,
+      "mae_wm2": 72.73352410098288,
+      "bias_wm2": 4.122872973656367
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 110.80574955906084,
+      "mae_wm2": 73.84993055115672,
+      "bias_wm2": 5.081901874627607
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 112.25544014259758,
+      "mae_wm2": 74.9732384449387,
+      "bias_wm2": 6.445661323762616
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 113.64989672311137,
+      "mae_wm2": 76.01711059837642,
+      "bias_wm2": 5.936041458205388
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 114.10404836892596,
+      "mae_wm2": 76.58649003118467,
+      "bias_wm2": 7.361102656980337
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.34182003600853,
+      "mae_wm2": 77.59409997455002,
+      "bias_wm2": 7.437011321035654
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 116.45376418974841,
+      "mae_wm2": 78.51313933464455,
+      "bias_wm2": 5.77076469980954
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 118.83961509291818,
+      "mae_wm2": 80.17426163736148,
+      "bias_wm2": 5.51937333252158
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 121.19419067022076,
+      "mae_wm2": 81.70165491247278,
+      "bias_wm2": 6.365522072202829
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 123.78061567029647,
+      "mae_wm2": 83.58127074824716,
+      "bias_wm2": 6.050861009975451
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 126.73041987359478,
+      "mae_wm2": 86.10211870193041,
+      "bias_wm2": 6.379161599585814
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "AC",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 130.45055280071173,
+      "mae_wm2": 88.87406558968908,
+      "bias_wm2": 5.87450769556561
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 103.6919588639464,
+      "mae_wm2": 68.16815224759462,
+      "bias_wm2": 5.785638798429572
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 104.46318505447546,
+      "mae_wm2": 69.54295811067237,
+      "bias_wm2": 6.8897098085468675
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 107.93688021733807,
+      "mae_wm2": 73.52210213627613,
+      "bias_wm2": 6.189860576025472
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.66891481445718,
+      "mae_wm2": 73.9019996756977,
+      "bias_wm2": 6.599551642262623
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 110.24902108204829,
+      "mae_wm2": 74.8538201974665,
+      "bias_wm2": 7.868667932109155
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 111.98031680877081,
+      "mae_wm2": 76.01372458700284,
+      "bias_wm2": 8.79595455660096
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.70705547615695,
+      "mae_wm2": 77.31311881920557,
+      "bias_wm2": 10.025287184091928
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.49150211326005,
+      "mae_wm2": 78.87132610570548,
+      "bias_wm2": 9.916841425106991
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.23700020455271,
+      "mae_wm2": 79.68523253665727,
+      "bias_wm2": 11.567925613539293
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 116.94021921998062,
+      "mae_wm2": 80.30152020840156,
+      "bias_wm2": 11.846191924968386
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.33940490126074,
+      "mae_wm2": 81.65320158991368,
+      "bias_wm2": 10.65774912636099
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 120.7066856614079,
+      "mae_wm2": 83.45342445651947,
+      "bias_wm2": 10.62433121368665
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.87409671470881,
+      "mae_wm2": 84.98839130595088,
+      "bias_wm2": 10.954957895239254
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 125.31674913873304,
+      "mae_wm2": 86.82534180453976,
+      "bias_wm2": 10.817416057911052
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 128.08009562502176,
+      "mae_wm2": 89.02569738752364,
+      "bias_wm2": 11.328426573615122
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "AC",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 131.43328126257228,
+      "mae_wm2": 91.83004802034615,
+      "bias_wm2": 10.891551439812291
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 105.74850359985828,
+      "mae_wm2": 69.27613420506043,
+      "bias_wm2": -4.231179767152447
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 105.42774309847462,
+      "mae_wm2": 69.71744660341295,
+      "bias_wm2": -2.3489358660434494
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 107.7535099672124,
+      "mae_wm2": 72.87246320201977,
+      "bias_wm2": -1.9811717312768788
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.37650604243741,
+      "mae_wm2": 73.36522462734484,
+      "bias_wm2": -0.8553962373773436
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 109.96226707452067,
+      "mae_wm2": 74.63502450891518,
+      "bias_wm2": 1.196844563601022
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 112.06643504733007,
+      "mae_wm2": 76.07365757715885,
+      "bias_wm2": 2.2021434537891498
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.86863855477671,
+      "mae_wm2": 77.6124986356583,
+      "bias_wm2": 4.049811467209043
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.66717281853123,
+      "mae_wm2": 79.02832404390523,
+      "bias_wm2": 4.037834822449418
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.58045275926777,
+      "mae_wm2": 79.49892790923111,
+      "bias_wm2": 5.144094774384401
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 117.47983879154917,
+      "mae_wm2": 80.13525705777319,
+      "bias_wm2": 5.529005361291898
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.7145351436806,
+      "mae_wm2": 81.32838482557604,
+      "bias_wm2": 4.4099919024913214
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 121.0396425751921,
+      "mae_wm2": 83.2900189933653,
+      "bias_wm2": 4.339205526006745
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.72651705550315,
+      "mae_wm2": 85.00706283189753,
+      "bias_wm2": 5.353117091003172
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 125.04414839757386,
+      "mae_wm2": 86.9560458019174,
+      "bias_wm2": 5.209714716667123
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.50334144996283,
+      "mae_wm2": 89.35431218295918,
+      "bias_wm2": 6.264211948112906
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACREL",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 130.73204063014603,
+      "mae_wm2": 92.021301918407,
+      "bias_wm2": 6.104949089077593
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 104.76432476909187,
+      "mae_wm2": 66.96990383727102,
+      "bias_wm2": -1.95393975783912
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 104.55471157794652,
+      "mae_wm2": 67.61991164354642,
+      "bias_wm2": 0.3195341257818395
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 106.36845935620234,
+      "mae_wm2": 70.0533424894821,
+      "bias_wm2": 0.7567331899846507
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 107.34236388478628,
+      "mae_wm2": 70.97104034731356,
+      "bias_wm2": 1.2147042508434027
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 109.11096290328703,
+      "mae_wm2": 72.2957890448223,
+      "bias_wm2": 3.26583435099169
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 110.84347242762438,
+      "mae_wm2": 73.6370660813817,
+      "bias_wm2": 4.34438854097088
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 112.41466844508018,
+      "mae_wm2": 74.95812812570188,
+      "bias_wm2": 5.846432167590824
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 113.89418208818212,
+      "mae_wm2": 76.13976759786215,
+      "bias_wm2": 5.281707890277625
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 114.20291814837454,
+      "mae_wm2": 76.73035235299398,
+      "bias_wm2": 7.013750121040771
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.19084795202433,
+      "mae_wm2": 77.5831047476491,
+      "bias_wm2": 7.127160281121335
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 116.1369513583203,
+      "mae_wm2": 78.50346121414732,
+      "bias_wm2": 5.770953772118329
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 118.40047399033976,
+      "mae_wm2": 80.04367538564931,
+      "bias_wm2": 5.698534919041698
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 120.75908328718356,
+      "mae_wm2": 81.75521630552285,
+      "bias_wm2": 6.638280298331888
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 123.19249899091956,
+      "mae_wm2": 83.61941874288163,
+      "bias_wm2": 6.359636684377774
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 126.17305999136039,
+      "mae_wm2": 86.29393043173438,
+      "bias_wm2": 7.033702940990583
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACREL",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 129.92287951765343,
+      "mae_wm2": 89.22730327616175,
+      "bias_wm2": 6.620783752565141
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 104.28494312816191,
+      "mae_wm2": 67.55762487638742,
+      "bias_wm2": 3.154753967786101
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 104.76721691913674,
+      "mae_wm2": 68.87118201540676,
+      "bias_wm2": 4.799064334567443
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 107.96305394176655,
+      "mae_wm2": 72.80156866231526,
+      "bias_wm2": 5.075139451869055
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.64128048512879,
+      "mae_wm2": 73.24538377716183,
+      "bias_wm2": 5.505794068295365
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 110.22294955265525,
+      "mae_wm2": 74.33605880992859,
+      "bias_wm2": 6.879016563308809
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 112.02583006499022,
+      "mae_wm2": 75.61912790925557,
+      "bias_wm2": 7.996211459053082
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.8404728786147,
+      "mae_wm2": 77.06086088248003,
+      "bias_wm2": 9.50478945459998
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.68032627799403,
+      "mae_wm2": 78.71309779791096,
+      "bias_wm2": 9.596713908677602
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.31800580425521,
+      "mae_wm2": 79.60365125333911,
+      "bias_wm2": 11.505100010590803
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 116.89977257783544,
+      "mae_wm2": 80.2380516770885,
+      "bias_wm2": 11.818437863285615
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.28629304829896,
+      "mae_wm2": 81.73661937568478,
+      "bias_wm2": 10.995703588250219
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 120.56694459474764,
+      "mae_wm2": 83.60139782461805,
+      "bias_wm2": 11.151759027605745
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.75358934857579,
+      "mae_wm2": 85.27771168345858,
+      "bias_wm2": 11.751230399498379
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 125.16828614072035,
+      "mae_wm2": 87.20820228406265,
+      "bias_wm2": 11.841188821877548
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.9058621248803,
+      "mae_wm2": 89.57515175700667,
+      "bias_wm2": 12.650180054782762
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACREL",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 131.2661790354518,
+      "mae_wm2": 92.45761573270153,
+      "bias_wm2": 12.672955040688752
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 105.6734672951643,
+      "mae_wm2": 69.1857876784164,
+      "bias_wm2": -4.157637845170336
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 105.53908369991939,
+      "mae_wm2": 69.70118444251703,
+      "bias_wm2": -2.1798958895545213
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 107.90904990332443,
+      "mae_wm2": 72.9418047229063,
+      "bias_wm2": -1.7738567251178359
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.45956916507892,
+      "mae_wm2": 73.38425235807946,
+      "bias_wm2": -0.7074907079435991
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 109.94232794782998,
+      "mae_wm2": 74.64659886626313,
+      "bias_wm2": 1.4093897048069195
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 111.99344926426379,
+      "mae_wm2": 76.03730663084677,
+      "bias_wm2": 2.337626286704215
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.90591160380689,
+      "mae_wm2": 77.60536240430292,
+      "bias_wm2": 4.193521555574693
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.63218437229982,
+      "mae_wm2": 79.03075754407242,
+      "bias_wm2": 4.350117163434744
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.55698066332124,
+      "mae_wm2": 79.48207976571312,
+      "bias_wm2": 5.3316713864411724
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 117.52102207287518,
+      "mae_wm2": 80.13798887332004,
+      "bias_wm2": 5.79100343439848
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.6758401981526,
+      "mae_wm2": 81.3251893990111,
+      "bias_wm2": 4.678125999898735
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 121.07964269703679,
+      "mae_wm2": 83.32357375514172,
+      "bias_wm2": 4.5727952569084165
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.73342318571453,
+      "mae_wm2": 85.03547731361988,
+      "bias_wm2": 5.61425377730907
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 125.05779068973995,
+      "mae_wm2": 86.97885213853573,
+      "bias_wm2": 5.393461682755956
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.51100952520356,
+      "mae_wm2": 89.3636280683636,
+      "bias_wm2": 6.41403603126378
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "ACRELWIN",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 130.82135113910232,
+      "mae_wm2": 92.0810849688121,
+      "bias_wm2": 6.333871540944175
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 105.35954191305602,
+      "mae_wm2": 67.27385526911658,
+      "bias_wm2": -1.4881395974619187
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 105.27688455995923,
+      "mae_wm2": 67.96309082194529,
+      "bias_wm2": 0.6891259044720517
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 106.77405669595859,
+      "mae_wm2": 70.20895627520055,
+      "bias_wm2": 1.0454092223774738
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 107.5605524749781,
+      "mae_wm2": 71.03192556348077,
+      "bias_wm2": 1.4790684820975097
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 109.20786475703791,
+      "mae_wm2": 72.39713092443931,
+      "bias_wm2": 3.646696039051391
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 110.81202291985105,
+      "mae_wm2": 73.6601307382399,
+      "bias_wm2": 4.631624726161563
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 112.53452453117329,
+      "mae_wm2": 75.0166497376049,
+      "bias_wm2": 6.19172173953134
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 113.81181859070777,
+      "mae_wm2": 76.19635146153756,
+      "bias_wm2": 5.835863473282562
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 114.11829789988909,
+      "mae_wm2": 76.7237530222103,
+      "bias_wm2": 7.3933254065025595
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 115.1882060158613,
+      "mae_wm2": 77.6256392168849,
+      "bias_wm2": 7.6178317863156995
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 116.0361498957213,
+      "mae_wm2": 78.55500896392194,
+      "bias_wm2": 6.325562485198769
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 118.3578880473756,
+      "mae_wm2": 80.15610922625982,
+      "bias_wm2": 6.2554210554731275
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 120.71100395002722,
+      "mae_wm2": 81.87799220843547,
+      "bias_wm2": 7.287210128454527
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 123.10511389082566,
+      "mae_wm2": 83.73622432221974,
+      "bias_wm2": 6.898337097328731
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 126.13814917614141,
+      "mae_wm2": 86.42188431426406,
+      "bias_wm2": 7.503994518022297
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "ACRELWIN",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 129.903369811762,
+      "mae_wm2": 89.37117089106852,
+      "bias_wm2": 7.270953030229506
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 15,
+      "n": 2126,
+      "rmse_wm2": 104.11797883513688,
+      "mae_wm2": 67.40341696550057,
+      "bias_wm2": 2.9550898089391264
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 30,
+      "n": 2143,
+      "rmse_wm2": 104.73446622768239,
+      "mae_wm2": 68.83626640827941,
+      "bias_wm2": 4.800650747991637
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 45,
+      "n": 2157,
+      "rmse_wm2": 108.05029971762862,
+      "mae_wm2": 72.89023392941004,
+      "bias_wm2": 5.001251591191883
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 60,
+      "n": 2168,
+      "rmse_wm2": 108.65453803758476,
+      "mae_wm2": 73.25734384445423,
+      "bias_wm2": 5.391035785664326
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 75,
+      "n": 2175,
+      "rmse_wm2": 110.21598510064425,
+      "mae_wm2": 74.38504697277469,
+      "bias_wm2": 6.809354284706419
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 90,
+      "n": 2176,
+      "rmse_wm2": 111.93087333700471,
+      "mae_wm2": 75.61346163120871,
+      "bias_wm2": 7.842711837529939
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 105,
+      "n": 2177,
+      "rmse_wm2": 113.77567545798517,
+      "mae_wm2": 77.05514603654544,
+      "bias_wm2": 9.366065562976615
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 120,
+      "n": 2179,
+      "rmse_wm2": 115.64076212923244,
+      "mae_wm2": 78.76826537358886,
+      "bias_wm2": 9.609170817403882
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 135,
+      "n": 2181,
+      "rmse_wm2": 116.29807549306538,
+      "mae_wm2": 79.61958105139853,
+      "bias_wm2": 11.275526230104873
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 150,
+      "n": 2178,
+      "rmse_wm2": 116.89617533061475,
+      "mae_wm2": 80.26592077797004,
+      "bias_wm2": 11.756296108738566
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 165,
+      "n": 2172,
+      "rmse_wm2": 118.28422993001934,
+      "mae_wm2": 81.79027175019924,
+      "bias_wm2": 10.88708744321605
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 180,
+      "n": 2159,
+      "rmse_wm2": 120.55836902210967,
+      "mae_wm2": 83.63715314869546,
+      "bias_wm2": 11.037948436616778
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 195,
+      "n": 2141,
+      "rmse_wm2": 122.76322807778159,
+      "mae_wm2": 85.34875170799457,
+      "bias_wm2": 11.661104748483192
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 210,
+      "n": 2121,
+      "rmse_wm2": 125.12712904384472,
+      "mae_wm2": 87.23715193604431,
+      "bias_wm2": 11.676791598769583
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 225,
+      "n": 2100,
+      "rmse_wm2": 127.8698026778959,
+      "mae_wm2": 89.62290025758975,
+      "bias_wm2": 12.435029606837073
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "ACRELWIN",
+      "lead_minutes": 240,
+      "n": 2078,
+      "rmse_wm2": 131.28408538598833,
+      "mae_wm2": 92.49702920800657,
+      "bias_wm2": 12.593172778372814
+    }
+  ],
+  "paired_key_rule": "exact station/init/target/lead/GHI-row keys and truth arrays required across baseline/candidate/seeds",
+  "candidate_manifests_sha256": {
+    "42": "56dedd3503e93acc9654600d81e6130333e1ebd666bbfc9fc617499ea7a74099",
+    "43": "f19e6123c6c51b72e85261a28d2e4f26ab36a84cca76de6e4e9d2e3acce209d7",
+    "44": "f94fea66fca4d5c2ac2d886b4c7a50e9d516e66c205041105a5e83ad87e46a9f"
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_inference_input": false,
+  "cpp_used_as_input": false,
+  "claim_rule": "validation screening only; training uses five-fold OOF forecast inputs; no independent-test claim"
+}

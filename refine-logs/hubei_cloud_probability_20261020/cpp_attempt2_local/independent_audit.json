@@ -1,0 +1,47 @@
+{
+  "state": "PASS_CORRECT_UTC_CPP_SIDECAR_KEYS_TIME_VALUES_TEST_CLOSED",
+  "rows": 3479,
+  "split_counts": {
+    "train": {
+      "rows": 3178,
+      "cot_valid_pixels": 807936,
+      "clp_valid_pixels": 807936,
+      "clp_class_counts": {
+        "0": 305854,
+        "1": 347688,
+        "2": 154394
+      },
+      "cot_range": [
+        0.0,
+        83.1275863647461
+      ]
+    },
+    "val": {
+      "rows": 301,
+      "cot_valid_pixels": 77056,
+      "clp_valid_pixels": 77056,
+      "clp_class_counts": {
+        "0": 24903,
+        "1": 40395,
+        "2": 11758
+      },
+      "cot_range": [
+        0.0,
+        76.443115234375
+      ]
+    }
+  },
+  "manifest_sha256": "3bae20a9607b941e544199b9f2900414b266ad11456e82d9bf51e7bd78c972f8",
+  "rows_sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+  "sidecar_sha256": "b27c1f9599591745c8bad85293c86b54ec3780a6b443760290542e1dca8982f0",
+  "extraction_report_sha256": "b4ec07313717e2f8dddd46a6eeb8ee640d4527cc9edcab4e98f042a1765636c3",
+  "source_report_failures": 0,
+  "time_rule": "CPP UTC=BJT-8h; checked row by row",
+  "coordinate_error_deg": {
+    "lat": 0.0,
+    "lon": 0.0
+  },
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "reference_caveat": "CPP is a retrieval reference, not independent cloud truth"
+}

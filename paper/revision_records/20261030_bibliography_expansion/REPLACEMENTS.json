@@ -1,0 +1,72 @@
+[
+  {
+    "language": "en",
+    "before": "Training, validation, and final evaluation dates are separated at the date-block level.",
+    "after": "Training, validation, and final evaluation dates are separated at the date-block level to reduce dependence between fitting and evaluation samples \\cite{roberts2017}."
+  },
+  {
+    "language": "zh",
+    "before": "训练、验证与最终评价按日期块分离。",
+    "after": "训练、验证与最终评价按日期块分离，以降低拟合与评价样本之间的依赖[@roberts2017]。"
+  },
+  {
+    "language": "en",
+    "before": "The retriever is a U-Net with two downsampling stages,",
+    "after": "The retriever follows the U-Net encoder--decoder architecture \\cite{unet2015}, with two downsampling stages,"
+  },
+  {
+    "language": "zh",
+    "before": "采用两级下采样U-Net，特征宽度为32、64、128，",
+    "after": "采用U-Net编码器—解码器结构[@unet2015]，设置两级下采样，特征宽度为32、64、128，"
+  },
+  {
+    "language": "en",
+    "before": "with a masked Huber objective,",
+    "after": "with a masked Huber objective \\cite{huber1964},"
+  },
+  {
+    "language": "zh",
+    "before": "使用CPP的log(1+COT)监督，损失为",
+    "after": "使用CPP的log(1+COT)监督，采用带有效像元掩膜的Huber损失[@huber1964]："
+  },
+  {
+    "language": "en",
+    "before": "Uncertainty is evaluated by paired resampling of date blocks, retaining overlapping forecast records within the same resampled block.",
+    "after": "Uncertainty is evaluated by paired resampling of date blocks, retaining overlapping forecast records within the same resampled block. This follows the principle of resampling groups rather than treating correlated records as independent observations \\cite{field2007}."
+  },
+  {
+    "language": "zh",
+    "before": "区间由日期块配对重采样估计，重叠预报记录保留在相应日期块内。",
+    "after": "区间由日期块配对重采样估计，重叠预报记录保留在相应日期块内。这遵循对整组数据重采样、避免将相关记录视为独立观测的原则[@field2007]。"
+  },
+  {
+    "language": "en",
+    "before": "Thickness-dependent gains should be interpreted through both attenuation and irradiance variability. A local COT error can affect the inferred radiation level, while cloud edges, diffuse radiation, and changes during a 15-minute interval complicate the mapping to station GHI. The continuous cases connect these processes to the conditions in which the added representation succeeds or fails.",
+    "after": "Thickness-dependent gains should be interpreted through both attenuation and irradiance variability. Radiative-transfer-based estimation links optical-property errors to surface fluxes, while unresolved broken clouds complicate agreement with point observations \\cite{takenaka2011}. Cloud edges, diffuse radiation, and changes during a 15-minute interval further complicate the mapping to station GHI. Cloud-shadow displacement and viewing parallax can also change which cloud pixels are relevant to a station \\cite{miller2018,wiltink2025}. The continuous cases connect these processes to the conditions in which the added representation succeeds or fails."
+  },
+  {
+    "language": "zh",
+    "before": "厚度依赖的收益应同时从辐射衰减和辐照度变化理解。局地COT误差影响辐射量级；云边界、散射辐射及15分钟内的变化使站点GHI映射更复杂。连续事件将这些过程与表示有效或失效的条件联系起来。",
+    "after": "厚度依赖的收益应同时从辐射衰减和辐照度变化理解。基于辐射传输的估计将光学属性误差与地表通量联系起来，而未解析的碎云使其与点观测的一致性更加复杂[@takenaka2011]。云边界、散射辐射及15分钟内的变化也会影响站点GHI映射。云影位移和观测视差还可能改变与站点相关的云像元[@miller2018,wiltink2025]。连续事件将这些过程与表示有效或失效的条件联系起来。"
+  },
+  {
+    "language": "en",
+    "before": "Spatial smoothing can reduce local COT contrasts, while errors in cloud growth and dissipation can suppress or delay changes in optical thickness.",
+    "after": "Spatial smoothing can reduce local COT contrasts, while errors in cloud growth and dissipation can suppress or delay changes in optical thickness. Prior nowcasting studies distinguish spatial appearance and numerical errors, and identify difficulties in representing cloud evolution \\cite{chen2024,cui2024}."
+  },
+  {
+    "language": "zh",
+    "before": "空间平滑可能削弱COT的局地对比；云团增长与消散误差则可能压低或延迟光学厚度变化。",
+    "after": "空间平滑可能削弱COT的局地对比；云团增长与消散误差则可能压低或延迟光学厚度变化。已有短临研究区分空间形态与数值误差，并指出表示云演变的困难[@chen2024,cui2024]。"
+  },
+  {
+    "language": "en",
+    "before": "CPP-based error measures assess agreement with a retrieval reference, whereas GHI performance is assessed against station observations.",
+    "after": "CPP-based error measures assess agreement with a retrieval reference, whereas GHI performance is assessed against station observations. Ground-reference quality also matters: a recent FY-4B validation study showed that radiometer quality can materially affect the assessment of satellite irradiance products \\cite{chen2025fy4b}."
+  },
+  {
+    "language": "zh",
+    "before": "CPP指标衡量与检索参考的一致性，GHI精度以站点观测评价。",
+    "after": "CPP指标衡量与检索参考的一致性，GHI精度以站点观测评价。地面参考质量同样重要：近期FY-4B验证研究表明，辐射仪质量会实质影响卫星辐照度产品的评价[@chen2025fy4b]。"
+  }
+]

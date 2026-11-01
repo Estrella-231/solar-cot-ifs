@@ -1,0 +1,132 @@
+{
+  "state": "COMPLETE_EXPLORATORY_HCV_REGIME_DIAGNOSTIC",
+  "source_run_manifest_sha256": "f0bc1e4a3dda654504b1bcd0bea3ade5d2af94d386771a92c8df3069b6ea1e73",
+  "comparison": "P-XC forecast COT GHI head minus no-COT GHI head; same H OOF keys, common truth, paired seeds",
+  "conditioning_variables": "P-XC predicted station-center COT bins (0-1, 1-10, 10-30, >=30) and target solar-zenith bands (<80, 80-90 degrees)",
+  "bootstrap": {
+    "unit": "fixed calendar two-day BJT blocks",
+    "reps": 5000,
+    "seed": 20261021
+  },
+  "results": {
+    "predicted_center_COT < 1": {
+      "delta_rmse_pxc_minus_none_wm2": 2.3059536587275935,
+      "ci95_low": -2.544094473690579,
+      "ci95_high": 7.483393552968289,
+      "two_day_blocks": 89,
+      "rows_station_seed": {
+        "sili": {
+          "42": 18875,
+          "43": 18875,
+          "44": 18875
+        },
+        "zhujia": {
+          "42": 29409,
+          "43": 29409,
+          "44": 29409
+        }
+      },
+      "interpretation": "exploratory H-only post-hoc stratification; positive means P-XC worsens"
+    },
+    "predicted_center_1 <= COT < 10": {
+      "delta_rmse_pxc_minus_none_wm2": 0.67498143029619,
+      "ci95_low": -1.5812909367229657,
+      "ci95_high": 3.101108240139833,
+      "two_day_blocks": 111,
+      "rows_station_seed": {
+        "sili": {
+          "42": 17963,
+          "43": 17963,
+          "44": 17963
+        },
+        "zhujia": {
+          "42": 18984,
+          "43": 18984,
+          "44": 18984
+        }
+      },
+      "interpretation": "exploratory H-only post-hoc stratification; positive means P-XC worsens"
+    },
+    "predicted_center_10 <= COT < 30": {
+      "delta_rmse_pxc_minus_none_wm2": -0.09686976926656143,
+      "ci95_low": -3.1055622334293593,
+      "ci95_high": 2.9385308858350667,
+      "two_day_blocks": 105,
+      "rows_station_seed": {
+        "sili": {
+          "42": 18726,
+          "43": 18726,
+          "44": 18726
+        },
+        "zhujia": {
+          "42": 13429,
+          "43": 13429,
+          "44": 13429
+        }
+      },
+      "interpretation": "exploratory H-only post-hoc stratification; positive means P-XC worsens"
+    },
+    "predicted_center_COT >= 30": {
+      "delta_rmse_pxc_minus_none_wm2": 0.3170008683914129,
+      "ci95_low": -1.4507183363315324,
+      "ci95_high": 2.0361055577594764,
+      "two_day_blocks": 85,
+      "rows_station_seed": {
+        "sili": {
+          "42": 16781,
+          "43": 16781,
+          "44": 16781
+        },
+        "zhujia": {
+          "42": 17595,
+          "43": 17595,
+          "44": 17595
+        }
+      },
+      "interpretation": "exploratory H-only post-hoc stratification; positive means P-XC worsens"
+    },
+    "SOZ < 80 deg": {
+      "delta_rmse_pxc_minus_none_wm2": 1.1839746502394586,
+      "ci95_low": -1.356390908245267,
+      "ci95_high": 3.6760391195444115,
+      "two_day_blocks": 112,
+      "rows_station_seed": {
+        "sili": {
+          "42": 63654,
+          "43": 63654,
+          "44": 63654
+        },
+        "zhujia": {
+          "42": 69424,
+          "43": 69424,
+          "44": 69424
+        }
+      },
+      "interpretation": "exploratory H-only post-hoc stratification; positive means P-XC worsens"
+    },
+    "80 <= SOZ < 90 deg": {
+      "delta_rmse_pxc_minus_none_wm2": 0.9654902836424247,
+      "ci95_low": -0.31676755227297193,
+      "ci95_high": 2.197823901582177,
+      "two_day_blocks": 112,
+      "rows_station_seed": {
+        "sili": {
+          "42": 8664,
+          "43": 8664,
+          "44": 8664
+        },
+        "zhujia": {
+          "42": 9902,
+          "43": 9902,
+          "44": 9902
+        }
+      },
+      "interpretation": "exploratory H-only post-hoc stratification; positive means P-XC worsens"
+    }
+  },
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false,
+  "claim_boundary": "post-hoc subgroup diagnostics only; not a confirmatory result and not a model-selection gate"
+}

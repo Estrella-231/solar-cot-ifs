@@ -1,0 +1,64 @@
+#!/bin/bash
+#PBS -N fghi_oracle_cf
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=12:gpus=3
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+FORECAST_PACK=$EXP/results/future_ghi_oof_head_pack_v2
+ORACLE_PACK=$EXP/results/future_cot_oracle_head_pack_v2
+HEAD_ROOT=$EXP/results/future_ghi_oof_cot_reliability_v1
+OUTPUT=$EXP/results/future_cot_oracle_inference_counterfactual_v1
+STAGING=${OUTPUT}.partial_${PBS_JOBID}
+mkdir -p "$EXP/logs"
+JOB_LOG=$EXP/logs/future_cot_oracle_inference_counterfactual_${PBS_JOBID}.log
+exec > >(tee -a "$JOB_LOG") 2>&1
+cd "$PROJECT"
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_futureghi_oracle_cf_pycache
+
+sha256sum -c "$EXP/ORACLE_COT_INFERENCE_COUNTERFACTUAL_SHA256SUMS"
+python -m py_compile "$EXP/oracle_cot_inference_counterfactual.py" "$EXP/aggregate_oracle_cot_inference_counterfactual.py" "$EXP/train_future_ghi_heads.py"
+test -d "$FORECAST_PACK" && test -d "$ORACLE_PACK" && test -d "$HEAD_ROOT"
+test ! -e "$OUTPUT" && test ! -e "$STAGING"
+python - "$FORECAST_PACK/pack_manifest.json" "$ORACLE_PACK/pack_manifest.json" <<'PY'
+import json,sys
+f,o=(json.load(open(p)) for p in sys.argv[1:])
+assert f['state']=='COMPLETE_CAUSAL_FUTURE_GHI_HEAD_PACK' and f['train_forecast_oof'] is True and f['forecast_bank_oof_fold_count']==5
+assert o['state']=='COMPLETE_ORACLE_FUTURE_COT_GHI_PACK' and o['oracle_only'] is True and o['deployable'] is False
+assert f['test_payload_opened'] is False and f['buffer_payload_opened'] is False
+assert o['test_payload_opened'] is False and o['buffer_payload_opened'] is False
+print('ORACLE_COT_COUNTERFACTUAL_PROVENANCE_PASS')
+PY
+mapfile -t GPU_IDS < <(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "${#GPU_IDS[@]}" -ne 3 ]; then
+  echo "REFUSE: expected exactly three allocated node22 GPUs, got ${GPU_IDS[*]:-none}"; exit 32
+fi
+for i in 0 1 2; do
+  GPU=${GPU_IDS[$i]}
+  SEED=$((42+i))
+  nvidia-smi -i "$GPU" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+done
+mkdir -p "$STAGING"
+pids=()
+for i in 0 1 2; do
+  GPU=${GPU_IDS[$i]}
+  SEED=$((42+i))
+  CUDA_VISIBLE_DEVICES="$GPU" python -u "$EXP/oracle_cot_inference_counterfactual.py" \
+    --forecast-pack "$FORECAST_PACK" --oracle-pack "$ORACLE_PACK" \
+    --forecast-head-root "$HEAD_ROOT" --output "$STAGING/seed${SEED}" --seeds "$SEED" \
+    --batch-size 1792 --bootstrap 2000 --bootstrap-seed 20261020 \
+    > "$STAGING/seed${SEED}.log" 2>&1 &
+  pids+=("$!")
+done
+for pid in "${pids[@]}"; do wait "$pid"; done
+python -u "$EXP/aggregate_oracle_cot_inference_counterfactual.py" \
+  --seed-output-root "$STAGING" --output "$STAGING"
+mv "$STAGING" "$OUTPUT"
+echo "ORACLE_COT_INFERENCE_COUNTERFACTUAL_COMPLETE oracle_only=1 test_payload_opened=0 buffer_payload_opened=0"

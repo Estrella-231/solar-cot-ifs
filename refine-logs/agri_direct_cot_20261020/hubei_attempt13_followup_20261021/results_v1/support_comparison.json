@@ -1,0 +1,150 @@
+{
+  "state": "COMPLETE_READONLY_CPP_GEOMETRY_SUPPORT_COMPARISON",
+  "unique_source_row_stats": {
+    "train": {
+      "old_valid": 699085,
+      "corrected_valid": 699023,
+      "same_valid": 691969,
+      "old_only": 7116,
+      "corrected_only": 7054,
+      "old_valid_outside_corrected_geometry": 7116,
+      "old_valid_unambiguously_outside_corrected_geometry": 7116,
+      "corrected_valid_outside_corrected_geometry": 0,
+      "max_abs_target_difference_on_common_valid_physical_cot": 0.0
+    },
+    "val": {
+      "old_valid": 66630,
+      "corrected_valid": 67187,
+      "same_valid": 65984,
+      "old_only": 646,
+      "corrected_only": 1203,
+      "old_valid_outside_corrected_geometry": 646,
+      "old_valid_unambiguously_outside_corrected_geometry": 646,
+      "corrected_valid_outside_corrected_geometry": 0,
+      "max_abs_target_difference_on_common_valid_physical_cot": 0.0
+    }
+  },
+  "repeated_sidecar_target_stats": {
+    "train": {
+      "matched_forecast_targets": 17616,
+      "old_valid": 4386024,
+      "corrected_valid": 4382924,
+      "same_valid": 4370946,
+      "old_only": 15078,
+      "corrected_only": 11978,
+      "old_valid_outside_corrected_geometry": 15078,
+      "old_valid_unambiguously_outside_corrected_geometry": 15078,
+      "corrected_valid_outside_corrected_geometry": 0
+    },
+    "val": {
+      "matched_forecast_targets": 1865,
+      "old_valid": 467154,
+      "corrected_valid": 467588,
+      "same_valid": 466664,
+      "old_only": 490,
+      "corrected_only": 924,
+      "old_valid_outside_corrected_geometry": 490,
+      "old_valid_unambiguously_outside_corrected_geometry": 490,
+      "corrected_valid_outside_corrected_geometry": 0
+    }
+  },
+  "source_rows_with_mask_difference": 86,
+  "source_pack_paths": {
+    "old_correct_utc": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cloud_probability_20261020/R_pack_correctutc_attempt2",
+    "corrected_solar": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/prepared_attempt12/R_packs/full",
+    "actual_sidecar": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/hubei_cot_auxiliary_retrain_attempt13_retry4/cpp_target_sidecar"
+  },
+  "old_status": {
+    "state": "HUBEI_R_TRAIN_VAL_CORRECT_UTC_PACK_BUILT_TEST_CLOSED",
+    "rows": 3479,
+    "counts_by_split": {
+      "train": {
+        "rows": 3178,
+        "supervised_rows": 2741,
+        "valid_pixels": 699085
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 262,
+        "valid_pixels": 66630
+      }
+    },
+    "source_input_pack_status_sha256": "92c68b591b64377855e4c66e3dcd4b55adf48c78fbe33436e218d4747acaf0fd",
+    "source_x_norm_sha256": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f",
+    "source_norm_sha256": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+    "cpp_sidecar_sha256": "b27c1f9599591745c8bad85293c86b54ec3780a6b443760290542e1dca8982f0",
+    "cpp_rows_sha256": "6e307b98f27df523bd5d7d7200d412e58ba768991b9b4e265290f6b3fe025957",
+    "time_rule": "CPP UTC = BJT - 8 hours",
+    "spatial_grid": {
+      "lat_shape": [
+        16,
+        16
+      ],
+      "lon_shape": [
+        16,
+        16
+      ],
+      "max_abs_lat": 32.400001525878906,
+      "max_abs_lon": 112.4000015258789
+    },
+    "target": "physical COT in [0,100], stored divided by 100; loss log1p after trainer rescales",
+    "mask": "correct-UTC CPP COT valid mask AND decoded AGRI day_mask>0.5 AND cosSOZ>cos(80deg)",
+    "normalization_fit": "historical train-only AGRI/geometry normalization; old CPP target and mask not read",
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0,
+    "reference_status": "CPP retrieval supervision, not independent truth"
+  },
+  "new_status": {
+    "state": "HUBEI_R_TRAIN_VAL_CORRECT_UTC_PACK_BUILT_TEST_CLOSED",
+    "rows": 3479,
+    "counts_by_split": {
+      "train": {
+        "rows": 3178,
+        "supervised_rows": 2738,
+        "valid_pixels": 699023
+      },
+      "val": {
+        "rows": 301,
+        "supervised_rows": 264,
+        "valid_pixels": 67187
+      }
+    },
+    "time_rule": "CPP UTC = BJT - 8 hours",
+    "fold": "full",
+    "solar_geometry_corrected": true,
+    "solar_geometry_source_sha256": "a45f4225ed09b82479db9555605a10095901727c1a4cf95d510d48f6fc02f1f5",
+    "corrected_SZA80_mask": true,
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0,
+    "source_correctutc_pack_sha256": "2db17d161f4d38ba3d55232a6dafd9efcf4b23fab65734a0bc8483be63c6d0d5",
+    "source_CPP_sidecar_sha256": "b27c1f9599591745c8bad85293c86b54ec3780a6b443760290542e1dca8982f0"
+  },
+  "sources_sha256": {
+    "prepared_inputs": "657e0edfcd5a3c9524c5cebb42179c5478f6bced8df591eabbc27effad50f121",
+    "index": "a8692c0f924b4869840e9c25d88f16c1f869fd88d41452f1db8f9879f29581f8",
+    "side_manifest": "5ae56ed5f755d2555d8aff1f598dd61056a38fa3402d0155fb35cf50a8bbad21",
+    "old_rows": "6ef1f3e5b3e1c9d015931d522366cac383ec1d2b575409d93c1db57d010b27df",
+    "new_rows": "2322b0a8dd8d480a65e702e7b10def6c4ddea737e9183a5f44b28e13c1744511",
+    "old_target": "c290b74f61664ba32567c6c675f9ee964c91dd22057ec16ffd9ea0fa2ef07134",
+    "old_mask": "c4f8cd00215281d9e841defa42bfdb0f382c22297738d6afc655d985ff510291",
+    "new_target": "befbf167cee3cde086ca64464a0e5d5c9b897c6cae4230e5eb211c3c046c2563",
+    "new_mask": "433eda0b165d2067441139c4793aedf9c4b9d23e944f1f29e978ea7bbd44ae18",
+    "new_x_norm": "79fb226f7a5af0e5c0bdf00b4ce9cc7bf962b462e4141b8d22240d1787a7a66f",
+    "new_norm": "4db7bb624a7a11edb7c337fa108a0a426a5018a2b885c520e894b988d3394446",
+    "old_status": "2db17d161f4d38ba3d55232a6dafd9efcf4b23fab65734a0bc8483be63c6d0d5",
+    "new_status": "345a080832b893c9c63b85180538a1dcfb13a6aae32617daaa99ad87892715d4",
+    "side_train_keys.csv": "9ad73c31ba0fabd14da96688f5ff9ddd14ee82fc0575754542663002a0cb632b",
+    "side_train_target_physical.npy": "f6e8bad22a0f01a007d9804d7894a2c56c041eda8fc4b30428ce32bd3b478cd6",
+    "side_train_mask.npy": "6e574c1305ebe1479d8e2ad0fb0adf477dbfda9a8e4a26625f3b75cd0e0f008b",
+    "side_val_keys.csv": "b1af4992c06a1a49a62c6a98db22153e2744c645d3e417d67ccc6100b9542775",
+    "side_val_target_physical.npy": "505ef4db719feba1fe19c59227bd86b16d5235ef381939b6ee16a509c066de6b",
+    "side_val_mask.npy": "9a590ef05f27ac2af4fb33d794bb6205fef847d3020cc817a2ac43c2e02722fc"
+  },
+  "script_sha256": "e3c134819fabe419673196ddb01588529a47f80d42cfcf706beafa80b8d57533",
+  "plan_sha256": "40c6f0416157ae867ab498162c6a47c21751886cca9a97c1eaf83c62902ff46d",
+  "activity": "read-only train/val support diagnostic; not a model/GHI result",
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "ghi_labels_read": false,
+  "active_files_changed": false
+}

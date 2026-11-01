@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N hb13_agri_aud
+#PBS -q normal
+#PBS -l nodes=1:ppn=4
+#PBS -l mem=16gb
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/attempt13_agri_guard_datefix_audit_v3/pbs_audit.log
+set -euo pipefail
+BASE=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021
+SRC=$BASE/hubei_cot_auxiliary_retrain_attempt13_ddp4_20261021/agri_guard_retry4/banks
+WORK=$BASE/attempt13_agri_guard_datefix_audit_v3
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+mkdir -p "$WORK"
+exec > >(tee -a "$WORK/audit.log") 2>&1
+printf 'START %s host=%s job=%s GPU=none\n' "$(date -Is)" "$(hostname)" "$PBS_JOBID"
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+qtext=$($QSTAT -u slfu)
+printf '%s\n' "$qtext"
+n=$(printf '%s\n' "$qtext" | awk '$1 ~ /^[0-9]+\./ && $10 != "C" {n++} END {print n+0}')
+test "$n" -le 3
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES="" PYTHONUNBUFFERED=1
+sha256sum "$WORK/audit_attempt13_agri_guard_fp64_v5.py"
+"$PY" -m py_compile "$WORK/audit_attempt13_agri_guard_fp64_v5.py"
+test -s "$SRC/mse_control/BANK_REPORT.json"
+test -s "$SRC/cot_aux/BANK_REPORT.json"
+"$PY" "$WORK/audit_attempt13_agri_guard_fp64_v5.py" \
+  --mse-bank "$SRC/mse_control" \
+  --cot-aux-bank "$SRC/cot_aux" \
+  --output "$WORK/fp64_audit_v3"
+printf 'COMPLETE %s host=%s job=%s\n' "$(date -Is)" "$(hostname)" "$PBS_JOBID"

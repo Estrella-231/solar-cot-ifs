@@ -1,0 +1,5 @@
+# Captions
+
+**EN.** Sensitivity of a fixed irradiance mapping to image and COT sources. (a) Equal-station, equal-seed GHI RMSE on 8,111 common replacement rows from 12 development target dates (three stations, three seeds). All branches retain historical COT; “no future COT” removes only the additional future-COT correction input. (b) Replacing forecast AGRI with observed target-time AGRI in that control. (c) Adding source-matched future COT relative to the control with the same AGRI source. Intervals are 95% paired target-date block bootstrap intervals (5,000 draws); the horizontal scales in (b) and (c) differ. Observed future AGRI and its retrieved COT are offline diagnostic inputs. These comparisons do not constitute independent evaluation or deployable forecast improvements.
+
+**中文。** 固定辐照度映射对云图与COT来源的敏感性。(a) 12个开发目标日期、8,111条共同可替换样本，三个站点各三个种子的GHI RMSE分别计算后等权汇总。各分支均保留历史COT，“无未来COT”仅去除额外的未来COT修正输入。(b) 在该控制组中以真实目标时刻AGRI替换预测AGRI。(c) 相对相同AGRI来源的控制，加入来源匹配的未来COT。区间为5,000次目标日期块配对bootstrap的95%区间；(b)(c)横轴范围不同。未来真实AGRI及其反演COT仅供离线诊断，结果不构成独立评价或可部署预报收益。

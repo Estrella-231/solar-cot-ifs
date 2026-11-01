@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N simvp_axis_fix
+#PBS -q normal
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/regional_station_cot_20260925/simvp_axis_corrected_val_20260928.pbs.log
+set -euo pipefail
+trap 'rc=$?; echo "FAILED: line=$LINENO status=$rc"; exit "$rc"' ERR
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$ROOT/experiments/regional_station_cot_20260925
+BANK=$EXP/sili_cot_dynamics_bank_train512_val512_20260927_v1
+DAYS=$EXP/sili_station_tracks_day_sidecar_seed42_20260928.npz
+OUT=$EXP/simvp_axis_corrected_val_20260928
+SCRIPT=$ROOT/scripts/evaluate_corrected_simvp_validation_20260928.py
+test -s "$BANK/complete.json"
+test -s "$BANK/val/cot_local_forecast.npy"
+test -s "$DAYS"
+test ! -e "$OUT"
+python -m py_compile "$SCRIPT"
+python -u "$SCRIPT" --bank "$BANK" --days "$DAYS" --output "$OUT"
+echo CORRECTED_SIMVP_VALIDATION_COMPLETE

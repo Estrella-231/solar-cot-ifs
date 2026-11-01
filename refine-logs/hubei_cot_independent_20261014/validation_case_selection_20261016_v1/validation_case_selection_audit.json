@@ -1,0 +1,271 @@
+{
+  "state": "FROZEN_VALIDATION_CASE_SELECTION_NO_MODEL_ERRORS_READ",
+  "input_labels": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\trainval_labels_20261015_v1\\ghi15_train_val_daylight_clear.csv",
+  "input_sha256": "326e16c16741ea4dd7696b81bcd11d800737f08274fd265fbf4373d2c411538c",
+  "selection_script_sha256": "ae31d31566c876f23ca96ed606244c773ca1a96e684f0a5e79b097a049a93b29",
+  "output_manifest": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\validation_case_selection_20261016_v1\\validation_case_manifest.csv",
+  "output_manifest_sha256": "7aff7ec07bf03b3a398b3f094fa71842502cd3f129173148c4696c3298016e43",
+  "split_filter": "val_only",
+  "eligible_label_filter": "valid_daylight_clear_sky_label==1 and mask==1",
+  "change_case": "largest observed GHI range over five consecutive 15-minute targets (60 minutes); illustrative ramp, not weather class",
+  "fixed_case": "min SHA256(hubei-val-case-v1|station|season|date) among remaining supported validation dates",
+  "model_predictions_or_errors_read": false,
+  "CPP_or_COT_read_for_selection": false,
+  "test_or_buffer_rows_read": false,
+  "cloud_weather_labels": "unavailable; no independent CPP/CLP class assigned",
+  "selection_count": 24,
+  "records": [
+    {
+      "station": "Niushou",
+      "season": "winter_DJF",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-12-02",
+      "valid_daylight_targets": 32,
+      "observed_GHI_range_wm2": 394.6,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "winter_DJF",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-02-20",
+      "valid_daylight_targets": 37,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "1080066e531b35d4ff322ef1f7d7a3b66a7ca4d4a9676177fb6d9f26ce0b71aa",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "spring_MAM",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2026-05-03",
+      "valid_daylight_targets": 43,
+      "observed_GHI_range_wm2": 526.066667,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "spring_MAM",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-04-20",
+      "valid_daylight_targets": 43,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "4cc97fae1922977a939fcb8d84370798e4296d57e6ae974beb7231c721a17cdd",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "summer_JJA",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2026-06-29",
+      "valid_daylight_targets": 50,
+      "observed_GHI_range_wm2": 476.6,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "summer_JJA",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2025-08-23",
+      "valid_daylight_targets": 41,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "840b5395e4027231ca98b62261092e85129c7a70484d471ce4b1d9a7870c794f",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "autumn_SON",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-09-27",
+      "valid_daylight_targets": 41,
+      "observed_GHI_range_wm2": 397.466667,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Niushou",
+      "season": "autumn_SON",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2025-11-06",
+      "valid_daylight_targets": 37,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "3655eb8913b8a367a9ed630d97561c30e4c8f024097de9624e56e677f8570561",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "winter_DJF",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-12-03",
+      "valid_daylight_targets": 33,
+      "observed_GHI_range_wm2": 451.4,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "winter_DJF",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-01-04",
+      "valid_daylight_targets": 30,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "04817ffb399aa0b9924f3ae22e83d6b14ac6b7344dc27fa4ae04e16be6539787",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "spring_MAM",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2026-05-03",
+      "valid_daylight_targets": 41,
+      "observed_GHI_range_wm2": 441.333333,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "spring_MAM",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-03-02",
+      "valid_daylight_targets": 37,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "587af8098fb67840bb60f25e42c668b0dbd02392264ef78f0e4f14899dbd8a91",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "summer_JJA",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-08-23",
+      "valid_daylight_targets": 39,
+      "observed_GHI_range_wm2": 857.466667,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "summer_JJA",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-06-28",
+      "valid_daylight_targets": 45,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "364c81121e6ea1a9c46d62f000ce87a4d76eaf410fa669e2983df7098688bff1",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "autumn_SON",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-11-05",
+      "valid_daylight_targets": 37,
+      "observed_GHI_range_wm2": 347.466667,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Wangzhai",
+      "season": "autumn_SON",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2025-10-05",
+      "valid_daylight_targets": 38,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "1d92f9d5561427934ed9425b0f01425e9f6b570f901bfaa9a0f8983551c10553",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "winter_DJF",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2026-02-20",
+      "valid_daylight_targets": 38,
+      "observed_GHI_range_wm2": 556.8,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "winter_DJF",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-02-21",
+      "valid_daylight_targets": 35,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "1104fc73408c2be1f43158b14d0aac1245e16b11024de5577c0acb2da881c233",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "spring_MAM",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2026-03-02",
+      "valid_daylight_targets": 37,
+      "observed_GHI_range_wm2": 312.733333,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "spring_MAM",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-04-20",
+      "valid_daylight_targets": 40,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "1db35245fd4d6cf34ed38e301e8411a7fe8a36d1b85d391677302e1a6706a63c",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "summer_JJA",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-08-22",
+      "valid_daylight_targets": 41,
+      "observed_GHI_range_wm2": 465.333333,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "summer_JJA",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2026-06-29",
+      "valid_daylight_targets": 44,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "4312b92ce0bd5c0c27298dc68a4639584cba3bf61f6cb73701b0ce33ac88838a",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "autumn_SON",
+      "case_type": "largest_observed_GHI_60min_range",
+      "date_BJT": "2025-09-27",
+      "valid_daylight_targets": 39,
+      "observed_GHI_range_wm2": 373.2,
+      "selection_basis": "truth_and_mask_only_no_model_prediction_or_error",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    },
+    {
+      "station": "Mizhuang",
+      "season": "autumn_SON",
+      "case_type": "fixed_hash_date",
+      "date_BJT": "2025-11-05",
+      "valid_daylight_targets": 33,
+      "observed_GHI_range_wm2": "",
+      "selection_basis": "minimum_SHA256_of_station_season_date_among_remaining_valid_validation_dates",
+      "selection_hash": "17dd2771386f77fcf1bf482e43bcadd067bdb60bf1e2f78d54be89d935498821",
+      "weather_class": "unverified_no_independent_CPP_CLP_label"
+    }
+  ]
+}

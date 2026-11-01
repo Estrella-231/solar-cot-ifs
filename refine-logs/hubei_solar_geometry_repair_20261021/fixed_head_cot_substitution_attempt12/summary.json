@@ -1,0 +1,750 @@
+{
+  "state": "VALIDATION_ONLY_FROZEN_FAC_COT_SUBSTITUTION_COMPLETE",
+  "interpretation": "fixed-head counterfactual; not a retrained-arm forecast result and not an independent test",
+  "sources": {
+    "forecast_cot": "corrected-SimVP predicted future AGRI -> frozen corrected R; deployable forecast-chain input",
+    "history_persistence": "observed history AGRI at init_time -> same frozen corrected R; persistence diagnostic",
+    "offline_future_agri": "observed future AGRI at target_time -> same frozen corrected R; offline oracle input, not deployable"
+  },
+  "validation_only": true,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "input_alignment": "station/init_time_bjt/target_time_bjt/lead_minutes exact match; all arms scored on the common intersection",
+  "common_support": {
+    "Niushou": {
+      "validation_rows": 5305,
+      "common_init_and_target_rows": 992,
+      "missing_init_time_rows": 3800,
+      "missing_target_time_rows": 3748,
+      "coverage_fraction": 0.18699340245051838
+    },
+    "Wangzhai": {
+      "validation_rows": 4883,
+      "common_init_and_target_rows": 874,
+      "missing_init_time_rows": 3553,
+      "missing_target_time_rows": 3548,
+      "coverage_fraction": 0.17898832684824903
+    },
+    "Mizhuang": {
+      "validation_rows": 5087,
+      "common_init_and_target_rows": 909,
+      "missing_init_time_rows": 3624,
+      "missing_target_time_rows": 3640,
+      "coverage_fraction": 0.17869078042068018
+    }
+  },
+  "normalization_fit_split": "train",
+  "normalization_contract_sha256": "4ef1814a1d88107741de2b212e9d186d7950e4a26d21cb2a5466476db7476ec5",
+  "pack_report_sha256": "9449d75d5a2eb23398bf969f8eed2fb77156fbcd89a9f4fcb6f9c4274ea7eaee",
+  "ghi_rows_sha256": "13178e19488bf286f5a6699314e59f776d461178ea76090709e3b3fe45290000",
+  "forecast_cot_array_sha256": "94dec72dabf1f68032cce07fe87914038401f4bad3a4ac263ada7e24751b6968",
+  "R_validation_keys_sha256": "87b7e95549074f53d99ad66735726f1b67cfcfbeca99164d15104c32ec7412f1",
+  "R_validation_prediction_sha256": "c4ed659d776bab20c5fd8f3fb3798196c6d5e1ae2c9fd5c5e7f975c697fcf1bc",
+  "R_validation_mask_sha256": "ee2b8ea789de0f876110801648d8aba640e69545af7bddf2d2d0561483b2d7a3",
+  "trainer_sha256": "3b2319b5c72f3abb00f003f8c228d3cdd6bef1ab39fb72724ae7e8fd7bec53ab",
+  "inference_device": "cpu",
+  "inference_mixed_precision": "CPU FP32 fallback; baseline parity tolerance still enforced",
+  "baseline_reproduction_tolerance_wm2": 0.3,
+  "FAC_checkpoint_sha256": {
+    "Niushou": "c5f84627ad7090ae45349cd49de1845d999027fac6a0e46fac3af5bb320f2033",
+    "Wangzhai": "40873a4c601a56d291307880461d8202c858846773d5bb0f04f15b9c25a5d019",
+    "Mizhuang": "3908d3e05304070ccbb2bdedf7416ae459f5d520141a0b7bf77daf4374d33510"
+  },
+  "baseline_reproduction": {
+    "Niushou": {
+      "max_abs_wm2": 0.18570730524879764,
+      "rmse_abs_wm2": 0.03959269767640256
+    },
+    "Wangzhai": {
+      "max_abs_wm2": 0.2372942856818554,
+      "rmse_abs_wm2": 0.08301765311292189
+    },
+    "Mizhuang": {
+      "max_abs_wm2": 0.192827349754225,
+      "rmse_abs_wm2": 0.06019497100819137
+    }
+  },
+  "metrics": [
+    {
+      "station": "Niushou",
+      "horizon": "all",
+      "arm": "forecast_cot",
+      "n": 992,
+      "rmse_wm2": 103.56121514253066,
+      "mae_wm2": 74.9870119721089,
+      "bias_wm2": -47.22940175787563,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "all",
+      "arm": "history_persistence",
+      "n": 992,
+      "rmse_wm2": 129.8974200311397,
+      "mae_wm2": 84.91537349153349,
+      "bias_wm2": -62.326919126811035,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "all",
+      "arm": "offline_future_agri",
+      "n": 992,
+      "rmse_wm2": 103.82661842753078,
+      "mae_wm2": 73.13131608841671,
+      "bias_wm2": -52.13162611372231,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "1h",
+      "arm": "forecast_cot",
+      "n": 260,
+      "rmse_wm2": 103.25004193322746,
+      "mae_wm2": 70.75405931114487,
+      "bias_wm2": -49.43921515167197,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "1h",
+      "arm": "history_persistence",
+      "n": 260,
+      "rmse_wm2": 115.86558184547393,
+      "mae_wm2": 76.11517385972688,
+      "bias_wm2": -51.63873950323466,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "1h",
+      "arm": "offline_future_agri",
+      "n": 260,
+      "rmse_wm2": 104.19663913689485,
+      "mae_wm2": 70.35572283912212,
+      "bias_wm2": -46.21671209314789,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "2h",
+      "arm": "forecast_cot",
+      "n": 257,
+      "rmse_wm2": 103.17337007979528,
+      "mae_wm2": 76.07764100930278,
+      "bias_wm2": -44.40986212775281,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "2h",
+      "arm": "history_persistence",
+      "n": 257,
+      "rmse_wm2": 130.9682302185244,
+      "mae_wm2": 86.43555744238643,
+      "bias_wm2": -65.51497837658177,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "2h",
+      "arm": "offline_future_agri",
+      "n": 257,
+      "rmse_wm2": 109.18717226968849,
+      "mae_wm2": 76.87089780876191,
+      "bias_wm2": -54.85464651539347,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "3h",
+      "arm": "forecast_cot",
+      "n": 249,
+      "rmse_wm2": 103.60460311855267,
+      "mae_wm2": 76.01459219109869,
+      "bias_wm2": -53.63746236289744,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "3h",
+      "arm": "history_persistence",
+      "n": 249,
+      "rmse_wm2": 138.86866858378235,
+      "mae_wm2": 90.27677340555825,
+      "bias_wm2": -69.61865010230889,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "3h",
+      "arm": "offline_future_agri",
+      "n": 249,
+      "rmse_wm2": 104.63137853494644,
+      "mae_wm2": 74.00666007283183,
+      "bias_wm2": -56.575607913961434,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "4h",
+      "arm": "forecast_cot",
+      "n": 226,
+      "rmse_wm2": 104.3083745362227,
+      "mae_wm2": 77.48439495778747,
+      "bias_wm2": -40.83322083709726,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "4h",
+      "arm": "history_persistence",
+      "n": 226,
+      "rmse_wm2": 133.6654136443549,
+      "mae_wm2": 87.40376309466775,
+      "bias_wm2": -62.96388577300495,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Niushou",
+      "horizon": "4h",
+      "arm": "offline_future_agri",
+      "n": 226,
+      "rmse_wm2": 95.95875144611279,
+      "mae_wm2": 71.10751560420664,
+      "bias_wm2": -50.943616971511304,
+      "baseline_reproduction_max_abs_wm2": 0.18570730524879764
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "all",
+      "arm": "forecast_cot",
+      "n": 874,
+      "rmse_wm2": 121.28116988943094,
+      "mae_wm2": 85.1942813535143,
+      "bias_wm2": -26.404203233788348,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "all",
+      "arm": "history_persistence",
+      "n": 874,
+      "rmse_wm2": 130.17175695954788,
+      "mae_wm2": 84.1919219294196,
+      "bias_wm2": -37.61599373436078,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "all",
+      "arm": "offline_future_agri",
+      "n": 874,
+      "rmse_wm2": 111.71275432078973,
+      "mae_wm2": 76.9847323345801,
+      "bias_wm2": -27.632809747138165,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "1h",
+      "arm": "forecast_cot",
+      "n": 219,
+      "rmse_wm2": 125.3442837439155,
+      "mae_wm2": 90.5223410803795,
+      "bias_wm2": -22.97310539789966,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "1h",
+      "arm": "history_persistence",
+      "n": 219,
+      "rmse_wm2": 125.90983578678197,
+      "mae_wm2": 85.85749505077445,
+      "bias_wm2": -22.012750027669505,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "1h",
+      "arm": "offline_future_agri",
+      "n": 219,
+      "rmse_wm2": 118.5976408609157,
+      "mae_wm2": 84.42195133805828,
+      "bias_wm2": -14.66916529941468,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "2h",
+      "arm": "forecast_cot",
+      "n": 231,
+      "rmse_wm2": 130.151623957994,
+      "mae_wm2": 91.06178425881409,
+      "bias_wm2": -17.626283272317227,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "2h",
+      "arm": "history_persistence",
+      "n": 231,
+      "rmse_wm2": 131.74804881193376,
+      "mae_wm2": 86.63544567688662,
+      "bias_wm2": -37.718294820217295,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "2h",
+      "arm": "offline_future_agri",
+      "n": 231,
+      "rmse_wm2": 117.51799636717912,
+      "mae_wm2": 81.51989765511773,
+      "bias_wm2": -24.271560049895808,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "3h",
+      "arm": "forecast_cot",
+      "n": 222,
+      "rmse_wm2": 119.49064446297824,
+      "mae_wm2": 79.7473468775435,
+      "bias_wm2": -32.41079984769928,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "3h",
+      "arm": "history_persistence",
+      "n": 222,
+      "rmse_wm2": 134.12953712489372,
+      "mae_wm2": 81.27546785859847,
+      "bias_wm2": -45.635186314355735,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "3h",
+      "arm": "offline_future_agri",
+      "n": 222,
+      "rmse_wm2": 110.27107111627436,
+      "mae_wm2": 71.8083451490335,
+      "bias_wm2": -32.85519790476371,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "4h",
+      "arm": "forecast_cot",
+      "n": 202,
+      "rmse_wm2": 107.45229897501578,
+      "mae_wm2": 78.69418829587954,
+      "bias_wm2": -33.5608640697845,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "4h",
+      "arm": "history_persistence",
+      "n": 202,
+      "rmse_wm2": 128.47640494361988,
+      "mae_wm2": 82.79706205061122,
+      "bias_wm2": -45.60222179462639,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Wangzhai",
+      "horizon": "4h",
+      "arm": "offline_future_agri",
+      "n": 202,
+      "rmse_wm2": 97.93141237063561,
+      "mae_wm2": 69.4242561186664,
+      "bias_wm2": -39.79180302991815,
+      "baseline_reproduction_max_abs_wm2": 0.2372942856818554
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "all",
+      "arm": "forecast_cot",
+      "n": 909,
+      "rmse_wm2": 142.89912045429713,
+      "mae_wm2": 98.86800376720683,
+      "bias_wm2": 13.97052110682505,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "all",
+      "arm": "history_persistence",
+      "n": 909,
+      "rmse_wm2": 151.2799929588372,
+      "mae_wm2": 102.89977087597457,
+      "bias_wm2": 4.463870309520535,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "all",
+      "arm": "offline_future_agri",
+      "n": 909,
+      "rmse_wm2": 137.69691271210021,
+      "mae_wm2": 94.59316874544736,
+      "bias_wm2": 15.000596406495436,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "1h",
+      "arm": "forecast_cot",
+      "n": 219,
+      "rmse_wm2": 152.4529852962297,
+      "mae_wm2": 107.98952907270746,
+      "bias_wm2": 20.92486221200842,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "1h",
+      "arm": "history_persistence",
+      "n": 219,
+      "rmse_wm2": 149.67925381727616,
+      "mae_wm2": 106.79343099105925,
+      "bias_wm2": 21.83558384103855,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "1h",
+      "arm": "offline_future_agri",
+      "n": 219,
+      "rmse_wm2": 146.5037287067816,
+      "mae_wm2": 103.67668226743505,
+      "bias_wm2": 27.471261863053307,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "2h",
+      "arm": "forecast_cot",
+      "n": 230,
+      "rmse_wm2": 140.66364031529227,
+      "mae_wm2": 98.06244565389038,
+      "bias_wm2": 19.3137274432372,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "2h",
+      "arm": "history_persistence",
+      "n": 230,
+      "rmse_wm2": 148.24104767490772,
+      "mae_wm2": 103.00335877813951,
+      "bias_wm2": 3.4831874771792863,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "2h",
+      "arm": "offline_future_agri",
+      "n": 230,
+      "rmse_wm2": 136.03848996343177,
+      "mae_wm2": 95.22057276694404,
+      "bias_wm2": 15.18160216359024,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "3h",
+      "arm": "forecast_cot",
+      "n": 243,
+      "rmse_wm2": 143.32043672104362,
+      "mae_wm2": 98.6875115657268,
+      "bias_wm2": 5.335734010608067,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "3h",
+      "arm": "history_persistence",
+      "n": 243,
+      "rmse_wm2": 150.32064688458217,
+      "mae_wm2": 100.13057889571884,
+      "bias_wm2": -4.243515168788903,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "3h",
+      "arm": "offline_future_agri",
+      "n": 243,
+      "rmse_wm2": 137.47688116979228,
+      "mae_wm2": 94.09788155383401,
+      "bias_wm2": 7.905582865493625,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "4h",
+      "arm": "forecast_cot",
+      "n": 217,
+      "rmse_wm2": 134.57055624059328,
+      "mae_wm2": 90.71834445438556,
+      "bias_wm2": 10.958148318671922,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "4h",
+      "arm": "history_persistence",
+      "n": 217,
+      "rmse_wm2": 157.03693292401243,
+      "mae_wm2": 101.96141543127717,
+      "bias_wm2": -2.2778510763539597,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    },
+    {
+      "station": "Mizhuang",
+      "horizon": "4h",
+      "arm": "offline_future_agri",
+      "n": 217,
+      "rmse_wm2": 130.32051062895457,
+      "mae_wm2": 85.31557612472152,
+      "bias_wm2": 10.16825185048375,
+      "baseline_reproduction_max_abs_wm2": 0.192827349754225
+    }
+  ],
+  "COT_diagnostic_scope": "station-pixel and local 3x3 values from the same corrected R; future AGRI input is observed offline and is not independent truth",
+  "COT_error_against_offline_future_R": {
+    "Niushou": {
+      "target_reference": "offline corrected-R inversion of observed future AGRI; not independent COT truth",
+      "station_pixel_rows": 992,
+      "local_3x3_valid_pixel_values": 8928,
+      "forecast_cot": {
+        "station_pixel_rmse_cot": 6.321270524635116,
+        "station_pixel_mae_cot": 3.7484040185320944,
+        "station_pixel_bias_cot": 0.0021639546499617637,
+        "local_3x3_rmse_cot": 6.378208964831363,
+        "local_3x3_mae_cot": 3.779916270524301,
+        "local_3x3_bias_cot": 0.012651345483841054
+      },
+      "history_persistence": {
+        "station_pixel_rmse_cot": 5.628124815129606,
+        "station_pixel_mae_cot": 3.468098899571135,
+        "station_pixel_bias_cot": -0.43176096311259654,
+        "local_3x3_rmse_cot": 5.6757616976398655,
+        "local_3x3_mae_cot": 3.513504512507596,
+        "local_3x3_bias_cot": -0.45618148757227006
+      }
+    },
+    "Wangzhai": {
+      "target_reference": "offline corrected-R inversion of observed future AGRI; not independent COT truth",
+      "station_pixel_rows": 874,
+      "local_3x3_valid_pixel_values": 7866,
+      "forecast_cot": {
+        "station_pixel_rmse_cot": 5.91224901367383,
+        "station_pixel_mae_cot": 3.648309854317448,
+        "station_pixel_bias_cot": 0.7291459666343418,
+        "local_3x3_rmse_cot": 5.896182840867084,
+        "local_3x3_mae_cot": 3.625756782700516,
+        "local_3x3_bias_cot": 0.6940045592538726
+      },
+      "history_persistence": {
+        "station_pixel_rmse_cot": 5.534799513019877,
+        "station_pixel_mae_cot": 3.680109260929855,
+        "station_pixel_bias_cot": -0.26280625621645415,
+        "local_3x3_rmse_cot": 5.594087274822928,
+        "local_3x3_mae_cot": 3.682424148358665,
+        "local_3x3_bias_cot": -0.2630180872112708
+      }
+    },
+    "Mizhuang": {
+      "target_reference": "offline corrected-R inversion of observed future AGRI; not independent COT truth",
+      "station_pixel_rows": 909,
+      "local_3x3_valid_pixel_values": 8177,
+      "forecast_cot": {
+        "station_pixel_rmse_cot": 5.490021555146961,
+        "station_pixel_mae_cot": 3.203206871984561,
+        "station_pixel_bias_cot": 0.5199367881478993,
+        "local_3x3_rmse_cot": 5.550499085548871,
+        "local_3x3_mae_cot": 3.243575711553727,
+        "local_3x3_bias_cot": 0.5267749247749953
+      },
+      "history_persistence": {
+        "station_pixel_rmse_cot": 5.861814499663808,
+        "station_pixel_mae_cot": 3.5599188939519677,
+        "station_pixel_bias_cot": -0.33697553809088776,
+        "local_3x3_rmse_cot": 5.89442473836,
+        "local_3x3_mae_cot": 3.5612956518454255,
+        "local_3x3_bias_cot": -0.3178176258055005
+      }
+    }
+  },
+  "equal_station_and_date_cluster_bootstrap": {
+    "all/history_persistence": {
+      "forecast_equal_station_rmse_wm2": 122.58050182875292,
+      "alternative_equal_station_rmse_wm2": 137.1163899831749,
+      "delta_rmse_wm2": 14.535888154422011,
+      "relative_rmse_reduction_percent": -11.85823841276886,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 15,
+      "observed_equal_station_delta_on_ci_support_wm2": 14.626697491636383,
+      "ci95_delta_rmse_wm2": [
+        -5.691120094506631,
+        44.41533772385213
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261022,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "all/offline_future_agri": {
+      "forecast_equal_station_rmse_wm2": 122.58050182875292,
+      "alternative_equal_station_rmse_wm2": 117.74542848680692,
+      "delta_rmse_wm2": -4.835073341946004,
+      "relative_rmse_reduction_percent": 3.9444065490127342,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 15,
+      "observed_equal_station_delta_on_ci_support_wm2": -4.849451592247249,
+      "ci95_delta_rmse_wm2": [
+        -10.63107331437557,
+        -1.3856072316343164
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261023,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "1h/history_persistence": {
+      "forecast_equal_station_rmse_wm2": 127.01577032445755,
+      "alternative_equal_station_rmse_wm2": 130.48489048317734,
+      "delta_rmse_wm2": 3.4691201587197944,
+      "relative_rmse_reduction_percent": -2.73125152086079,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 14,
+      "observed_equal_station_delta_on_ci_support_wm2": 3.4218253261661715,
+      "ci95_delta_rmse_wm2": [
+        -6.74191566395408,
+        13.534524182458956
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261033,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "1h/offline_future_agri": {
+      "forecast_equal_station_rmse_wm2": 127.01577032445755,
+      "alternative_equal_station_rmse_wm2": 123.09933623486404,
+      "delta_rmse_wm2": -3.9164340895935084,
+      "relative_rmse_reduction_percent": 3.0834234832329153,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 14,
+      "observed_equal_station_delta_on_ci_support_wm2": -3.827837735914258,
+      "ci95_delta_rmse_wm2": [
+        -9.085548938696643,
+        -0.9344056647893021
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261034,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "2h/history_persistence": {
+      "forecast_equal_station_rmse_wm2": 124.66287811769386,
+      "alternative_equal_station_rmse_wm2": 136.9857755684553,
+      "delta_rmse_wm2": 12.32289745076145,
+      "relative_rmse_reduction_percent": -9.884977498375608,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 14,
+      "observed_equal_station_delta_on_ci_support_wm2": 12.422797064269938,
+      "ci95_delta_rmse_wm2": [
+        -3.7655885714494355,
+        35.74818568678544
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261044,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "2h/offline_future_agri": {
+      "forecast_equal_station_rmse_wm2": 124.66287811769386,
+      "alternative_equal_station_rmse_wm2": 120.91455286676644,
+      "delta_rmse_wm2": -3.7483252509273846,
+      "relative_rmse_reduction_percent": 3.006769382773757,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 14,
+      "observed_equal_station_delta_on_ci_support_wm2": -3.755504237248388,
+      "ci95_delta_rmse_wm2": [
+        -12.759715427851898,
+        0.016888957031219634
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261045,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "3h/history_persistence": {
+      "forecast_equal_station_rmse_wm2": 122.1385614341915,
+      "alternative_equal_station_rmse_wm2": 141.10628419775276,
+      "delta_rmse_wm2": 18.967722763561238,
+      "relative_rmse_reduction_percent": -15.529675919575231,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 13,
+      "observed_equal_station_delta_on_ci_support_wm2": 19.16638117491387,
+      "ci95_delta_rmse_wm2": [
+        -10.189445767253916,
+        57.56934505044087
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261055,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "3h/offline_future_agri": {
+      "forecast_equal_station_rmse_wm2": 122.1385614341915,
+      "alternative_equal_station_rmse_wm2": 117.45977694033769,
+      "delta_rmse_wm2": -4.678784493853821,
+      "relative_rmse_reduction_percent": 3.830718520763616,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 13,
+      "observed_equal_station_delta_on_ci_support_wm2": -4.647887723748013,
+      "ci95_delta_rmse_wm2": [
+        -11.053817081990843,
+        -1.1054704347429847
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261056,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "4h/history_persistence": {
+      "forecast_equal_station_rmse_wm2": 115.44374325061058,
+      "alternative_equal_station_rmse_wm2": 139.72625050399574,
+      "delta_rmse_wm2": 24.28250725338516,
+      "relative_rmse_reduction_percent": -21.03406089377367,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 13,
+      "observed_equal_station_delta_on_ci_support_wm2": 24.40983472224171,
+      "ci95_delta_rmse_wm2": [
+        -2.7808911451426463,
+        68.28730262048823
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261066,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    },
+    "4h/offline_future_agri": {
+      "forecast_equal_station_rmse_wm2": 115.44374325061058,
+      "alternative_equal_station_rmse_wm2": 108.07022481523431,
+      "delta_rmse_wm2": -7.373518435376265,
+      "relative_rmse_reduction_percent": 6.387109623922616,
+      "ci_support_scope": "date-cluster interval restricted to dates present at all three stations; see observed_equal_station_delta_on_ci_support_wm2",
+      "common_target_date_clusters": 13,
+      "observed_equal_station_delta_on_ci_support_wm2": -7.403353980373505,
+      "ci95_delta_rmse_wm2": [
+        -19.009876429379876,
+        -0.681250026879561
+      ],
+      "bootstrap_draws": 5000,
+      "bootstrap_seed": 20261067,
+      "delta_definition": "equal-station mean RMSE(alternative COT - forecast COT); negative favors alternative"
+    }
+  },
+  "bootstrap_draws": 5000,
+  "bootstrap_unit": "target BJT date; equal-station RMSE difference",
+  "COT_validity": "R output masked to zero outside saved R val_valid_mask before extracting local 3x3 patches"
+}

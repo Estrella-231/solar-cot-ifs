@@ -1,0 +1,170 @@
+{
+  "state": "CONFIRMED_CPP_REFERENCE_GLOBAL_VS_VAL_LOCAL_INDEX_BUG",
+  "source_bank": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\refine-logs\\cot_value_first_20261013\\results\\forecast_cot_val_bank_20261014_v1\\forecast_cot_val_bank.npz",
+  "old_bank_sha256": "fd7a431148ebf301140614bdafa8f05e09e99bc5c83a34bb0c456d6cf88b27ac",
+  "new_bank_sha256": "257b7eda0ae134c1abb3bced6c30d6b0948507c52438400771104075b64d89e0",
+  "new_bank": "F:\\CODE_Classify\\辐照度预报\\solar-cot-ifs\\audits\\cpp_reference_join_20261016\\repaired_existing_271_windows\\forecast_cot_val_bank.npz",
+  "evidence": "Every previously supported bank key matched the reconstructed erroneous val-local join exactly.",
+  "wrong_key_examples": [
+    {
+      "assigned_key": [
+        "zhujia",
+        "2024-12-24 06:00:00"
+      ],
+      "actual_CPP_source_key": [
+        "sili",
+        "2024-04-18 23:00:00"
+      ],
+      "misused_index": 361
+    },
+    {
+      "assigned_key": [
+        "sili",
+        "2024-12-24 07:00:00"
+      ],
+      "actual_CPP_source_key": [
+        "zhujia",
+        "2024-04-18 23:00:00"
+      ],
+      "misused_index": 362
+    },
+    {
+      "assigned_key": [
+        "zhujia",
+        "2024-12-24 07:00:00"
+      ],
+      "actual_CPP_source_key": [
+        "sili",
+        "2024-04-19 00:00:00"
+      ],
+      "misused_index": 363
+    },
+    {
+      "assigned_key": [
+        "sili",
+        "2024-12-24 08:00:00"
+      ],
+      "actual_CPP_source_key": [
+        "zhujia",
+        "2024-04-19 00:00:00"
+      ],
+      "misused_index": 364
+    },
+    {
+      "assigned_key": [
+        "zhujia",
+        "2024-12-24 08:00:00"
+      ],
+      "actual_CPP_source_key": [
+        "sili",
+        "2024-04-19 01:00:00"
+      ],
+      "misused_index": 365
+    },
+    {
+      "assigned_key": [
+        "sili",
+        "2024-12-25 01:00:00"
+      ],
+      "actual_CPP_source_key": [
+        "zhujia",
+        "2024-04-19 01:00:00"
+      ],
+      "misused_index": 366
+    }
+  ],
+  "old_matched_window_station_lead_records": 2150,
+  "corrected_key_records": 2612,
+  "old_valid_pixel_records": 550400,
+  "new_valid_pixel_records": 668672,
+  "window_count": 271,
+  "scope": "existing 271 forecast windows only; not a re-enumeration of all eligible validation windows",
+  "changed_arrays": [
+    "cpp_reference_cot",
+    "cpp_valid_mask"
+  ],
+  "model_outputs_unchanged": true,
+  "direct_R_original_validation": {
+    "n": 356169,
+    "rmse": 9.074092379589063,
+    "mae": 4.646311979476951,
+    "bias": 0.2790200773034811,
+    "pearson_r": 0.8207615821627102
+  },
+  "paired_metrics": [
+    {
+      "station": "sili",
+      "mode": "SimVP forecast AGRI -> R",
+      "old_invalid": {
+        "n": 276736,
+        "rmse": 29.131844915024473,
+        "mae": 25.154748113284473,
+        "bias": -14.496064491579936,
+        "pearson_r": -0.20356588227475586
+      },
+      "corrected": {
+        "n": 336384,
+        "rmse": 11.296985462813614,
+        "mae": 7.074303644006094,
+        "bias": 3.216479092694039,
+        "pearson_r": 0.6483577089094179
+      }
+    },
+    {
+      "station": "sili",
+      "mode": "observed target AGRI -> R",
+      "old_invalid": {
+        "n": 276736,
+        "rmse": 27.123481367749857,
+        "mae": 22.951115064739636,
+        "bias": -12.279912576599033,
+        "pearson_r": -0.06894168214916316
+      },
+      "corrected": {
+        "n": 336384,
+        "rmse": 12.17208686922539,
+        "mae": 7.679515338603983,
+        "bias": 5.325075158747261,
+        "pearson_r": 0.6557103641803238
+      }
+    },
+    {
+      "station": "zhujia",
+      "mode": "SimVP forecast AGRI -> R",
+      "old_invalid": {
+        "n": 273664,
+        "rmse": 23.043068978614663,
+        "mae": 18.191109194985327,
+        "bias": -12.947794491716952,
+        "pearson_r": 0.09106160340534349
+      },
+      "corrected": {
+        "n": 332288,
+        "rmse": 11.192243291165077,
+        "mae": 6.276206699103588,
+        "bias": 1.4170895127497496,
+        "pearson_r": 0.670113334110086
+      }
+    },
+    {
+      "station": "zhujia",
+      "mode": "observed target AGRI -> R",
+      "old_invalid": {
+        "n": 273664,
+        "rmse": 24.902543146710805,
+        "mae": 20.430079208095087,
+        "bias": -11.728462426471975,
+        "pearson_r": -0.10878978804993465
+      },
+      "corrected": {
+        "n": 332288,
+        "rmse": 10.42775260794064,
+        "mae": 5.18279133002394,
+        "bias": 2.217037322940119,
+        "pearson_r": 0.7415859912068234
+      }
+    }
+  ],
+  "test_read": 0,
+  "limitations": "Stored target-AGRI R replay uses forecast dataset inputs/geometry; direct R validation is a separate replay/support. Do not equate supports."
+}

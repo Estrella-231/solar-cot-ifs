@@ -1,0 +1,147 @@
+{
+  "status": "FROZEN_METADATA_ONLY_GHI15_SUPPORT_PASSED",
+  "split_id": "hubei_monthly_block_2d_buffer1d_seed42_202508_202607_frozen_v1",
+  "source_candidate_report": "solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\expanded_split_20261015_candidate_v2\\REPORT.json",
+  "source_candidate_report_sha256": "6716a17152b549ddd7ff2e85c71d365f0513fd8a23be32c7426ae6e0ea44adef",
+  "source_support_report": "solar-cot-ifs\\refine-logs\\hubei_cot_independent_20261014\\timestamp_support_20261015_v2\\by_candidate_split\\REPORT.json",
+  "source_support_report_sha256": "55fe02ec4b1a7d5ea7eb55c4bc0eba8806b2c5997311739f99ea3c5edef1ec5b",
+  "day_assignment_sha256": "6ef8cbc7d2bb7d1b1d3defdfcba473cb171e06db0115c8206f7c289d8bad19c6",
+  "counts": {
+    "train": 250,
+    "buffer": 44,
+    "test": 22,
+    "val": 22
+  },
+  "date_range_BJT": [
+    "2025-08-01",
+    "2026-07-14"
+  ],
+  "shared_R_S_H_date_map": true,
+  "selection_uses_GHI_CPP_values": false,
+  "test_GHI_values_read": 0,
+  "test_timestamp_support_read": true,
+  "timestamp_support_by_split": {
+    "buffer": {
+      "stations": {
+        "Niushou": {
+          "complete15_targets": 3271,
+          "target_slots": 4070,
+          "support_fraction": 0.8036855036855037,
+          "days_with_any_complete_target": 44,
+          "assigned_days": 44,
+          "zero_support_days": 0
+        },
+        "Wangzhai": {
+          "complete15_targets": 3170,
+          "target_slots": 4070,
+          "support_fraction": 0.7788697788697788,
+          "days_with_any_complete_target": 43,
+          "assigned_days": 44,
+          "zero_support_days": 1
+        },
+        "Mizhuang": {
+          "complete15_targets": 3153,
+          "target_slots": 4070,
+          "support_fraction": 0.7746928746928747,
+          "days_with_any_complete_target": 43,
+          "assigned_days": 44,
+          "zero_support_days": 1
+        }
+      },
+      "three_station_common_targets": 1923,
+      "target_slots": 4070
+    },
+    "test": {
+      "stations": {
+        "Niushou": {
+          "complete15_targets": 1620,
+          "target_slots": 2049,
+          "support_fraction": 0.7906295754026355,
+          "days_with_any_complete_target": 22,
+          "assigned_days": 22,
+          "zero_support_days": 0
+        },
+        "Wangzhai": {
+          "complete15_targets": 1642,
+          "target_slots": 2049,
+          "support_fraction": 0.8013665202537823,
+          "days_with_any_complete_target": 22,
+          "assigned_days": 22,
+          "zero_support_days": 0
+        },
+        "Mizhuang": {
+          "complete15_targets": 1521,
+          "target_slots": 2049,
+          "support_fraction": 0.7423133235724744,
+          "days_with_any_complete_target": 21,
+          "assigned_days": 22,
+          "zero_support_days": 1
+        }
+      },
+      "three_station_common_targets": 980,
+      "target_slots": 2049
+    },
+    "train": {
+      "stations": {
+        "Niushou": {
+          "complete15_targets": 18472,
+          "target_slots": 23093,
+          "support_fraction": 0.7998960724028926,
+          "days_with_any_complete_target": 250,
+          "assigned_days": 250,
+          "zero_support_days": 0
+        },
+        "Wangzhai": {
+          "complete15_targets": 18241,
+          "target_slots": 23093,
+          "support_fraction": 0.7898930411813103,
+          "days_with_any_complete_target": 249,
+          "assigned_days": 250,
+          "zero_support_days": 1
+        },
+        "Mizhuang": {
+          "complete15_targets": 17882,
+          "target_slots": 23093,
+          "support_fraction": 0.7743472047806694,
+          "days_with_any_complete_target": 249,
+          "assigned_days": 250,
+          "zero_support_days": 1
+        }
+      },
+      "three_station_common_targets": 11175,
+      "target_slots": 23093
+    },
+    "val": {
+      "stations": {
+        "Niushou": {
+          "complete15_targets": 1652,
+          "target_slots": 2045,
+          "support_fraction": 0.8078239608801956,
+          "days_with_any_complete_target": 22,
+          "assigned_days": 22,
+          "zero_support_days": 0
+        },
+        "Wangzhai": {
+          "complete15_targets": 1540,
+          "target_slots": 2045,
+          "support_fraction": 0.7530562347188264,
+          "days_with_any_complete_target": 22,
+          "assigned_days": 22,
+          "zero_support_days": 0
+        },
+        "Mizhuang": {
+          "complete15_targets": 1624,
+          "target_slots": 2045,
+          "support_fraction": 0.7941320293398533,
+          "days_with_any_complete_target": 22,
+          "assigned_days": 22,
+          "zero_support_days": 0
+        }
+      },
+      "three_station_common_targets": 950,
+      "target_slots": 2045
+    }
+  },
+  "missing_support_days_do_not_change_date_assignment": true,
+  "freeze_scope": "Date membership only; no labels, values, normalization, or model results frozen."
+}

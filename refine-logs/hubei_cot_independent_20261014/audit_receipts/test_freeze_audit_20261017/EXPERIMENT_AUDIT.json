@@ -1,0 +1,39 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-17",
+  "project": "Hubei independent COT and forecast-GHI validation",
+  "overall_verdict": "FAIL",
+  "integrity_status": "fail",
+  "reason_code": "test_freeze_lineage_and_reproducibility_open",
+  "summary": "Keep held-out test and buffer closed until result lineage, normalization/checkpoint reload parity, fold-isolated OOF evidence, and fail-closed test evaluation are completed.",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "auditor": "fresh reviewer agent /root/hubei_test_freeze_audit",
+  "trace_path": "REVIEWER_TRACE.md (local response record; not platform trace)",
+  "audited_input_hashes": {
+    "solar-cot-ifs/scripts/train_hubei_ghi_heads.py": "sha256:FD15BF6F939CB81D09BD05E6FC889F88E53E8A9E40366D417FA195848CAF5999",
+    "solar-cot-ifs/scripts/evaluate_hubei_forecast_heads_validation_20261016.py": "sha256:CDDFDF8D6D064716ED6BF2885ED3112E91D5C236DDD84E51FF6617A1732A70E4",
+    "solar-cot-ifs/scripts/analyze_hubei_forecast_ghi_three_seed_validation_20261017.py": "sha256:C895F0E731EE212E48569B856A55B4CB0CCB9CA9739546BE89DB8BC759202BBD",
+    "solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/same_time_three_seeds_recheck/independent_three_seed_validation_audit.json": "sha256:4C2005B458C4514A3B17AEA32A28C2693139926384D17666FEEE833C0D0573DE",
+    "solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/audit_receipts/forecast_ghi_three_seed_validation_20261017/three_seed_validation_summary.json": "sha256:2DBCAE5EC9DE5B215293B8F30E6D84380C7134274B8A6FDB2B10D52373C15969",
+    "solar-cot-ifs/paper/main.tex": "sha256:B87F7C8CD5532D2AF994B81A5DCE17E0C682C25783C43C6748080423CDE1F0B6",
+    "solar-cot-ifs/paper/main_zh.md": "sha256:70962EC614DD0BD402DDC5CFEE5DAA9B56AFA66252B51BC891281CA734CFAA9E"
+  },
+  "checks": {
+    "gt_provenance": {"status": "warn", "details": "Station observed GHI is the target; W/m2 calibration and source dictionary remain independently unverified."},
+    "score_normalization": {"status": "pass", "details": "Raw W/m2 metrics use common paired support; exact train-only normalizers are not persisted in the existing checkpoints."},
+    "result_existence": {"status": "fail", "details": "Manuscript cites superseded same-time pack values and stale forecast-evaluation status."},
+    "dead_code_and_reproducibility": {"status": "fail", "details": "Summary script/source provenance and checkpoint reload inference parity are not bound to the saved metrics."},
+    "scope": {"status": "warn", "details": "Three nearby stations, 22 validation dates, three seeds; conclusions must remain validation-only and region-specific."},
+    "eval_type": "real_gt_validation_not_independent_test"
+  },
+  "claims": [
+    {"id": "Hubei same-time COT validation", "impact": "needs current e8c5 lineage; old 7990846 values superseded"},
+    {"id": "Forecast COT improves GHI", "impact": "unsupported by current validation; FAC is +1.331 W/m2 versus FA"},
+    {"id": "Independent Hubei test result", "impact": "not available; test remains closed"}
+  ],
+  "test_and_buffer_payloads_read": 0,
+  "generated_at": "2026-10-17T00:00:00+08:00"
+}

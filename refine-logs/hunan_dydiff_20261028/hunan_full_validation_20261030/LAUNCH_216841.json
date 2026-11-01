@@ -1,0 +1,65 @@
+{
+  "observed_server_cst": "2026-10-30 20:00:25 CST",
+  "job": "216841.tc6000",
+  "state": "R",
+  "account_unfinished_jobs": 1,
+  "allocation": {
+    "node": "node21",
+    "gpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "cpus": 24
+  },
+  "training_input": {
+    "checkpoint": "HunanDyDiff independently trained epoch150 EMA",
+    "training_status": "PASS",
+    "checkpoint_sha256": "f3b10f5590f317d727e8ff4bc03a0c8bee20382236a8e3f913d09ff1958e6842",
+    "normalization_sha256": "6290d3ebad884ccfe689f63cc09ab66ab4c3906665c3149995f75c201de64d1d",
+    "manifest_sha256": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2"
+  },
+  "smoke": {
+    "forecast_smoke1": "PASS",
+    "windows": 16,
+    "elapsed_seconds": 15.198767344933003,
+    "evaluation_smoke1": "PASS",
+    "GHI_rows": 432,
+    "COT_rows": 512,
+    "elapsed_seconds_eval": 55.44177663885057,
+    "test_payloads_read": 0
+  },
+  "main_generation": {
+    "phase": "forecast_attempt1 active",
+    "confirmed_by": "forecast_attempt1 val_00000_complete files and generate_216841.tc6000.log window_complete events",
+    "windows_complete": 122,
+    "per_rank": [
+      31,
+      30,
+      30,
+      31
+    ],
+    "latest_rank_elapsed_seconds": [
+      64.2103,
+      62.9996,
+      62.7047,
+      63.9227
+    ],
+    "aggregate_throughput_windows_per_second": 1.9,
+    "remaining_windows": 3018,
+    "generation_eta_minutes": 26.5,
+    "test_payloads_read": 0
+  },
+  "gpu_sample": {
+    "sample_time_cst": "~20:00",
+    "GPU0_memory_mib": 4653,
+    "GPU1_memory_mib": 4797,
+    "GPU2_memory_mib": 4797,
+    "GPU3_memory_mib": 4653,
+    "utilization": "100% on all four GPUs"
+  },
+  "errors": "No errors observed in sampled generation/evaluation log tails; smoke completion PASS.",
+  "note": "ETA is for forecast generation only; post-generation four-shard evaluation/merge remains.",
+  "actions": "Read-only monitoring; no job state changes and no test payloads accessed."
+}

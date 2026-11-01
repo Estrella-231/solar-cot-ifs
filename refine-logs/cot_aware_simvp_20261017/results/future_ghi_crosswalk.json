@@ -1,0 +1,194 @@
+{
+  "status": "PASS_METADATA_ONLY_FUTURE_GHI_CROSSWALK",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "time_contract": "init=BJT_start+105min; target=init+lead; UTC target=BJT target-8h",
+  "label_contract": "15-minute interval-ending target; leads +15..+240 min",
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "leads_minutes": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "sequence_counts_train_val": {
+    "train": 35320,
+    "val": 3140
+  },
+  "ghi_label_counts_train_val": {
+    "train": 50458,
+    "val": 4479
+  },
+  "candidate_rows_station_init_lead": 1230720,
+  "matched_rows_station_init_lead": 781504,
+  "matched_by_split": {
+    "train": 714914,
+    "val": 66590
+  },
+  "matched_by_station_split": {
+    "sili_train": 343079,
+    "sili_val": 32159,
+    "zhujia_train": 371835,
+    "zhujia_val": 34431
+  },
+  "missing_label_rows": 449216,
+  "split_mismatch_rows": 0,
+  "per_lead": {
+    "15": {
+      "candidate": 76920,
+      "missing_label": 28760,
+      "matched": 48160,
+      "sili_matched": 23117,
+      "zhujia_matched": 25043
+    },
+    "30": {
+      "candidate": 76920,
+      "missing_label": 28466,
+      "matched": 48454,
+      "sili_matched": 23261,
+      "zhujia_matched": 25193
+    },
+    "45": {
+      "candidate": 76920,
+      "missing_label": 28203,
+      "matched": 48717,
+      "sili_matched": 23391,
+      "zhujia_matched": 25326
+    },
+    "60": {
+      "candidate": 76920,
+      "missing_label": 28022,
+      "matched": 48898,
+      "sili_matched": 23476,
+      "zhujia_matched": 25422
+    },
+    "75": {
+      "candidate": 76920,
+      "missing_label": 27903,
+      "matched": 49017,
+      "sili_matched": 23530,
+      "zhujia_matched": 25487
+    },
+    "90": {
+      "candidate": 76920,
+      "missing_label": 27867,
+      "matched": 49053,
+      "sili_matched": 23547,
+      "zhujia_matched": 25506
+    },
+    "105": {
+      "candidate": 76920,
+      "missing_label": 27815,
+      "matched": 49105,
+      "sili_matched": 23573,
+      "zhujia_matched": 25532
+    },
+    "120": {
+      "candidate": 76920,
+      "missing_label": 27745,
+      "matched": 49175,
+      "sili_matched": 23608,
+      "zhujia_matched": 25567
+    },
+    "135": {
+      "candidate": 76920,
+      "missing_label": 27673,
+      "matched": 49247,
+      "sili_matched": 23644,
+      "zhujia_matched": 25603
+    },
+    "150": {
+      "candidate": 76920,
+      "missing_label": 27610,
+      "matched": 49310,
+      "sili_matched": 23674,
+      "zhujia_matched": 25636
+    },
+    "165": {
+      "candidate": 76920,
+      "missing_label": 27568,
+      "matched": 49352,
+      "sili_matched": 23694,
+      "zhujia_matched": 25658
+    },
+    "180": {
+      "candidate": 76920,
+      "missing_label": 27687,
+      "matched": 49233,
+      "sili_matched": 23651,
+      "zhujia_matched": 25582
+    },
+    "195": {
+      "candidate": 76920,
+      "missing_label": 27935,
+      "matched": 48985,
+      "sili_matched": 23539,
+      "zhujia_matched": 25446
+    },
+    "210": {
+      "candidate": 76920,
+      "missing_label": 28247,
+      "matched": 48673,
+      "sili_matched": 23383,
+      "zhujia_matched": 25290
+    },
+    "225": {
+      "candidate": 76920,
+      "missing_label": 28636,
+      "matched": 48284,
+      "sili_matched": 23186,
+      "zhujia_matched": 25098
+    },
+    "240": {
+      "candidate": 76920,
+      "missing_label": 29079,
+      "matched": 47841,
+      "sili_matched": 22964,
+      "zhujia_matched": 24877
+    }
+  },
+  "unique_station_target_labels_used": 52988,
+  "target_label_multiplicity_min_max": [
+    1,
+    16
+  ],
+  "source_sha256": {
+    "sequences": "f6703ed5e42f1ae00aac6538b108dc4d9361197ad57ad86a0f407767aa2e4cb2",
+    "sequence_audit": "491523ac2eea97f08fad571d3df1a09177c29f3bbcf309d79fb95a29790988e4",
+    "ghi_rows": "a3cac8b82fa0a9639ef1235da9b0a2b4010829982e075f5de8d714b17ba98756",
+    "ghi_pack_manifest": "27b1a10b172c5030194007bc1fdeb2ea6c929c86c304e78242255de9dee54bd4"
+  },
+  "paired_key_array": {
+    "path": "future_ghi_crosswalk_keys.npz",
+    "rows": 781504,
+    "sha256": "e642e2260e13cbefd0c03f482a91847b7dc67e3bf94fc3668e86f8f065fc3e86",
+    "fields": [
+      "split_code",
+      "sequence_index_within_split",
+      "station_index",
+      "lead_index",
+      "ghi_row_index"
+    ]
+  },
+  "payload_reads": {
+    "agri": 0,
+    "cpp": 0,
+    "ghi_arrays": 0,
+    "test": 0,
+    "buffer": 0
+  }
+}

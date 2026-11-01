@@ -1,0 +1,46 @@
+{
+  "scope": "validation only; CPP is a retrieval reference, not independent truth",
+  "ghi": {
+    "n_rows": 4479,
+    "n_target_dates": 52,
+    "n_seeds": 3,
+    "contrasts": [
+      {
+        "label": "COT vs AGRI-only",
+        "point": -3.7402514464291414,
+        "ci": [
+          -6.179576809008933,
+          -1.5972587518629546
+        ]
+      },
+      {
+        "label": "COT vs AGRI-capacity control",
+        "point": -3.5817637713472408,
+        "ci": [
+          -5.97704175056339,
+          -1.478821376980598
+        ]
+      }
+    ],
+    "bootstrap": "percentile 95%; resample BJT target-date clusters; preserve all seed/station/method pairing; recompute station RMSE differences then average stations and seeds"
+  },
+  "forecast_cot": {
+    "scale": "station-centred 3x3",
+    "n_target_dates": 8,
+    "s_to_r_rmse": 25.537545430565114,
+    "persistence_rmse": 28.25161892352748,
+    "delta_rmse": -2.714073492962367,
+    "descriptive_ci95": [
+      -6.475685019039314,
+      0.49346129777326553
+    ],
+    "thick_cloud_threshold_cot": 30.0,
+    "thick_cloud_csi_s_to_r": 0.0818316465070353,
+    "thick_cloud_csi_persistence": 0.18856741008639744,
+    "interval_status": "DESCRIPTIVE_ONLY_LT20_TARGET_DATES"
+  },
+  "sources_sha256": {
+    "ghi_heads_three_seed_validation_audit.json": "e9de68fc4085659b14950c1e780d5005655e14bc3c8fc63c4becf886c8120c90",
+    "cot_forecast_metrics.json": "5b75949788307ea99651c91a068cfd74b86002ab180b75e68c9e4deee647c859"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "state": "FOLD1_OOF_COT_TEMPORAL_DESCRIPTIVE_SCREEN",
+  "interpretation_limit": "single heldout training-date fold; no CPP/GHI skill or causal gain claim",
+  "inputs": {
+    "audit_script_sha256": "5af13879389455a61962783be5d6971bc49b13271a4dcabc52ee69b6a535a6b9",
+    "forecast_bank": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/cot_aware_simvp_20261017/results/future_ghi_oof_banks_v1/fold_1",
+    "forecast_manifest_sha256": "9544e786eb8ef7f56fd1e12747c21a47345f45e7f391cb5fc4484a5232be929b",
+    "history_bank": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/refine-logs/cot_aware_simvp_20261017/results/future_simvp_r_bank_v1",
+    "history_manifest_sha256": "1587597aeabba677d5c5e60dbe4e13fbbaacae029a3b1eb1d473526f4cd7f055",
+    "forecast_rows": 6430,
+    "same_key_train_intersection": 6430,
+    "shared_frozen_r_checkpoint_sha256": "342596094d1a41aa8b141972a7b4adadece179b4b9f58170f4e7f409a894f001",
+    "history_source": "last two observed history AGRI frames processed by the same frozen R; history only",
+    "future_observed_agri_read": false,
+    "cpp_read": false,
+    "ghi_read": false,
+    "test_or_buffer_payload_read": false
+  },
+  "units": "physical COT recovered from stored log1p(COT)",
+  "stations": {
+    "sili": {
+      "history_last_15min_signed_delta": {
+        "n": 57870,
+        "mean": -2.6305779986023468,
+        "median": -0.09173521772027016,
+        "p95": 5.201164579391466,
+        "p99": 15.444242000579804,
+        "max_abs": 307.5166320800781,
+        "fraction_abs_gt_20": 0.05289441852427856
+      },
+      "forecast_first_step_signed_delta": {
+        "n": 57870,
+        "mean": -3.475107826617811,
+        "median": -0.03701621666550636,
+        "p95": 8.082914257049557,
+        "p99": 19.980521545410063,
+        "max_abs": 154.467041015625,
+        "fraction_abs_gt_20": 0.08657335406946605
+      },
+      "forecast_15min_adjacent_signed_deltas_all_16_leads": {
+        "n": 925920,
+        "mean": -0.31740410056158735,
+        "median": -0.00029926886782050133,
+        "p95": 7.690485382080075,
+        "p99": 18.896321372985824,
+        "max_abs": 154.467041015625,
+        "fraction_abs_gt_20": 0.022137981683082772
+      },
+      "forecast_cot_physical_all_leads": {
+        "n": 925920,
+        "mean": 23.049893984331796,
+        "median": 15.318567276000977,
+        "p95": 77.51258049011214,
+        "p99": 138.18006896972628,
+        "max_abs": 367.25347900390625,
+        "fraction_abs_gt_20": 0.42616100743044755
+      },
+      "mean_abs_change_ratio_forecast_to_history": 0.6546363830566406
+    },
+    "zhujia": {
+      "history_last_15min_signed_delta": {
+        "n": 57870,
+        "mean": -2.225519023484509,
+        "median": -0.0060828085988759995,
+        "p95": 4.958614158630369,
+        "p99": 15.52219902038572,
+        "max_abs": 146.5193328857422,
+        "fraction_abs_gt_20": 0.044928287541040265
+      },
+      "forecast_first_step_signed_delta": {
+        "n": 57870,
+        "mean": -1.8651464189007747,
+        "median": -0.0002635300625115633,
+        "p95": 9.238510894775382,
+        "p99": 25.033103790283196,
+        "max_abs": 117.32666015625,
+        "fraction_abs_gt_20": 0.06756523241748748
+      },
+      "forecast_15min_adjacent_signed_deltas_all_16_leads": {
+        "n": 925920,
+        "mean": -0.11751271834258492,
+        "median": -0.0001629423350095749,
+        "p95": 8.140806388854973,
+        "p99": 20.427870483398408,
+        "max_abs": 117.32666015625,
+        "fraction_abs_gt_20": 0.022585104544669086
+      },
+      "forecast_cot_physical_all_leads": {
+        "n": 925920,
+        "mean": 21.852764071230077,
+        "median": 10.93673038482666,
+        "p95": 82.42036399841304,
+        "p99": 145.27039245605457,
+        "max_abs": 310.02593994140625,
+        "fraction_abs_gt_20": 0.3850980646276136
+      },
+      "mean_abs_change_ratio_forecast_to_history": 0.706644594669342
+    }
+  }
+}

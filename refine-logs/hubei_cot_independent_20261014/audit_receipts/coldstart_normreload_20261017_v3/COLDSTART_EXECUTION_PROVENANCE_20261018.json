@@ -1,0 +1,33 @@
+{
+  "state": "COLDSTART_AUDIT_EXECUTION_LINKAGE_CAPTURED_WITH_POSTRUN_SOURCE_HASH_LIMITATION",
+  "captured_at": "2026-10-18",
+  "pbs_job_id": "214705.tc6000",
+  "pbs_job_log_sha256": "e31c04a50985b17d00ad5ae62d9df6ac2c764a994541bf4a824e09be3a510608",
+  "pbs_runner_local_sha256": "09ebbe0bd66a3f15abf9eb44cae0a72564220bb0fd623c59eaf8a4cb67facd93",
+  "audit_sources": [
+    {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017/source_rebuild_20261017_v2/scripts/audit_hubei_checkpoint_coldstart_normreload_20261017_v3.py",
+      "current_sha256": "ad1f8f855cd6caf6371dd53cb8f6e970e9add1c208eeff206ce980242659b38f",
+      "mtime": "2026-10-17 21:46:10 +0800"
+    },
+    {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_forecast_ghi_20261017/scripts/audit_hubei_checkpoint_coldstart_normreload_20261017_v3.py",
+      "current_sha256": "ad1f8f855cd6caf6371dd53cb8f6e970e9add1c208eeff206ce980242659b38f",
+      "mtime": "2026-10-17 21:46:11 +0800"
+    }
+  ],
+  "source_receipts": {
+    "same_time_coldstart_audit_sha256": "eb72f580dabc3c523f7651cb1f70b936a296dc516046ebc35ce3ac42d1f65cde",
+    "forecast_coldstart_audit_sha256": "54fbfce21ce01fd5e775eb23888869468c8de591c231fea8cbdfaf0e67e00286"
+  },
+  "execution_evidence": {
+    "job_log_marker": "HUBEI_CHECKPOINT_COLDSTART_AUDIT_V3_COMPLETE_TEST_CLOSED",
+    "log_mtime": "2026-10-17 21:51:04 +0800",
+    "both_audit_scripts_current_sha_match": true,
+    "limitations": "Script hashes were collected after execution. File mtimes predate the run, but the original output receipts did not record source hashes at execution time; this companion receipt does not prove historical byte identity cryptographically."
+  },
+  "data_boundary": {
+    "test_payloads_read": 0,
+    "buffer_payloads_read": 0
+  }
+}

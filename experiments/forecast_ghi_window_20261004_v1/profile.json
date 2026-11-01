@@ -1,0 +1,31 @@
+{
+  "trials": [
+    {
+      "batch": 64,
+      "peak_gib": 2.9209165573120117,
+      "samples_per_second": 6874.319686250739
+    },
+    {
+      "batch": 128,
+      "peak_gib": 3.086965560913086,
+      "samples_per_second": 17929.2935785081
+    },
+    {
+      "batch": 256,
+      "peak_gib": 3.4199790954589844,
+      "samples_per_second": 31024.123207007342
+    },
+    {
+      "batch": 512,
+      "peak_gib": 4.086006164550781,
+      "samples_per_second": 40060.80486143201
+    },
+    {
+      "batch": 1024,
+      "peak_gib": 5.418060302734375,
+      "samples_per_second": 49996.89392110266
+    }
+  ],
+  "batch": 1024,
+  "rule": "smallest within5pct fastest,15pct VRAM reserve"
+}

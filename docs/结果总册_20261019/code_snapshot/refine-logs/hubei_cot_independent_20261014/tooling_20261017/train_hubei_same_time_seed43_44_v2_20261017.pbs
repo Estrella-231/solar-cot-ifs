@@ -1,0 +1,60 @@
+#!/bin/bash
+#PBS -N hb_same_seed
+#PBS -q gpu
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l walltime=06:00:00
+#PBS -j oe
+set -euo pipefail
+
+: "${SEED:?submit with qsub -v SEED=43 or SEED=44}"
+case "$SEED" in 43|44) ;; *) echo "Unsupported seed: $SEED" >&2; exit 2 ;; esac
+
+ROOT=/public/home/slfu/ttzhou/swc/irradiance_forecast/hubei_al_same_time_20261017
+WORK="$ROOT/source_rebuild_20261017_v2"
+PACK="$WORK/pack"
+OUT="$WORK/training/same_time_seed${SEED}"
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+QSTAT=/opt/gridview/pbs/dispatcher/bin/qstat
+SCRIPT="$WORK/scripts"
+exec > "$WORK/train_seed${SEED}_${PBS_JOBID//./_}.log" 2>&1
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+CUDNN_LIB="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib"
+export LD_LIBRARY_PATH="$CUDNN_LIB:${LD_LIBRARY_PATH:-}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+export PYTHONPATH="$SCRIPT:${PYTHONPATH:-}"
+
+test ! -e "$OUT"
+test -s "$WORK/profile_same_time_heads.json"
+test ! -e "$WORK/profile_only_unused"
+
+"$PY" - "$WORK/profile_same_time_heads.json" "$PACK/pack_report.json" <<'PY'
+import json, sys
+from pathlib import Path
+profile = json.loads(Path(sys.argv[1]).read_text())
+pack = json.loads(Path(sys.argv[2]).read_text())
+assert profile["state"] == "HUBEI_GHI_HEAD_SINGLE_GPU_PROFILE_COMPLETE"
+assert profile["test_payloads_read"] == 0
+assert pack["test_and_buffer_values_read"] == 0
+assert profile["input_mode"] == "same_time"
+assert set(profile["arms"]) == {"A", "AC", "AP"}
+assert profile["profile_station"] == "Mizhuang"
+for arm in ("A", "AC", "AP"):
+    rows = [r for r in profile["results"] if r["arm"] == arm]
+    assert any(r["batch"] == 512 and r["updates_per_epoch_min_support"] >= 12 for r in rows)
+print("PROFILE_AND_PACK_GATE_PASS batch=512 test_closed=1", flush=True)
+PY
+
+GPU_IDS=$("$QSTAT" -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'gpu/[0-9]+' | cut -d/ -f2 | sort -nu | paste -sd, -)
+IFS=, read -r -a GPU_ARRAY <<< "$GPU_IDS"
+test "${#GPU_ARRAY[@]}" -eq 1
+printf 'PBS_JOBID=%s\nSEED=%s\nALLOCATED_PHYSICAL_GPU=%s\n' "$PBS_JOBID" "$SEED" "$GPU_IDS"
+
+CUDA_VISIBLE_DEVICES="${GPU_ARRAY[0]}" "$PY" "$SCRIPT/train_hubei_ghi_heads.py" \
+  --pack "$PACK" --output "$OUT" --input-mode same_time \
+  --arms A AC AP --seed "$SEED" --epochs 30 --batch-size 512
+
+test -s "$OUT/run_metadata.json"
+test -s "$OUT/all_metrics.jsonl"
+echo "HUBEI_SAME_TIME_SEED${SEED}_COMPLETE"

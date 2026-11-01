@@ -1,0 +1,70 @@
+#!/bin/bash
+#PBS -N fghi_spatial_3gpu
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=16:gpus=3
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -o /dev/null
+set -euo pipefail
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+EXP=$PROJECT/refine-logs/cot_aware_simvp_20261017
+PACK=$EXP/results/future_ghi_oof_head_pack_v2
+CENTER=$EXP/results/future_cot_oof_reliability_v2/calibration.json
+AUDIT=$EXP/results/future_cot_oof_spatial_contrast_v1/spatial_contrast_calibration.json
+RUN=$EXP/results/future_cot_oof_spatial_contrast_v1/ghi_seed_runs
+BASE=$EXP/results/future_ghi_oof_cot_reliability_v1
+OUTAUDIT=$EXP/results/future_ghi_oof_spatial_contrast_validation_audit_v1.json
+LOG=$EXP/logs/future_ghi_spatial_contrast_3gpu_${PBS_JOBID}.log
+mkdir -p "$EXP/logs"
+exec > >(tee -a "$LOG") 2>&1
+cd "$EXP"
+sha256sum -c FUTURE_COT_SPATIAL_CONTRAST_SHA256SUMS
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPYCACHEPREFIX=/tmp/slfu_future_cot_spatial_pycache
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+python -m py_compile train_future_ghi_spatial_contrast.py audit_future_ghi_spatial_contrast.py
+python test_future_ghi_spatial_contrast.py
+python - "$AUDIT" "$PACK/pack_manifest.json" <<'PY'
+import json,hashlib,sys
+def sha(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+ return h.hexdigest()
+d=json.load(open(sys.argv[1]));m=json.load(open(sys.argv[2]))
+assert d.get('predeclared_cot_pre_gate')=='PASS'
+assert d.get('forecast_pack_manifest_sha256')==sha(sys.argv[2])
+assert d.get('test_payload_opened') is False and d.get('buffer_payload_opened') is False
+assert m.get('train_forecast_oof') is True and m.get('forecast_bank_oof_fold_count')==5
+print('SPATIAL_COT_GPU_GATE_PASS')
+PY
+test ! -e "$RUN"
+test ! -e "$OUTAUDIT"
+GPU_TEXT=$(/opt/gridview/pbs/dispatcher/bin/qstat -f "$PBS_JOBID" | tr -d '[:space:]' | grep -oE 'node22-gpu/[0-9]+' | cut -d/ -f2 | sort -un)
+if [ "$(printf '%s\n' "$GPU_TEXT" | wc -l)" -ne 3 ] || [ -z "$GPU_TEXT" ]; then
+  echo "REFUSE: expected three distinct node22 GPUs, got $GPU_TEXT"; exit 32
+fi
+GPU0=$(printf '%s\n' "$GPU_TEXT" | sed -n '1p'); GPU1=$(printf '%s\n' "$GPU_TEXT" | sed -n '2p'); GPU2=$(printf '%s\n' "$GPU_TEXT" | sed -n '3p')
+nvidia-smi -i "$GPU0,$GPU1,$GPU2" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+CUDA_VISIBLE_DEVICES="$GPU0" python -u train_future_ghi_spatial_contrast.py --pack "$PACK" --center-calibration "$CENTER" --spatial-calibration "$AUDIT" --output-root "$RUN" --seed 42 --epochs 30 --batch-size 1792 > "$EXP/logs/future_ghi_spatial_seed42_${PBS_JOBID}.log" 2>&1 & PID42=$!
+CUDA_VISIBLE_DEVICES="$GPU1" python -u train_future_ghi_spatial_contrast.py --pack "$PACK" --center-calibration "$CENTER" --spatial-calibration "$AUDIT" --output-root "$RUN" --seed 43 --epochs 30 --batch-size 1792 > "$EXP/logs/future_ghi_spatial_seed43_${PBS_JOBID}.log" 2>&1 & PID43=$!
+CUDA_VISIBLE_DEVICES="$GPU2" python -u train_future_ghi_spatial_contrast.py --pack "$PACK" --center-calibration "$CENTER" --spatial-calibration "$AUDIT" --output-root "$RUN" --seed 44 --epochs 30 --batch-size 1792 > "$EXP/logs/future_ghi_spatial_seed44_${PBS_JOBID}.log" 2>&1 & PID44=$!
+set +e
+wait "$PID42"; RC42=$?; wait "$PID43"; RC43=$?; wait "$PID44"; RC44=$?
+set -e
+if [ "$RC42" -ne 0 ] || [ "$RC43" -ne 0 ] || [ "$RC44" -ne 0 ]; then echo "SEED_FAILURE $RC42 $RC43 $RC44"; exit 41; fi
+python -u audit_future_ghi_spatial_contrast.py --candidate-root "$RUN" --baseline-root "$BASE" --output "$OUTAUDIT" --bootstrap 2000
+python - "$RUN" "$OUTAUDIT" <<'PY'
+import json,sys
+root=sys.argv[1];a=json.load(open(sys.argv[2]))
+for s in (42,43,44):
+ m=json.load(open(f'{root}/seed{s}_manifest.json'))
+ assert m['state']=='COMPLETE_FUTURE_GHI_SPATIAL_CONTRAST_SEED_RUN'
+ assert m['test_payload_opened'] is False and m['buffer_payload_opened'] is False
+assert a['state']=='COMPLETE_PAIRED_FUTURE_GHI_SPATIAL_CONTRAST_VALIDATION_AUDIT'
+assert a['seeds']==[42,43,44] and a['test_payload_opened'] is False
+print('FUTURE_GHI_SPATIAL_CONTRAST_3SEED_AUDIT_COMPLETE',a['pairwise_delta_rmse_wm2'],a['date_block_bootstrap_95pct_ci_wm2'])
+PY
+echo "FUTURE_GHI_SPATIAL_CONTRAST_MULTIGPU_COMPLETE test_payload_opened=0 buffer_payload_opened=0"

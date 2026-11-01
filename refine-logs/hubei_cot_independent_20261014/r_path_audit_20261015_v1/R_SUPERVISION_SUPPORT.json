@@ -1,0 +1,23 @@
+{
+  "state": "HUBEI_R_SUPERVISION_SUPPORT_EXPLICIT_TEST_CLOSED",
+  "source_pack_status_sha256": "92c68b591b64377855e4c66e3dcd4b55adf48c78fbe33436e218d4747acaf0fd",
+  "source_rows_sha256": "9a7993c6a2509a598cc87d77cfa35fce695877208456819793064d426fa47745",
+  "source_mask_sha256": "99ce657288f30753bc9f9c1b2b10c9f076412558046e43e2174ac6ab4169ce63",
+  "manifest_sha256": "2bcad3a537b207c7707b2390af03c1338665ac07ffec675413015e29c00f29d8",
+  "test_payloads_read": 0,
+  "split": {
+    "train": {
+      "all_agri_rows_for_inference": 3178,
+      "r_supervision_eligible": 2811,
+      "r_supervision_ineligible_explicit": 367,
+      "valid_cpp_pixels": 719496
+    },
+    "val": {
+      "all_agri_rows_for_inference": 301,
+      "r_supervision_eligible": 259,
+      "r_supervision_ineligible_explicit": 42,
+      "valid_cpp_pixels": 66304
+    }
+  },
+  "policy": "Only rows with at least one valid CPP pixel contribute R training/validation loss; preserve every AGRI row for later COT-bank inference. No row is silently removed from the shared GHI sample universe."
+}

@@ -1,0 +1,36 @@
+{
+  "state": "TRAIN_VAL_LABELS_EXTRACTED_FROM_EXISTING_WORKBOOKS",
+  "split_id": "hunan_monthly_block_2d_buffer1d_seed42_v1",
+  "candidate_keys": 111466,
+  "counts": {
+    "train/complete_ghi": 93255,
+    "train/incomplete_ghi_source": 9217,
+    "val/complete_ghi": 8137,
+    "val/incomplete_ghi_source": 857
+  },
+  "source_workbooks": {
+    "sili": {
+      "source_file": "四里光伏.xlsx",
+      "sheet": "结果集",
+      "daily_rows_scanned": 801,
+      "source_date_min": "2024-01-01",
+      "source_date_max": "2026-06-30",
+      "requested_dates": 667,
+      "requested_5min_timestamps": 167199
+    },
+    "zhujia": {
+      "source_file": "竺家光伏.xlsx",
+      "sheet": "结果集",
+      "daily_rows_scanned": 875,
+      "source_date_min": "2024-01-01",
+      "source_date_max": "2026-06-30",
+      "requested_dates": 667,
+      "requested_5min_timestamps": 167199
+    }
+  },
+  "label_window": "(target-15min,target]; values at target-10/-5/target",
+  "only_candidate_train_val_keys_requested": true,
+  "noncandidate_label_cells_decoded": false,
+  "source_payload_scope": "train/val candidate dates and exact requested five-minute cells only",
+  "output": "unique_target_labels_train_val.csv"
+}

@@ -1,0 +1,52 @@
+{
+  "type": "source-audited architecture review",
+  "width_mm": 177,
+  "height_mm": 188,
+  "font_points": [
+    8.0,
+    9.5
+  ],
+  "result_claim": "none; verified architecture only; final Hubei corrected-geometry same-time result binding pending",
+  "renderer": "Matplotlib deterministic vector diagram + validated FigureSpec stock topology",
+  "diagram_scope": "single-frame; Hunan single-COT-channel main head, Hubei two-slot control inset",
+  "no_test_or_training_payloads": true,
+  "sources": {
+    "hunan_r": {
+      "path": "experiments/monthly_R_station16_20261013_v1/scripts/train_station16_R.py",
+      "sha256": "7a2e5cb441cdb5132a537cd03580017801595bdea839719d1773398d267210ce"
+    },
+    "hunan_head": {
+      "path": "experiments/monthly_R_station16_20261013_v1/head_candidate_v0.py",
+      "sha256": "eab8a098541b3eab47b1972e0413a82b82746039b768e3479fa1c4f75732730b"
+    },
+    "hunan_al": {
+      "path": "experiments/monthly_R_station16_20261013/head_r_al_candidate.py",
+      "sha256": "12c358503d2fde44bb747f5512085542d0c9be30fddb51e0745e030a8fe78a12"
+    },
+    "hubei_r": {
+      "path": "refine-logs/hubei_solar_geometry_repair_20261021/code/train_cot_repaired.py",
+      "sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05"
+    },
+    "hubei_head": {
+      "path": "refine-logs/hubei_cloud_probability_20261020/train_hubei_ghi_fourarm_paired.py",
+      "sha256": "f2f46df092db653b8a04f99ef80308a7f98fee6a207a0f74f731c5e51f4cb895"
+    }
+  },
+  "files": {
+    "audit_shapes.py": "b71be0baad9bfc70ad1ea0662b11f10f1c6176f2c53a211fae531be3effeafd5",
+    "CAPTIONS.md": "c8152893d887a4025373fd8e0720c9036d8928d51ec4f3bba5c69a5f4aa8d03e",
+    "CODE_WITNESS.json": "943e529ae29319bfd06b4f2cab88575cdf7ac6419afbea648f9996e0ef32147e",
+    "DESIGN.md": "af005fc8a21d8dd53b1eee5f469bcd972caeb667320e7b2d03cba7f05f819471",
+    "figurespec_render.log": "8d5b17cc6ebd57431340ccc58a7780d0843e74b42c5584d7834e437b466ff225",
+    "figure_spec.json": "23176412c738cbfd60b57e4170bb1af44389baa82e4c20856a70e5ea47bb988a",
+    "fig_core_architecture.pdf": "1af59bd8e4c4d69ffac2fe4df7f44a73591563ac60e33949270b5e21d8c972de",
+    "fig_core_architecture.png": "bf7adaacc0d3abab045393bd1cff031d54cad2098e15ca3fd91d1947ec6510e4",
+    "fig_core_architecture.svg": "6b3ff6c3955fc48460959d9fa382ae9c9829482483bf4e94ddcea9cdb22af371",
+    "pdf_render_check.png": "11d8c52c2c14439a9f84e7dd319f7bcce7f79f9cff0306375b0670e55049211f",
+    "print_preview.png": "2084ffd3f91a0641552e46a85ff4f80aed6add47544a2c79baf53b5d7c28ca80",
+    "render_architecture.py": "19ce55e08f4e3ffe58577568b679978fb6a81fdcbc96ffa672f8f9c79d98e853",
+    "stock_spec_draft.svg": "a103c35f191316242ad90e317156271c2f5068c6b9a3321bde6a6cfb96dfa8ed",
+    "VERIFICATION.json": "c01c41242d6acf92f99e8ab7a84f36e65a7c557c6fd983710403b7762777c0db",
+    "verify_exports.py": "6824301ef1f06498bc679562b309c4bb77a707ddc8529eff5aeb8a500cf12831"
+  }
+}

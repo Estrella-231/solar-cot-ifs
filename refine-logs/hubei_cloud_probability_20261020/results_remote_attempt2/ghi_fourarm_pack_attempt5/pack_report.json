@@ -1,0 +1,172 @@
+{
+  "state": "HUBEI_GHI_FOURARM_COMMON_TRAINVAL_PACK_TEST_CLOSED",
+  "rows": 25899,
+  "source_ghi_rows": 29351,
+  "retained_rows_after_coverage_and_quality": 25899,
+  "auxiliary_common_support_rows_before_quality_filter": 25901,
+  "excluded_rows_due_aux_source_unavailable": 3450,
+  "total_rows_excluded_from_fourarm_pack": 3452,
+  "input_quality_exclusion_rule": "exclude station rows where all 13 AGRI bands are exactly zero across the station-centred 3x3 input; applied identically before all four arms; raw source pack unchanged",
+  "excluded_rows_all_zero_agri_station_3x3": 2,
+  "excluded_all_zero_agri_by_station_split": {
+    "Niushou": {
+      "train": 0,
+      "val": 0
+    },
+    "Wangzhai": {
+      "train": 1,
+      "val": 0
+    },
+    "Mizhuang": {
+      "train": 1,
+      "val": 0
+    }
+  },
+  "excluded_all_zero_agri_keys": [
+    {
+      "source_row_index": 13367,
+      "station": "Wangzhai",
+      "split": "train",
+      "time_bjt": "202511221400",
+      "reason": "all_13_agri_bands_zero_in_station_3x3"
+    },
+    {
+      "source_row_index": 23137,
+      "station": "Mizhuang",
+      "split": "train",
+      "time_bjt": "202511221400",
+      "reason": "all_13_agri_bands_zero_in_station_3x3"
+    }
+  ],
+  "excluded_rows_by_station_split": {
+    "Niushou": {
+      "train": 1091,
+      "val": 90
+    },
+    "Wangzhai": {
+      "train": 1066,
+      "val": 90
+    },
+    "Mizhuang": {
+      "train": 1032,
+      "val": 81
+    }
+  },
+  "unique_missing_time_keys_by_split": {
+    "train": 1370,
+    "val": 111
+  },
+  "exclusion_policy": "coverage-only common support across existing GHI rows, corrected COT bank and p_cloud bank; identical retained rows for all arms; no weather/performance filtering",
+  "rows_by_split": {
+    "train": 23704,
+    "val": 2195
+  },
+  "rows_by_station": {
+    "Niushou": 8779,
+    "Wangzhai": 8586,
+    "Mizhuang": 8534
+  },
+  "arms": [
+    "A",
+    "AC",
+    "AM",
+    "ACM"
+  ],
+  "input_geometry": "station-centered 3x3 AGRI+cosSOZ+cosRAA; same-time GHI reconstruction",
+  "stations_local_centers_16x16": {
+    "Niushou": [
+      8,
+      6
+    ],
+    "Wangzhai": [
+      9,
+      8
+    ],
+    "Mizhuang": [
+      7,
+      10
+    ]
+  },
+  "base_arrays_exactly_equal_to_source_on_retained_row_indices": {
+    "agri_raw.npy": {
+      "source_sha256": "a632953841dd7b3b445b792c6de25d70db58beb6bb44e88e2ded79c89bf7ab9f",
+      "retained_array_sha256": "99dfe75028aeb26cfe79a445ecaf6797a62b35aa9f91f819b8ddcd257cf0b230",
+      "rowwise_equal_to_source_common_support": true,
+      "source_shape": [
+        29351,
+        13,
+        3,
+        3
+      ],
+      "retained_shape": [
+        25899,
+        13,
+        3,
+        3
+      ]
+    },
+    "geometry.npy": {
+      "source_sha256": "b6a4b4d010fe005706dbdd6f55e827201f1bad89a6235433ff92b0741163ec9b",
+      "retained_array_sha256": "fd781295dc3f0e56d07bc41351808e6ff69a99506fc35021f5198f117c953503",
+      "rowwise_equal_to_source_common_support": true,
+      "source_shape": [
+        29351,
+        2,
+        3,
+        3
+      ],
+      "retained_shape": [
+        25899,
+        2,
+        3,
+        3
+      ]
+    },
+    "ghi_wm2.npy": {
+      "source_sha256": "8b7970a981359e1d4af648cd3bf61088a2f24fcdc9bb5ed13e38d46f3cfa8605",
+      "retained_array_sha256": "07144fbee814865d551cc52f23df2f45d168dfd9eda1977c1968b5aec7da8701",
+      "rowwise_equal_to_source_common_support": true,
+      "source_shape": [
+        29351
+      ],
+      "retained_shape": [
+        25899
+      ]
+    },
+    "clear_sky_wm2.npy": {
+      "source_sha256": "671b5722036d2bc2d38d1104f1da16b93505022bba15ccac26c3ebe7f72c7d89",
+      "retained_array_sha256": "ce451a7450d3e88a63c92fd9d8439fea0b38180062cefdcd44b77453bccdca2b",
+      "rowwise_equal_to_source_common_support": true,
+      "source_shape": [
+        29351
+      ],
+      "retained_shape": [
+        25899
+      ]
+    }
+  },
+  "source_row_indices_sha256": "5d4d4344fdecbbc861eac36bde1d3cc3a01121bbb2f86ab7b6f28884ce6f69f2",
+  "source_ghi_pack_report_sha256": "7990846a8d573ed351cc0eb7403590ca61b86bd0a8bfeaea5619cb5232225746",
+  "source_rows_sha256": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db",
+  "cot_bank_report_sha256": "d061ccb28da2a1022dd90c26cde00ac3756f06e2a2d4ef9b5ddd6404001348c0",
+  "cot_bank_prediction_sha256": "da9a3b61914b6ec293088459cecbb611bf40ce2b07e376554959aa4484760ace",
+  "pcloud_bank_report_sha256": "5d9fbad709319a7c8fce08fb1c96aa11d6941b49fc3852a17201b70f06d32c7e",
+  "pcloud_bank_prediction_sha256": "f4eb96a74e4b93fc13df064c6f7542c4f871429a4c787480f66be590023d32f9",
+  "pcloud_source_rows_used": {
+    "date_oof": 7668,
+    "full_train": 18231
+  },
+  "old_time_misaligned_cot_array_read": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "hashes": {
+    "agri_raw.npy": "99dfe75028aeb26cfe79a445ecaf6797a62b35aa9f91f819b8ddcd257cf0b230",
+    "geometry.npy": "fd781295dc3f0e56d07bc41351808e6ff69a99506fc35021f5198f117c953503",
+    "ghi_wm2.npy": "07144fbee814865d551cc52f23df2f45d168dfd9eda1977c1968b5aec7da8701",
+    "clear_sky_wm2.npy": "ce451a7450d3e88a63c92fd9d8439fea0b38180062cefdcd44b77453bccdca2b",
+    "rows.csv": "afbff407baabd59dfffbfac1271a0a9dc726af59c6c71eeae05c622ed0419803",
+    "cot_pred_3x3.npy": "dd49d1e5c81bd76f399697129d8303db4a2dc5c954d2818569666aede7334cbf",
+    "p_cloud_3x3.npy": "94fb6543a4a28f2d3e6836b7c2a77630632a9fd31d35c787e71f3ce10d067f54"
+  },
+  "interpretation": "CPP-derived COT and CLP-trained cloud probability are predicted features; CPP CLP/COT are retrieval references, not independent truth"
+}

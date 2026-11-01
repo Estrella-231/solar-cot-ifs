@@ -1,0 +1,108 @@
+{
+  "state": "COMPLETE_DIRECT_COT_ZERO_INIT_CONDITIONAL_RESIDUAL_HEADS",
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 30,
+  "batch_size": 512,
+  "architecture": "frozen no-COT single-frame head plus 297\u219264\u219232\u21921 zero-initialized residual branch",
+  "pack_manifest_sha256": "bd6c393b6d6bc2ba73452cf8abcbc835c5a0ae78f1d0a5d1f773f1a3f9910a1f",
+  "trainer_sha256": "2a06413dcb92f3f14eb503cb7d1eacec950241a7ee402250d5b21ef6c47470a7",
+  "head_definition_sha256": "66b87d77552a3bc67702ab04bd0d95c69c71099431093f2b19e4b05450b73ba2",
+  "runs": [
+    {
+      "station": "sili",
+      "seed": 42,
+      "n_train": 72345,
+      "n_val": 31655,
+      "epochs": 30,
+      "batch_size": 512,
+      "updates": 4260,
+      "frozen_baseline_replay_max_abs_drift_wm2": 0.00024229101836681366,
+      "candidate_rmse_wm2": 135.91644837346232,
+      "baseline_rmse_wm2": 133.38650225934597,
+      "delta_rmse_candidate_minus_baseline_wm2": 2.529946114116342,
+      "elapsed_seconds": 8.452999999994063
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "n_train": 72345,
+      "n_val": 31655,
+      "epochs": 30,
+      "batch_size": 512,
+      "updates": 4260,
+      "frozen_baseline_replay_max_abs_drift_wm2": 0.0003270665038144216,
+      "candidate_rmse_wm2": 136.72545802685713,
+      "baseline_rmse_wm2": 131.91845628625887,
+      "delta_rmse_candidate_minus_baseline_wm2": 4.807001740598253,
+      "elapsed_seconds": 7.952999999994063
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "n_train": 72345,
+      "n_val": 31655,
+      "epochs": 30,
+      "batch_size": 512,
+      "updates": 4260,
+      "frozen_baseline_replay_max_abs_drift_wm2": 0.0002872992627089843,
+      "candidate_rmse_wm2": 134.4569639358943,
+      "baseline_rmse_wm2": 131.75625134343846,
+      "delta_rmse_candidate_minus_baseline_wm2": 2.7007125924558295,
+      "elapsed_seconds": 8.436999999990803
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "n_train": 79417,
+      "n_val": 34431,
+      "epochs": 30,
+      "batch_size": 512,
+      "updates": 4680,
+      "frozen_baseline_replay_max_abs_drift_wm2": 0.0003104528586845845,
+      "candidate_rmse_wm2": 137.23617698826482,
+      "baseline_rmse_wm2": 137.5409016621396,
+      "delta_rmse_candidate_minus_baseline_wm2": -0.3047246738747731,
+      "elapsed_seconds": 8.98399999999674
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "n_train": 79417,
+      "n_val": 34431,
+      "epochs": 30,
+      "batch_size": 512,
+      "updates": 4680,
+      "frozen_baseline_replay_max_abs_drift_wm2": 0.00033640510810073465,
+      "candidate_rmse_wm2": 140.87774991119306,
+      "baseline_rmse_wm2": 135.02058226185028,
+      "delta_rmse_candidate_minus_baseline_wm2": 5.857167649342784,
+      "elapsed_seconds": 9.203000000008615
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "n_train": 79417,
+      "n_val": 34431,
+      "epochs": 30,
+      "batch_size": 512,
+      "updates": 4680,
+      "frozen_baseline_replay_max_abs_drift_wm2": 0.000393161695683375,
+      "candidate_rmse_wm2": 145.64885259920553,
+      "baseline_rmse_wm2": 142.35112910214357,
+      "delta_rmse_candidate_minus_baseline_wm2": 3.297723497061952,
+      "elapsed_seconds": 9.48399999999674
+    }
+  ],
+  "test_payload_opened": false,
+  "buffer_payload_opened": false,
+  "future_observed_agri_used_as_input": false,
+  "cpp_used_as_input": false
+}

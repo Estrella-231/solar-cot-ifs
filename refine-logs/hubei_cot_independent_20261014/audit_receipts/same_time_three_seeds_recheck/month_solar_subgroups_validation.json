@@ -1,0 +1,1310 @@
+{
+  "state": "HUBEI_SAME_TIME_MONTH_AND_SOLAR_STRATA_VALIDATION_ONLY",
+  "test_payloads_read": 0,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "stations": [
+    "Niushou",
+    "Wangzhai",
+    "Mizhuang"
+  ],
+  "source": "same-time validation saved predictions plus target-time cosSOZ center pixel from frozen train/validation pack",
+  "parent_validation_audit_sha256": "4c2005b458c4514a3b17aea32a28c2693139926384d17666feee833c0d0573de",
+  "frozen_pack_sha256": "e8c5b2dc587e8a938bba43fc564be43aec777788aca223c054341f75dd09a515",
+  "prediction_bundle_sha256": {
+    "42": {
+      "Niushou": {
+        "A": "21132a80ac1ba53174ca4a60a256ce415a6e7118b927bd865bbe059e4107ca26",
+        "AC": "a715b484e74962256b42192418d3dd9a9621b7c62c642208084f33f6b55b4c54",
+        "AP": "481dd7d0a45d4c6a6e908b537dff80d84c3e80546723455ed3a23273f2ce00e3"
+      },
+      "Wangzhai": {
+        "A": "2e98e48ff5292279d1e9659e63962a18c02b11cd5ac1d7f6effd82b367938347",
+        "AC": "99bdfb6973df67e7c802104a8adf44b01128ea5450f95dfd02ba597161654754",
+        "AP": "b6240a37f98d3a07b06568e85395111eeeaba12dd49a36b9a7d5a298ec9969e9"
+      },
+      "Mizhuang": {
+        "A": "60261c43ed6162d0c5cf12a0a2cf250aa2e53824d0662956ad01f8cfff61502f",
+        "AC": "3dcdb52962028c5f399182da75323adaa92d6090cb7ecae9782a9df009d358d3",
+        "AP": "02090bc0d914aba7b54c0a92d675dd907f31150322ca245bd51f1a20c4a3d382"
+      }
+    },
+    "43": {
+      "Niushou": {
+        "A": "a2bafc1cb24dfbbfd24e18a9416e5dcb030ad80ae8068fd280784de9c21eefcd",
+        "AC": "7b0525d73647984df8eb742d1b75f8aab5e0d73ffbc7b50d032d0a78a147580a",
+        "AP": "d95ca19ac270cce24ffbec1ee3ca88e9fb3d0cac2a811e7a49dedd0943bc64da"
+      },
+      "Wangzhai": {
+        "A": "793466710ff5efd00d916cd278c49699088ec208e7748eab3e1b4205ebcd488f",
+        "AC": "9d600b71e976aa9a82714e8df62fd5d7dbbc5f1b8f21db06c563f0ca872ab62f",
+        "AP": "d5f3e510fcb541079acd976904c02187677b300592e948904b4b0c395114d533"
+      },
+      "Mizhuang": {
+        "A": "72327d6f762cc98cd8b3dc9d9d08da7910241d742d8c0d5af1ab83f952639d97",
+        "AC": "8f2e4b874fcaf819d701d5d0ae9af258340ad446a8e4150436e362e1f5de2206",
+        "AP": "ff974f0d0e34d14cb9a32d15a4f5fead6bad1a8a7efcc612c8fb553895f0f04c"
+      }
+    },
+    "44": {
+      "Niushou": {
+        "A": "3a9b29b2534e810b233290fcbd5ab5b5b143a4c763b6757ffaa66b6c1a60034b",
+        "AC": "c9eeae867a15ccdedd73f0b93b5711969de7739d04ec5f12fc60fe588cbb7120",
+        "AP": "48c2db9f6cb7889c1c56a8c90436d5ef343af7a895253b1653906c851ce69a19"
+      },
+      "Wangzhai": {
+        "A": "319aa087524c0e600a8edcdec9d16858b3032e20d2460a502c57fd644f06af10",
+        "AC": "c75eedca1fc9fb98c3a809f7460d0b95ef3dd31fc9349cef1fa98eb7b80dca2e",
+        "AP": "36e5f78db5da68335baf045a35129eeba2ac9c880585437001017b20eb1c6908"
+      },
+      "Mizhuang": {
+        "A": "549191b4b23863b7cde058f68b75b6578968d81968172f2fb41798a42af4fcc2",
+        "AC": "2a1e269305bdd8bd23f17d9dddb81b087f3489b7075216d50d553fb391dcf906",
+        "AP": "7a9a1fc5516b8f21b318b33884680e4331c0c92623e9bc4a184d9127edf37a57"
+      }
+    }
+  },
+  "geometry_channel": "cosSOZ (channel 0 of geometry.npy), solar altitude = degrees(arcsin(cosSOZ))",
+  "solar_bins_deg": [
+    -90,
+    0,
+    15,
+    30,
+    45,
+    60,
+    90.0001
+  ],
+  "solar_bin_labels": [
+    "below_0",
+    "0-15",
+    "15-30",
+    "30-45",
+    "45-60",
+    "60-90"
+  ],
+  "solar_bin_coverage": {
+    "Niushou": {
+      "all_validation_prediction_keys": 856,
+      "assigned_to_a_solar_bin": 856,
+      "below_0_deg": 9,
+      "unassigned_or_out_of_range": 0
+    },
+    "Wangzhai": {
+      "all_validation_prediction_keys": 784,
+      "assigned_to_a_solar_bin": 784,
+      "below_0_deg": 7,
+      "unassigned_or_out_of_range": 0
+    },
+    "Mizhuang": {
+      "all_validation_prediction_keys": 816,
+      "assigned_to_a_solar_bin": 816,
+      "below_0_deg": 9,
+      "unassigned_or_out_of_range": 0
+    }
+  },
+  "support_by_station": {
+    "Niushou": 856,
+    "Wangzhai": 784,
+    "Mizhuang": 816
+  },
+  "strata_are_descriptive_not_confirmatory": true,
+  "no_cloud_condition_claim": "No independent CLP/CPP cloud-cover field was included in the GHI pack; cloud/weather strata are not inferred from GHI or prediction errors.",
+  "source_hashes": {
+    "rows_csv": "43f7bc09892fb31307a75534b0a0c449ecb0ba4056b715af1b6bfd16042f46db",
+    "geometry_npy": "b6a4b4d010fe005706dbdd6f55e827201f1bad89a6235433ff92b0741163ec9b"
+  },
+  "strata": {
+    "month": {
+      "Niushou": {
+        "202508": {
+          "n": 85,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 39.75147027330901,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 112.95247072492567,
+              "mae_wm2": 87.65402792773995
+            },
+            "AC": {
+              "rmse_wm2": 108.54531578705972,
+              "mae_wm2": 84.35211316382184
+            },
+            "AP": {
+              "rmse_wm2": 112.37900445756293,
+              "mae_wm2": 87.24931944725559
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -4.40715493786595,
+            "AC_minus_AP": -3.833688670503198
+          }
+        },
+        "202509": {
+          "n": 81,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 32.70550922185495,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 61.11766051646692,
+              "mae_wm2": 43.069591966837095
+            },
+            "AC": {
+              "rmse_wm2": 56.57033712956248,
+              "mae_wm2": 37.417227046502894
+            },
+            "AP": {
+              "rmse_wm2": 60.6419514092809,
+              "mae_wm2": 42.47789823172668
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -4.547323386904445,
+            "AC_minus_AP": -4.071614279718418
+          }
+        },
+        "202510": {
+          "n": 75,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 33.016971809863115,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 99.13507878197849,
+              "mae_wm2": 82.92152846429083
+            },
+            "AC": {
+              "rmse_wm2": 91.56588527554094,
+              "mae_wm2": 75.3525034553475
+            },
+            "AP": {
+              "rmse_wm2": 99.19238075575781,
+              "mae_wm2": 82.83819882008764
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -7.5691935064375615,
+            "AC_minus_AP": -7.6264954802168745
+          }
+        },
+        "202511": {
+          "n": 73,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 25.517193325208385,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 34.42846663614284,
+              "mae_wm2": 28.741100814142456
+            },
+            "AC": {
+              "rmse_wm2": 31.27635837393265,
+              "mae_wm2": 25.00063583402805
+            },
+            "AP": {
+              "rmse_wm2": 33.893074535702624,
+              "mae_wm2": 28.16822402592595
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -3.1521082622101964,
+            "AC_minus_AP": -2.616716161769977
+          }
+        },
+        "202512": {
+          "n": 66,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 22.361788043865392,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 65.81672994766868,
+              "mae_wm2": 54.437518093020024
+            },
+            "AC": {
+              "rmse_wm2": 65.9211076865487,
+              "mae_wm2": 54.93181684583124
+            },
+            "AP": {
+              "rmse_wm2": 65.34605583086731,
+              "mae_wm2": 53.82413082803138
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 0.10437773888001327,
+            "AC_minus_AP": 0.5750518556813802
+          }
+        },
+        "202601": {
+          "n": 65,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 22.89924247089501,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 71.54724666221368,
+              "mae_wm2": 57.38603219302036
+            },
+            "AC": {
+              "rmse_wm2": 69.37680253677328,
+              "mae_wm2": 52.81842385748258
+            },
+            "AP": {
+              "rmse_wm2": 70.08537861733025,
+              "mae_wm2": 55.965613428484176
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -2.1704441254404023,
+            "AC_minus_AP": -0.7085760805569615
+          }
+        },
+        "202602": {
+          "n": 71,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 27.944734470563763,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 90.10952399336861,
+              "mae_wm2": 69.8806047819275
+            },
+            "AC": {
+              "rmse_wm2": 97.08851282149779,
+              "mae_wm2": 74.7852720402601
+            },
+            "AP": {
+              "rmse_wm2": 90.05926888005501,
+              "mae_wm2": 69.36935809427793
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 6.978988828129171,
+            "AC_minus_AP": 7.029243941442776
+          }
+        },
+        "202603": {
+          "n": 74,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 30.420820451234828,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 71.50647135198732,
+              "mae_wm2": 50.67494376664897
+            },
+            "AC": {
+              "rmse_wm2": 73.26526720022015,
+              "mae_wm2": 50.20039489667292
+            },
+            "AP": {
+              "rmse_wm2": 71.04275125775628,
+              "mae_wm2": 50.088580580478585
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.7587958482328265,
+            "AC_minus_AP": 2.222515942463867
+          }
+        },
+        "202604": {
+          "n": 88,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 40.29291453984704,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 55.42381540163203,
+              "mae_wm2": 47.8650472573936
+            },
+            "AC": {
+              "rmse_wm2": 53.57304631611311,
+              "mae_wm2": 45.31722448890408
+            },
+            "AP": {
+              "rmse_wm2": 54.3939431870281,
+              "mae_wm2": 46.88583757197767
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -1.8507690855189243,
+            "AC_minus_AP": -0.8208968709149976
+          }
+        },
+        "202605": {
+          "n": 88,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 40.51421378342144,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 68.10405008770924,
+              "mae_wm2": 53.536460738741994
+            },
+            "AC": {
+              "rmse_wm2": 67.29888733976382,
+              "mae_wm2": 52.89981730372617
+            },
+            "AP": {
+              "rmse_wm2": 67.6065922554553,
+              "mae_wm2": 52.97673550902894
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.8051627479454263,
+            "AC_minus_AP": -0.3077049156914787
+          }
+        },
+        "202606": {
+          "n": 90,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 41.26225195989724,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 78.98146147918061,
+              "mae_wm2": 59.22278416355451
+            },
+            "AC": {
+              "rmse_wm2": 76.83409931157419,
+              "mae_wm2": 57.30149688742779
+            },
+            "AP": {
+              "rmse_wm2": 78.37076600874498,
+              "mae_wm2": 58.62091898498712
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -2.1473621676064263,
+            "AC_minus_AP": -1.5366666971707825
+          }
+        }
+      },
+      "Wangzhai": {
+        "202508": {
+          "n": 77,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 39.26202372738329,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 100.40344940331165,
+              "mae_wm2": 70.74568480343531
+            },
+            "AC": {
+              "rmse_wm2": 101.94706003346158,
+              "mae_wm2": 72.01037241653962
+            },
+            "AP": {
+              "rmse_wm2": 100.521188279078,
+              "mae_wm2": 70.96457238011546
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.5436106301499422,
+            "AC_minus_AP": 1.4258717543835786
+          }
+        },
+        "202509": {
+          "n": 78,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 31.45646502071413,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 60.307723365848176,
+              "mae_wm2": 40.54474731405319
+            },
+            "AC": {
+              "rmse_wm2": 60.62231988450213,
+              "mae_wm2": 40.28333852668124
+            },
+            "AP": {
+              "rmse_wm2": 59.941726879016194,
+              "mae_wm2": 40.279647313830246
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 0.3145965186539617,
+            "AC_minus_AP": 0.6805930054859388
+          }
+        },
+        "202510": {
+          "n": 70,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 33.429074430158266,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 92.20989785105088,
+              "mae_wm2": 75.89636797337306
+            },
+            "AC": {
+              "rmse_wm2": 81.92854419437244,
+              "mae_wm2": 64.793389467966
+            },
+            "AP": {
+              "rmse_wm2": 90.20917074087909,
+              "mae_wm2": 73.80871586913155
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -10.281353656678442,
+            "AC_minus_AP": -8.280626546506653
+          }
+        },
+        "202511": {
+          "n": 66,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 25.5133153227429,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 45.42446784690129,
+              "mae_wm2": 32.81353573534977
+            },
+            "AC": {
+              "rmse_wm2": 42.23379849999994,
+              "mae_wm2": 27.881460303647653
+            },
+            "AP": {
+              "rmse_wm2": 44.45401237193537,
+              "mae_wm2": 31.930634673647205
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -3.190669346901352,
+            "AC_minus_AP": -2.2202138719354374
+          }
+        },
+        "202512": {
+          "n": 64,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 22.38147611778846,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 69.56331731141331,
+              "mae_wm2": 54.62199760088697
+            },
+            "AC": {
+              "rmse_wm2": 69.28892467192638,
+              "mae_wm2": 54.88699536413575
+            },
+            "AP": {
+              "rmse_wm2": 68.90071739546194,
+              "mae_wm2": 53.715843352566786
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.2743926394869381,
+            "AC_minus_AP": 0.3882072764644467
+          }
+        },
+        "202601": {
+          "n": 60,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 23.142189226366675,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 64.23038878744897,
+              "mae_wm2": 45.9464445806212
+            },
+            "AC": {
+              "rmse_wm2": 63.776245330010454,
+              "mae_wm2": 41.50928297407098
+            },
+            "AP": {
+              "rmse_wm2": 63.20757694790898,
+              "mae_wm2": 44.50026990522941
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.45414345743853346,
+            "AC_minus_AP": 0.5686683821014663
+          }
+        },
+        "202602": {
+          "n": 35,
+          "unique_dates": 1,
+          "mean_solar_altitude_deg": 28.53146944402336,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 66.35458901639682,
+              "mae_wm2": 58.21773426248914
+            },
+            "AC": {
+              "rmse_wm2": 69.55395858860517,
+              "mae_wm2": 60.421144020167134
+            },
+            "AP": {
+              "rmse_wm2": 65.9633429646763,
+              "mae_wm2": 57.82759917825461
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 3.199369572208352,
+            "AC_minus_AP": 3.590615623928881
+          }
+        },
+        "202603": {
+          "n": 74,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 30.061881327890635,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 48.29559078006046,
+              "mae_wm2": 37.594279890695404
+            },
+            "AC": {
+              "rmse_wm2": 46.37823589052971,
+              "mae_wm2": 35.926337915128684
+            },
+            "AP": {
+              "rmse_wm2": 47.706129968025266,
+              "mae_wm2": 36.94743239168111
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -1.9173548895307444,
+            "AC_minus_AP": -1.3278940774955572
+          }
+        },
+        "202604": {
+          "n": 83,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 41.87217178183797,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 46.53680233867911,
+              "mae_wm2": 37.84559637158511
+            },
+            "AC": {
+              "rmse_wm2": 45.81508984536482,
+              "mae_wm2": 36.56355063353916
+            },
+            "AP": {
+              "rmse_wm2": 45.19801657545872,
+              "mae_wm2": 36.605753862654346
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.7217124933142927,
+            "AC_minus_AP": 0.6170732699060911
+          }
+        },
+        "202605": {
+          "n": 87,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 40.67439294121585,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 58.37741850759048,
+              "mae_wm2": 48.56252900576683
+            },
+            "AC": {
+              "rmse_wm2": 56.785427017247805,
+              "mae_wm2": 47.2550725457312
+            },
+            "AP": {
+              "rmse_wm2": 57.985590127560066,
+              "mae_wm2": 48.3775663387273
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -1.591991490342669,
+            "AC_minus_AP": -1.200163110312258
+          }
+        },
+        "202606": {
+          "n": 90,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 42.240964552557365,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 62.01079087624684,
+              "mae_wm2": 46.3107508595343
+            },
+            "AC": {
+              "rmse_wm2": 59.156079371035766,
+              "mae_wm2": 44.703202454249066
+            },
+            "AP": {
+              "rmse_wm2": 61.61793507860468,
+              "mae_wm2": 46.090590589576294
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -2.854711505211076,
+            "AC_minus_AP": -2.4618557075689154
+          }
+        }
+      },
+      "Mizhuang": {
+        "202508": {
+          "n": 82,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 37.86541971968233,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 107.38809094180867,
+              "mae_wm2": 74.61863742829338
+            },
+            "AC": {
+              "rmse_wm2": 108.82304411139181,
+              "mae_wm2": 74.95964827697452
+            },
+            "AP": {
+              "rmse_wm2": 107.22087704146209,
+              "mae_wm2": 74.2890207735988
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.434953169583153,
+            "AC_minus_AP": 1.6021670699297204
+          }
+        },
+        "202509": {
+          "n": 79,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 32.12210581001121,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 54.40334667464871,
+              "mae_wm2": 37.08471222248573
+            },
+            "AC": {
+              "rmse_wm2": 63.430968358015924,
+              "mae_wm2": 40.300865172813275
+            },
+            "AP": {
+              "rmse_wm2": 54.65277987692661,
+              "mae_wm2": 37.215139810345626
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 9.02762168336721,
+            "AC_minus_AP": 8.778188481089318
+          }
+        },
+        "202510": {
+          "n": 70,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 32.21456548581817,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 71.75233362343417,
+              "mae_wm2": 58.55824880883807
+            },
+            "AC": {
+              "rmse_wm2": 64.23996616743632,
+              "mae_wm2": 51.567314042931514
+            },
+            "AP": {
+              "rmse_wm2": 70.51485893327089,
+              "mae_wm2": 57.36910330851873
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -7.512367455997835,
+            "AC_minus_AP": -6.2748927658345535
+          }
+        },
+        "202511": {
+          "n": 66,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 26.37246598043879,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 36.41408563783737,
+              "mae_wm2": 29.191565433761685
+            },
+            "AC": {
+              "rmse_wm2": 30.16643985530406,
+              "mae_wm2": 24.185775233489096
+            },
+            "AP": {
+              "rmse_wm2": 35.780006046083805,
+              "mae_wm2": 28.68509375966258
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -6.247645782533309,
+            "AC_minus_AP": -5.613566190779744
+          }
+        },
+        "202512": {
+          "n": 63,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 22.263764354905852,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 65.73005930833644,
+              "mae_wm2": 53.501743371524505
+            },
+            "AC": {
+              "rmse_wm2": 67.01115187765042,
+              "mae_wm2": 55.47246515025538
+            },
+            "AP": {
+              "rmse_wm2": 65.24114608719506,
+              "mae_wm2": 52.90741776284718
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.2810925693139765,
+            "AC_minus_AP": 1.7700057904553528
+          }
+        },
+        "202601": {
+          "n": 64,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 22.63659504971659,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 67.07605321077308,
+              "mae_wm2": 54.01581654251398
+            },
+            "AC": {
+              "rmse_wm2": 64.12031739421543,
+              "mae_wm2": 49.34396936205061
+            },
+            "AP": {
+              "rmse_wm2": 66.28402490858225,
+              "mae_wm2": 53.09788412061365
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -2.9557358165576297,
+            "AC_minus_AP": -2.163707514366808
+          }
+        },
+        "202602": {
+          "n": 73,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 28.96183769915725,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 143.72890405839436,
+              "mae_wm2": 89.97320044506766
+            },
+            "AC": {
+              "rmse_wm2": 113.32121032219736,
+              "mae_wm2": 79.40600123307475
+            },
+            "AP": {
+              "rmse_wm2": 144.3847709572477,
+              "mae_wm2": 90.3911705020832
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -30.40769373619703,
+            "AC_minus_AP": -31.06356063505035
+          }
+        },
+        "202603": {
+          "n": 73,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 31.07680349124206,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 93.43998239794969,
+              "mae_wm2": 68.63757848140857
+            },
+            "AC": {
+              "rmse_wm2": 84.93060095520902,
+              "mae_wm2": 58.83763326221405
+            },
+            "AP": {
+              "rmse_wm2": 93.27032231803834,
+              "mae_wm2": 68.19042659268531
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -8.509381442740656,
+            "AC_minus_AP": -8.339721362829323
+          }
+        },
+        "202604": {
+          "n": 83,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 38.73003592063371,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 42.436741199462254,
+              "mae_wm2": 37.0609327362005
+            },
+            "AC": {
+              "rmse_wm2": 36.73492016910773,
+              "mae_wm2": 30.35777949628581
+            },
+            "AP": {
+              "rmse_wm2": 41.79556751141037,
+              "mae_wm2": 36.48920597668633
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -5.701821030354526,
+            "AC_minus_AP": -5.06064734230264
+          }
+        },
+        "202605": {
+          "n": 82,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 40.258222340966974,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 70.6666650491465,
+              "mae_wm2": 57.32273499267857
+            },
+            "AC": {
+              "rmse_wm2": 72.48015008797363,
+              "mae_wm2": 59.93026006076394
+            },
+            "AP": {
+              "rmse_wm2": 70.19228351506169,
+              "mae_wm2": 57.022862720780246
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.813485038827115,
+            "AC_minus_AP": 2.2878665729119283
+          }
+        },
+        "202606": {
+          "n": 81,
+          "unique_dates": 2,
+          "mean_solar_altitude_deg": 45.345393324988045,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 57.75350352694225,
+              "mae_wm2": 44.8981105996748
+            },
+            "AC": {
+              "rmse_wm2": 58.24977153978116,
+              "mae_wm2": 44.71756834895522
+            },
+            "AP": {
+              "rmse_wm2": 57.543222921942316,
+              "mae_wm2": 44.66267059025941
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 0.49626801283890387,
+            "AC_minus_AP": 0.7065486178388388
+          }
+        }
+      }
+    },
+    "solar_altitude_deg": {
+      "Niushou": {
+        "0-15": {
+          "n": 169,
+          "unique_dates": 22,
+          "mean_solar_altitude_deg": 7.668019730723522,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 33.70814884854949,
+              "mae_wm2": 25.099971225606442
+            },
+            "AC": {
+              "rmse_wm2": 30.211260946123804,
+              "mae_wm2": 22.3882169875241
+            },
+            "AP": {
+              "rmse_wm2": 33.06050488999182,
+              "mae_wm2": 24.637925685723207
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -3.496887902425685,
+            "AC_minus_AP": -2.8492439438680144
+          }
+        },
+        "15-30": {
+          "n": 209,
+          "unique_dates": 22,
+          "mean_solar_altitude_deg": 22.39237438539499,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 75.87658945700196,
+              "mae_wm2": 63.15178692816168
+            },
+            "AC": {
+              "rmse_wm2": 72.80820642446379,
+              "mae_wm2": 58.744783875284384
+            },
+            "AP": {
+              "rmse_wm2": 75.08113045205953,
+              "mae_wm2": 62.2172374231013
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -3.06838303253816,
+            "AC_minus_AP": -2.2729240275957303
+          }
+        },
+        "30-45": {
+          "n": 220,
+          "unique_dates": 22,
+          "mean_solar_altitude_deg": 36.83097379678148,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 86.24447901244628,
+              "mae_wm2": 66.45496214375352
+            },
+            "AC": {
+              "rmse_wm2": 86.81811457948766,
+              "mae_wm2": 65.8290477926081
+            },
+            "AP": {
+              "rmse_wm2": 86.09972361738933,
+              "mae_wm2": 66.02950597531868
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 0.5736355670413834,
+            "AC_minus_AP": 0.71839096209834
+          }
+        },
+        "45-60": {
+          "n": 156,
+          "unique_dates": 16,
+          "mean_solar_altitude_deg": 51.004185530996025,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 85.31929651810636,
+              "mae_wm2": 67.12873610472069
+            },
+            "AC": {
+              "rmse_wm2": 84.91007315024804,
+              "mae_wm2": 66.79469863369934
+            },
+            "AP": {
+              "rmse_wm2": 84.97784401441858,
+              "mae_wm2": 66.74878444834653
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.4092233678583123,
+            "AC_minus_AP": -0.06777086417053606
+          }
+        },
+        "60-90": {
+          "n": 93,
+          "unique_dates": 8,
+          "mean_solar_altitude_deg": 68.46020241810064,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 96.20639790424575,
+              "mae_wm2": 75.07727835597103
+            },
+            "AC": {
+              "rmse_wm2": 90.91318153626969,
+              "mae_wm2": 70.61917636556863
+            },
+            "AP": {
+              "rmse_wm2": 95.14002047432662,
+              "mae_wm2": 73.93148925398414
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -5.293216367976058,
+            "AC_minus_AP": -4.2268389380569475
+          }
+        },
+        "below_0": {
+          "n": 9,
+          "unique_dates": 9,
+          "mean_solar_altitude_deg": -1.2158626917728557,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 4.639465416315913,
+              "mae_wm2": 3.253851617720944
+            },
+            "AC": {
+              "rmse_wm2": 4.625737923803171,
+              "mae_wm2": 3.278797562820492
+            },
+            "AP": {
+              "rmse_wm2": 4.644274007433438,
+              "mae_wm2": 3.2923287406425783
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.013727492512741968,
+            "AC_minus_AP": -0.018536083630267264
+          }
+        }
+      },
+      "Wangzhai": {
+        "0-15": {
+          "n": 154,
+          "unique_dates": 21,
+          "mean_solar_altitude_deg": 8.043173998219974,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 30.933873521797537,
+              "mae_wm2": 21.123958106761503
+            },
+            "AC": {
+              "rmse_wm2": 28.01952169723973,
+              "mae_wm2": 18.712559245938024
+            },
+            "AP": {
+              "rmse_wm2": 30.3606179354703,
+              "mae_wm2": 20.65418669421758
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -2.9143518245578064,
+            "AC_minus_AP": -2.34109623823057
+          }
+        },
+        "15-30": {
+          "n": 190,
+          "unique_dates": 21,
+          "mean_solar_altitude_deg": 22.55601649611195,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 66.99106672133456,
+              "mae_wm2": 51.42337077124077
+            },
+            "AC": {
+              "rmse_wm2": 62.90004797130612,
+              "mae_wm2": 46.57828477725648
+            },
+            "AP": {
+              "rmse_wm2": 65.88838142384323,
+              "mae_wm2": 50.27944493377418
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -4.0910187500284465,
+            "AC_minus_AP": -2.9883334525371033
+          }
+        },
+        "30-45": {
+          "n": 202,
+          "unique_dates": 21,
+          "mean_solar_altitude_deg": 36.70595736157527,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 74.26224001334283,
+              "mae_wm2": 60.864630206583364
+            },
+            "AC": {
+              "rmse_wm2": 71.7854186166255,
+              "mae_wm2": 57.53194170816503
+            },
+            "AP": {
+              "rmse_wm2": 73.50935792259108,
+              "mae_wm2": 60.146695582386684
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -2.4768213967173316,
+            "AC_minus_AP": -1.723939305965582
+          }
+        },
+        "45-60": {
+          "n": 141,
+          "unique_dates": 15,
+          "mean_solar_altitude_deg": 51.094974259752526,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 67.55347231464559,
+              "mae_wm2": 52.07892893617598
+            },
+            "AC": {
+              "rmse_wm2": 69.4559195429504,
+              "mae_wm2": 54.171514006089375
+            },
+            "AP": {
+              "rmse_wm2": 66.97821452390724,
+              "mae_wm2": 51.346562306649865
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.902447228304813,
+            "AC_minus_AP": 2.4777050190431567
+          }
+        },
+        "60-90": {
+          "n": 90,
+          "unique_dates": 8,
+          "mean_solar_altitude_deg": 69.16141235674438,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 90.90393183367763,
+              "mae_wm2": 66.6862003467701
+            },
+            "AC": {
+              "rmse_wm2": 90.62254488865374,
+              "mae_wm2": 66.50268044648347
+            },
+            "AP": {
+              "rmse_wm2": 90.58240202147222,
+              "mae_wm2": 66.51214397571705
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.2813869450239063,
+            "AC_minus_AP": 0.040142867181515385
+          }
+        },
+        "below_0": {
+          "n": 7,
+          "unique_dates": 7,
+          "mean_solar_altitude_deg": -1.0348503267779103,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 7.841695440980434,
+              "mae_wm2": 4.508408743838248
+            },
+            "AC": {
+              "rmse_wm2": 7.796462151515127,
+              "mae_wm2": 4.570787918216194
+            },
+            "AP": {
+              "rmse_wm2": 7.911791247560377,
+              "mae_wm2": 4.553093751357491
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -0.04523328946530736,
+            "AC_minus_AP": -0.11532909604524999
+          }
+        }
+      },
+      "Mizhuang": {
+        "0-15": {
+          "n": 162,
+          "unique_dates": 22,
+          "mean_solar_altitude_deg": 7.989492209710174,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 43.82715352822876,
+              "mae_wm2": 31.19630506171734
+            },
+            "AC": {
+              "rmse_wm2": 36.946450154416674,
+              "mae_wm2": 26.3277032293318
+            },
+            "AP": {
+              "rmse_wm2": 43.519342174382025,
+              "mae_wm2": 30.983525881122173
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -6.880703373812092,
+            "AC_minus_AP": -6.572892019965356
+          }
+        },
+        "15-30": {
+          "n": 201,
+          "unique_dates": 22,
+          "mean_solar_altitude_deg": 22.53375490680883,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 78.55999124632382,
+              "mae_wm2": 62.98283219930545
+            },
+            "AC": {
+              "rmse_wm2": 68.76665280746471,
+              "mae_wm2": 54.91163391774369
+            },
+            "AP": {
+              "rmse_wm2": 78.00981305709654,
+              "mae_wm2": 62.28797080781724
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -9.79333843885911,
+            "AC_minus_AP": -9.243160249631828
+          }
+        },
+        "30-45": {
+          "n": 218,
+          "unique_dates": 22,
+          "mean_solar_altitude_deg": 36.93343553138834,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 97.92216779136845,
+              "mae_wm2": 63.74114695091131
+            },
+            "AC": {
+              "rmse_wm2": 84.9050663033447,
+              "mae_wm2": 58.62399666170827
+            },
+            "AP": {
+              "rmse_wm2": 97.92335644175493,
+              "mae_wm2": 63.25018920665122
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": -13.017101488023764,
+            "AC_minus_AP": -13.018290138410222
+          }
+        },
+        "45-60": {
+          "n": 136,
+          "unique_dates": 16,
+          "mean_solar_altitude_deg": 51.28967787478841,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 74.91321519648416,
+              "mae_wm2": 56.25175808925255
+            },
+            "AC": {
+              "rmse_wm2": 83.0090887364574,
+              "mae_wm2": 62.21221783114415
+            },
+            "AP": {
+              "rmse_wm2": 74.66759453471578,
+              "mae_wm2": 55.970974492091756
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 8.095873539973232,
+            "AC_minus_AP": 8.34149420174164
+          }
+        },
+        "60-90": {
+          "n": 90,
+          "unique_dates": 8,
+          "mean_solar_altitude_deg": 69.11810502881849,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 92.10617515824237,
+              "mae_wm2": 62.250905411331736
+            },
+            "AC": {
+              "rmse_wm2": 93.99805020893844,
+              "mae_wm2": 64.02666190818503
+            },
+            "AP": {
+              "rmse_wm2": 92.07792932272507,
+              "mae_wm2": 62.212034451520005
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 1.8918750506960815,
+            "AC_minus_AP": 1.9201208862133967
+          }
+        },
+        "below_0": {
+          "n": 9,
+          "unique_dates": 9,
+          "mean_solar_altitude_deg": -1.1066479768999382,
+          "arms_mean_over_seeds": {
+            "A": {
+              "rmse_wm2": 4.947101569332015,
+              "mae_wm2": 3.541950362837977
+            },
+            "AC": {
+              "rmse_wm2": 4.965020088856547,
+              "mae_wm2": 3.497618596655903
+            },
+            "AP": {
+              "rmse_wm2": 4.9234908163740485,
+              "mae_wm2": 3.5447346820944436
+            }
+          },
+          "delta_rmse_mean_over_seeds_wm2": {
+            "AC_minus_A": 0.017918519524531717,
+            "AC_minus_AP": 0.04152927248249819
+          }
+        }
+      }
+    }
+  }
+}

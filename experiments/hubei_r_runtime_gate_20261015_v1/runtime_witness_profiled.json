@@ -1,0 +1,58 @@
+{
+  "state": "HUBEI_R_RUNTIME_WITNESS_PASSED_NO_FORMAL_TRAINING",
+  "test_payloads_read": 0,
+  "pack_hashes_match": true,
+  "pack_hashes": {
+    "mask.npy": "99ce657288f30753bc9f9c1b2b10c9f076412558046e43e2174ac6ab4169ce63",
+    "norm.json": "11b9014bc07df2d72926ed230ed954b7eea95621869e6479c4aba7f6986bb86a",
+    "rows.csv": "9a7993c6a2509a598cc87d77cfa35fce695877208456819793064d426fa47745",
+    "target.npy": "93b59effa1680c98d1fc29df59002d424ed32c414b608cd21b721bc8245b1683",
+    "x_norm.npy": "07abd38111adb4fb07912534c71dd3d5b3b3edc5030822b0b725cedd5311d17f"
+  },
+  "train_rows": 2811,
+  "val_rows": 259,
+  "batch_samples": 8,
+  "batch_valid_cpp_pixels": 2048,
+  "loss_fp16_autocast": 0.06825031340122223,
+  "gradient_norm_before_clip": 0.0776345506310463,
+  "save_reload_max_abs_prediction_difference": 0.0,
+  "single_validation_sample_fp64_metrics_not_skill_claim": {
+    "valid_pixels": 256,
+    "rmse": 3.2681286501673927,
+    "mae": 2.154975663000202,
+    "bias": -1.4750869451061515
+  },
+  "profile_candidates": [
+    {
+      "batch": 32,
+      "updates_per_epoch": 87,
+      "samples_per_second": 3139.6232015937344,
+      "peak_memory_bytes": 146113536
+    },
+    {
+      "batch": 64,
+      "updates_per_epoch": 43,
+      "samples_per_second": 5071.611634101468,
+      "peak_memory_bytes": 153644032
+    },
+    {
+      "batch": 128,
+      "updates_per_epoch": 21,
+      "samples_per_second": 15116.322601850408,
+      "peak_memory_bytes": 168705024
+    },
+    {
+      "batch": 192,
+      "updates_per_epoch": 14,
+      "samples_per_second": 18815.462962732683,
+      "peak_memory_bytes": 184290304
+    }
+  ],
+  "profile_selected_batch_within_3pct_best": 192,
+  "profile_scope": "single-card microprofile; selected batch remains provisional until formal trainer is separately audited",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "gpu_memory_peak_bytes": 184290304,
+  "torch": "2.3.1+cu118",
+  "model_source_sha256": "8af2d0e101b492bf2096223fe788b7f3a8a9b5ece2544db45903b95397620e05",
+  "note": "Bounded runtime witness only; no epoch training, checkpoint selection, test access, or performance claim."
+}

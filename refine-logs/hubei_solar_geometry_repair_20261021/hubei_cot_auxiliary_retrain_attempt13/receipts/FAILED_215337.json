@@ -1,0 +1,16 @@
+{
+  "state": "FAILED_BEFORE_DATA_PREFLIGHT",
+  "job_id": "215337.tc6000",
+  "exit_status": 1,
+  "elapsed_walltime": "00:00:19",
+  "pbs_allocation": "node22-gpu/1",
+  "reported_hostname": "gpu2",
+  "failure": "incorrect hostname assertion required hostname -s == node22 despite PBS allocation being node22-gpu/1",
+  "stage_reached": "attempt13 wrapper startup",
+  "data_preflight_started": false,
+  "training_started": false,
+  "test_payloads_read": 0,
+  "buffer_payloads_read": 0,
+  "log": "../attempt13_pair.log",
+  "repair": "remove hostname literal check; retain PBS node22-gpu resource allocation assertion; retry with separate log"
+}

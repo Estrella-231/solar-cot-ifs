@@ -1,0 +1,10 @@
+#!/bin/bash
+#PBS -N hb_geo_diag11
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=4
+#PBS -l walltime=00:20:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/geometry_diag_attempt11.log
+set -euo pipefail
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
+/public/home/slfu/miniconda3/envs/swc/bin/python -u /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_solar_geometry_repair_20261021/diagnose_attempt11.py

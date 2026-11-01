@@ -1,0 +1,13 @@
+实时核验收据 — 2026-10-30
+
+服务器观察时间：2026-10-30 17:58:27 CST；客户端时钟：2026-10-30 10:17:33 UTC（18:17:33 CST）。服务器/客户端时间有约19分钟偏差；ETA按剩余时长给出，不用两种时钟差推算速度。
+
+PBS 216594.tc6000：R，node21，GPU0–7共8张A100-SXM4-40GB。progress.json：training，epoch 146 / batch 360，global_step 64450 / 66300，test_payloads_read=0。已完成145轮，未发现完成标记。
+
+最近完整3140样本验证：epoch145，normalized RMSE 0.4330496、normalized MAE 0.2273480、matched model RMSE 0.4320450、persistence RMSE 0.7918377、MSE skill 0.7022954。该值也是当前best full-val RMSE。
+
+最近普通轮141–144耗时1052.09、1050.69、1052.49、1050.29秒，均值约1051.39秒。epoch145完整验证轮耗时1614.63秒，比普通轮约多563秒。以progress快照计算，当前轮剩余约82步（约176秒），其后4轮约4206秒，并计1次全验证额外563秒，合计约4980秒（1小时23分）。按服务器时间估计约19:21 CST完成，时钟差异与运行波动会影响绝对时刻。
+
+最近日志异常扫描（末尾5000行）未见 Traceback、OOM、CUDA error、NaN、Inf 或 error。GPU CSV最新样本17:57:57.839 CST，8卡利用率100%，显存31557–39537/40536 MiB。last.pt 1,053,155,194字节，mtime 17:56:30；best.pt同尺寸，mtime 17:45:14。checkpoint仅stat，未加载。
+
+方法边界：只读 qstat、progress JSON、日志尾段/关键事件、checkpoint元数据与GPU CSV；未读取test载荷，未启动/停止/修改作业。

@@ -1,0 +1,176 @@
+#!/bin/bash
+#PBS -N cot_oof16_val
+#PBS -q gpu
+#PBS -l nodes=node22:ppn=24:gpus=6
+#PBS -l walltime=01:30:00
+#PBS -j oe
+#PBS -o /public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/hubei_cot_station_patch_forecast_20261022/oof_source_cv_attempt15/monthly_val_score_attempt16/retry01/logs/pbs.log
+set -euo pipefail
+
+PROJECT=/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907
+BASE=$PROJECT/experiments/hubei_cot_station_patch_forecast_20261022
+ATTEMPT15=$BASE/oof_source_cv_attempt15
+ATTEMPT16=$ATTEMPT15/monthly_val_score_attempt16/retry01
+CACHE_ATTEMPT5=$BASE/cache_attempt5
+CACHE=$CACHE_ATTEMPT5/cache
+TRAINER=$ATTEMPT15/scripts/train_station_patch_cot_forecaster.py
+MODEL_SOURCE=$PROJECT/scripts/retrieved_cot_forecaster_20261013.py
+PY=/public/home/slfu/miniconda3/envs/swc/bin/python
+PREDICTIONS=$ATTEMPT16/predictions
+LOGROOT=$ATTEMPT16/logs
+
+trap 'status=$?; echo ATTEMPT16_ERR line=$LINENO command=$BASH_COMMAND status=$status; exit $status' ERR
+echo "ATTEMPT16_MONTHLY_VAL_INFERENCE_START job=$PBS_JOBID host=$(hostname)"
+
+test -f "$CACHE/cache_report.json"
+test -f "$CACHE_ATTEMPT5/cache_audit/cache_audit.json"
+test -f "$TRAINER"
+test -f "$MODEL_SOURCE"
+test -f "$ATTEMPT16/infer_frozen_monthly_validation.py"
+test -f "$ATTEMPT16/score_monthly_validation_attempt16.py"
+test ! -e "$ATTEMPT16/inference_complete.json"
+test ! -e "$ATTEMPT16/monthly_validation_score.json"
+test ! -d "$PREDICTIONS"
+
+source /public/home/slfu/miniconda3/etc/profile.d/conda.sh
+conda activate swc
+export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$ATTEMPT16:$ATTEMPT15/scripts:$PROJECT/scripts"
+export LD_PRELOAD="$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_ops_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_cnn_train.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_adv_infer.so.8:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn.so.8"
+
+GPU_TEXT=$(qstat -f "$PBS_JOBID" | tr -d '\n' | grep -oE 'node22-gpu/[0-9]+' | sort -Vu | cut -d/ -f2)
+mapfile -t GPU_IDS <<< "$GPU_TEXT"
+if [[ ${#GPU_IDS[@]} -ne 6 && ${#GPU_IDS[@]} -ne 4 ]]; then
+  echo "Expected 6 allocated GPUs, or 4 for the documented fallback; got ${#GPU_IDS[@]}: ${GPU_IDS[*]}"
+  exit 2
+fi
+printf 'ALLOCATED_NODE22_GPU_IDS=%s\n' "${GPU_IDS[*]}"
+nvidia-smi -i "$(IFS=,; echo "${GPU_IDS[*]}")" --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv
+for gpu in "${GPU_IDS[@]}"; do
+  test -z "$(nvidia-smi -i "$gpu" --query-compute-apps=pid --format=csv,noheader)"
+done
+
+"$PY" - "$CACHE" "$CACHE_ATTEMPT5/cache_audit/cache_audit.json" "$ATTEMPT15/training" <<'PY'
+import hashlib, json, pathlib, sys
+cache, audit_path, training_root = map(pathlib.Path, sys.argv[1:])
+report = json.load(open(cache / "cache_report.json", encoding="utf-8"))
+audit = json.load(open(audit_path, encoding="utf-8"))
+assert report["state"] == "COMPLETE_HUBEI_STATION_PATCH_COT_GEOMETRY_CACHE_TRAINVAL_ONLY", report
+assert audit["state"] == "PASS_STATION_PATCH_CACHE_AND_PAIR_AUDIT_TEST_BUFFER_CLOSED", audit
+assert report["split"]["train"] == 20206 and report["split"]["val"] == 1855, report
+assert report["split"]["test_payloads_read"] == report["split"]["buffer_payloads_read"] == 0, report
+assert report["test_payloads_read"] == report["buffer_payloads_read"] == 0, report
+assert audit.get("test_payloads_read") == audit.get("buffer_payloads_read") == 0, audit
+names = [f"{arm}_seed{seed}" for arm in ("fullr_control", "oof_train_source") for seed in (42,43,44)]
+for name in names:
+    run = training_root / name
+    d = json.load(open(run / "training_complete.json", encoding="utf-8"))
+    h = hashlib.sha256((run / "best.pt").read_bytes()).hexdigest()
+    assert d["state"] == "COMPLETE_TRAINED_HUBEI_INTERNAL_TRAIN_DATE_HOLDOUT_COT_DIAGNOSTIC", name
+    assert d["seed"] == int(name.rsplit("seed", 1)[1]) and d["global_step"] == 1350, name
+    assert d["global_batch"] == 32 and d["world_size"] == 1 and d["train_config"]["width"] == 96, name
+    assert d["official_monthly_validation_payloads_read"] == 0, name
+    assert d["test_payloads_read"] == d["buffer_payloads_read"] == 0, name
+    assert d["best_checkpoint_sha256"] == h, name
+print("ATTEMPT15_CHECKPOINTS_AND_TRAINVAL_CACHE_PREFLIGHT_PASS")
+PY
+
+# Stage the audited train/validation cache once on node-local storage. The
+# six processes share this local copy; no test/buffer payload is staged.
+LOCAL_ROOT="/tmp/attempt16_monthly_val_${PBS_JOBID}"
+LOCAL_CACHE_ATTEMPT5="$LOCAL_ROOT/cache_attempt5"
+mkdir -p "$LOCAL_ROOT"
+cp -a "$CACHE_ATTEMPT5" "$LOCAL_CACHE_ATTEMPT5"
+test -f "$LOCAL_CACHE_ATTEMPT5/cache/cache_report.json"
+test -f "$LOCAL_CACHE_ATTEMPT5/cache_audit/cache_audit.json"
+sha256sum "$CACHE/cache_report.json" "$LOCAL_CACHE_ATTEMPT5/cache/cache_report.json" \
+  "$CACHE_ATTEMPT5/cache_audit/cache_audit.json" \
+  "$LOCAL_CACHE_ATTEMPT5/cache_audit/cache_audit.json" \
+  > "$LOGROOT/cache_stage_hashes_${PBS_JOBID}.txt"
+"$PY" - "$LOCAL_CACHE_ATTEMPT5" <<'PY'
+import hashlib, json, pathlib, sys
+root = pathlib.Path(sys.argv[1])
+report = json.load(open(root / "cache" / "cache_report.json", encoding="utf-8"))
+for name, expected in report["files"].items():
+    p = root / "cache" / name
+    h = hashlib.sha256(p.read_bytes()).hexdigest()
+    assert h == expected, (name, h, expected)
+print("LOCAL_TRAINVAL_CACHE_HASHES_PASS")
+PY
+
+mkdir -p "$PREDICTIONS" "$LOGROOT"
+run_one() {
+  local gpu="$1" name="$2" out
+  out="$PREDICTIONS/$name.npz"
+  test ! -e "$out" && test ! -e "$PREDICTIONS/$name.json"
+  (
+    export CUDA_VISIBLE_DEVICES="$gpu"
+    "$PY" "$ATTEMPT16/infer_frozen_monthly_validation.py" \
+      --cache "$LOCAL_CACHE_ATTEMPT5/cache" \
+      --checkpoint "$ATTEMPT15/training/$name/best.pt" \
+      --checkpoint-origin "$ATTEMPT15/training/$name/best.pt" \
+      --trainer "$TRAINER" --project-scripts "$PROJECT/scripts" \
+      --output "$out" --model-name "$name" --batch-size 32 \
+      > "$LOGROOT/${name}_${PBS_JOBID}.log" 2>&1
+    test -f "$out" && test -f "$PREDICTIONS/$name.json"
+  )
+}
+
+wait_all() {
+  local rc=0 pid
+  for pid in "$@"; do
+    wait "$pid" || rc=1
+  done
+  return "$rc"
+}
+
+NAMES=(fullr_control_seed42 oof_train_source_seed42 fullr_control_seed43 oof_train_source_seed43 fullr_control_seed44 oof_train_source_seed44)
+if [[ ${#GPU_IDS[@]} -eq 6 ]]; then
+  pids=()
+  for i in "${!NAMES[@]}"; do run_one "${GPU_IDS[$i]}" "${NAMES[$i]}" & pids+=("$!"); done
+  wait_all "${pids[@]}"
+else
+  pids=()
+  for i in 0 1 2 3; do run_one "${GPU_IDS[$i]}" "${NAMES[$i]}" & pids+=("$!"); done
+  wait_all "${pids[@]}"
+  pids=()
+  for i in 4 5; do j=$((i-4)); run_one "${GPU_IDS[$j]}" "${NAMES[$i]}" & pids+=("$!"); done
+  wait_all "${pids[@]}"
+fi
+
+"$PY" "$ATTEMPT16/score_monthly_validation_attempt16.py" \
+  --cache "$LOCAL_CACHE_ATTEMPT5/cache" \
+  --training-root "$ATTEMPT15/training" \
+  --prediction-root "$PREDICTIONS" \
+  --output-dir "$ATTEMPT16" --bootstrap 5000 --bootstrap-seed 20261022 \
+  | tee "$LOGROOT/score_${PBS_JOBID}.log"
+
+sha256sum "$PREDICTIONS"/*.npz "$PREDICTIONS"/*.json \
+  "$ATTEMPT16/monthly_validation_score.json" "$ATTEMPT16/common_scored_keys.csv" \
+  > "$ATTEMPT16/SHA256SUMS_${PBS_JOBID}.txt"
+"$PY" - "$ATTEMPT16" "$PBS_JOBID" "${GPU_IDS[*]}" <<'PY'
+import json, pathlib, sys, time
+root, job, gpu_ids = pathlib.Path(sys.argv[1]), sys.argv[2], sys.argv[3]
+score = json.load(open(root / "monthly_validation_score.json", encoding="utf-8"))
+names = [f"{arm}_seed{seed}" for arm in ("fullr_control", "oof_train_source") for seed in (42,43,44)]
+assert all((root / "predictions" / f"{name}.npz").is_file() for name in names)
+assert all((root / "predictions" / f"{name}.json").is_file() for name in names)
+receipt = {
+  "state": "COMPLETE_ATTEMPT16_FROZEN_MONTHLY_VALIDATION_INFERENCE_AND_SCORE",
+  "pbs_job_id": job, "node": __import__("os").uname().nodename,
+  "allocated_gpu_ids": gpu_ids, "models_inferred": names,
+  "inference_script_sha256": __import__("hashlib").sha256((root / "infer_frozen_monthly_validation.py").read_bytes()).hexdigest(),
+  "scorer_script_sha256": __import__("hashlib").sha256((root / "score_monthly_validation_attempt16.py").read_bytes()).hexdigest(),
+  "pbs_script_sha256": __import__("hashlib").sha256((root / "run_attempt16_monthly_val_inference.pbs").read_bytes()).hexdigest(),
+  "optimizer_updates": 0, "validation_windows": score["monthly_validation_init_windows"],
+  "scored_init_lead_pairs": score["init_lead_pairs_with_any_valid_station_pixel"],
+  "target_dates_bjt": score["target_dates_bjt"],
+  "test_payloads_read": 0, "buffer_payloads_read": 0,
+  "science_gate_passed": score["gate"]["passes_all_predeclared_gates"],
+  "score_file": str(root / "monthly_validation_score.json"),
+  "score_sha256": __import__("hashlib").sha256((root / "monthly_validation_score.json").read_bytes()).hexdigest(),
+}
+(root / "inference_complete.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+print(json.dumps(receipt, indent=2))
+PY
+echo "ATTEMPT16_MONTHLY_VAL_INFERENCE_COMPLETE job=$PBS_JOBID gpu_ids=${GPU_IDS[*]}"
