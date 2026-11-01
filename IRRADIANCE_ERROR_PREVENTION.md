@@ -1,14 +1,18 @@
+# 2026-11-02 适用范围更正
+
+本文件保留历史技术证据；范围、模型和资源以当前AGENTS为准。第二篇已包含独立湖北/湖南实验并可复用DyDiff/SimVP；不存在普遍“先占满单卡”“只用湖南/SimVP”要求。训练时使用train真实目标图与部署时使用未来观测须区分，前者不因图像时间而自动构成泄漏。历史辅助损失、v2建议及失败配置不是新实验强制规则；历史单帧/三帧或CPP门槛不可跨实验套用。当前用户路线不变。
+
 ## 2026-10-14 第二篇新增湖北独立区域实验
 
 用户批准第二篇 COT 论文在湖南两站之外增加湖北牛首、王寨、米庄三站，按相同方法开展独立训练与区域内时间留出评价。执行计划为 `solar-cot-ifs/refine-logs/hubei_cot_independent_20261014/EXPERIMENT_PLAN.md`（工作区根相对路径）。先做同期无COT A、加COT AC、容量对照AP，再根据预定证据推进固定外推应用；不改变第一篇范围。
-本条覆盖下文历史“第二篇仅湖南、湖北不得进入论文”的范围限定。两省训练数据、日期清单、归一化、权重和结果独立，不互相初始化、不改湖南现有实验；科学结论为两个区域的重复验证，不称零样本迁移。湖北旧资产须核验新日期清单，来源不合规则独立重训。test载荷仍关闭，PBS≤3、先充分利用单卡等规则继续适用。本次是方案与范围更新，不代表训练已启动。
+本条覆盖下文历史“第二篇仅湖南、湖北不得进入论文”的范围限定。两省训练数据、日期清单、归一化、权重和结果独立，不互相初始化、不改湖南现有实验；科学结论为两个区域的重复验证，不称零样本迁移。湖北旧资产须核验新日期清单，来源不合规则独立重训。test载荷仍关闭，PBS≤3；长任务按当前多卡资源规则执行。本次是方案与范围更新，不代表训练已启动。
 
 # Irradiance Forecasting Error Prevention
 
 ## 0. Short Chinese Memory
 
 - v3 旧 scan-time 结果不能用于最终模型或汇报：主要问题是 `row 错`、`BJT/UTC 错`、`精确瞬时标签噪声大`；正式 `direct_ghi_v3_cached` 不属于这批禁用资产。
-- 当前论文全部使用湖南数据完成训练、验证、选模和独立时间测试，不做湖北到湖南的数据或 checkpoint 迁移；`0–4 h` 短临是核心，IFS `D+1～D+3` 属于论文之外的独立中期工程。
+- 第一期湖南训练范围按其方案；第二篇湖北为主分析、湖南为补充，两省独立训练与评价、不混用权重。`0–4 h`为短临核心，IFS `D+1～D+3`不自动纳入。
 - 已有 16 通道 SimVP（13 AGRI + `cosSOZ` + `cosRAA` + `day_mask`）是正式基线资产，不再是必须冻结复用的唯一论文骨干；新模型必须独立命名和保存，不能与旧 checkpoint 混用。
 - 8→16 的真实时效是相对历史末帧 `+15...+240 min`；旧结果的 `lead=0...225` 是从第一张未来帧计时，转换规则为 `canonical_lead=legacy_lead+15`。
 - 新实验必须先确认：时间体系、真实 HDF 行列、湖南自己的 grid/crop/站点坐标、所选 checkpoint 的准确通道合同、主标签定义和评估口径。
@@ -218,16 +222,11 @@ p90 absolute difference about 305 W m^-2
 correlation about 0.863
 ```
 
-### Rule
+### Interpretation and scope (corrected 2026-11-02)
 
-Do not train exact scan GHI as a strong auxiliary regression target with `scan_aux_weight=0.3`.
+The numbers above describe a particular historical configuration. They do not prove that scan supervision, a weight of 0.3, or any replacement weight is universally good or bad. Do not restore the old invalid labels/checkpoints or the user-excluded area-to-point v2 route. If a new authorized study tests scan supervision, retain the 15-minute target and compare a separately named treatment under matched conditions; weights 0.03/0.05 and scan gating are unverified candidates, not established fixes.
 
-Safer options:
-
-- reduce scan weight to `0.03` or `0.05`;
-- gate scan loss when `|scan_ghi - mean_ghi|` is too large;
-- use exact scan as a quality/cloud-variability feature, not a strong shared-encoder loss;
-- keep v2 0-5min mean auxiliary for 4h because it aligns better with the 15min mean target.
+Target-time observed scan GHI is supervision or offline diagnostics only. It must not become a forecast input or an inference gate. A deployable feature/gate must use information available at initialization. Existing non-selected high-bias runs remain negative results, while time/index-corrupted runs cannot support valid performance claims.
 
 ## 7. Plotting: Initialization Time vs Target Time
 
@@ -311,9 +310,9 @@ Do not compare metrics across these modes as if they are the same experiment.
 
 ## 10. Model Selection Status
 
-The current paper route uses Hunan as the main training/evaluation region. The existing 16-channel SimVP is a reproducible baseline, not the mandatory final backbone. New Hunan short-term models may be trained, but every model and channel change must be isolated, documented and compared on the same frozen temporal split and labels.
+The first-paper Hunan route and the second-paper independent Hubei/Hunan route follow their respective current AGENTS. The existing 16-channel SimVP is a reproducible baseline, not the mandatory final backbone. New Hunan short-term models may be trained, but every model and channel change must be isolated, documented and compared on the same frozen temporal split and labels.
 
-The former Hubei-to-Hunan zero-shot route is no longer the main paper question. Hubei results may be retained only as historical reproduction or optional external validation.
+The former Hubei-to-Hunan zero-shot route is no longer the main paper question. The second paper also contains independently trained Hubei results under the later user authorization; historical Hubei assets need their own lineage and cannot stand in for Hunan training.
 
 The legacy area-to-point v2 model is excluded from the current paper method and experiment matrix by explicit user decision on 2026-08-14.
 
