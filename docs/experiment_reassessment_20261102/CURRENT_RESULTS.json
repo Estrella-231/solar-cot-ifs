@@ -1,0 +1,207 @@
+{
+  "scope": "saved validation summaries; no new inference, training or bootstrap; no test/buffer payload read",
+  "sources": [
+    {
+      "path": "refine-logs/hubei_same_time_geometry_20261102/INDEPENDENT_FP64_RESULTS.json",
+      "sha256": "9e0e94ee66a6be7d5f3d7f5419db3973a84342e19e4ea1f60817e7468ab2f849"
+    },
+    {
+      "path": "refine-logs/hubei_threeframe_dydiff_forecast_20261102/INDEPENDENT_FP64_RECHECK.json",
+      "sha256": "49cffa7f79a8fd94882aacc243eac5c4a5fd88e38afd347ebee85fccd26f8ab8"
+    },
+    {
+      "path": "refine-logs/hubei_threeframe_dydiff_forecast_20261102/recovered/evaluation/RESULTS.json",
+      "sha256": "ebc8426bebb302d787802f38272cd3ca49833264860983ae1e66f7bee887c204"
+    },
+    {
+      "path": "refine-logs/fulltrain_forecast_cot_20261101/observed_trained_heads_evaluation_v1/RESULTS.json",
+      "sha256": "54f066e4261abf4014412fbc56f814f1c8ec9c06e9a5cf818f5f5a9f5014f2ad"
+    }
+  ],
+  "rows": [
+    {
+      "region": "Hubei",
+      "mode": "observed_same_time",
+      "no_cot_rmse": 74.4056169636632,
+      "cot_rmse": 68.62918776427138,
+      "gain_percent": 7.7634316266913155,
+      "delta_ci95": [
+        -9.65011563661719,
+        -2.3129539902040976
+      ],
+      "rows": 1905,
+      "dates": 20,
+      "seed_summary": {
+        "per_seed_region_equal_means": [
+          {
+            "seed": 42,
+            "no_cot_rmse": 73.82310436953543,
+            "cot_rmse": 68.56040846113979,
+            "gain_percent": 7.128792474036622
+          },
+          {
+            "seed": 43,
+            "no_cot_rmse": 75.3372842904483,
+            "cot_rmse": 68.63967471706876,
+            "gain_percent": 8.890165920446776
+          },
+          {
+            "seed": 44,
+            "no_cot_rmse": 74.05646223100587,
+            "cot_rmse": 68.68748011460556,
+            "gain_percent": 7.249849580516992
+          }
+        ],
+        "no_cot_seed_sd": 0.815240442278646,
+        "cot_seed_sd": 0.06418164389342633
+      }
+    },
+    {
+      "region": "Hubei",
+      "mode": "DyDiff_forecast",
+      "no_cot_rmse": 101.01782738063906,
+      "cot_rmse": 96.07131999287587,
+      "gain_percent": 4.896667762537161,
+      "delta_ci95": [
+        -9.983210509323442,
+        -0.15400210758508923
+      ],
+      "rows": 24451,
+      "dates": 17,
+      "seed_summary": {
+        "per_seed_region_equal_means": [
+          {
+            "seed": 42,
+            "no_cot_rmse": 100.85388572897864,
+            "cot_rmse": 95.88561356613818,
+            "gain_percent": 4.926207975953985
+          },
+          {
+            "seed": 43,
+            "no_cot_rmse": 101.8059046421749,
+            "cot_rmse": 95.81422940901203,
+            "gain_percent": 5.885390689491215
+          },
+          {
+            "seed": 44,
+            "no_cot_rmse": 100.39369177076362,
+            "cot_rmse": 96.51411700347741,
+            "gain_percent": 3.8643610956600103
+          }
+        ],
+        "no_cot_seed_sd": 0.7202388127605833,
+        "cot_seed_sd": 0.3851309114059744
+      },
+      "all_forecast_leads": {
+        "A_rmse": 104.19696915601486,
+        "AC_rmse": 99.27317256032359,
+        "reduction_percent": 4.72547007420037,
+        "delta_ci95": [
+          -10.124256245744375,
+          0.09273980460129078
+        ],
+        "rows": 21324,
+        "target_dates": 17
+      }
+    },
+    {
+      "region": "Hunan",
+      "mode": "DyDiff_forecast",
+      "no_cot_rmse": 122.58830279749982,
+      "cot_rmse": 120.50183451559512,
+      "gain_percent": 1.7020125365070804,
+      "delta_ci95": [
+        -3.527265825108029,
+        -0.5977915246523274
+      ],
+      "rows": 66086,
+      "dates": 51,
+      "seed_summary": {
+        "per_seed_region_equal_means": [
+          {
+            "seed": 42,
+            "no_cot_rmse": 122.70650511799897,
+            "cot_rmse": 120.53769029195038,
+            "gain_percent": 1.7674815397626873
+          },
+          {
+            "seed": 43,
+            "no_cot_rmse": 122.65616977325278,
+            "cot_rmse": 120.55241091040986,
+            "gain_percent": 1.7151675832793556
+          },
+          {
+            "seed": 44,
+            "no_cot_rmse": 122.40223350124771,
+            "cot_rmse": 120.41540234442513,
+            "gain_percent": 1.62319844988966
+          }
+        ],
+        "no_cot_seed_sd": 0.16309429477605025,
+        "cot_seed_sd": 0.07521345831582711
+      },
+      "all_forecast_leads": {
+        "no_cot_rmse": 126.17230610165252,
+        "cot_rmse": 124.01234441506544,
+        "reduction_percent": 1.7119142491117456,
+        "delta_ci95": [
+          -3.631619716761063,
+          -0.6383454590543904
+        ],
+        "rows": 57907,
+        "target_bjt_dates": 51,
+        "runs": [
+          {
+            "station": "sili",
+            "seed": 42,
+            "rows": 27745,
+            "no_cot_rmse": 139.8695850867736,
+            "cot_rmse": 136.09017052016912,
+            "delta_rmse": -3.779414566604487
+          },
+          {
+            "station": "sili",
+            "seed": 43,
+            "rows": 27745,
+            "no_cot_rmse": 139.38283717634604,
+            "cot_rmse": 136.11962903378077,
+            "delta_rmse": -3.2632081425652757
+          },
+          {
+            "station": "sili",
+            "seed": 44,
+            "rows": 27745,
+            "no_cot_rmse": 139.37477829199082,
+            "cot_rmse": 136.32749385959104,
+            "delta_rmse": -3.0472844323997776
+          },
+          {
+            "station": "zhujia",
+            "seed": 42,
+            "rows": 30162,
+            "no_cot_rmse": 112.73648537013909,
+            "cot_rmse": 112.01905355548183,
+            "delta_rmse": -0.7174318146572602
+          },
+          {
+            "station": "zhujia",
+            "seed": 43,
+            "rows": 30162,
+            "no_cot_rmse": 113.02422579963489,
+            "cot_rmse": 111.90834770861083,
+            "delta_rmse": -1.115878091024058
+          },
+          {
+            "station": "zhujia",
+            "seed": 44,
+            "rows": 30162,
+            "no_cot_rmse": 112.64592488503075,
+            "cot_rmse": 111.60937181275908,
+            "delta_rmse": -1.0365530722716727
+          }
+        ]
+      }
+    }
+  ],
+  "warning": "Different regions and same-time/forecast cohorts are not causal comparisons of training domain or extrapolation."
+}
