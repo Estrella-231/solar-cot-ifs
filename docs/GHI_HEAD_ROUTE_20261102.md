@@ -1,0 +1,28 @@
+# 2026-11-02 用户确定：真实图训练GHI头
+
+当前主路线使用真实同期AGRI三帧训练的既有GHI头，冻结后接预测AGRI及预测COT进行预报。不再用预测图训练或微调GHI头；不得把这类变化隐含在“全train重训”中。此决定覆盖此前“两条训练路径均可默认推进”的表述。train/validation/test外层日期清单与其他数据规则不变。
+
+## 当前湖南两站资产
+
+- 固定上游：湖南独立DyDiff第150轮EMA、25步、单成员，以及现有太阳几何修正R；SimVP作为已有对照。
+- GHI头：`FourArmIntervalHead`，真实同期T−30、T−15、T三帧、站点3×3；使用旧头自身的归一化。
+- 配对组：M00无COT、M10加入对应真实图经R反演的COT进行训练。预报时M10使用预测图经同一R得到的预测COT，不能输入真实未来图或CPP。
+- 站点：四里、竺家；各seed42/43/44，沿用已训练权重，不重新训练或更换初始化。
+- 服务器权重根：`/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1`，具体为`seed{seed}/{station}/{M00,M10}/best.pt`。
+- 选择清单：`configs/hunan_active_ghi_heads.json`，记录与已完成冻结回放一致的12份权重及SHA；工程登记不代替新部署代码的路径读取。
+
+预报时三帧按目标时刻组织：+15含两帧已知真实历史、+30含一帧、+45～240全部为预测。真实图只用于训练和初始化时已知的历史，不把真实未来图混进预报。
+
+## 对应结果
+
+完整湖南冻结验证63,480条记录、51个目标日期、两站三种子：DyDiff无COT124.958→加预测COT122.788 W/m²，降幅1.737%；四里2.482%，竺家0.829%。SimVP原同设置降幅1.633%。这些是开发验证，不改名独立test，不宣称每站均显著。
+
+原结果：`refine-logs/hunan_dydiff_20261028/hunan_full_validation_20261030/recovered/evaluation_attempt1/RESULTS.md`。同样本复算及两种训练域差异：`refine-logs/fulltrain_forecast_cot_20261101/common_sample_diagnosis/REPORT.md`。
+
+最新已按用户要求，将本轮新生成的DyDiff预测云图/COT接回这12个旧头，使用旧头自身归一化，不重新训练。完整66,086条验证记录为122.588→120.502 W/m²，降幅1.702%，目标日期配对95%区间[-3.527,-0.598]；四里2.470%，竺家0.765%，竺家单站区间跨零。与原结果相同的63,480条记录上为124.939→122.774，降幅1.733%，与原1.737%接近。两种样本范围分别报告，不覆盖原分数。新报告和保存预测见`refine-logs/fulltrain_forecast_cot_20261101/observed_trained_heads_evaluation_v1/`，本地逐预测点指标复算通过。
+
+## 本轮预测图训练结果的处理
+
+`refine-logs/fulltrain_forecast_cot_20261101`作为已完成的预测域训练对照归档，保留权重、输入、日志和原分数；不作为当前主路线，不自动接续训练。其共同样本0.616%与旧1.737%是不同训练域和训练设置的结果，不称单纯扩大train的数据量消融。
+
+本次仅切换后续实验路线和资产选择，不启动新训练、不恢复旧定时、不删除结果、不改论文正文。以后涉及训练域、输入帧数、模型或预算变化，先明确说明变化，不能隐含替换用户选定路线。

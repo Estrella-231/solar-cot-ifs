@@ -1,0 +1,87 @@
+{
+  "state": "EIGHT_FINDINGS_IMPLEMENTED_IN_CURRENT_ENTRY_POINTS",
+  "date": "2026-10-30",
+  "modified_files": [
+    {
+      "path": "scripts/hubei_forecast_pack_gate.py",
+      "before_sha256": "b01a5017c0342ebe36dc08e18a376bfd88c16ea5ba03164287c940573400232b",
+      "after_sha256": "814887e097c269d42cb3f21ee4b203a68bc8342a5913e2ecb9b32e26732d8b68"
+    },
+    {
+      "path": "scripts/train_hubei_ghi_heads.py",
+      "before_sha256": "fd15bf6f939cb81d09bd05e6fc889f88e53e8a9e40366d417fa195848caf5999",
+      "after_sha256": "52555e1bb52944a8574279c94228991ded71062b042e3ed0376197c26a67b7bd"
+    },
+    {
+      "path": "scripts/test_hubei_forecast_pack_gate.py",
+      "before_sha256": "d7eeef37f5c3a30f68cce20adf55f4908d6e00e117c6da85da6256c1b83957ed",
+      "after_sha256": "f9615ce0799a9cf23f9e8fe14d3792b697a7b9082347b10eb999f9d36fcf8362"
+    },
+    {
+      "path": "scripts/test_hubei_forecast_ghi_heads_contract_20261016.py",
+      "before_sha256": "e770b76c3af295909c9dd59c0f33f6099ebdff2103046b6c0bba18ed1b6f0c67",
+      "after_sha256": "659e90e92bb36525939b0bce206520612e055dfa65aab679c8ae4079f8d6f592"
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "63df7a268f4c1ae875572e005b9db2f7529fa0c2805aeba57ad371b0dbcc0b63",
+      "after_sha256": "002438e5445ae417347680582b903d58d43be088622c60e0026ec7c8279233c4"
+    },
+    {
+      "path": "CLAUDE.md",
+      "before_sha256": "60bd20467c213977ff038625142a969a25b11d3de6cbd3906b1b85d5196dc7dc",
+      "after_sha256": "a46ebb305ae72e6da801f92419bf81492029d407b1e3573e2a7e27b74dc5499b"
+    },
+    {
+      "path": "docs/AI_EXECUTION_HANDOFF.md",
+      "before_sha256": "610fb1bd0b27a3bf4492a474da6cf5f6200bca1dcdfdfffc4977418a82bd367d",
+      "after_sha256": "6f90ff89e3c31ebbfdd92750024a5b80d49cd358ac496e5a106ec9c6dee6b54e"
+    },
+    {
+      "path": "refine-logs/PIPELINE_SUMMARY.md",
+      "before_sha256": "f3c2c1e57ab4a44f20220d6036ec65065e3f9ac09a111e128d0e4fcf0ca141f9",
+      "after_sha256": "ae01e91b1fdcc41544820ecf1145f4177742204160425f4c937d0c71aaf1af9c"
+    },
+    {
+      "path": "AGENTS.md",
+      "before_sha256": "ec349f63ac981a9b73785fcebd7fabb6eecca28e83dc40be73c56dc828bd27bf",
+      "after_sha256": "9bb7c1cf8f4591c8e6b97f6dabd3948a26211b20472d09108ee8a2bbd3224f3d"
+    },
+    {
+      "path": "../AGENTS.md",
+      "before_sha256": "cabd49f6629a7e62b47c88b43a3e1b6cd528acd42e293576c10aa01eb929724b",
+      "after_sha256": "fa7cfa5c7cf7e479d8168ad1f0b6254a2d31246cbf73fd4898f000676f168faf"
+    }
+  ],
+  "coverage": {
+    "1": "full-train accepted; OOF opt-in in code",
+    "2": "U/H and U-only R not default",
+    "3": "no automatic nested internal date partitions",
+    "4": "auxiliary COT metrics do not block paired GHI evaluation",
+    "5": "primary comparison separated from secondary diagnostics",
+    "6": "validation remains usable for development",
+    "7": "frozen heads and forecast-trained heads both evaluable",
+    "8": "current multi-GPU policy in root and project entry points"
+  },
+  "tests": {
+    "local_pack_gate": "PASS_13",
+    "local_ghi_head_contract": "PASS",
+    "local_cli_help": "PASS",
+    "remote_pack_gate": "PASS_13",
+    "remote_ghi_head_contract": "PASS",
+    "python_syntax": "PASS",
+    "new_entry_markdown_links": "PASS"
+  },
+  "remote_sync_receipt": "REMOTE_SYNC.json",
+  "remote_synced_files_matching_local": 14,
+  "remote_python": "/public/home/slfu/miniconda3/envs/swc/bin/python",
+  "historical_run_scripts_replaced": false,
+  "model_or_loss_changed": false,
+  "results_changed": false,
+  "qsub_submitted": 0,
+  "jobs_cancelled": 0,
+  "test_buffer_payloads_read": false,
+  "timers_resumed": false,
+  "manuscript_changed": false,
+  "github_pushed": false
+}

@@ -1,0 +1,283 @@
+{
+  "title": "湖南COT预报：正负结果处理流程对照",
+  "canvas": {
+    "width": 1600,
+    "height": 1150
+  },
+  "style": {
+    "font_family": "Microsoft YaHei, Noto Sans CJK SC, sans-serif",
+    "font_size": 21,
+    "bg_color": "#FFFFFF"
+  },
+  "nodes": [
+    {
+      "id": "nt",
+      "label": "H内预测AGRI＋预测COT＋太阳几何\n在预测输入上从头训练配对GHI头",
+      "x": 400,
+      "y": 217,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#FFF8F0",
+      "stroke": "#CF9B6A",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "pt",
+      "label": "真实同期AGRI＋反演COT＋太阳几何\n先训练配对GHI头，再冻结权重",
+      "x": 1200,
+      "y": 217,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#ECF8F5",
+      "stroke": "#72B6AA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "nh",
+      "label": "单帧：目标时刻1张AGRI＋1张COT\n逐时效读取站点3×3",
+      "x": 400,
+      "y": 332,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#FFF8F0",
+      "stroke": "#CF9B6A",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "ph",
+      "label": "三帧：目标前30、15分钟及目标时刻\n每帧读取站点3×3",
+      "x": 1200,
+      "y": 332,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#ECF8F5",
+      "stroke": "#72B6AA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "ni",
+      "label": "8帧真实历史AGRI → S_U\n产生16帧未来AGRI",
+      "x": 400,
+      "y": 488,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#F6F8FA",
+      "stroke": "#BAC3CA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "pi",
+      "label": "8帧真实历史AGRI → 全train湖南SimVP\n产生16帧未来AGRI",
+      "x": 1200,
+      "y": 488,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#F6F8FA",
+      "stroke": "#BAC3CA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "nc",
+      "label": "预测AGRI → U-only修正R_U → 未来COT\n另有：历史AGRI＋COT → P-XC → 未来COT",
+      "x": 400,
+      "y": 605,
+      "width": 590,
+      "height": 92,
+      "shape": "rounded",
+      "fill": "#F6F8FA",
+      "stroke": "#BAC3CA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "pc",
+      "label": "预测AGRI → 全train修正R → 未来COT\n与同一时序的预测AGRI逐像元对齐",
+      "x": 1200,
+      "y": 605,
+      "width": 590,
+      "height": 92,
+      "shape": "rounded",
+      "fill": "#F6F8FA",
+      "stroke": "#BAC3CA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "ng",
+      "label": "目标时刻预测AGRI＋COT → 单帧GHI头\n不把真实未来AGRI或CPP送入主预测",
+      "x": 400,
+      "y": 732,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#FFF8F0",
+      "stroke": "#CF9B6A",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "pg",
+      "label": "对齐三帧AGRI＋COT → 冻结三帧GHI头\n+45～240分钟：三帧全部来自预测场",
+      "x": 1200,
+      "y": 732,
+      "width": 590,
+      "height": 78,
+      "shape": "rounded",
+      "fill": "#ECF8F5",
+      "stroke": "#72B6AA",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "nr",
+      "label": "无COT 135.329 → SimVP→R COT 136.663\nP-XC直接预测COT：136.698；均未获总体收益\n66,086条记录/seed；两站×3种子",
+      "x": 400,
+      "y": 916,
+      "width": 590,
+      "height": 130,
+      "shape": "rounded",
+      "fill": "#FFF8F0",
+      "stroke": "#CF9B6A",
+      "text_color": "#263238",
+      "font_size": 22
+    },
+    {
+      "id": "pr",
+      "label": "无COT 127.421 → 预测COT 125.340\n降低1.633%；日期块95%区间[−3.714, −0.561]\n63,480条记录；51日；两站×3种子",
+      "x": 1200,
+      "y": 916,
+      "width": 590,
+      "height": 130,
+      "shape": "rounded",
+      "fill": "#ECF8F5",
+      "stroke": "#72B6AA",
+      "text_color": "#263238",
+      "font_size": 22
+    }
+  ],
+  "edges": [
+    {
+      "from": "nt",
+      "to": "nh",
+      "color": "#5D6972",
+      "thickness": 2
+    },
+    {
+      "from": "pt",
+      "to": "ph",
+      "color": "#5D6972",
+      "thickness": 2
+    },
+    {
+      "from": "ni",
+      "to": "nc",
+      "color": "#5D6972",
+      "thickness": 2
+    },
+    {
+      "from": "nc",
+      "to": "ng",
+      "color": "#5D6972",
+      "thickness": 2
+    },
+    {
+      "from": "pi",
+      "to": "pc",
+      "color": "#5D6972",
+      "thickness": 2
+    },
+    {
+      "from": "pc",
+      "to": "pg",
+      "color": "#5D6972",
+      "thickness": 2
+    }
+  ],
+  "groups": [],
+  "labels": [
+    {
+      "text": "湖南COT预报：正、负结果的处理流程差异",
+      "x": 800,
+      "y": 42,
+      "font_size": 32,
+      "color": "#263238",
+      "anchor": "middle"
+    },
+    {
+      "text": "左：较早负结果｜预报域训练的单帧头",
+      "x": 400,
+      "y": 101,
+      "font_size": 25,
+      "color": "#A55A21",
+      "anchor": "middle"
+    },
+    {
+      "text": "右：最新正结果｜同期训练的三帧头冻结回放",
+      "x": 1200,
+      "y": 101,
+      "font_size": 25,
+      "color": "#087F78",
+      "anchor": "middle"
+    },
+    {
+      "text": "① GHI头怎样训练",
+      "x": 800,
+      "y": 151,
+      "font_size": 23,
+      "color": "#263238",
+      "anchor": "middle"
+    },
+    {
+      "text": "② 验证时实际怎样预报",
+      "x": 800,
+      "y": 426,
+      "font_size": 23,
+      "color": "#263238",
+      "anchor": "middle"
+    },
+    {
+      "text": "③ 各自共同样本中的结果（RMSE，W/m²）",
+      "x": 800,
+      "y": 822,
+      "font_size": 23,
+      "color": "#263238",
+      "anchor": "middle"
+    },
+    {
+      "text": "已核实同时变化：上游训练范围与权重、GHI训练域、1帧/3帧、评价样本",
+      "x": 800,
+      "y": 1044,
+      "font_size": 23,
+      "color": "#263238",
+      "anchor": "middle"
+    },
+    {
+      "text": "因此：新结果支持该配置的验证增益，不能单独归因于“三帧”或“修正R”。",
+      "x": 800,
+      "y": 1091,
+      "font_size": 22,
+      "color": "#263238",
+      "anchor": "middle"
+    },
+    {
+      "text": "两者均为开发验证；不是独立测试。图示不表示不同实验使用同一套S/R/GHI权重。",
+      "x": 800,
+      "y": 1129,
+      "font_size": 19,
+      "color": "#61717C",
+      "anchor": "middle"
+    }
+  ]
+}

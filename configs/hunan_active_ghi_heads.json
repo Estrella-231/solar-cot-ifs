@@ -1,0 +1,79 @@
+{
+  "status": "SELECTED_BY_USER_20261102",
+  "training_inputs": "observed same-time AGRI and frozen-R retrieved COT",
+  "inference_inputs": "forecast AGRI and frozen-R forecast COT, with observed history only when available at init",
+  "head_class": "FourArmIntervalHead",
+  "spatial_shape": [
+    3,
+    3
+  ],
+  "context_offsets_minutes": [
+    -30,
+    -15,
+    0
+  ],
+  "train_forecast_inputs": false,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "stations": [
+    "sili",
+    "zhujia"
+  ],
+  "heads": {
+    "sili/42/M00": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed42/sili/M00/best.pt",
+      "sha256": "385498bd5b562cd31cfc34bf95512684faa3ffbfba3f2306a8a9c9af61523d7b"
+    },
+    "sili/42/M10": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed42/sili/M10/best.pt",
+      "sha256": "dadfc5c0577bbeea215edb0671d61c1743db2a5558ec8bb235e0e09eb0a6793c"
+    },
+    "sili/43/M00": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed43/sili/M00/best.pt",
+      "sha256": "3b86175db76777ba43276a8a689f7ef5e2ed124a88c010db45bfb7c8e6cac999"
+    },
+    "sili/43/M10": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed43/sili/M10/best.pt",
+      "sha256": "e404323f789269d879e8c5261a95abfe89db9053e5a31951d5b4d81043fb3299"
+    },
+    "sili/44/M00": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed44/sili/M00/best.pt",
+      "sha256": "93bedc872a4fcce9fc8e220983fcd910b1700efbd15117e13a167bd514c25043"
+    },
+    "sili/44/M10": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed44/sili/M10/best.pt",
+      "sha256": "597aac604db83b26a58f5ab1cc7e31a59c0ead23046d5341bdccdf36e72a01e8"
+    },
+    "zhujia/42/M00": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed42/zhujia/M00/best.pt",
+      "sha256": "36d8ba4ec3c5230ca80d0c8021eb6b37dac0206d1eeb5be1b5aac5713d10ab57"
+    },
+    "zhujia/42/M10": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed42/zhujia/M10/best.pt",
+      "sha256": "fd004d5ba5141d3b849fba6ea46d6e6f278e6555108c82834eee2c41d2ae493b"
+    },
+    "zhujia/43/M00": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed43/zhujia/M00/best.pt",
+      "sha256": "70b2195e5581a8061f7eee137474cc09e69cb537052f393e44f09890c304648c"
+    },
+    "zhujia/43/M10": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed43/zhujia/M10/best.pt",
+      "sha256": "ca17b9eecb1ff6a6a3430a31326763294389aa6710d906bc976a7c04f0df0d6d"
+    },
+    "zhujia/44/M00": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed44/zhujia/M00/best.pt",
+      "sha256": "c723fbc3e7b66590d1d6f48440483d9266fd10abe9260b6a025cd77a063da775"
+    },
+    "zhujia/44/M10": {
+      "path": "/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907/experiments/cloud_probability_input_20261020/results/four_arm_paired_v1_attempt1/seed44/zhujia/M10/best.pt",
+      "sha256": "a4f422ed2cf9a25c62a48eb61797f46c6f923d6209a68317293e5946be58a77d"
+    }
+  },
+  "forecast_trained_heads_role": "completed comparison only; not selected",
+  "test_payloads_read": 0,
+  "new_training_submitted": false,
+  "latest_evaluation": "refine-logs/fulltrain_forecast_cot_20261101/observed_trained_heads_evaluation_v1/RESULTS.json"
+}

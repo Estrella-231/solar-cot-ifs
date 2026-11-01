@@ -1,33 +1,36 @@
-# 下一位AI的执行交接
+# 2026-11-02 用户确定：真实图训练GHI头
 
-## 当前范围
+当前主路线使用真实同期AGRI三帧训练的既有GHI头，冻结后接预测AGRI及预测COT进行预报。不再用预测图训练或微调GHI头；不得把这类变化隐含在“全train重训”中。此决定覆盖此前“两条训练路径均可默认推进”的表述。train/validation/test外层日期清单与其他数据规则不变。
 
-已授权建立第二篇工程和准备写作/消融方案。本轮未启动训练，未建立后台自动化。本文件是后续执行合同，不是已经存在可执行训练程序的声明。先读本工程AGENTS.md、docs/UPSTREAM_PROJECT_RULES.md和IRRADIANCE_ERROR_PREVENTION.md，再从EXPERIMENT_TRACKER的P200开始，勿继续第一篇R200编号。
+Details: docs/GHI_HEAD_ROUTE_20261102.md (repository root).
 
-## 路径
+---
 
-本地：`F:/CODE_Classify/辐照度预报/solar-cot-ifs`。
-已登记M0服务器绝对路径：`/home/Data_Pool_3/wangyc/irradiance_paper/hunan_shortterm_m0_20260903_r101_r103_v1`，来自现有README，本轮未联网核验。
-建议新服务器工程根：`/home/Data_Pool_3/wangyc/irradiance_paper/solar_cot_ifs_20260905`，目前未创建、未确认写权限；先在真实目标主机核对挂载与权限，不把该建议当作已部署事实。不得输出本地路径替代服务器执行路径。
+# 第二篇执行交接
 
-## 执行步骤和失败规则
+更新：2026-10-30。当前任务按仓库`AGENTS.md`和[简化执行方式](execution_simplification_20261030/CURRENT_POLICY.md)执行。原交接把所有任务退回P200、反复复核不变资产和单卡先行，现已替换；旧文件完整保存在`execution_simplification_20261030/runtime_fix_before/docs/AI_EXECUTION_HANDOFF.md`。
 
-1. 使用已有SSH配置只读查证服务器M0、湖南SimVP、COT和IFS文件；按边界日期/明确manifest查，避免大目录全树find。核实训练区域/实际训练时间而非目录名。记录配置、norm、checkpoint和manifest的SHA256。只保存连接配置引用，别拷贝密钥。
-2. 实现P200审计脚本与asset_manifest：用真实schema检查CPP质量位、填充值、COT范围和角度；每条IFS记录确定release≤init，严格同cycle相邻step差分。未知字段直接FAIL，不默认填0或“晴空”。
-3. 核对M0 train/val/test支持范围、30个标签手算、2站grid真实HDF行列。新增cohort不得根据模型误差或未来CPP质量筛选。若第一篇已触碰test，记录暴露范围，披露限制。
-4. 若无湖南合规SimVP权重，先查第一篇是否已有在训作业；已有则共享其完工资产，未有则只安排一次基线训练。COT缺合规资产时只训练候选小R，来源和合同独立。旧湖北资产不作为临时正式权重。
-5. 用32个train/val初始化做端到端smoke；分别断言输入来源与时间、输出16lead、有限值、预测和标签单位、冻结参数无梯度。8个train样本过拟合仅用于检查学习链路。加载checkpoint时严格匹配通道和norm长度，禁止静默缺权重。
-6. 使用单卡profile记录显存、batch、GPU利用率、样本/秒和I/O时间。先增加单卡吞吐，必要时梯度累积保持有效batch；饱和后可多卡。不得取消/抢占第一篇已有作业。
-7. 外推缓存共用一次，建议站点patch级存储。每条cache保留station/init/target/lead、source_split、SimVP/R/norm哈希。正式保存全部逐样本预测，不能只存汇总metrics。
-8. 按experiment-plan实现并运行A/AC单种子pilot；IFS审计通过才扩至AN/ACN。之后AL/ALN和容量对照判断表示归因，避免先跑大矩阵。明确错误修复须新run_id；无明确错误的负结果不反复搜索test。
-9. 正式每组3种子，统一训练/选模预算。验证冻结配置后才统一评估test，按日期配对CI、多日块敏感性及各站指标出表。主指标重算、cohort主键/真值/掩膜一致性必须通过。
-10. 使用result-to-claim判断C1/C2为supported/partial/rejected；再更新英文LaTeX和中文Markdown相同章节、公式和数字。无提升如实写，不调用自动审稿循环编造已完成结果。
+## 从哪里继续
 
-## 原始产物最低字段
+1. 读取当前任务目录的方案、tracker和[结果总表](experiment_results_20261030/SUMMARY.md)，确认已经做过什么、当前问题及唯一新增因素。不要根据9月的“尚未训练”状态重建整条链。
+2. 普通实验默认使用原外层train/validation/test划分和全部train，复用已核实的上游权重、归一化及保存输出。上游在train上的预测可用于下游训练，不默认追加U/H、U-only R、五折OOF或多层校准留出。明确研究cross-fitting时才单独使用OOF。
+3. 对本次真正改变的接口做小样本检查：UTC/BJT、站点像元、初始化与目标时刻、15分钟标签、单位、train归一化、模型重载和有限值。未变的资产引用已有核验；有新差异再定位受影响环节。
+4. 有有效未来预测与GHI标签时直接做同样本有无COT评价。CPP覆盖、COT RMSE/CSI和文献口径用于解释，不普遍阻断GHI。允许真实同期图像训练的冻结头接预测图，也允许预测域重训；注明训练域和帧数。
+5. 按当前问题确定主要比较，保存逐样本预测并复算，报告两站/三站、各时效及不确定性。辅助指标不全部改善时解释差异，不把它们追加成继续开发的通行证。旧实验依原判据报告，不事后改判。
+6. validation继续用于开发与选模，保留候选与负结果；不必每个想法都等新观测。最终独立确认与开发验证分开，不打开封存test/buffer载荷。
 
-逐样本预测：run_id、seed、station、split、init_time、target_time、lead_minutes、ghi_true、ghi_pred、kt_pred、clear_sky_mean、day_mask、ifs_cycle、ifs_release_time、cohort_hash、upstream_hash。禁用仅字符串拼接的含混issue_time。
-审计产物：版本化config、输入/资产manifest、norm、权重哈希、覆盖统计、训练日志、最佳验证轮次、退出码、profile。工程信息不进入论文正文。
+## 代码与运行
 
-## 完成标准
+湖北普通预测数据包可由`scripts/build_hubei_forecast_ghi_heads_pack_20261016.py`在不指定`--oof-train-bank`时构建；`scripts/train_hubei_ghi_heads.py --input-mode forecast`默认接受该全train级联输入。仅复现OOF设计时指定`--require-oof`；需要原五折数时再指定`--oof-fold-count 5`。模型、损失、预算、归一化及评价行没有随该开关改变。
 
-P200所有必要门通过；smoke冻结/因果/数值正确；核心组与归因对照按相同预算完成；共同样本原始预测可重算；负结果保留；双语一致；论文结论有逐项证据。若IFS因果数据不存在，则交付COT单线实验并将C2明确标为未完成，不能伪造完整融合结论。
+长训练、批量推理和评价优先使用有效的多卡配置，保持全局batch、更新数和学习率计划。每次提交前后查全账户队列，未结束PBS最多3个；核对调度分配与物理占用，不操作他人作业。保留已有断点；例行监控交Luna。本文不恢复已停任务或定时。
+
+本地仓库为`F:/CODE_Classify/辐照度预报/solar-cot-ifs`；历史登记服务器工程根为`/public/home/slfu/ttzhou/swc/irradiance_forecast/SolarCOTIFS_20260907`。具体实验可能使用独立目录，以当前runner和tracker为准。历史登记不等于当前可达或已经同步，远端修改前核对相应文件，避免覆盖其他窗口改动。
+
+## 结果和必须保留的边界
+
+湖南完整SimVP冻结验证已有127.421→125.340 W/m²（1.633%）的总体改善，见[完整结果](../refine-logs/hunan_dydiff_20261028/full_validation_20261029/RESULTS.md)。它使用真实同期三帧训练后冻结的配对GHI头，输入实际预测图；属于开发验证，竺家单站区间跨零。不要因缺少OOF或未在预报域重训而丢弃该有效结果，也不要用它改写其他设置的负结果。
+
+时间/空间/标签、方法间同样本与掩膜、train拟合归一化及未来推理因果性仍是必要检查。真实未来AGRI/CPP可作训练监督或单列离线参考，不能进入可部署推理；CPP是反演参考。IFS来源未明确时可继续COT实验，不虚构实时IFS收益。
+
+本次交接修复不修改论文正文。以后修改正文时，英文LaTeX与中文Markdown须同步，编译并查看实际页面；工程路径和内部修复留在工程文档。

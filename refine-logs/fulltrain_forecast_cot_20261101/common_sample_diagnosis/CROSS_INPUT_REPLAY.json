@@ -1,0 +1,154 @@
+{
+  "runs": [
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "M00",
+      "rows": 30516,
+      "old_original_rmse": 137.56560726610206,
+      "old_head_new_inputs_rmse": 137.5617366222739,
+      "prediction_change_mae": 0.548903627833458,
+      "prediction_change_p99": 2.95430555386365,
+      "prediction_change_max": 5.8714222014386905
+    },
+    {
+      "station": "sili",
+      "seed": 42,
+      "arm": "M10",
+      "rows": 30516,
+      "old_original_rmse": 133.7720534812239,
+      "old_head_new_inputs_rmse": 133.77873056398485,
+      "prediction_change_mae": 0.49367130661603187,
+      "prediction_change_p99": 2.733612466157947,
+      "prediction_change_max": 5.38268445248832
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "M00",
+      "rows": 30516,
+      "old_original_rmse": 137.08354330333657,
+      "old_head_new_inputs_rmse": 137.0670587781976,
+      "prediction_change_mae": 0.5670667686316276,
+      "prediction_change_p99": 3.0317755169440623,
+      "prediction_change_max": 5.97971949406201
+    },
+    {
+      "station": "sili",
+      "seed": 43,
+      "arm": "M10",
+      "rows": 30516,
+      "old_original_rmse": 133.76790326347106,
+      "old_head_new_inputs_rmse": 133.77048798921265,
+      "prediction_change_mae": 0.5009486822852066,
+      "prediction_change_p99": 2.748317589563108,
+      "prediction_change_max": 5.605480000536772
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "M00",
+      "rows": 30516,
+      "old_original_rmse": 137.01562755912704,
+      "old_head_new_inputs_rmse": 137.0060293956897,
+      "prediction_change_mae": 0.5351275657534525,
+      "prediction_change_p99": 2.9239081029723812,
+      "prediction_change_max": 5.832410519018595
+    },
+    {
+      "station": "sili",
+      "seed": 44,
+      "arm": "M10",
+      "rows": 30516,
+      "old_original_rmse": 133.90557420292748,
+      "old_head_new_inputs_rmse": 133.91470577294584,
+      "prediction_change_mae": 0.4754596677238886,
+      "prediction_change_p99": 2.590352492709643,
+      "prediction_change_max": 5.448303465615027
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "M00",
+      "rows": 32964,
+      "old_original_rmse": 112.5854254332691,
+      "old_head_new_inputs_rmse": 112.55991704195583,
+      "prediction_change_mae": 0.6659987014772321,
+      "prediction_change_p99": 3.6400935160462904,
+      "prediction_change_max": 10.4319677673775
+    },
+    {
+      "station": "zhujia",
+      "seed": 42,
+      "arm": "M10",
+      "rows": 32964,
+      "old_original_rmse": 111.89724292368916,
+      "old_head_new_inputs_rmse": 111.86344188390972,
+      "prediction_change_mae": 0.5882053756501008,
+      "prediction_change_p99": 3.502900628784009,
+      "prediction_change_max": 8.825922534302663
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "M00",
+      "rows": 32964,
+      "old_original_rmse": 112.96324894448645,
+      "old_head_new_inputs_rmse": 112.93755522599211,
+      "prediction_change_mae": 0.5885669680543416,
+      "prediction_change_p99": 3.4009505592538827,
+      "prediction_change_max": 8.057604095556599
+    },
+    {
+      "station": "zhujia",
+      "seed": 43,
+      "arm": "M10",
+      "rows": 32964,
+      "old_original_rmse": 111.88949172808942,
+      "old_head_new_inputs_rmse": 111.85979224595728,
+      "prediction_change_mae": 0.5502523758037464,
+      "prediction_change_p99": 3.2655782688908204,
+      "prediction_change_max": 7.973281628590485
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "M00",
+      "rows": 32964,
+      "old_original_rmse": 112.53708380963778,
+      "old_head_new_inputs_rmse": 112.50371153323718,
+      "prediction_change_mae": 0.6176995678224496,
+      "prediction_change_p99": 3.456437240410994,
+      "prediction_change_max": 10.696963007776503
+    },
+    {
+      "station": "zhujia",
+      "seed": 44,
+      "arm": "M10",
+      "rows": 32964,
+      "old_original_rmse": 111.49520789297478,
+      "old_head_new_inputs_rmse": 111.45532777021492,
+      "prediction_change_mae": 0.5703832841556116,
+      "prediction_change_p99": 3.4313911170152975,
+      "prediction_change_max": 8.242648890060082
+    }
+  ],
+  "training_summary": {
+    "old_train_observed_target_rows": 47666,
+    "new_train_forecast_instances": 714914,
+    "new_train_unique_station_target_times": 48584,
+    "old_parameter_count": 42529,
+    "old_batch": 1792,
+    "old_epochs": 30,
+    "old_selection": "minimum station-day-clean validation GHI RMSE; first epoch wins exact ties",
+    "old_cot_scaler": [
+      1.8354828989218208,
+      1.3974485910139944
+    ],
+    "new_cot_scaler": [
+      1.8301987907862254,
+      1.397617455352424
+    ]
+  },
+  "elapsed_seconds": 8.168680776841938
+}

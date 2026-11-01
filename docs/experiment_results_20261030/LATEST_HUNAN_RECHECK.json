@@ -1,0 +1,78 @@
+{
+  "scope": "Complete frozen Hunan validation; source NPZ independently recomputed, no inference/training",
+  "rows": 63480,
+  "target_dates": 51,
+  "test_or_buffer_payload_read": false,
+  "methods": {
+    "simvp": {
+      "before": 127.42117627406617,
+      "after": 125.3401284275789,
+      "delta": -2.081047846487266,
+      "gain_percent": 1.6332040774848964,
+      "ci95": [
+        -3.7144653491487394,
+        -0.5613495387681963
+      ],
+      "by_station": {
+        "sili": {
+          "before": 132.08210184299372,
+          "after": 129.22738180668057,
+          "gain_percent": 2.1613223869700118,
+          "seed_deltas": [
+            -3.070618662919344,
+            -2.8621332997326476,
+            -2.631408146287498
+          ]
+        },
+        "zhujia": {
+          "before": 122.76025070513863,
+          "after": 121.45287504847721,
+          "gain_percent": 1.0649828826120955,
+          "seed_deltas": [
+            -1.7632635156338807,
+            -0.8019820840022476,
+            -1.3568813703481624
+          ]
+        }
+      }
+    },
+    "dydiff": {
+      "before": 128.32615380207463,
+      "after": 127.221172582485,
+      "delta": -1.1049812195896322,
+      "gain_percent": 0.8610724991367802,
+      "ci95": [
+        -2.670781552302306,
+        0.4715130626930083
+      ],
+      "by_station": {
+        "sili": {
+          "before": 139.63410300239627,
+          "after": 136.99933730182838,
+          "gain_percent": 1.8869070262317518,
+          "seed_deltas": [
+            -3.187134106317899,
+            -2.521396713977765,
+            -2.195766281408112
+          ]
+        },
+        "zhujia": {
+          "before": 117.01820460175297,
+          "after": 117.4430078631416,
+          "gain_percent": -0.36302322603082277,
+          "seed_deltas": [
+            0.5940722574243438,
+            0.2580262528243509,
+            0.4223112739172592
+          ]
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "ghi_rows.csv": "2c21bd0f37b62d29eb696932fe505509bb0739055ddcd59852c7708ddb64d0a1",
+    "ghi_predictions.npz": "7ec0e813a4d2be92fe6c83ac0f3684029b74ff4d22f7f9a48dae8d7d805cad0b",
+    "ghi_scores_fp64.json": "7db5d3169973cef5e72d3c1127bcc8079c5d82d7769da51e253e043b53aa07b3"
+  },
+  "matches_saved_scores_and_CI": true
+}

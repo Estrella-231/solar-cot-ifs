@@ -1,4 +1,47 @@
+# 2026-11-02 用户确定：真实图训练GHI头
+
+当前主路线使用真实同期AGRI三帧训练的既有GHI头，冻结后接预测AGRI及预测COT进行预报。不再用预测图训练或微调GHI头；不得把这类变化隐含在“全train重训”中。此决定覆盖此前“两条训练路径均可默认推进”的表述。train/validation/test外层日期清单与其他数据规则不变。
+
+Details: docs/GHI_HEAD_ROUTE_20261102.md (repository root).
+
+---
+
 # 第二篇：SimVP + COT + IFS 辐照度短临预报
+
+## 最新结果与当前路线（2026-11-02）
+
+当前固定湖南DyDiff第150轮EMA与修正R，使用**真实同期云图训练的既有GHI头**，冻结后接预测云图/COT评价，不用预测图重训或微调GHI头。详见[路线与服务器资产](docs/GHI_HEAD_ROUTE_20261102.md)、[当前旧头选择清单](configs/hunan_active_ghi_heads.json)。
+
+本轮生成完成33,253个train/val序列，预测域GHI重训对照与旧头回放均已完成；未使用test。旧头接本轮预测产物，完整66,086条验证记录上两站三种子等权RMSE为122.588→120.502 W/m²，降幅**1.702%**；日期配对95%区间[-3.527,-0.598]。四里改善2.470%，竺家0.765%，竺家单站区间跨零。与原63,480条记录相同样本上的降幅为1.733%，接近原1.737%。[完整结果](refine-logs/fulltrain_forecast_cot_20261101/observed_trained_heads_evaluation_v1/RESULTS.md)
+
+预测图训练头仅保留为完成的对照：其完整验证降幅0.605%，共同63,480条上0.616%，总体区间跨零；它的绝对GHI误差更低，但不是当前用户选定路线。两种训练域并非仅数据量不同，不能将差异归因于取消U/H。[共同样本与原因诊断](refine-logs/fulltrain_forecast_cot_20261101/common_sample_diagnosis/REPORT.md)
+
+PBS217013为保留进度的四卡阶段、217014为短时性能测试、217015为八卡续跑与后续头部训练，均已结束；不是正在运行的作业。最新工程记录见[实验tracker](refine-logs/fulltrain_forecast_cot_20261101/EXPERIMENT_TRACKER.md)。GitHub保存代码、方案、结果和复核收据；数据、权重、逐样本预测留原服务器/本地归档，不随本次推送上传。
+
+## 执行入口（2026-10-30修订，头部路线以2026-11-02为准）
+
+当前研究覆盖湖北三站和湖南两站，两区域独立训练与评价。先读[当前执行规则](AGENTS.md)、[简化执行方式](docs/execution_simplification_20261030/CURRENT_POLICY.md)及[结果总表](docs/experiment_results_20261030/SUMMARY.md)。下方9月、10月初的进度是历史记录，不能作为当前任务的前置条件。
+
+- 普通级联默认复用已核实的全train上游模型和输出，不再强制U/H、五折OOF、U-only R或多层内部日期留出。OOF保留为可选实验。
+- 有预测和有效地面标签即可评价有无COT的GHI差异；COT/CPP辅助指标、个别站点或时效未改善，不单独阻止开发。validation可以开发和选模，独立test继续封存。
+- 真实同期图像训练的冻结GHI头，可以接实际预测图像评价预报；不强制重新训练。报告须注明头的训练域、帧数及验证范围。
+- 来源、时间、空间、单位、标签及数值接口检查通过后复用；未改变的部分不重复全量审计。长任务按现行规则优先多卡，不再单卡先行。
+
+最新完整湖南SimVP冻结头验证：无COT **127.421**、加预测COT **125.340 W/m²**，RMSE下降 **1.633%**；目标日期块差值95%区间为[−3.714,−0.561] W/m²。这是开发验证结果，竺家单站区间仍跨零；旧负结果保留，不能笼统写成“预测COT一律无效”。来源见[完整结果](refine-logs/hunan_dydiff_20261028/full_validation_20261029/RESULTS.md)。
+
+湖北现有普通预测数据包入口已允许全train预测；以下为命令格式（路径替换为实际已构建数据包和新输出目录，预算沿用当前实验方案）：
+
+```bash
+python scripts/train_hubei_ghi_heads.py --pack PACK_DIR --output NEW_RUN_DIR --input-mode forecast
+```
+
+复现特定五折设计时才额外指定`--require-oof --oof-fold-count 5`。示例不自动启动训练，也不代表应复跑已完成实验。执行交接见[AI_EXECUTION_HANDOFF.md](docs/AI_EXECUTION_HANDOFF.md)；八项修复状态见[IMPLEMENTATION.md](docs/execution_simplification_20261030/IMPLEMENTATION.md)。
+
+## 历史背景与进度
+
+**2026-10-03 详细交接入口：** [原始数据、预处理、划分、S/R/H逐层结构、训练与评价](docs/END_TO_END_HANDOFF_20261003.md)。新月度划分SimVP已完成12轮训练，test未读取；区域R与GHI时空头的现有实现仍属旧划分探索资产，新合同全链尚待重建。下方带旧日期的状态保留为历史记录。
+
+**2026-09-17 方向更新：** 固定湖南 SimVP 和 COT 反演器，将完整16×16 COT空间场作为GHI网络的输入通道。先验证空间图相对无COT及四统计量的收益，再做容量/监督/空间排列归因与IFS增量。方案已更新，空间头尚未实现或训练，来源门禁仍保留。见[方向把控](docs/COT_SPATIAL_DIRECTION_20260917.md)、[实验计划](refine-logs/EXPERIMENT_PLAN.md)、[英文正文](paper/main.tex)、[中文对照](paper/main_zh.md)。以下为既有工程背景和历史结果。
 
 本工程于 2026-09-05 独立建立。核心问题：固定 SimVP 外推后，显式云光学厚度表示是否改善湖南站点的 +15～+240 min GHI，以及 IFS 是否提供互补收益。
 
@@ -28,7 +71,7 @@ cd solar-cot-ifs
 
 第一篇在相邻 `solar-energy` 中。本篇使用相同数据合同与合规基线以减少成本，但科学问题、下游训练、结果和正文独立。研究结论待实验决定。
 
-## 当前工程状态（2026-09-12）
+## 历史工程状态（2026-09-12）
 
 最新、可复核的工程和服务器状态见 [PROJECT_STATUS_20260912.md](docs/PROJECT_STATUS_20260912.md)。当前已完成湖南冻结 SimVP/COT 缓存、A/AC 多种子验证、天气分层和固定 AC 的反事实诊断；没有使用 test。四维 COT 直接拼接未得到稳定收益，IFS 因果合同未通过，所以 AN/ACN 尚未运行。
 

@@ -1,0 +1,56 @@
+{
+  "job": "217015.tc6000",
+  "state": "COMPLETE_WITH_VALIDATION_RESULTS",
+  "generation_sequences": 33253,
+  "ghi_head_models_complete": 12,
+  "epochs_each": 30,
+  "all_six_seed_pairs_improved": true,
+  "pack_rows": {
+    "train": 714914,
+    "val": 66086
+  },
+  "results": {
+    "all": {
+      "no_cot_rmse": 112.44673268043461,
+      "cot_rmse": 111.76646798951619,
+      "reduction_percent": 0.604966169049734,
+      "delta_ci95": [
+        -1.6219636785980693,
+        0.2450696597353262
+      ],
+      "target_bjt_dates": 51
+    },
+    "sili": {
+      "no_cot_rmse": 125.00830692465998,
+      "cot_rmse": 124.24472792640249,
+      "reduction_percent": 0.6108226061470301,
+      "delta_ci95": [
+        -1.9210338268789617,
+        0.44293575158737436
+      ],
+      "target_bjt_dates": 43
+    },
+    "zhujia": {
+      "no_cot_rmse": 99.88515843620928,
+      "cot_rmse": 99.2882080526299,
+      "reduction_percent": 0.5976367189331935,
+      "delta_ci95": [
+        -2.1914510753621004,
+        0.9661676416229871
+      ],
+      "target_bjt_dates": 50
+    },
+    "lead45_240": {
+      "no_cot_rmse": 115.48166766453858,
+      "cot_rmse": 114.46568805693404,
+      "reduction_percent": 0.8797756632298066,
+      "delta_ci95": [
+        -2.0130362252692717,
+        -0.06729587624070935
+      ],
+      "target_bjt_dates": 51
+    }
+  },
+  "saved_prediction_point_metrics_rechecked": true,
+  "test_payloads_read": 0
+}
