@@ -1,0 +1,156 @@
+{
+  "scope": "style and encoding only; no new evaluation",
+  "source_files": [
+    {
+      "path": "refine-logs\\hubei_same_time_geometry_20261102\\INDEPENDENT_FP64_RESULTS.json",
+      "sha256": "9e0e94ee66a6be7d5f3d7f5419db3973a84342e19e4ea1f60817e7468ab2f849"
+    },
+    {
+      "path": "refine-logs\\hubei_same_time_geometry_20261102\\COT_QUALITY_AND_GHI_STRATA.json",
+      "sha256": "6ffa76e863621c43f81a3afed7ab0e754d0bb6fa4e69f9bbc78f68f5dd1828ec"
+    }
+  ],
+  "source_values_unchanged": true,
+  "gain_rows": [
+    {
+      "station": "Niushou",
+      "A_rmse": 69.96791627585837,
+      "AC_rmse": 64.4511686482329,
+      "gain_pct": 7.884681896020631,
+      "delta_ci95": [
+        -10.880033605478665,
+        -0.19950047768802953
+      ]
+    },
+    {
+      "station": "Wangzhai",
+      "A_rmse": 67.45190675951436,
+      "AC_rmse": 59.214625315926526,
+      "gain_pct": 12.212080931909211,
+      "delta_ci95": [
+        -13.817528198738707,
+        -3.415224057132065
+      ]
+    },
+    {
+      "station": "Mizhuang",
+      "A_rmse": 85.79702785561686,
+      "AC_rmse": 82.22176932865467,
+      "gain_pct": 4.167112330486313,
+      "delta_ci95": [
+        -7.778244500200551,
+        0.5691651846091778
+      ]
+    },
+    {
+      "station": "Equal-station mean",
+      "A_rmse": 74.4056169636632,
+      "AC_rmse": 68.62918776427138,
+      "delta_ci95": [
+        -9.65011563661719,
+        -2.3129539902040976
+      ],
+      "gain_pct": 7.7634316266913155
+    }
+  ],
+  "thickness_rows": [
+    {
+      "name": "Near-zero",
+      "n": 226,
+      "dates": 9,
+      "station_seed_cells": 9,
+      "A_rmse": 96.82009332255458,
+      "AC_rmse": 92.75158174293004,
+      "gain_pct": 4.202135569184343,
+      "gain_ci95": [
+        2.2336588052781594,
+        13.732652991986537
+      ],
+      "delta_ci95": [
+        -9.978932466408104,
+        -1.847239058020711
+      ],
+      "A_bias": 2.9207918096634513,
+      "AC_bias": 9.830271225472636
+    },
+    {
+      "name": "Thin",
+      "n": 61,
+      "dates": 4,
+      "station_seed_cells": 9,
+      "A_rmse": 126.80114623570866,
+      "AC_rmse": 119.0760620540905,
+      "gain_pct": 6.092282610173035,
+      "gain_ci95": [
+        -2.7760281584247233,
+        15.433767349455861
+      ],
+      "delta_ci95": [
+        -15.869118319849576,
+        3.441226121336925
+      ],
+      "A_bias": -6.605081871880425,
+      "AC_bias": -11.668656357053726
+    },
+    {
+      "name": "Moderate",
+      "n": 185,
+      "dates": 6,
+      "station_seed_cells": 9,
+      "A_rmse": 84.17609138557445,
+      "AC_rmse": 78.3964772684266,
+      "gain_pct": 6.866099413756256,
+      "gain_ci95": [
+        -35.4008622945243,
+        16.6829423582477
+      ],
+      "delta_ci95": [
+        -16.51728329387845,
+        10.83562336798229
+      ],
+      "A_bias": -8.974932784947327,
+      "AC_bias": -19.54116059153787
+    },
+    {
+      "name": "Thick",
+      "n": 140,
+      "dates": 6,
+      "station_seed_cells": 9,
+      "A_rmse": 51.52057765566584,
+      "AC_rmse": 33.22377170142552,
+      "gain_pct": 35.513588524813784,
+      "gain_ci95": [
+        29.916314395123365,
+        44.4310344668835
+      ],
+      "delta_ci95": [
+        -33.583879538212614,
+        -13.439082666664984
+      ],
+      "A_bias": 22.407564812598878,
+      "AC_bias": 0.6350747189665289
+    }
+  ],
+  "thickness_bin_labels": [
+    "[0, 0.1)",
+    "[0.1, 5)",
+    "[5, 30)",
+    "[30, 100]"
+  ],
+  "CI_definition": "5000 paired target-date draws per stratum; retain fixed available station-seed cells, reject draws with zero records in any cell",
+  "rendering": {
+    "width_inches": 7.05,
+    "font": "Times New Roman",
+    "formats": [
+      "pdf",
+      "png",
+      "svg"
+    ],
+    "comparison": "horizontal paired points joined within rows only",
+    "uncertainty": "horizontal intervals, zero line retained; no clipping",
+    "numeric_axis_scope": "point plots use labelled nonzero RMSE lower limits; no bars or filled area"
+  },
+  "test_payload_read": false,
+  "training_performed": false,
+  "visual_review": "PNG images inspected at full resolution; labels, zero crossings and full intervals visible; no category-to-category connections."
+}

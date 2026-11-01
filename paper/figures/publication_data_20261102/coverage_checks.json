@@ -1,0 +1,67 @@
+{
+  "purpose": "Style-only redraw with true provincial boundaries and local Hubei inset",
+  "source_dates": "paper\\figures\\data_coverage_20261102\\usable_dates.csv",
+  "source_counts": "paper\\figures\\data_coverage_20261102\\date_counts.csv",
+  "dates_sha256": "b7e0f74d1dfa10fcb879a526ad32ea1d639bc7b1c9f0c092c01d38b09a285cee",
+  "counts_sha256": "8c0fa55ea0d488bb9578e951dbd168a27bfbd430408f2c5883cdb8191879450d",
+  "coordinates": {
+    "Niushou": [
+      32.08,
+      112.04
+    ],
+    "Wangzhai": [
+      32.04,
+      112.12
+    ],
+    "Mizhuang": [
+      32.12,
+      112.2
+    ],
+    "Sili": [
+      25.9478611111,
+      112.347916667
+    ],
+    "Zhujia": [
+      29.566666667,
+      112.45
+    ]
+  },
+  "coordinates_unchanged": true,
+  "all_date_rows_displayed": 1863,
+  "date_count_checks_passed": true,
+  "test_payload_read": false,
+  "source_arrays_changed": false,
+  "boundary_source": "Natural Earth 1:10m Admin-1 states/provinces; China feature subset, local regional viewport only",
+  "boundary_documentation": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/",
+  "boundary_download": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_1_states_provinces.geojson",
+  "boundary_sha256": "14d832a7ed32aa5a03afa99aa571616c78f758317638c07dfd35c21453849e79",
+  "panels": {
+    "a": "Hubei/Hunan provincial locator and five stations (three Hubei stations overlap at this scale)",
+    "b": "Hubei three-station detail, same coordinates, no interpolation",
+    "c": "All retained usable training and validation dates; gaps not bridged"
+  },
+  "caption_change": "Replace previous two regional coordinate panels with regional provincial locator (a) and Hubei station detail (b); date panel (c) unchanged in sample scope. Administrative boundaries: Natural Earth.",
+  "export": {
+    "width_in": 7.05,
+    "height_in": 5.8,
+    "png_dpi": 400,
+    "pdf_vector": true,
+    "font": "Times New Roman"
+  },
+  "visual_review": "Inspected full PNG; labels, regional context, station zoom and complete date raster legible with no clipping",
+  "pdf_pages": 1,
+  "pdf_page_size_points": [
+    0.0,
+    0.0,
+    507.6000061035156,
+    417.6000061035156
+  ],
+  "pdf_fonts": [
+    "FHXFSG+TimesNewRomanPSMT",
+    "FHXFSG+TimesNewRomanPS-BoldMT"
+  ],
+  "hunan_station_boundary_containment": {
+    "Sili": "Hunan",
+    "Zhujia": "Hunan"
+  }
+}

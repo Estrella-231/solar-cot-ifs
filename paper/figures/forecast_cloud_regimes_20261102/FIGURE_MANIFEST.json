@@ -1,0 +1,79 @@
+{
+  "state": "RENDERED",
+  "source_directory": "F:\\CODE_Classify\\\u8f90\u7167\u5ea6\u9884\u62a5\\solar-cot-ifs\\refine-logs\\forecast_thick_cloud_events_20261102",
+  "journal": "not selected; general manuscript layout",
+  "outputs": [
+    {
+      "file": "forecast_regimes",
+      "width_mm": 179.99999999998556,
+      "height_mm": 111.99999999998946,
+      "png_mode": "RGB",
+      "png_size": [
+        2834,
+        1763
+      ],
+      "pdf_pages": 1,
+      "pdf_sha256": "b2267e2445b6ec485a657dd7d113287ebec72ed18c156e9a3cdfb920efc0f1f8"
+    },
+    {
+      "file": "forecast_events",
+      "width_mm": 179.99999999998556,
+      "height_mm": 190.0000000000161,
+      "png_mode": "RGB",
+      "png_size": [
+        2834,
+        2992
+      ],
+      "pdf_pages": 1,
+      "pdf_sha256": "00824ba1a7d50e65eb116dbeb0686cd6515aeeac44a0a3f8332ccabe9e067278"
+    }
+  ],
+  "case_checks": [
+    {
+      "case": "Hubei_Mizhuang_202509260715",
+      "display_times": [
+        "2025-09-26T08:45:00",
+        "2025-09-26T09:15:00",
+        "2025-09-26T09:45:00"
+      ],
+      "data_sha256": "491bdb9befff1070cdc6fdaf08626af9891fdae410d616a25cc372df8664c0a5",
+      "native_forecast_shape": [
+        16,
+        16,
+        16
+      ],
+      "shown_seed42_rmse": [
+        26.66611734428345,
+        14.510451071833227
+      ]
+    },
+    {
+      "case": "Hunan_sili_202506151215",
+      "display_times": [
+        "2025-06-15T12:00:00",
+        "2025-06-15T12:30:00",
+        "2025-06-15T15:15:00"
+      ],
+      "data_sha256": "8a3b07590eba087b308c40c23d1716117d02f34e86c6a8825bf14d4c6ffbabb2",
+      "native_forecast_shape": [
+        16,
+        3,
+        3
+      ],
+      "shown_seed42_rmse": [
+        14.867879634502904,
+        22.097905531039643
+      ]
+    }
+  ],
+  "source_hashes": {
+    "RESULTS.json": "eb3705ad1bd427a3c54d019953fb324f8763c91b081a81097b5e42e1052c4574",
+    "CASE_SELECTION.json": "5898248bf065f8d57c180cddb0ba5cfcc0bf81b695167440ca8dc112cef11ff0",
+    "CASE_SOURCE_CHECK.json": "7d5bed8ae59360b9241652094b588bf54e127d81e3af05ba6e94dd1c6fb77cfa"
+  },
+  "statistics": "Equal station and seed RMSE; 5000 paired target-date bootstrap draws. No rescore or sample changes.",
+  "images": "Actual saved native arrays. Observed AGRI RGB=C03/C02/C01; sqrt(clip(reflectance,0,1)); COT common 0..80 with upper extension; no smoothing. Hunan 3x3 forecast crop is enlarged for display, not spatially interpolated.",
+  "display_selection": "Same frozen 3 times per case: CPP peak minus 30 min / CPP peak / final GHI-valid target.",
+  "case_uncertainty": "Cases selected conditional on improvement/degradation; not independent weather frequency evidence.",
+  "software_citation": "Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents. https://doi.org/10.48550/arXiv.2609.00065 (latest v2 record checked 2026-11-02)."
+}

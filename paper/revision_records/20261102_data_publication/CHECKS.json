@@ -1,0 +1,54 @@
+{
+  "english_scientific_text_unchanged": true,
+  "chinese_scientific_text_unchanged": true,
+  "main_assets_replaced": [
+    "study_regions_coverage",
+    "cot_quality",
+    "ghi_gain",
+    "ghi_thickness",
+    "current_observed_events",
+    "regional_forecast_lead"
+  ],
+  "english_and_chinese_asset_paths_match": true,
+  "built_in_compile": "success",
+  "local_pdflatex_two_passes": "success",
+  "pdf_pages": 27,
+  "main_figure_pages": {
+    "1": 4,
+    "2": 5,
+    "3": 7,
+    "4": 9,
+    "5": 10,
+    "6": 10,
+    "7": 12,
+    "8": 14
+  },
+  "test_payload_read": false,
+  "individual_figure_checks": [
+    "coverage_checks.json",
+    "estimation_checks.json",
+    "events_checks.json",
+    "quality_forecast_checks.json"
+  ],
+  "figure_pdf_sha256": {
+    "study_regions_coverage": "8e194177fe85accd5705b948e0e486fc516786babcbe3cf20ebdb6b27f6be851",
+    "cot_quality": "b691beeed452dffd1d54bd9cb4b2e91518f302cf75de247dbf5ad379e98e8e0e",
+    "ghi_gain": "d1a7f175be4f37d8a21e046def6246f08b118a2637102a76ec30c488d93ccabb",
+    "ghi_thickness": "c686c6f0b28efbf5d3919060f787a7263bd7fe9939609793d37c0bbd06236159",
+    "current_observed_events": "56c295c50050842ea628fabf5e5ea583bb56a7c854c49e18b8a8998050a3113c",
+    "regional_forecast_lead": "9bc35c70c47908702972947c755ddf5ad9c0a50ce047a4dd9b1045810503c1fe"
+  },
+  "manuscript_sha256": {
+    "main.tex": "379dd4ec8ed66b2bbb72ed7a4e7fe13260b5048d38c8f3e519375abb2e301b1f",
+    "main_zh.md": "3a9bec4385a7cf07dcccc9a78c1c5d762f8132c5594d8fcef5367295c3e1593f",
+    "main.pdf": "8b27c88bf2fe40cb6ca391bc6f18426ecdf868ad37f3abbb29243945f3b8eafc"
+  },
+  "actual_pdf_pages_visually_checked": [
+    4,
+    9,
+    10,
+    12,
+    14
+  ],
+  "visual_review": "No clipped labels, overlapping legends or missing CI at publication size."
+}
