@@ -133,9 +133,9 @@ def main():
     if hits:
      eligible.append((int(hits),int((ss.target>=end).sum()>0),-abs((start-init).total_seconds()/60-60),init))
    eligible.sort(reverse=True);init=eligible[0][-1];q=sub[sub.init.eq(init)].sort_values('target');peak=pd.Timestamp(e['peak_time']);frames=[]
-   for target in [peak-pd.Timedelta(minutes=30),peak,peak+pd.Timedelta(minutes=30)]:frames.append(q.iloc[np.argmin(abs(q.target-target))].target.isoformat())
+   for target in [peak-pd.Timedelta(minutes=30),peak,q.target.max()]:frames.append(q.iloc[np.argmin(abs(q.target-target))].target.isoformat())
    e.update(init=init.isoformat(),display_times=list(dict.fromkeys(frames)),single_reference_fallback=fallback);chosen.append(e)
- (P/'CASE_SELECTION.json').write_text(json.dumps({'selection':'earliest qualifying improved/degraded segment per region; origin maximizes event coverage, then proximity to 60-min advance; no maximization of error gain','cases':chosen},indent=2,default=default))
+ (P/'CASE_SELECTION.json').write_text(json.dumps({'selection':'earliest qualifying improved/degraded segment per region; origin maximizes event coverage, then proximity to 60-min advance; no maximization of error gain','display_frame_rule':'reference peak minus30min / reference peak / last GHI-valid target of selected initialization; same rule for all four; no error-based frame selection','cases':chosen},indent=2,default=default))
  print(json.dumps(coverage,default=default))
  for r in records:
   if r['scope']=='all' and r['stratum']=='Thick':print('THICK',r['region'],r['A_rmse'],r['AC_rmse'],r['gain_percent'],r.get('delta_ci95'))
