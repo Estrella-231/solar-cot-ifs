@@ -1,0 +1,51 @@
+% Replacement for Table 2. Date ranges describe retained samples, not continuous coverage.
+\begin{table}[!htbp]\centering\small
+\caption{Usable station samples for observed-image GHI estimation. Coordinates are latitude and longitude in degrees; dates are Beijing target dates. Counts are 15-minute station records, with distinct dates in parentheses. Validation counts follow the observation-quality exclusions used for model selection.}\label{tab:data}
+\begin{tabularx}{\linewidth}{llXrr}\toprule
+Region & Station (latitude, longitude) & Retained target-date range & Training & Validation\\\midrule
+Hubei & Niushou (32.0800, 112.0400) & 2025-08-01--2026-05-26 & 6,776 (214) & 663 (20)\\
+ & Wangzhai (32.0400, 112.1200) & 2025-08-01--2026-05-26 & 6,660 (212) & 607 (19)\\
+ & Mizhuang (32.1200, 112.2000) & 2025-08-01--2026-05-26 & 6,599 (213) & 635 (20)\\
+Hunan & Sili (25.9479, 112.3479) & 2024-04-02--2026-06-30 & 22,930 (508) & 1,999 (43)\\
+ & Zhujia (29.5667, 112.4500) & 2024-04-02--2026-06-30 & 24,736 (564) & 2,227 (50)\\\bottomrule
+\end{tabularx}
+\end{table}
+
+% Add directly after Table 2 or merge into Temporal sampling.
+The retained GHI samples comprise 20,035 training and 1,905 validation records in Hubei, and 47,666 training and 4,226 validation records in Hunan. Across stations, these cover 214/20 and 578/51 distinct training/validation dates, respectively. Validation target dates span 22 August 2025--4 May 2026 in Hubei and 19 April 2024--25 June 2026 in Hunan; these endpoints do not imply continuous coverage. The Hunan validation set excludes 37 Sili records on 5 September 2024 under the established station-day observation-quality rule. This exclusion is applied during model selection as well as evaluation and removes no training records.
+
+% Replace the existing Temporal sampling paragraph; retain the existing section heading.
+Training, validation, and final evaluation dates are separated at the date-block level to reduce dependence between fitting and evaluation samples \cite{roberts2017}. In both regions, sufficiently covered months reserve separate consecutive two-day blocks for validation and testing, with one-day buffers on each side; months with fewer than twenty eligible days contribute only training data. All frames of a three-frame GHI example or an eight-history/sixteen-future forecasting example must remain in the same partition. Normalization is fitted on training data alone. The fixed imagery partitions contain 34,854/3,171 training/validation sequences in Hubei and 35,320/3,140 in Hunan. These are image-sequence counts, distinct from the station GHI counts in Table~\ref{tab:data}. Targets and clear-sky quantities are identical within each paired GHI comparison. The results reported here use validation data; the reserved test partitions have not been evaluated.
+
+% Replace/extend the CPP description in Study area and data; producer-version details belong in the supplement.
+The cloud reference consists of archived FY-4B/AGRI cloud physical property (CPP) retrievals, including dimensionless COT and cloud phase, registered to the regional AGRI grid by their latitude and longitude coordinates. Supervised COT pixels require finite reference values in $[0,100]$ and daytime solar zenith angles below $80^\circ$; valid zero-COT values are retained. Hunan additionally requires valid AGRI inputs and a valid clear/water/ice phase category, whereas Hubei uses the COT validity mask independently of phase validity. Missing reference values are excluded from COT supervision and reference-based stratification, but CPP availability does not restrict the main GHI comparison. CPP is a satellite retrieval reference, not an independent ground truth; the historical production-version limitations are documented in the supplementary provenance description.
+
+% Replacement for Table 3; optimizer details common to both regions are stated in the following paragraph.
+\begin{table}[!htbp]\centering\small
+\caption{Regional training settings for the models used in the primary three-frame comparisons. Training and validation counts refer to each component's own eligible data; models are trained independently by region. The same settings are used within each with/without-COT pair.}\label{tab:training}
+\begin{tabularx}{\linewidth}{p{42mm}XX}\toprule
+Setting & Hubei & Hunan\\\midrule
+\multicolumn{3}{l}{\textit{COT retriever: $16\times16$, 13 AGRI and three geometry/daytime channels}}\\
+U-Net feature widths & 16, 32, 64 & 32, 64, 128\\
+Supervised training/validation patches & 2,738 / 264 & 15,414 / 1,398\\
+Valid training/validation pixels & 699,023 / 67,187 & 3,886,399 / 352,441\\
+Batch; maximum epochs & 128; 50 & 1,284; 50\\
+Input standardization & All training input pixels, all 16 channels & Valid training reference pixels; first 15 channels; binary daytime channel retained\\
+\midrule
+\multicolumn{3}{l}{\textit{GHI estimator: three $3\times3$ frames, 42,529 parameters}}\\
+Batch; epochs & 512; 30 & 1,792; 30\\
+Standardization & Station-specific training statistics & Shared two-station training statistics\\
+Random seeds & 42, 43, 44 & 42, 43, 44\\
+\midrule
+\multicolumn{3}{l}{\textit{DyDiff image predictor: $256\times256$, eight historical and sixteen future frames}}\\
+Training/validation sequences & 34,854 / 3,171 & 35,320 / 3,140\\
+Global batch; epochs & 150; 150 & 80; 150\\
+Updates per epoch & 233 & 442\\
+Sampling & 25 steps, one prediction member & 25 steps, one prediction member\\\bottomrule
+\end{tabularx}
+\end{table}
+
+% Training details to place immediately after Table 3.
+The COT retrievers use AdamW with learning rate $10^{-3}$, weight decay $10^{-4}$, gradient-norm clipping at 5, and a maximum of 50 epochs. Training stops after eight epochs without improvement in validation masked log-COT Huber loss; the lowest-loss checkpoint is retained. The GHI estimators use AdamW with learning rate $10^{-3}$ and weight decay $10^{-4}$ for 30 epochs, cosine decay to $10^{-5}$, and gradient-norm clipping at 5. Each station and random seed selects the checkpoint with the lowest validation GHI RMSE. AGRI and log-COT standardization is fixed from training data, while the two solar-geometric inputs retain their physical values. Initial parameters, sample orders, optimizer settings, and update counts are identical within each COT comparison. The retriever and image-predictor parameters remain fixed when evaluating GHI forecasts.
+
+The regional DyDiff predictors share a factorized transformer architecture with patch size 8, width 384, twelve layers, six attention heads, and an MLP expansion ratio of 4 (65,794,266 trainable parameters). They are independently trained for 150 epochs using a 1,000-step mixed-velocity diffusion objective, AdamW with initial learning rate $10^{-4}$ and weight decay $10^{-4}$, two warm-up epochs, a minimum learning rate of $10^{-6}$, and gradient-norm clipping at 1. Exponential moving average weights use a decay of 0.999. Model selection uses fixed-seed, single-member validation forecast RMSE in the training-normalized image space; GHI evaluation uses 25-step single-member sampling. Image normalization is fitted separately on each region's training partition.

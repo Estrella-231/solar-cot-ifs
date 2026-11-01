@@ -1,0 +1,140 @@
+{
+  "cases": [
+    {
+      "station": "Niushou",
+      "date": "20250926",
+      "n": 15,
+      "A_rmse_seedmean": 27.797936929077185,
+      "AC_rmse_seedmean": 19.30250132776457,
+      "gain_pct": 30.561388864891693,
+      "COT_min": 33.5324592590332,
+      "COT_max": 48.24265670776367,
+      "snapshot_COT_max": 57.53583908081055,
+      "display_mean_A_bias": 0.6261022919542104,
+      "display_mean_AC_bias": 0.4236283336208757,
+      "snapshots_bjt": [
+        "202509261030",
+        "202509261230",
+        "202509261430"
+      ],
+      "missing_GHI_times": [
+        "202509261345",
+        "202509261400"
+      ],
+      "CPP_reference_points": 12
+    },
+    {
+      "station": "Niushou",
+      "date": "20250927",
+      "n": 16,
+      "A_rmse_seedmean": 92.71977147357832,
+      "AC_rmse_seedmean": 100.89363577679003,
+      "gain_pct": -8.815664850447757,
+      "COT_min": 18.435495376586918,
+      "COT_max": 31.658626556396484,
+      "snapshot_COT_max": 35.50429916381836,
+      "display_mean_A_bias": -34.797711650410974,
+      "display_mean_AC_bias": -40.78775656211345,
+      "snapshots_bjt": [
+        "202509271030",
+        "202509271230",
+        "202509271430"
+      ],
+      "missing_GHI_times": [
+        "202509271130"
+      ],
+      "CPP_reference_points": 17
+    }
+  ],
+  "candidate_rule": {
+    "station": "Niushou, first station in fixed study order",
+    "time_bjt": "10:30–14:30, fixed 17-target grid",
+    "minimum_GHI_targets": 12,
+    "retrieved_station_COT_peak_min": 30,
+    "retrieved_station_COT_range_min": 5,
+    "selection": "earliest calendar date in each positive and non-positive paired-RMSE direction group; not extrema",
+    "scope": "illustrative conditional selection, not prevalence or independent weather replication",
+    "initial_completeness_attempt": "17/17 yielded no candidates; threshold relaxed to 12/17 based on missingness before direction-based selection"
+  },
+  "eligible_station_dates": [
+    {
+      "station": "Niushou",
+      "date": "20250926",
+      "n": 15,
+      "A_rmse": 27.797936929077185,
+      "AC_rmse": 19.30250132776457,
+      "gain_pct": 30.561388864891693,
+      "cot_min": 33.5324592590332,
+      "cot_max": 48.24265670776367,
+      "cot_range": 14.710197448730469,
+      "ghi_min": 50.400001525878906,
+      "ghi_max": 107.06666564941406,
+      "eligible": true
+    },
+    {
+      "station": "Niushou",
+      "date": "20250927",
+      "n": 16,
+      "A_rmse": 92.71977147357832,
+      "AC_rmse": 100.89363577679003,
+      "gain_pct": -8.815664850447757,
+      "cot_min": 18.435495376586918,
+      "cot_max": 31.658626556396484,
+      "cot_range": 13.22313117980957,
+      "ghi_min": 99.66666412353516,
+      "ghi_max": 484.2000122070313,
+      "eligible": true
+    },
+    {
+      "station": "Niushou",
+      "date": "20251106",
+      "n": 14,
+      "A_rmse": 25.607067329770672,
+      "AC_rmse": 18.06002527561668,
+      "gain_pct": 29.472496623538905,
+      "cot_min": 33.89369583129883,
+      "cot_max": 50.82125473022461,
+      "cot_range": 16.92755889892578,
+      "ghi_min": 18.26666641235352,
+      "ghi_max": 100.93333435058594,
+      "eligible": true
+    },
+    {
+      "station": "Niushou",
+      "date": "20260103",
+      "n": 15,
+      "A_rmse": 24.695828634929825,
+      "AC_rmse": 25.80315729641212,
+      "gain_pct": -4.483869230919783,
+      "cot_min": 13.423640251159668,
+      "cot_max": 30.023761749267575,
+      "cot_range": 16.60012149810791,
+      "ghi_min": 44.59999847412109,
+      "ghi_max": 187.0666656494141,
+      "eligible": true
+    },
+    {
+      "station": "Niushou",
+      "date": "20260301",
+      "n": 14,
+      "A_rmse": 59.12521917188658,
+      "AC_rmse": 52.35989500581754,
+      "gain_pct": 11.442366321554164,
+      "cot_min": 35.962772369384766,
+      "cot_max": 41.82216262817383,
+      "cot_range": 5.859390258789063,
+      "ghi_min": 19.600000381469727,
+      "ghi_max": 88.86666870117188,
+      "eligible": true
+    }
+  ],
+  "display_predictions": "mean of three independent seed predictions; displayed RMSE computed per seed then averaged, not ensemble RMSE",
+  "raw_model_route": "observed T-30/T-15/T AGRI → corrected fixed R → same-time paired GHI heads",
+  "RGB": "C03/C02/C01, square root of clip(reflectance,0,1), common mapping, native16x16 nearest-neighbour display",
+  "COT": "expm1(current frozen R log1p output); common0–70 scale; no pixel above70 in chosen snapshots",
+  "spatial": "Niushou centre(row8,col6); dashed3x3 model crop; Rcontext16x16",
+  "gaps": "15-min reindex with NaN, no gap bridging; sparse CPP reference markers not connected",
+  "normal_GHI_axes": "independent0–150 /0–500 Wm-2; alternative common0–550 export also saved",
+  "test_payloads_read": 0,
+  "training_performed": false
+}

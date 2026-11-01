@@ -1,0 +1,610 @@
+{
+  "status": "PASS",
+  "scope": "current regional DyDiff validation; observed-trained frozen GHI models",
+  "bootstrap_repeats": 5000,
+  "bootstrap_seed": 20261102,
+  "bootstrap_unit": "BJT target date; shared resamples across methods, stations and seeds",
+  "weighting": "RMSE within each station and each seed, then equal weights",
+  "test_payloads_read": 0,
+  "smoothing": "none",
+  "subsampling": "none",
+  "summaries": [
+    {
+      "region": "Hubei",
+      "no_cot_rmse": 101.01782738063906,
+      "with_cot_rmse": 96.07131999287587,
+      "delta_rmse": -4.946507387763191,
+      "reduction_percent": 4.896667762537166,
+      "delta_ci95_lower": -9.983210509323428,
+      "delta_ci95_upper": -0.15400210758507535,
+      "records": 24451,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 8567,
+        "Wangzhai": 7673,
+        "Mizhuang": 8211
+      },
+      "first_target_bjt": "2025-08-22 06:45:00",
+      "last_target_bjt": "2026-04-21 19:00:00"
+    },
+    {
+      "region": "Hunan",
+      "no_cot_rmse": 122.5883027974998,
+      "with_cot_rmse": 120.50183451559519,
+      "delta_rmse": -2.086468281904601,
+      "reduction_percent": 1.7020125365069916,
+      "delta_ci95_lower": -3.527265825108029,
+      "delta_ci95_upper": -0.5977915246523274,
+      "records": 66086,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 31655,
+        "zhujia": 34431
+      },
+      "first_target_bjt": "2024-04-19 06:15:00",
+      "last_target_bjt": "2026-06-25 19:15:00"
+    }
+  ],
+  "sources": [
+    {
+      "region": "Hubei",
+      "source": "refine-logs\\hubei_threeframe_dydiff_forecast_20261102\\recovered\\evaluation",
+      "files_sha256": {
+        "RESULTS.json": "ebc8426bebb302d787802f38272cd3ca49833264860983ae1e66f7bee887c204",
+        "predictions.npz": "e95a314a33c370c31d581ccd62d0e9e7668159e88fc4fded522ca481da94011c",
+        "keys.csv": "1da26f4f34f342576f1e8928afe7646b401afc95f0a8c3d75a5ea28635bf7ff0"
+      },
+      "max_absolute_difference_from_saved_point_and_ci": 2.842170943040401e-14
+    },
+    {
+      "region": "Hunan",
+      "source": "refine-logs\\fulltrain_forecast_cot_20261101\\observed_trained_heads_evaluation_v1",
+      "files_sha256": {
+        "RESULTS.json": "54f066e4261abf4014412fbc56f814f1c8ec9c06e9a5cf818f5f5a9f5014f2ad",
+        "predictions.npz": "eff39d18d7d9f26f409cbe525370c1c5e51d8ed7115e65d78edfa12ae8f80814",
+        "keys.csv": "7cda092470d9c8e697fc946cf77fa2ad9cf8f3b333310d71ca37ebfb20dcd4a4"
+      },
+      "max_absolute_difference_from_saved_point_and_ci": 1.1368683772161603e-13
+    }
+  ],
+  "lead_metrics": [
+    {
+      "lead_minutes": 15,
+      "region": "Hubei",
+      "no_cot_rmse": 73.53610498406935,
+      "with_cot_rmse": 67.90993307581337,
+      "delta_rmse": -5.626171908255984,
+      "reduction_percent": 7.650897351001684,
+      "delta_ci95_lower": -10.774120236106022,
+      "delta_ci95_upper": -1.5375025442226324,
+      "records": 1566,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 549,
+        "Wangzhai": 492,
+        "Mizhuang": 525
+      }
+    },
+    {
+      "lead_minutes": 30,
+      "region": "Hubei",
+      "no_cot_rmse": 77.8625928311889,
+      "with_cot_rmse": 72.40847896079362,
+      "delta_rmse": -5.45411387039529,
+      "reduction_percent": 7.00479353701996,
+      "delta_ci95_lower": -10.750300304940277,
+      "delta_ci95_upper": -1.3299184580414205,
+      "records": 1561,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 547,
+        "Wangzhai": 490,
+        "Mizhuang": 524
+      }
+    },
+    {
+      "lead_minutes": 45,
+      "region": "Hubei",
+      "no_cot_rmse": 82.0897950185619,
+      "with_cot_rmse": 76.86037560662035,
+      "delta_rmse": -5.229419411941549,
+      "reduction_percent": 6.3703648069276975,
+      "delta_ci95_lower": -10.435321123387276,
+      "delta_ci95_upper": -1.1413176974019488,
+      "records": 1557,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 545,
+        "Wangzhai": 489,
+        "Mizhuang": 523
+      }
+    },
+    {
+      "lead_minutes": 60,
+      "region": "Hubei",
+      "no_cot_rmse": 85.97066885585153,
+      "with_cot_rmse": 80.75505712653599,
+      "delta_rmse": -5.21561172931554,
+      "reduction_percent": 6.0667339206824655,
+      "delta_ci95_lower": -10.10912133435682,
+      "delta_ci95_upper": -1.235662965652884,
+      "records": 1553,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 543,
+        "Wangzhai": 488,
+        "Mizhuang": 522
+      }
+    },
+    {
+      "lead_minutes": 75,
+      "region": "Hubei",
+      "no_cot_rmse": 91.11351751332363,
+      "with_cot_rmse": 85.80066213506464,
+      "delta_rmse": -5.312855378258988,
+      "reduction_percent": 5.8310287246698405,
+      "delta_ci95_lower": -9.943210826449139,
+      "delta_ci95_upper": -1.257616193496829,
+      "records": 1548,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 542,
+        "Wangzhai": 486,
+        "Mizhuang": 520
+      }
+    },
+    {
+      "lead_minutes": 90,
+      "region": "Hubei",
+      "no_cot_rmse": 93.0949432500613,
+      "with_cot_rmse": 88.02309017116862,
+      "delta_rmse": -5.071853078892687,
+      "reduction_percent": 5.448043579842176,
+      "delta_ci95_lower": -9.885515364852358,
+      "delta_ci95_upper": -0.8174339088980513,
+      "records": 1543,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 541,
+        "Wangzhai": 484,
+        "Mizhuang": 518
+      }
+    },
+    {
+      "lead_minutes": 105,
+      "region": "Hubei",
+      "no_cot_rmse": 96.50979970974784,
+      "with_cot_rmse": 90.99734212911795,
+      "delta_rmse": -5.512457580629885,
+      "reduction_percent": 5.711811232857745,
+      "delta_ci95_lower": -11.080169174356824,
+      "delta_ci95_upper": -0.6342132917895142,
+      "records": 1538,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 539,
+        "Wangzhai": 482,
+        "Mizhuang": 517
+      }
+    },
+    {
+      "lead_minutes": 120,
+      "region": "Hubei",
+      "no_cot_rmse": 100.99545235951922,
+      "with_cot_rmse": 94.67030417135052,
+      "delta_rmse": -6.325148188168697,
+      "reduction_percent": 6.262804948536404,
+      "delta_ci95_lower": -12.20698636211443,
+      "delta_ci95_upper": -0.9989742953750957,
+      "records": 1533,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 537,
+        "Wangzhai": 480,
+        "Mizhuang": 516
+      }
+    },
+    {
+      "lead_minutes": 135,
+      "region": "Hubei",
+      "no_cot_rmse": 105.13401830391881,
+      "with_cot_rmse": 99.04827136773434,
+      "delta_rmse": -6.085746936184464,
+      "reduction_percent": 5.788561147346183,
+      "delta_ci95_lower": -11.935413448925111,
+      "delta_ci95_upper": -0.5238705410209155,
+      "records": 1527,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 535,
+        "Wangzhai": 478,
+        "Mizhuang": 514
+      }
+    },
+    {
+      "lead_minutes": 150,
+      "region": "Hubei",
+      "no_cot_rmse": 103.98125775044802,
+      "with_cot_rmse": 99.19145012172844,
+      "delta_rmse": -4.789807628719586,
+      "reduction_percent": 4.606414398463022,
+      "delta_ci95_lower": -11.29233901960515,
+      "delta_ci95_upper": 1.387934736016581,
+      "records": 1523,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 533,
+        "Wangzhai": 478,
+        "Mizhuang": 512
+      }
+    },
+    {
+      "lead_minutes": 165,
+      "region": "Hubei",
+      "no_cot_rmse": 104.55637573949177,
+      "with_cot_rmse": 99.20460596745502,
+      "delta_rmse": -5.3517697720367465,
+      "reduction_percent": 5.11854942769917,
+      "delta_ci95_lower": -11.649036447950026,
+      "delta_ci95_upper": 0.9914530898082533,
+      "records": 1519,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 532,
+        "Wangzhai": 477,
+        "Mizhuang": 510
+      }
+    },
+    {
+      "lead_minutes": 180,
+      "region": "Hubei",
+      "no_cot_rmse": 109.52097547930761,
+      "with_cot_rmse": 103.77925986551192,
+      "delta_rmse": -5.741715613795691,
+      "reduction_percent": 5.242571652295503,
+      "delta_ci95_lower": -11.587678344161773,
+      "delta_ci95_upper": 0.42262047380283163,
+      "records": 1511,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 529,
+        "Wangzhai": 475,
+        "Mizhuang": 507
+      }
+    },
+    {
+      "lead_minutes": 195,
+      "region": "Hubei",
+      "no_cot_rmse": 112.97915405600328,
+      "with_cot_rmse": 107.61341665407734,
+      "delta_rmse": -5.365737401925941,
+      "reduction_percent": 4.749316320129438,
+      "delta_ci95_lower": -11.060652394911083,
+      "delta_ci95_upper": 0.7568164714847658,
+      "records": 1503,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 527,
+        "Wangzhai": 472,
+        "Mizhuang": 504
+      }
+    },
+    {
+      "lead_minutes": 210,
+      "region": "Hubei",
+      "no_cot_rmse": 116.64751413434709,
+      "with_cot_rmse": 112.05314721679775,
+      "delta_rmse": -4.594366917549337,
+      "reduction_percent": 3.9386753773919647,
+      "delta_ci95_lower": -10.29067384306717,
+      "delta_ci95_upper": 1.6355892433954227,
+      "records": 1496,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 525,
+        "Wangzhai": 469,
+        "Mizhuang": 502
+      }
+    },
+    {
+      "lead_minutes": 225,
+      "region": "Hubei",
+      "no_cot_rmse": 121.49991752148902,
+      "with_cot_rmse": 117.97020907433655,
+      "delta_rmse": -3.5297084471524727,
+      "reduction_percent": 2.9051118051402702,
+      "delta_ci95_lower": -8.832849405246735,
+      "delta_ci95_upper": 1.8907926073141819,
+      "records": 1490,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 523,
+        "Wangzhai": 467,
+        "Mizhuang": 500
+      }
+    },
+    {
+      "lead_minutes": 240,
+      "region": "Hubei",
+      "no_cot_rmse": 125.84949494202267,
+      "with_cot_rmse": 123.25567405343003,
+      "delta_rmse": -2.5938208885926457,
+      "reduction_percent": 2.0610498991573967,
+      "delta_ci95_lower": -7.656838782530962,
+      "delta_ci95_upper": 2.8405690438343765,
+      "records": 1483,
+      "target_bjt_dates": 17,
+      "records_by_station": {
+        "Niushou": 520,
+        "Wangzhai": 466,
+        "Mizhuang": 497
+      }
+    },
+    {
+      "lead_minutes": 15,
+      "region": "Hunan",
+      "no_cot_rmse": 88.78277947909885,
+      "with_cot_rmse": 87.5225936047285,
+      "delta_rmse": -1.2601858743703502,
+      "reduction_percent": 1.4194034944209233,
+      "delta_ci95_lower": -3.3715241711822355,
+      "delta_ci95_upper": 0.7668649730940562,
+      "records": 4074,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1948,
+        "zhujia": 2126
+      }
+    },
+    {
+      "lead_minutes": 30,
+      "region": "Hunan",
+      "no_cot_rmse": 96.75940818838228,
+      "with_cot_rmse": 94.937221760595,
+      "delta_rmse": -1.8221864277872868,
+      "reduction_percent": 1.8832136966357327,
+      "delta_ci95_lower": -3.6943737552411404,
+      "delta_ci95_upper": -0.06189884178910251,
+      "records": 4105,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1962,
+        "zhujia": 2143
+      }
+    },
+    {
+      "lead_minutes": 45,
+      "region": "Hunan",
+      "no_cot_rmse": 103.02751787524794,
+      "with_cot_rmse": 100.75762637348227,
+      "delta_rmse": -2.2698915017656702,
+      "reduction_percent": 2.2031895444809213,
+      "delta_ci95_lower": -4.014309013944108,
+      "delta_ci95_upper": -0.6473082277844926,
+      "records": 4133,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1976,
+        "zhujia": 2157
+      }
+    },
+    {
+      "lead_minutes": 60,
+      "region": "Hunan",
+      "no_cot_rmse": 108.6465290946731,
+      "with_cot_rmse": 106.37404516950812,
+      "delta_rmse": -2.272483925164977,
+      "reduction_percent": 2.0916304865890023,
+      "delta_ci95_lower": -4.011319836210461,
+      "delta_ci95_upper": -0.6301224117526361,
+      "records": 4153,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1985,
+        "zhujia": 2168
+      }
+    },
+    {
+      "lead_minutes": 75,
+      "region": "Hunan",
+      "no_cot_rmse": 112.57525397080042,
+      "with_cot_rmse": 110.01742417425044,
+      "delta_rmse": -2.5578297965499814,
+      "reduction_percent": 2.272106618754266,
+      "delta_ci95_lower": -4.216949084507989,
+      "delta_ci95_upper": -0.9999222037057762,
+      "records": 4166,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1991,
+        "zhujia": 2175
+      }
+    },
+    {
+      "lead_minutes": 90,
+      "region": "Hunan",
+      "no_cot_rmse": 115.8279826790315,
+      "with_cot_rmse": 113.21241879912496,
+      "delta_rmse": -2.6155638799065457,
+      "reduction_percent": 2.2581450694470595,
+      "delta_ci95_lower": -4.117374521183251,
+      "delta_ci95_upper": -1.1765515425695232,
+      "records": 4170,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1994,
+        "zhujia": 2176
+      }
+    },
+    {
+      "lead_minutes": 105,
+      "region": "Hunan",
+      "no_cot_rmse": 118.52286687686428,
+      "with_cot_rmse": 115.91186046000597,
+      "delta_rmse": -2.6110064168583165,
+      "reduction_percent": 2.2029558393748094,
+      "delta_ci95_lower": -4.217112268560821,
+      "delta_ci95_upper": -1.0203002590771126,
+      "records": 4174,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1997,
+        "zhujia": 2177
+      }
+    },
+    {
+      "lead_minutes": 120,
+      "region": "Hunan",
+      "no_cot_rmse": 122.38228513147617,
+      "with_cot_rmse": 119.75779702522784,
+      "delta_rmse": -2.6244881062483216,
+      "reduction_percent": 2.144500001310501,
+      "delta_ci95_lower": -4.258717000406366,
+      "delta_ci95_upper": -0.9627083800549259,
+      "records": 4180,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 2001,
+        "zhujia": 2179
+      }
+    },
+    {
+      "lead_minutes": 135,
+      "region": "Hunan",
+      "no_cot_rmse": 123.61284809311466,
+      "with_cot_rmse": 121.09992628849385,
+      "delta_rmse": -2.5129218046208166,
+      "reduction_percent": 2.032896938615869,
+      "delta_ci95_lower": -4.135425469793759,
+      "delta_ci95_upper": -0.8610482423185022,
+      "records": 4186,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 2005,
+        "zhujia": 2181
+      }
+    },
+    {
+      "lead_minutes": 150,
+      "region": "Hunan",
+      "no_cot_rmse": 125.0051997397192,
+      "with_cot_rmse": 122.83031278497758,
+      "delta_rmse": -2.1748869547416234,
+      "reduction_percent": 1.739837190188953,
+      "delta_ci95_lower": -3.7743076375408275,
+      "delta_ci95_upper": -0.5196946581999762,
+      "records": 4182,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 2004,
+        "zhujia": 2178
+      }
+    },
+    {
+      "lead_minutes": 165,
+      "region": "Hunan",
+      "no_cot_rmse": 128.54309021163687,
+      "with_cot_rmse": 126.34078590190848,
+      "delta_rmse": -2.2023043097283903,
+      "reduction_percent": 1.7132809753542255,
+      "delta_ci95_lower": -3.9092054990190293,
+      "delta_ci95_upper": -0.4179775647856596,
+      "records": 4173,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 2001,
+        "zhujia": 2172
+      }
+    },
+    {
+      "lead_minutes": 180,
+      "region": "Hunan",
+      "no_cot_rmse": 131.59438009807187,
+      "with_cot_rmse": 129.74480704518467,
+      "delta_rmse": -1.8495730528871945,
+      "reduction_percent": 1.405510669611254,
+      "delta_ci95_lower": -3.572813542956312,
+      "delta_ci95_upper": -0.07667753376283495,
+      "records": 4152,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1993,
+        "zhujia": 2159
+      }
+    },
+    {
+      "lead_minutes": 195,
+      "region": "Hunan",
+      "no_cot_rmse": 135.08805356142918,
+      "with_cot_rmse": 133.458764220855,
+      "delta_rmse": -1.6292893405741893,
+      "reduction_percent": 1.2060943196826046,
+      "delta_ci95_lower": -3.2828153000923663,
+      "delta_ci95_upper": 0.08983107997022251,
+      "records": 4119,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1978,
+        "zhujia": 2141
+      }
+    },
+    {
+      "lead_minutes": 210,
+      "region": "Hunan",
+      "no_cot_rmse": 139.87925240503944,
+      "with_cot_rmse": 137.98357811105902,
+      "delta_rmse": -1.89567429398042,
+      "reduction_percent": 1.355221922756089,
+      "delta_ci95_lower": -3.6392934515407496,
+      "delta_ci95_upper": -0.07665955894248827,
+      "records": 4081,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1960,
+        "zhujia": 2121
+      }
+    },
+    {
+      "lead_minutes": 225,
+      "region": "Hunan",
+      "no_cot_rmse": 144.33635964687053,
+      "with_cot_rmse": 142.4900633374255,
+      "delta_rmse": -1.846296309445023,
+      "reduction_percent": 1.2791623080713133,
+      "delta_ci95_lower": -3.6034022437351383,
+      "delta_ci95_upper": -0.06407865750578386,
+      "records": 4040,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1940,
+        "zhujia": 2100
+      }
+    },
+    {
+      "lead_minutes": 240,
+      "region": "Hunan",
+      "no_cot_rmse": 149.4528304549111,
+      "with_cot_rmse": 147.67009912870137,
+      "delta_rmse": -1.7827313262097277,
+      "reduction_percent": 1.1928387845070443,
+      "delta_ci95_lower": -3.539532761520867,
+      "delta_ci95_upper": 0.006474964132229377,
+      "records": 3998,
+      "target_bjt_dates": 51,
+      "records_by_station": {
+        "sili": 1920,
+        "zhujia": 2078
+      }
+    }
+  ],
+  "figure_size_inches": [
+    7.0,
+    5.2
+  ],
+  "png_dpi": 360,
+  "versions": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.0"
+  }
+}
