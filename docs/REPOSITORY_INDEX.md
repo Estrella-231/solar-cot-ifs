@@ -2,7 +2,7 @@
 
 规则更新入口：[研究规则纠错机制及20项审计](rule_correction_20261102/REPORT.md)。当前项目AGENTS已收敛为现行规则；历史全文保存在该审计目录，不能继续作为执行指令。
 
-新增条件分析：[两省预报厚云分层及四个真实AGRI/COT/GHI案例](../refine-logs/forecast_thick_cloud_events_20261102/RESULTS.md)。厚云点降幅湖北15.45%、湖南2.90%，两者日期块区间均跨零；与总体预报4.90%/1.70%及同期厚云35.51%分开。连续参考段不等于独立云团，论文整合目前仅有双语建议。
+新增条件分析：[两省预报厚云分层及四个真实AGRI/COT/GHI案例](../refine-logs/forecast_thick_cloud_events_20261102/RESULTS.md)。厚云点降幅湖北15.45%、湖南2.90%，两者日期块区间均跨零；与总体预报4.90%/1.70%及同期厚云35.51%分开。连续参考段不等于独立云团，已纳入主文§5.6/图9–10与补充S7；新窗口接续见[交接入口](../paper/HANDOFF_NEXT_WINDOW_20261103.md)。
 
 核对日期：2026-11-02。这里区分“当前选用”“已完成对照”“负结果”“失效来源”和“运行故障”。文件夹日期较新或存在 best.pt，都不自动表示正在使用。机器可读索引见 [ASSET_STATUS.json](ASSET_STATUS.json)。
 
@@ -15,7 +15,7 @@
 | 湖南GHI预报 | 真实同期三帧训练的既有GHI头，冻结后接预测AGRI/COT；两站、三seed、有无COT共12个头。不用预测图重训或微调头 | [选用权重与哈希](../configs/hunan_active_ghi_heads.json) |
 | 当前湖南预报评价 | 66,086条验证记录、51个目标日期；122.588→120.502 W/m²，下降1.702%；四里2.470%、竺家0.765%，竺家单站区间跨零 | [结果与评分口径](../refine-logs/fulltrain_forecast_cot_20261101/observed_trained_heads_evaluation_v1/RESULTS.md) |
 | 湖北同期COT价值 | 正确太阳几何、真实三帧；三站三seed，1,905条共同验证记录、20个日期；74.406→68.629 W/m²，下降7.763%；米庄单站区间跨零 | [完成记录](../refine-logs/hubei_same_time_geometry_20261102/EXPERIMENT_TRACKER.md)、[结果](../refine-logs/hubei_same_time_geometry_20261102/RESULTS.md) |
-| 论文 | 唯一英文主稿main.tex、对应main_zh.md及编译main.pdf；仍有明确待填项，尚非投稿定稿 | [论文版本入口](../paper/VERSION_INDEX.md) |
+| 论文 | 唯一英文主稿main.tex、对应main_zh.md及编译main.pdf；已完成本轮结果整合；完整四组合与最终留出评价仍未完成，尚非投稿定稿 | [论文版本入口](../paper/VERSION_INDEX.md) |
 | 执行规则 | 普通级联默认全train，可复用已核实上游；OOF可选；外层划分、因果输入与共同评价行不变 | [现行规则](execution_simplification_20261030/CURRENT_POLICY.md)、[AGENTS](../AGENTS.md) |
 
 上述分数均为validation结果，不是独立test成绩。两区域独立训练，不称零样本迁移。平均分数按站点和seed等权，不能用合并样本RMSE替换。
